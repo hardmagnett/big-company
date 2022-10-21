@@ -2,11 +2,12 @@
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
-<template class="foo">
-  <img alt="Vue logo" class="logo" src="@/assets/images/logo.svg" width="24" height="24" />
+<template>
+  <img alt="Логотип" src="@/assets/images/logo.svg" width="24" height="24" />
 
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink>
+  <RouterLink :to="{name: 'dashboard'}">Панель управления</RouterLink>
+  <RouterLink :to="{name: 'employees'}">Сотрудники</RouterLink>
+  <RouterLink :to="{name: 'departments'}">Отделы</RouterLink>
 
   <RouterView />
 </template>

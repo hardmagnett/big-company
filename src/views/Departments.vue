@@ -1,6 +1,6 @@
 <template>
   <div class="about-view">
-    <p>This is an about page</p>
+    <p>Страница с отделами</p>
   </div>
 </template>
 

@@ -6,6 +6,7 @@ import TestCompWithScss from "@/components/TestCompWithScss.vue";
 
 <template>
   <div class="home-view">
+    <p>Страница с сотрудниками</p>
     <TestCompWithScss />
   </div>
 </template>
