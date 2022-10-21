@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../../components/vite-done-it/TheWelcome.vue'
+
+import TestCompWithScss from "@/components/TestCompWithScss.vue";
+
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="home-view">
+    <TestCompWithScss />
+  </div>
 </template>
