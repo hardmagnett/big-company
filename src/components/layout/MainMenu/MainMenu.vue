@@ -1,39 +1,65 @@
-<template>
-  <div class="main-menu">
-    <MainMenuItem
-        :menuItem="{
-          id: 1,
-          title: 'Заголовки',
-          route: {
-            to: 'headers'
-          },
-          children: [
-            {
-              id: 2,
-              title: 'Кнопки',
-              route: {
-                to: 'buttons'
-              },
-            },
-            {
-              id: 3,
-              title: 'Элементы форм',
-              route: {
-                to: 'inputs'
-              },
-            }
-          ]
-        }"
-    />
-    <!--<MainMenuItem />-->
-    <!--<MainMenuItem />-->
-  </div>
-</template>
-
 <script setup lang="ts">
 import MainMenuItem from '@/components/layout/MainMenu/MainMenuItem.vue';
 
+let i = 0
+const menuItems = [
+  {
+    id: i++,
+    title: 'Панель управления',
+    route: {
+      to: 'dashboard'
+    },
+  },
+  {
+    id: i++,
+    title: 'Сотрудники',
+    route: {
+      to: 'employees'
+    },
+  },
+  {
+    id: i++,
+    title: 'Отделы',
+    route: {
+      to: 'departments'
+    },
+  },
+  {
+    id: i++,
+    title: 'Заголовки',
+    route: {
+      to: 'headers'
+    },
+    children: [
+      {
+        id: i++,
+        title: 'Кнопки',
+        route: {
+          to: 'buttons'
+        },
+      },
+      {
+        id: i++,
+        title: 'Элементы форм',
+        route: {
+          to: 'inputs'
+        },
+      }
+    ]
+  }
+]
+
 </script>
+
+<template>
+  <div class="main-menu">
+    <MainMenuItem
+        v-for="menuItem in menuItems"
+        :key="menuItem.id"
+        :menuItem="menuItem"
+    />
+  </div>
+</template>
 
 <style scoped lang="scss">
 // Обычно позиционирование компонента делается снаружи.

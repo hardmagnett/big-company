@@ -1,13 +1,9 @@
 <script setup lang="ts">
-// import {defineProps} from 'vue';
 
 const props = defineProps<{
-  title?: string
-  likes?: number
   menuItem: object
 }>()
 
-// console.log(props.title)
 </script>
 
 <template>
