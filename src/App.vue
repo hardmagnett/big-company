@@ -7,9 +7,9 @@ import MainMenu from '@/components/layout/MainMenu/MainMenu.vue';
 <template>
   <img alt="Логотип" src="@/assets/images/logo.svg" width="24" height="24" />
 
-  <RouterLink :to="{name: 'dashboard'}">Панель управления</RouterLink>
-  <RouterLink :to="{name: 'employees'}">Сотрудники</RouterLink>
-  <RouterLink :to="{name: 'departments'}">Отделы</RouterLink>
+  <!--<RouterLink :to="{name: 'dashboard'}">Панель управления</RouterLink>-->
+  <!--<RouterLink :to="{name: 'employees'}">Сотрудники</RouterLink>-->
+  <!--<RouterLink :to="{name: 'departments'}">Отделы</RouterLink>-->
 
   <MainMenu/>
 

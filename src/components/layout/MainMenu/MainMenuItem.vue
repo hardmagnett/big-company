@@ -1,20 +1,28 @@
 <script setup lang="ts">
+// import {defineProps} from 'vue';
 
+const props = defineProps<{
+  title?: string
+  likes?: number
+  menuItem: object
+}>()
+
+// console.log(props.title)
 </script>
 
 <template>
-  <div class="left-menu-item">
+  <div class="main-menu-item">
 
-    <!--<nuxt-link v-if="!menuItem.menuWithoutLink" :to="menuItem.routePath">{{menuItem.menuTitle}}</nuxt-link>-->
-    <!--<a v-if="menuItem.menuWithoutLink">{{menuItem.menuTitle}}</a>-->
-    <p>Название пункта меню</p>
+    <RouterLink v-if="menuItem.route" :to="{name: menuItem.route.to}">{{menuItem.title}}</RouterLink>
+    <a v-if="!menuItem.route">{{menuItem.title}}</a>
 
-    <div>
-      <!--<MainMenuItem />-->
-      <!--<MainMenuItem />-->
-      <p>Здесь будут пункты меню</p>
-
-    </div>
+    <template v-if="menuItem.children">
+      <MainMenuItem
+          v-for="childMenuItem in menuItem.children"
+          :key="childMenuItem.id"
+          :menuItem="childMenuItem"
+      />
+    </template>
   </div>
 </template>
 

@@ -1,8 +1,32 @@
 <template>
   <div class="main-menu">
-    <MainMenuItem />
-    <MainMenuItem />
-    <MainMenuItem />
+    <MainMenuItem
+        :menuItem="{
+          id: 1,
+          title: 'Заголовки',
+          route: {
+            to: 'headers'
+          },
+          children: [
+            {
+              id: 2,
+              title: 'Кнопки',
+              route: {
+                to: 'buttons'
+              },
+            },
+            {
+              id: 3,
+              title: 'Элементы форм',
+              route: {
+                to: 'inputs'
+              },
+            }
+          ]
+        }"
+    />
+    <!--<MainMenuItem />-->
+    <!--<MainMenuItem />-->
   </div>
 </template>
 
