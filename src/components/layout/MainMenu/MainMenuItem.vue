@@ -1,7 +1,9 @@
 <script setup lang="ts">
 
+import type {MenuItem} from '@/components/layout/MainMenu/types';
+
 const props = defineProps<{
-  menuItem: object
+  menuItem: MenuItem
 }>()
 
 </script>
