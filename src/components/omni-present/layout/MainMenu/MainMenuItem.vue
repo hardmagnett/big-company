@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type {MenuItem} from '@/components/layout/MainMenu/types';
+import type {MenuItem} from '@/components/omni-present/layout/MainMenu/types';
 
 const props = defineProps<{
   menuItem: MenuItem
