@@ -1,0 +1,43 @@
+h1, .h1, ,.h1-base,
+h2, .h2, ,.h2-base,
+h3, .h3, ,.h3-base,
+h4, .h4, ,.h4-base,
+h5, .h5, ,.h5-base,
+h6, .h6, ,.h6-base {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: $headerFontWeight;
+  line-height: $headerLineHeight;
+  letter-spacing: $headerLetterSpacing;
+  font-family: $headerFontFamily;
+}
+
+@mixin h-base($hLevel) {
+  font-size: nth($headerFontSizes, $hLevel);
+  @media (min-width: $sm) {
+    font-size: nth($headerFontSizesSm, $hLevel);
+  }
+  @media (min-width: $md) {
+    font-size: nth($headerFontSizesMd, $hLevel);
+  }
+  @media (min-width: $lg) {
+    font-size: nth($headerFontSizesLg, $hLevel);
+  }
+  @media (min-width: $xl) {
+    font-size: nth($headerFontSizesXl, $hLevel);
+  }
+  @media (min-width: $xxl) {
+    font-size: nth($headerFontSizesXxl, $hLevel);
+  }
+}
+
+@for $hLevel from 1 through 6 {
+
+  h#{$hLevel}, .h#{$hLevel}, .h#{$hLevel}-base {
+    @include h-base($hLevel);
+  }
+
+  h#{$hLevel}:not(.h#{$hLevel}-base), .h#{$hLevel} {
+    margin-bottom: nth($headerBottomMargins, $hLevel);
+  }
+}
