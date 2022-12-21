@@ -1,0 +1,55 @@
+// Базовое техническое
+// ===================
+
+// todo:: не помню нахрена это нужно. Наверное от этой переменной лучше избавиться.
+// Путь от конревого scss-файла в проекте до корня проекта.
+// Например если файл лежит здесь assets/scss/index.scss то путь будет '../../'
+// Это нужно например для импорта шрифтов из библиотеки.
+// И чтобы не быть привязанным к webpack-алиасам конкретного фреймворка, например `~` в nuxt.
+// Даже если в проекте эту переменную не нужно переопределять, всё равно для ясности её лучше написать.
+// Со слешем в конце.
+$pathToNodeModules: '../../'      !default;
+
+// Типографика
+// ===========
+// Идея пропорций взята отсюда https://type-scale.com/
+$fontScale: 1.067           !default;        // Minor Second
+$fontScaleSm: $fontScale    !default;
+$fontScaleMd: 1.125         !default;       // Major Second
+$fontScaleLg: 1.200         !default;       // Minor Third
+$fontScaleXl: $fontScaleLg  !default;
+$fontScaleXxl: $fontScaleXl !default;
+
+@use 'sass:math';
+// Заголовки обычные
+// -----------------
+// Это не хардкод - это для гибкости.
+// Для каждой ширины каждый размер заголовка может быть любым.
+// Например h1 как h1, h2 как h5, h3 как h6. И это при соблюдении scale.
+// И подобные вариации могут отличаться от расширения к расширению.
+$headerFontSizes: 1rem * math.pow($fontScale, 5), 1.0rem * math.pow($fontScale, 4),  1rem * math.pow($fontScale, 3), 1rem * math.pow($fontScale, 2), 1rem * $fontScale, 1rem !default;
+$headerFontSizesSm: 1rem * math.pow($fontScaleSm, 5), 1.0rem * math.pow($fontScaleSm, 4),  1rem * math.pow($fontScaleSm, 3), 1rem * math.pow($fontScaleSm, 2), 1rem * $fontScaleSm, 1rem !default;
+$headerFontSizesMd: 1rem * math.pow($fontScaleMd, 5), 1.0rem * math.pow($fontScaleMd, 4),  1rem * math.pow($fontScaleMd, 3), 1rem * math.pow($fontScaleMd, 2), 1rem * $fontScaleMd, 1rem !default;;
+$headerFontSizesLg: 1rem * math.pow($fontScaleLg, 5), 1.0rem * math.pow($fontScaleLg, 4),  1rem * math.pow($fontScaleLg, 3), 1rem * math.pow($fontScaleLg, 2), 1rem * $fontScaleLg, 1rem !default;
+$headerFontSizesXl: $headerFontSizesLg !default;
+$headerFontSizesXxl:$headerFontSizesXl !default;
+
+$headerBottomMargins: 0.5rem, 0.5rem, 0.5rem, 0.5rem, 0.5rem, 0.5rem !default;
+
+$headerFontWeight: 500 !default;
+$headerFontFamily: 'IBM Plex Sans', sans-serif !default;
+$headerLetterSpacing: 0rem !default;
+$headerLineHeight: 1.2 !default;
+
+// Адаптив
+// =======
+
+$sm: 576px !default;    // Bootstrap 5
+$md: 768px !default;    // Tailwind 2
+$lg: 1024px !default;   // Tailwind 2
+$xl: 1280px !default;   // Tailwind 2
+$xxl: 1536px !default;  // Tailwind 2
+
+// Отступы
+// =======
+$gap: 1rem !default;    // 16px

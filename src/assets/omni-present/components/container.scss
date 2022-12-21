@@ -1,0 +1,26 @@
+.container {
+  padding-right: $gap;
+  padding-left: $gap;
+  margin-right: auto;
+  margin-left: auto;
+  @media (min-width: $sm) {
+    // Именно max-width а не width - так не появляется горизонтальный скроллбар.
+    // Проблема такого подхода вот в чем:
+    // На самом брекпоинте контейнер становится не 768 а 751,
+    // и есть риски выхода за края.
+    max-width: $sm;
+  }
+
+  @media (min-width: $md) {
+    max-width: $md;
+  }
+  @media (min-width: $lg) {
+    max-width: $lg;
+  }
+  @media (min-width: $xl) {
+    max-width: $xl;
+  }
+  @media (min-width: $xxl) {
+    max-width: $xxl;
+  }
+}
