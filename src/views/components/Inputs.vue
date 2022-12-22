@@ -7,6 +7,11 @@
     <br>
     <txt value="default value"></txt>
 
+    <h3>Checkbox</h3>
+    <check-box label="С указанием label" />
+    <br>
+    <check-box />
+
   </div>
 </template>
 
