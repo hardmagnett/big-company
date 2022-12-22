@@ -4,10 +4,10 @@
 
     <h4>Кнопки-Кнопки</h4>
     <div class="buttons-page__buttons">
-      <!--<btn>Main</btn>-->
-      <!--<btn class="btn&#45;&#45;success">Success</btn>-->
-      <!--<btn class="btn&#45;&#45;danger">Danger</btn>-->
-      <!--<btn class="btn&#45;&#45;error">Error</btn>-->
+      <btn>Main</btn>
+      <btn class="btn--success">Success</btn>
+      <btn class="btn--danger">Danger</btn>
+      <btn class="btn--error">Error</btn>
     </div>
   </div>
 </template>
