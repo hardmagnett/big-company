@@ -32,6 +32,13 @@
       <p class="h4-base">Параграф .h4-base</p>
       <p class="h5-base">Параграф .h5-base</p>
       <p class="h6-base">Параграф .h6-base</p>
+
+      <br>
+      <p>Lorem ipsum dolor <a href="http://ya.ru">ya.ru</a> sit amet, consectetur adipisicing elit. Consectetur doloribus eum, laudantium natus nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed sint? Dolor nobis non provident suscipit totam.</p>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
   </div>
 </template>

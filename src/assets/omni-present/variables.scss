@@ -54,8 +54,11 @@ $xxl: 1536px !default;  // Tailwind 2
 
 //// Типовые размеры для типовой верстки
 // =======
-$gap: 1rem !default;    // 16px
-$headerHeight: $gap * 3 !default;
+:root {
+  --gap: 1rem;    // 16px
+}
+//$gap: 1rem !default;    // 16px
+$headerHeight: calc(var(--gap) * 3);
 $borderRadius: 4px;
 // совпадает с размером из FireFox
 $scrollbarWidth: 6px;

@@ -1,6 +1,6 @@
 .container {
-  padding-right: $gap;
-  padding-left: $gap;
+  padding-right: var(--gap);
+  padding-left: var(--gap);
   margin-right: auto;
   margin-left: auto;
   @media (min-width: $sm) {
