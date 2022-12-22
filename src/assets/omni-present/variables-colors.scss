@@ -1,0 +1,32 @@
+:root {
+  --hueBlue: 212;
+  --hueGreen: 113;
+  --hueRed: 5;
+  --hueOrange: 25;
+
+  --satFillSmall: 42%;
+  --lightFillSmall: 52%;
+
+  --satFillBig: 39%;
+  --lightFillBig: 47%;
+
+  --satFillAccent: 52%;
+  --lightFillAccent: 34%;
+
+  // clrFill - Ярко выраженный цвет. Например кнопка или шапка.
+  --clrFillBlueSmall: hsl(var(--hueBlue), var(--satFillSmall), var(--lightFillSmall));
+  --clrFillBlueBig: hsl(var(--hueBlue), var(--satFillBig), var(--lightFillBig));
+  --clrFillBlueAccent: hsl(var(--hueBlue), var(--satFillAccent), var(--lightFillAccent));
+
+  --clrFillRedSmall: hsl(var(--hueRed), var(--satFillSmall), var(--lightFillSmall));
+  --clrFillRedBig: hsl(var(--hueRed), var(--satFillBig), var(--lightFillBig));
+  --clrFillRedAccent: hsl(var(--hueRed), var(--satFillAccent), var(--lightFillAccent));
+
+  --clrFillGreenSmall: hsl(var(--hueGreen), var(--satFillSmall), var(--lightFillSmall));
+  --clrFillGreenBig: hsl(var(--hueGreen), var(--satFillBig), var(--lightFillBig));
+  --clrFillGreenAccent: hsl(var(--hueGreen), var(--satFillAccent), var(--lightFillAccent));
+
+  --clrFillOrangeSmall: hsl(var(--hueOrange), var(--satFillSmall), var(--lightFillSmall));
+  --clrFillOrangeBig: hsl(var(--hueOrange), var(--satFillBig), var(--lightFillBig));
+  --clrFillOrangeAccent: hsl(var(--hueOrange), var(--satFillAccent), var(--lightFillAccent));
+}

@@ -38,7 +38,7 @@ export default {
     outline: none !important;
     text-decoration: none;
     color: white;
-    background-color: clrFill();
+    background-color: var(--clrFillBlueSmall);
     border: none;
     height: $height;
     line-height: $height;
@@ -46,25 +46,31 @@ export default {
     cursor: pointer;
     transition: background-color var(--timeShort);
     &:hover {
-      background-color: clrFill(accent);
+      background-color: var(--clrFillBlueAccent);
     }
   }
   .btn--error {
-    background-color: clrFill(small, error);
+    background-color: var(--clrFillRedSmall);
+    //background-color: clrFill(small, error);
     &:hover {
-      background-color: clrFill(accent, error);
+      //background-color: clrFill(accent, error);
+      background-color: var(--clrFillRedAccent);
     }
   }
   .btn--success {
-    background-color: clrFill(small, success);
+    //background-color: clrFill(small, success);
+    background-color: var(--clrFillGreenSmall);
     &:hover {
-      background-color: clrFill(accent, success);
+      //background-color: clrFill(accent, success);
+      background-color: var(--clrFillGreenAccent);
     }
   }
   .btn--danger {
-    background-color: clrFill(small, danger);
+    //background-color: clrFill(small, danger);
+    background-color: var(--clrFillOrangeSmall);
     &:hover {
-      background-color: clrFill(accent, danger);
+      //background-color: clrFill(accent, danger);
+      background-color: var(--clrFillOrangeAccent);
     }
   }
   .btn--small {

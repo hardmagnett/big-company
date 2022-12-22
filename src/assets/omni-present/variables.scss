@@ -45,7 +45,7 @@ $bodyFontFamily: 'Inter Tight', sans-serif !default;
 
 // Адаптив
 // =======
-
+//$bpSm:  480px;  - Не помню откуда взял эту цифру. Ещё не пригодиласть после переноса из старого кода.
 $sm: 576px !default;    // Bootstrap 5
 $md: 768px !default;    // Tailwind 2
 $lg: 1024px !default;   // Tailwind 2
