@@ -38,7 +38,7 @@
 <script setup lang="ts">
 
 import { faker } from '@faker-js/faker';
-import { onMounted, reactive } from 'Vue';
+import { onMounted, reactive } from 'vue';
 
 
 const counter = reactive(faker)
