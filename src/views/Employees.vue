@@ -1,12 +1,25 @@
 <script setup lang="ts">
+import HeaderAndSomethingElse from '@/components/app/positioning/HeaderAndSomethingElse.vue';
 
-import TestCompWithScss from "@/components/TestCompWithScss.vue";
 
 </script>
 
 <template>
   <div class="home-view">
-    <p>Страница с сотрудниками</p>
-    <TestCompWithScss />
+    <HeaderAndSomethingElse>
+      <template v-slot:left>
+        <h1>Сотрудники</h1>
+      </template>
+      <template v-slot:right>
+        <!--:to="{name: 'noteAdd'}"-->
+        <btn>
+          Создать
+        </btn>
+      </template>
+    </HeaderAndSomethingElse>
+
+
+    <div class="clear-both"></div>
+    <p>fasdfasdfa</p>
   </div>
 </template>

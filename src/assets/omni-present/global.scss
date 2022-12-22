@@ -27,11 +27,6 @@ input, textarea {
   outline: none !important;
 }
 
-// clearfix для float в виде div
-div.clearfix {
-  clear: both;
-}
-
 // Глобальный модификатор для красивого скроллбара
 .global-mod--with-cool-scrollbar {
   scrollbar-color: transparent transparent;

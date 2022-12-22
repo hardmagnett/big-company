@@ -6,8 +6,8 @@
 
 <style scoped lang="scss">
 .container {
-  padding-right: var(--gap);
-  padding-left: var(--gap);
+  padding: calc(var(--gap) / 2) var(--gap);
   margin-left: var(--leftMenuWidth);
+  overflow-x: hidden;
 }
 </style>
