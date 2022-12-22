@@ -6,7 +6,7 @@
 }
 
 
-// clrFill - Ярко выраженный цвет. Например кнопка или шапка.
+// clrFill - Ярко выраженный цвет. Например кнопка. Максимум - шапка.
 // small - например для кнопки или шапки
 // big - например для блока, занимающего пол страницы
 // accent - например для активной ссылки на страницу
@@ -50,4 +50,20 @@
 
   --clrBorderBlueLighter: hsl(var(--hueBlue), var(--satBorderLighter), var(--lightBorderLighter));
   --clrBorderBlueLightest: hsl(var(--hueBlue), var(--satBorderLightest), var(--lightBorderLightest));
+}
+
+// clrFont - Цвет шрифта
+:root {
+  --satFontLight: 36%;
+  --lightFontLight: 88%;
+
+  --satFontGray: 0%;
+  --lightFontGray: 58%;
+
+  --satFontDark: 0%;
+  --lightFontDark: 0%;
+
+  --clrFontBlueLight: hsl(var(--hueBlue), var(--satFontLight), var(--lightFontLight));
+  --clrFontBlueGray: hsl(var(--hueBlue), var(--satFontGray), var(--lightFontGray));
+  --clrFontBlueDark: hsl(var(--hueBlue), var(--satFontDark), var(--lightFontDark));
 }

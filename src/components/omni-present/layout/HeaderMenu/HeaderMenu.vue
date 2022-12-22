@@ -21,19 +21,12 @@
 
 <template>
   <div class="header-menu">
-    <img alt="Логотип" src="@/assets/app/images/logo.svg" width="24" height="24" />
+    <img alt="Логотип" src="@/assets/app/images/logo.svg" width="24" height="24"
+         style="margin-top: 12px; margin-left: 12px"
+    />
     <span>trololo</span>
     <!--<container>-->
-      <!--<router-link-->
-      <!--  v-for="(menuItem, index) in items"-->
-      <!--  :key="index"-->
-      <!--  class="header-menu__link"-->
-      <!--  active-class="header-menu__link&#45;&#45;active"-->
-      <!--  exact-->
-      <!--  :to=menuItem.to-->
-      <!--&gt;-->
-      <!--  {{menuItem.text}}-->
-      <!--</router-link>-->
+
     <!--</container>-->
   </div>
 </template>
