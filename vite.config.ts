@@ -14,7 +14,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/assets/omni-present/variables/breakpoints.scss";`
+        additionalData: `@import "./src/assets/omni-present/attach-it-to-every-component.scss";`
       }
     }
   }

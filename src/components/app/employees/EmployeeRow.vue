@@ -1,0 +1,114 @@
+<template>
+  <div class="employee-row">
+    <h4 class="employee-row__header">{{counter.random.words() + counter.random.words()}}</h4>
+    <!--<div :set="qty = counter.random.number(5) + 1"></div>-->
+    <div :set="qty = 3"></div>
+
+    <!--<div :set="qtyToDisplay = qty >= 3 ? 3 : qty"></div>-->
+    <div :set="qtyToDisplay = 3"></div>
+
+    <ul>
+      <li :key="n" v-for="n in qtyToDisplay"
+          class="mod--ellipsis-one-line"
+      >
+        <!--Для ограничения длины троеточием приходится отказаться от display: list-item. Поэтому &bullet;-->
+        &bullet; {{counter.random.words() + counter.random.words()}}
+      </li>
+      <li v-if="qty > 3">...</li>
+    </ul>
+    <div class="employee-row__pusher"></div>
+    <div class="employee-row__buttons">
+      <!--:class="{'btn--small': areButtonsSmall}"-->
+      <!--:to="{name: 'noteEdit', params: { noteId: 123 }}"-->
+      <btn
+
+      >
+        Изменить
+      </btn>
+      <!--:class="{'btn--small': areButtonsSmall}"-->
+      <btn
+        class="btn--error"
+      >
+        Удалить
+      </btn>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+
+import { faker } from '@faker-js/faker';
+import { onMounted, reactive } from 'Vue';
+
+
+const counter = reactive(faker)
+// export default {
+//   data(){
+//     return {
+//       faker: faker
+//     }
+//   },
+//   computed: {
+//     // areButtonsSmall () {
+//     //   return !this.$screen.bpSm
+//     // }
+//   },
+//   mounted(){
+//     console.log(this.faker); console.log('^...this.faker:')
+//     // console.log(this.faker.random.words()); console.log('^...this.faker.random.words():')
+//   }
+// }
+
+onMounted(() => {
+  // console.log(faker); console.log('^...faker:')
+  // console.log(faker.random.words()); console.log('^...faker.random.words():')
+})
+</script>
+
+<style scoped lang="scss">
+  .employee-row {
+    padding: var(--gap);
+    //border: 1px solid clrBorder(lighter, main);
+    border: 1px solid var(--clrBorderBlueLightest);
+    border-radius: var(--borderRadius);
+    background-color: white;
+    display: flex;
+    flex-flow: column nowrap;
+
+    overflow: hidden;
+
+    &__header {
+      margin-bottom: 0;
+
+      // Обрезание на 2-й строке start
+      height: 37px;			// указать высоту, если линия одна а рубить на третьей например
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;	// указать на какой линии рубить
+      overflow: hidden;
+      // Обрезание на 2-й строке end
+    }
+
+    ul > li {
+      //@include singleLineEllipsis();
+      color: clrFont(gray, main);
+      font-size: var(--fsSmall);
+    }
+    .employee-row__pusher {
+      flex: 1 0 auto;
+    }
+    .employee-row__buttons {
+      display: flex;
+      justify-content: flex-end;
+      .btn {
+        &:last-child {
+          margin-left: var(--gap);
+        }
+      }
+      // Не понял зачем это нужно. Временно закомментил.
+      //@media (min-width: $bpXl) {
+      //  justify-content: space-between;
+      //}
+    }
+  }
+</style>

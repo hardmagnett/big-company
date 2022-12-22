@@ -1,0 +1,4 @@
+@mixin flexItemBasis($qty, $columnGap) {
+  $summaryGapDistance: ($qty - 1) * $columnGap;
+  flex-basis: calc((100% - #{$summaryGapDistance}) / #{$qty});
+}

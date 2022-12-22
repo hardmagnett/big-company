@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import HeaderAndSomethingElse from '@/components/app/positioning/HeaderAndSomethingElse.vue';
+import HeaderAndSomethingElse from '@/components/app/shared/positioning/HeaderAndSomethingElse.vue';
+import EmployeesTable from '@/components/app/employees/EmployeesTable.vue';
+
 
 
 </script>
@@ -20,6 +22,6 @@ import HeaderAndSomethingElse from '@/components/app/positioning/HeaderAndSometh
 
 
     <div class="clear-both"></div>
-    <p>fasdfasdfa</p>
+    <EmployeesTable />
   </div>
 </template>
