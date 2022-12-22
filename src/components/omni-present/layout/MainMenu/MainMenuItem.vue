@@ -1,16 +1,30 @@
 <script setup lang="ts">
 
+import { onMounted, computed, ref } from 'vue'
+
 import type {MenuItem} from '@/components/omni-present/layout/MainMenu/types';
 
-const props = defineProps<{
+export interface Props {
+  deepLevel?: number
   menuItem: MenuItem
-}>()
+}
+const props = withDefaults(defineProps<Props>(), {
+  deepLevel: 0,
+  // labels: () => ['one', 'two']
+})
+
+const rootNode = ref(null)
+
+const paddingLeft = computed(() => props.deepLevel * 16)
+
+onMounted(() => {
+  rootNode.value.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
+})
 
 </script>
 
 <template>
-  <div class="main-menu-item">
-
+  <div class="main-menu-item" ref="rootNode">
     <RouterLink
         v-if="menuItem.route"
         :to="{name: menuItem.route.to}"
@@ -26,6 +40,7 @@ const props = defineProps<{
           v-for="childMenuItem in menuItem.children"
           :key="childMenuItem.id"
           :menuItem="childMenuItem"
+          :deepLevel="deepLevel + 1"
       />
     </template>
   </div>
@@ -33,11 +48,17 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 .main-menu-item {
+  --paddingByDeep: 0;
   --accentedColor: var(--clrBgBlueAccent);
   .header-menu__link--active {
     background-color: var(--accentedColor)
   }
   a {
+    &:before {
+      display: inline;
+      content: '';
+      padding-left: var(--paddingByDeep)
+    }
     padding-left: 16px;
     padding-right: 16px;
     //outline: 1px solid darkred;
@@ -58,7 +79,7 @@ const props = defineProps<{
   }
 
   > .main-menu-item {
-    margin-left: 16px;
+    //margin-left: 16px;
     //color: clrFont(light, main);
   }
   &:hover {
