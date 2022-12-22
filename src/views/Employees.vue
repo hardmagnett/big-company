@@ -13,8 +13,10 @@ import EmployeesTable from '@/components/app/employees/EmployeesTable.vue';
         <h1>Сотрудники</h1>
       </template>
       <template v-slot:right>
-        <!--:to="{name: 'noteAdd'}"-->
-        <btn>
+
+        <btn
+          :to="{name: 'employeeCreate'}"
+        >
           Создать
         </btn>
       </template>
