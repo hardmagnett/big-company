@@ -52,6 +52,30 @@
   --clrBorderBlueLightest: hsl(var(--hueBlue), var(--satBorderLightest), var(--lightBorderLightest));
 }
 
+// clrBg - Цвет фона. Для блоков большого размера. Светлый задний фон
+// big - например фон всей страницы
+// small - например для шапки в таблице
+// accent - Чтобы выделялось на фоне любого серого. Например для скроллбара, или подчеркивания в меню.
+// highlight - для blink-эффекта
+:root {
+  --satBgBig: 9%;
+  --lightBgBig: 94%;
+
+  --satBgSmall: 25%;
+  --lightBgSmall: 98%;
+
+  --satBgAccent: 19%;
+  --lightBgAccent: 83%;
+
+  --satBgHighlight: 81%;
+  --lightBgHighlight: 90%;
+
+  --clrBgBlueBig: hsl(var(--hueBlue), var(--satBgBig), var(--lightBgBig));
+  --clrBgBlueSmall: hsl(var(--hueBlue), var(--satBgSmall), var(--lightBgSmall));
+  --clrBgBlueAccent: hsl(var(--hueBlue), var(--satBgAccent), var(--lightBgAccent));
+  --clrBgBlueHighlight: hsl(var(--hueBlue), var(--satBgHighlight), var(--lightBgHighlight));
+}
+
 // clrFont - Цвет шрифта
 :root {
   --satFontLight: 36%;

@@ -79,7 +79,10 @@ const menuItems = [
   bottom: 0;
   width: 200px;
   //outline: 1px solid darkred;
-  //background-color: var(--clrFillBlueSmall);
-  background-color: var(--clrFillBlueBig);
+  //background-color: var(--clrFillBlueBig);
+  background-color: var(--clrBgBlueBig);
+  //background-color: var(--clrBgBlueSmall);
+  //background-color: var(--clrBgBlueAccent);
+  //background-color: var(--clrBgBlueHighlight);
 }
 </style>

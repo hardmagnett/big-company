@@ -37,19 +37,21 @@ const props = defineProps<{
   //display: flex;
   //align-items: center;
   //outline: 1px solid darkred;
+  --accentedColor: var(--clrBgBlueAccent);
   .header-menu__link--active {
-    background-color: var(--clrFillBlueAccent)
+    background-color: var(--accentedColor)
   }
   a {
     display: block;
     height: calc(var(--gap) * 2);
     line-height: calc(var(--gap) * 2);
-    color: var(--clrFontBlueLight);
+    //color: var(--clrFontBlueLight);
+    color: var(--clrFontBlueDark);
     text-decoration: none;
     transition: background-color var(--timeShort);
 
     &:hover {
-      background-color: var(--clrFillBlueAccent)
+      background-color: var(--accentedColor)
     }
   }
 

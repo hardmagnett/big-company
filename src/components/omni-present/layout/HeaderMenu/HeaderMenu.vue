@@ -22,9 +22,8 @@
 <template>
   <div class="header-menu">
     <img alt="Логотип" src="@/assets/app/images/logo.svg" width="24" height="24"
-         style="margin-top: 12px; margin-left: 12px"
     />
-    <span>trololo</span>
+    <span class="color-test">trololo</span>
     <!--<container>-->
 
     <!--</container>-->
@@ -41,6 +40,17 @@
     position: fixed;
     top: 0;
     width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+
+    // эти 3 - просто чтобы верхушка не смотрелась уродливо.
+    align-items: center;
+    gap: 16px;
+    padding-left: 16px;
+
+    .color-test {
+      color: var(--clrFontBlueLight);
+    }
 
     // Скопировал. Нужно опробовать.
     //color: clrFont(light, main);
