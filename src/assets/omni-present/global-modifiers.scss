@@ -1,0 +1,52 @@
+.mod--cool-scrollbar {
+  $color: #ddd;
+  // for ff
+  scrollbar-color: $color transparent;
+  scrollbar-width: thin;
+
+
+  // for webkit
+  &::-webkit-scrollbar              {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-button       {
+    width: 0px;
+    height: 0px;
+  }
+  &::-webkit-scrollbar-track        {
+    //Дорожка для ползунка
+    background: transparent;
+  }
+  &::-webkit-scrollbar-track-piece  {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb        {
+    background: $color;
+    cursor: pointer !important;
+  }
+  &::-webkit-scrollbar-corner       {
+    background: transparent;
+  }
+
+  &.mod-cool-scrollbar-filled-track {
+    $color: #ddd;
+    $trackColor: #fff;
+
+    // for ff
+    scrollbar-color: $color $trackColor;
+
+    // for webkit
+    &::-webkit-scrollbar-track        {
+      background: $trackColor;
+    }
+    &::-webkit-scrollbar-thumb        {
+      background: $color;
+    }
+    &::-webkit-scrollbar-corner       {
+      background: $trackColor;
+    }
+
+  }
+}
+
