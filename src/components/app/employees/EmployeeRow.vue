@@ -19,9 +19,9 @@
     <div class="employee-row__pusher"></div>
     <div class="employee-row__buttons">
       <!--:class="{'btn--small': areButtonsSmall}"-->
-      <!--:to="{name: 'noteEdit', params: { noteId: 123 }}"-->
-      <btn
 
+      <btn
+        :to="{name: 'employeeEdit', params: { employeeId: 123 }}"
       >
         Изменить
       </btn>
