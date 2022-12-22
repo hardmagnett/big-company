@@ -1,11 +1,44 @@
+body {
+  font-family: $bodyFontFamily;
+  background-color: clrBg(big, main);
+  margin-top: $headerHeight;
+}
+
 * {
+  // Нормальный прочет размеров
   box-sizing: border-box;
 
-  > *:first-child {
-    margin-top: 0;
+  // чтобы у вложенных элементов в любой блок не было отступов сверху и снизу
+  > *:first-child { margin-top: 0 }
+  > *:last-child { margin-bottom: 0 }
+}
+
+input, textarea {
+  outline: none !important;
+}
+
+// clearfix для float в виде div
+div.clearfix {
+  clear: both;
+}
+
+// Глобальный модификатор для красивого скроллбара
+.global-mod--with-cool-scrollbar {
+  scrollbar-color: transparent transparent;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: $scrollbarWidth;
+    height: $scrollbarWidth;
+  }
+  ::-webkit-scrollbar-thumb        {
+    background: transparent;
   }
 
-  > *:last-child {
-    margin-bottom: 0;
+  &:hover {
+    scrollbar-color: clrBg(accent, main) transparent;
+  }
+  &:hover::-webkit-scrollbar-thumb{
+    background: clrBg(accent, main);
   }
 }

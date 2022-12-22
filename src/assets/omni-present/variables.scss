@@ -41,6 +41,8 @@ $headerFontFamily: 'Inter Tight', sans-serif !default;
 $headerLetterSpacing: 0rem !default;
 $headerLineHeight: 1.2 !default;
 
+$bodyFontFamily: 'Inter Tight', sans-serif !default;
+
 // Адаптив
 // =======
 
@@ -50,6 +52,10 @@ $lg: 1024px !default;   // Tailwind 2
 $xl: 1280px !default;   // Tailwind 2
 $xxl: 1536px !default;  // Tailwind 2
 
-// Отступы
+//// Типовые размеры для типовой верстки
 // =======
 $gap: 1rem !default;    // 16px
+$headerHeight: $gap * 3 !default;
+$borderRadius: 4px;
+// совпадает с размером из FireFox
+$scrollbarWidth: 6px;
