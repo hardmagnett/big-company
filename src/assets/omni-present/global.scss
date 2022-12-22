@@ -1,7 +1,7 @@
 body {
   font-family: $bodyFontFamily;
   background-color: clrBg(big, main);
-  margin-top: $headerHeight;
+  margin-top: var(--headerHeight);
 }
 
 * {

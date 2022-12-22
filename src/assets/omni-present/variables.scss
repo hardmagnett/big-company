@@ -67,9 +67,10 @@ $xxl: 1536px !default;  // Tailwind 2
 
   --gap: 1rem;    // 16px
   --borderRadius: 4px;
+  --headerHeight: calc(var(--gap) * 3);
 }
 //$gap: 1rem !default;    // 16px
-$headerHeight: calc(var(--gap) * 3);
+//$headerHeight: calc(var(--gap) * 3);
 //$borderRadius: 4px;
 // совпадает с размером из FireFox
 $scrollbarWidth: 6px;

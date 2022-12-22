@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import MainMenu from '@/components/omni-present/layout/MainMenu/MainMenu.vue';
+import HeaderMenu from "@/components/omni-present/layout/HeaderMenu/HeaderMenu.vue";
+// export default {
+  // components: {HeaderMenu}
+// }
+
 
 </script>
 
 <template>
-  <img alt="Логотип" src="@/assets/app/images/logo.svg" width="24" height="24" />
+  <HeaderMenu/>
 
   <MainMenu/>
 

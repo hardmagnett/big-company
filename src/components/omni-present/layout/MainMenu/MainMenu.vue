@@ -74,9 +74,12 @@ const menuItems = [
   padding: 16px;
   position: fixed;
   left: 0;
-  top: 0;
+  //top: 0;
+  top: var(--headerHeight);
   bottom: 0;
   width: 200px;
-  outline: 1px solid darkred;
+  //outline: 1px solid darkred;
+  //background-color: var(--clrFillBlueSmall);
+  background-color: var(--clrFillBlueBig);
 }
 </style>
