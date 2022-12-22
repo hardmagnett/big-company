@@ -1,7 +1,16 @@
 body {
   font-family: $bodyFontFamily;
-  background-color: clrBg(big, main);
+  font-size: var(--fs);
+  color: var(--clrFontBlueDark);
+
+  //background-color: clrBg(big, main);
+  background-color: var(--clrBgBlueBig);
   margin-top: var(--headerHeight);
+}
+a {
+  //color: $clrMainDark;
+  //color: clrFill('accent');
+  color: var(--clrFillBlueAccent)
 }
 
 * {
