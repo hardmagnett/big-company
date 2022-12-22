@@ -1,0 +1,9 @@
+body {
+  font-family: $bodyFontFamily;
+  font-size: var(--fs);
+  color: var(--clrFontBlueDark);
+}
+
+a {
+  color: var(--clrFillBlueAccent)
+}

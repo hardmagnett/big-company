@@ -3,7 +3,8 @@
 @import 'variables/index.scss';
 @import 'mixins/mixins.scss';
 
-@import 'global.scss';
+@import 'layout/reset';
+@import 'layout/layout.scss';
 
 @import 'global-modifiers/positioning';
 @import 'global-modifiers/fx';
@@ -11,5 +12,6 @@
 
 @import 'fonts/inter-tight/inter-tight.scss';
 
+@import 'typo/main.scss';
 @import 'typo/headers.scss';
 

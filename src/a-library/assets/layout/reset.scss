@@ -1,0 +1,12 @@
+* {
+  // Нормальный прочет размеров
+  box-sizing: border-box;
+
+  // чтобы у вложенных элементов в любой блок не было отступов сверху и снизу
+  > *:first-child { margin-top: 0 }
+  > *:last-child { margin-bottom: 0 }
+}
+
+input, textarea {
+  outline: none !important;
+}
