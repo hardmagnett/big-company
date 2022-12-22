@@ -12,7 +12,7 @@ h6, .h6, ,.h6-base {
   font-family: $headerFontFamily;
 }
 
-@mixin h-base($hLevel) {
+@mixin fontSizesForAllBreakpoints($hLevel) {
   font-size: nth($headerFontSizes, $hLevel);
   @media (min-width: $sm) {
     font-size: nth($headerFontSizesSm, $hLevel);
@@ -32,12 +32,8 @@ h6, .h6, ,.h6-base {
 }
 
 @for $hLevel from 1 through 6 {
-
-  h#{$hLevel}, .h#{$hLevel}, .h#{$hLevel}-base {
-    @include h-base($hLevel);
-  }
-
-  h#{$hLevel}:not(.h#{$hLevel}-base), .h#{$hLevel} {
+  h#{$hLevel}, .h#{$hLevel} {
+    @include fontSizesForAllBreakpoints($hLevel);
     margin-bottom: nth($headerBottomMargins, $hLevel);
   }
 }
