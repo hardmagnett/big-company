@@ -58,11 +58,14 @@
 // accent - Чтобы выделялось на фоне любого серого. Например для скроллбара, или подчеркивания в меню.
 // highlight - для blink-эффекта
 :root {
-  --satBgBig: 9%;
-  --lightBgBig: 94%;
 
-  --satBgSmall: 25%;
-  --lightBgSmall: 98%;
+  --satBgBig: 25%;
+  --lightBgBig: 98%;
+
+  --satBgSmall: 9%;
+  --lightBgSmall: 94%;
+
+
 
   --satBgAccent: 19%;
   --lightBgAccent: 83%;

@@ -71,18 +71,14 @@ const menuItems = [
 // Обычно позиционирование компонента делается снаружи.
 // Но т.к. это меню должно быть всегда в одном и том-же месте, то оно спозиционировано изнутри.
 .main-menu {
-  padding: 16px;
+  //padding: 16px;
+  padding-top: calc(var(--gap) / 2);
+  padding-bottom: calc(var(--gap) / 2);
   position: fixed;
   left: 0;
-  //top: 0;
   top: var(--headerHeight);
   bottom: 0;
   width: 200px;
-  //outline: 1px solid darkred;
-  //background-color: var(--clrFillBlueBig);
-  background-color: var(--clrBgBlueBig);
-  //background-color: var(--clrBgBlueSmall);
-  //background-color: var(--clrBgBlueAccent);
-  //background-color: var(--clrBgBlueHighlight);
+  background-color: var(--clrBgBlueSmall);
 }
 </style>

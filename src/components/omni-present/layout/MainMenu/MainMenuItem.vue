@@ -33,22 +33,24 @@ const props = defineProps<{
 
 <style scoped lang="scss">
 .main-menu-item {
-  //height: calc(var(--gap) * 2);
-  //display: flex;
-  //align-items: center;
-  //outline: 1px solid darkred;
   --accentedColor: var(--clrBgBlueAccent);
   .header-menu__link--active {
     background-color: var(--accentedColor)
   }
   a {
+    padding-left: 16px;
+    padding-right: 16px;
+    //outline: 1px solid darkred;
     display: block;
-    height: calc(var(--gap) * 2);
-    line-height: calc(var(--gap) * 2);
-    //color: var(--clrFontBlueLight);
+    --height: calc(var(--gap) * 2);
+    height: var(--height);
+    line-height: var(--height);
     color: var(--clrFontBlueDark);
     text-decoration: none;
     transition: background-color var(--timeShort);
+    //font-size: var(--fsSmall);
+    font-size: var(--fsTiny);
+    font-weight: var(--fontBold);
 
     &:hover {
       background-color: var(--accentedColor)
