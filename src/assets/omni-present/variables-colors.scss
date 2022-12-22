@@ -3,7 +3,11 @@
   --hueGreen: 113;
   --hueRed: 5;
   --hueOrange: 25;
+}
 
+
+// clrFill - Ярко выраженный цвет. Например кнопка или шапка.
+:root {
   --satFillSmall: 42%;
   --lightFillSmall: 52%;
 
@@ -13,7 +17,6 @@
   --satFillAccent: 52%;
   --lightFillAccent: 34%;
 
-  // clrFill - Ярко выраженный цвет. Например кнопка или шапка.
   --clrFillBlueSmall: hsl(var(--hueBlue), var(--satFillSmall), var(--lightFillSmall));
   --clrFillBlueBig: hsl(var(--hueBlue), var(--satFillBig), var(--lightFillBig));
   --clrFillBlueAccent: hsl(var(--hueBlue), var(--satFillAccent), var(--lightFillAccent));
@@ -29,4 +32,19 @@
   --clrFillOrangeSmall: hsl(var(--hueOrange), var(--satFillSmall), var(--lightFillSmall));
   --clrFillOrangeBig: hsl(var(--hueOrange), var(--satFillBig), var(--lightFillBig));
   --clrFillOrangeAccent: hsl(var(--hueOrange), var(--satFillAccent), var(--lightFillAccent));
+}
+
+
+// clrBorder - Цвет Бордюра
+// lighter - на стыке белого с серым
+// lightest - на фоне белого
+:root {
+  --satBorderLighter: 10%;
+  --lightBorderLighter: 90%;
+
+  --satBorderLightest: 9%;
+  --lightBorderLightest: 94%;
+
+  --clrBorderBlueLighter: hsl(var(--hueBlue), var(--satBorderLighter), var(--lightBorderLighter));
+  --clrBorderBlueLightest: hsl(var(--hueBlue), var(--satBorderLightest), var(--lightBorderLightest));
 }

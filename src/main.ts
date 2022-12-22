@@ -7,12 +7,14 @@ import router from './router'
 import './assets/main.scss'
 
 import Btn from "@/components/omni-present/forms/FormInputBtn.vue";
+import Txt from "@/components/omni-present/forms/FormInputTxt.vue";
 
 const app = createApp(App)
 
 // Регистрация глобальных компонентов start
 // todo:: вынести это отсюда куда-нить. Их будет много.
 app.component('btn', Btn);
+app.component('txt', Txt);
 // Регистрация глобальных компонентов end
 
 app.use(createPinia())
