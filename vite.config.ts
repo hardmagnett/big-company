@@ -14,7 +14,8 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "./src/assets/omni-present/attach-it-to-every-component.scss";`
+        // additionalData: `@import "./src/assets/omni-present/attach-it-to-every-component.scss";`
+        additionalData: `@import "./src/a-library/assets/attach-it-to-every-component.scss";`
       }
     }
   }

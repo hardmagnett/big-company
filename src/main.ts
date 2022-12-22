@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import './assets/main.scss'
+import './main.scss'
 
 import Container from "@/components/omni-present/layout/Container/Container.vue";
 import Btn from "@/components/omni-present/forms/FormInputBtn.vue";
