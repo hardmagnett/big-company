@@ -23,7 +23,7 @@ import EmployeesTable from '@/components/app/employees/EmployeesTable.vue';
     </HeaderAndSomethingElse>
 
 
-    <div class="clear-both"></div>
+    <div class="mod--clear-both"></div>
     <EmployeesTable />
   </div>
 </template>

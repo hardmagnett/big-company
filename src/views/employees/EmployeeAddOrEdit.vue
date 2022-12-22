@@ -6,7 +6,7 @@
     <btn class="note-edit__btn-add-task">
       Добавить Задачу
     </btn>
-    <div class="clear-both"></div>
+    <div class="mod--clear-both"></div>
     <div class="note-edit__control-buttons">
       <btn class="">{{ actionTitle }}</btn>
       <btn class="btn--danger">Отменить</btn>
