@@ -14,10 +14,12 @@ import HeaderMenu from "@/components/omni-present/layout/HeaderMenu/HeaderMenu.v
 
   <MainMenu/>
 
-  <div class="container">
+  <!--<div class="container">-->
+  <container>
     <h1>Какой-то заголовок</h1>
     <RouterView />
-  </div>
+  </container>
+  <!--</div>-->
 
 
 </template>
