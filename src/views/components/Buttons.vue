@@ -9,6 +9,17 @@
       <btn class="btn--danger">Danger</btn>
       <btn class="btn--error">Error</btn>
     </div>
+    <div class="buttons-page__buttons">
+      <btn class="btn--small">Small</btn>
+    </div>
+    <h4>Кнопки-Ссылки</h4>
+    <div class="buttons-page__buttons">
+      <btn href="https://stackoverflow.com/users/1638298/flamytwista" target="_blank">stackoverflow.com</btn>
+    </div>
+    <h4>Кнопки-RouterLink</h4>
+    <div class="buttons-page__buttons">
+      <btn :to="{name: 'dashboard'}">На главную</btn>
+    </div>
   </div>
 </template>
 
