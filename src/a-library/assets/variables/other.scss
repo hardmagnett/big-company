@@ -1,0 +1,18 @@
+:root {
+
+  //// Время анимаций
+  --timeShort: 200ms;
+  --timeMedium: 1000ms;
+
+  --gap: 1rem;    // 16px
+  --borderRadius: 4px;
+
+  // Не типографический заголовок, а шапка
+  --headerHeight: calc(var(--gap) * 3);
+
+  // В перспективе будет меняться js-ом
+  --leftMenuWidth: 200px;
+}
+
+// совпадает с размером из FireFox
+$scrollbarWidth: 6px;

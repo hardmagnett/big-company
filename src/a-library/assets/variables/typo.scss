@@ -1,17 +1,3 @@
-// Базовое техническое
-// ===================
-
-// todo:: не помню нахрена это нужно. Наверное от этой переменной лучше избавиться.
-// Путь от конревого scss-файла в проекте до корня проекта.
-// Например если файл лежит здесь assets/scss/index.scss то путь будет '../../'
-// Это нужно например для импорта шрифтов из библиотеки.
-// И чтобы не быть привязанным к webpack-алиасам конкретного фреймворка, например `~` в nuxt.
-// Даже если в проекте эту переменную не нужно переопределять, всё равно для ясности её лучше написать.
-// Со слешем в конце.
-$pathToNodeModules: '../../'      !default;
-
-// Типографика
-// ===========
 // Идея пропорций взята отсюда https://type-scale.com/
 $fontScale: 1.067           !default;        // Minor Second
 $fontScaleSm: $fontScale    !default;
@@ -43,34 +29,11 @@ $headerLineHeight: 1.2 !default;
 
 $bodyFontFamily: 'Inter Tight', sans-serif !default;
 
-
-
-//// Типовые размеры для типовой верстки
-// =======
 :root {
-
   //// размеры Шрифтов
   --fs: 16px;
   --fsSmall: 14px;
   --fsTiny: 12px;
 
   --fontBold: 600;
-
-  //// Время анимаций
-  --timeShort: 200ms;
-  --timeMedium: 1000ms;
-
-  --gap: 1rem;    // 16px
-  --borderRadius: 4px;
-
-  // Не типографический заголовок, а шапка
-  --headerHeight: calc(var(--gap) * 3);
-
-  // В перспективе будет меняться js-ом
-  --leftMenuWidth: 200px;
 }
-//$gap: 1rem !default;    // 16px
-//$headerHeight: calc(var(--gap) * 3);
-//$borderRadius: 4px;
-// совпадает с размером из FireFox
-$scrollbarWidth: 6px;
