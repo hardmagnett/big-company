@@ -4,9 +4,12 @@
 @import 'mixins/mixins.scss';
 
 @import 'global.scss';
-@import 'helpers/positioning';
+
+@import 'global-modifiers/positioning';
+@import 'global-modifiers/fx';
+@import 'global-modifiers/typo';
 
 @import 'fonts/inter-tight/inter-tight.scss';
-@import 'global-modifiers';
+
 @import 'typo/headers.scss';
 

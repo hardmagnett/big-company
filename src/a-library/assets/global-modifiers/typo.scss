@@ -1,0 +1,7 @@
+// Добавлять троеточие к однострочному тексту
+.mod--ellipsis-one-line {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

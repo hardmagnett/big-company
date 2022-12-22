@@ -21,7 +21,8 @@
 
 <template>
   <div class="header-menu">
-    <img alt="Логотип" src="@/assets/app/images/logo.svg" width="24" height="24"
+    <!--<img alt="Логотип" src="@/assets/app/images/logo.svg" width="24" height="24"-->
+    <img alt="Логотип" src="@/app/assets/images/logo.svg" width="24" height="24"
     />
     <span class="color-test">trololo</span>
     <!--<container>-->
