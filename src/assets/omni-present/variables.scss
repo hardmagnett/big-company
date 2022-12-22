@@ -62,7 +62,12 @@ $bodyFontFamily: 'Inter Tight', sans-serif !default;
 
   --gap: 1rem;    // 16px
   --borderRadius: 4px;
+
+  // Не типографический заголовок, а шапка
   --headerHeight: calc(var(--gap) * 3);
+
+  // В перспективе будет меняться js-ом
+  --leftMenuWidth: 200px;
 }
 //$gap: 1rem !default;    // 16px
 //$headerHeight: calc(var(--gap) * 3);

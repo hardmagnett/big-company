@@ -1,8 +1,5 @@
 <template>
   <div class="headers">
-    <!--<div class="container">-->
-    <container>
-
       <h1>Заголовок h1</h1>
       <h2>Заголовок h2</h2>
       <h3>Заголовок h3</h3>
@@ -40,8 +37,6 @@
       <br>
       <br>
       <br>
-    </container>
-    <!--</div>-->
   </div>
 </template>
 
