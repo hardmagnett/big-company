@@ -73,5 +73,6 @@ const menuItems = [
   bottom: 0;
   width: 200px;
   background-color: var(--clrBgBlueSmall);
+  border-right: 1px solid var(--clrBorderBlueLighter)
 }
 </style>
