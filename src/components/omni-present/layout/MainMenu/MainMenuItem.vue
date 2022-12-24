@@ -70,8 +70,8 @@ onMounted(() => {
     text-decoration: none;
     transition: background-color var(--timeShort);
     //font-size: var(--fsSmall);
-    font-size: var(--fsTiny);
-    font-weight: var(--fontBold);
+    font-size: var(--fontSizeTiny);
+    font-weight: var(--fontWeightBold);
 
     &:hover {
       background-color: var(--accentedColor)

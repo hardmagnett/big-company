@@ -92,7 +92,7 @@ onMounted(() => {
     ul > li {
       //@include singleLineEllipsis();
       color: clrFont(gray, main);
-      font-size: var(--fsSmall);
+      font-size: var(--fontSizeSmall);
     }
     .employee-row__pusher {
       flex: 1 0 auto;

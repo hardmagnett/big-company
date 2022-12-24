@@ -78,6 +78,6 @@ export default {
     padding: 0 var(--gap);
     height: $height;
     line-height: $height;
-    font-size: var(--fsSmall);
+    font-size: var(--fontSizeSmall);
   }
 </style>
