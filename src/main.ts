@@ -6,10 +6,10 @@ import router from './router'
 
 import './main.scss'
 
-import Container from "@/components/omni-present/layout/Container/Container.vue";
-import Btn from "@/components/omni-present/forms/FormInputBtn.vue";
-import Txt from "@/components/omni-present/forms/FormInputTxt.vue";
-import CheckBox from "@/components/omni-present/forms/FormInputCheckBox.vue";
+import Container from "@/a-library/components/layout/Container/Container.vue";
+import Btn from "@/a-library/components/forms/FormInputBtn.vue";
+import Txt from "@/a-library/components/forms/FormInputTxt.vue";
+import CheckBox from "@/a-library/components/forms/FormInputCheckBox.vue";
 
 const app = createApp(App)
 

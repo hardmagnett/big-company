@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import MainMenuItem from '@/components/omni-present/layout/MainMenu/MainMenuItem.vue';
+import MainMenuItem from '@/a-library/components/layout/MainMenu/MainMenuItem.vue';
 
-import type {MenuItem} from '@/components/omni-present/layout/MainMenu/types';
+import type {MenuItem} from '@/a-library/components/layout/MainMenu/types';
 
 let i = 0
 const menuItems = [

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import MainMenu from '@/components/omni-present/layout/MainMenu/MainMenu.vue';
-import HeaderMenu from "@/components/omni-present/layout/HeaderMenu/HeaderMenu.vue";
+import MainMenu from '@/a-library/components/layout/MainMenu/MainMenu.vue';
+import HeaderMenu from "@/a-library/components//layout/HeaderMenu/HeaderMenu.vue";
 // export default {
   // components: {HeaderMenu}
 // }
