@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import MainMenuItem from '@/a-library/components/layout/MainMenu/MainMenuItem.vue';
+import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
 
-import type {MenuItem} from '@/a-library/components/layout/MainMenu/types';
+import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
 let i = 0
 const menuItems = [
@@ -59,7 +59,7 @@ const menuItems = [
 
 <template>
   <div class="main-menu">
-    <MainMenuItem
+    <AMainMenuItem
         v-for="menuItem in menuItems"
         :key="menuItem.id"
         :menuItem="menuItem"

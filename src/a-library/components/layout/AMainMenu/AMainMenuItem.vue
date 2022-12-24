@@ -2,7 +2,7 @@
 
 import { onMounted, computed, ref } from 'vue'
 
-import type {MenuItem} from '@/components/omni-present/layout/MainMenu/types';
+import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
 export interface Props {
   deepLevel?: number
@@ -36,7 +36,7 @@ onMounted(() => {
     <a v-if="!menuItem.route">{{menuItem.title}}</a>
 
     <template v-if="menuItem.children">
-      <MainMenuItem
+      <AMainMenuItem
           v-for="childMenuItem in menuItem.children"
           :key="childMenuItem.id"
           :menuItem="childMenuItem"
