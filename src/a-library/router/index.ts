@@ -1,7 +1,7 @@
-import components from '@/a-library/router/components';
+import componentList from '@/a-library/router/component-list';
 
 let routes = [
-  ...components,
+  ...componentList,
 ]
 
 export default routes
