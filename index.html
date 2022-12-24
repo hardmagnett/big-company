@@ -2,9 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
+
+    <!--Для совсем старых браузеров-->
+    <link rel="icon" href="/icons/favicon.ico"><!-- 32×32 -->
+    <!--Для современных браузеров-->
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+    <!--Для IOS-->
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"><!-- 180×180 -->
+    <!--Для Android и PWA-->
+    <link rel="manifest" href="/icons/manifest.webmanifest">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vite App</title>
+    <title>CRM</title>
   </head>
   <body class="mod--cool-scrollbar">
     <div id="app"></div>
