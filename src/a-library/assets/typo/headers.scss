@@ -14,19 +14,19 @@ h6, .h6, ,.h6-base {
 
 @mixin fontSizesForAllBreakpoints($hLevel) {
   font-size: nth($headerFontSizes, $hLevel);
-  @media (min-width: $sm) {
+  @media (min-width: $bpSm) {
     font-size: nth($headerFontSizesSm, $hLevel);
   }
-  @media (min-width: $md) {
+  @media (min-width: $bpMd) {
     font-size: nth($headerFontSizesMd, $hLevel);
   }
-  @media (min-width: $lg) {
+  @media (min-width: $bpLg) {
     font-size: nth($headerFontSizesLg, $hLevel);
   }
-  @media (min-width: $xl) {
+  @media (min-width: $bpXl) {
     font-size: nth($headerFontSizesXl, $hLevel);
   }
-  @media (min-width: $xxl) {
+  @media (min-width: $bpXxl) {
     font-size: nth($headerFontSizesXxl, $hLevel);
   }
 }
