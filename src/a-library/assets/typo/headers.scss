@@ -1,9 +1,9 @@
-h1, .h1, ,.h1-base,
-h2, .h2, ,.h2-base,
-h3, .h3, ,.h3-base,
-h4, .h4, ,.h4-base,
-h5, .h5, ,.h5-base,
-h6, .h6, ,.h6-base {
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
   margin-top: 0;
   margin-bottom: 0;
   font-weight: $_headerFontWeight;
@@ -31,6 +31,7 @@ h6, .h6, ,.h6-base {
   }
 }
 
+// На выходе создает правил от h1 до h6 и от .h1 до .h6
 @for $hLevel from 1 through 6 {
   h#{$hLevel}, .h#{$hLevel} {
     @include fontSizesForAllBreakpoints($hLevel);
