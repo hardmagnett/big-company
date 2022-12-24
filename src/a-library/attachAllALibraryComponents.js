@@ -5,9 +5,9 @@ import AMainMenu from '@/a-library/components/layout/AMainMenu/AMainMenu.vue';
 
 
 // Forms
-import Btn from "@/a-library/components/forms/FormInputBtn.vue";
-import Txt from "@/a-library/components/forms/FormInputTxt.vue";
-import CheckBox from "@/a-library/components/forms/FormInputCheckBox.vue";
+import ABtn from "@/a-library/components/forms/ABtn/ABtn.vue";
+import AInput from "@/a-library/components/forms/AInput/AInput.vue";
+import ACheckBox from "@/a-library/components/forms/ACheckBox/ACheckBox.vue";
 
 /**
  * На практике в приложении обычно используется большая часть возможностей библиотеки.
@@ -20,7 +20,7 @@ export default function(app){
   app.component('AMainMenu', AMainMenu);
 
   // Forms
-  app.component('btn', Btn);
-  app.component('txt', Txt);
-  app.component('check-box', CheckBox);
+  app.component('btn', ABtn);
+  app.component('txt', AInput);
+  app.component('check-box', ACheckBox);
 }
