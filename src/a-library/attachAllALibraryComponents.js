@@ -20,6 +20,7 @@ export default function(app){
   app.component('AMainMenu', AMainMenu);
 
   // Forms
+  // todo:: переименовать компоненты здесь и в местах использования
   app.component('btn', ABtn);
   app.component('txt', AInput);
   app.component('check-box', ACheckBox);
