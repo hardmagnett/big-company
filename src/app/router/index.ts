@@ -1,12 +1,9 @@
+import dashboard from '@/app/router/dashboard';
 import employees from '@/app/router/employees';
 import departments from '@/app/router/departments';
 
 let routes = [
-  {
-    path: '/',
-    name: 'dashboard',
-    component: () => import('@/app/views/Dashboard.vue')
-  },
+  ...dashboard,
   ...employees,
   ...departments,
 ]
