@@ -1,16 +1,16 @@
 <template>
   <div class="note-edit">
     <h1>{{ title }}</h1>
-    <txt class="note-edit__input-title" placeholder="Заголовок"></txt>
+    <AInput class="note-edit__input-title" placeholder="Заголовок"></AInput>
 
-    <btn class="note-edit__btn-add-task">
+    <ABtn class="note-edit__btn-add-task">
       Добавить Задачу
-    </btn>
+    </ABtn>
     <div class="mod--clear-both"></div>
     <div class="note-edit__control-buttons">
-      <btn class="">{{ actionTitle }}</btn>
-      <btn class="btn--danger">Отменить</btn>
-      <btn class="btn--error">Удалить</btn>
+      <ABtn class="">{{ actionTitle }}</ABtn>
+      <ABtn class="btn--danger">Отменить</ABtn>
+      <ABtn class="btn--error">Удалить</ABtn>
     </div>
 
   </div>

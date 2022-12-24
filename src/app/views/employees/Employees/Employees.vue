@@ -12,11 +12,11 @@ import EmployeesTable from '@/app/components/employees/EmployeesTable/EmployeesT
       </template>
       <template v-slot:right>
 
-        <btn
+        <ABtn
           :to="{name: 'employeeCreate'}"
         >
           Создать
-        </btn>
+        </ABtn>
       </template>
     </HeaderAndSomethingElse>
 

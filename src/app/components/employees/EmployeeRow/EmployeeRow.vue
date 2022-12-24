@@ -20,17 +20,17 @@
     <div class="employee-row__buttons">
       <!--:class="{'btn--small': areButtonsSmall}"-->
 
-      <btn
+      <ABtn
         :to="{name: 'employeeEdit', params: { employeeId: 123 }}"
       >
         Изменить
-      </btn>
+      </ABtn>
       <!--:class="{'btn--small': areButtonsSmall}"-->
-      <btn
+      <ABtn
         class="btn--error"
       >
         Удалить
-      </btn>
+      </ABtn>
     </div>
   </div>
 </template>

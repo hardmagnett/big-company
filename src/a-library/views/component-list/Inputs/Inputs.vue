@@ -3,14 +3,14 @@
     <p>Элементы форм</p>
 
     <h3>Input Text</h3>
-    <txt placeholder="placeholder for text"></txt>
+    <AInput placeholder="placeholder for text"></AInput>
     <br>
-    <txt value="default value"></txt>
+    <AInput value="default value"></AInput>
 
     <h3>Checkbox</h3>
-    <check-box label="С указанием label" />
+    <ACheckBox label="С указанием label" />
     <br>
-    <check-box />
+    <ACheckBox />
 
   </div>
 </template>

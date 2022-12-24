@@ -4,21 +4,21 @@
 
     <h4>Кнопки-Кнопки</h4>
     <div class="buttons-page__buttons">
-      <btn>Main</btn>
-      <btn class="btn--success">Success</btn>
-      <btn class="btn--danger">Danger</btn>
-      <btn class="btn--error">Error</btn>
+      <ABtn>Main</ABtn>
+      <ABtn class="btn--success">Success</ABtn>
+      <ABtn class="btn--danger">Danger</ABtn>
+      <ABtn class="btn--error">Error</ABtn>
     </div>
     <div class="buttons-page__buttons">
-      <btn class="btn--small">Small</btn>
+      <ABtn class="btn--small">Small</ABtn>
     </div>
     <h4>Кнопки-Ссылки</h4>
     <div class="buttons-page__buttons">
-      <btn href="https://stackoverflow.com/users/1638298/flamytwista" target="_blank">stackoverflow.com</btn>
+      <ABtn href="https://stackoverflow.com/users/1638298/flamytwista" target="_blank">stackoverflow.com</ABtn>
     </div>
     <h4>Кнопки-RouterLink</h4>
     <div class="buttons-page__buttons">
-      <btn :to="{name: 'dashboard'}">На главную</btn>
+      <ABtn :to="{name: 'dashboard'}">На главную</ABtn>
     </div>
   </div>
 </template>

@@ -10,7 +10,7 @@ import AInput from "@/a-library/components/forms/AInput/AInput.vue";
 import ACheckBox from "@/a-library/components/forms/ACheckBox/ACheckBox.vue";
 
 /**
- * На практике в приложении обычно используется большая часть возможностей библиотеки.
+ * На практике в приложении обычно используется бОльшая часть возможностей библиотеки.
  * Поэтому не скромничаем и подключаем все компоненты сразу.
  */
 export default function(app){
@@ -20,8 +20,7 @@ export default function(app){
   app.component('AMainMenu', AMainMenu);
 
   // Forms
-  // todo:: переименовать компоненты здесь и в местах использования
-  app.component('btn', ABtn);
-  app.component('txt', AInput);
-  app.component('check-box', ACheckBox);
+  app.component('ABtn', ABtn);
+  app.component('AInput', AInput);
+  app.component('ACheckBox', ACheckBox);
 }
