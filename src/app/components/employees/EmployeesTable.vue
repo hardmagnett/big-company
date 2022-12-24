@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import EmployeeRow from '@/components/app/employees/EmployeeRow.vue';
+import EmployeeRow from '@/app/components/employees/EmployeeRow.vue';
 
 </script>
 

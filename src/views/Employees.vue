@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import HeaderAndSomethingElse from '@/components/app/shared/positioning/HeaderAndSomethingElse.vue';
-import EmployeesTable from '@/components/app/employees/EmployeesTable.vue';
+import HeaderAndSomethingElse from '@/app/components/shared/positioning/HeaderAndSomethingElse.vue';
+import EmployeesTable from '@/app/components/employees/EmployeesTable.vue';
 
 
 
