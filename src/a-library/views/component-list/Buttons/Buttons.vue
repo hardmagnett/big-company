@@ -1,8 +1,8 @@
 <template>
   <div class="buttons-page">
-    <p>Кнопки</p>
+    <h1>Кнопки</h1>
 
-    <h4>Кнопки-Кнопки</h4>
+    <h2>Кнопки-Кнопки</h2>
     <div class="buttons-page__buttons">
       <ABtn>Main</ABtn>
       <ABtn class="btn--success">Success</ABtn>
@@ -12,13 +12,14 @@
     <div class="buttons-page__buttons">
       <ABtn class="btn--small">Small</ABtn>
     </div>
-    <h4>Кнопки-Ссылки</h4>
+    <h2>Кнопки-Ссылки</h2>
     <div class="buttons-page__buttons">
       <ABtn href="https://stackoverflow.com/users/1638298/flamytwista" target="_blank">stackoverflow.com</ABtn>
     </div>
-    <h4>Кнопки-RouterLink</h4>
+    <h2>Кнопки-RouterLink</h2>
     <div class="buttons-page__buttons">
-      <ABtn :to="{name: 'dashboard'}">На главную</ABtn>
+      <!--<ABtn :to="{name: 'dashboard'}">На главную</ABtn>-->
+      <ABtn :to="{path: '/'}">На главную</ABtn>
     </div>
   </div>
 </template>

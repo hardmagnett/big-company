@@ -1,13 +1,13 @@
 <template>
   <div class="inputs-page">
-    <p>Элементы форм</p>
+    <h1>Элементы форм</h1>
 
-    <h3>Input Text</h3>
+    <h2>AInput</h2>
     <AInput placeholder="placeholder for text"></AInput>
     <br>
     <AInput value="default value"></AInput>
 
-    <h3>Checkbox</h3>
+    <h2>ACheckBox</h2>
     <ACheckBox label="С указанием label" />
     <br>
     <ACheckBox />

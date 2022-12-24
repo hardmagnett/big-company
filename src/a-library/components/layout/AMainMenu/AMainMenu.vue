@@ -7,9 +7,9 @@ let i = 0
 const menuItems = [
   {
     id: i++,
-    title: 'Панель управления',
+    title: 'Структура компании',
     route: {
-      to: 'dashboard'
+      to: 'departments'
     },
   } as MenuItem ,
   {
@@ -17,13 +17,6 @@ const menuItems = [
     title: 'Сотрудники',
     route: {
       to: 'employees'
-    },
-  } as MenuItem ,
-  {
-    id: i++,
-    title: 'Отделы',
-    route: {
-      to: 'departments'
     },
   } as MenuItem ,
   {
