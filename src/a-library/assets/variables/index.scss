@@ -1,5 +1,20 @@
-@import 'breakpoints';
+/*
+Часть переменных CSS, часть переменных SCSS.
+Потому-что у них разные возможности.
+                                      CSS         SCSS
+Можно использовать из JS              +           -
 
+Можно передать в качестве параметра   -           +
+в SCSS-миксин или SCSS-функцию
+
+Можно использовать в MediaQuery       -           +
+
+Можно задать разное значение
+в зависимости от MediaQuery           +           -
+
+ */
+
+@import 'breakpoints';
 @import 'colors';
 @import 'typo';
 @import 'other';
