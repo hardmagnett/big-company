@@ -2,6 +2,6 @@ export default [
   {
     path: '/departments',
     name: 'departments',
-    component: () => import('@/views/Departments.vue')
+    component: () => import('@/app/views/departments/Departments.vue')
   },
 ]

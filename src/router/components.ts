@@ -5,16 +5,16 @@ export default [
     {
       path: `${pathToComponents}headers`,
       name: 'headers',
-      component: () => import('@/views/components/Headers.vue')
+      component: () => import('@/a-library/views/components/Headers.vue')
     },
     {
       path: `${pathToComponents}buttons`,
       name: 'buttons',
-      component: () => import('@/views/components/Buttons.vue')
+      component: () => import('@/a-library/views/components/Buttons.vue')
     },
     {
       path: `${pathToComponents}inputs`,
       name: 'inputs',
-      component: () => import('@/views/components/Inputs.vue')
+      component: () => import('@/a-library/views/components/Inputs.vue')
     }
 ]
