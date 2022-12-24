@@ -1,10 +1,10 @@
 // Идея пропорций взята отсюда https://type-scale.com/
-$fontScale: 1.067           !default;        // Minor Second
-$fontScaleSm: $fontScale    !default;
-$fontScaleMd: 1.125         !default;       // Major Second
-$fontScaleLg: 1.200         !default;       // Minor Third
-$fontScaleXl: $fontScaleLg  !default;
-$fontScaleXxl: $fontScaleXl !default;
+$_fontScale: 1.067           !default;        // Minor Second
+$_fontScaleSm: $_fontScale !default;
+$_fontScaleMd: 1.125         !default;       // Major Second
+$_fontScaleLg: 1.200         !default;       // Minor Third
+$_fontScaleXl: $_fontScaleLg !default;
+$_fontScaleXxl: $_fontScaleXl !default;
 
 @use 'sass:math';
 // Заголовки обычные
@@ -13,21 +13,21 @@ $fontScaleXxl: $fontScaleXl !default;
 // Для каждой ширины каждый размер заголовка может быть любым.
 // Например h1 как h1, h2 как h5, h3 как h6. И это при соблюдении scale.
 // И подобные вариации могут отличаться от расширения к расширению.
-$headerFontSizes: 1rem * math.pow($fontScale, 5), 1.0rem * math.pow($fontScale, 4),  1rem * math.pow($fontScale, 3), 1rem * math.pow($fontScale, 2), 1rem * $fontScale, 1rem !default;
-$headerFontSizesSm: 1rem * math.pow($fontScaleSm, 5), 1.0rem * math.pow($fontScaleSm, 4),  1rem * math.pow($fontScaleSm, 3), 1rem * math.pow($fontScaleSm, 2), 1rem * $fontScaleSm, 1rem !default;
-$headerFontSizesMd: 1rem * math.pow($fontScaleMd, 5), 1.0rem * math.pow($fontScaleMd, 4),  1rem * math.pow($fontScaleMd, 3), 1rem * math.pow($fontScaleMd, 2), 1rem * $fontScaleMd, 1rem !default;;
-$headerFontSizesLg: 1rem * math.pow($fontScaleLg, 5), 1.0rem * math.pow($fontScaleLg, 4),  1rem * math.pow($fontScaleLg, 3), 1rem * math.pow($fontScaleLg, 2), 1rem * $fontScaleLg, 1rem !default;
-$headerFontSizesXl: $headerFontSizesLg !default;
-$headerFontSizesXxl:$headerFontSizesXl !default;
+$_headerFontSizes: 1rem * math.pow($_fontScale, 5), 1.0rem * math.pow($_fontScale, 4),  1rem * math.pow($_fontScale, 3), 1rem * math.pow($_fontScale, 2), 1rem * $_fontScale, 1rem !default;
+$_headerFontSizesSm: 1rem * math.pow($_fontScaleSm, 5), 1.0rem * math.pow($_fontScaleSm, 4),  1rem * math.pow($_fontScaleSm, 3), 1rem * math.pow($_fontScaleSm, 2), 1rem * $_fontScaleSm, 1rem !default;
+$_headerFontSizesMd: 1rem * math.pow($_fontScaleMd, 5), 1.0rem * math.pow($_fontScaleMd, 4),  1rem * math.pow($_fontScaleMd, 3), 1rem * math.pow($_fontScaleMd, 2), 1rem * $_fontScaleMd, 1rem !default;;
+$_headerFontSizesLg: 1rem * math.pow($_fontScaleLg, 5), 1.0rem * math.pow($_fontScaleLg, 4),  1rem * math.pow($_fontScaleLg, 3), 1rem * math.pow($_fontScaleLg, 2), 1rem * $_fontScaleLg, 1rem !default;
+$_headerFontSizesXl: $_headerFontSizesLg !default;
+$_headerFontSizesXxl: $_headerFontSizesXl !default;
 
-$headerBottomMargins: 0.5rem, 0.5rem, 0.5rem, 0.5rem, 0.5rem, 0.5rem !default;
+$_headerBottomMargins: 0.5rem, 0.5rem, 0.5rem, 0.5rem, 0.5rem, 0.5rem !default;
 
-$headerFontWeight: 300 !default;
-$headerFontFamily: 'Inter Tight', sans-serif !default;
-$headerLetterSpacing: 0rem !default;
-$headerLineHeight: 1.2 !default;
+$_headerFontWeight: 300 !default;
+$_headerFontFamily: 'Inter Tight', sans-serif !default;
+$_headerLetterSpacing: 0rem !default;
+$_headerLineHeight: 1.2 !default;
 
-$bodyFontFamily: 'Inter Tight', sans-serif !default;
+$_bodyFontFamily: 'Inter Tight', sans-serif !default;
 
 :root {
   //// размеры Шрифтов
