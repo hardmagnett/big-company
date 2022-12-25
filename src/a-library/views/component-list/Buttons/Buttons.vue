@@ -31,6 +31,8 @@
     <h3>Специально для иконок</h3>
     <div class="buttons-page__buttons">
       <ABtn icon><AIcon icon="mdi-pencil"/></ABtn>
+      <ABtn icon class="btn--success"><AIcon icon="mdi-check-bold"/></ABtn>
+      <ABtn icon class="btn--danger"><AIcon icon="mdi-close-octagon"/></ABtn>
       <ABtn icon class="btn--error"><AIcon icon="mdi-delete"/></ABtn>
     </div>
   </div>

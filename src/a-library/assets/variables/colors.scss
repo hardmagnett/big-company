@@ -77,6 +77,21 @@
   --clrBgBlueSmall: hsl(var(--_hueBlue), var(--_satBgSmall), var(--_lightBgSmall));
   --clrBgBlueAccent: hsl(var(--_hueBlue), var(--_satBgAccent), var(--_lightBgAccent));
   --clrBgBlueHighlight: hsl(var(--_hueBlue), var(--_satBgHighlight), var(--_lightBgHighlight));
+
+  --clrBgRedBig: hsl(var(--_hueRed), var(--_satBgBig), var(--_lightBgBig));
+  --clrBgRedSmall: hsl(var(--_hueRed), var(--_satBgSmall), var(--_lightBgSmall));
+  --clrBgRedAccent: hsl(var(--_hueRed), var(--_satBgAccent), var(--_lightBgAccent));
+  --clrBgRedHighlight: hsl(var(--_hueRed), var(--_satBgHighlight), var(--_lightBgHighlight));
+
+  --clrBgOrangeBig: hsl(var(--_hueOrange), var(--_satBgBig), var(--_lightBgBig));
+  --clrBgOrangeSmall: hsl(var(--_hueOrange), var(--_satBgSmall), var(--_lightBgSmall));
+  --clrBgOrangeAccent: hsl(var(--_hueOrange), var(--_satBgAccent), var(--_lightBgAccent));
+  --clrBgOrangeHighlight: hsl(var(--_hueOrange), var(--_satBgHighlight), var(--_lightBgHighlight));
+
+  --clrBgGreenBig: hsl(var(--_hueGreen), var(--_satBgBig), var(--_lightBgBig));
+  --clrBgGreenSmall: hsl(var(--_hueGreen), var(--_satBgSmall), var(--_lightBgSmall));
+  --clrBgGreenAccent: hsl(var(--_hueGreen), var(--_satBgAccent), var(--_lightBgAccent));
+  --clrBgGreenHighlight: hsl(var(--_hueGreen), var(--_satBgHighlight), var(--_lightBgHighlight));
 }
 
 // clrFont - Цвет шрифта

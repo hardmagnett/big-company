@@ -16,7 +16,7 @@
       <p class="h6">Параграф .h6</p>
       <br>
       <br>
-    
+
     <h2>Параграфы</h2>
       <p>
         Lorem ipsum dolor <a href="http://ya.ru">ya.ru</a> sit amet,

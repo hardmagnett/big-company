@@ -1,6 +1,10 @@
 <template>
   <component :is="rootComponent"
     class="btn"
+    :class="{
+      'btn--icon': icon,
+      'btn--with-text': !icon
+    }"
     v-bind="$attrs"
   >
     <slot/>
@@ -10,6 +14,12 @@
 <script>
 
 export default {
+  props: {
+    icon: {
+      type: Boolean,
+      default: false
+    }
+  },
 
   computed: {
     rootComponent () {
@@ -28,7 +38,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .btn {
+  .btn--with-text {
     --height: calc(var(--gap) * 1.6);
     @media (min-width: $bpMd) {
       --height: calc(var(--gap) * 1.8);
@@ -58,30 +68,76 @@ export default {
     &:hover {
       background-color: var(--clrFillBlueAccent);
     }
-  }
-  .btn--error {
-    background-color: var(--clrFillRedSmall);
-    &:hover {
-      background-color: var(--clrFillRedAccent);
+    &.btn--error {
+      background-color: var(--clrFillRedSmall);
+      &:hover {
+        background-color: var(--clrFillRedAccent);
+      }
+    }
+    &.btn--success {
+      background-color: var(--clrFillGreenSmall);
+      &:hover {
+        background-color: var(--clrFillGreenAccent);
+      }
+    }
+    &.btn--danger {
+      background-color: var(--clrFillOrangeSmall);
+      &:hover {
+        background-color: var(--clrFillOrangeAccent);
+      }
+    }
+    &.btn--small {
+      $height: calc(var(--gap) * 1.5);
+      padding: 0 var(--gap);
+      height: $height;
+      line-height: $height;
+      font-size: var(--fontSizeSmall);
     }
   }
-  .btn--success {
-    background-color: var(--clrFillGreenSmall);
-    &:hover {
-      background-color: var(--clrFillGreenAccent);
+
+
+  .btn--icon {
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+
+    background-color: transparent;
+    transition: background-color var(--timeShort);
+
+    --size: calc(var(--gap) * 1.6);
+    @media (min-width: $bpMd) {
+      --size: calc(var(--gap) * 1.8);
     }
-  }
-  .btn--danger {
-    background-color: var(--clrFillOrangeSmall);
-    &:hover {
-      background-color: var(--clrFillOrangeAccent);
+    @media (min-width: $bpLg) {
+      --size: calc(var(--gap) * 1.8);
     }
-  }
-  .btn--small {
-    $height: calc(var(--gap) * 1.5);
-    padding: 0 var(--gap);
-    height: $height;
-    line-height: $height;
-    font-size: var(--fontSizeSmall);
+    height: var(--size);
+    width: var(--size);
+
+    color: var(--clrFillBlueSmall);
+    &:hover {
+      background-color: var(--clrBgBlueSmall);
+    }
+
+    &.btn--success {
+      color: var(--clrFillGreenSmall);
+      &:hover {
+        background-color: var(--clrBgGreenSmall);
+      }
+    }
+    &.btn--danger {
+      color: var(--clrFillOrangeSmall);
+      &:hover {
+        background-color: var(--clrBgOrangeSmall);
+      }
+    }
+    &.btn--error {
+      color: var(--clrFillRedSmall);
+      &:hover {
+        background-color: var(--clrBgRedSmall);
+      }
+    }
+
   }
 </style>
