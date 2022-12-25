@@ -18,16 +18,16 @@
       <br>
 
       <ABtn>
-        <span class="mdi mdi-pencil"></span>
+        <AIcon icon="mdi-pencil"/>
       </ABtn>
       <button>
-        <span class="mdi mdi-pencil"></span>
+        <AIcon icon="mdi-pencil"/>
       </button>
       <p>
         Lorem ipsum dolor <a href="http://ya.ru">ya.ru</a> sit amet,
-        <span class="mdi mdi-pencil"></span>
+        <AIcon icon="mdi-pencil"/>
         <a href="http://ya.ru">
-          <span class="mdi mdi-pencil"></span>
+          <AIcon icon="mdi-pencil"/>
         </a>
         consectetur adipisicing elit. Consectetur doloribus eum, laudantium natus nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed sint? Dolor nobis non provident suscipit totam.</p>
       <br>
