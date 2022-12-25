@@ -16,13 +16,7 @@
       <p class="h6">Параграф .h6</p>
       <br>
       <br>
-
-      <ABtn>
-        <AIcon icon="mdi-pencil"/>
-      </ABtn>
-      <button>
-        <AIcon icon="mdi-pencil"/>
-      </button>
+    
     <h2>Параграфы</h2>
       <p>
         Lorem ipsum dolor <a href="http://ya.ru">ya.ru</a> sit amet,
