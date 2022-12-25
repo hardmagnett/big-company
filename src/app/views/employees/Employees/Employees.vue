@@ -6,9 +6,9 @@ import EmployeesTable from '@/app/components/employees/EmployeesTable/EmployeesT
 
 <template>
   <div class="home-view">
-    <HeaderAndSomethingElse>
+    <HeaderAndSomethingElse class="mod--mb-1">
       <template v-slot:left>
-        <h1>Сотрудники</h1>
+        <h1 class="mod--mb-0">Сотрудники</h1>
       </template>
       <template v-slot:right>
 

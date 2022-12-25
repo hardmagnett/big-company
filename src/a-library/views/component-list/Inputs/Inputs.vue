@@ -6,6 +6,7 @@
     <AInput placeholder="placeholder for text"></AInput>
     <br>
     <AInput value="default value"></AInput>
+    <br>
 
     <h2>ACheckBox</h2>
     <ACheckBox label="С указанием label" />
