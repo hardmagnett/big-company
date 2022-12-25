@@ -23,13 +23,24 @@
       <button>
         <AIcon icon="mdi-pencil"/>
       </button>
+    <h2>Параграфы</h2>
       <p>
         Lorem ipsum dolor <a href="http://ya.ru">ya.ru</a> sit amet,
+        consectetur adipisicing elit. Consectetur doloribus eum, laudantium natus nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed sint? Dolor nobis non provident suscipit totam.
+        Сonsectetur adipisicing elit. Consectetur doloribus eum, laudantium natus nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed sint? Dolor nobis non provident suscipit totam.
+      </p>
+      <p>Сonsectetur adipisicing elit. Consectetur doloribus eum, laudantium natus nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed sint? Dolor nobis non provident suscipit totam.</p>
+
+    <h2>AIcon</h2>
+    <p>
+      Компонент-иконка - по сути обычный span. Лекго вставляется в текст
+      <AIcon icon="mdi-pencil"/>
+      или в ссылку
+      <a href="/" target="_blank">
         <AIcon icon="mdi-pencil"/>
-        <a href="http://ya.ru">
-          <AIcon icon="mdi-pencil"/>
-        </a>
-        consectetur adipisicing elit. Consectetur doloribus eum, laudantium natus nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed sint? Dolor nobis non provident suscipit totam.</p>
+      </a>
+      .
+    </p>
       <br>
       <br>
       <br>

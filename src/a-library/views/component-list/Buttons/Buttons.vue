@@ -21,6 +21,18 @@
       <!--<ABtn :to="{name: 'dashboard'}">На главную</ABtn>-->
       <ABtn :to="{path: '/'}">На главную</ABtn>
     </div>
+
+    <h2>Кнопки c иконками</h2>
+    <h3>Обычные</h3>
+    <div class="buttons-page__buttons">
+      <ABtn>Редактировать <AIcon icon="mdi-pencil"/></ABtn>
+      <ABtn class="btn--error">Удалить <AIcon icon="mdi-delete"/></ABtn>
+    </div>
+    <h3>Специально для иконок</h3>
+    <div class="buttons-page__buttons">
+      <ABtn icon><AIcon icon="mdi-pencil"/></ABtn>
+      <ABtn icon class="btn--error"><AIcon icon="mdi-delete"/></ABtn>
+    </div>
   </div>
 </template>
 
@@ -32,12 +44,19 @@
   display: flex;
   flex-flow: row wrap;
   margin-bottom: var(--gap);
+  gap: var(--gap);
 
   > * {
-    margin-right: var(--gap);
-    margin-bottom: var(--gap);
+    //margin-right: var(--gap);
+    //margin-bottom: var(--gap);
   }
 }
 
 
 </style>
+<!--<script>-->
+<!--import AIcon from "../../../components/typo/AIcon/AIcon"-->
+<!--export default {-->
+<!--  components: {AIcon},-->
+<!--}-->
+<!--</script>-->

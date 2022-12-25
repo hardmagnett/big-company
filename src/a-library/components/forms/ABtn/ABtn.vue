@@ -39,7 +39,8 @@ export default {
 
     height: var(--height);
     line-height: var(--height);
-    padding: 0 var(--height);
+    //padding: 0 var(--height);
+    padding: 0 var(--gap);
 
     display: block;
     width: fit-content;
