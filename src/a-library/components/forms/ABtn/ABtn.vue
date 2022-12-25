@@ -29,7 +29,17 @@ export default {
 
 <style scoped lang="scss">
   .btn {
-    $height: calc(var(--gap) * 2);
+    --height: calc(var(--gap) * 1.6);
+    @media (min-width: $bpMd) {
+      --height: calc(var(--gap) * 1.8);
+    }
+    @media (min-width: $bpLg) {
+      --height: calc(var(--gap) * 1.8);
+    }
+
+    height: var(--height);
+    line-height: var(--height);
+    padding: 0 var(--height);
 
     display: block;
     width: fit-content;
@@ -40,9 +50,8 @@ export default {
     color: white;
     background-color: var(--clrFillBlueSmall);
     border: none;
-    height: $height;
-    line-height: $height;
-    padding: 0 calc(var(--gap) * 2);
+
+
     cursor: pointer;
     transition: background-color var(--timeShort);
     &:hover {
@@ -51,25 +60,19 @@ export default {
   }
   .btn--error {
     background-color: var(--clrFillRedSmall);
-    //background-color: clrFill(small, error);
     &:hover {
-      //background-color: clrFill(accent, error);
       background-color: var(--clrFillRedAccent);
     }
   }
   .btn--success {
-    //background-color: clrFill(small, success);
     background-color: var(--clrFillGreenSmall);
     &:hover {
-      //background-color: clrFill(accent, success);
       background-color: var(--clrFillGreenAccent);
     }
   }
   .btn--danger {
-    //background-color: clrFill(small, danger);
     background-color: var(--clrFillOrangeSmall);
     &:hover {
-      //background-color: clrFill(accent, danger);
       background-color: var(--clrFillOrangeAccent);
     }
   }

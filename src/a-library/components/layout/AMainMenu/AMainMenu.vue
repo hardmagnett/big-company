@@ -71,7 +71,8 @@ const menuItems = [
   left: 0;
   top: var(--headerHeight);
   bottom: 0;
-  width: 200px;
+  //margin-left: var(--leftMenuWidth);
+  width: var(--leftMenuWidth);
   background-color: var(--clrBgBlueSmall);
   border-right: 1px solid var(--clrBorderBlueLighter)
 }

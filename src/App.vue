@@ -15,7 +15,5 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <style scoped lang="scss">
 .container {
-  // временный хардкод.
-  margin-left: 300px;
 }
 </style>
