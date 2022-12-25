@@ -16,7 +16,20 @@
       <p class="h6">Параграф .h6</p>
       <br>
       <br>
-      <p>Lorem ipsum dolor <a href="http://ya.ru">ya.ru</a> sit amet, consectetur adipisicing elit. Consectetur doloribus eum, laudantium natus nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed sint? Dolor nobis non provident suscipit totam.</p>
+
+      <ABtn>
+        <span class="mdi mdi-pencil"></span>
+      </ABtn>
+      <button>
+        <span class="mdi mdi-pencil"></span>
+      </button>
+      <p>
+        Lorem ipsum dolor <a href="http://ya.ru">ya.ru</a> sit amet,
+        <span class="mdi mdi-pencil"></span>
+        <a href="http://ya.ru">
+          <span class="mdi mdi-pencil"></span>
+        </a>
+        consectetur adipisicing elit. Consectetur doloribus eum, laudantium natus nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed sint? Dolor nobis non provident suscipit totam.</p>
       <br>
       <br>
       <br>
