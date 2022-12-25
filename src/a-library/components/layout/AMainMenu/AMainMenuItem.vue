@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { onMounted, computed, ref } from 'vue'
+import { onMounted, computed, ref, reactive } from 'vue'
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 // import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
@@ -19,7 +19,14 @@ const props = withDefaults(defineProps<Props>(), {
 
 const rootNode = ref(null)
 
+const isClosed = ref(true)
+
 const paddingLeft = computed(() => props.deepLevel * 16)
+const classes = computed(() => {
+  return {
+    'main-menu-item--is-closed': props.menuItem.children && isClosed.value
+  }
+})
 
 // const componentForLink = computed(() => {
 //   return props.menuItem.route ? 'RouterLink' : 'a'
@@ -35,7 +42,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="main-menu-item" ref="rootNode">
+  <div
+      class="main-menu-item"
+      :class="classes"
+      ref="rootNode"
+  >
     <!--componentForLink-->
     <!--v-if="menuItem.route"-->
     <!--<component-->
@@ -65,6 +76,7 @@ onMounted(() => {
     <a
       class="main-menu-item__link"
       v-if="!menuItem.route"
+      @click="isClosed = !isClosed"
     >
       <AIcon
         :icon="menuItem.icon"
@@ -73,14 +85,14 @@ onMounted(() => {
       <span>{{menuItem.title}}</span>
     </a>
 
-    <template v-if="menuItem.children">
+    <div class="main-menu-item__children" v-if="menuItem.children">
       <AMainMenuItem
           v-for="childMenuItem in menuItem.children"
           :key="childMenuItem.id"
           :menuItem="childMenuItem"
           :deepLevel="deepLevel + 1"
       />
-    </template>
+    </div>
   </div>
 </template>
 
@@ -130,15 +142,24 @@ onMounted(() => {
     }
   }
 
-  > .main-menu-item {
+  > .main-menu-item__children {
     //margin-left: 16px;
     //color: clrFont(light, main);
+    max-height: 100px;
+    overflow-y: hidden;
+    transition: max-height var(--timeShort);
   }
   &:hover {
     a {
 
     }
 
+  }
+
+  &.main-menu-item--is-closed {
+    > .main-menu-item__children {
+      max-height: 0;
+    }
   }
 }
 </style>
