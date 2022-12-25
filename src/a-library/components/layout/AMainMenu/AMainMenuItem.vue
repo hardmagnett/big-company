@@ -53,18 +53,24 @@ onMounted(() => {
         class="main-menu-item__link"
         v-if="menuItem.route"
         :to="{name: menuItem.route.to}"
-        active-class="header-menu__link--active"
+        active-class="main-menu-item__link--active"
         exact
     >
-      <AIcon :icon="menuItem.icon"/>
-      {{menuItem.title}}
+      <AIcon
+        :icon="menuItem.icon"
+        size="giant"
+      />
+      <span>{{menuItem.title}}</span>
     </RouterLink>
     <a
       class="main-menu-item__link"
       v-if="!menuItem.route"
     >
-      <AIcon :icon="menuItem.icon"/>
-      {{menuItem.title}}
+      <AIcon
+        :icon="menuItem.icon"
+        size="giant"
+      />
+      <span>{{menuItem.title}}</span>
     </a>
 
     <template v-if="menuItem.children">
@@ -83,7 +89,7 @@ onMounted(() => {
   --paddingByDeep: 0;
   --accentedColor: var(--clrBgBlueAccent);
   .header-menu__link--active {
-    background-color: var(--accentedColor)
+
   }
   //a {
   .main-menu-item__link {
@@ -95,22 +101,32 @@ onMounted(() => {
     padding-left: 16px;
     padding-right: 16px;
     //outline: 1px solid darkred;
-    display: block;
+    display: flex;
+    align-items: center;
     --height: calc(var(--gap) * 2);
     height: var(--height);
     line-height: var(--height);
     color: var(--clrFontBlueDark);
     text-decoration: none;
-    transition: background-color var(--timeShort);
+    transition: background-color var(--timeShort), color var(--timeShort);
     //font-size: var(--fsSmall);
     font-size: var(--fontSizeTiny);
     font-weight: var(--fontWeightBold);
+    //transition: color var(--timeMedium);
 
     &:hover {
       background-color: var(--accentedColor)
     }
+
+    &.main-menu-item__link--active {
+      background-color: var(--accentedColor);
+      color: var(--clrFillBlueSmall);
+    }
     .a-icon {
       margin-right: var(--gap);
+      //color: var(--clrFillBlueSmall);
+      //color: var(--clrFillBlueAccent);
+      //color: var(--clrFillBlueBig)
     }
   }
 
