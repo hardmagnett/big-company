@@ -8,6 +8,7 @@ const menuItems = [
   {
     id: i++,
     title: 'Структура компании',
+    icon: 'mdi-family-tree',
     route: {
       to: 'departments'
     },
@@ -15,6 +16,7 @@ const menuItems = [
   {
     id: i++,
     title: 'Сотрудники',
+    icon: 'mdi-account-group',
     route: {
       to: 'employees'
     },
@@ -22,10 +24,12 @@ const menuItems = [
   {
     id: i++,
     title: 'Компоненты',
+    icon: 'mdi-vuejs',
     children: [
       {
         id: i++,
         title: 'Заголовки',
+        icon: 'mdi-format-size',
         route: {
           to: 'headers'
         },
@@ -33,6 +37,7 @@ const menuItems = [
       {
         id: i++,
         title: 'Кнопки',
+        icon: 'mdi-button-cursor',
         route: {
           to: 'buttons'
         },
@@ -40,6 +45,7 @@ const menuItems = [
       {
         id: i++,
         title: 'Элементы форм',
+        icon: 'mdi-form-textbox',
         route: {
           to: 'inputs'
         },

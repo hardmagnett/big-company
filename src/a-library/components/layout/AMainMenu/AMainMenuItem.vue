@@ -3,6 +3,10 @@
 import { onMounted, computed, ref } from 'vue'
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
+// import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
+// export default {
+//   components: {AIcon}
+// }
 
 export interface Props {
   deepLevel?: number
@@ -17,6 +21,13 @@ const rootNode = ref(null)
 
 const paddingLeft = computed(() => props.deepLevel * 16)
 
+// const componentForLink = computed(() => {
+//   return props.menuItem.route ? 'RouterLink' : 'a'
+// })
+// const componentForLink = computed(() => {
+//   return props.menuItem.route ? 'RouterLink' : 'a'
+// })
+
 onMounted(() => {
   rootNode.value.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
 })
@@ -25,15 +36,36 @@ onMounted(() => {
 
 <template>
   <div class="main-menu-item" ref="rootNode">
+    <!--componentForLink-->
+    <!--v-if="menuItem.route"-->
+    <!--<component-->
+    <!--  :is="componentForLink"-->
+    <!--  class="main-menu-item__link"-->
+    <!--  :to="{name: menuItem.route.to}"-->
+    <!--  active-class="header-menu__link&#45;&#45;active"-->
+    <!--  exact-->
+    <!--&gt;-->
+
+    <!--</component>-->
+
+
     <RouterLink
+        class="main-menu-item__link"
         v-if="menuItem.route"
         :to="{name: menuItem.route.to}"
         active-class="header-menu__link--active"
         exact
     >
+      <AIcon :icon="menuItem.icon"/>
       {{menuItem.title}}
     </RouterLink>
-    <a v-if="!menuItem.route">{{menuItem.title}}</a>
+    <a
+      class="main-menu-item__link"
+      v-if="!menuItem.route"
+    >
+      <AIcon :icon="menuItem.icon"/>
+      {{menuItem.title}}
+    </a>
 
     <template v-if="menuItem.children">
       <AMainMenuItem
@@ -53,7 +85,8 @@ onMounted(() => {
   .header-menu__link--active {
     background-color: var(--accentedColor)
   }
-  a {
+  //a {
+  .main-menu-item__link {
     &:before {
       display: inline;
       content: '';
@@ -75,6 +108,9 @@ onMounted(() => {
 
     &:hover {
       background-color: var(--accentedColor)
+    }
+    .a-icon {
+      margin-right: var(--gap);
     }
   }
 
