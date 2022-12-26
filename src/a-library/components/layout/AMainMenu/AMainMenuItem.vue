@@ -1,6 +1,8 @@
 <script setup lang="ts">
 
 import { onMounted, computed, ref, reactive } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+const route = useRoute()
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 // import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
@@ -32,8 +34,26 @@ const hasChildren = computed(()=>{
   return props.menuItem.children?.length
 })
 
+/**
+ * Сейчас эта проверка реализованна для 1-го уровня вложенности,
+ * Потому-что на проекте всего 1 уровень вложенности в меню.
+ * Не на чем проверять.
+ * Если будет необходимость сделать 2 или более уровней вложенности в меню,
+ * то можно будет обходить всех потомков рекурсивно.
+ */
 const isOneOfDescendantRouteActive = computed(()=>{
-  return false
+  let result = false
+  if (!hasChildren) return result
+
+  let currRouteName = route.name
+  for (let child of props.menuItem.children) {
+    let menuRouteName = child.route.to
+    if (currRouteName === menuRouteName) {
+      result = true
+      break;
+    }
+  }
+  return result
 })
 
 onMounted(() => {
@@ -64,7 +84,7 @@ onMounted(() => {
     </RouterLink>
     <a
       class="main-menu-item__link"
-      :class="{'main-menu-item__link--descendant-active': !isOneOfDescendantRouteActive}"
+      :class="{'main-menu-item__link--descendant-active': isOneOfDescendantRouteActive}"
       v-if="hasChildren"
       @click="isClosed = !isClosed"
     >
