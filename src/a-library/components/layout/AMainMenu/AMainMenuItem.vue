@@ -69,7 +69,7 @@ onMounted(() => {
       ref="rootNode"
   >
     <RouterLink
-        class="main-menu-item__link"
+        class="main-menu-item__link main-menu-item__link--to-page"
         v-if="!hasChildren"
         :to="{name: menuItem.route.to}"
         active-class="main-menu-item__link--active"
@@ -83,7 +83,7 @@ onMounted(() => {
       <span>{{menuItem.title}}</span>
     </RouterLink>
     <a
-      class="main-menu-item__link"
+      class="main-menu-item__link main-menu-item__link--to-children"
       :class="{'main-menu-item__link--descendant-active': isOneOfDescendantRouteActive}"
       v-if="hasChildren"
       @click="isClosed = !isClosed"
@@ -117,28 +117,28 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .main-menu-item {
+  // Изменяется JS-ом в зависимости от глубины.
   --paddingByDeep: 0;
-  //--accentedColorLess: var(--clrFillBlueSmall);
-  //--accentedColor: var(--clrBgBlueAccent);
 
   --accentedColorLess: var(--clrBgBlueAccent);
   --accentedColor: var(--clrFillBlueSmall);
-  .header-menu__link--active {
 
+  > .main-menu-item__children {
+    max-height: max-content;
+    overflow-y: hidden;
+    // Анимация до max-content не работает. Может-быть потом в браузерах исправят.
+    transition: max-height var(--timeShort);
   }
-  //a {
+
   .main-menu-item__link {
-    &:before {
-      display: inline;
-      content: '';
-      padding-left: var(--paddingByDeep)
-    }
+    --height: calc(var(--gap) * 2);
+
     cursor: pointer;
     padding-left: 16px;
     padding-right: 16px;
     display: flex;
     align-items: center;
-    --height: calc(var(--gap) * 2);
+
     height: var(--height);
     line-height: var(--height);
     color: var(--clrFontBlueDark);
@@ -147,23 +147,40 @@ onMounted(() => {
     font-size: var(--fontSizeTiny);
     font-weight: var(--fontWeightBold);
 
+    // before нужно исключительно чтобы дать отступ слева для вложенных элементов.
+    &:before {
+      display: inline;
+      content: '';
+      padding-left: var(--paddingByDeep)
+    }
+
+    // Отодвигает следующие элементы, в частности индикатор открытости,
+    // максимально вправо.
     .main-menu-item__spacer {
-      // Отодвигает следующие элементы максимально вправо.
       flex: 1 0 auto;
     }
 
     .main-menu-item__closing-indicator {}
 
-    &:hover {
-      background-color: var(--accentedColor);
-      //background-color: var(--clrFillBlueAccent);
-      color: var(--clrFontBlueLight);
+    &.main-menu-item__link--to-page {
+      &:hover {
+        background-color: var(--accentedColorLess);
+      }
+    }
+
+    &.main-menu-item__link--to-children {
+      &:hover {
+        background-color: var(--accentedColorLess);
+      }
     }
 
     &.main-menu-item__link--active {
       background-color: var(--accentedColor);
-      //color: var(--clrFillBlueSmall);
       color: var(--clrFontBlueLight);
+      &:hover {
+        background-color: var(--accentedColor);
+        color: var(--clrFontBlueLight);
+      }
     }
     &.main-menu-item__link--descendant-active {
       background-color: var(--accentedColorLess);
@@ -171,19 +188,6 @@ onMounted(() => {
     .main-menu-item__menu-icon {
       margin-right: var(--gap);
     }
-  }
-
-  > .main-menu-item__children {
-    max-height: max-content;
-    overflow-y: hidden;
-    // Анимация до max-content не работает. Может-быть потом в браузерах исправят.
-    transition: max-height var(--timeShort);
-  }
-  &:hover {
-    a {
-
-    }
-
   }
 
   &.main-menu-item--is-closed {
