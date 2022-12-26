@@ -32,6 +32,10 @@ const hasChildren = computed(()=>{
   return props.menuItem.children?.length
 })
 
+const isOneOfDescendantRouteActive = computed(()=>{
+  return false
+})
+
 onMounted(() => {
   rootNode.value.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
 })
@@ -60,6 +64,7 @@ onMounted(() => {
     </RouterLink>
     <a
       class="main-menu-item__link"
+      :class="{'main-menu-item__link--descendant-active': !isOneOfDescendantRouteActive}"
       v-if="hasChildren"
       @click="isClosed = !isClosed"
     >
@@ -93,7 +98,11 @@ onMounted(() => {
 <style scoped lang="scss">
 .main-menu-item {
   --paddingByDeep: 0;
-  --accentedColor: var(--clrBgBlueAccent);
+  //--accentedColorLess: var(--clrFillBlueSmall);
+  //--accentedColor: var(--clrBgBlueAccent);
+
+  --accentedColorLess: var(--clrBgBlueAccent);
+  --accentedColor: var(--clrFillBlueSmall);
   .header-menu__link--active {
 
   }
@@ -126,12 +135,18 @@ onMounted(() => {
     .main-menu-item__closing-indicator {}
 
     &:hover {
-      background-color: var(--accentedColor)
+      background-color: var(--accentedColor);
+      //background-color: var(--clrFillBlueAccent);
+      color: var(--clrFontBlueLight);
     }
 
     &.main-menu-item__link--active {
       background-color: var(--accentedColor);
-      color: var(--clrFillBlueSmall);
+      //color: var(--clrFillBlueSmall);
+      color: var(--clrFontBlueLight);
+    }
+    &.main-menu-item__link--descendant-active {
+      background-color: var(--accentedColorLess);
     }
     .main-menu-item__menu-icon {
       margin-right: var(--gap);
