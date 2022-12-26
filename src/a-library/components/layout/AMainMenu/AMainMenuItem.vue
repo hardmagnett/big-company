@@ -48,6 +48,7 @@ import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
 export interface Props {
   deepLevel?: number
+  isMainMenuCollapsed: boolean
   menuItem: MenuItem
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -62,7 +63,8 @@ let isClosed = ref(true)
 const paddingLeft = computed(() => props.deepLevel * 16)
 const classes = computed(() => {
   return {
-    'main-menu-item--is-closed': props.menuItem.children && isClosed.value
+    'main-menu-item--is-closed': props.menuItem.children && isClosed.value,
+    'main-menu-item--main-menu-is-collapsed': props.isMainMenuCollapsed
   }
 })
 
@@ -127,7 +129,7 @@ onMounted(() => {
         :icon="menuItem.icon"
         size="giant"
       />
-      <span>{{menuItem.title}}</span>
+      <span class="main-menu-item__text">{{menuItem.title}}</span>
     </RouterLink>
     <a
       class="main-menu-item__link main-menu-item__link--to-children"
@@ -140,7 +142,7 @@ onMounted(() => {
         :icon="menuItem.icon"
         size="giant"
       />
-      <span>{{menuItem.title}}</span>
+      <span class="main-menu-item__text">{{menuItem.title}}</span>
       <span class="main-menu-item__spacer"></span>
       <AIcon
           class="main-menu-item__closing-indicator"
@@ -157,6 +159,7 @@ onMounted(() => {
           :key="childMenuItem.id"
           :menuItem="childMenuItem"
           :deepLevel="deepLevel + 1"
+          :isMainMenuCollapsed="isMainMenuCollapsed"
       />
     </div>
   </div>
@@ -166,6 +169,8 @@ onMounted(() => {
 .main-menu-item {
   // Изменяется JS-ом в зависимости от глубины.
   --paddingByDeep: 0;
+
+  --mainMenuCollapseAnimationTime: var(--timeMedium);
 
   --accentedColorLess: var(--clrBgBlueAccent);
   --accentedColor: var(--clrFillBlueSmall);
@@ -201,7 +206,8 @@ onMounted(() => {
     &:before {
       display: inline;
       content: '';
-      padding-left: var(--paddingByDeep)
+      padding-left: var(--paddingByDeep);
+      transition: padding-left var(--mainMenuCollapseAnimationTime);
     }
 
     // Отодвигает следующие элементы, в частности индикатор открытости,
@@ -240,9 +246,32 @@ onMounted(() => {
     }
   }
 
+  .main-menu-item__text {
+    opacity: 1;
+    transition: opacity var(--mainMenuCollapseAnimationTime);
+  }
+  .main-menu-item__closing-indicator {
+    opacity: 1;
+    transition: opacity var(--mainMenuCollapseAnimationTime);
+  }
+
   &.main-menu-item--is-closed {
     > .main-menu-item__children {
       max-height: 0;
+    }
+  }
+
+  &.main-menu-item--main-menu-is-collapsed {
+    .main-menu-item__link {
+      &:before {
+        padding-left: 0;
+      }
+    }
+    .main-menu-item__text {
+      opacity: 0;
+    }
+    .main-menu-item__closing-indicator {
+      opacity: 0;
     }
   }
 }

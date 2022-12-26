@@ -36,21 +36,18 @@ let isBig = computed(()=>{
 let isCollapsedOnBigScreen = ref(false)
 let isCollapsedOnSmallScreen = ref(true)
 
-
-
-let classes = computed(()=>{
-
-  // let isCollapsedByBigScreen = isCollapsedOnBigScreen.value && isBig
-  // let isCollapsedBySmallScreen = isCollapsedOnSmallScreen.value && !isBig
-
+let isCollapsed = computed(()=>{
   let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
   let isCollapsedBySmallScreen = !isBig.value && isCollapsedOnSmallScreen.value
+  return isCollapsedByBigScreen || isCollapsedBySmallScreen
+})
 
+let classes = computed(()=>{
   return {
-    'main-menu--is-collapsed': isCollapsedByBigScreen || isCollapsedBySmallScreen,
+    'main-menu--is-collapsed': isCollapsed.value,
+    // todo:: вероятно эти 2 стиля окажутся не нужны
     'main-menu--is-collapsed-on-big-screen': isCollapsedOnBigScreen.value,
     'main-menu--is-collapsed-on-small-screen': isCollapsedOnSmallScreen.value,
-
   }
 })
 
@@ -128,6 +125,7 @@ const menuItems = [
         v-for="menuItem in menuItems"
         :key="menuItem.id"
         :menuItem="menuItem"
+        :isMainMenuCollapsed="isCollapsed"
     />
 
     <div
