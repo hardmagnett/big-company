@@ -52,6 +52,7 @@ onMounted(() => {
         exact
     >
       <AIcon
+        class="main-menu-item__menu-icon"
         :icon="menuItem.icon"
         size="giant"
       />
@@ -63,10 +64,12 @@ onMounted(() => {
       @click="isClosed = !isClosed"
     >
       <AIcon
+        class="main-menu-item__menu-icon"
         :icon="menuItem.icon"
         size="giant"
       />
       <span>{{menuItem.title}}</span>
+      <span class="main-menu-item__spacer"></span>
       <AIcon
           class="main-menu-item__closing-indicator"
           v-if="hasChildren"
@@ -115,10 +118,12 @@ onMounted(() => {
     font-size: var(--fontSizeTiny);
     font-weight: var(--fontWeightBold);
 
-    .main-menu-item__closing-indicator {
-      outline: 1px solid darkred;
-      align-self: flex-end;
+    .main-menu-item__spacer {
+      // Отодвигает следующие элементы максимально вправо.
+      flex: 1 0 auto;
     }
+
+    .main-menu-item__closing-indicator {}
 
     &:hover {
       background-color: var(--accentedColor)
@@ -128,7 +133,7 @@ onMounted(() => {
       background-color: var(--accentedColor);
       color: var(--clrFillBlueSmall);
     }
-    .a-icon {
+    .main-menu-item__menu-icon {
       margin-right: var(--gap);
     }
   }
