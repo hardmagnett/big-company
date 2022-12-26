@@ -3,6 +3,68 @@ import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
+import {ref, computed} from 'vue';
+
+// todo:: вынести это куда-то в pinia start
+// todo:: сделать это не только для isBig, а для любого брекпоинта
+let documentWidth = ref(document.documentElement.clientWidth)
+window.addEventListener('resize', ()=>{
+  // console.log('here----------------------------------')
+  let newVal = document.documentElement.clientWidth
+  // console.log(newVal); console.log('^...newVal:')
+  documentWidth.value = newVal
+  // documentWidth.value = newVal
+  // console.log(documentWidth); console.log('^...documentWidth:')
+  // console.log(documentWidth.value); console.log('^...documentWidth.value:')
+});
+
+let isBig = computed(()=>{
+  // todo:: убрать этот хардкод и сделать соответствующую инфраструктуру
+  let bigBp = 768;
+  // let documentWidth = document.documentElement.clientWidth
+  // console.log(documentWidth.value); console.log('^...documentWidth.value:')
+
+  // let isBig = documentWidth.value >= bigBp
+  let isBig = documentWidth.value >= bigBp
+  return isBig
+})
+
+// todo:: вынести это куда-то в pinia end
+
+// todo:: эту штуку можно хранить в localstorage.
+// И вообще можно сделать некую свою обертку с названием localUserSettings
+let isCollapsedOnBigScreen = ref(false)
+let isCollapsedOnSmallScreen = ref(true)
+
+
+
+let classes = computed(()=>{
+
+  // let isCollapsedByBigScreen = isCollapsedOnBigScreen.value && isBig
+  // let isCollapsedBySmallScreen = isCollapsedOnSmallScreen.value && !isBig
+
+  let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
+  let isCollapsedBySmallScreen = !isBig.value && isCollapsedOnSmallScreen.value
+
+  return {
+    'main-menu--is-collapsed': isCollapsedByBigScreen || isCollapsedBySmallScreen,
+    'main-menu--is-collapsed-on-big-screen': isCollapsedOnBigScreen.value,
+    'main-menu--is-collapsed-on-small-screen': isCollapsedOnSmallScreen.value,
+
+  }
+})
+
+function toggleMenuCollapse(){
+
+  if (isBig.value) {
+    isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
+  } else {
+    isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
+  }
+  // console.log(documentWidth); console.log('^...documentWidth:')
+  // console.log('toggleMenuCollapse')
+}
+
 let i = 0
 const menuItems = [
   {
@@ -57,12 +119,23 @@ const menuItems = [
 </script>
 
 <template>
-  <div class="main-menu">
+  <div
+    class="main-menu"
+    :class="classes"
+  >
+    <!--{{isBig}}-->
     <AMainMenuItem
         v-for="menuItem in menuItems"
         :key="menuItem.id"
         :menuItem="menuItem"
     />
+
+    <div
+        class="main-menu__width-toggler"
+        @click="toggleMenuCollapse"
+    >
+      <AIcon icon="mdi-chevron-left" size="giant"></AIcon>
+    </div>
   </div>
 </template>
 
@@ -70,16 +143,40 @@ const menuItems = [
 // Обычно позиционирование компонента делается снаружи.
 // Но т.к. это меню должно быть всегда в одном и том-же месте, то оно спозиционировано изнутри.
 .main-menu {
-  //padding: 16px;
   padding-top: calc(var(--gap) / 2);
   padding-bottom: calc(var(--gap) / 2);
   position: fixed;
   left: 0;
   top: var(--headerHeight);
   bottom: 0;
-  //margin-left: var(--leftMenuWidth);
-  width: var(--leftMenuWidth);
+  width: var(--leftMenuWidthExpanded);
   background-color: var(--clrBgBlueSmall);
-  border-right: 1px solid var(--clrBorderBlueLighter)
+  border-right: 1px solid var(--clrBorderBlueLighter);
+  transition: width var(--timeMedium);
+
+  overflow-x:hidden;
+
+  // todo:: переделать. Это не предусматривает скролл от меню
+  .main-menu__width-toggler {
+
+    //outline: 1px solid darkred;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--gap) * 2);
+    border-top: 1px solid var(--clrBorderBlueLighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+      background-color: var(--clrBgBlueAccent);
+    }
+  }
+
+  &.main-menu--is-collapsed {
+    width: var(--leftMenuWidthCollapsed);
+  }
 }
 </style>

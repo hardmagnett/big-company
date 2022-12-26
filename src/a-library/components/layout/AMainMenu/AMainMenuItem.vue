@@ -170,6 +170,9 @@ onMounted(() => {
   --accentedColorLess: var(--clrBgBlueAccent);
   --accentedColor: var(--clrFillBlueSmall);
 
+  // Чтобы в процессе сворачивании меню текст не переносился на несколько строк
+  width: var(--leftMenuWidthExpanded);
+
   > .main-menu-item__children {
     max-height: max-content;
     overflow-y: hidden;

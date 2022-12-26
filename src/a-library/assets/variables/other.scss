@@ -12,7 +12,8 @@
   --headerHeight: calc(var(--gap) * 3);
 
   // В перспективе будет меняться js-ом
-  --leftMenuWidth: 200px;
+  --leftMenuWidthExpanded: 200px;
+  --leftMenuWidthCollapsed: 53px;
 }
 
 // совпадает с размером из FireFox

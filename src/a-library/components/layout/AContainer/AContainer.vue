@@ -7,7 +7,7 @@
 <style scoped lang="scss">
 .container {
   padding: calc(var(--gap) / 2) var(--gap);
-  margin-left: var(--leftMenuWidth);
+  margin-left: var(--leftMenuWidthExpanded);
   overflow-x: hidden;
   @media (min-width: $bpSm) {}
 
