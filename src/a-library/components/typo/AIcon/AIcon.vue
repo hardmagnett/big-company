@@ -17,12 +17,17 @@ export default {
       type: String,
       default: 'medium',    //tiny small medium large giant
     },
+    rotate180: {
+      type: Boolean,
+      default: false,
+    }
   },
   computed: {
     classes(){
       return {
         'mdi': true,
         [this.icon]: true,
+        'mdi-rotate-180': this.rotate180,
         'a-icon--medium': this.size === 'medium',
         'a-icon--large': this.size === 'large',
         'a-icon--giant': this.size === 'giant',
@@ -41,6 +46,8 @@ export default {
 
 <style scoped lang="scss">
 .a-icon {
+
+  // В случае необходимости, можно переделать размеры при помощи mdi-класоов. Наприме mdi-18px.mdi-set .
   &.a-icon--medium {
     font-size: var(--fontSizeBase)
   }

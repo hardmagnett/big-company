@@ -28,12 +28,9 @@ const classes = computed(() => {
   }
 })
 
-// const componentForLink = computed(() => {
-//   return props.menuItem.route ? 'RouterLink' : 'a'
-// })
-// const componentForLink = computed(() => {
-//   return props.menuItem.route ? 'RouterLink' : 'a'
-// })
+const hasChildren = computed(()=>{
+  return props.menuItem.children?.length
+})
 
 onMounted(() => {
   rootNode.value.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
@@ -47,22 +44,9 @@ onMounted(() => {
       :class="classes"
       ref="rootNode"
   >
-    <!--componentForLink-->
-    <!--v-if="menuItem.route"-->
-    <!--<component-->
-    <!--  :is="componentForLink"-->
-    <!--  class="main-menu-item__link"-->
-    <!--  :to="{name: menuItem.route.to}"-->
-    <!--  active-class="header-menu__link&#45;&#45;active"-->
-    <!--  exact-->
-    <!--&gt;-->
-
-    <!--</component>-->
-
-
     <RouterLink
         class="main-menu-item__link"
-        v-if="menuItem.route"
+        v-if="!hasChildren"
         :to="{name: menuItem.route.to}"
         active-class="main-menu-item__link--active"
         exact
@@ -75,7 +59,7 @@ onMounted(() => {
     </RouterLink>
     <a
       class="main-menu-item__link"
-      v-if="!menuItem.route"
+      v-if="hasChildren"
       @click="isClosed = !isClosed"
     >
       <AIcon
@@ -83,9 +67,16 @@ onMounted(() => {
         size="giant"
       />
       <span>{{menuItem.title}}</span>
+      <AIcon
+          class="main-menu-item__closing-indicator"
+          v-if="hasChildren"
+          icon="mdi-chevron-down"
+          :rotate180="!isClosed"
+          size="giant"
+      />
     </a>
 
-    <div class="main-menu-item__children" v-if="menuItem.children">
+    <div class="main-menu-item__children" v-if="hasChildren">
       <AMainMenuItem
           v-for="childMenuItem in menuItem.children"
           :key="childMenuItem.id"
@@ -110,6 +101,7 @@ onMounted(() => {
       content: '';
       padding-left: var(--paddingByDeep)
     }
+    cursor: pointer;
     padding-left: 16px;
     padding-right: 16px;
     display: flex;
@@ -122,6 +114,11 @@ onMounted(() => {
     transition: background-color var(--timeShort), color var(--timeShort);
     font-size: var(--fontSizeTiny);
     font-weight: var(--fontWeightBold);
+
+    .main-menu-item__closing-indicator {
+      outline: 1px solid darkred;
+      align-self: flex-end;
+    }
 
     &:hover {
       background-color: var(--accentedColor)
