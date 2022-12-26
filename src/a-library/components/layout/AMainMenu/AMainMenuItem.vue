@@ -170,7 +170,7 @@ onMounted(() => {
   // Изменяется JS-ом в зависимости от глубины.
   --paddingByDeep: 0;
 
-  --mainMenuCollapseAnimationTime: var(--timeMedium);
+  --mainMenuCollapseAnimationTime: var(--timeShort);
 
   --accentedColorLess: var(--clrBgBlueAccent);
   --accentedColor: var(--clrFillBlueSmall);

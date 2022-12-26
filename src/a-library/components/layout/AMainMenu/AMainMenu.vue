@@ -150,7 +150,7 @@ const menuItems = [
   width: var(--leftMenuWidthExpanded);
   background-color: var(--clrBgBlueSmall);
   border-right: 1px solid var(--clrBorderBlueLighter);
-  transition: width var(--timeMedium);
+  transition: width var(--timeShort);
 
   overflow-x:hidden;
 
