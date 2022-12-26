@@ -120,6 +120,10 @@ const menuItems = [
     class="main-menu"
     :class="classes"
   >
+    <AHeader
+        :isMainMenuCollapsed="isCollapsed"
+
+    />
     <!--{{isBig}}-->
     <AMainMenuItem
         v-for="menuItem in menuItems"
@@ -144,11 +148,12 @@ const menuItems = [
 // Обычно позиционирование компонента делается снаружи.
 // Но т.к. это меню должно быть всегда в одном и том-же месте, то оно спозиционировано изнутри.
 .main-menu {
-  padding-top: calc(var(--gap) / 2);
+  //padding-top: calc(var(--gap) / 2);
   padding-bottom: calc(var(--gap) / 2);
   position: fixed;
   left: 0;
-  top: var(--headerHeight);
+  //top: var(--headerHeight);
+  top: 0;
   bottom: 0;
   width: var(--leftMenuWidthExpanded);
   background-color: var(--clrBgBlueSmall);
@@ -156,6 +161,10 @@ const menuItems = [
   transition: width var(--timeShort);
 
   overflow-x:hidden;
+
+  .a-header {
+    margin-bottom: calc(var(--gap) / 2);
+  }
 
   // todo:: переделать. Это не предусматривает скролл от меню
   .main-menu__width-toggler {
