@@ -112,7 +112,6 @@ onMounted(() => {
     }
     padding-left: 16px;
     padding-right: 16px;
-    //outline: 1px solid darkred;
     display: flex;
     align-items: center;
     --height: calc(var(--gap) * 2);
@@ -121,10 +120,8 @@ onMounted(() => {
     color: var(--clrFontBlueDark);
     text-decoration: none;
     transition: background-color var(--timeShort), color var(--timeShort);
-    //font-size: var(--fsSmall);
     font-size: var(--fontSizeTiny);
     font-weight: var(--fontWeightBold);
-    //transition: color var(--timeMedium);
 
     &:hover {
       background-color: var(--accentedColor)
@@ -136,17 +133,13 @@ onMounted(() => {
     }
     .a-icon {
       margin-right: var(--gap);
-      //color: var(--clrFillBlueSmall);
-      //color: var(--clrFillBlueAccent);
-      //color: var(--clrFillBlueBig)
     }
   }
 
   > .main-menu-item__children {
-    //margin-left: 16px;
-    //color: clrFont(light, main);
-    max-height: 100px;
+    max-height: max-content;
     overflow-y: hidden;
+    // Анимация до max-content не работает. Может-быть потом в браузерах исправят.
     transition: max-height var(--timeShort);
   }
   &:hover {
