@@ -132,7 +132,10 @@ const menuItems = [
         class="main-menu__width-toggler"
         @click="toggleMenuCollapse"
     >
-      <AIcon icon="mdi-chevron-left" size="giant"></AIcon>
+      <AIcon
+          icon="mdi-chevron-left" size="giant"
+          :rotate180="isCollapsed"
+      />
     </div>
   </div>
 </template>
