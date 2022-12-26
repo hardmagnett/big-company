@@ -179,12 +179,9 @@ onMounted(() => {
   width: var(--leftMenuWidthExpanded);
 
   > .main-menu-item__children {
-    max-height: max-content;
+    max-height: 1000px;
     overflow-y: hidden;
-    // Анимация до max-content не работает. Может-быть потом в браузерах исправят.
-    // todo:: попробвать значение для max-height брать из css-переменной.
-    // Значение css-переменной ставить js-ом и попробовать брать из либо из суммы высот потомков, либо попробовать как-то из высоты самого элемента.
-    transition: max-height var(--timeShort);
+    transition: max-height var(--timeShort) ease-in;
   }
 
   .main-menu-item__link {
@@ -260,6 +257,7 @@ onMounted(() => {
   &.main-menu-item--is-closed {
     > .main-menu-item__children {
       max-height: 0;
+      transition: max-height var(--timeShort) ease-out;
     }
   }
 
