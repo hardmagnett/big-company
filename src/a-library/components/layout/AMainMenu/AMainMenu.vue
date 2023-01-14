@@ -2,6 +2,8 @@
 import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
+import getCSSVariable from '@/a-library/helpers/DOM/getCSSVariable';
+
 
 import {ref, computed} from 'vue';
 
@@ -20,7 +22,8 @@ window.addEventListener('resize', ()=>{
 
 let isBig = computed(()=>{
   // todo:: убрать этот хардкод и сделать соответствующую инфраструктуру
-  let bigBp = 768;
+  // let bigBp = 768;
+  let bigBp = getCSSVariable('--bpMd');
   // let documentWidth = document.documentElement.clientWidth
   // console.log(documentWidth.value); console.log('^...documentWidth.value:')
 
