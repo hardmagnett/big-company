@@ -12,15 +12,11 @@ import {ref, computed} from 'vue';
 
 // todo:: вынести это куда-то в pinia start
 // todo:: сделать это не только для isBig, а для любого брекпоинта
+// Вместо isBig можно сделать 2 параметрических геттера: isEqualOrMoreThan('--bpMd') и isLessThan('--bpLg')
 let documentWidth = ref(document.documentElement.clientWidth)
 window.addEventListener('resize', ()=>{
-  // console.log('here----------------------------------')
   let newVal = document.documentElement.clientWidth
-  // console.log(newVal); console.log('^...newVal:')
   documentWidth.value = newVal
-  // documentWidth.value = newVal
-  // console.log(documentWidth); console.log('^...documentWidth:')
-  // console.log(documentWidth.value); console.log('^...documentWidth.value:')
 });
 
 let isBig = computed(()=>{
