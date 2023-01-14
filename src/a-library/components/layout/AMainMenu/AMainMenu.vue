@@ -1,4 +1,7 @@
 <script setup lang="ts">
+
+import localStorageService from '@/a-library/helpers/DOM/localStorageService';
+
 import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
@@ -28,10 +31,13 @@ let isBig = computed(()=>{
 
 // todo:: вынести это куда-то в pinia end
 
-// todo:: эту штуку можно хранить в localstorage.
-// И вообще можно сделать некую свою обертку с названием localUserSettings
-let isCollapsedOnBigScreen = ref(false)
-let isCollapsedOnSmallScreen = ref(true)
+let isCollapsedOnBigScreenFromLocalStorage = localStorageService.getItem('isMenuCollapsedOnBigScreen')
+let isCollapsedOnBigScreenToSet = isCollapsedOnBigScreenFromLocalStorage === null ? false : isCollapsedOnBigScreenFromLocalStorage
+let isCollapsedOnBigScreen = ref(isCollapsedOnBigScreenToSet)
+
+let isCollapsedOnSmallScreenFromLocalStorage = localStorageService.getItem('isMenuCollapsedOnSmallScreen')
+let isCollapsedOnSmallScreenToSet = isCollapsedOnSmallScreenFromLocalStorage === null ? true : isCollapsedOnSmallScreenFromLocalStorage
+let isCollapsedOnSmallScreen = ref(isCollapsedOnSmallScreenToSet)
 
 let isCollapsed = computed(()=>{
   let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
@@ -52,12 +58,15 @@ function toggleMenuCollapse(){
 
   if (isBig.value) {
     isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
+    localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
   } else {
     isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
+    localStorageService.setItem('isMenuCollapsedOnSmallScreen', isCollapsedOnSmallScreen.value)
   }
   // console.log(documentWidth); console.log('^...documentWidth:')
   // console.log('toggleMenuCollapse')
 }
+
 
 let i = 0
 const menuItems = [
