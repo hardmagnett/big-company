@@ -111,7 +111,8 @@ const menuItems = [
   >
     <AHeader
         :isMainMenuCollapsed="isCollapsed"
-
+        logoUrl="/src/app/assets/images/logo.svg"
+        textNearLogo="CRM"
     />
     <!--{{isBig}}-->
     <AMainMenuItem

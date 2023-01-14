@@ -2,10 +2,14 @@
 import {computed,} from 'vue';
 
 export interface Props {
-  isMainMenuCollapsed: boolean
+  isMainMenuCollapsed: boolean,
+  logoUrl: string | null,
+  textNearLogo: string | null
 }
 const props = withDefaults(defineProps<Props>(), {
   isMainMenuCollapsed: false,
+  logoUrl: null,
+  textNearLogo: null
 })
 
 let classes = computed(()=>{
@@ -14,7 +18,9 @@ let classes = computed(()=>{
   }
 })
 
-// todo:: Логотип и текст возле лого должны быть параметрами
+let imageForLogo = computed(()=>{
+  return new URL(props.logoUrl, import.meta.url).href;
+})
 
 </script>
 
@@ -22,9 +28,8 @@ let classes = computed(()=>{
   <div class="a-header"
     :class="classes"
   >
-    <!--<img alt="Логотип" src="@/app/assets/images/logo.svg" height="28"/>-->
-    <img alt="Логотип" src="@/app/assets/images/logo.svg" width="20"/>
-    <span class="a-header__text-near-logo">CRM</span>
+    <img v-if="logoUrl" alt="Логотип" :src="imageForLogo" width="20"/>
+    <span v-if="textNearLogo" class="a-header__text-near-logo">{{ textNearLogo }}</span>
   </div>
 </template>
 
