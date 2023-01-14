@@ -1,2 +1,6 @@
-@import 'variables/index.scss';
+// Сюда подключаем только SCSS-переменные и НЕ подключаем CSS-переменные.
+// Если подключить сюда CSS-переменные,
+// то они будут дублироваться в CSSOM столько раз, сколько компонентов окажется подключено.
+
+@import 'variablesSCSS/index.scss';
 @import 'mixins/mixins.scss';
