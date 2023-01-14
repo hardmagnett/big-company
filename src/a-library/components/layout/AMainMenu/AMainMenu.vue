@@ -20,13 +20,9 @@ let isBig = computed(()=>{
   return isEqualOrMoreThan.value('--bpMd')
 })
 
-let isCollapsedOnBigScreenFromLocalStorage = localStorageService.getItem('isMenuCollapsedOnBigScreen')
-let isCollapsedOnBigScreenToSet = isCollapsedOnBigScreenFromLocalStorage === null ? false : isCollapsedOnBigScreenFromLocalStorage
-let isCollapsedOnBigScreen = ref(isCollapsedOnBigScreenToSet)
 
-let isCollapsedOnSmallScreenFromLocalStorage = localStorageService.getItem('isMenuCollapsedOnSmallScreen')
-let isCollapsedOnSmallScreenToSet = isCollapsedOnSmallScreenFromLocalStorage === null ? true : isCollapsedOnSmallScreenFromLocalStorage
-let isCollapsedOnSmallScreen = ref(isCollapsedOnSmallScreenToSet)
+let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
+let isCollapsedOnSmallScreen = ref(localStorageService.getItem('isMenuCollapsedOnSmallScreen', true))
 
 let isCollapsed = computed(()=>{
   let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
