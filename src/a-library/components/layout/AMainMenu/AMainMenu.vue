@@ -1,31 +1,24 @@
 <script setup lang="ts">
 
+import {ref, computed} from 'vue';
+import { storeToRefs } from 'pinia'
+import { useResponsiveStore } from '@/a-library/stores/responsive.js';
+
+
 import localStorageService from '@/a-library/helpers/DOM/localStorageService';
-
-import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
-
-import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 import getCSSVariable from '@/a-library/helpers/DOM/getCSSVariable';
 
+import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
+import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
-import {ref, computed} from 'vue';
 
-// todo:: вынести это куда-то в pinia start
-// todo:: сделать это не только для isBig, а для любого брекпоинта
-// Вместо isBig можно сделать 2 параметрических геттера: isEqualOrMoreThan('--bpMd') и isLessThan('--bpLg')
-let documentWidth = ref(document.documentElement.clientWidth)
-window.addEventListener('resize', ()=>{
-  let newVal = document.documentElement.clientWidth
-  documentWidth.value = newVal
-});
+
+const responsiveStore = useResponsiveStore()
+const { isEqualOrMoreThan } = storeToRefs(responsiveStore)
 
 let isBig = computed(()=>{
-  let bigBp = getCSSVariable('--bpMd');
-  let isBig = documentWidth.value >= bigBp
-  return isBig
+  return isEqualOrMoreThan.value('--bpMd')
 })
-
-// todo:: вынести это куда-то в pinia end
 
 let isCollapsedOnBigScreenFromLocalStorage = localStorageService.getItem('isMenuCollapsedOnBigScreen')
 let isCollapsedOnBigScreenToSet = isCollapsedOnBigScreenFromLocalStorage === null ? false : isCollapsedOnBigScreenFromLocalStorage
@@ -59,8 +52,6 @@ function toggleMenuCollapse(){
     isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
     localStorageService.setItem('isMenuCollapsedOnSmallScreen', isCollapsedOnSmallScreen.value)
   }
-  // console.log(documentWidth); console.log('^...documentWidth:')
-  // console.log('toggleMenuCollapse')
 }
 
 
