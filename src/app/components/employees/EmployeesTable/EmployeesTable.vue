@@ -21,16 +21,16 @@ import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue'
       flex: 0 0 100%;
 
       @media (min-width: $bpMd) {
-        @include flexItemBasis(2, 16px);
+        @include flexItemBasis(2);
       }
       @media (min-width: $bpLg) {
         //flex-basis: 50%;
         //calc()
-        @include flexItemBasis(3, 16px);
+        @include flexItemBasis(3);
       }
 
       @media (min-width: $bpXl) {
-        @include flexItemBasis(4, 16px);
+        @include flexItemBasis(4);
         //@include flexItemBasis(3, var(--gap));
         //@include flexItemWidthAndMargin(4, $gap);
       }
