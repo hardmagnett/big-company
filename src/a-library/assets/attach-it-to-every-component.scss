@@ -2,5 +2,5 @@
 // Если подключить сюда CSS-переменные,
 // то они будут дублироваться в CSSOM столько раз, сколько компонентов окажется подключено.
 
-@import 'variablesSCSS/index.scss';
+@import 'variables/indexSCSS.scss';
 @import 'mixins/mixins.scss';
