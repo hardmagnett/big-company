@@ -1,5 +1,5 @@
 {
-  "name": "corporation",
+  "name": "code-example",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -7,7 +7,7 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "//": "type-watch можно запустить в терминале и смотреть на наличие ts-ошибок. Но у него ужасное форматирование.",
+    "//": "type-watch запускать в терминале и смотреть ts-ошибоки. Но у него ужасное форматирование.",
     "type-watch": "vue-tsc --noEmit --watch",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
