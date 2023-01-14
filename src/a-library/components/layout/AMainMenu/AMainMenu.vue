@@ -21,13 +21,7 @@ window.addEventListener('resize', ()=>{
 });
 
 let isBig = computed(()=>{
-  // todo:: убрать этот хардкод и сделать соответствующую инфраструктуру
-  // let bigBp = 768;
   let bigBp = getCSSVariable('--bpMd');
-  // let documentWidth = document.documentElement.clientWidth
-  // console.log(documentWidth.value); console.log('^...documentWidth.value:')
-
-  // let isBig = documentWidth.value >= bigBp
   let isBig = documentWidth.value >= bigBp
   return isBig
 })
