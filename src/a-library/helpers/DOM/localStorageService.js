@@ -10,6 +10,8 @@ class LocalStorageService {
     localStorage.setItem(key, JSON.stringify({ value }));
   }
 
+  // todo:: сделать дефолтовое значение, если оно отсутствует в localstorage.
+  // Это сократит клиентский код.
   getItem(key){
     const data = localStorage.getItem(key);
 
