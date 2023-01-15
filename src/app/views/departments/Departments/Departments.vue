@@ -3,7 +3,7 @@
 
     <Teleport to="#page-header-place">
       <APageHeader>
-        Структура кампании 2
+        Отделы
       </APageHeader>
     </Teleport>
 

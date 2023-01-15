@@ -21,6 +21,9 @@ import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue'
 
     .employee-row {
       flex: 0 0 100%;
+      @media (min-width: $bpSm) {
+        @include flexItemBasis(2);
+      }
 
       @media (min-width: $bpMd) {
         @include flexItemBasis(2);

@@ -55,7 +55,7 @@ let i = 0
 const menuItems = [
   {
     id: i++,
-    title: 'Структура компании',
+    title: 'Отделы',
     icon: 'mdi-family-tree',
     route: {
       to: 'departments'
