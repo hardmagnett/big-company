@@ -2,6 +2,7 @@
 import AContainer from "@/a-library/components/layout/AContainer/AContainer.vue";
 import AHeader from "@/a-library/components/layout/AHeader/AHeader.vue";
 import AMainMenu from '@/a-library/components/layout/AMainMenu/AMainMenu.vue';
+import AHamburger from '@/a-library/components/layout/AHamburger/AHamburger.vue';
 
 
 // Forms
@@ -21,6 +22,7 @@ export default function(app){
   app.component('AContainer', AContainer);
   app.component('AHeader', AHeader);
   app.component('AMainMenu', AMainMenu);
+  app.component('AHamburger', AHamburger);
 
   // Forms
   app.component('ABtn', ABtn);
