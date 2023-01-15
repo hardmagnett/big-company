@@ -16,6 +16,8 @@ import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue'
     display: flex;
     flex-flow: row wrap;
     gap: var(--gap);
+    //gap: $gap;
+    //gap: 0;
 
     .employee-row {
       flex: 0 0 100%;
@@ -31,6 +33,7 @@ import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue'
 
       @media (min-width: $bpXl) {
         @include flexItemBasis(4);
+        //flex-basis: 100px;
         //@include flexItemBasis(3, var(--gap));
         //@include flexItemWidthAndMargin(4, $gap);
       }

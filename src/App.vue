@@ -42,7 +42,7 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
   }
   .a-container {
     outline: 1px solid orange;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
   }
 }
 
