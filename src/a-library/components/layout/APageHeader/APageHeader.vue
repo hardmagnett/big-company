@@ -25,7 +25,7 @@ export default {
   flex-flow: row nowrap;
   align-items: center;
 
-  background-color: var(--clrBgBlueBig);
-  border-bottom: 1px solid var(--clrBorderBlueLightest)
+  background-color: var(--clrBgBlueSmall);
+  border-bottom: 1px solid var(--clrBorderBlueLighter)
 }
 </style>

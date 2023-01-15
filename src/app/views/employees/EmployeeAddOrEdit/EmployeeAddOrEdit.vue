@@ -1,6 +1,11 @@
 <template>
   <div class="note-edit">
-    <h1>{{ title }}</h1>
+    <Teleport to="#page-header-place">
+      <APageHeader>
+        {{ title }}
+      </APageHeader>
+    </Teleport>
+
     <AInput class="note-edit__input-title" placeholder="Заголовок"></AInput>
 
     <ABtn class="note-edit__btn-add-task">

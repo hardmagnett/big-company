@@ -1,6 +1,11 @@
 <template>
   <div class="inputs-page">
-    <h1>Элементы форм</h1>
+    <!--<h1>Элементы форм</h1>-->
+    <Teleport to="#page-header-place">
+      <APageHeader>
+        Элементы форм
+      </APageHeader>
+    </Teleport>
 
     <h2>AInput</h2>
     <AInput placeholder="placeholder for text"></AInput>

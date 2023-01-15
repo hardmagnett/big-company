@@ -1,25 +1,28 @@
 <script setup lang="ts">
 import HeaderAndSomethingElse from '@/app/components/shared/positioning/HeaderAndSomethingElse/HeaderAndSomethingElse.vue';
 import EmployeesTable from '@/app/components/employees/EmployeesTable/EmployeesTable.vue';
+import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
+// export default {
+//   components: {AIcon}
+// }
+
 
 </script>
 
 <template>
   <div class="home-view">
-    <HeaderAndSomethingElse class="mod--mb-1">
-      <template v-slot:left>
-        <h1 class="mod--mb-0">Сотрудники</h1>
-      </template>
-      <template v-slot:right>
 
-        <ABtn
-          :to="{name: 'employeeCreate'}"
-        >
-          Создать
-        </ABtn>
-      </template>
-    </HeaderAndSomethingElse>
-
+    <Teleport to="#page-header-place">
+      <APageHeader>
+        Сотрудники
+      </APageHeader>
+    </Teleport>
+    <ABtn
+        :to="{name: 'employeeCreate'}"
+    >
+      <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
+    </ABtn>
+    <br>
 
     <div class="mod--clear-both"></div>
     <EmployeesTable />

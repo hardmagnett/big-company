@@ -1,6 +1,11 @@
 <template>
   <div class="buttons-page">
-    <h1>Кнопки</h1>
+    <!--<h1>Кнопки</h1>-->
+    <Teleport to="#page-header-place">
+      <APageHeader>
+        Кнопки
+      </APageHeader>
+    </Teleport>
 
     <h2>Кнопки-Кнопки</h2>
     <div class="buttons-page__buttons">

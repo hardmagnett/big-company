@@ -1,5 +1,11 @@
 <template>
   <div class="headers">
+    <Teleport to="#page-header-place">
+      <APageHeader>
+        Заголовки
+      </APageHeader>
+    </Teleport>
+
       <h1>Заголовок h1</h1>
       <h2>Заголовок h2</h2>
       <h3>Заголовок h3</h3>
