@@ -18,7 +18,7 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
   position: absolute;
   top: 130px;
   left: 130px;
-  z-index: 300000;
+  z-index: 15;
 }
 .container {
 
