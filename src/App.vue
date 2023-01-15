@@ -5,12 +5,21 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
 </script>
 
 <template>
-  <AHamburger />
-  <AMainMenu/>
+  <div class="app">
+    <AHamburger />
 
-  <AContainer>
-    <RouterView />
-  </AContainer>
+
+
+    <AMainMenu/>
+
+    <AContainer>
+      <!--<template v-slot:header>-->
+      <!--  <APageHeader>Структура кампании</APageHeader>-->
+      <!--</template>-->
+      <RouterView />
+    </AContainer>
+  </div>
+
 </template>
 
 <style scoped lang="scss">
@@ -20,7 +29,21 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
   left: 130px;
   z-index: 15;
 }
-.container {
+.app {
+  display: flex;
+  width: 100%;
+  flex-flow: row nowrap;
 
+  height: 100%;
+  position: absolute;
+  .main-menu {
+    outline: 1px solid purple;
+    flex: 0 0 auto;
+  }
+  .a-container {
+    outline: 1px solid orange;
+    flex: 1 0 auto;
+  }
 }
+
 </style>

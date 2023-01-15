@@ -138,9 +138,10 @@ const menuItems = [
 // Обычно позиционирование компонента делается снаружи.
 // Но т.к. это меню должно быть всегда в одном и том-же месте, то оно спозиционировано изнутри.
 .main-menu {
+  position: relative;
   //padding-top: calc(var(--gap) / 2);
   padding-bottom: calc(var(--gap) / 2);
-  position: fixed;
+  //position: fixed;
   left: 0;
   //top: var(--headerHeight);
   top: 0;

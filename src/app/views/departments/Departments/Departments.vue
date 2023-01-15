@@ -1,6 +1,8 @@
 <template>
   <div class="about-view">
+    <APageHeader>Структура кампании</APageHeader>
     <h1>Структура кампании</h1>
+
 
     <h2>Дерево</h2>
     <ul>
