@@ -17,14 +17,15 @@ export default {
 
 <style scoped lang="scss">
 .a-page-header {
-  //outline: 1px solid darkred;
+  padding-left: var(--gap);
+  padding-right: var(--gap);
   height: var(--headerHeight);
 
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
 
-  background-color: var(--clrBgBlueSmall);
+  background-color: var(--clrBgBlueBig);
   border-bottom: 1px solid var(--clrBorderBlueLightest)
 }
 </style>
