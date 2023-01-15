@@ -16,7 +16,8 @@ $_fontScaleXxl: $_fontScaleXl !default;
 $_headerFontSizes: 1rem * math.pow($_fontScale, 5), 1.0rem * math.pow($_fontScale, 4),  1rem * math.pow($_fontScale, 3), 1rem * math.pow($_fontScale, 2), 1rem * $_fontScale, 1rem !default;
 $_headerFontSizesSm: 1rem * math.pow($_fontScaleSm, 5), 1.0rem * math.pow($_fontScaleSm, 4),  1rem * math.pow($_fontScaleSm, 3), 1rem * math.pow($_fontScaleSm, 2), 1rem * $_fontScaleSm, 1rem !default;
 $_headerFontSizesMd: 1rem * math.pow($_fontScaleMd, 5), 1.0rem * math.pow($_fontScaleMd, 4),  1rem * math.pow($_fontScaleMd, 3), 1rem * math.pow($_fontScaleMd, 2), 1rem * $_fontScaleMd, 1rem !default;;
-$_headerFontSizesLg: 1rem * math.pow($_fontScaleLg, 5), 1.0rem * math.pow($_fontScaleLg, 4),  1rem * math.pow($_fontScaleLg, 3), 1rem * math.pow($_fontScaleLg, 2), 1rem * $_fontScaleLg, 1rem !default;
+//$_headerFontSizesLg: 1rem * math.pow($_fontScaleLg, 5), 1.0rem * math.pow($_fontScaleLg, 4),  1rem * math.pow($_fontScaleLg, 3), 1rem * math.pow($_fontScaleLg, 2), 1rem * $_fontScaleLg, 1rem !default;
+$_headerFontSizesLg: $_headerFontSizesMd !default;
 $_headerFontSizesXl: $_headerFontSizesLg !default;
 $_headerFontSizesXxl: $_headerFontSizesXl !default;
 

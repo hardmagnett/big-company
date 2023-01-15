@@ -37,11 +37,11 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
   height: 100%;
   position: absolute;
   .main-menu {
-    outline: 1px solid purple;
+    //outline: 1px solid purple;
     flex: 0 0 auto;
   }
   .a-container {
-    outline: 1px solid orange;
+    //outline: 1px solid orange;
     flex: 1 1 auto;
   }
 }

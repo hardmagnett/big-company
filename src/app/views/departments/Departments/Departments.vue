@@ -1,7 +1,14 @@
 <template>
   <div class="about-view">
-    <APageHeader>Структура кампании</APageHeader>
-    <h1>Структура кампании</h1>
+
+    <Teleport to="#page-header-place">
+      <APageHeader>
+        Структура кампании 2
+      </APageHeader>
+    </Teleport>
+
+    <!--<APageHeader>Структура кампании</APageHeader>-->
+    <!--<h1>Структура кампании</h1>-->
 
 
     <h2>Дерево</h2>
