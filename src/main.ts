@@ -16,3 +16,6 @@ app.use(createPinia())
 app.use(router)
 
 app.mount('#app')
+
+import tsFunc from './learningTS'
+tsFunc()
