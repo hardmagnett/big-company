@@ -1,7 +1,28 @@
 :root {
+  // todo:: эти похоже будут не нужны. Удалить их.
   --bpSm: #{$bpSm};
   --bpMd: #{$bpMd};
   --bpLg: #{$bpLg};
   --bpXl: #{$bpXl};
   --bpXxl: #{$bpXxl};
+}
+
+:root {
+  --bp-xs-or-more: true;
+
+  @media (min-width: 576px) {
+    --bp-sm-or-more: true;
+  }
+  @media (min-width: 768px) {
+    --bp-md-or-more: true;
+  }
+  @media (min-width: 1024px) {
+    --bp-lg-or-more: true;
+  }
+  @media (min-width: 1280px) {
+    --bp-xl-or-more: true;
+  }
+  @media (min-width: 1536px) {
+    --bp-xxl-or-more: true;
+  }
 }
