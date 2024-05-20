@@ -1,6 +1,4 @@
-h1, .h1,
-h2, .h2,
-h3, .h3 {
+h1, h2, h3{
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: $_headerFontWeight;
@@ -9,39 +7,12 @@ h3, .h3 {
   font-family: $_headerFontFamily;
 }
 
-h1, .h1 {
+h1 {
   font-size: var(--fontSizeMegaGiant);
 }
-h2, .h2 {
+h2 {
   font-size: var(--fontSizeGiant);
 }
-h3, .h3 {
+h3 {
   font-size: var(--fontSizeLarge);
 }
-
-//@mixin fontSizesForAllBreakpoints($hLevel) {
-//  font-size: nth($_headerFontSizes, $hLevel);
-//  @media (min-width: $bpSm) {
-//    font-size: nth($_headerFontSizesSm, $hLevel);
-//  }
-//  @media (min-width: $bpMd) {
-//    font-size: nth($_headerFontSizesMd, $hLevel);
-//  }
-//  @media (min-width: $bpLg) {
-//    font-size: nth($_headerFontSizesLg, $hLevel);
-//  }
-//  @media (min-width: $bpXl) {
-//    font-size: nth($_headerFontSizesXl, $hLevel);
-//  }
-//  @media (min-width: $bpXxl) {
-//    font-size: nth($_headerFontSizesXxl, $hLevel);
-//  }
-//}
-//
-//// На выходе создает правил от h1 до h6 и от .h1 до .h6
-//@for $hLevel from 1 through 6 {
-//  h#{$hLevel}, .h#{$hLevel} {
-//    @include fontSizesForAllBreakpoints($hLevel);
-//    margin-bottom: nth($_headerBottomMargins, $hLevel);
-//  }
-//}
