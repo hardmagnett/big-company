@@ -17,5 +17,6 @@ app.use(router)
 
 app.mount('#app')
 
+// fixme:: удалить learningTS ближе к концу проекта.
 import tsFunc from './learningTS'
 tsFunc()
