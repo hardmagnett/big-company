@@ -14,8 +14,9 @@ import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue'
 </script>
 
 <!--<style scoped>-->
-<!--<style scoped lang="css">-->
 <style scoped lang="scss">
+//<style scoped lang="css">
+
 
 
   .employees-table {
@@ -26,6 +27,7 @@ import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue'
     /* gap: 0; */
 
     .employee-row {
+      outline: 1px solid orange;
       --flex-items-qty: 1;
       @container style(--pb-sx-or-more) {
         --flex-items-qty: 1;

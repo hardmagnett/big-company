@@ -14,5 +14,4 @@
 .mod--basis-for-column-flex-item {
   --summaryGapDistance: calc((var(--flex-items-qty) - 1) * var(--gap));
   flex-basis: calc((100% - var(--summaryGapDistance)) / var(--flex-items-qty)) !important;
-  outline: 1px solid green;
 }
