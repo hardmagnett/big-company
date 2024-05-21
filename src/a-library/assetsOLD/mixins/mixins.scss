@@ -1,0 +1,17 @@
+// Fixme:: Похоже больше не нужен. Удалить потом.
+
+//@mixin flexItemBasis($qty, $columnGap: $gap) {
+//  $summaryGapDistance: ($qty - 1) * $columnGap;
+//  flex-basis: calc((100% - #{$summaryGapDistance}) / #{$qty});
+//}
+
+
+// todo:: наверное перенести куда-нибудь к миксинам.
+// У тега, к котором применяется данный класс,
+// должны быть css-переменные --gap и --flex-items-qty.
+// У родителя должен быть flex-flow: row wrap;
+
+.mod--basis-for-column-flex-item {
+  --summaryGapDistance: calc((var(--flex-items-qty) - 1) * var(--gap));
+  flex-basis: calc((100% - var(--summaryGapDistance)) / var(--flex-items-qty)) !important;
+}
