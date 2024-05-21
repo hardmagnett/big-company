@@ -77,7 +77,7 @@ export default {
     flex-flow: column wrap;
     justify-content: flex-end;
     align-items: flex-end;
-    @media (min-width: $bpMd) {
+    @container style(--bp-md-or-more) {
       flex-flow: row wrap;
     }
     > * {

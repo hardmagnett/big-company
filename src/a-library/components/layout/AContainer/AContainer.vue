@@ -23,18 +23,24 @@
     padding: calc(var(--gap) / 2) var(--gap);
     //margin-left: var(--leftMenuWidthExpanded);
     overflow-x: hidden;
-    @media (min-width: $bpSm) {}
 
-    @media (min-width: $bpMd) {
+    @container style(--bp-sm-or-more) {
+    }
+    @container style(--bp-md-or-more) {
       //padding-left: calc(var(--gap) * 2);
       //padding-right: calc(var(--gap) * 2);
+
     }
-    @media (min-width: $bpLg) {
+    @container style(--bp-lg-or-more) {
       //padding-left: calc(var(--gap) * 3);
       //padding-right: calc(var(--gap) * 3);
     }
-    @media (min-width: $bpXl) {}
-    @media (min-width: $bpXxl) {}
+    @container style(--bp-xl-or-more) {
+
+    }
+    @container style(--bp-xxl-or-more) {
+
+    }
   }
 }
 </style>

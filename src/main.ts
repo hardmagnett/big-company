@@ -6,8 +6,9 @@ import attachAllALibraryComponents from '@/a-library/attachAllALibraryComponents
 import App from './App.vue'
 import router from './router.ts'
 
-import './main.scss'
 import './_main.css'
+import './main.scss'
+
 
 const app = createApp(App)
 

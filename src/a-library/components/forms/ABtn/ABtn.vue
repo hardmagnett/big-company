@@ -40,10 +40,10 @@ export default {
 <style scoped lang="scss">
   .btn--with-text {
     --height: calc(var(--gap) * 1.6);
-    @media (min-width: $bpMd) {
+    @container style(--bp-md-or-more) {
       --height: calc(var(--gap) * 1.8);
     }
-    @media (min-width: $bpLg) {
+    @container style(--bp-lg-or-more) {
       --height: calc(var(--gap) * 1.8);
     }
 
@@ -106,10 +106,10 @@ export default {
     transition: background-color var(--timeShort);
 
     --size: calc(var(--gap) * 1.6);
-    @media (min-width: $bpMd) {
+    @container style(--bp-md-or-more) {
       --size: calc(var(--gap) * 1.8);
     }
-    @media (min-width: $bpLg) {
+    @container style(--bp-lg-or-more) {
       --size: calc(var(--gap) * 1.8);
     }
     height: var(--size);

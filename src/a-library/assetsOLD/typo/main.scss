@@ -1,5 +1,5 @@
 body {
-  font-family: $_bodyFontFamily;
+  font-family: var(--bodyFontFamily);
   font-size: var(--fontSizeBase);
   color: var(--clrFontBlueDark);
 }

@@ -14,7 +14,7 @@
   padding-left: var(--gap);
   margin-right: auto;
   margin-left: auto;
-  @media (min-width: $bpSm) {
+  @container style(--bp-sm-or-more) {
     // Именно max-width а не width - так не появляется горизонтальный скроллбар.
 
     // Если использовать width, то будет следующая проблема:
@@ -27,29 +27,28 @@
     // когда окно браузера будет больше брекпоинта на ширину вертикального скролбара.
 
     // Аналогичная ситуация для остальных брекпоинтов.
-    max-width: $bpSm;
+    max-width: var(--bpSm);
   }
-
-  @media (min-width: $bpMd) {
-    max-width: $bpMd;
+  @container style(--bp-md-or-more) {
+    max-width: var(--bpMd);
   }
-  @media (min-width: $bpLg) {
-    max-width: $bpLg;
+  @container style(--bp-lg-or-more) {
+    max-width: var(--bpLg);
   }
-  @media (min-width: $bpXl) {
-    max-width: $bpXl;
+  @container style(--bp-xl-or-more) {
+    max-width: var(--bpXl);
   }
-  @media (min-width: $bpXxl) {
-    max-width: $bpXxl;
+  @container style(--bp-xxl-or-more) {
+    max-width: var(--bpXxl);
   }
 }
 
 .container--no-padding-on-xs {
   padding-right: 0;
   padding-left: 0;
-  @media (min-width: $bpSm) {
-    padding-right: $gap;
-    padding-left: $gap;
+  @container style(--bp-sm-or-more) {
+    padding-right: var(--gap);
+    padding-left: var(--gap);
   }
 }
 .container--fluid {
