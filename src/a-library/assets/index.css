@@ -4,3 +4,7 @@
 @import 'variables/colors.css';
 @import 'variables/typo.css';
 @import 'variables/other.css';
+
+
+
+@import 'global-modifiers/positioning.css'; /*Недоделан. Только 1 mixin перенес в него*/
