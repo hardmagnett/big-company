@@ -13,3 +13,6 @@
 @import 'global-modifiers/positioning.css';
 @import 'global-modifiers/fx.css';
 @import 'global-modifiers/typo.css';
+
+@import 'fonts/inter-tight/inter-tight.css';
+@import 'fonts/material-design-icons/material-design-icons-v6.9.96.css';

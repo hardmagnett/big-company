@@ -1,10 +1,9 @@
 :root {
-
   --headerFontWeight: 300;
-  --headerFontFamily: 'Inter Tight', sans-serif;
+  --headerFontFamily: 'Inter Tight Font', sans-serif;
   --headerLetterSpacing: 0rem;
   --headerLineHeight: 1.2;
-  --bodyFontFamily: 'Inter Tight', sans-serif;
+  --bodyFontFamily: 'Inter Tight Font', sans-serif;
 
 
   /*размеры Шрифтов*/

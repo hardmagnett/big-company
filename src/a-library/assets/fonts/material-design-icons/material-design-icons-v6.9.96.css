@@ -1,9 +1,7 @@
-$fullPath: '@/a-library/assetsOLD/fonts/material-design-icons/';
-
 /* MaterialDesignIcons.com */
 @font-face {
   font-family: "Material Design Icons";
-  src:url('#{$fullPath}material-design-icons-v6.9.96.woff2') format('woff2');
+  src:url('./material-design-icons-v6.9.96.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
