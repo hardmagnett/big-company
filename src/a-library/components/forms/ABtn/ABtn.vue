@@ -90,7 +90,7 @@ export default {
       padding: 0 var(--gap);
       height: var(--height);
       line-height: var(--height);
-      font-size: var(--fontSizeSmall);
+      font-size: var(--font-size-small);
     }
   }
 

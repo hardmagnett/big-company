@@ -90,7 +90,7 @@ onMounted(() => {
     }
 
     ul > li {
-      font-size: var(--fontSizeSmall);
+      font-size: var(--font-size-small);
     }
     .employee-row__pusher {
       flex: 1 0 auto;

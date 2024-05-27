@@ -51,13 +51,13 @@ export default {
 
   /*В случае необходимости, можно переделать размеры при помощи mdi-класоов. Наприме mdi-18px.mdi-set .*/
   &.a-icon--medium {
-    font-size: var(--fontSizeBase)
+    font-size: var(--font-size-base)
   }
   &.a-icon--large {
-    font-size: var(--fontSizeLarge)
+    font-size: var(--font-size-large)
   }
   &.a-icon--giant {
-    font-size: var(--fontSizeGiant)
+    font-size: var(--font-size-giant)
   }
 }
 </style>

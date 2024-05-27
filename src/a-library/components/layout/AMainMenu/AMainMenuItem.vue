@@ -198,8 +198,8 @@ onMounted(() => {
     color: var(--clr-font-blue-dark);
     text-decoration: none;
     transition: background-color var(--time-short), color var(--time-short);
-    font-size: var(--fontSizeTiny);
-    font-weight: var(--fontWeightBold);
+    font-size: var(--font-size-tiny);
+    font-weight: var(--font-weight-bold);
 
     /*before нужно исключительно чтобы дать отступ слева для вложенных элементов.*/
     &:before {

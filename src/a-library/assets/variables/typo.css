@@ -1,18 +1,18 @@
 :root {
-  --headerFontWeight: 300;
-  --headerFontFamily: 'Inter Tight Font', sans-serif;
-  --headerLetterSpacing: 0rem;
-  --headerLineHeight: 1.2;
-  --bodyFontFamily: 'Inter Tight Font', sans-serif;
+  --header-font-weight: 300;
+  --header-font-family: 'Inter Tight Font', sans-serif;
+  --header-letter-spacing: 0rem;
+  --header-line-height: 1.2;
+  --body-font-family: 'Inter Tight Font', sans-serif;
 
 
   /*размеры Шрифтов*/
-  --fontSizeMegaGiant: 23px;    /*В т.ч. для h1*/
-  --fontSizeGiant: 20px;        /*В т.ч. для h2*/
-  --fontSizeLarge: 18px;        /*В т.ч. для h3*/
-  --fontSizeBase: 16px;
-  --fontSizeSmall: 14px;
-  --fontSizeTiny: 12px;
+  --font-size-mega-giant: 23px;    /*В т.ч. для h1*/
+  --font-size-giant: 20px;        /*В т.ч. для h2*/
+  --font-size-large: 18px;        /*В т.ч. для h3*/
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-tiny: 12px;
 
-  --fontWeightBold: 600;
+  --font-weight-bold: 600;
 }
