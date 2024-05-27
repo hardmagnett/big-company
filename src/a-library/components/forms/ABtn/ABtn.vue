@@ -37,61 +37,60 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .btn--with-text {
     --height: calc(var(--gap) * 1.6);
-    @media (min-width: $bpMd) {
+    @container style(--bp-md-or-more) {
       --height: calc(var(--gap) * 1.8);
     }
-    @media (min-width: $bpLg) {
+    @container style(--bp-lg-or-more) {
       --height: calc(var(--gap) * 1.8);
     }
 
     height: var(--height);
     line-height: var(--height);
-    //padding: 0 var(--height);
     padding: 0 var(--gap);
 
     display: block;
     width: fit-content;
 
-    border-radius: var(--borderRadius);
+    border-radius: var(--border-radius);
     outline: none !important;
     text-decoration: none;
     color: white;
-    background-color: var(--clrFillBlueSmall);
+    background-color: var(--clr-fill-blue-small);
     border: none;
 
 
     cursor: pointer;
-    transition: background-color var(--timeShort);
+    transition: background-color var(--time-short);
     &:hover {
-      background-color: var(--clrFillBlueAccent);
+      background-color: var(--clr-fill-blue-accent);
     }
     &.btn--error {
-      background-color: var(--clrFillRedSmall);
+      background-color: var(--clr-fill-red-small);
       &:hover {
-        background-color: var(--clrFillRedAccent);
+        background-color: var(--clr-fill-red-accent);
       }
     }
     &.btn--success {
-      background-color: var(--clrFillGreenSmall);
+      background-color: var(--clr-fill-green-small);
       &:hover {
-        background-color: var(--clrFillGreenAccent);
+        background-color: var(--clr-fill-green-accent);
       }
     }
     &.btn--danger {
-      background-color: var(--clrFillOrangeSmall);
+      background-color: var(--clr-fill-orange-small);
       &:hover {
-        background-color: var(--clrFillOrangeAccent);
+        background-color: var(--clr-fill-orange-accent);
       }
     }
     &.btn--small {
-      $height: calc(var(--gap) * 1.5);
+      --height: calc(var(--gap) * 1.5);
       padding: 0 var(--gap);
-      height: $height;
-      line-height: $height;
-      font-size: var(--fontSizeSmall);
+      height: var(--height);
+      line-height: var(--height);
+      font-size: var(--font-size-small);
     }
   }
 
@@ -103,39 +102,39 @@ export default {
     padding: 0;
 
     background-color: transparent;
-    transition: background-color var(--timeShort);
+    transition: background-color var(--time-short);
 
     --size: calc(var(--gap) * 1.6);
-    @media (min-width: $bpMd) {
+    @container style(--bp-md-or-more) {
       --size: calc(var(--gap) * 1.8);
     }
-    @media (min-width: $bpLg) {
+    @container style(--bp-lg-or-more) {
       --size: calc(var(--gap) * 1.8);
     }
     height: var(--size);
     width: var(--size);
 
-    color: var(--clrFillBlueSmall);
+    color: var(--clr-fill-blue-small);
     &:hover {
-      background-color: var(--clrBgBlueSmall);
+      background-color: var(--clr-bg-blue-small);
     }
 
     &.btn--success {
-      color: var(--clrFillGreenSmall);
+      color: var(--clr-fill-green-small);
       &:hover {
-        background-color: var(--clrBgGreenSmall);
+        background-color: var(--clr-bg-green-small);
       }
     }
     &.btn--danger {
-      color: var(--clrFillOrangeSmall);
+      color: var(--clr-fill-orange-small);
       &:hover {
-        background-color: var(--clrBgOrangeSmall);
+        background-color: var(--clr-bg-orange-small);
       }
     }
     &.btn--error {
-      color: var(--clrFillRedSmall);
+      color: var(--clr-fill-red-small);
       &:hover {
-        background-color: var(--clrBgRedSmall);
+        background-color: var(--clr-bg-red-small);
       }
     }
 

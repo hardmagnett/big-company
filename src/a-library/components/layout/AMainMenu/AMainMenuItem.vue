@@ -165,23 +165,23 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .main-menu-item {
-  // Изменяется JS-ом в зависимости от глубины.
+  /*Изменяется JS-ом в зависимости от глубины.*/
   --paddingByDeep: 0;
 
-  --mainMenuCollapseAnimationTime: var(--timeShort);
+  --mainMenuCollapseAnimationTime: var(--time-short);
 
-  --accentedColorLess: var(--clrBgBlueAccent);
-  --accentedColor: var(--clrFillBlueSmall);
+  --accentedColorLess: var(--clr-bg-blue-accent);
+  --accentedColor: var(--clr-fill-blue-small);
 
-  // Чтобы в процессе сворачивании меню текст не переносился на несколько строк
-  width: var(--leftMenuWidthExpanded);
+  /*Чтобы в процессе сворачивании меню текст не переносился на несколько строк*/
+  width: var(--left-menu-width-expanded);
 
   > .main-menu-item__children {
     max-height: 1000px;
     overflow-y: hidden;
-    transition: max-height var(--timeShort) ease-in;
+    transition: max-height var(--time-short) ease-in;
   }
 
   .main-menu-item__link {
@@ -195,13 +195,13 @@ onMounted(() => {
 
     height: var(--height);
     line-height: var(--height);
-    color: var(--clrFontBlueDark);
+    color: var(--clr-font-blue-dark);
     text-decoration: none;
-    transition: background-color var(--timeShort), color var(--timeShort);
-    font-size: var(--fontSizeTiny);
-    font-weight: var(--fontWeightBold);
+    transition: background-color var(--time-short), color var(--time-short);
+    font-size: var(--font-size-tiny);
+    font-weight: var(--font-weight-bold);
 
-    // before нужно исключительно чтобы дать отступ слева для вложенных элементов.
+    /*before нужно исключительно чтобы дать отступ слева для вложенных элементов.*/
     &:before {
       display: inline;
       content: '';
@@ -209,8 +209,8 @@ onMounted(() => {
       transition: padding-left var(--mainMenuCollapseAnimationTime);
     }
 
-    // Отодвигает следующие элементы, в частности индикатор открытости,
-    // максимально вправо.
+    /*Отодвигает следующие элементы, в частности индикатор открытости,*/
+    /*максимально вправо.*/
     .main-menu-item__spacer {
       flex: 1 0 auto;
     }
@@ -231,10 +231,10 @@ onMounted(() => {
 
     &.main-menu-item__link--active {
       background-color: var(--accentedColor);
-      color: var(--clrFontBlueLight);
+      color: var(--clr-font-blue-light);
       &:hover {
         background-color: var(--accentedColor);
-        color: var(--clrFontBlueLight);
+        color: var(--clr-font-blue-light);
       }
     }
     &.main-menu-item__link--descendant-active {
@@ -257,7 +257,7 @@ onMounted(() => {
   &.main-menu-item--is-closed {
     > .main-menu-item__children {
       max-height: 0;
-      transition: max-height var(--timeShort) ease-out;
+      transition: max-height var(--time-short) ease-out;
     }
   }
 

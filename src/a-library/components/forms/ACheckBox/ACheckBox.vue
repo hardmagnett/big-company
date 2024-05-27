@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .check-box {
     display: block;
     cursor: pointer;
@@ -54,32 +54,28 @@ export default {
         left: 0;
       }
 
-      // Рамка для checkmark
+      /*Рамка для checkmark*/
       &:before {
         content: '';
         background-color: white;
-        //border: 1px solid clrBorder(lighter, main);
-        border: 1px solid var(--clrBorderBlueLighter);
+        border: 1px solid var(--clr-border-blue-lighter);
       }
-      // Непосредственно checkmark
+      /*Непосредственно checkmark*/
       &:after {
-        //color: clrFill(accent, main);
-        color: var(--clrFillBlueAccent);
+        color: var(--clr-fill-blue-accent);
         content: '✔';
         opacity: 0;
-        //transition: opacity $timeShort;
-        transition: opacity var(--timeShort);
+        transition: opacity var(--time-short);
         transform: translateX(3px) translateY(0px);
         font-weight: bold;
       }
     }
 
     .check-box__label--with-text {
-      //padding-left: $gap * 1.5;
       padding-left: calc(var(--gap) * 1.5);
     }
 
-    // чекнутый checkmark
+    /*чекнутый checkmark*/
     .check-box__input:checked + .check-box__label::after {
       opacity: 1;
     }

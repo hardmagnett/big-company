@@ -1,9 +1,0 @@
-// Когда будут работать Custom Media Queries (Media Queries Level 5),
-// можно будет попробовать использовать их вместо scss переменных.
-
-//$bpSm:  480px;  - Не помню откуда взял эту цифру. Ещё не пригодиласть после переноса из старого кода.
-$bpSm: 576px !default;    // Bootstrap 5
-$bpMd: 768px !default;    // Tailwind 2
-$bpLg: 1024px !default;   // Tailwind 2
-$bpXl: 1280px !default;   // Tailwind 2
-$bpXxl: 1536px !default;  // Tailwind 2

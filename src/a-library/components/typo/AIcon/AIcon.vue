@@ -44,20 +44,20 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .a-icon {
-  // Если вдруг будут приколы с размерами - смотри как сделано в плеере электроснега.
-  // Там я решил эту проблему.
+  /*Если вдруг будут приколы с размерами - смотри как сделано в плеере электроснега.*/
+  /*Там я решил эту проблему.*/
 
-  // В случае необходимости, можно переделать размеры при помощи mdi-класоов. Наприме mdi-18px.mdi-set .
+  /*В случае необходимости, можно переделать размеры при помощи mdi-класоов. Наприме mdi-18px.mdi-set .*/
   &.a-icon--medium {
-    font-size: var(--fontSizeBase)
+    font-size: var(--font-size-base)
   }
   &.a-icon--large {
-    font-size: var(--fontSizeLarge)
+    font-size: var(--font-size-large)
   }
   &.a-icon--giant {
-    font-size: var(--fontSizeGiant)
+    font-size: var(--font-size-giant)
   }
 }
 </style>

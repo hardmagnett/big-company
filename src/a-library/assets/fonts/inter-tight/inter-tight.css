@@ -1,0 +1,18 @@
+/*format('truetype supports variations') - так должно работать в будущем*/
+/*format('truetype-variations') - так работает сейчас*/
+
+@font-face {
+  /*Здесь и в других местах нужно дать шрифту нестандартрое название, чтобы шрифт не подключалая из ОС */
+  font-family: 'Inter Tight Font';
+  src:url('./InterTight-VariableFont_wght.ttf') format('truetype supports variations');
+  src:url('./InterTight-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Inter Tight';
+  src:url('./InterTight-Italic-VariableFont_wght.ttf') format('truetype supports variations');
+  src:url('./InterTight-Italic-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+}

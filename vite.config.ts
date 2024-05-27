@@ -12,10 +12,7 @@ export default defineConfig({
     }
   },
   css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "./src/a-library/assets/attach-it-to-every-component.scss";`
-      }
-    }
+    devSourcemap: true,
+    preprocessorOptions: {}
   }
 })

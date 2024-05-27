@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .txt {
     --height: calc(var(--gap) * 2);
     display: block;
@@ -21,8 +21,8 @@ export default {
     line-height: var(--height);
     padding-left: var(--gap);
     padding-right: var(--gap);
-    border: 1px solid var(--clrBorderBlueLighter);
-    border-radius: var(--borderRadius);
+    border: 1px solid var(--clr-border-blue-lighter);
+    border-radius: var(--border-radius);
     width: 100%;
   }
 </style>

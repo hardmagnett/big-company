@@ -22,7 +22,7 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
 
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .a-hamburger {
   position: absolute;
   top: 130px;
@@ -37,11 +37,9 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
   height: 100%;
   position: absolute;
   .main-menu {
-    //outline: 1px solid purple;
     flex: 0 0 auto;
   }
   .a-container {
-    //outline: 1px solid orange;
     flex: 1 1 auto;
     overflow-y: auto;
   }

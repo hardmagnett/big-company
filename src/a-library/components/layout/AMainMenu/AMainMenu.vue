@@ -17,7 +17,7 @@ const responsiveStore = useResponsiveStore()
 const { isEqualOrMoreThan } = storeToRefs(responsiveStore)
 
 let isBig = computed(()=>{
-  return isEqualOrMoreThan.value('--bpMd')
+  return isEqualOrMoreThan.value('--bp-md')
 })
 
 
@@ -134,22 +134,22 @@ const menuItems = [
   </div>
 </template>
 
-<style scoped lang="scss">
-// Обычно позиционирование компонента делается снаружи.
-// Но т.к. это меню должно быть всегда в одном и том-же месте, то оно спозиционировано изнутри.
+<style scoped>
+/*Обычно позиционирование компонента делается снаружи.*/
+/*Но т.к. это меню должно быть всегда в одном и том-же месте, то оно спозиционировано изнутри.*/
 .main-menu {
   position: relative;
-  //padding-top: calc(var(--gap) / 2);
+  /*padding-top: calc(var(--gap) / 2);*/
   padding-bottom: calc(var(--gap) / 2);
-  //position: fixed;
+  /*position: fixed;*/
   left: 0;
-  //top: var(--headerHeight);
+  /*top: var(--headerHeight);*/
   top: 0;
   bottom: 0;
-  width: var(--leftMenuWidthExpanded);
-  background-color: var(--clrBgBlueSmall);
-  border-right: 1px solid var(--clrBorderBlueLighter);
-  transition: width var(--timeShort);
+  width: var(--left-menu-width-expanded);
+  background-color: var(--clr-bg-blue-small);
+  border-right: 1px solid var(--clr-border-blue-lighter);
+  transition: width var(--time-short);
 
   overflow-x:hidden;
 
@@ -157,27 +157,27 @@ const menuItems = [
     margin-bottom: calc(var(--gap) / 2);
   }
 
-  // todo:: переделать. Это не предусматривает скролл от меню
+  /*todo:: переделать. Это не предусматривает скролл от меню*/
   .main-menu__width-toggler {
 
-    //outline: 1px solid darkred;
+    /*outline: 1px solid darkred;*/
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: calc(var(--gap) * 2);
-    border-top: 1px solid var(--clrBorderBlueLighter);
+    border-top: 1px solid var(--clr-border-blue-lighter);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     &:hover {
-      background-color: var(--clrBgBlueAccent);
+      background-color: var(--clr-bg-blue-accent);
     }
   }
 
   &.main-menu--is-collapsed {
-    width: var(--leftMenuWidthCollapsed);
+    width: var(--left-menu-width-collapsed);
   }
 }
 </style>

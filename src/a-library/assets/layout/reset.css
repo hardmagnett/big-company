@@ -1,0 +1,8 @@
+* {
+  /*Нормальный прочет размеров*/
+  box-sizing: border-box;
+}
+
+input, textarea {
+    outline: none !important;
+}

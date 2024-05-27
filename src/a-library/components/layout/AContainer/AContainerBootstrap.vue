@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 /**
 Контейнер похожий на Bootstrap-овский.
 Он не используется в этом приложении, но хранится здесь на тот случай, когда понадобиться.
@@ -14,42 +14,41 @@
   padding-left: var(--gap);
   margin-right: auto;
   margin-left: auto;
-  @media (min-width: $bpSm) {
-    // Именно max-width а не width - так не появляется горизонтальный скроллбар.
+  @container style(--bp-sm-or-more) {
+    /*Именно max-width а не width - так не появляется горизонтальный скроллбар.*/
 
-    // Если использовать width, то будет следующая проблема:
-    // Допустим $sm === 768px и окно браузера === 768px.
-    // Тогда в случае наличия вертикального скроллбара
-    // ширина документа будет не 768px а 751px.
-    // А ширина контейнера так и останется 768px.
-    // Появится горизонтальный скроллбар,
-    // и горизонтальный скролбар исчезнет только
-    // когда окно браузера будет больше брекпоинта на ширину вертикального скролбара.
+    /*Если использовать width, то будет следующая проблема:*/
+    /*Допустим $sm === 768px и окно браузера === 768px.*/
+    /*Тогда в случае наличия вертикального скроллбара*/
+    /*ширина документа будет не 768px а 751px.*/
+    /*А ширина контейнера так и останется 768px.*/
+    /*Появится горизонтальный скроллбар,*/
+    /*и горизонтальный скролбар исчезнет только*/
+    /*когда окно браузера будет больше брекпоинта на ширину вертикального скролбара.*/
 
-    // Аналогичная ситуация для остальных брекпоинтов.
-    max-width: $bpSm;
+    /*Аналогичная ситуация для остальных брекпоинтов.*/
+    max-width: var(--bp-sm);
   }
-
-  @media (min-width: $bpMd) {
-    max-width: $bpMd;
+  @container style(--bp-md-or-more) {
+    max-width: var(--bp-md);
   }
-  @media (min-width: $bpLg) {
-    max-width: $bpLg;
+  @container style(--bp-lg-or-more) {
+    max-width: var(--bp-lg);
   }
-  @media (min-width: $bpXl) {
-    max-width: $bpXl;
+  @container style(--bp-xl-or-more) {
+    max-width: var(--bp-xl);
   }
-  @media (min-width: $bpXxl) {
-    max-width: $bpXxl;
+  @container style(--bp-xxl-or-more) {
+    max-width: var(--bp-xxl);
   }
 }
 
 .container--no-padding-on-xs {
   padding-right: 0;
   padding-left: 0;
-  @media (min-width: $bpSm) {
-    padding-right: $gap;
-    padding-left: $gap;
+  @container style(--bp-sm-or-more) {
+    padding-right: var(--gap);
+    padding-left: var(--gap);
   }
 }
 .container--fluid {

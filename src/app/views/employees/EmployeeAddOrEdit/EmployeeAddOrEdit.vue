@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .note-edit {
   .note-edit__input-title {
     margin-bottom: var(--gap);
@@ -77,7 +77,7 @@ export default {
     flex-flow: column wrap;
     justify-content: flex-end;
     align-items: flex-end;
-    @media (min-width: $bpMd) {
+    @container style(--bp-md-or-more) {
       flex-flow: row wrap;
     }
     > * {

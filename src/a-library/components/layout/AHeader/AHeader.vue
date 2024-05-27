@@ -35,13 +35,13 @@ let imageForLogo = computed(()=>{
 
 
 
-<style scoped lang="scss">
+<style scoped>
   .a-header {
-    height: var(--headerHeight);
-    background-color: var(--clrFillBlueSmall);
-    //position: fixed;
-    //top: 0;
-    //width: 100%;
+    height: var(--header-height);
+    background-color: var(--clr-fill-blue-small);
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*width: 100%;*/
     display: flex;
     flex-flow: row nowrap;
 
@@ -50,9 +50,9 @@ let imageForLogo = computed(()=>{
     padding-left: var(--gap);
 
     .a-header__text-near-logo {
-      color: var(--clrFontBlueLight);
+      color: var(--clr-font-blue-light);
       opacity: 1;
-      transition: opacity var(--timeShort);
+      transition: opacity var(--time-short);
     }
 
     &.a-header--main-menu-is-collapsed {

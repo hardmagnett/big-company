@@ -1,0 +1,15 @@
+:root {
+  /*Значения переменных типа --bpXX должны совпадать с переменными типа --bp-XX-or-more.*/
+  --bp-sm: 576px;    /*Bootstrap 5*/
+  --bp-md: 768px;    /*Tailwind 2*/
+  --bp-lg: 1024px;   /*Tailwind 2*/
+  --bp-xl: 1280px;   /*Tailwind 2*/
+  --bp-xxl: 1536px;  /*Tailwind 2*/
+
+  --bp-xs-or-more: true;
+  @media (min-width: 576px) { --bp-sm-or-more: true}
+  @media (min-width: 768px) {--bp-md-or-more: true}
+  @media (min-width: 1024px) {--bp-lg-or-more: true}
+  @media (min-width: 1280px) {--bp-xl-or-more: true}
+  @media (min-width: 1536px) {--bp-xxl-or-more: true}
+}
