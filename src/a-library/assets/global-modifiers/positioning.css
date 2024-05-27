@@ -5,3 +5,23 @@
   --summaryGapDistance: calc((var(--flex-items-qty) - 1) * var(--gap));
   flex-basis: calc((100% - var(--summaryGapDistance)) / var(--flex-items-qty)) !important;
 }
+
+.mod--float-left {
+  float: left;
+}
+.mod--float-right {
+  float: right;
+}
+.mod--clear-both {
+  clear: both;
+}
+
+.mod--mt-0 {
+  margin-top: 0;
+}
+.mod--mb-0 {
+  margin-bottom: 0;
+}
+.mod--mb-1 {
+  margin-bottom: var(--gap);
+}

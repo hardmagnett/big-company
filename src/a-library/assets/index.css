@@ -10,4 +10,6 @@
 
 
 
-@import 'global-modifiers/positioning.css'; /*Недоделан. Только 1 mixin перенес в него*/
+@import 'global-modifiers/positioning.css';
+@import 'global-modifiers/fx.css';
+@import 'global-modifiers/typo.css';
