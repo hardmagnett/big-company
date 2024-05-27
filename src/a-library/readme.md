@@ -16,9 +16,9 @@ attachAllALibraryComponents(app)
 
 ```
 
-```scss
-// main.scss или аналог
-// Подключить стили
+```css
+/*main.css или аналог*/
+/*Подключить стили*/
 @import 'a-library/assets/index';
 ```
 

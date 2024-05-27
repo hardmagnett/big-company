@@ -16,3 +16,8 @@
 
 @import 'fonts/inter-tight/inter-tight.css';
 @import 'fonts/material-design-icons/material-design-icons-v6.9.96.css';
+
+@import 'typo/main.css';
+@import 'typo/headers.css';
+
+@import 'libs-overriding/material-design.icons.css';
