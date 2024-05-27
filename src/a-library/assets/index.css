@@ -5,6 +5,9 @@
 @import 'variables/typo.css';
 @import 'variables/other.css';
 
+@import 'layout/reset.css';
+@import 'layout/layout.css';
+
 
 
 @import 'global-modifiers/positioning.css'; /*Недоделан. Только 1 mixin перенес в него*/
