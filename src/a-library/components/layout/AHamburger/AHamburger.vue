@@ -35,7 +35,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .a-hamburger {
   cursor: pointer;
   height: var(--headerHeight);

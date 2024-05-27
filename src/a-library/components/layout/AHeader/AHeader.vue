@@ -35,13 +35,13 @@ let imageForLogo = computed(()=>{
 
 
 
-<style scoped lang="scss">
+<style scoped>
   .a-header {
     height: var(--headerHeight);
     background-color: var(--clrFillBlueSmall);
-    //position: fixed;
-    //top: 0;
-    //width: 100%;
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*width: 100%;*/
     display: flex;
     flex-flow: row nowrap;
 

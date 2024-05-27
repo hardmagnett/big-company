@@ -37,7 +37,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .btn--with-text {
     --height: calc(var(--gap) * 1.6);
     @container style(--bp-md-or-more) {
@@ -49,7 +49,6 @@ export default {
 
     height: var(--height);
     line-height: var(--height);
-    //padding: 0 var(--height);
     padding: 0 var(--gap);
 
     display: block;
@@ -87,10 +86,10 @@ export default {
       }
     }
     &.btn--small {
-      $height: calc(var(--gap) * 1.5);
+      --height: calc(var(--gap) * 1.5);
       padding: 0 var(--gap);
-      height: $height;
-      line-height: $height;
+      height: var(--height);
+      line-height: var(--height);
       font-size: var(--fontSizeSmall);
     }
   }

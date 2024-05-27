@@ -165,9 +165,9 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .main-menu-item {
-  // Изменяется JS-ом в зависимости от глубины.
+  /*Изменяется JS-ом в зависимости от глубины.*/
   --paddingByDeep: 0;
 
   --mainMenuCollapseAnimationTime: var(--timeShort);
@@ -175,7 +175,7 @@ onMounted(() => {
   --accentedColorLess: var(--clrBgBlueAccent);
   --accentedColor: var(--clrFillBlueSmall);
 
-  // Чтобы в процессе сворачивании меню текст не переносился на несколько строк
+  /*Чтобы в процессе сворачивании меню текст не переносился на несколько строк*/
   width: var(--leftMenuWidthExpanded);
 
   > .main-menu-item__children {
@@ -201,7 +201,7 @@ onMounted(() => {
     font-size: var(--fontSizeTiny);
     font-weight: var(--fontWeightBold);
 
-    // before нужно исключительно чтобы дать отступ слева для вложенных элементов.
+    /*before нужно исключительно чтобы дать отступ слева для вложенных элементов.*/
     &:before {
       display: inline;
       content: '';
@@ -209,8 +209,8 @@ onMounted(() => {
       transition: padding-left var(--mainMenuCollapseAnimationTime);
     }
 
-    // Отодвигает следующие элементы, в частности индикатор открытости,
-    // максимально вправо.
+    /*Отодвигает следующие элементы, в частности индикатор открытости,*/
+    /*максимально вправо.*/
     .main-menu-item__spacer {
       flex: 1 0 auto;
     }

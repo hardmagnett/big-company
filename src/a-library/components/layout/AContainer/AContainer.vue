@@ -17,23 +17,23 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .a-container {
   .container__main-content {
     padding: calc(var(--gap) / 2) var(--gap);
-    //margin-left: var(--leftMenuWidthExpanded);
+    /*margin-left: var(--leftMenuWidthExpanded);*/
     overflow-x: hidden;
 
     @container style(--bp-sm-or-more) {
     }
     @container style(--bp-md-or-more) {
-      //padding-left: calc(var(--gap) * 2);
-      //padding-right: calc(var(--gap) * 2);
+      /*padding-left: calc(var(--gap) * 2);*/
+      /*padding-right: calc(var(--gap) * 2);*/
 
     }
     @container style(--bp-lg-or-more) {
-      //padding-left: calc(var(--gap) * 3);
-      //padding-right: calc(var(--gap) * 3);
+      /*padding-left: calc(var(--gap) * 3);*/
+      /*padding-right: calc(var(--gap) * 3);*/
     }
     @container style(--bp-xl-or-more) {
 

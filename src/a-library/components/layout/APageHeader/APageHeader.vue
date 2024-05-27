@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .a-page-header {
   padding-left: var(--gap);
   padding-right: var(--gap);

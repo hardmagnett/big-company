@@ -13,7 +13,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .txt {
     --height: calc(var(--gap) * 2);
     display: block;

@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .buttons-page {
   padding-bottom: 200px;
 }
@@ -54,8 +54,8 @@
   gap: var(--gap);
 
   > * {
-    //margin-right: var(--gap);
-    //margin-bottom: var(--gap);
+    /*margin-right: var(--gap);*/
+    /*margin-bottom: var(--gap);*/
   }
 }
 
