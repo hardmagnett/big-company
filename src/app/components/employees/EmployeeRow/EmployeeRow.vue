@@ -68,7 +68,7 @@ onMounted(() => {
 <style scoped lang="scss">
   .employee-row {
     padding: var(--gap);
-    //border: 1px solid clrBorder(lighter, main);
+    /*border: 1px solid clrBorder(lighter, main);*/
     border: 1px solid var(--clrBorderBlueLightest);
     border-radius: var(--borderRadius);
     background-color: white;
@@ -77,21 +77,19 @@ onMounted(() => {
 
     overflow: hidden;
 
-    &__header {
+    .employee-row__header {
       margin-bottom: 0;
 
-      // Обрезание на 2-й строке start
-      height: 37px;			// указать высоту, если линия одна а рубить на третьей например
+      /*Обрезание на 2-й строке start*/
+      height: 37px;			/*указать высоту, если линия одна а рубить на третьей например*/
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;	// указать на какой линии рубить
+      -webkit-line-clamp: 2;	/*указать на какой линии рубить*/
       overflow: hidden;
-      // Обрезание на 2-й строке end
+      /*Обрезание на 2-й строке end*/
     }
 
     ul > li {
-      //@include singleLineEllipsis();
-      color: clrFont(gray, main);
       font-size: var(--fontSizeSmall);
     }
     .employee-row__pusher {
@@ -105,10 +103,6 @@ onMounted(() => {
           margin-left: var(--gap);
         }
       }
-      // Не понял зачем это нужно. Временно закомментил.
-      //@media (min-width: $bpXl) {
-      //  justify-content: space-between;
-      //}
     }
   }
 </style>

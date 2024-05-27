@@ -28,10 +28,7 @@ export default defineConfig({
   // ...
   css: {
     preprocessorOptions: {
-      scss: {
-        // Подключить переменные и миксины к каждому компоненту.
-        additionalData: `@import "./src/a-library/assets/attach-it-to-every-component.scss";`
-      }
+      // пусто. Раньше здесь было про scss.
     }
   }
 })

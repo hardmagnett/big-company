@@ -13,12 +13,7 @@ import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue'
 
 </script>
 
-<!--<style scoped>-->
-<style scoped lang="scss">
-//<style scoped lang="css">
-
-
-
+<style scoped>
   .employees-table {
     display: flex;
     flex-flow: row wrap;

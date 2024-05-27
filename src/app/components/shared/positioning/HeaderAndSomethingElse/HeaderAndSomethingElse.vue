@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .header-and-something-else {
   display: flex;
   flex-flow: row wrap;

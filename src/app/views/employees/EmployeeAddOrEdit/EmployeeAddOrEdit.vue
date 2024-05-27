@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 .note-edit {
   .note-edit__input-title {
     margin-bottom: var(--gap);
