@@ -54,7 +54,7 @@ export default {
     display: block;
     width: fit-content;
 
-    border-radius: var(--borderRadius);
+    border-radius: var(--border-radius);
     outline: none !important;
     text-decoration: none;
     color: white;
@@ -63,7 +63,7 @@ export default {
 
 
     cursor: pointer;
-    transition: background-color var(--timeShort);
+    transition: background-color var(--time-short);
     &:hover {
       background-color: var(--clr-fill-blue-accent);
     }
@@ -102,7 +102,7 @@ export default {
     padding: 0;
 
     background-color: transparent;
-    transition: background-color var(--timeShort);
+    transition: background-color var(--time-short);
 
     --size: calc(var(--gap) * 1.6);
     @container style(--bp-md-or-more) {

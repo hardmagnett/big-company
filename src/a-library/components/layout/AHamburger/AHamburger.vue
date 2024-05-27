@@ -38,8 +38,8 @@ export default {
 <style scoped>
 .a-hamburger {
   cursor: pointer;
-  height: var(--headerHeight);
-  width: var(--headerHeight);
+  height: var(--header-height);
+  width: var(--header-height);
   overflow: hidden;
   background-color: var(--clr-fill-blue-small);
   display: flex;
@@ -52,7 +52,7 @@ export default {
     gap: 7px;
     width: 20px;
     .a-hamburger__line {
-      transition: opacity var(--timeShort), transform var(--timeShort);
+      transition: opacity var(--time-short), transform var(--time-short);
       height: 2px;
       background-color: white;
     }

@@ -146,10 +146,10 @@ const menuItems = [
   /*top: var(--headerHeight);*/
   top: 0;
   bottom: 0;
-  width: var(--leftMenuWidthExpanded);
+  width: var(--left-menu-width-expanded);
   background-color: var(--clr-bg-blue-small);
   border-right: 1px solid var(--clr-border-blue-lighter);
-  transition: width var(--timeShort);
+  transition: width var(--time-short);
 
   overflow-x:hidden;
 
@@ -177,7 +177,7 @@ const menuItems = [
   }
 
   &.main-menu--is-collapsed {
-    width: var(--leftMenuWidthCollapsed);
+    width: var(--left-menu-width-collapsed);
   }
 }
 </style>

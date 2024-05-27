@@ -1,5 +1,5 @@
 .mdi:before {
   /*Чтобы, например, при тоггле класса mdi-rotate-180*/
   /*вращение было анимированным*/
-  transition: transform var(--timeShort)
+  transition: transform var(--time-short)
 }

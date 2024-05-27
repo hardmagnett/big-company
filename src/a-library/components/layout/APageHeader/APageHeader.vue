@@ -19,7 +19,7 @@ export default {
 .a-page-header {
   padding-left: var(--gap);
   padding-right: var(--gap);
-  height: var(--headerHeight);
+  height: var(--header-height);
 
   display: flex;
   flex-flow: row nowrap;

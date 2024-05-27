@@ -65,7 +65,7 @@ export default {
         color: var(--clr-fill-blue-accent);
         content: '✔';
         opacity: 0;
-        transition: opacity var(--timeShort);
+        transition: opacity var(--time-short);
         transform: translateX(3px) translateY(0px);
         font-weight: bold;
       }

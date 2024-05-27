@@ -22,7 +22,7 @@ export default {
     padding-left: var(--gap);
     padding-right: var(--gap);
     border: 1px solid var(--clr-border-blue-lighter);
-    border-radius: var(--borderRadius);
+    border-radius: var(--border-radius);
     width: 100%;
   }
 </style>

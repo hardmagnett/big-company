@@ -170,18 +170,18 @@ onMounted(() => {
   /*Изменяется JS-ом в зависимости от глубины.*/
   --paddingByDeep: 0;
 
-  --mainMenuCollapseAnimationTime: var(--timeShort);
+  --mainMenuCollapseAnimationTime: var(--time-short);
 
   --accentedColorLess: var(--clr-bg-blue-accent);
   --accentedColor: var(--clr-fill-blue-small);
 
   /*Чтобы в процессе сворачивании меню текст не переносился на несколько строк*/
-  width: var(--leftMenuWidthExpanded);
+  width: var(--left-menu-width-expanded);
 
   > .main-menu-item__children {
     max-height: 1000px;
     overflow-y: hidden;
-    transition: max-height var(--timeShort) ease-in;
+    transition: max-height var(--time-short) ease-in;
   }
 
   .main-menu-item__link {
@@ -197,7 +197,7 @@ onMounted(() => {
     line-height: var(--height);
     color: var(--clr-font-blue-dark);
     text-decoration: none;
-    transition: background-color var(--timeShort), color var(--timeShort);
+    transition: background-color var(--time-short), color var(--time-short);
     font-size: var(--fontSizeTiny);
     font-weight: var(--fontWeightBold);
 
@@ -257,7 +257,7 @@ onMounted(() => {
   &.main-menu-item--is-closed {
     > .main-menu-item__children {
       max-height: 0;
-      transition: max-height var(--timeShort) ease-out;
+      transition: max-height var(--time-short) ease-out;
     }
   }
 

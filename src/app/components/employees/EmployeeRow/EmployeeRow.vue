@@ -70,7 +70,7 @@ onMounted(() => {
     padding: var(--gap);
     /*border: 1px solid clrBorder(lighter, main);*/
     border: 1px solid var(--clr-border-blue-lightest);
-    border-radius: var(--borderRadius);
+    border-radius: var(--border-radius);
     background-color: white;
     display: flex;
     flex-flow: column nowrap;
