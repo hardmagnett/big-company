@@ -41,7 +41,7 @@ export default {
   height: var(--headerHeight);
   width: var(--headerHeight);
   overflow: hidden;
-  background-color: var(--clrFillBlueSmall);
+  background-color: var(--clr-fill-blue-small);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;

@@ -58,11 +58,11 @@ export default {
       &:before {
         content: '';
         background-color: white;
-        border: 1px solid var(--clrBorderBlueLighter);
+        border: 1px solid var(--clr-border-blue-lighter);
       }
       /*Непосредственно checkmark*/
       &:after {
-        color: var(--clrFillBlueAccent);
+        color: var(--clr-fill-blue-accent);
         content: '✔';
         opacity: 0;
         transition: opacity var(--timeShort);

@@ -27,19 +27,19 @@
     /*когда окно браузера будет больше брекпоинта на ширину вертикального скролбара.*/
 
     /*Аналогичная ситуация для остальных брекпоинтов.*/
-    max-width: var(--bpSm);
+    max-width: var(--bp-sm);
   }
   @container style(--bp-md-or-more) {
-    max-width: var(--bpMd);
+    max-width: var(--bp-md);
   }
   @container style(--bp-lg-or-more) {
-    max-width: var(--bpLg);
+    max-width: var(--bp-lg);
   }
   @container style(--bp-xl-or-more) {
-    max-width: var(--bpXl);
+    max-width: var(--bp-xl);
   }
   @container style(--bp-xxl-or-more) {
-    max-width: var(--bpXxl);
+    max-width: var(--bp-xxl);
   }
 }
 

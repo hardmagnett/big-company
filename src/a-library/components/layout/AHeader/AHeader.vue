@@ -38,7 +38,7 @@ let imageForLogo = computed(()=>{
 <style scoped>
   .a-header {
     height: var(--headerHeight);
-    background-color: var(--clrFillBlueSmall);
+    background-color: var(--clr-fill-blue-small);
     /*position: fixed;*/
     /*top: 0;*/
     /*width: 100%;*/
@@ -50,7 +50,7 @@ let imageForLogo = computed(()=>{
     padding-left: var(--gap);
 
     .a-header__text-near-logo {
-      color: var(--clrFontBlueLight);
+      color: var(--clr-font-blue-light);
       opacity: 1;
       transition: opacity var(--timeShort);
     }

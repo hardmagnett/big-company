@@ -1,9 +1,9 @@
 body {
   font-family: var(--bodyFontFamily);
   font-size: var(--fontSizeBase);
-  color: var(--clrFontBlueDark);
+  color: var(--clr-font-blue-dark);
 }
 
 a {
-  color: var(--clrFillBlueAccent)
+  color: var(--clr-fill-blue-accent)
 }

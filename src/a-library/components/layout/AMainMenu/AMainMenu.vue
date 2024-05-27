@@ -17,7 +17,7 @@ const responsiveStore = useResponsiveStore()
 const { isEqualOrMoreThan } = storeToRefs(responsiveStore)
 
 let isBig = computed(()=>{
-  return isEqualOrMoreThan.value('--bpMd')
+  return isEqualOrMoreThan.value('--bp-md')
 })
 
 
@@ -147,8 +147,8 @@ const menuItems = [
   top: 0;
   bottom: 0;
   width: var(--leftMenuWidthExpanded);
-  background-color: var(--clrBgBlueSmall);
-  border-right: 1px solid var(--clrBorderBlueLighter);
+  background-color: var(--clr-bg-blue-small);
+  border-right: 1px solid var(--clr-border-blue-lighter);
   transition: width var(--timeShort);
 
   overflow-x:hidden;
@@ -166,13 +166,13 @@ const menuItems = [
     left: 0;
     right: 0;
     height: calc(var(--gap) * 2);
-    border-top: 1px solid var(--clrBorderBlueLighter);
+    border-top: 1px solid var(--clr-border-blue-lighter);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     &:hover {
-      background-color: var(--clrBgBlueAccent);
+      background-color: var(--clr-bg-blue-accent);
     }
   }
 

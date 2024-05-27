@@ -172,8 +172,8 @@ onMounted(() => {
 
   --mainMenuCollapseAnimationTime: var(--timeShort);
 
-  --accentedColorLess: var(--clrBgBlueAccent);
-  --accentedColor: var(--clrFillBlueSmall);
+  --accentedColorLess: var(--clr-bg-blue-accent);
+  --accentedColor: var(--clr-fill-blue-small);
 
   /*Чтобы в процессе сворачивании меню текст не переносился на несколько строк*/
   width: var(--leftMenuWidthExpanded);
@@ -195,7 +195,7 @@ onMounted(() => {
 
     height: var(--height);
     line-height: var(--height);
-    color: var(--clrFontBlueDark);
+    color: var(--clr-font-blue-dark);
     text-decoration: none;
     transition: background-color var(--timeShort), color var(--timeShort);
     font-size: var(--fontSizeTiny);
@@ -231,10 +231,10 @@ onMounted(() => {
 
     &.main-menu-item__link--active {
       background-color: var(--accentedColor);
-      color: var(--clrFontBlueLight);
+      color: var(--clr-font-blue-light);
       &:hover {
         background-color: var(--accentedColor);
-        color: var(--clrFontBlueLight);
+        color: var(--clr-font-blue-light);
       }
     }
     &.main-menu-item__link--descendant-active {

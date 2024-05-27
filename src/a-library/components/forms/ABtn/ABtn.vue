@@ -58,31 +58,31 @@ export default {
     outline: none !important;
     text-decoration: none;
     color: white;
-    background-color: var(--clrFillBlueSmall);
+    background-color: var(--clr-fill-blue-small);
     border: none;
 
 
     cursor: pointer;
     transition: background-color var(--timeShort);
     &:hover {
-      background-color: var(--clrFillBlueAccent);
+      background-color: var(--clr-fill-blue-accent);
     }
     &.btn--error {
-      background-color: var(--clrFillRedSmall);
+      background-color: var(--clr-fill-red-small);
       &:hover {
-        background-color: var(--clrFillRedAccent);
+        background-color: var(--clr-fill-red-accent);
       }
     }
     &.btn--success {
-      background-color: var(--clrFillGreenSmall);
+      background-color: var(--clr-fill-green-small);
       &:hover {
-        background-color: var(--clrFillGreenAccent);
+        background-color: var(--clr-fill-green-accent);
       }
     }
     &.btn--danger {
-      background-color: var(--clrFillOrangeSmall);
+      background-color: var(--clr-fill-orange-small);
       &:hover {
-        background-color: var(--clrFillOrangeAccent);
+        background-color: var(--clr-fill-orange-accent);
       }
     }
     &.btn--small {
@@ -114,27 +114,27 @@ export default {
     height: var(--size);
     width: var(--size);
 
-    color: var(--clrFillBlueSmall);
+    color: var(--clr-fill-blue-small);
     &:hover {
-      background-color: var(--clrBgBlueSmall);
+      background-color: var(--clr-bg-blue-small);
     }
 
     &.btn--success {
-      color: var(--clrFillGreenSmall);
+      color: var(--clr-fill-green-small);
       &:hover {
-        background-color: var(--clrBgGreenSmall);
+        background-color: var(--clr-bg-green-small);
       }
     }
     &.btn--danger {
-      color: var(--clrFillOrangeSmall);
+      color: var(--clr-fill-orange-small);
       &:hover {
-        background-color: var(--clrBgOrangeSmall);
+        background-color: var(--clr-bg-orange-small);
       }
     }
     &.btn--error {
-      color: var(--clrFillRedSmall);
+      color: var(--clr-fill-red-small);
       &:hover {
-        background-color: var(--clrBgRedSmall);
+        background-color: var(--clr-bg-red-small);
       }
     }
 
