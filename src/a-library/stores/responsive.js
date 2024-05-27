@@ -12,6 +12,7 @@ export const useResponsiveStore = defineStore('responsive', ()=>{
     documentWidth.value = newVal
   });
 
+  // todo сделать ф-и, аналогичные переменным в css.
   const isEqualOrMoreThan = computed((state) => {
     return (breakpointVariableName) => {
       let bpValue = getCSSVariable(breakpointVariableName);
