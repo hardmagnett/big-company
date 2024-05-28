@@ -66,7 +66,7 @@ onMounted(() => {
 })
 </script>
 
-<style scoped lang="scss">
+<style scoped>
   .employee-row {
     padding: var(--gap);
     /*border: 1px solid clrBorder(lighter, main);*/
