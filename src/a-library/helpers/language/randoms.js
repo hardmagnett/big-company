@@ -23,5 +23,7 @@ let sameRandom = function(){
 }
 sameRandom.previousResult = 0.5
 
-export default sameRandom
+export {
+  sameRandom
+}
 

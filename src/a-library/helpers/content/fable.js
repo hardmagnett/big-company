@@ -3,24 +3,25 @@
  * Поэтому библиотека должна быть максимально лёгкой (в отличие от faker.js).
  */
 
-import sameRandom from '@/a-library/helpers/language/sameRandom.js'
+import { sameRandom } from '@/a-library/helpers/language/randoms.js'
 
 export default {
   _getAny(array){
     if (this._emptyValuesAllowed) {
       array.unshift('')
     }
-    let randomFunction = this._sameRandom ? sameRandom : Math.random
-    let result = array[Math.floor(randomFunction() * array.length)]
+
+    let result = array[Math.floor(this._randomFunction() * array.length)]
+
     return result;
   },
   _emptyValuesAllowed: false,
-  _sameRandom: true,
+  _randomFunction: sameRandom,
   allowEmptyValues(){
     this._emptyValuesAllowed = true
   },
   useRealRandom(){
-    this._sameRandom= false
+    this._randomFunction = Math.random
   },
   firstName({
     gender = null, // "male"/"female"
@@ -65,7 +66,7 @@ export default {
    * @returns {string}  // например "Алексей Семенов"
    */
   fullName() {
-    let gender = (Math.random() > 0.5) ? 'male' : 'female'
+    let gender = (this._randomFunction() > 0.5) ? 'male' : 'female'
     return `${this.firstName({gender})} ${this.lastName({gender})}`
   },
   avatarUrl(){
@@ -97,7 +98,7 @@ export default {
 
         } = {}){
     let wordsQty = (min && max) ? _random(min, max) : strict
-    let availableWords = ['пирамида', 'часы', 'декоратор', 'ракета', 'монитор']
+    let availableWords = ['пирамида', 'часы', 'декоратор', 'ракета', 'монитор','синхрофазотрон', 'дезоксирибонуклеиновая кислота']
     let resultArray = []
     for (let i = 1; i <= wordsQty; i++) {
       resultArray.push(this._getAny(availableWords))

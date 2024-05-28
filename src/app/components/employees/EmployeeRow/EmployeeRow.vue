@@ -13,7 +13,8 @@
           class="mod--ellipsis-one-line"
       >
         <!--Для ограничения длины троеточием приходится отказаться от display: list-item. Поэтому &bullet;-->
-        &bullet; {{counter.random.words() + counter.random.words()}}
+        <!--&bullet; {{fable.words({min: 1, max: 3})}}-->
+        &bullet; {{'fsdfads'}}
       </li>
       <li v-if="qty > 3">...</li>
     </ul>
