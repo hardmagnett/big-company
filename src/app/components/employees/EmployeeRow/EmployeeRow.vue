@@ -1,8 +1,6 @@
 <template>
   <div class="employee-row">
-    <!--<h4 class="employee-row__header">{{counter.random.words() + counter.random.words()}}</h4>-->
     <h4 class="employee-row__header">{{fable.fullName()}}</h4>
-    <!--<div :set="qty = counter.random.number(5) + 1"></div>-->
     <div :set="qty = 3"></div>
 
     <!--<div :set="qtyToDisplay = qty >= 3 ? 3 : qty"></div>-->
@@ -13,8 +11,7 @@
           class="mod--ellipsis-one-line"
       >
         <!--Для ограничения длины троеточием приходится отказаться от display: list-item. Поэтому &bullet;-->
-        <!--&bullet; {{fable.words({min: 1, max: 3})}}-->
-        &bullet; {{'fsdfads'}}
+        &bullet; {{fable.words({min: 1, max: 3})}}
       </li>
       <li v-if="qty > 3">...</li>
     </ul>
@@ -39,19 +36,13 @@
 
 <script setup lang="ts">
 
-import { faker } from '@faker-js/faker';
 import fable from '@/a-library/helpers/content/fable.js';
-
-
-
-
 
 
 
 import { onMounted, reactive } from 'vue';
 
 
-const counter = reactive(faker)
 // export default {
 //   data(){
 //     return {

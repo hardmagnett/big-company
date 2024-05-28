@@ -1,27 +1,32 @@
 /**
- * Эта бибилотека нужна исключительно для верстки или заполнения данными моделей, которые будут выводиться на этапе верстки.
+ * Эта библиотека нужна исключительно для верстки или заполнения данными моделей, которые будут выводиться на этапе верстки.
  * Поэтому библиотека должна быть максимально лёгкой (в отличие от faker.js).
  */
 
-import { sameRandom } from '@/a-library/helpers/language/randoms.js'
+import {randomBetween, sameRandom} from '@/a-library/helpers/language/randoms.js'
 
 export default {
+  _emptyValuesAllowed: false,
+  _isSameRandom: true,
+  _randomFunction: function(){
+    let result = this._isSameRandom ? sameRandom() : Math.random()
+    return result
+  },
   _getAny(array){
     if (this._emptyValuesAllowed) {
       array.unshift('')
     }
+    // console.log(this._randomFunction()); console.log('^...this._randomFunction():')
 
     let result = array[Math.floor(this._randomFunction() * array.length)]
 
     return result;
   },
-  _emptyValuesAllowed: false,
-  _randomFunction: sameRandom,
   allowEmptyValues(){
     this._emptyValuesAllowed = true
   },
   useRealRandom(){
-    this._randomFunction = Math.random
+    this._isSameRandom = false
   },
   firstName({
     gender = null, // "male"/"female"
@@ -97,7 +102,7 @@ export default {
           strict = 5
 
         } = {}){
-    let wordsQty = (min && max) ? _random(min, max) : strict
+    let wordsQty = (min && max) ? randomBetween(min, max, {sameRandom: true}) : strict
     let availableWords = ['пирамида', 'часы', 'декоратор', 'ракета', 'монитор','синхрофазотрон', 'дезоксирибонуклеиновая кислота']
     let resultArray = []
     for (let i = 1; i <= wordsQty; i++) {

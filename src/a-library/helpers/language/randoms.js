@@ -2,8 +2,8 @@
   Возвращает псевдо-случайные значения от 0 включительно до 1 не включительно. Как и Math.random()
   Но возвращает их в каждый раз в одном и том-же порядке.
  */
-let sameRandom = function(){
-  let previousResult = sameRandom.previousResult
+let sameRandomFunction = function(){
+  let previousResult = sameRandomFunction.previousResult
 
   let result = Math.sin(previousResult)
   // Возьмем дробную часть от 4-го знака после запятой. Чтобы результаты выглядели хаотичнее.
@@ -18,12 +18,31 @@ let sameRandom = function(){
   // Хак, чтобы такого не произошло.
   if (result === 0) resultToSaveAsPrevious = 0.5
 
-  sameRandom.previousResult = resultToSaveAsPrevious
+  sameRandomFunction.previousResult = resultToSaveAsPrevious
   return result
 }
-sameRandom.previousResult = 0.5
+sameRandomFunction.previousResult = 0.5
+
+let randomBetween = function(min, max, {
+  floating = false,
+  sameRandom = false
+} = {}) {
+  let randomFunction = sameRandom ? sameRandomFunction : Math.random
+
+  let result = randomFunction() * (max - min + 1) + min
+  if (!floating) {
+    result = Math.floor(result)
+  }
+
+  return result
+
+}
+// for (var i = 0; i < 30; i++) {
+//   console.log(randomBetween(1, 3, {sameRandom: true}))
+// }
 
 export {
-  sameRandom
+  sameRandomFunction as sameRandom,
+  randomBetween
 }
 
