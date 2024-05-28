@@ -37,9 +37,6 @@ let randomBetween = function(min, max, {
   return result
 
 }
-// for (var i = 0; i < 30; i++) {
-//   console.log(randomBetween(1, 3, {sameRandom: true}))
-// }
 
 export {
   sameRandomFunction as sameRandom,
