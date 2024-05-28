@@ -1,7 +1,7 @@
 <template>
   <div class="employee-row">
     <!--<h4 class="employee-row__header">{{counter.random.words() + counter.random.words()}}</h4>-->
-    <h4 class="employee-row__header">{{fable.login()}}</h4>
+    <h4 class="employee-row__header">{{fable.fullName()}}</h4>
     <!--<div :set="qty = counter.random.number(5) + 1"></div>-->
     <div :set="qty = 3"></div>
 

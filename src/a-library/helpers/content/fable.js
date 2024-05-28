@@ -22,14 +22,51 @@ export default {
   useRealRandom(){
     this._sameRandom= false
   },
-  firstName(){
-    return this._getAny(['Виктор', 'Ирина', 'Михаил', 'Анастасия', 'Константин'])
+  firstName({
+    gender = null, // "male"/"female"
+  } = {}){
+    let maleResults = ['Виктор', 'Андрей', 'Михаил', 'Семён', 'Константин']
+    let femaleResults = ['Марина', 'Ирина', 'Ольга', 'Анастасия']
+    let selectFrom
+    switch(gender) {
+      case 'male':
+        selectFrom = maleResults
+        break
+      case 'female':
+        selectFrom = femaleResults
+        break
+      default:
+        selectFrom = [...maleResults, ...femaleResults]
+        break
+    }
+    return this._getAny(selectFrom)
   },
-  lastName(){
-    return this._getAny(['Семенов', 'Ургант', 'Череззабороногузадерищенко', 'Минаева', 'Черноградский'])
+  lastName({
+    gender = null, // "male"/"female"
+  } = {}){
+    let maleResults = ['Семенов', 'Ургант', 'Череззабороногузадерищенко', 'Минаев', 'Черноградский']
+    let femaleResults = ['Семенова', 'Ургант', 'Череззабороногузадерищенко', 'Минаева', 'Черноградская']
+    let selectFrom
+    switch(gender) {
+      case 'male':
+        selectFrom = maleResults
+        break
+      case 'female':
+        selectFrom = femaleResults
+        break
+      default:
+        selectFrom = [...maleResults, ...femaleResults]
+        break
+    }
+    return this._getAny(selectFrom)
   },
+  /**
+   *
+   * @returns {string}  // например "Алексей Семенов"
+   */
   fullName() {
-    return `${this.firstName()} ${this.lastName()}`
+    let gender = (Math.random() > 0.5) ? 'male' : 'female'
+    return `${this.firstName({gender})} ${this.lastName({gender})}`
   },
   avatarUrl(){
     return this._getAny([
