@@ -32,6 +32,7 @@
   .container__main-content {
     flex: 1 1 auto;
     /*background-color: red;*/
+    /*foo*/
     padding: calc(var(--gap) / 2) var(--gap);
     /*margin-left: var(--leftMenuWidthExpanded);*/
     overflow-x: hidden;
