@@ -1,6 +1,11 @@
 <template>
   <div class="a-container">
-    <div id="page-header-place"></div>
+    <div
+      id="page-header-place"
+      class="a-container__page-header-place"
+    >
+      <!--сюда контент передается телепортом из view-х-->
+    </div>
 
     <!--<template v-slot:header>-->
 
@@ -10,7 +15,7 @@
     <!--</template>-->
 
     <!--<slot name="header"></slot>-->
-    <div class="container__main-content">
+    <div class="container__main-content mod--cool-scrollbar">
       <slot />
     </div>
 
@@ -19,7 +24,14 @@
 
 <style scoped>
 .a-container {
+  display: flex;
+  flex-flow: column nowrap;
+  .a-container__page-header-place {
+    flex: 0 0 auto;
+  }
   .container__main-content {
+    flex: 1 1 auto;
+    /*background-color: red;*/
     padding: calc(var(--gap) / 2) var(--gap);
     /*margin-left: var(--leftMenuWidthExpanded);*/
     overflow-x: hidden;
