@@ -10,7 +10,7 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
 
 
 
-    <AMainMenu/>
+    <!--<AMainMenu/>-->
 
     <AContainer>
       <!--<template v-slot:header>-->

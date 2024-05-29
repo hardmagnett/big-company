@@ -16,9 +16,17 @@
       </div>
 
     </div>
-    <div class="container__main-content mod--cool-scrollbar">
-      <slot />
+    <div class="a-container__body">
+      <!--<div class="a-container__temp-like-menu">-->
+      <!--  temp-like-menu-->
+      <!--</div>-->
+      <AMainMenu/>
+
+      <div class="container__main-content mod--cool-scrollbar">
+        <slot />
+      </div>
     </div>
+
 
   </div>
 </template>
@@ -42,14 +50,23 @@
       outline: 1px solid orange;
     }
   }
-
-  .container__main-content {
+  .a-container__body {
     flex: 1 1 auto;
-    /*background-color: red;*/
-    /*foo*/
-    padding: calc(var(--gap) / 2) var(--gap);
-    /*margin-left: var(--leftMenuWidthExpanded);*/
-    overflow-x: hidden;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    .a-container__temp-like-menu,
+    .a-main-menu {
+      width: 100px;
+      background-color: #aff;
+    }
+    .container__main-content {
+      flex: 1 1 auto;
+      /*background-color: red;*/
+      /*foo*/
+      padding: calc(var(--gap) / 2) var(--gap);
+      /*margin-left: var(--leftMenuWidthExpanded);*/
+      overflow-x: hidden;
 
     @container style(--bp-sm-or-more) {
     }
@@ -68,7 +85,9 @@
     @container style(--bp-xxl-or-more) {
 
     }
+    }
   }
+
 }
 </style>
 <script setup lang="ts">
