@@ -27,16 +27,23 @@ import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
 
 const responsiveStore = useResponsiveStore()
-const { isEqualOrMoreThan } = storeToRefs(responsiveStore)
+const { isMdOrMore } = storeToRefs(responsiveStore)
 
+// Возможно выпилить отсюда и перенести в AContainer.
+// А здесь принимать готовое значение.
 let isBig = computed(()=>{
-  return isEqualOrMoreThan.value('--bp-md')
+  console.log(1)
+  return isMdOrMore.value()
+  // return isEqualOrMoreThan.value('--bp-md')
 })
 
-
+// Возможно выпилить отсюда и перенести в AContainer.
+// А здесь принимать готовое значение.
 let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
 let isCollapsedOnSmallScreen = ref(localStorageService.getItem('isMenuCollapsedOnSmallScreen', true))
 
+// Возможно выпилить отсюда и перенести в AContainer.
+// А здесь принимать готовое значение.
 let isCollapsed = computed(()=>{
   let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
   let isCollapsedBySmallScreen = !isBig.value && isCollapsedOnSmallScreen.value

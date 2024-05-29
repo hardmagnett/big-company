@@ -1,20 +1,21 @@
 <template>
   <div class="a-container">
-    <div
-      id="page-header-place"
-      class="a-container__page-header-place"
-    >
-      <!--сюда контент передается телепортом из view-х-->
+    <div class="a-container__header">
+      <div class="a-container__top-left">
+        <AHeader
+            :isMainMenuCollapsed="isMainMenuCollapsed"
+            logoUrl="/src/app/assets/images/logo.svg"
+            textNearLogo="CRM"
+        />
+      </div>
+      <div
+          id="page-header-place"
+          class="a-container__page-header-place"
+      >
+        <!--сюда контент передается телепортом из view-х-->
+      </div>
+
     </div>
-
-    <!--<template v-slot:header>-->
-
-      <!--<APageHeader id="page-header">-->
-      <!--  &lt;!&ndash;Структура кампании&ndash;&gt;-->
-      <!--</APageHeader>-->
-    <!--</template>-->
-
-    <!--<slot name="header"></slot>-->
     <div class="container__main-content mod--cool-scrollbar">
       <slot />
     </div>
@@ -26,9 +27,22 @@
 .a-container {
   display: flex;
   flex-flow: column nowrap;
-  .a-container__page-header-place {
+  .a-container__header {
     flex: 0 0 auto;
+
+    display: flex;
+    flex-flow: row nowrap;
+
+    .a-container__top-left {
+      outline: 1px solid darkred;
+    }
+
+    .a-container__page-header-place {
+      flex: 1 0 auto;
+      outline: 1px solid orange;
+    }
   }
+
   .container__main-content {
     flex: 1 1 auto;
     /*background-color: red;*/
@@ -57,3 +71,28 @@
   }
 }
 </style>
+<script setup lang="ts">
+
+import {computed, ref} from "vue";
+import {storeToRefs} from "pinia";
+import localStorageService from '@/a-library/helpers/DOM/localStorageService';
+import {useResponsiveStore} from "@/a-library/stores/responsive";
+const responsiveStore = useResponsiveStore()
+
+const { isMdOrMore } = storeToRefs(responsiveStore)
+
+
+let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
+let isCollapsedOnSmallScreen = ref(localStorageService.getItem('isMenuCollapsedOnSmallScreen', true))
+
+let isBig = computed(()=>{
+  // return isEqualOrMoreThan.value('--bp-md')
+  return isMdOrMore.value()
+})
+
+let isMainMenuCollapsed = computed(()=>{
+  let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
+  let isCollapsedBySmallScreen = !isBig.value && isCollapsedOnSmallScreen.value
+  return isCollapsedByBigScreen || isCollapsedBySmallScreen
+})
+</script>
