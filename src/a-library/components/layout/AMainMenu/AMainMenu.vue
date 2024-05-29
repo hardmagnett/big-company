@@ -59,10 +59,10 @@ let isCollapsed = computed(()=>{
 
 let classes = computed(()=>{
   return {
-    'main-menu--is-collapsed': isCollapsed.value,
+    'a-main-menu--is-collapsed': isCollapsed.value,
     // todo:: вероятно эти 2 стиля окажутся не нужны
-    'main-menu--is-collapsed-on-big-screen': props.isCollapsedOnBigScreen.value,
-    'main-menu--is-collapsed-on-small-screen': props.isCollapsedOnSmallScreen.value,
+    'a-main-menu--is-collapsed-on-big-screen': props.isCollapsedOnBigScreen.value,
+    'a-main-menu--is-collapsed-on-small-screen': props.isCollapsedOnSmallScreen.value,
   }
 })
 
@@ -204,7 +204,7 @@ const menuItems = [
 
 <template>
   <div
-    class="main-menu"
+    class="a-main-menu"
     :class="classes"
   >
     <AHeader
@@ -212,7 +212,7 @@ const menuItems = [
         logoUrl="/src/app/assets/images/logo.svg"
         textNearLogo="CRM"
     />
-    <div class="main-menu__items mod--cool-scrollbar">
+    <div class="a-main-menu__items mod--cool-scrollbar">
       <!--{{isBig}}-->
       <AMainMenuItem
           v-for="menuItem in menuItems"
@@ -224,7 +224,7 @@ const menuItems = [
 
 
     <div
-        class="main-menu__width-toggler"
+        class="a-main-menu__width-toggler"
         @click="toggleMenuCollapse"
     >
       <AIcon
@@ -238,7 +238,7 @@ const menuItems = [
 <style scoped>
 /*Обычно позиционирование компонента делается снаружи.*/
 /*Но т.к. это меню должно быть всегда в одном и том-же месте, то оно спозиционировано изнутри.*/
-.main-menu {
+.a-main-menu {
   position: relative;
   /*padding-top: calc(var(--gap) / 2);*/
   /*padding-bottom: calc(var(--gap) / 2);*/
@@ -263,7 +263,7 @@ const menuItems = [
     border-bottom: 1px solid var(--clr-border-blue-darker);
   }
 
-  .main-menu__items {
+  .a-main-menu__items {
     /*outline: 1px solid darkred;*/
     /*padding-top: calc(var(--gap) / 2);*/
     flex: 1 1 auto;
@@ -271,7 +271,7 @@ const menuItems = [
     overflow-x: hidden;
   }
 
-  .main-menu__width-toggler {
+  .a-main-menu__width-toggler {
 
     flex: 0 0 auto;
 
@@ -291,7 +291,7 @@ const menuItems = [
     }
   }
 
-  &.main-menu--is-collapsed {
+  &.a-main-menu--is-collapsed {
     width: var(--left-menu-width-collapsed);
   }
 }

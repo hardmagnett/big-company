@@ -61,7 +61,7 @@
 
     .a-container__page-header-place {
       flex: 1 0 auto;
-      outline: 1px solid orange;
+      /*outline: 1px solid orange;*/
     }
   }
   .a-container__body {
@@ -69,15 +69,12 @@
     display: flex;
     flex-flow: row nowrap;
     overflow: hidden;
-    .a-container__temp-like-menu,
+
     .a-main-menu {
-      width: 100px;
-      background-color: #aff;
+      flex: 0 0 auto;
     }
     .container__main-content {
       flex: 1 1 auto;
-      /*background-color: red;*/
-      /*foo*/
       padding: calc(var(--gap) / 2) var(--gap);
       /*margin-left: var(--leftMenuWidthExpanded);*/
       overflow-x: hidden;
