@@ -24,7 +24,17 @@ import getCSSVariable from '@/a-library/helpers/DOM/getCSSVariable';
 import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
+const emit = defineEmits(['toggleMenuCollapse'])
 
+export interface Props {
+  isCollapsedOnBigScreen: boolean,
+  isCollapsedOnSmallScreen: boolean
+}
+// todo:: тут defaults не нужны, но без них IDE подсвечивает красным. Разобраться.
+const props = withDefaults(defineProps<Props>(), {
+  isCollapsedOnBigScreen: false,
+  isCollapsedOnSmallScreen: false
+})
 
 const responsiveStore = useResponsiveStore()
 const { isMdOrMore } = storeToRefs(responsiveStore)
@@ -39,14 +49,11 @@ let isBig = computed(()=>{
 
 // Возможно выпилить отсюда и перенести в AContainer.
 // А здесь принимать готовое значение.
-let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
-let isCollapsedOnSmallScreen = ref(localStorageService.getItem('isMenuCollapsedOnSmallScreen', true))
-
-// Возможно выпилить отсюда и перенести в AContainer.
-// А здесь принимать готовое значение.
 let isCollapsed = computed(()=>{
-  let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
-  let isCollapsedBySmallScreen = !isBig.value && isCollapsedOnSmallScreen.value
+  // let isCollapsedByBigScreen = isBig.value && props.isCollapsedOnBigScreen.value
+  // let isCollapsedBySmallScreen = !isBig.value && props.isCollapsedOnSmallScreen.value
+  let isCollapsedByBigScreen = isBig.value && props.isCollapsedOnBigScreen
+  let isCollapsedBySmallScreen = !isBig.value && props.isCollapsedOnSmallScreen
   return isCollapsedByBigScreen || isCollapsedBySmallScreen
 })
 
@@ -54,19 +61,21 @@ let classes = computed(()=>{
   return {
     'main-menu--is-collapsed': isCollapsed.value,
     // todo:: вероятно эти 2 стиля окажутся не нужны
-    'main-menu--is-collapsed-on-big-screen': isCollapsedOnBigScreen.value,
-    'main-menu--is-collapsed-on-small-screen': isCollapsedOnSmallScreen.value,
+    'main-menu--is-collapsed-on-big-screen': props.isCollapsedOnBigScreen.value,
+    'main-menu--is-collapsed-on-small-screen': props.isCollapsedOnSmallScreen.value,
   }
 })
 
 function toggleMenuCollapse(){
+  emit('toggleMenuCollapse')
 
+  // То что дальше - похоже не будет нужно.
   if (isBig.value) {
-    isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
-    localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
+    // isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
+    // localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
   } else {
-    isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
-    localStorageService.setItem('isMenuCollapsedOnSmallScreen', isCollapsedOnSmallScreen.value)
+    // isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
+    // localStorageService.setItem('isMenuCollapsedOnSmallScreen', isCollapsedOnSmallScreen.value)
   }
 }
 

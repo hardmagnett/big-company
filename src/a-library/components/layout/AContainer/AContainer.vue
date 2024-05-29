@@ -1,7 +1,12 @@
 <template>
   <div class="a-container">
     <div class="a-container__header">
-      <div class="a-container__top-left">
+      <div
+        class="a-container__top-left"
+        :class="{
+          'a-container__top-left--collapsed': isMainMenuCollapsed
+        }"
+      >
         <AHeader
             :isMainMenuCollapsed="isMainMenuCollapsed"
             logoUrl="/src/app/assets/images/logo.svg"
@@ -20,7 +25,11 @@
       <!--<div class="a-container__temp-like-menu">-->
       <!--  temp-like-menu-->
       <!--</div>-->
-      <AMainMenu/>
+      <AMainMenu
+        :isCollapsedOnBigScreen="isCollapsedOnBigScreen"
+        :isCollapsedOnSmallScreen="isCollapsedOnSmallScreen"
+        @toggle-menu-collapse="toggleMenuCollapse"
+      />
 
       <div class="container__main-content mod--cool-scrollbar">
         <slot />
@@ -43,6 +52,11 @@
 
     .a-container__top-left {
       outline: 1px solid darkred;
+      width: var(--left-menu-width-expanded);
+      transition: width var(--time-short);
+      &.a-container__top-left--collapsed {
+        width: var(--left-menu-width-collapsed);
+      }
     }
 
     .a-container__page-header-place {
@@ -114,4 +128,14 @@ let isMainMenuCollapsed = computed(()=>{
   let isCollapsedBySmallScreen = !isBig.value && isCollapsedOnSmallScreen.value
   return isCollapsedByBigScreen || isCollapsedBySmallScreen
 })
+
+function toggleMenuCollapse(){
+  if (isBig.value) {
+    isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
+    localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
+  } else {
+    isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
+    localStorageService.setItem('isMenuCollapsedOnSmallScreen', isCollapsedOnSmallScreen.value)
+  }
+}
 </script>
