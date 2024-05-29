@@ -1,7 +1,7 @@
 body {
   font-family: var(--body-font-family);
   font-size: var(--font-size-base);
-  color: var(--clr-font-blue-dark);
+  color: var(--clr-font-blue-darkest);
 }
 
 a {

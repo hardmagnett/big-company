@@ -1,4 +1,17 @@
 <script setup lang="ts">
+/**
+ * Меню предусматривает лишь 1 уровень вложенности (У элемента может быть лишь 1 уровень потомков).
+ * Делать глубже не имеет смысла:
+ * - Это не помещается в экраны сматрфонов уже на 3-м уровне.
+ * - Для 2-х уровней
+ *   - либо будет пестрить от всех цветных подсветок, подсказывающих какой уровень открыт,
+ *   — либо без подсветок будет непонятно какой уровень открыт.
+ * - Это неудобно с точки зрения UX - пользователь путается.
+ *   Лучше на более вложенные элементы делать ссылки уже непосредственно на страницах.
+ *
+ * Я не встречал подобных боковых меню, у которых было-бы 2 и более уровней вложенности,
+ * да таких, чтобы были удобными. В Vuetify всего 2 уровня. В SilverStripe всего 1 уровень.
+ */
 
 import {ref, computed} from 'vue';
 import { storeToRefs } from 'pinia'
@@ -71,14 +84,14 @@ const menuItems = [
   { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
   { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
   { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
   // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
   // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
   // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
@@ -89,6 +102,47 @@ const menuItems = [
   // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
   // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
 
+  {
+    id: i++,
+    title: 'Сотрудники',
+    icon: 'mdi-account-group',
+    route: {
+      to: 'employees'
+    },
+  } as MenuItem ,
+  {
+    id: i++,
+    title: 'Компоненты',
+    icon: 'mdi-vuejs',
+    children: [
+      {
+        id: i++,
+        title: 'Заголовки',
+        icon: 'mdi-format-size',
+        route: {
+          to: 'headers'
+        },
+      } as MenuItem ,
+      {
+        id: i++,
+        title: 'Кнопки',
+        icon: 'mdi-button-cursor',
+        route: {
+          to: 'buttons'
+        },
+      } as MenuItem ,
+      {
+        id: i++,
+        title: 'Элементы форм',
+        icon: 'mdi-form-textbox',
+        route: {
+          to: 'inputs'
+        },
+      } as MenuItem
+    ]
+  },
+
+  // Ещё раз сотрудники и компоненты
   {
     id: i++,
     title: 'Сотрудники',

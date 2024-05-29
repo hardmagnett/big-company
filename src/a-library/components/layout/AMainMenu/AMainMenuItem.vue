@@ -64,7 +64,8 @@ const paddingLeft = computed(() => props.deepLevel * 16)
 const classes = computed(() => {
   return {
     'main-menu-item--is-closed': props.menuItem.children && isClosed.value,
-    'main-menu-item--main-menu-is-collapsed': props.isMainMenuCollapsed
+    'main-menu-item--main-menu-is-collapsed': props.isMainMenuCollapsed,
+    'main-menu-item--deep-level-1': props.deepLevel === 1
   }
 })
 
@@ -195,7 +196,7 @@ onMounted(() => {
 
     height: var(--height);
     line-height: var(--height);
-    color: var(--clr-font-blue-dark);
+    color: var(--clr-font-blue-darkest);
     text-decoration: none;
     transition: background-color var(--time-short), color var(--time-short);
     font-size: var(--font-size-tiny);
@@ -231,7 +232,7 @@ onMounted(() => {
 
     &.main-menu-item__link--active {
       background-color: var(--accentedColor);
-      color: var(--clr-font-blue-light);
+      color: var(--clr-font-blue-light) !important;
       &:hover {
         background-color: var(--accentedColor);
         color: var(--clr-font-blue-light);
@@ -272,6 +273,13 @@ onMounted(() => {
     }
     .main-menu-item__closing-indicator {
       opacity: 0;
+    }
+  }
+
+  &.main-menu-item--deep-level-1 {
+    background-color: var(--clr-bg-blue-smaller);
+    .main-menu-item__link {
+      color: var(--clr-font-blue-dark);
     }
   }
 }
