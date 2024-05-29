@@ -51,6 +51,7 @@ export default {
     flex-flow: column nowrap;
     gap: 7px;
     width: 20px;
+    transition: transform var(--time-short);
     .a-hamburger__line {
       transition: opacity var(--time-short), transform var(--time-short);
       height: 2px;
@@ -60,6 +61,7 @@ export default {
 
   &.a-hamburger--is-cross {
     .a-hamburger__lines {
+      transform: rotate(360deg);
       .a-hamburger__line {
         height: 2px;
         background-color: white;

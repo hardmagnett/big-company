@@ -182,7 +182,7 @@ onMounted(() => {
   > .main-menu-item__children {
     max-height: 1000px;
     overflow-y: hidden;
-    transition: max-height var(--time-short) ease-in;
+    transition: max-height var(--time-short) var(--transition-extra-easy-in);
   }
 
   .main-menu-item__link {
@@ -258,7 +258,7 @@ onMounted(() => {
   &.main-menu-item--is-closed {
     > .main-menu-item__children {
       max-height: 0;
-      transition: max-height var(--time-short) ease-out;
+      transition: max-height var(--time-short) var(--transition-extra-easy-out);
     }
   }
 

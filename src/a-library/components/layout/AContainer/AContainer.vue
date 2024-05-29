@@ -7,7 +7,11 @@
           'a-container__top-left--collapsed': isMainMenuCollapsed
         }"
       >
+        <AHamburger
+            v-if="!isBig"
+        />
         <AHeader
+            v-if="isBig"
             :isMainMenuCollapsed="isMainMenuCollapsed"
             logoUrl="/src/app/assets/images/logo.svg"
             textNearLogo="CRM"
@@ -108,6 +112,7 @@ import {computed, ref} from "vue";
 import {storeToRefs} from "pinia";
 import localStorageService from '@/a-library/helpers/DOM/localStorageService';
 import {useResponsiveStore} from "@/a-library/stores/responsive";
+import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue";
 const responsiveStore = useResponsiveStore()
 
 const { isMdOrMore } = storeToRefs(responsiveStore)
