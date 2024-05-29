@@ -51,9 +51,10 @@
     flex-flow: row nowrap;
 
     .a-container__top-left {
-      outline: 1px solid darkred;
+      /*outline: 1px solid darkred;*/
       width: var(--left-menu-width-expanded);
       transition: width var(--time-short);
+      border-right: 1px solid var(--clr-border-blue-lighter);
       &.a-container__top-left--collapsed {
         width: var(--left-menu-width-collapsed);
       }
