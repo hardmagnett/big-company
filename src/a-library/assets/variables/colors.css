@@ -41,6 +41,7 @@
 /*clrBorder - Цвет Бордюра*/
 /*lighter - на стыке белого с серым*/
 /*lightest - на фоне белого*/
+/*darker - на фоне --clr-fill-blue-small*/
 :root {
   --_sat-border-lighter: 10%;
   --_light-border-lighter: 90%;
@@ -48,8 +49,12 @@
   --_sat-border-lightest: 9%;
   --_light-border-lightest: 94%;
 
+  --_sat-border-darker: 42%;
+  --_light-border-darker: 48%;
+
   --clr-border-blue-lighter: hsl(var(--_hue-blue), var(--_sat-border-lighter), var(--_light-border-lighter));
   --clr-border-blue-lightest: hsl(var(--_hue-blue), var(--_sat-border-lightest), var(--_light-border-lightest));
+  --clr-border-blue-darker: hsl(var(--_hue-blue), var(--_sat-border-darker), var(--_light-border-darker));
 }
 
 /*clr-bg - Цвет фона. Для блоков большого размера. Светлый задний фон*/

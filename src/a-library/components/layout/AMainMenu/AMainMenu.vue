@@ -61,6 +61,34 @@ const menuItems = [
       to: 'departments'
     },
   } as MenuItem ,
+
+  // todo:: удалить это, когда закончишь с высотой меню.
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
+
   {
     id: i++,
     title: 'Сотрудники',
@@ -114,13 +142,16 @@ const menuItems = [
         logoUrl="/src/app/assets/images/logo.svg"
         textNearLogo="CRM"
     />
-    <!--{{isBig}}-->
-    <AMainMenuItem
-        v-for="menuItem in menuItems"
-        :key="menuItem.id"
-        :menuItem="menuItem"
-        :isMainMenuCollapsed="isCollapsed"
-    />
+    <div class="main-menu__items mod--cool-scrollbar">
+      <!--{{isBig}}-->
+      <AMainMenuItem
+          v-for="menuItem in menuItems"
+          :key="menuItem.id"
+          :menuItem="menuItem"
+          :isMainMenuCollapsed="isCollapsed"
+      />
+    </div>
+
 
     <div
         class="main-menu__width-toggler"
@@ -140,7 +171,7 @@ const menuItems = [
 .main-menu {
   position: relative;
   /*padding-top: calc(var(--gap) / 2);*/
-  padding-bottom: calc(var(--gap) / 2);
+  /*padding-bottom: calc(var(--gap) / 2);*/
   /*position: fixed;*/
   left: 0;
   /*top: var(--headerHeight);*/
@@ -153,18 +184,32 @@ const menuItems = [
 
   overflow-x:hidden;
 
+  display: flex;
+  flex-flow: column nowrap;
+
   .a-header {
-    margin-bottom: calc(var(--gap) / 2);
+    /*margin-bottom: calc(var(--gap) / 2);*/
+    flex: 0 0 auto;
+    border-bottom: 1px solid var(--clr-border-blue-darker);
   }
 
-  /*todo:: переделать. Это не предусматривает скролл от меню*/
+  .main-menu__items {
+    /*outline: 1px solid darkred;*/
+    /*padding-top: calc(var(--gap) / 2);*/
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
   .main-menu__width-toggler {
 
+    flex: 0 0 auto;
+
     /*outline: 1px solid darkred;*/
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
     height: calc(var(--gap) * 2);
     border-top: 1px solid var(--clr-border-blue-lighter);
     display: flex;
