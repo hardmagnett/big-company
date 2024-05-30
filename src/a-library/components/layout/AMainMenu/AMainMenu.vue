@@ -198,11 +198,13 @@ const menuItems = [
           :key="menuItem.id"
           :menuItem="menuItem"
           :isMainMenuCollapsed="isCollapsed"
+          :isMainMenuOnSmallScreen="!isBig"
       />
     </div>
 
 
     <div
+        v-if="isBig"
         class="a-main-menu__width-toggler"
         @click="toggleMenuCollapse"
     >

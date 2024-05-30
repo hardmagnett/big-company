@@ -49,6 +49,7 @@ import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 export interface Props {
   deepLevel?: number
   isMainMenuCollapsed: boolean
+  isMainMenuOnSmallScreen?: boolean
   menuItem: MenuItem
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -65,6 +66,7 @@ const classes = computed(() => {
   return {
     'main-menu-item--is-closed': props.menuItem.children && isClosed.value,
     'main-menu-item--main-menu-is-collapsed': props.isMainMenuCollapsed,
+    'main-menu-item--main-menu-on-small-screen': props.isMainMenuOnSmallScreen,
     'main-menu-item--deep-level-1': props.deepLevel === 1
   }
 })
@@ -130,7 +132,7 @@ onMounted(() => {
         :icon="menuItem.icon"
         size="giant"
       />
-      <span class="main-menu-item__text">{{menuItem.title}}</span>
+      <span class="main-menu-item__text mod--ellipsis-one-line">{{menuItem.title}}</span>
     </RouterLink>
     <a
       class="main-menu-item__link main-menu-item__link--to-children"
@@ -143,7 +145,7 @@ onMounted(() => {
         :icon="menuItem.icon"
         size="giant"
       />
-      <span class="main-menu-item__text">{{menuItem.title}}</span>
+      <span class="main-menu-item__text mod--ellipsis-one-line">{{menuItem.title}}</span>
       <span class="main-menu-item__spacer"></span>
       <AIcon
           class="main-menu-item__closing-indicator"
@@ -161,6 +163,7 @@ onMounted(() => {
           :menuItem="childMenuItem"
           :deepLevel="deepLevel + 1"
           :isMainMenuCollapsed="isMainMenuCollapsed"
+          :isMainMenuOnSmallScreen="isMainMenuOnSmallScreen"
       />
     </div>
   </div>
@@ -273,6 +276,16 @@ onMounted(() => {
     }
     .main-menu-item__closing-indicator {
       opacity: 0;
+    }
+  }
+
+  &.main-menu-item--main-menu-on-small-screen {
+    width: 100%;
+    /*> a {*/
+    /*  width: 500px;*/
+    /*}*/
+    .main-menu-item__text {
+
     }
   }
 
