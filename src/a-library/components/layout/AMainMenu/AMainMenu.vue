@@ -28,12 +28,12 @@ const emit = defineEmits(['toggleMenuCollapse'])
 
 export interface Props {
   isCollapsedOnBigScreen: boolean,
-  isCollapsedOnSmallScreen: boolean
+  isBig: boolean
 }
 // todo:: тут defaults не нужны, но без них IDE подсвечивает красным. Разобраться.
 const props = withDefaults(defineProps<Props>(), {
   isCollapsedOnBigScreen: false,
-  isCollapsedOnSmallScreen: false
+  isBig: false,
 })
 
 const responsiveStore = useResponsiveStore()
@@ -41,42 +41,19 @@ const { isMdOrMore } = storeToRefs(responsiveStore)
 
 // Возможно выпилить отсюда и перенести в AContainer.
 // А здесь принимать готовое значение.
-let isBig = computed(()=>{
-  console.log(1)
-  return isMdOrMore.value()
-  // return isEqualOrMoreThan.value('--bp-md')
-})
-
-// Возможно выпилить отсюда и перенести в AContainer.
-// А здесь принимать готовое значение.
 let isCollapsed = computed(()=>{
-  // let isCollapsedByBigScreen = isBig.value && props.isCollapsedOnBigScreen.value
-  // let isCollapsedBySmallScreen = !isBig.value && props.isCollapsedOnSmallScreen.value
-  let isCollapsedByBigScreen = isBig.value && props.isCollapsedOnBigScreen
-  let isCollapsedBySmallScreen = !isBig.value && props.isCollapsedOnSmallScreen
-  return isCollapsedByBigScreen || isCollapsedBySmallScreen
+  let isCollapsedByBigScreen = props.isBig && props.isCollapsedOnBigScreen
+  return isCollapsedByBigScreen
 })
 
 let classes = computed(()=>{
   return {
     'a-main-menu--is-collapsed': isCollapsed.value,
-    // todo:: вероятно эти 2 стиля окажутся не нужны
-    'a-main-menu--is-collapsed-on-big-screen': props.isCollapsedOnBigScreen.value,
-    'a-main-menu--is-collapsed-on-small-screen': props.isCollapsedOnSmallScreen.value,
   }
 })
 
 function toggleMenuCollapse(){
   emit('toggleMenuCollapse')
-
-  // То что дальше - похоже не будет нужно.
-  if (isBig.value) {
-    // isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
-    // localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
-  } else {
-    // isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
-    // localStorageService.setItem('isMenuCollapsedOnSmallScreen', isCollapsedOnSmallScreen.value)
-  }
 }
 
 
@@ -208,6 +185,8 @@ const menuItems = [
     :class="classes"
   >
     <AHeader
+        v-if="!isBig"
+        :isOnSmallScreen="!isBig"
         :isMainMenuCollapsed="isCollapsed"
         logoUrl="/src/app/assets/images/logo.svg"
         textNearLogo="CRM"
@@ -261,6 +240,7 @@ const menuItems = [
     /*margin-bottom: calc(var(--gap) / 2);*/
     flex: 0 0 auto;
     border-bottom: 1px solid var(--clr-border-blue-darker);
+    margin-left: var(--left-menu-width-collapsed);
   }
 
   .a-main-menu__items {

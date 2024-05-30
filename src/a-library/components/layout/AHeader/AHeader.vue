@@ -3,18 +3,21 @@ import {computed,} from 'vue';
 
 export interface Props {
   isMainMenuCollapsed: boolean,
+  isOnSmallScreen: boolean,
   logoUrl: string | null,
   textNearLogo: string | null
 }
 const props = withDefaults(defineProps<Props>(), {
   isMainMenuCollapsed: false,
   logoUrl: null,
-  textNearLogo: null
+  textNearLogo: null,
+  isOnSmallScreen: false,
 })
 
 let classes = computed(()=>{
   return  {
-    'a-header--main-menu-is-collapsed': props.isMainMenuCollapsed
+    'a-header--main-menu-is-collapsed': props.isMainMenuCollapsed,
+    'a-header--is-on-small-screen': props.isOnSmallScreen
   }
 })
 
@@ -59,6 +62,13 @@ let imageForLogo = computed(()=>{
       .a-header__text-near-logo {
         opacity: 0;
       }
+    }
+    &.a-header--is-on-small-screen {
+      padding-right: var(--gap);
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      padding-left: 0;
     }
   }
 </style>

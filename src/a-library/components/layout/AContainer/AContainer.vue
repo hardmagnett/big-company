@@ -34,6 +34,7 @@
         :isCollapsedOnBigScreen="isCollapsedOnBigScreen"
         :isCollapsedOnSmallScreen="isCollapsedOnSmallScreen"
         @toggle-menu-collapse="toggleMenuCollapse"
+        :isBig="isBig"
         :class="{
           'a-main-menu--visible-on-small': isMenuVisibleOnSmall
         }"
