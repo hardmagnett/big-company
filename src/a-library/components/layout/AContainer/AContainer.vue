@@ -70,7 +70,10 @@
       /*outline: 1px solid darkred;*/
       width: var(--left-menu-width-expanded);
       transition: width var(--time-short);
+
       /*border-right: 1px solid var(--clr-border-blue-lighter);*/
+
+
       /*border-bottom: 1px solid var(--clr-border-blue-darker);*/
       /*height: var(--header-height);*/
       z-index: 16;
@@ -111,13 +114,15 @@
         z-index: 8;
         will-change: transform;
         transform: translate(-100%, 0);
-        transition: transform var(--time-short)
+        transition: transform var(--time-short);
+
+        &.a-main-menu--visible-on-small {
+          transform: translate(0, 0);
+          border-right: none;
+          /*isMenuVisibleOnSmall */
+        }
       }
-      &.a-main-menu--visible-on-small {
-        transform: translate(0, 0);
-        border-right: none;
-        /*isMenuVisibleOnSmall */
-      }
+
 
     }
     .container__main-content {
@@ -209,6 +214,7 @@ function toggleMenuOnSmall(){
   isMenuVisibleOnSmall.value = !isMenuVisibleOnSmall.value
 }
 function clickOnRouterLinkHandler(){
-  toggleMenuOnSmall()
+  isMenuVisibleOnSmall.value = false
+  // toggleMenuOnSmall()
 }
 </script>
