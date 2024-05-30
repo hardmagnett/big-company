@@ -1,5 +1,10 @@
 <template>
   <div class="a-container">
+
+    <div
+        class="a-container__menu-overlay"
+        :class="{'a-container__menu-overlay--invisible': hideMenuOverlay}"
+    ></div>
     <div class="a-container__header">
       <div
         class="a-container__top-left"
@@ -65,7 +70,7 @@
       /*outline: 1px solid darkred;*/
       width: var(--left-menu-width-expanded);
       transition: width var(--time-short);
-      border-right: 1px solid var(--clr-border-blue-lighter);
+      /*border-right: 1px solid var(--clr-border-blue-lighter);*/
       /*border-bottom: 1px solid var(--clr-border-blue-darker);*/
       /*height: var(--header-height);*/
       z-index: 16;
@@ -110,6 +115,7 @@
       }
       &.a-main-menu--visible-on-small {
         transform: translate(0, 0);
+        border-right: none;
         /*isMenuVisibleOnSmall */
       }
 
@@ -137,6 +143,22 @@
     @container style(--bp-xxl-or-more) {
 
     }
+    }
+  }
+  .a-container__menu-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 8;
+    background-color: black;
+    opacity: 0.7;
+    will-change: opacity;
+    transition: opacity var(--time-short);
+    &.a-container__menu-overlay--invisible {
+      opacity: 0;
+      pointer-events: none;
     }
   }
 
@@ -167,6 +189,11 @@ let isMainMenuCollapsed = computed(()=>{
   let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
   let isCollapsedBySmallScreen = !isBig.value && isCollapsedOnSmallScreen.value
   return isCollapsedByBigScreen || isCollapsedBySmallScreen
+})
+
+let hideMenuOverlay = computed(()=>{
+  let result = isBig.value || !isMenuVisibleOnSmall.value
+  return result
 })
 
 function toggleMenuCollapse(){
