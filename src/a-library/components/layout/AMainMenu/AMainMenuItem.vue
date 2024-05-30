@@ -38,6 +38,7 @@
 
 import { onMounted, computed, ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+const emit = defineEmits(['clickOnRouterLink'])
 const route = useRoute()
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
@@ -126,6 +127,7 @@ onMounted(() => {
         :to="{name: menuItem.route.to}"
         active-class="main-menu-item__link--active"
         exact
+        @click="emit('clickOnRouterLink')"
     >
       <AIcon
         class="main-menu-item__menu-icon"
@@ -164,6 +166,7 @@ onMounted(() => {
           :deepLevel="deepLevel + 1"
           :isMainMenuCollapsed="isMainMenuCollapsed"
           :isMainMenuOnSmallScreen="isMainMenuOnSmallScreen"
+          @click-on-router-link="emit('clickOnRouterLink')"
       />
     </div>
   </div>
@@ -179,7 +182,6 @@ onMounted(() => {
   --accentedColorLess: var(--clr-bg-blue-accent);
   --accentedColor: var(--clr-fill-blue-small);
 
-  /*Чтобы в процессе сворачивании меню текст не переносился на несколько строк*/
   width: var(--left-menu-width-expanded);
 
   > .main-menu-item__children {

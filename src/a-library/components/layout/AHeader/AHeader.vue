@@ -3,7 +3,7 @@ import {computed,} from 'vue';
 
 export interface Props {
   isMainMenuCollapsed: boolean,
-  isOnSmallScreen: boolean,
+  isOnSmallScreen?: boolean,
   logoUrl: string | null,
   textNearLogo: string | null
 }

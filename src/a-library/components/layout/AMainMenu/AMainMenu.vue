@@ -24,7 +24,7 @@ import getCSSVariable from '@/a-library/helpers/DOM/getCSSVariable';
 import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
-const emit = defineEmits(['toggleMenuCollapse'])
+const emit = defineEmits(['toggleMenuCollapse', 'clickOnRouterLink'])
 
 export interface Props {
   isCollapsedOnBigScreen: boolean,
@@ -199,6 +199,7 @@ const menuItems = [
           :menuItem="menuItem"
           :isMainMenuCollapsed="isCollapsed"
           :isMainMenuOnSmallScreen="!isBig"
+          @click-on-router-link="emit('clickOnRouterLink')"
       />
     </div>
 

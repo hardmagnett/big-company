@@ -10,6 +10,7 @@
         <AHamburger
             v-if="!isBig"
             @clickedOnCross="toggleMenuOnSmall"
+            :is-crossed="isMenuVisibleOnSmall"
         />
         <AHeader
             v-if="isBig"
@@ -34,6 +35,7 @@
         :isCollapsedOnBigScreen="isCollapsedOnBigScreen"
         :isCollapsedOnSmallScreen="isCollapsedOnSmallScreen"
         @toggle-menu-collapse="toggleMenuCollapse"
+        @click-on-router-link="clickOnRouterLinkHandler"
         :isBig="isBig"
         :class="{
           'a-main-menu--visible-on-small': isMenuVisibleOnSmall
@@ -172,7 +174,9 @@ function toggleMenuCollapse(){
   }
 }
 function toggleMenuOnSmall(){
-  console.log(1)
   isMenuVisibleOnSmall.value = !isMenuVisibleOnSmall.value
+}
+function clickOnRouterLinkHandler(){
+  toggleMenuOnSmall()
 }
 </script>

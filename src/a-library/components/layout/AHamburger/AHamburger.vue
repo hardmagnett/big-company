@@ -15,20 +15,20 @@
 <script>
 
 export default {
-  // props: {
-  //   isCross: {
-  //     type: Boolean,
-  //     default: true,
-  //   }
-  // },
+  props: {
+    isCrossed: {
+      type: Boolean,
+      default: true,
+    }
+  },
   data(){
     return {
-      isCrossed: false
+      // isCrossed: false
     }
   },
   methods: {
     processClick(){
-      this.isCrossed = !this.isCrossed
+      // this.isCrossed = !this.isCrossed
       this.$emit('clickedOnCross')
     }
   }
