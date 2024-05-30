@@ -9,6 +9,7 @@
       >
         <AHamburger
             v-if="!isBig"
+            @clickedOnCross="toggleMenuOnSmall"
         />
         <AHeader
             v-if="isBig"
@@ -33,6 +34,9 @@
         :isCollapsedOnBigScreen="isCollapsedOnBigScreen"
         :isCollapsedOnSmallScreen="isCollapsedOnSmallScreen"
         @toggle-menu-collapse="toggleMenuCollapse"
+        :class="{
+          'a-main-menu--visible-on-small': isMenuVisibleOnSmall
+        }"
       />
 
       <div class="container__main-content mod--cool-scrollbar">
@@ -59,6 +63,13 @@
       width: var(--left-menu-width-expanded);
       transition: width var(--time-short);
       border-right: 1px solid var(--clr-border-blue-lighter);
+      z-index: 16;
+      @container style(--bp-sm-or-less) {
+        width: var(--left-menu-width-collapsed);
+      }
+      .a-hamburger {
+
+      }
       &.a-container__top-left--collapsed {
         width: var(--left-menu-width-collapsed);
       }
@@ -77,6 +88,23 @@
 
     .a-main-menu {
       flex: 0 0 auto;
+      @container style(--bp-sm-or-less) {
+        /*outline: 1px solid darkred;*/
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 80%;
+        z-index: 8;
+        will-change: transform;
+        transform: translate(-100%, 0);
+        transition: transform var(--time-short)
+      }
+      &.a-main-menu--visible-on-small {
+        transform: translate(0, 0);
+        /*isMenuVisibleOnSmall */
+      }
+
     }
     .container__main-content {
       flex: 1 1 auto;
@@ -120,6 +148,7 @@ const { isMdOrMore } = storeToRefs(responsiveStore)
 
 let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
 let isCollapsedOnSmallScreen = ref(localStorageService.getItem('isMenuCollapsedOnSmallScreen', true))
+let isMenuVisibleOnSmall = ref(false)
 
 let isBig = computed(()=>{
   // return isEqualOrMoreThan.value('--bp-md')
@@ -140,5 +169,9 @@ function toggleMenuCollapse(){
     isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
     localStorageService.setItem('isMenuCollapsedOnSmallScreen', isCollapsedOnSmallScreen.value)
   }
+}
+function toggleMenuOnSmall(){
+  console.log(1)
+  isMenuVisibleOnSmall.value = !isMenuVisibleOnSmall.value
 }
 </script>
