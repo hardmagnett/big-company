@@ -22,7 +22,7 @@ import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue'
     /* gap: 0; */
 
     .employee-row {
-      outline: 1px solid orange;
+      /*outline: 1px solid orange;*/
       --flex-items-qty: 1;
       @container style(--pb-sx-or-more) {
         --flex-items-qty: 1;

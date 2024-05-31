@@ -41,6 +41,7 @@
 /*clrBorder - Цвет Бордюра*/
 /*lighter - на стыке белого с серым*/
 /*lightest - на фоне белого*/
+/*darker - на фоне --clr-fill-blue-small*/
 :root {
   --_sat-border-lighter: 10%;
   --_light-border-lighter: 90%;
@@ -48,8 +49,12 @@
   --_sat-border-lightest: 9%;
   --_light-border-lightest: 94%;
 
+  --_sat-border-darker: 42%;
+  --_light-border-darker: 48%;
+
   --clr-border-blue-lighter: hsl(var(--_hue-blue), var(--_sat-border-lighter), var(--_light-border-lighter));
   --clr-border-blue-lightest: hsl(var(--_hue-blue), var(--_sat-border-lightest), var(--_light-border-lightest));
+  --clr-border-blue-darker: hsl(var(--_hue-blue), var(--_sat-border-darker), var(--_light-border-darker));
 }
 
 /*clr-bg - Цвет фона. Для блоков большого размера. Светлый задний фон*/
@@ -64,6 +69,8 @@
   --_sat-bg-small: 9%;
   --_light-bg-small: 94%;
 
+  --_sat-bg-smaller: 9%;
+  --_light-bg-smaller: 90%;
 
 
   --_sat-bg-accent: 19%;
@@ -74,6 +81,7 @@
 
   --clr-bg-blue-big: hsl(var(--_hue-blue), var(--_sat-bg-big), var(--_light-bg-big));
   --clr-bg-blue-small: hsl(var(--_hue-blue), var(--_sat-bg-small), var(--_light-bg-small));
+  --clr-bg-blue-smaller: hsl(var(--_hue-blue), var(--_sat-bg-smaller), var(--_light-bg-smaller));
   --clr-bg-blue-accent: hsl(var(--_hue-blue), var(--_sat-bg-accent), var(--_light-bg-accent));
   --clr-bg-blue-highlight: hsl(var(--_hue-blue), var(--_sat-bg-highlight), var(--_light-bg-highlight));
 
@@ -102,9 +110,13 @@
   --_light-font-gray: 58%;
 
   --_sat-font-dark: 0%;
-  --_light-font-dark: 0%;
+  --_light-font-dark: 20%;
+
+  --_sat-font-darkest: 0%;
+  --_light-font-darkest: 0%;
 
   --clr-font-blue-light: hsl(var(--_hue-blue), var(--_sat-font-light), var(--_light-font-light));
   --clr-font-blue-gray: hsl(var(--_hue-blue), var(--_sat-font-gray), var(--_light-font-gray));
   --clr-font-blue-dark: hsl(var(--_hue-blue), var(--_sat-font-dark), var(--_light-font-dark));
+  --clr-font-blue-darkest: hsl(var(--_hue-blue), var(--_sat-font-darkest), var(--_light-font-darkest));
 }

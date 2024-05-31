@@ -1,18 +1,19 @@
 :root {
 
 /*Время анимаций*/
---time-short: 200ms;
+--time-short: 300ms;
 /*--timeShort: 1000ms;*/    /*Удобно для быстрого замедления и отладки анимаций.*/
 --time-medium: 1000ms;
+/*Эти двое - для нормальной анимации изменения высоты с 0 на auto и обратно*/
+--transition-extra-easy-out: cubic-bezier(0,1,0,1);
+--transition-extra-easy-in: cubic-bezier(1,0,1,0);
 
-    --gap: 16px;
-    --border-radius: 4px;
+--gap: 16px;
+--border-radius: 4px;
 
 /*Не типографический заголовок, а шапка*/
 --header-height: calc(var(--gap) * 3);
 
-/*fixme - либо узнать что это за переменные, либо удалить этот странный коммент*/
-/*В перспективе будет меняться js-ом*/
 --left-menu-width-expanded: 200px;
 --left-menu-width-collapsed: 53px;
 }

@@ -1,7 +1,7 @@
 <template>
   <div
       class="a-hamburger"
-      :class="{'a-hamburger--is-cross': isCrossTemp}"
+      :class="{'a-hamburger--is-cross': isCrossed}"
       @click="processClick"
   >
     <div class="a-hamburger__lines">
@@ -16,19 +16,19 @@
 
 export default {
   props: {
-    isCross: {
+    isCrossed: {
       type: Boolean,
       default: true,
     }
   },
   data(){
     return {
-      isCrossTemp: false
+      // isCrossed: false
     }
   },
   methods: {
     processClick(){
-      this.isCrossTemp = !this.isCrossTemp
+      // this.isCrossed = !this.isCrossed
       this.$emit('clickedOnCross')
     }
   }
@@ -39,7 +39,8 @@ export default {
 .a-hamburger {
   cursor: pointer;
   height: var(--header-height);
-  width: var(--header-height);
+  /*width: var(--header-height);*/
+  width: var(--left-menu-width-collapsed);
   overflow: hidden;
   background-color: var(--clr-fill-blue-small);
   display: flex;
@@ -51,6 +52,7 @@ export default {
     flex-flow: column nowrap;
     gap: 7px;
     width: 20px;
+    transition: transform var(--time-short);
     .a-hamburger__line {
       transition: opacity var(--time-short), transform var(--time-short);
       height: 2px;
@@ -60,6 +62,7 @@ export default {
 
   &.a-hamburger--is-cross {
     .a-hamburger__lines {
+      transform: rotate(360deg);
       .a-hamburger__line {
         height: 2px;
         background-color: white;

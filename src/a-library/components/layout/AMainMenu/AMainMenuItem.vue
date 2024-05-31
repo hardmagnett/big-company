@@ -38,6 +38,7 @@
 
 import { onMounted, computed, ref, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+const emit = defineEmits(['clickOnRouterLink'])
 const route = useRoute()
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
@@ -49,6 +50,7 @@ import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 export interface Props {
   deepLevel?: number
   isMainMenuCollapsed: boolean
+  isMainMenuOnSmallScreen?: boolean
   menuItem: MenuItem
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -64,7 +66,9 @@ const paddingLeft = computed(() => props.deepLevel * 16)
 const classes = computed(() => {
   return {
     'main-menu-item--is-closed': props.menuItem.children && isClosed.value,
-    'main-menu-item--main-menu-is-collapsed': props.isMainMenuCollapsed
+    'main-menu-item--main-menu-is-collapsed': props.isMainMenuCollapsed,
+    'main-menu-item--main-menu-on-small-screen': props.isMainMenuOnSmallScreen,
+    'main-menu-item--deep-level-1': props.deepLevel === 1
   }
 })
 
@@ -123,13 +127,14 @@ onMounted(() => {
         :to="{name: menuItem.route.to}"
         active-class="main-menu-item__link--active"
         exact
+        @click="emit('clickOnRouterLink')"
     >
       <AIcon
         class="main-menu-item__menu-icon"
         :icon="menuItem.icon"
         size="giant"
       />
-      <span class="main-menu-item__text">{{menuItem.title}}</span>
+      <span class="main-menu-item__text mod--ellipsis-one-line">{{menuItem.title}}</span>
     </RouterLink>
     <a
       class="main-menu-item__link main-menu-item__link--to-children"
@@ -142,7 +147,7 @@ onMounted(() => {
         :icon="menuItem.icon"
         size="giant"
       />
-      <span class="main-menu-item__text">{{menuItem.title}}</span>
+      <span class="main-menu-item__text mod--ellipsis-one-line">{{menuItem.title}}</span>
       <span class="main-menu-item__spacer"></span>
       <AIcon
           class="main-menu-item__closing-indicator"
@@ -160,6 +165,8 @@ onMounted(() => {
           :menuItem="childMenuItem"
           :deepLevel="deepLevel + 1"
           :isMainMenuCollapsed="isMainMenuCollapsed"
+          :isMainMenuOnSmallScreen="isMainMenuOnSmallScreen"
+          @click-on-router-link="emit('clickOnRouterLink')"
       />
     </div>
   </div>
@@ -175,13 +182,12 @@ onMounted(() => {
   --accentedColorLess: var(--clr-bg-blue-accent);
   --accentedColor: var(--clr-fill-blue-small);
 
-  /*Чтобы в процессе сворачивании меню текст не переносился на несколько строк*/
   width: var(--left-menu-width-expanded);
 
   > .main-menu-item__children {
     max-height: 1000px;
     overflow-y: hidden;
-    transition: max-height var(--time-short) ease-in;
+    transition: max-height var(--time-short) var(--transition-extra-easy-in);
   }
 
   .main-menu-item__link {
@@ -195,7 +201,7 @@ onMounted(() => {
 
     height: var(--height);
     line-height: var(--height);
-    color: var(--clr-font-blue-dark);
+    color: var(--clr-font-blue-darkest);
     text-decoration: none;
     transition: background-color var(--time-short), color var(--time-short);
     font-size: var(--font-size-tiny);
@@ -231,7 +237,7 @@ onMounted(() => {
 
     &.main-menu-item__link--active {
       background-color: var(--accentedColor);
-      color: var(--clr-font-blue-light);
+      color: var(--clr-font-blue-light) !important;
       &:hover {
         background-color: var(--accentedColor);
         color: var(--clr-font-blue-light);
@@ -257,7 +263,7 @@ onMounted(() => {
   &.main-menu-item--is-closed {
     > .main-menu-item__children {
       max-height: 0;
-      transition: max-height var(--time-short) ease-out;
+      transition: max-height var(--time-short) var(--transition-extra-easy-out);
     }
   }
 
@@ -272,6 +278,23 @@ onMounted(() => {
     }
     .main-menu-item__closing-indicator {
       opacity: 0;
+    }
+  }
+
+  &.main-menu-item--main-menu-on-small-screen {
+    width: 100%;
+    /*> a {*/
+    /*  width: 500px;*/
+    /*}*/
+    .main-menu-item__text {
+
+    }
+  }
+
+  &.main-menu-item--deep-level-1 {
+    background-color: var(--clr-bg-blue-smaller);
+    .main-menu-item__link {
+      color: var(--clr-font-blue-dark);
     }
   }
 }

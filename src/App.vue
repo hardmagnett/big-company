@@ -6,11 +6,11 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
 
 <template>
   <div class="app">
-    <AHamburger />
+    <!--<AHamburger />-->
 
 
 
-    <AMainMenu/>
+    <!--<AMainMenu/>-->
 
     <AContainer>
       <!--<template v-slot:header>-->
@@ -23,12 +23,12 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
 </template>
 
 <style scoped>
-.a-hamburger {
-  position: absolute;
-  top: 130px;
-  left: 130px;
-  z-index: 15;
-}
+/*.a-hamburger {*/
+/*  position: absolute;*/
+/*  top: 130px;*/
+/*  left: 130px;*/
+/*  z-index: 15;*/
+/*}*/
 .app {
   display: flex;
   width: 100%;
