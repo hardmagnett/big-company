@@ -61,10 +61,11 @@ let i = 0
 const menuItems = [
   {
     id: i++,
-    title: 'Отделы',
-    icon: 'mdi-family-tree',
+    title: 'Задачи',
+    icon: 'mdi-view-dashboard-variant',
+    // icon: 'mdi-view-dashboard-variant-outline',
     route: {
-      to: 'departments'
+      to: 'tasks'
     },
   } as MenuItem ,
   {

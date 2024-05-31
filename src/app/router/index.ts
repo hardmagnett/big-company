@@ -1,9 +1,9 @@
+import tasks from '@/app/router/tasks';
 import employees from '@/app/router/employees';
-import departments from '@/app/router/departments';
 
 let routes = [
+  ...tasks,
   ...employees,
-  ...departments,
 ]
 
 export default routes
