@@ -17,10 +17,6 @@ import {ref, computed} from 'vue';
 import { storeToRefs } from 'pinia'
 import { useResponsiveStore } from '@/a-library/stores/responsive.js';
 
-
-import localStorageService from '@/a-library/helpers/DOM/localStorageService';
-import getCSSVariable from '@/a-library/helpers/DOM/getCSSVariable';
-
 import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
@@ -30,11 +26,7 @@ export interface Props {
   isCollapsedOnBigScreen: boolean,
   isBig: boolean
 }
-// todo:: тут defaults не нужны, но без них IDE подсвечивает красным. Разобраться.
-const props = withDefaults(defineProps<Props>(), {
-  isCollapsedOnBigScreen: false,
-  isBig: false,
-})
+const props = withDefaults(defineProps<Props>(), {})
 
 const responsiveStore = useResponsiveStore()
 const { isMdOrMore } = storeToRefs(responsiveStore)
@@ -61,40 +53,13 @@ let i = 0
 const menuItems = [
   {
     id: i++,
-    title: 'Отделы',
-    icon: 'mdi-family-tree',
+    title: 'Задачи',
+    icon: 'mdi-view-dashboard-variant',
+    // icon: 'mdi-view-dashboard-variant-outline',
     route: {
-      to: 'departments'
+      to: 'tasks'
     },
   } as MenuItem ,
-
-  // todo:: удалить это, когда закончишь с высотой меню.
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-
   {
     id: i++,
     title: 'Сотрудники',
@@ -131,50 +96,26 @@ const menuItems = [
         route: {
           to: 'inputs'
         },
-      } as MenuItem
+      } as MenuItem,
+      {
+        id: i++,
+        title: 'Сетка',
+        icon: 'mdi-view-grid',
+        route: {
+          to: 'column-grid'
+        },
+      } as MenuItem,
+      {
+        id: i++,
+        title: 'Блоки',
+        icon: 'mdi-square',
+        // icon: 'mdi-square-outline',
+        route: {
+          to: 'blocks'
+        },
+      } as MenuItem,
     ]
   },
-
-  // Ещё раз сотрудники и компоненты
-  {
-    id: i++,
-    title: 'Сотрудники',
-    icon: 'mdi-account-group',
-    route: {
-      to: 'employees'
-    },
-  } as MenuItem ,
-  {
-    id: i++,
-    title: 'Компоненты',
-    icon: 'mdi-vuejs',
-    children: [
-      {
-        id: i++,
-        title: 'Заголовки',
-        icon: 'mdi-format-size',
-        route: {
-          to: 'headers'
-        },
-      } as MenuItem ,
-      {
-        id: i++,
-        title: 'Кнопки',
-        icon: 'mdi-button-cursor',
-        route: {
-          to: 'buttons'
-        },
-      } as MenuItem ,
-      {
-        id: i++,
-        title: 'Элементы форм',
-        icon: 'mdi-form-textbox',
-        route: {
-          to: 'inputs'
-        },
-      } as MenuItem
-    ]
-  }
 ]
 
 </script>

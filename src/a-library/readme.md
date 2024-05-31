@@ -7,12 +7,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import attachAllALibraryComponents from '@/a-library/attachAllALibraryComponents.js';
+import bootstrapALibrary from '@/a-library/bootstrap.js';
 
 const app = createApp(App)
 
-// Подключить все компоненты
-attachAllALibraryComponents(app)
+bootstrapALibrary({
+  vueApp: app,
+  appName: 'code-example'
+})
 
 ```
 

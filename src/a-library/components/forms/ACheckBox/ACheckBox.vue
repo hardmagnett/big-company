@@ -34,6 +34,7 @@ export default {
     position: relative;
     width: fit-content;
     height: calc(var(--gap) + 2px);
+    line-height: 1.2;
 
     .check-box__input {
       display: none;

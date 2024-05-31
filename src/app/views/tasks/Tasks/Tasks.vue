@@ -3,7 +3,7 @@
 
     <Teleport to="#page-header-place">
       <APageHeader>
-        Отделы
+        Задачи
       </APageHeader>
     </Teleport>
 
