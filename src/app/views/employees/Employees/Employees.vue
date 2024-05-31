@@ -10,21 +10,19 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 </script>
 
 <template>
-  <div class="home-view">
-
+  <div class="employees">
     <Teleport to="#page-header-place">
       <APageHeader>
         Сотрудники
       </APageHeader>
     </Teleport>
-    <ABtn
-        :to="{name: 'employeeCreate'}"
-    >
+    <ABtn>
       <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
     </ABtn>
     <br>
 
     <div class="mod--clear-both"></div>
+    <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
     <EmployeesTable />
   </div>
 </template>
