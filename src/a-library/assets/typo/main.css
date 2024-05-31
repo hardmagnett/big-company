@@ -2,6 +2,13 @@ body {
   font-family: var(--body-font-family);
   font-size: var(--font-size-base);
   color: var(--clr-font-blue-darkest);
+  letter-spacing: var(--body-letter-spacing);
+  line-height: var(--body-line-height);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: calc(var(--gap) / 2);
 }
 
 a {

@@ -23,7 +23,7 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
       </p>
     </div>
 
-    <!--<br>-->
+    <br>
 
     <div class="mod--clear-both"></div>
     <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->

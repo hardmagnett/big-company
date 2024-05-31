@@ -1,9 +1,14 @@
 :root {
   --header-font-weight: 300;
   --header-font-family: 'Inter Tight Font', sans-serif;
-  --header-letter-spacing: 0rem;
+  --header-letter-spacing: 0.02rem;
   --header-line-height: 1.2;
+
   --body-font-family: 'Inter Tight Font', sans-serif;
+  --body-letter-spacing: 0.02rem;
+  --body-line-height: 1.4;
+  /*--body-line-height: 1.2;*/
+  /*--body-line-height: 1;*/
 
 
   /*размеры Шрифтов*/
