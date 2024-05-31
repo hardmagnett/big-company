@@ -1,6 +1,7 @@
 <template>
   <div class="employee-row">
-    Это будет рядком от сотрудника
+    <p>Это будет рядком от сотрудника</p>
+
   </div>
 </template>
 

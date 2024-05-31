@@ -2,9 +2,6 @@
 import HeaderAndSomethingElse from '@/app/components/shared/positioning/HeaderAndSomethingElse/HeaderAndSomethingElse.vue';
 import EmployeesTable from '@/app/components/employees/EmployeesTable/EmployeesTable.vue';
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-// export default {
-//   components: {AIcon}
-// }
 
 
 </script>
@@ -16,13 +13,36 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
         Сотрудники
       </APageHeader>
     </Teleport>
-    <ABtn>
-      <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
-    </ABtn>
-    <br>
+    <div class="employees__add-and-qty">
+      <ABtn>
+        <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
+      </ABtn>
+      <p class="mod--mt-0 mod--mb-0">
+        <!--Найдено: <span class="employees__qty-number">100000</span>-->
+        Найдено: <span class="employees__qty-number">1</span>
+      </p>
+    </div>
+
+    <!--<br>-->
 
     <div class="mod--clear-both"></div>
     <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
     <EmployeesTable />
   </div>
 </template>
+<style scoped>
+.employees {
+  .employees__add-and-qty {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    .employees__qty-number {
+      display: inline-block;
+      /*outline: 1px solid darkred;*/
+      width: 55px;
+      text-align: right;
+    }
+  }
+}
+
+</style>
