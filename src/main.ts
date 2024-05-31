@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import attachAllALibraryComponents from '@/a-library/attachAllALibraryComponents.js';
+import bootstrapALibrary from '@/a-library/bootstrap.js';
 
 
 import App from './App.vue'
@@ -11,7 +11,10 @@ import './main.css'
 
 const app = createApp(App)
 
-attachAllALibraryComponents(app)
+bootstrapALibrary({
+  vueApp: app,
+  appName: 'code-example'
+})
 
 app.use(createPinia())
 app.use(router)
