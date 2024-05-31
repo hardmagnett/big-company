@@ -1,10 +1,3 @@
-<template>
-  <span
-      class="a-icon"
-      :class="classes"
-  ></span>
-</template>
-
 <script>
 
 export default {
@@ -38,6 +31,15 @@ export default {
 
 }
 </script>
+
+<template>
+  <span
+      class="a-icon"
+      :class="classes"
+  ></span>
+</template>
+
+
 
 <style scoped>
 .a-icon {

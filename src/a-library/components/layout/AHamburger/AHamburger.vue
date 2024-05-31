@@ -1,17 +1,3 @@
-<template>
-  <div
-      class="a-hamburger"
-      :class="{'a-hamburger--is-cross': isCrossed}"
-      @click="processClick"
-  >
-    <div class="a-hamburger__lines">
-      <div class="a-hamburger__line a-hamburger__line--1" />
-      <div class="a-hamburger__line a-hamburger__line--2" />
-      <div class="a-hamburger__line a-hamburger__line--3" />
-    </div>
-  </div>
-</template>
-
 <script>
 
 export default {
@@ -28,6 +14,22 @@ export default {
   }
 }
 </script>
+
+<template>
+  <div
+      class="a-hamburger"
+      :class="{'a-hamburger--is-cross': isCrossed}"
+      @click="processClick"
+  >
+    <div class="a-hamburger__lines">
+      <div class="a-hamburger__line a-hamburger__line--1" />
+      <div class="a-hamburger__line a-hamburger__line--2" />
+      <div class="a-hamburger__line a-hamburger__line--3" />
+    </div>
+  </div>
+</template>
+
+
 
 <style scoped>
 .a-hamburger {

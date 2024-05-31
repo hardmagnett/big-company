@@ -1,3 +1,44 @@
+<script setup lang="ts">
+
+import {computed, ref} from "vue";
+import {storeToRefs} from "pinia";
+import localStorageService from '@/a-library/helpers/DOM/localStorageService';
+import {useResponsiveStore} from "@/a-library/stores/responsive";
+import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue";
+const responsiveStore = useResponsiveStore()
+
+const { isMdOrMore } = storeToRefs(responsiveStore)
+
+
+let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
+let isMenuVisibleOnSmall = ref(false)
+
+let isBig = computed(()=>{
+  return isMdOrMore.value()
+})
+
+let isMainMenuCollapsed = computed(()=>{
+  let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
+  return isCollapsedByBigScreen
+})
+
+let hideMenuOverlay = computed(()=>{
+  let result = isBig.value || !isMenuVisibleOnSmall.value
+  return result
+})
+
+function toggleMenuCollapse(){
+  isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
+  localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
+}
+function toggleMenuOnSmall(){
+  isMenuVisibleOnSmall.value = !isMenuVisibleOnSmall.value
+}
+function clickOnRouterLinkHandler(){
+  isMenuVisibleOnSmall.value = false
+}
+</script>
+
 <template>
   <div class="a-container">
 
@@ -138,43 +179,4 @@
 
 }
 </style>
-<script setup lang="ts">
 
-import {computed, ref} from "vue";
-import {storeToRefs} from "pinia";
-import localStorageService from '@/a-library/helpers/DOM/localStorageService';
-import {useResponsiveStore} from "@/a-library/stores/responsive";
-import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue";
-const responsiveStore = useResponsiveStore()
-
-const { isMdOrMore } = storeToRefs(responsiveStore)
-
-
-let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
-let isMenuVisibleOnSmall = ref(false)
-
-let isBig = computed(()=>{
-  return isMdOrMore.value()
-})
-
-let isMainMenuCollapsed = computed(()=>{
-  let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
-  return isCollapsedByBigScreen
-})
-
-let hideMenuOverlay = computed(()=>{
-  let result = isBig.value || !isMenuVisibleOnSmall.value
-  return result
-})
-
-function toggleMenuCollapse(){
-  isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
-  localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
-}
-function toggleMenuOnSmall(){
-  isMenuVisibleOnSmall.value = !isMenuVisibleOnSmall.value
-}
-function clickOnRouterLinkHandler(){
-  isMenuVisibleOnSmall.value = false
-}
-</script>

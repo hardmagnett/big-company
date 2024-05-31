@@ -1,3 +1,15 @@
+<script>
+
+export default {
+  props: {
+    label: {
+      type: String,
+      default: null
+    }
+  }
+}
+</script>
+
 <template>
   <label :for="`check-box-${$.uid}`" class="check-box">
     <input
@@ -14,18 +26,6 @@
     </span>
   </label>
 </template>
-
-<script>
-
-export default {
-  props: {
-    label: {
-      type: String,
-      default: null
-    }
-  }
-}
-</script>
 
 <style scoped>
   .check-box {

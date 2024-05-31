@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue';
+
+</script>
+
 <template>
   <div class="employees-table">
     <EmployeeRow
@@ -6,11 +11,6 @@
     />
   </div>
 </template>
-
-<script setup lang="ts">
-import EmployeeRow from '@/app/components/employees/EmployeeRow/EmployeeRow.vue';
-
-</script>
 
 <style scoped>
   .employees-table {

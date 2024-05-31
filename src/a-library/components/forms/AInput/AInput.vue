@@ -6,13 +6,6 @@
 
 </template>
 
-<script>
-
-export default {
-
-}
-</script>
-
 <style scoped>
   .txt {
     --height: calc(var(--gap) * 2);
