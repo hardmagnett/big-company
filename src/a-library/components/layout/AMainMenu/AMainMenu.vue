@@ -13,9 +13,7 @@
  * да таких, чтобы были удобными. В Vuetify всего 2 уровня. В SilverStripe всего 1 уровень.
  */
 
-import {ref, computed} from 'vue';
-import { storeToRefs } from 'pinia'
-import { useResponsiveStore } from '@/a-library/stores/responsive.js';
+import {computed} from 'vue';
 
 import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
@@ -28,8 +26,7 @@ export interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {})
 
-const responsiveStore = useResponsiveStore()
-const { isMdOrMore } = storeToRefs(responsiveStore)
+
 
 // Возможно выпилить отсюда и перенести в AContainer.
 // А здесь принимать готовое значение.
@@ -55,7 +52,6 @@ const menuItems = [
     id: i++,
     title: 'Задачи',
     icon: 'mdi-view-dashboard-variant',
-    // icon: 'mdi-view-dashboard-variant-outline',
     route: {
       to: 'tasks'
     },
@@ -109,7 +105,6 @@ const menuItems = [
         id: i++,
         title: 'Блоки',
         icon: 'mdi-square',
-        // icon: 'mdi-square-outline',
         route: {
           to: 'blocks'
         },
@@ -133,7 +128,6 @@ const menuItems = [
         textNearLogo="CRM"
     />
     <div class="a-main-menu__items mod--cool-scrollbar">
-      <!--{{isBig}}-->
       <AMainMenuItem
           v-for="menuItem in menuItems"
           :key="menuItem.id"
@@ -163,11 +157,7 @@ const menuItems = [
 /*Но т.к. это меню должно быть всегда в одном и том-же месте, то оно спозиционировано изнутри.*/
 .a-main-menu {
   position: relative;
-  /*padding-top: calc(var(--gap) / 2);*/
-  /*padding-bottom: calc(var(--gap) / 2);*/
-  /*position: fixed;*/
   left: 0;
-  /*top: var(--headerHeight);*/
   top: 0;
   bottom: 0;
   width: var(--left-menu-width-expanded);
@@ -181,15 +171,12 @@ const menuItems = [
   flex-flow: column nowrap;
 
   .a-header {
-    /*margin-bottom: calc(var(--gap) / 2);*/
     flex: 0 0 auto;
     border-bottom: 1px solid var(--clr-border-blue-darker);
     margin-left: var(--left-menu-width-collapsed);
   }
 
   .a-main-menu__items {
-    /*outline: 1px solid darkred;*/
-    /*padding-top: calc(var(--gap) / 2);*/
     flex: 1 1 auto;
     overflow-y: auto;
     overflow-x: hidden;
@@ -199,11 +186,6 @@ const menuItems = [
 
     flex: 0 0 auto;
 
-    /*outline: 1px solid darkred;*/
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    /*left: 0;*/
-    /*right: 0;*/
     height: calc(var(--gap) * 2);
     border-top: 1px solid var(--clr-border-blue-lighter);
     display: flex;

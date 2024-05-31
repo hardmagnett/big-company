@@ -21,6 +21,7 @@
  * Можно повесить например переход на другую страницу на быстрый клик
  * а тоггл потомков либо на долгий клик, либо на двойной клик, либо на другой тач-жест.
  * Но это вообще неудобно и вводит путаницу.
+ * А многие пользователь вообще не знают что бывают другие жесты кроме одиночного тыка пальцем.
  *
  * Элементы меню маленького размера (свернуты по горизонтали), управление мышью:
  * -----------------------------------------------------------------------------
@@ -33,19 +34,15 @@
  *
  * В итоге код был-бы сложным, а компонентом было-бы пользоваться весьма неудобно.
  *
- * Лучше грамотно проектировать меню, чтобы не было пунктов меню с двойным назначением.
+ * Лучше проектировать меню так, чтобы не было пунктов меню с двойным назначением (разворот и переход).
  */
 
-import { onMounted, computed, ref, reactive } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { onMounted, computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 const emit = defineEmits(['clickOnRouterLink'])
 const route = useRoute()
 
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
-// import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-// export default {
-//   components: {AIcon}
-// }
 
 export interface Props {
   deepLevel?: number
@@ -55,7 +52,6 @@ export interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
   deepLevel: 0,
-  // labels: () => ['one', 'two']
 })
 
 const rootNode = ref(null)
@@ -79,7 +75,7 @@ const hasChildren = computed(()=>{
 /**
  * Сейчас эта проверка реализованна для 1-го уровня вложенности,
  * Потому-что на проекте всего 1 уровень вложенности в меню.
- * Не на чем проверять.
+ * Не вижу смысла делать 2 и более.
  * Если будет необходимость сделать 2 или более уровней вложенности в меню,
  * то можно будет обходить всех потомков рекурсивно.
  */
@@ -103,7 +99,7 @@ const isOneOfDescendantRouteActive = computed(()=>{
  * то можно было-бы реализовать такую фичу:
  * При открытии родителя закрываются все другие родители, не являющиеся родителем данного родителя.
  * Это было-бы удобно, чтобы в меню не было слишком много родителей распахнуто.
- * Но сейчас не на чем проверять, поэтому пока-что пусть остается как есть.
+ * Но сейчас это ещё не нужно, поэтому пока-что пусть остается как есть.
  */
 function toggleSubmenu(){
   isClosed.value = !isClosed.value
@@ -221,8 +217,6 @@ onMounted(() => {
       flex: 1 0 auto;
     }
 
-    .main-menu-item__closing-indicator {}
-
     &.main-menu-item__link--to-page {
       &:hover {
         background-color: var(--accentedColorLess);
@@ -283,12 +277,6 @@ onMounted(() => {
 
   &.main-menu-item--main-menu-on-small-screen {
     width: 100%;
-    /*> a {*/
-    /*  width: 500px;*/
-    /*}*/
-    .main-menu-item__text {
-
-    }
   }
 
   &.main-menu-item--deep-level-1 {

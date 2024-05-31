@@ -16,7 +16,6 @@ export default {
     if (this._emptyValuesAllowed) {
       array.unshift('')
     }
-    // console.log(this._randomFunction()); console.log('^...this._randomFunction():')
 
     let result = array[Math.floor(this._randomFunction() * array.length)]
 

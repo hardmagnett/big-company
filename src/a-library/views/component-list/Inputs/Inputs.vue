@@ -1,6 +1,5 @@
 <template>
   <div class="inputs-page">
-    <!--<h1>Элементы форм</h1>-->
     <Teleport to="#page-header-place">
       <APageHeader>
         Элементы форм

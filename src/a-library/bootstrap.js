@@ -58,6 +58,5 @@ export default function({
 
   // Helpers
   // =======
-  // import localStorageService from '@/a-library/helpers/DOM/localStorageService.js'
   localStorageService.setStoragePrefix(appName)
 }
