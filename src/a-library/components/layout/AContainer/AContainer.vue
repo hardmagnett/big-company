@@ -106,14 +106,13 @@
     .a-main-menu {
       flex: 0 0 auto;
       @container style(--bp-sm-or-less) {
-        /*outline: 1px solid darkred;*/
         position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         width: 80%;
         z-index: 8;
-        will-change: transform;
+        /*Не ставить здесь will-change: transform; !!! От этого начинает от случая к случаю заблуриваться меню, и это никак не пофиксить!*/
         transform: translate(-100%, 0);
         transition: transform var(--time-short);
 
