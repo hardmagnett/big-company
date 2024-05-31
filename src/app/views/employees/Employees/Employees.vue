@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import HeaderAndSomethingElse from '@/app/components/shared/positioning/HeaderAndSomethingElse/HeaderAndSomethingElse.vue';
 import EmployeesTable from '@/app/components/employees/EmployeesTable/EmployeesTable.vue';
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 

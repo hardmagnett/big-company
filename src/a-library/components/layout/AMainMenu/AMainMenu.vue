@@ -30,11 +30,7 @@ export interface Props {
   isCollapsedOnBigScreen: boolean,
   isBig: boolean
 }
-// todo:: тут defaults не нужны, но без них IDE подсвечивает красным. Разобраться.
-const props = withDefaults(defineProps<Props>(), {
-  isCollapsedOnBigScreen: false,
-  isBig: false,
-})
+const props = withDefaults(defineProps<Props>(), {})
 
 const responsiveStore = useResponsiveStore()
 const { isMdOrMore } = storeToRefs(responsiveStore)
