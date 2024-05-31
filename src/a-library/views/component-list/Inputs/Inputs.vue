@@ -7,13 +7,13 @@
       </APageHeader>
     </Teleport>
 
-    <h2>AInput</h2>
+    <h2>Текстовое поле</h2>
     <AInput placeholder="placeholder for text"></AInput>
     <br>
     <AInput value="default value"></AInput>
     <br>
 
-    <h2>ACheckBox</h2>
+    <h2>Чекбокс</h2>
     <ACheckBox label="С указанием label" />
     <br>
     <ACheckBox />

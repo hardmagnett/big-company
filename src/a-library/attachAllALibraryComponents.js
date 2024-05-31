@@ -14,6 +14,9 @@ import ACheckBox from "@/a-library/components/forms/ACheckBox/ACheckBox.vue";
 // Typo
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 
+// Blocks
+import ACard from "@/a-library/components/blocks/ACard/ACard.vue"
+
 /**
  * На практике в приложении обычно используется бОльшая часть возможностей библиотеки.
  * Поэтому не скромничаем и подключаем все компоненты сразу.
@@ -33,4 +36,7 @@ export default function(app){
 
   // Typo
   app.component('AIcon', AIcon);
+
+  // Blocks
+  app.component('ACard', ACard);
 }

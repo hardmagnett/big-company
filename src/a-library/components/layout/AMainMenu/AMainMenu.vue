@@ -67,34 +67,6 @@ const menuItems = [
       to: 'departments'
     },
   } as MenuItem ,
-
-  // todo:: удалить это, когда закончишь с высотой меню.
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-  // { id: i++, title: 'Сотрудники', icon: 'mdi-account-group', route: { to: 'employees'},} as MenuItem ,
-
   {
     id: i++,
     title: 'Сотрудники',
@@ -131,50 +103,26 @@ const menuItems = [
         route: {
           to: 'inputs'
         },
-      } as MenuItem
+      } as MenuItem,
+      {
+        id: i++,
+        title: 'Сетка',
+        icon: 'mdi-view-grid',
+        route: {
+          to: 'column-grid'
+        },
+      } as MenuItem,
+      {
+        id: i++,
+        title: 'Блоки',
+        icon: 'mdi-square',
+        // icon: 'mdi-square-outline',
+        route: {
+          to: 'blocks'
+        },
+      } as MenuItem,
     ]
   },
-
-  // Ещё раз сотрудники и компоненты
-  {
-    id: i++,
-    title: 'Сотрудники',
-    icon: 'mdi-account-group',
-    route: {
-      to: 'employees'
-    },
-  } as MenuItem ,
-  {
-    id: i++,
-    title: 'Компоненты',
-    icon: 'mdi-vuejs',
-    children: [
-      {
-        id: i++,
-        title: 'Заголовки',
-        icon: 'mdi-format-size',
-        route: {
-          to: 'headers'
-        },
-      } as MenuItem ,
-      {
-        id: i++,
-        title: 'Кнопки',
-        icon: 'mdi-button-cursor',
-        route: {
-          to: 'buttons'
-        },
-      } as MenuItem ,
-      {
-        id: i++,
-        title: 'Элементы форм',
-        icon: 'mdi-form-textbox',
-        route: {
-          to: 'inputs'
-        },
-      } as MenuItem
-    ]
-  }
 ]
 
 </script>
