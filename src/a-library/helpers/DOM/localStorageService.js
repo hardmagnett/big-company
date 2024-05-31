@@ -7,6 +7,7 @@
  */
 class LocalStorageService {
   setItem(key, value){
+    // Сохранение в JSON-е даёт возможность при извлечении восстановить тип.
     localStorage.setItem(key, JSON.stringify({ value }));
   }
 

@@ -36,9 +36,10 @@
       <!--<div class="a-container__temp-like-menu">-->
       <!--  temp-like-menu-->
       <!--</div>-->
+      <!--:isCollapsedOnSmallScreen="isCollapsedOnSmallScreen"-->
       <AMainMenu
         :isCollapsedOnBigScreen="isCollapsedOnBigScreen"
-        :isCollapsedOnSmallScreen="isCollapsedOnSmallScreen"
+
         @toggle-menu-collapse="toggleMenuCollapse"
         @click-on-router-link="clickOnRouterLinkHandler"
         :isBig="isBig"
@@ -182,7 +183,6 @@ const { isMdOrMore } = storeToRefs(responsiveStore)
 
 
 let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
-let isCollapsedOnSmallScreen = ref(localStorageService.getItem('isMenuCollapsedOnSmallScreen', true))
 let isMenuVisibleOnSmall = ref(false)
 
 let isBig = computed(()=>{
@@ -192,8 +192,7 @@ let isBig = computed(()=>{
 
 let isMainMenuCollapsed = computed(()=>{
   let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
-  let isCollapsedBySmallScreen = !isBig.value && isCollapsedOnSmallScreen.value
-  return isCollapsedByBigScreen || isCollapsedBySmallScreen
+  return isCollapsedByBigScreen
 })
 
 let hideMenuOverlay = computed(()=>{
@@ -202,13 +201,8 @@ let hideMenuOverlay = computed(()=>{
 })
 
 function toggleMenuCollapse(){
-  if (isBig.value) {
-    isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
-    localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
-  } else {
-    isCollapsedOnSmallScreen.value = !isCollapsedOnSmallScreen.value
-    localStorageService.setItem('isMenuCollapsedOnSmallScreen', isCollapsedOnSmallScreen.value)
-  }
+  isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
+  localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
 }
 function toggleMenuOnSmall(){
   isMenuVisibleOnSmall.value = !isMenuVisibleOnSmall.value

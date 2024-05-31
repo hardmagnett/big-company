@@ -17,10 +17,6 @@ import {ref, computed} from 'vue';
 import { storeToRefs } from 'pinia'
 import { useResponsiveStore } from '@/a-library/stores/responsive.js';
 
-
-import localStorageService from '@/a-library/helpers/DOM/localStorageService';
-import getCSSVariable from '@/a-library/helpers/DOM/getCSSVariable';
-
 import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
 import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
