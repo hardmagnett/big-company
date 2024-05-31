@@ -42,9 +42,6 @@ let imageForLogo = computed(()=>{
   .a-header {
     height: var(--header-height);
     background-color: var(--clr-fill-blue-small);
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*width: 100%;*/
     display: flex;
     flex-flow: row nowrap;
 

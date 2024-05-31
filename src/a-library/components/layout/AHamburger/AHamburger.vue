@@ -21,14 +21,8 @@ export default {
       default: true,
     }
   },
-  data(){
-    return {
-      // isCrossed: false
-    }
-  },
   methods: {
     processClick(){
-      // this.isCrossed = !this.isCrossed
       this.$emit('clickedOnCross')
     }
   }
@@ -39,7 +33,6 @@ export default {
 .a-hamburger {
   cursor: pointer;
   height: var(--header-height);
-  /*width: var(--header-height);*/
   width: var(--left-menu-width-collapsed);
   overflow: hidden;
   background-color: var(--clr-fill-blue-small);
