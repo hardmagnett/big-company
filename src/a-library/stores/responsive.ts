@@ -46,6 +46,7 @@ export const useResponsiveStore = defineStore('responsive', ()=>{
     return (breakpointVariableName: string) => {
       // let bpValue = getCSSVariable(breakpointVariableName);
       let bpValue = getCSSVariable(breakpointVariableName);
+      console.log(bpValue); console.log('^...bpValue:')
       // if (typeof bpValue === 'string') {
       //   throw new Error('Не удалось получить значение брекпоинта из CSS-переменной по названию CSS-переменной')
       // }
