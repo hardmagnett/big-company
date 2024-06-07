@@ -5,30 +5,35 @@
  * @param varName String - например '--bpSm'
  * @param options
  */
-export default function getCSSVariable(varName, options = {
+export default function getCSSVariable(varName: string, options = {
   // Если значение например "768px", то преобразует в "768",
   cutPx: true,
 
   // Если после преобразований значение будет возможно перевести в число, то будет переведено.
   // Например "768" в 768.
   attemptConvertToNumber: true,
-}){
-  let result = getComputedStyle(document.documentElement).getPropertyValue(varName);
+}): string | number {
+  // let result: string | number
+  let  resultingString = getComputedStyle(document.documentElement).getPropertyValue(varName);
   if (options.cutPx) {
-    result = result.replaceAll('px', '')
+    resultingString = resultingString.replaceAll('px', '')
   }
+  if (!options.attemptConvertToNumber) return resultingString
 
+  let resultingNumber: number | null = null
+  // Далее пробуем преобразовать в число.
   if_attemptConvertToNumber: if (options.attemptConvertToNumber) {
 
-    // Если result равен "" или " ", то Number(result) вернет 0. Тут такое преобразование не нужно.
-    let isResultEmptyOrConsistFromOnlySpaces = result.replaceAll(' ', '').length === 0
+    // Если resultingString равен "" или " ", то Number(resultingString) вернет 0. Тут такое преобразование не нужно.
+    let isResultEmptyOrConsistFromOnlySpaces = resultingString.replaceAll(' ', '').length === 0
     if (isResultEmptyOrConsistFromOnlySpaces) break if_attemptConvertToNumber
 
-    let convertedToNumber = Number(result)
+    let convertedToNumber = Number(resultingString)
     let isResultConvertedToNumberIsNan = Number.isNaN(convertedToNumber)
     if (isResultConvertedToNumberIsNan) break if_attemptConvertToNumber
 
-    result = convertedToNumber
+    resultingNumber = convertedToNumber
   }
-  return result
+  // Если преобразовалось в число - возвращаем число, иначе возвращаем ранее полученную строку
+  return resultingNumber ?? resultingString
 }
