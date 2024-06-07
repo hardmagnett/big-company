@@ -1,10 +1,3 @@
-- переделать все компоненты под TS Composition:
-  + ABtn.vue (OLD and JS)
-  - ACheckBox.vue (OLD and JS)
-  - AHamburger.vue (OLD and JS)
-  + AIcon.vue (OLD and JS)
-
-
 - Линтер
  - Тут будет куча проблем, пушо я просто попереименовывал JS-файлы в TS без всякой работы с типами.
 
