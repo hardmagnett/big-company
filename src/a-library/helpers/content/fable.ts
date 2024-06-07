@@ -5,6 +5,8 @@
 
 import {randomBetween, sameRandom} from '@/a-library/helpers/language/randoms'
 
+type Gender = 'male' | 'female'
+
 export default {
   _emptyValuesAllowed: false,
   _isSameRandom: true,
@@ -12,12 +14,12 @@ export default {
     let result = this._isSameRandom ? sameRandom() : Math.random()
     return result
   },
-  _getAny(array){
+  _getAny(availableValues: Array<string>){
     if (this._emptyValuesAllowed) {
-      array.unshift('')
+      availableValues.unshift('')
     }
 
-    let result = array[Math.floor(this._randomFunction() * array.length)]
+    let result = availableValues[Math.floor(this._randomFunction() * availableValues.length)]
 
     return result;
   },
@@ -27,9 +29,7 @@ export default {
   useRealRandom(){
     this._isSameRandom = false
   },
-  firstName({
-    gender = null, // "male"/"female"
-  } = {}){
+  firstName({gender}: {gender?: Gender} = {}){
     let maleResults = ['Виктор', 'Андрей', 'Михаил', 'Семён', 'Константин']
     let femaleResults = ['Марина', 'Ирина', 'Ольга', 'Анастасия']
     let selectFrom
@@ -46,9 +46,7 @@ export default {
     }
     return this._getAny(selectFrom)
   },
-  lastName({
-    gender = null, // "male"/"female"
-  } = {}){
+  lastName({gender}: {gender?: Gender} = {}){
     let maleResults = ['Семенов', 'Ургант', 'Череззабороногузадерищенко', 'Минаев', 'Черноградский']
     let femaleResults = ['Семенова', 'Ургант', 'Череззабороногузадерищенко', 'Минаева', 'Черноградская']
     let selectFrom
@@ -70,7 +68,7 @@ export default {
    * @returns {string}  // например "Алексей Семенов"
    */
   fullName() {
-    let gender = (this._randomFunction() > 0.5) ? 'male' : 'female'
+    let gender: Gender = (this._randomFunction() > 0.5) ? 'male' : 'female'
     return `${this.firstName({gender})} ${this.lastName({gender})}`
   },
   avatarUrl(){
