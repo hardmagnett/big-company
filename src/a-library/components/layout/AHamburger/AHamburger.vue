@@ -1,17 +1,16 @@
-<script>
+<script setup lang="ts">
 
-export default {
-  props: {
-    isCrossed: {
-      type: Boolean,
-      default: true,
-    }
-  },
-  methods: {
-    processClick(){
-      this.$emit('clickedOnCross')
-    }
-  }
+const emit = defineEmits(['clickedOnCross'])
+
+export interface Props {
+  isCrossed?: boolean,
+}
+const props = withDefaults(defineProps<Props>(), {
+  isCrossed: true,
+})
+
+const processClick = ()=>{
+  emit('clickedOnCross')
 }
 </script>
 

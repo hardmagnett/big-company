@@ -30,6 +30,11 @@ const greeting = ref('Hello World!')
 const myComputed = computed(() => 'foo')
 // Доступ: Из шаблона напрямую. Из скрипта через `.value`
 
+//////// Methods
+let myMethod = ()=>{
+}
+// Доступ: Из шаблона напрямую. Из скрипта вроде тоже напрямую. Это-ж функция.
+
 //////// Хуки
 onMounted(() => {})
 
