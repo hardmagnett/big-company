@@ -1,5 +1,5 @@
 - переделать все компоненты под TS Composition:
-  - ABtn.vue (OLD and JS)
+  + ABtn.vue (OLD and JS)
   - ACheckBox.vue (OLD and JS)
   - AHamburger.vue (OLD and JS)
   + AIcon.vue (OLD and JS)
@@ -10,6 +10,7 @@
 
 - Сделать первую версию лайв-темплейта для vue-comp TS CompositionApi. Со шпаргалками.
   Наверное логичнее делать когда линтер пройдется.
+  ПРОЙТИСЬ ПО ВСЕМ КОМПОНЕНТАМ И НАСОБИРАТЬ ТО ЧТО УЖЕ ЕСТЬ!!
 
 
 - компонент mainMenu - он-же в фреймворке, поэтому нужно В НЕГО передавать список элементов.

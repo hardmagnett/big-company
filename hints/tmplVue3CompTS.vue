@@ -3,7 +3,9 @@ import {
   onMounted,
   ref,
   reactive,
-  computed
+  computed,
+  useAttrs,
+  useSlots,
 } from 'vue'
 
 //////// Эмит событий
@@ -19,16 +21,24 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {
   optPropWithDefaultValue: false,
 })
-// Обращаться: из скриптов через `props.`. Из шаблона - ХЗ.
+// Доступ: Из шаблона - ХЗ. Из скрипта через `props.`.
 
 //////// Data-Props
 const greeting = ref('Hello World!')
 
 //////// Computed
 const myComputed = computed(() => 'foo')
+// Доступ: Из шаблона напрямую. Из скрипта через `.value`
 
 //////// Хуки
 onMounted(() => {})
+
+//////// Использование slots и attrs
+const slots = useSlots()
+const attrs = useAttrs()
+// Доступ: Из шаблона - ХЗ. Из скрипта напрямую.
+
+
 </script>
 
 <template>
