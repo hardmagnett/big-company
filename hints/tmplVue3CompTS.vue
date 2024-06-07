@@ -2,24 +2,32 @@
 import {
   onMounted,
   ref,
-  reactive
+  reactive,
+  computed
 } from 'vue'
 
+//////// Эмит событий
 const emit = defineEmits(['myEventName'])
 function someMethod(){emit('myEventName')}
 
+//////// Props
 export interface Props {
   optPropWithDefaultValue?: boolean,
   requiredProp: boolean
 }
 // Эта конструкция должна быть. ХЗ почему.
 const props = withDefaults(defineProps<Props>(), {
-  propWithDefaultValue: false,
+  optPropWithDefaultValue: false,
 })
+// Обращаться: из скриптов через `props.`. Из шаблона - ХЗ.
 
+//////// Data-Props
 const greeting = ref('Hello World!')
 
+//////// Computed
+const myComputed = computed(() => 'foo')
 
+//////// Хуки
 onMounted(() => {})
 </script>
 

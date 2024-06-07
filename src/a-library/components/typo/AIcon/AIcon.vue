@@ -1,35 +1,30 @@
-<script>
+<script setup lang="ts">
 
-export default {
-  props: {
-    icon: {
-      type: String,
-      default: 'mdi-google-downasaur',
-    },
-    size: {
-      type: String,
-      default: 'medium',    //tiny small medium large giant
-    },
-    rotate180: {
-      type: Boolean,
-      default: false,
-    }
-  },
-  computed: {
-    classes(){
-      return {
-        'mdi': true,
-        [this.icon]: true,
-        'mdi-rotate-180': this.rotate180,
-        'a-icon--medium': this.size === 'medium',
-        'a-icon--large': this.size === 'large',
-        'a-icon--giant': this.size === 'giant',
+import {computed} from "vue";
 
-      }
-    }
-  }
-
+export interface Props {
+  icon?: string,
+  size?: string,
+  rotate180?: boolean,
 }
+// Эта конструкция должна быть. ХЗ почему.
+const props = withDefaults(defineProps<Props>(), {
+  icon: 'mdi-google-downasaur',
+  size: 'medium', //tiny small medium large giant
+  rotate180: false
+})
+
+const classes = computed(() => {
+  return {
+    'mdi': true,
+    [props.icon]: true,
+    'mdi-rotate-180': props.rotate180,
+    'a-icon--medium': props.size === 'medium',
+    'a-icon--large': props.size === 'large',
+    'a-icon--giant': props.size === 'giant',
+
+  }
+})
 </script>
 
 <template>

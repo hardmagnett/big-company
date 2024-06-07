@@ -2,7 +2,7 @@
   - ABtn.vue (OLD and JS)
   - ACheckBox.vue (OLD and JS)
   - AHamburger.vue (OLD and JS)
-  - AIcon.vue (OLD and JS)
+  + AIcon.vue (OLD and JS)
 
 
 - Линтер
