@@ -5,6 +5,9 @@ import {
   reactive
 } from 'vue'
 
+const emit = defineEmits(['myEventName'])
+function someMethod(){emit('myEventName')}
+
 export interface Props {
   optPropWithDefaultValue?: boolean,
   requiredProp: boolean

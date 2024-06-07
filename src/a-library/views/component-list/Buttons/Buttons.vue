@@ -1,6 +1,5 @@
 <template>
   <div class="buttons-page">
-    <!--<h1>Кнопки</h1>-->
     <Teleport to="#page-header-place">
       <APageHeader>
         Кнопки
@@ -23,7 +22,6 @@
     </div>
     <h2>Кнопки-RouterLink</h2>
     <div class="buttons-page__buttons">
-      <!--<ABtn :to="{name: 'dashboard'}">На главную</ABtn>-->
       <ABtn :to="{path: '/'}">На главную</ABtn>
     </div>
 
@@ -52,18 +50,7 @@
   flex-flow: row wrap;
   margin-bottom: var(--gap);
   gap: var(--gap);
-
-  > * {
-    /*margin-right: var(--gap);*/
-    /*margin-bottom: var(--gap);*/
-  }
 }
 
 
 </style>
-<!--<script>-->
-<!--import AIcon from "../../../components/typo/AIcon/AIcon"-->
-<!--export default {-->
-<!--  components: {AIcon},-->
-<!--}-->
-<!--</script>-->

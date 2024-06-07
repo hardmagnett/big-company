@@ -24,18 +24,6 @@ bootstrapALibrary({
 @import 'a-library/assets/index';
 ```
 
-```ts
-// vite.config.js
-export default defineConfig({
-  // ...
-  css: {
-    preprocessorOptions: {
-      // пусто. Раньше здесь было про scss.
-    }
-  }
-})
-```
-
 
 ```ts
 // router.ts или аналог

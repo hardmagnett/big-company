@@ -4,7 +4,7 @@ import bootstrapALibrary from '@/a-library/bootstrap.js';
 
 
 import App from './App.vue'
-import router from './router.ts'
+import router from './router'
 
 import './main.css'
 

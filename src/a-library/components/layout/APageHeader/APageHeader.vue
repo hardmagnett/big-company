@@ -8,13 +8,6 @@
   </div>
 </template>
 
-<script>
-
-export default {
-
-}
-</script>
-
 <style scoped>
 .a-page-header {
   padding-left: var(--gap);

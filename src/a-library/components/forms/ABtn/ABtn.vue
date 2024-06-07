@@ -1,16 +1,3 @@
-<template>
-  <component :is="rootComponent"
-    class="btn"
-    :class="{
-      'btn--icon': icon,
-      'btn--with-text': !icon
-    }"
-    v-bind="$attrs"
-  >
-    <slot/>
-  </component>
-</template>
-
 <script>
 
 export default {
@@ -24,8 +11,8 @@ export default {
   computed: {
     rootComponent () {
       return this.isAnchor ? 'a'
-        : this.isRouterLink ? 'router-link'
-          : 'button'
+          : this.isRouterLink ? 'router-link'
+              : 'button'
     },
     isAnchor () {
       return this.$attrs.href
@@ -36,6 +23,19 @@ export default {
   }
 }
 </script>
+
+<template>
+  <component :is="rootComponent"
+    class="btn"
+    :class="{
+      'btn--icon': icon,
+      'btn--with-text': !icon
+    }"
+    v-bind="$attrs"
+  >
+    <slot/>
+  </component>
+</template>
 
 <style scoped>
   .btn--with-text {

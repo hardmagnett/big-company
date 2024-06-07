@@ -1,3 +1,20 @@
+<script>
+
+export default {
+  props: {
+    isCrossed: {
+      type: Boolean,
+      default: true,
+    }
+  },
+  methods: {
+    processClick(){
+      this.$emit('clickedOnCross')
+    }
+  }
+}
+</script>
+
 <template>
   <div
       class="a-hamburger"
@@ -12,34 +29,12 @@
   </div>
 </template>
 
-<script>
 
-export default {
-  props: {
-    isCrossed: {
-      type: Boolean,
-      default: true,
-    }
-  },
-  data(){
-    return {
-      // isCrossed: false
-    }
-  },
-  methods: {
-    processClick(){
-      // this.isCrossed = !this.isCrossed
-      this.$emit('clickedOnCross')
-    }
-  }
-}
-</script>
 
 <style scoped>
 .a-hamburger {
   cursor: pointer;
   height: var(--header-height);
-  /*width: var(--header-height);*/
   width: var(--left-menu-width-collapsed);
   overflow: hidden;
   background-color: var(--clr-fill-blue-small);

@@ -17,7 +17,6 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
         <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
       </ABtn>
       <p class="mod--mt-0 mod--mb-0">
-        <!--Найдено: <span class="employees__qty-number">100000</span>-->
         Найдено: <span class="employees__qty-number">1</span>
       </p>
     </div>
@@ -37,7 +36,6 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
     justify-content: space-between;
     .employees__qty-number {
       display: inline-block;
-      /*outline: 1px solid darkred;*/
       width: 55px;
       text-align: right;
     }

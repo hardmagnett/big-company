@@ -1,3 +1,44 @@
+<script setup lang="ts">
+
+import {computed, ref} from "vue";
+import {storeToRefs} from "pinia";
+import localStorageService from '@/a-library/helpers/DOM/localStorageService';
+import {useResponsiveStore} from "@/a-library/stores/responsive";
+import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue";
+const responsiveStore = useResponsiveStore()
+
+const { isMdOrMore } = storeToRefs(responsiveStore)
+
+
+let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
+let isMenuVisibleOnSmall = ref(false)
+
+let isBig = computed(()=>{
+  return isMdOrMore.value()
+})
+
+let isMainMenuCollapsed = computed(()=>{
+  let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
+  return isCollapsedByBigScreen
+})
+
+let hideMenuOverlay = computed(()=>{
+  let result = isBig.value || !isMenuVisibleOnSmall.value
+  return result
+})
+
+function toggleMenuCollapse(){
+  isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
+  localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
+}
+function toggleMenuOnSmall(){
+  isMenuVisibleOnSmall.value = !isMenuVisibleOnSmall.value
+}
+function clickOnRouterLinkHandler(){
+  isMenuVisibleOnSmall.value = false
+}
+</script>
+
 <template>
   <div class="a-container">
 
@@ -33,10 +74,6 @@
 
     </div>
     <div class="a-container__body">
-      <!--<div class="a-container__temp-like-menu">-->
-      <!--  temp-like-menu-->
-      <!--</div>-->
-      <!--:isCollapsedOnSmallScreen="isCollapsedOnSmallScreen"-->
       <AMainMenu
         :isCollapsedOnBigScreen="isCollapsedOnBigScreen"
 
@@ -68,15 +105,9 @@
     flex-flow: row nowrap;
 
     .a-container__top-left {
-      /*outline: 1px solid darkred;*/
       width: var(--left-menu-width-expanded);
       transition: width var(--time-short);
 
-      /*border-right: 1px solid var(--clr-border-blue-lighter);*/
-
-
-      /*border-bottom: 1px solid var(--clr-border-blue-darker);*/
-      /*height: var(--header-height);*/
       z-index: 16;
       @container style(--bp-sm-or-less) {
         width: var(--left-menu-width-collapsed);
@@ -94,7 +125,6 @@
 
     .a-container__page-header-place {
       flex: 1 0 auto;
-      /*outline: 1px solid orange;*/
     }
   }
   .a-container__body {
@@ -119,7 +149,6 @@
         &.a-main-menu--visible-on-small {
           transform: translate(0, 0);
           border-right: none;
-          /*isMenuVisibleOnSmall */
         }
       }
 
@@ -128,26 +157,7 @@
     .container__main-content {
       flex: 1 1 auto;
       padding: calc(var(--gap) / 2) var(--gap);
-      /*margin-left: var(--leftMenuWidthExpanded);*/
       overflow-x: hidden;
-
-    @container style(--bp-sm-or-more) {
-    }
-    @container style(--bp-md-or-more) {
-      /*padding-left: calc(var(--gap) * 2);*/
-      /*padding-right: calc(var(--gap) * 2);*/
-
-    }
-    @container style(--bp-lg-or-more) {
-      /*padding-left: calc(var(--gap) * 3);*/
-      /*padding-right: calc(var(--gap) * 3);*/
-    }
-    @container style(--bp-xl-or-more) {
-
-    }
-    @container style(--bp-xxl-or-more) {
-
-    }
     }
   }
   .a-container__menu-overlay {
@@ -169,45 +179,4 @@
 
 }
 </style>
-<script setup lang="ts">
 
-import {computed, ref} from "vue";
-import {storeToRefs} from "pinia";
-import localStorageService from '@/a-library/helpers/DOM/localStorageService';
-import {useResponsiveStore} from "@/a-library/stores/responsive";
-import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue";
-const responsiveStore = useResponsiveStore()
-
-const { isMdOrMore } = storeToRefs(responsiveStore)
-
-
-let isCollapsedOnBigScreen = ref(localStorageService.getItem('isMenuCollapsedOnBigScreen', false))
-let isMenuVisibleOnSmall = ref(false)
-
-let isBig = computed(()=>{
-  // return isEqualOrMoreThan.value('--bp-md')
-  return isMdOrMore.value()
-})
-
-let isMainMenuCollapsed = computed(()=>{
-  let isCollapsedByBigScreen = isBig.value && isCollapsedOnBigScreen.value
-  return isCollapsedByBigScreen
-})
-
-let hideMenuOverlay = computed(()=>{
-  let result = isBig.value || !isMenuVisibleOnSmall.value
-  return result
-})
-
-function toggleMenuCollapse(){
-  isCollapsedOnBigScreen.value = !isCollapsedOnBigScreen.value
-  localStorageService.setItem('isMenuCollapsedOnBigScreen', isCollapsedOnBigScreen.value)
-}
-function toggleMenuOnSmall(){
-  isMenuVisibleOnSmall.value = !isMenuVisibleOnSmall.value
-}
-function clickOnRouterLinkHandler(){
-  isMenuVisibleOnSmall.value = false
-  // toggleMenuOnSmall()
-}
-</script>

@@ -1,10 +1,3 @@
-<template>
-  <span
-      class="a-icon"
-      :class="classes"
-  ></span>
-</template>
-
 <script>
 
 export default {
@@ -33,20 +26,24 @@ export default {
         'a-icon--giant': this.size === 'giant',
 
       }
-      // return [
-      //   'mdi',
-      //   this.icon,
-      //
-      // ]
     }
   }
 
 }
 </script>
 
+<template>
+  <span
+      class="a-icon"
+      :class="classes"
+  ></span>
+</template>
+
+
+
 <style scoped>
 .a-icon {
-  /*Если вдруг будут приколы с размерами - смотри как сделано в плеере электроснега.*/
+  /*Если вдруг будут проблемы с размерами - смотри как сделано в моём плеере.*/
   /*Там я решил эту проблему.*/
 
   /*В случае необходимости, можно переделать размеры при помощи mdi-класоов. Наприме mdi-18px.mdi-set .*/
