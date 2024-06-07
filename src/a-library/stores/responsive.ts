@@ -8,23 +8,27 @@ import getCSSVariable from "@/a-library/helpers/DOM/getCSSVariable"
  * потому-что данные об адаптивном состоянии в реактивном виде могут понадобиться любому из компонентов.
  * Возможно в будущем перенесу это куда-нибудь. А пока-что пусть лежит здесь.
  */
-
+let timerForTransition: number | null = null
 function stopTransitionsOnDocumentResize(){
   const bodyClasses = document.body.classList;
   const classToToggle = 'mod--stop-transitions'
-  if (stopTransitionsOnDocumentResize.timer) {
-    clearTimeout(stopTransitionsOnDocumentResize.timer);
-    stopTransitionsOnDocumentResize.timer = null;
+  // if (stopTransitionsOnDocumentResize.timer) {
+  if (timerForTransition) {
+    clearTimeout(timerForTransition);
+    // clearTimeout(stopTransitionsOnDocumentResize.timer);
+    // stopTransitionsOnDocumentResize.timer = null;
+    timerForTransition = null;
   }
   else {
     bodyClasses.add(classToToggle);
   }
-  stopTransitionsOnDocumentResize.timer = setTimeout(() => {
+  // stopTransitionsOnDocumentResize.timer = setTimeout(() => {
+  timerForTransition = setTimeout(() => {
     bodyClasses.remove(classToToggle);
-    stopTransitionsOnDocumentResize.timer = null;
+    timerForTransition = null;
   }, 100);
 }
-stopTransitionsOnDocumentResize.timer = null
+// stopTransitionsOnDocumentResize.timer = null
 
 export const useResponsiveStore = defineStore('responsive', ()=>{
   let documentElement = document.documentElement
@@ -39,8 +43,12 @@ export const useResponsiveStore = defineStore('responsive', ()=>{
   });
 
   const isEqualOrMoreThan = computed((state) => {
-    return (breakpointVariableName) => {
+    return (breakpointVariableName: string) => {
+      // let bpValue = getCSSVariable(breakpointVariableName);
       let bpValue = getCSSVariable(breakpointVariableName);
+      // if (typeof bpValue === 'string') {
+      //   throw new Error('Не удалось получить значение брекпоинта из CSS-переменной по названию CSS-переменной')
+      // }
       let isEqualOrMoreThan = documentWidth.value >= bpValue
       return isEqualOrMoreThan
     }
