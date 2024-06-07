@@ -1,3 +1,5 @@
+import type { App } from 'vue'
+
 // Components
 // ==========
 
@@ -34,7 +36,7 @@ import localStorageService from '@/a-library/helpers/DOM/localStorageService'
 export default function({
   vueApp,
   appName
-}){
+}: { vueApp: App, appName: string }){
   // Components
   // ==========
 

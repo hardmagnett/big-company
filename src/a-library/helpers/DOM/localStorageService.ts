@@ -11,7 +11,7 @@
 
 let _storagePrefix = ''
 class LocalStorageService {
-  setStoragePrefix(prefix) {
+  setStoragePrefix(prefix: string) {
     _storagePrefix = prefix
   }
 
