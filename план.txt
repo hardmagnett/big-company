@@ -5,12 +5,12 @@
   - AIcon.vue (OLD and JS)
 
 - переделать все JS-файлы под TS:
-  - bootstrap.js
-  - fable.js
-  - getCSSVariable.js
-  - localStorageService.js
-  - randoms.js
-  - responsive.js (store)
+  + bootstrap.ts
+  + fable.ts
+  + getCSSVariable.ts
+  + localStorageService.ts
+  + randoms.ts
+  + responsive.ts (store)
 
 - Указать для IDE пути типа таких
   import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue";

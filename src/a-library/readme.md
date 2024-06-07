@@ -7,7 +7,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import bootstrapALibrary from '@/a-library/bootstrap.js';
+import bootstrapALibrary from '@/a-library/bootstrap.ts';
 
 const app = createApp(App)
 

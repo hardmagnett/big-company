@@ -3,7 +3,7 @@
  * Поэтому библиотека должна быть максимально лёгкой (в отличие от faker.js).
  */
 
-import {randomBetween, sameRandom} from '@/a-library/helpers/language/randoms.js'
+import {randomBetween, sameRandom} from '@/a-library/helpers/language/randoms'
 
 export default {
   _emptyValuesAllowed: false,

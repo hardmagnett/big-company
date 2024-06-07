@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import bootstrapALibrary from '@/a-library/bootstrap.js';
+import bootstrapALibrary from '@/a-library/bootstrap';
 
 
 import App from './App.vue'

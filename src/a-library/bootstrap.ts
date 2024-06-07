@@ -21,7 +21,7 @@ import ACard from "@/a-library/components/blocks/ACard/ACard.vue"
 
 // Helpers
 // =======
-import localStorageService from '@/a-library/helpers/DOM/localStorageService.js'
+import localStorageService from '@/a-library/helpers/DOM/localStorageService'
 
 
 /**
