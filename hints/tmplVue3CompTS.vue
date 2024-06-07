@@ -17,10 +17,10 @@ export interface Props {
   optPropWithDefaultValue?: boolean,
   requiredProp: boolean
 }
-// Эта конструкция должна быть. ХЗ почему.
 const props = withDefaults(defineProps<Props>(), {
   optPropWithDefaultValue: false,
 })
+// Эта конструкция должна быть. ХЗ почему.
 // Доступ: Из шаблона - ХЗ. Из скрипта через `props.`.
 
 //////// Data-Props

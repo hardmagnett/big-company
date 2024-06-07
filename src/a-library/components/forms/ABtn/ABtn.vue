@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {computed, useAttrs} from 'Vue';
+import {computed, useAttrs} from 'vue';
 
 const attrs = useAttrs()
 
