@@ -9,7 +9,7 @@ function getValueOfCSSVariable(varName: string): string {
 }
 
 /**
- * Подходит, например, для получения ширины экрана браузераю
+ * Подходит, например, для получения ширины экрана браузера.
  * @param varName
  */
 function getValueOfCSSVariableAsNumber(varName: string): number {
@@ -22,10 +22,11 @@ function getValueOfCSSVariableAsNumber(varName: string): number {
   if (isResultEmptyOrConsistFromOnlySpaces) {
     throw new Error('Строковое значение переменной пустое и не может быть корректно приведено к числу')
   }
+
   let convertedToNumber = Number(resultingString)
   let isResultConvertedToNumberIsNan = Number.isNaN(convertedToNumber)
   if (isResultConvertedToNumberIsNan) {
-    throw new Error('Числовое значение является NaN и не может быть корректро использовано')
+    throw new Error('Числовое значение является NaN и не может быть полезным. Вероятно значение CSS-переменной некорректное.')
   }
   return convertedToNumber
 }
