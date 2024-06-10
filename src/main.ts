@@ -20,3 +20,10 @@ app.use(createPinia())
 app.use(router)
 
 app.mount('#app')
+
+function doShit(myParam: string): void {
+  console.log(myParam); console.log('^...myParam:')
+}
+
+// doShit('foo')
+doShit(123)
