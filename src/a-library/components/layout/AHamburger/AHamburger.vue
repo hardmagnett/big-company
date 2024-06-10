@@ -5,7 +5,7 @@ const emit = defineEmits(['clickedOnCross'])
 export interface Props {
   isCrossed?: boolean,
 }
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   isCrossed: true,
 })
 

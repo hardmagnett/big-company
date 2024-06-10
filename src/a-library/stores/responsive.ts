@@ -37,14 +37,14 @@ export const useResponsiveStore = defineStore('responsive', ()=>{
     documentWidth.value = newVal
   });
 
-  const isEqualOrMoreThan = computed((state) => {
+  const isEqualOrMoreThan = computed(() => {
     return (breakpointVariableName: string) => {
       const bpValue = getValueOfCSSVariableAsNumber(breakpointVariableName);
       const isEqualOrMoreThan = documentWidth.value >= bpValue
       return isEqualOrMoreThan
     }
   })
-  const isMdOrMore = computed((state) => {
+  const isMdOrMore = computed(() => {
     return ()=>{
       return isEqualOrMoreThan.value('--bp-md')
     }
