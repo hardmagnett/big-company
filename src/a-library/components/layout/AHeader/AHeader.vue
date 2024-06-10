@@ -4,12 +4,11 @@ import {computed,} from 'vue';
 export interface Props {
   isMainMenuCollapsed: boolean,
   isOnSmallScreen?: boolean,
-  logoUrl: string | null,
+  logoUrl: string,
   textNearLogo: string | null
 }
 const props = withDefaults(defineProps<Props>(), {
   isMainMenuCollapsed: false,
-  logoUrl: null,
   textNearLogo: null,
   isOnSmallScreen: false,
 })

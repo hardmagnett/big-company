@@ -81,7 +81,7 @@ const hasChildren = computed(()=>{
  */
 const isOneOfDescendantRouteActive = computed(()=>{
   let result = false
-  if (!hasChildren) return result
+  if (!hasChildren.value) return result
 
   let currRouteName = route.name
   for (let child of props.menuItem.children) {

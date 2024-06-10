@@ -1,6 +1,6 @@
 import componentList from '@/a-library/router/component-list';
 
-let routes = [
+const routes = [
   ...componentList,
 ]
 

@@ -11,7 +11,7 @@ export default {
   _emptyValuesAllowed: false,
   _isSameRandom: true,
   _randomFunction: function(){
-    let result = this._isSameRandom ? sameRandom() : Math.random()
+    const result = this._isSameRandom ? sameRandom() : Math.random()
     return result
   },
   _getAny(availableValues: Array<string>){
@@ -19,7 +19,7 @@ export default {
       availableValues.unshift('')
     }
 
-    let result = availableValues[Math.floor(this._randomFunction() * availableValues.length)]
+    const result = availableValues[Math.floor(this._randomFunction() * availableValues.length)]
 
     return result;
   },
@@ -30,8 +30,8 @@ export default {
     this._isSameRandom = false
   },
   firstName({gender}: {gender?: Gender} = {}){
-    let maleResults = ['Виктор', 'Андрей', 'Михаил', 'Семён', 'Константин']
-    let femaleResults = ['Марина', 'Ирина', 'Ольга', 'Анастасия']
+    const maleResults = ['Виктор', 'Андрей', 'Михаил', 'Семён', 'Константин']
+    const femaleResults = ['Марина', 'Ирина', 'Ольга', 'Анастасия']
     let selectFrom
     switch(gender) {
       case 'male':
@@ -47,8 +47,8 @@ export default {
     return this._getAny(selectFrom)
   },
   lastName({gender}: {gender?: Gender} = {}){
-    let maleResults = ['Семенов', 'Ургант', 'Череззабороногузадерищенко', 'Минаев', 'Черноградский']
-    let femaleResults = ['Семенова', 'Ургант', 'Череззабороногузадерищенко', 'Минаева', 'Черноградская']
+    const maleResults = ['Семенов', 'Ургант', 'Череззабороногузадерищенко', 'Минаев', 'Черноградский']
+    const femaleResults = ['Семенова', 'Ургант', 'Череззабороногузадерищенко', 'Минаева', 'Черноградская']
     let selectFrom
     switch(gender) {
       case 'male':
@@ -68,7 +68,7 @@ export default {
    * @returns {string}  // например "Алексей Семенов"
    */
   fullName() {
-    let gender: Gender = (this._randomFunction() > 0.5) ? 'male' : 'female'
+    const gender: Gender = (this._randomFunction() > 0.5) ? 'male' : 'female'
     return `${this.firstName({gender})} ${this.lastName({gender})}`
   },
   avatarUrl(){
@@ -99,13 +99,13 @@ export default {
           strict = 5
 
         } = {}){
-    let wordsQty = (min && max) ? randomBetween(min, max, {sameRandom: true}) : strict
-    let availableWords = ['пирамида', 'часы', 'декоратор', 'ракета', 'монитор','синхрофазотрон', 'дезоксирибонуклеиновая кислота']
-    let resultArray = []
+    const wordsQty = (min && max) ? randomBetween(min, max, {sameRandom: true}) : strict
+    const availableWords = ['пирамида', 'часы', 'декоратор', 'ракета', 'монитор','синхрофазотрон', 'дезоксирибонуклеиновая кислота']
+    const resultArray = []
     for (let i = 1; i <= wordsQty; i++) {
       resultArray.push(this._getAny(availableWords))
     }
-    let result = resultArray.join(' ')
+    const result = resultArray.join(' ')
     return result
 
   }

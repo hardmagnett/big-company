@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/* eslint-disable */
 import {
   onMounted,
   ref,
@@ -43,7 +44,7 @@ const slots = useSlots()
 const attrs = useAttrs()
 // Доступ: Из шаблона - ХЗ. Из скрипта напрямую.
 
-
+/* eslint-enable */
 </script>
 
 <template>
