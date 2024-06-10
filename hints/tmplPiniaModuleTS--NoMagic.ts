@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 export const useMyShedStore = defineStore('MyShed', () => {
@@ -26,3 +27,4 @@ export const useMyShedStore = defineStore('MyShed', () => {
     increment
   }
 })
+/* eslint-enable */
