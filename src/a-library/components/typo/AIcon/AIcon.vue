@@ -7,7 +7,6 @@ export interface Props {
   size?: string,
   rotate180?: boolean,
 }
-// Эта конструкция должна быть. ХЗ почему.
 const props = withDefaults(defineProps<Props>(), {
   icon: 'mdi-google-downasaur',
   size: 'medium', //tiny small medium large giant

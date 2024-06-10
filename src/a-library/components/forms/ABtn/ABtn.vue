@@ -4,8 +4,6 @@ import {computed, useAttrs} from 'vue';
 
 const attrs = useAttrs()
 
-
-//////// Props
 export interface Props {
   icon?: boolean,
 }
