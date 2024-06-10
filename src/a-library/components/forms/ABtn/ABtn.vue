@@ -1,27 +1,28 @@
-<script>
+<script setup lang="ts">
 
-export default {
-  props: {
-    icon: {
-      type: Boolean,
-      default: false
-    }
-  },
+import {computed, useAttrs} from 'vue';
 
-  computed: {
-    rootComponent () {
-      return this.isAnchor ? 'a'
-          : this.isRouterLink ? 'router-link'
-              : 'button'
-    },
-    isAnchor () {
-      return this.$attrs.href
-    },
-    isRouterLink () {
-      return this.$attrs.to
-    }
-  }
+const attrs = useAttrs()
+
+export interface Props {
+  icon?: boolean,
 }
+const props = withDefaults(defineProps<Props>(), {
+  icon: false,
+})
+
+const rootComponent = computed(()=>{
+  return isAnchor.value ? 'a'
+    : isRouterLink.value ? 'router-link'
+    : 'button'
+})
+
+const isAnchor = computed(()=>{
+  return attrs.href
+})
+const isRouterLink = computed(()=>{
+  return attrs.to
+})
 </script>
 
 <template>

@@ -1,13 +1,11 @@
-<script>
+<script setup lang="ts">
 
-export default {
-  props: {
-    label: {
-      type: String,
-      default: null
-    }
-  }
+
+export interface Props {
+  label?: string,
 }
+const props = withDefaults(defineProps<Props>(), {})
+
 </script>
 
 <template>

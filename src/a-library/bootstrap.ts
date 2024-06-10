@@ -1,3 +1,5 @@
+import type { App } from 'vue'
+
 // Components
 // ==========
 
@@ -21,7 +23,7 @@ import ACard from "@/a-library/components/blocks/ACard/ACard.vue"
 
 // Helpers
 // =======
-import localStorageService from '@/a-library/helpers/DOM/localStorageService.js'
+import localStorageService from '@/a-library/helpers/DOM/localStorageService'
 
 
 /**
@@ -34,7 +36,7 @@ import localStorageService from '@/a-library/helpers/DOM/localStorageService.js'
 export default function({
   vueApp,
   appName
-}){
+}: { vueApp: App, appName: string }){
   // Components
   // ==========
 

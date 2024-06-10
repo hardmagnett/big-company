@@ -1,5 +1,3 @@
-// Переписывать на ts придется самостоятельно, т.к. в статье глубокая привязка к хелперам из angular.
-
 /**
  * В отличие от нативного localStorage,
  * возвращает string, number, boolean, object не строками, а теми типами, которые добавлялись.
@@ -9,23 +7,24 @@
  * переменные не перетирали друг друга.
  */
 
+type TypeAvailableToStore = number | string | boolean
 let _storagePrefix = ''
 class LocalStorageService {
-  setStoragePrefix(prefix) {
+  setStoragePrefix(prefix: string) {
     _storagePrefix = prefix
   }
 
-  _createStorageKey(clientKey) {
+  _createStorageKey(clientKey: string ) {
     let result = _storagePrefix ? _storagePrefix + '--' + clientKey : clientKey
     return result
   }
 
-  setItem(key, value){
+  setItem(key: string, value: TypeAvailableToStore){
     // Сохранение в JSON-е даёт возможность при извлечении восстановить тип.
     localStorage.setItem(this._createStorageKey(key), JSON.stringify({ value }));
   }
 
-  getItem(key, otherwise){
+  getItem(key: string, otherwise: TypeAvailableToStore){
     const data = localStorage.getItem(this._createStorageKey(key));
 
     if (data !== null) {

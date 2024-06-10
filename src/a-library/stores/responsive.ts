@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import getCSSVariable from "@/a-library/helpers/DOM/getCSSVariable"
+import {getValueOfCSSVariableAsNumber} from "@/a-library/helpers/DOM/getCSSVariable"
 
 /**
  * Вообще хранилище не должно знать ничего о DOM.
@@ -8,23 +8,22 @@ import getCSSVariable from "@/a-library/helpers/DOM/getCSSVariable"
  * потому-что данные об адаптивном состоянии в реактивном виде могут понадобиться любому из компонентов.
  * Возможно в будущем перенесу это куда-нибудь. А пока-что пусть лежит здесь.
  */
-
+let timerForTransition: number | null = null
 function stopTransitionsOnDocumentResize(){
   const bodyClasses = document.body.classList;
   const classToToggle = 'mod--stop-transitions'
-  if (stopTransitionsOnDocumentResize.timer) {
-    clearTimeout(stopTransitionsOnDocumentResize.timer);
-    stopTransitionsOnDocumentResize.timer = null;
+  if (timerForTransition) {
+    clearTimeout(timerForTransition);
+    timerForTransition = null;
   }
   else {
     bodyClasses.add(classToToggle);
   }
-  stopTransitionsOnDocumentResize.timer = setTimeout(() => {
+  timerForTransition = setTimeout(() => {
     bodyClasses.remove(classToToggle);
-    stopTransitionsOnDocumentResize.timer = null;
+    timerForTransition = null;
   }, 100);
 }
-stopTransitionsOnDocumentResize.timer = null
 
 export const useResponsiveStore = defineStore('responsive', ()=>{
   let documentElement = document.documentElement
@@ -39,8 +38,8 @@ export const useResponsiveStore = defineStore('responsive', ()=>{
   });
 
   const isEqualOrMoreThan = computed((state) => {
-    return (breakpointVariableName) => {
-      let bpValue = getCSSVariable(breakpointVariableName);
+    return (breakpointVariableName: string) => {
+      let bpValue = getValueOfCSSVariableAsNumber(breakpointVariableName);
       let isEqualOrMoreThan = documentWidth.value >= bpValue
       return isEqualOrMoreThan
     }

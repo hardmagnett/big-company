@@ -2,25 +2,48 @@
 import {
   onMounted,
   ref,
-  reactive
+  reactive,
+  computed,
+  useAttrs,
+  useSlots,
 } from 'vue'
 
+//////// Эмит событий
 const emit = defineEmits(['myEventName'])
 function someMethod(){emit('myEventName')}
 
+//////// Props
 export interface Props {
   optPropWithDefaultValue?: boolean,
   requiredProp: boolean
 }
-// Эта конструкция должна быть. ХЗ почему.
 const props = withDefaults(defineProps<Props>(), {
-  propWithDefaultValue: false,
+  optPropWithDefaultValue: false,
 })
+// Эта конструкция должна быть. ХЗ почему.
+// Доступ: Из шаблона - ХЗ. Из скрипта через `props.`.
 
+//////// Data-Props
 const greeting = ref('Hello World!')
 
+//////// Computed
+const myComputed = computed(() => 'foo')
+// Доступ: Из шаблона напрямую. Из скрипта через `.value`
 
+//////// Methods
+let myMethod = ()=>{
+}
+// Доступ: Из шаблона напрямую. Из скрипта вроде тоже напрямую. Это-ж функция.
+
+//////// Хуки
 onMounted(() => {})
+
+//////// Использование slots и attrs
+const slots = useSlots()
+const attrs = useAttrs()
+// Доступ: Из шаблона - ХЗ. Из скрипта напрямую.
+
+
 </script>
 
 <template>
