@@ -1,5 +1,12 @@
 <script setup lang="ts">
 
+function doShit(myParam: string): void {
+  console.log(myParam); console.log('^...myParam:')
+}
+
+// doShit('foo')
+doShit(1234)
+
 const emit = defineEmits(['clickedOnCross'])
 
 export interface Props {

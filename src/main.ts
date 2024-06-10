@@ -26,4 +26,4 @@ function doShit(myParam: string): void {
 }
 
 // doShit('foo')
-doShit(123)
+doShit(1234)
