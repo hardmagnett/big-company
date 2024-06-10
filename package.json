@@ -7,11 +7,9 @@
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit",
-    "type-check2": "vue-tsc",
+    "type-check": "vue-tsc --build --force",
     "//": "type-watch запускать в терминале и смотреть ts-ошибоки. Но у него ужасное форматирование.",
-    "type-watch": "vue-tsc --noEmit --watch",
-    "type-watch2": "vue-tsc --watch",
+    "type-watch": "vue-tsc --build --force --watch",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
