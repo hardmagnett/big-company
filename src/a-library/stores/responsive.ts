@@ -26,21 +26,21 @@ function stopTransitionsOnDocumentResize(){
 }
 
 export const useResponsiveStore = defineStore('responsive', ()=>{
-  let documentElement = document.documentElement
+  const documentElement = document.documentElement
 
-  let documentWidth = ref(documentElement.clientWidth)
+  const documentWidth = ref(documentElement.clientWidth)
 
   window.addEventListener('resize', ()=>{
     stopTransitionsOnDocumentResize()
 
-    let newVal = documentElement.clientWidth
+    const newVal = documentElement.clientWidth
     documentWidth.value = newVal
   });
 
   const isEqualOrMoreThan = computed((state) => {
     return (breakpointVariableName: string) => {
-      let bpValue = getValueOfCSSVariableAsNumber(breakpointVariableName);
-      let isEqualOrMoreThan = documentWidth.value >= bpValue
+      const bpValue = getValueOfCSSVariableAsNumber(breakpointVariableName);
+      const isEqualOrMoreThan = documentWidth.value >= bpValue
       return isEqualOrMoreThan
     }
   })

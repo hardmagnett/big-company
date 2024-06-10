@@ -15,7 +15,7 @@ class LocalStorageService {
   }
 
   _createStorageKey(clientKey: string ) {
-    let result = _storagePrefix ? _storagePrefix + '--' + clientKey : clientKey
+    const result = _storagePrefix ? _storagePrefix + '--' + clientKey : clientKey
     return result
   }
 

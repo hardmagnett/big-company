@@ -3,8 +3,8 @@
   Но возвращает их в каждый раз в одном и том-же порядке.
  */
 let previousResultForSameRandomFunction = 0.5
-let sameRandomFunction = function(){
-  let previousResult = previousResultForSameRandomFunction
+const sameRandomFunction = function(){
+  const previousResult = previousResultForSameRandomFunction
 
   let result = Math.sin(previousResult)
   // Возьмем дробную часть от 4-го знака после запятой. Чтобы результаты выглядели хаотичнее.
@@ -23,11 +23,11 @@ let sameRandomFunction = function(){
   return result
 }
 
-let randomBetween = function(min: number, max: number, {
+const randomBetween = function(min: number, max: number, {
   floating = false,
   sameRandom = false
 } = {}) {
-  let randomFunction = sameRandom ? sameRandomFunction : Math.random
+  const randomFunction = sameRandom ? sameRandomFunction : Math.random
 
   let result = randomFunction() * (max - min + 1) + min
   if (!floating) {

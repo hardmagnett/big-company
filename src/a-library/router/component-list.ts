@@ -1,4 +1,4 @@
-let pathToComponents = '/components/'
+const pathToComponents = '/components/'
 
 export default [
     {

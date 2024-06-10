@@ -1,7 +1,7 @@
 import tasks from '@/app/router/tasks';
 import employees from '@/app/router/employees';
 
-let routes = [
+const routes = [
   ...tasks,
   ...employees,
 ]
