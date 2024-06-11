@@ -54,7 +54,8 @@ const props = withDefaults(defineProps<Props>(), {
   deepLevel: 0,
 })
 
-const rootNode = ref(null)
+// const rootNode = ref(null)
+const rootNode = ref<HTMLElement | null>(null)
 
 let isClosed = ref(true)
 
@@ -114,7 +115,7 @@ function toggleSubmenu(){
 }
 
 onMounted(() => {
-  rootNode.value.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
+  rootNode.value?.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
 })
 
 </script>
