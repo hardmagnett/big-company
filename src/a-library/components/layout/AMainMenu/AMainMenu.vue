@@ -13,10 +13,10 @@
  * да таких, чтобы были удобными. В Vuetify всего 2 уровня. В SilverStripe всего 1 уровень.
  */
 
-import {computed} from 'vue';
+import {computed, inject} from 'vue';
 
 import AMainMenuItem from '@/a-library/components/layout/AMainMenu/AMainMenuItem.vue';
-import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
+import {menuItemsInjectionKey} from '@/a-library/components/layout/AMainMenu/types';
 
 const emit = defineEmits(['toggleMenuCollapse', 'clickOnRouterLink'])
 
@@ -45,73 +45,7 @@ function toggleMenuCollapse(){
   emit('toggleMenuCollapse')
 }
 
-
-let i = 0
-const menuItems = [
-  {
-    id: i++,
-    title: 'Задачи',
-    icon: 'mdi-view-dashboard-variant',
-    route: {
-      to: 'tasks'
-    },
-  } as MenuItem ,
-  {
-    id: i++,
-    title: 'Сотрудники',
-    icon: 'mdi-account-group',
-    route: {
-      to: 'employees'
-    },
-  } as MenuItem ,
-  {
-    id: i++,
-    title: 'Компоненты',
-    icon: 'mdi-vuejs',
-    children: [
-      {
-        id: i++,
-        title: 'Заголовки',
-        icon: 'mdi-format-size',
-        route: {
-          to: 'headers'
-        },
-      } as MenuItem ,
-      {
-        id: i++,
-        title: 'Кнопки',
-        icon: 'mdi-button-cursor',
-        route: {
-          to: 'buttons'
-        },
-      } as MenuItem ,
-      {
-        id: i++,
-        title: 'Элементы форм',
-        icon: 'mdi-form-textbox',
-        route: {
-          to: 'inputs'
-        },
-      } as MenuItem,
-      {
-        id: i++,
-        title: 'Сетка',
-        icon: 'mdi-view-grid',
-        route: {
-          to: 'column-grid'
-        },
-      } as MenuItem,
-      {
-        id: i++,
-        title: 'Блоки',
-        icon: 'mdi-square',
-        route: {
-          to: 'blocks'
-        },
-      } as MenuItem,
-    ]
-  },
-]
+const menuItems = inject(menuItemsInjectionKey)
 
 </script>
 

@@ -1,11 +1,17 @@
-interface MenuItem {
+import type { InjectionKey } from 'vue'
+
+interface IMenuItem {
   id: number
   title: string
   icon: string
   route?: {
     to: string
   }
-  children?: Array<MenuItem>
+  children?: Array<IMenuItem>
 }
 
-export type {MenuItem}
+const menuItemsInjectionKey = Symbol() as InjectionKey<Array<IMenuItem>>
+
+export type {IMenuItem}
+export {menuItemsInjectionKey}
+

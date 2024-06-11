@@ -42,19 +42,19 @@ import { useRoute } from 'vue-router'
 const emit = defineEmits(['clickOnRouterLink'])
 const route = useRoute()
 
-import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
+import type {IMenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
 export interface Props {
   deepLevel?: number
   isMainMenuCollapsed: boolean
   isMainMenuOnSmallScreen?: boolean
-  menuItem: MenuItem
+  menuItem: IMenuItem
 }
 const props = withDefaults(defineProps<Props>(), {
   deepLevel: 0,
 })
 
-const rootNode = ref(null)
+const rootNode = ref<HTMLElement | null>(null)
 
 let isClosed = ref(true)
 
@@ -69,7 +69,11 @@ const classes = computed(() => {
 })
 
 const hasChildren = computed(()=>{
-  return props.menuItem.children?.length
+  return Boolean(props.menuItem.children?.length)
+})
+const children = computed(()=>{
+  let result = Array.isArray(props.menuItem.children) ? props.menuItem.children: []
+  return result
 })
 
 /**
@@ -84,8 +88,8 @@ const isOneOfDescendantRouteActive = computed(()=>{
   if (!hasChildren.value) return result
 
   let currRouteName = route.name
-  for (let child of props.menuItem.children) {
-    let menuRouteName = child.route.to
+  for (let child of children.value) {
+    let menuRouteName = child.route?.to
     if (currRouteName === menuRouteName) {
       result = true
       break;
@@ -106,7 +110,7 @@ function toggleSubmenu(){
 }
 
 onMounted(() => {
-  rootNode.value.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
+  rootNode.value?.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
 })
 
 </script>
@@ -120,7 +124,7 @@ onMounted(() => {
     <RouterLink
         class="main-menu-item__link main-menu-item__link--to-page"
         v-if="!hasChildren"
-        :to="{name: menuItem.route.to}"
+        :to="{name: menuItem.route?.to}"
         active-class="main-menu-item__link--active"
         exact
         @click="emit('clickOnRouterLink')"
