@@ -1,18 +1,18 @@
 import type { InjectionKey } from 'vue'
 
 // todo::  Если это останется интерфейсом, то переименовать в IMenuItem
-interface MenuItem {
+interface IMenuItem {
   id: number
   title: string
   icon: string
   route?: {
     to: string
   }
-  children?: Array<MenuItem>
+  children?: Array<IMenuItem>
 }
 
-const menuItemsInjectionKey = Symbol() as InjectionKey<Array<MenuItem>>
+const menuItemsInjectionKey = Symbol() as InjectionKey<Array<IMenuItem>>
 
-export type {MenuItem}
+export type {IMenuItem}
 export {menuItemsInjectionKey}
 

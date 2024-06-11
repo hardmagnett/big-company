@@ -42,13 +42,13 @@ import { useRoute } from 'vue-router'
 const emit = defineEmits(['clickOnRouterLink'])
 const route = useRoute()
 
-import type {MenuItem} from '@/a-library/components/layout/AMainMenu/types';
+import type {IMenuItem} from '@/a-library/components/layout/AMainMenu/types';
 
 export interface Props {
   deepLevel?: number
   isMainMenuCollapsed: boolean
   isMainMenuOnSmallScreen?: boolean
-  menuItem: MenuItem
+  menuItem: IMenuItem
 }
 const props = withDefaults(defineProps<Props>(), {
   deepLevel: 0,

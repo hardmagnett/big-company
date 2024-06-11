@@ -1,8 +1,8 @@
-import type {MenuItem} from "@/a-library/components/layout/AMainMenu/types";
+import type {IMenuItem} from "@/a-library/components/layout/AMainMenu/types";
 
 let i = 0
 
-const menuItems: Array<MenuItem> = [
+const menuItems: Array<IMenuItem> = [
   {
     id: i++,
     title: 'Задачи',
