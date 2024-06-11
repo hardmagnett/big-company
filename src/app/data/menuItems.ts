@@ -1,15 +1,16 @@
 import type {MenuItem} from "@/a-library/components/layout/AMainMenu/types";
 
 let i = 0
-const menuItems = [
+
+const menuItems: Array<MenuItem> = [
   {
     id: i++,
-    title: 'ЗадачиZZZ',
+    title: 'Задачи',
     icon: 'mdi-view-dashboard-variant',
     route: {
       to: 'tasks'
     },
-  } as MenuItem ,
+  },
   {
     id: i++,
     title: 'Сотрудники',
@@ -17,7 +18,7 @@ const menuItems = [
     route: {
       to: 'employees'
     },
-  } as MenuItem ,
+  },
   {
     id: i++,
     title: 'Компоненты',
@@ -30,7 +31,7 @@ const menuItems = [
         route: {
           to: 'headers'
         },
-      } as MenuItem ,
+      },
       {
         id: i++,
         title: 'Кнопки',
@@ -38,7 +39,7 @@ const menuItems = [
         route: {
           to: 'buttons'
         },
-      } as MenuItem ,
+      },
       {
         id: i++,
         title: 'Элементы форм',
@@ -46,7 +47,7 @@ const menuItems = [
         route: {
           to: 'inputs'
         },
-      } as MenuItem,
+      },
       {
         id: i++,
         title: 'Сетка',
@@ -54,7 +55,7 @@ const menuItems = [
         route: {
           to: 'column-grid'
         },
-      } as MenuItem,
+      },
       {
         id: i++,
         title: 'Блоки',
@@ -62,9 +63,10 @@ const menuItems = [
         route: {
           to: 'blocks'
         },
-      } as MenuItem,
+      },
     ]
   },
 ]
+
 
 export default menuItems
