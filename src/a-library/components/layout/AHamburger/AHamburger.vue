@@ -1,24 +1,23 @@
 <script setup lang="ts">
-
-const emit = defineEmits(['clickedOnCross'])
+const emit = defineEmits(["clickedOnCross"]);
 
 export interface Props {
-  isCrossed?: boolean,
+  isCrossed?: boolean;
 }
 withDefaults(defineProps<Props>(), {
   isCrossed: true,
-})
+});
 
-const processClick = ()=>{
-  emit('clickedOnCross')
-}
+const processClick = () => {
+  emit("clickedOnCross");
+};
 </script>
 
 <template>
   <div
-      class="a-hamburger"
-      :class="{'a-hamburger--is-cross': isCrossed}"
-      @click="processClick"
+    class="a-hamburger"
+    :class="{ 'a-hamburger--is-cross': isCrossed }"
+    @click="processClick"
   >
     <div class="a-hamburger__lines">
       <div class="a-hamburger__line a-hamburger__line--1" />
@@ -27,8 +26,6 @@ const processClick = ()=>{
     </div>
   </div>
 </template>
-
-
 
 <style scoped>
 .a-hamburger {
@@ -48,7 +45,9 @@ const processClick = ()=>{
     width: 20px;
     transition: transform var(--time-short);
     .a-hamburger__line {
-      transition: opacity var(--time-short), transform var(--time-short);
+      transition:
+        opacity var(--time-short),
+        transform var(--time-short);
       height: 2px;
       background-color: white;
     }

@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 
-input, textarea {
-    outline: none !important;
+input,
+textarea {
+  outline: none !important;
 }

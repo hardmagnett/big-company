@@ -1,23 +1,21 @@
-@import 'normalize.css';
+@import "normalize.css";
 
-@import 'variables/breakpoints.css';
-@import 'variables/colors.css';
-@import 'variables/typo.css';
-@import 'variables/other.css';
+@import "variables/breakpoints.css";
+@import "variables/colors.css";
+@import "variables/typo.css";
+@import "variables/other.css";
 
-@import 'layout/reset.css';
-@import 'layout/layout.css';
+@import "layout/reset.css";
+@import "layout/layout.css";
 
+@import "global-modifiers/positioning.css";
+@import "global-modifiers/fx.css";
+@import "global-modifiers/typo.css";
 
+@import "fonts/inter-tight/inter-tight.css";
+@import "fonts/material-design-icons/material-design-icons-v6.9.96.css";
 
-@import 'global-modifiers/positioning.css';
-@import 'global-modifiers/fx.css';
-@import 'global-modifiers/typo.css';
+@import "typo/main.css";
+@import "typo/headers.css";
 
-@import 'fonts/inter-tight/inter-tight.css';
-@import 'fonts/material-design-icons/material-design-icons-v6.9.96.css';
-
-@import 'typo/main.css';
-@import 'typo/headers.css';
-
-@import 'libs-overriding/material-design.icons.css';
+@import "libs-overriding/material-design.icons.css";

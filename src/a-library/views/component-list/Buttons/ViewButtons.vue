@@ -1,9 +1,7 @@
 <template>
   <div class="buttons-page">
     <Teleport to="#page-header-place">
-      <APageHeader>
-        Кнопки
-      </APageHeader>
+      <APageHeader> Кнопки </APageHeader>
     </Teleport>
 
     <h2>Кнопки-Кнопки</h2>
@@ -18,25 +16,29 @@
     </div>
     <h2>Кнопки-Ссылки</h2>
     <div class="buttons-page__buttons">
-      <ABtn href="https://stackoverflow.com/users/1638298/flamytwista" target="_blank">stackoverflow.com</ABtn>
+      <ABtn
+        href="https://stackoverflow.com/users/1638298/flamytwista"
+        target="_blank"
+        >stackoverflow.com</ABtn
+      >
     </div>
     <h2>Кнопки-RouterLink</h2>
     <div class="buttons-page__buttons">
-      <ABtn :to="{path: '/'}">На главную</ABtn>
+      <ABtn :to="{ path: '/' }">На главную</ABtn>
     </div>
 
     <h2>Кнопки c иконками</h2>
     <h3>Обычные</h3>
     <div class="buttons-page__buttons">
-      <ABtn>Редактировать <AIcon icon="mdi-pencil"/></ABtn>
-      <ABtn class="btn--error">Удалить <AIcon icon="mdi-delete"/></ABtn>
+      <ABtn>Редактировать <AIcon icon="mdi-pencil" /></ABtn>
+      <ABtn class="btn--error">Удалить <AIcon icon="mdi-delete" /></ABtn>
     </div>
     <h3>Специально для иконок</h3>
     <div class="buttons-page__buttons">
-      <ABtn icon><AIcon icon="mdi-pencil"/></ABtn>
-      <ABtn icon class="btn--success"><AIcon icon="mdi-check-bold"/></ABtn>
-      <ABtn icon class="btn--danger"><AIcon icon="mdi-close-octagon"/></ABtn>
-      <ABtn icon class="btn--error"><AIcon icon="mdi-delete"/></ABtn>
+      <ABtn icon><AIcon icon="mdi-pencil" /></ABtn>
+      <ABtn icon class="btn--success"><AIcon icon="mdi-check-bold" /></ABtn>
+      <ABtn icon class="btn--danger"><AIcon icon="mdi-close-octagon" /></ABtn>
+      <ABtn icon class="btn--error"><AIcon icon="mdi-delete" /></ABtn>
     </div>
   </div>
 </template>
@@ -51,6 +53,4 @@
   margin-bottom: var(--gap);
   gap: var(--gap);
 }
-
-
 </style>

@@ -12,5 +12,5 @@ p {
 }
 
 a {
-  color: var(--clr-fill-blue-accent)
+  color: var(--clr-fill-blue-accent);
 }

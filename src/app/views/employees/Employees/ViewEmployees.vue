@@ -1,27 +1,21 @@
 <script setup lang="ts">
-import EmployeesTable from '@/app/components/employees/EmployeesTable/EmployeesTable.vue';
+import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-
-
 </script>
 
 <template>
   <div class="employees">
     <Teleport to="#page-header-place">
-      <APageHeader>
-        Сотрудники
-      </APageHeader>
+      <APageHeader> Сотрудники </APageHeader>
     </Teleport>
     <div class="employees__add-and-qty">
-      <ABtn>
-        <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
-      </ABtn>
+      <ABtn> <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать </ABtn>
       <p class="mod--mt-0 mod--mb-0">
         Найдено: <span class="employees__qty-number">1</span>
       </p>
     </div>
 
-    <br>
+    <br />
 
     <div class="mod--clear-both"></div>
     <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
@@ -41,5 +35,4 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
     }
   }
 }
-
 </style>
