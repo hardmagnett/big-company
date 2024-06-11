@@ -17,7 +17,7 @@ const app = createApp(App)
 bootstrapALibrary({
   vueApp: app,
     appName: 'code-example'
-    })
+  })
 
 app.use(createPinia())
 app.use(router)
