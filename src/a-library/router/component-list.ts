@@ -23,7 +23,9 @@ export default [
     path: `${pathToComponents}column-grid`,
     name: "column-grid",
     component: () =>
-      import("@/a-library/views/component-list/ViewColumnGrid/ViewColumnGrid.vue"),
+      import(
+        "@/a-library/views/component-list/ViewColumnGrid/ViewColumnGrid.vue"
+      ),
   },
   {
     path: `${pathToComponents}blocks`,
