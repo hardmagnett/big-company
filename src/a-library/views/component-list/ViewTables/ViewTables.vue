@@ -5,7 +5,8 @@
     </Teleport>
 
     <h2>Таблицы</h2>
-    <p>Таблицы</p>
+    <p>Продолжить отсюда</p>
+    https://vuetifyjs.com/en/components/tables/#api
   </div>
 </template>
 
