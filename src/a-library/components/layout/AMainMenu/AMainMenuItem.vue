@@ -54,7 +54,6 @@ const props = withDefaults(defineProps<Props>(), {
   deepLevel: 0,
 })
 
-// const rootNode = ref(null)
 const rootNode = ref<HTMLElement | null>(null)
 
 let isClosed = ref(true)
@@ -76,9 +75,6 @@ const children = computed(()=>{
   let result = Array.isArray(props.menuItem.children) ? props.menuItem.children: []
   return result
 })
-// const routeToName = computed(()=>{
-//
-// })
 
 /**
  * Сейчас эта проверка реализованна для 1-го уровня вложенности,
@@ -92,7 +88,6 @@ const isOneOfDescendantRouteActive = computed(()=>{
   if (!hasChildren.value) return result
 
   let currRouteName = route.name
-  // for (let child of props.menuItem.children) {
   for (let child of children.value) {
     let menuRouteName = child.route?.to
     if (currRouteName === menuRouteName) {
