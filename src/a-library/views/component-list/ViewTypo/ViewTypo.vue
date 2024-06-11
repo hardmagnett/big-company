@@ -1,7 +1,7 @@
 <template>
   <div class="headers">
     <Teleport to="#page-header-place">
-      <APageHeader> Заголовки </APageHeader>
+      <APageHeader> Типографика </APageHeader>
     </Teleport>
 
     <h1>Заголовок h1</h1>
