@@ -69,8 +69,15 @@ const classes = computed(() => {
 })
 
 const hasChildren = computed(()=>{
-  return props.menuItem.children?.length
+  return Boolean(props.menuItem.children?.length)
 })
+const children = computed(()=>{
+  let result = Array.isArray(props.menuItem.children) ? props.menuItem.children: []
+  return result
+})
+// const routeToName = computed(()=>{
+//
+// })
 
 /**
  * Сейчас эта проверка реализованна для 1-го уровня вложенности,
@@ -84,8 +91,9 @@ const isOneOfDescendantRouteActive = computed(()=>{
   if (!hasChildren.value) return result
 
   let currRouteName = route.name
-  for (let child of props.menuItem.children) {
-    let menuRouteName = child.route.to
+  // for (let child of props.menuItem.children) {
+  for (let child of children.value) {
+    let menuRouteName = child.route?.to
     if (currRouteName === menuRouteName) {
       result = true
       break;
@@ -120,7 +128,7 @@ onMounted(() => {
     <RouterLink
         class="main-menu-item__link main-menu-item__link--to-page"
         v-if="!hasChildren"
-        :to="{name: menuItem.route.to}"
+        :to="{name: menuItem.route?.to}"
         active-class="main-menu-item__link--active"
         exact
         @click="emit('clickOnRouterLink')"
