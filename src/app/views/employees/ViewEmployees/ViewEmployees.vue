@@ -8,22 +8,32 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
     <Teleport to="#page-header-place">
       <APageHeader> Сотрудники </APageHeader>
     </Teleport>
-    <div class="employees__add-and-qty">
+    <div class="employees__add-and-qty mod--mb-half">
       <ABtn> <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать </ABtn>
       <p class="mod--mt-0 mod--mb-0">
         Найдено: <span class="employees__qty-number">1</span>
       </p>
     </div>
 
-    <br />
+    <!--<br />-->
 
-    <div class="mod--clear-both"></div>
+    <!--<div class="mod&#45;&#45;clear-both"></div>-->
     <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
-    <EmployeesTable />
+    <EmployeesTable
+        class="mod--cool-scrollbar"
+    />
   </div>
 </template>
 <style scoped>
 .employees {
+  /*flex: 0 0 auto;*/
+  display: flex;
+  flex-flow: column nowrap;
+  > * {
+    flex: 0 0 auto;
+  }
+
+  overflow-y: auto;
   .employees__add-and-qty {
     display: flex;
     flex-flow: row nowrap;
@@ -33,6 +43,13 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
       width: 55px;
       text-align: right;
     }
+  }
+  .employees-table {
+    flex: 1 1 auto;
+    overflow-y: auto;
+
+    /*outline: 1px solid darkred;*/
+    /*background-color: #aff;*/
   }
 }
 </style>

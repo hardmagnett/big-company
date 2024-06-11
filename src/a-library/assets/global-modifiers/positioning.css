@@ -24,6 +24,10 @@
 .mod--mb-0 {
   margin-bottom: 0;
 }
+.mod--mb-half {
+  margin-bottom: calc(var(--gap) / 2);
+}
 .mod--mb-1 {
   margin-bottom: var(--gap);
 }
+

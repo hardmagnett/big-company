@@ -151,6 +151,9 @@ function clickOnRouterLinkHandler() {
       flex: 1 1 auto;
       padding: calc(var(--gap) / 2) var(--gap);
       overflow-x: hidden;
+
+      display: flex;
+      flex-flow: column nowrap;
     }
   }
   .a-container__menu-overlay {
