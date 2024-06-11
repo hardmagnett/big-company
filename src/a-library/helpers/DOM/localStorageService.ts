@@ -7,32 +7,36 @@
  * переменные не перетирали друг друга.
  */
 
-type TypeAvailableToStore = number | string | boolean
-let _storagePrefix = ''
+type TypeAvailableToStore = number | string | boolean;
+let _storagePrefix = "";
 class LocalStorageService {
   setStoragePrefix(prefix: string) {
-    _storagePrefix = prefix
+    _storagePrefix = prefix;
   }
 
-  _createStorageKey(clientKey: string ) {
-    const result = _storagePrefix ? _storagePrefix + '--' + clientKey : clientKey
-    return result
+  _createStorageKey(clientKey: string) {
+    const result = _storagePrefix
+      ? _storagePrefix + "--" + clientKey
+      : clientKey;
+    return result;
   }
 
-  setItem(key: string, value: TypeAvailableToStore){
+  setItem(key: string, value: TypeAvailableToStore) {
     // Сохранение в JSON-е даёт возможность при извлечении восстановить тип.
-    localStorage.setItem(this._createStorageKey(key), JSON.stringify({ value }));
+    localStorage.setItem(
+      this._createStorageKey(key),
+      JSON.stringify({ value }),
+    );
   }
 
-  getItem(key: string, otherwise: TypeAvailableToStore){
+  getItem(key: string, otherwise: TypeAvailableToStore) {
     const data = localStorage.getItem(this._createStorageKey(key));
 
     if (data !== null) {
       return JSON.parse(data).value;
     }
-    return otherwise ?? null
+    return otherwise ?? null;
   }
 }
-const localStorageServiceSingleton = new LocalStorageService()
-export default localStorageServiceSingleton
-
+const localStorageServiceSingleton = new LocalStorageService();
+export default localStorageServiceSingleton;

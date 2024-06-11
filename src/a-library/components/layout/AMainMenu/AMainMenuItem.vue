@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 /**
  * Пункт меню может быть:
  * - Либо ссылкой на страницу. При клике происходит переход на другую страницу.
@@ -37,44 +36,46 @@
  * Лучше проектировать меню так, чтобы не было пунктов меню с двойным назначением (разворот и переход).
  */
 
-import { onMounted, computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
-const emit = defineEmits(['clickOnRouterLink'])
-const route = useRoute()
+import { onMounted, computed, ref } from "vue";
+import { useRoute } from "vue-router";
+const emit = defineEmits(["clickOnRouterLink"]);
+const route = useRoute();
 
-import type {IMenuItem} from '@/a-library/components/layout/AMainMenu/types';
+import type { IMenuItem } from "@/a-library/components/layout/AMainMenu/types";
 
 export interface Props {
-  deepLevel?: number
-  isMainMenuCollapsed: boolean
-  isMainMenuOnSmallScreen?: boolean
-  menuItem: IMenuItem
+  deepLevel?: number;
+  isMainMenuCollapsed: boolean;
+  isMainMenuOnSmallScreen?: boolean;
+  menuItem: IMenuItem;
 }
 const props = withDefaults(defineProps<Props>(), {
   deepLevel: 0,
-})
+});
 
-const rootNode = ref<HTMLElement | null>(null)
+const rootNode = ref<HTMLElement | null>(null);
 
-let isClosed = ref(true)
+let isClosed = ref(true);
 
-const paddingLeft = computed(() => props.deepLevel * 16)
+const paddingLeft = computed(() => props.deepLevel * 16);
 const classes = computed(() => {
   return {
-    'main-menu-item--is-closed': props.menuItem.children && isClosed.value,
-    'main-menu-item--main-menu-is-collapsed': props.isMainMenuCollapsed,
-    'main-menu-item--main-menu-on-small-screen': props.isMainMenuOnSmallScreen,
-    'main-menu-item--deep-level-1': props.deepLevel === 1
-  }
-})
+    "main-menu-item--is-closed": props.menuItem.children && isClosed.value,
+    "main-menu-item--main-menu-is-collapsed": props.isMainMenuCollapsed,
+    "main-menu-item--main-menu-on-small-screen": props.isMainMenuOnSmallScreen,
+    "main-menu-item--deep-level-1": props.deepLevel === 1,
+  };
+});
 
-const hasChildren = computed(()=>{
-  return Boolean(props.menuItem.children?.length)
-})
-const children = computed(()=>{
-  let result = Array.isArray(props.menuItem.children) ? props.menuItem.children: []
-  return result
-})
+const hasChildren = computed(() => {
+  return Boolean(props.menuItem.children?.length);
+});
+const children = computed(() => {
+  let result = Array.isArray(props.menuItem.children)
+    ? props.menuItem.children
+    : [];
+  return result;
+});
 
 /**
  * Сейчас эта проверка реализованна для 1-го уровня вложенности,
@@ -83,20 +84,20 @@ const children = computed(()=>{
  * Если будет необходимость сделать 2 или более уровней вложенности в меню,
  * то можно будет обходить всех потомков рекурсивно.
  */
-const isOneOfDescendantRouteActive = computed(()=>{
-  let result = false
-  if (!hasChildren.value) return result
+const isOneOfDescendantRouteActive = computed(() => {
+  let result = false;
+  if (!hasChildren.value) return result;
 
-  let currRouteName = route.name
+  let currRouteName = route.name;
   for (let child of children.value) {
-    let menuRouteName = child.route?.to
+    let menuRouteName = child.route?.to;
     if (currRouteName === menuRouteName) {
-      result = true
+      result = true;
       break;
     }
   }
-  return result
-})
+  return result;
+});
 
 /**
  * Если-бы в меню было более 1-го пункта меню, содержащего потомков,
@@ -105,40 +106,42 @@ const isOneOfDescendantRouteActive = computed(()=>{
  * Это было-бы удобно, чтобы в меню не было слишком много родителей распахнуто.
  * Но сейчас это ещё не нужно, поэтому пока-что пусть остается как есть.
  */
-function toggleSubmenu(){
-  isClosed.value = !isClosed.value
+function toggleSubmenu() {
+  isClosed.value = !isClosed.value;
 }
 
 onMounted(() => {
-  rootNode.value?.style.setProperty(`--paddingByDeep`, `${paddingLeft.value}px`);
-})
-
+  rootNode.value?.style.setProperty(
+    `--paddingByDeep`,
+    `${paddingLeft.value}px`,
+  );
+});
 </script>
 
 <template>
-  <div
-      class="main-menu-item"
-      :class="classes"
-      ref="rootNode"
-  >
+  <div class="main-menu-item" :class="classes" ref="rootNode">
     <RouterLink
-        class="main-menu-item__link main-menu-item__link--to-page"
-        v-if="!hasChildren"
-        :to="{name: menuItem.route?.to}"
-        active-class="main-menu-item__link--active"
-        exact
-        @click="emit('clickOnRouterLink')"
+      class="main-menu-item__link main-menu-item__link--to-page"
+      v-if="!hasChildren"
+      :to="{ name: menuItem.route?.to }"
+      active-class="main-menu-item__link--active"
+      exact
+      @click="emit('clickOnRouterLink')"
     >
       <AIcon
         class="main-menu-item__menu-icon"
         :icon="menuItem.icon"
         size="giant"
       />
-      <span class="main-menu-item__text mod--ellipsis-one-line">{{menuItem.title}}</span>
+      <span class="main-menu-item__text mod--ellipsis-one-line">{{
+        menuItem.title
+      }}</span>
     </RouterLink>
     <a
       class="main-menu-item__link main-menu-item__link--to-children"
-      :class="{'main-menu-item__link--descendant-active': isOneOfDescendantRouteActive}"
+      :class="{
+        'main-menu-item__link--descendant-active': isOneOfDescendantRouteActive,
+      }"
       v-if="hasChildren"
       @click="toggleSubmenu"
     >
@@ -147,26 +150,28 @@ onMounted(() => {
         :icon="menuItem.icon"
         size="giant"
       />
-      <span class="main-menu-item__text mod--ellipsis-one-line">{{menuItem.title}}</span>
+      <span class="main-menu-item__text mod--ellipsis-one-line">{{
+        menuItem.title
+      }}</span>
       <span class="main-menu-item__spacer"></span>
       <AIcon
-          class="main-menu-item__closing-indicator"
-          v-if="hasChildren"
-          icon="mdi-chevron-down"
-          :rotate180="!isClosed"
-          size="giant"
+        class="main-menu-item__closing-indicator"
+        v-if="hasChildren"
+        icon="mdi-chevron-down"
+        :rotate180="!isClosed"
+        size="giant"
       />
     </a>
 
     <div class="main-menu-item__children" v-if="hasChildren">
       <AMainMenuItem
-          v-for="childMenuItem in menuItem.children"
-          :key="childMenuItem.id"
-          :menuItem="childMenuItem"
-          :deepLevel="deepLevel + 1"
-          :isMainMenuCollapsed="isMainMenuCollapsed"
-          :isMainMenuOnSmallScreen="isMainMenuOnSmallScreen"
-          @click-on-router-link="emit('clickOnRouterLink')"
+        v-for="childMenuItem in menuItem.children"
+        :key="childMenuItem.id"
+        :menuItem="childMenuItem"
+        :deepLevel="deepLevel + 1"
+        :isMainMenuCollapsed="isMainMenuCollapsed"
+        :isMainMenuOnSmallScreen="isMainMenuOnSmallScreen"
+        @click-on-router-link="emit('clickOnRouterLink')"
       />
     </div>
   </div>
@@ -203,14 +208,16 @@ onMounted(() => {
     line-height: var(--height);
     color: var(--clr-font-blue-darkest);
     text-decoration: none;
-    transition: background-color var(--time-short), color var(--time-short);
+    transition:
+      background-color var(--time-short),
+      color var(--time-short);
     font-size: var(--font-size-tiny);
     font-weight: var(--font-weight-bold);
 
     /*before нужно исключительно чтобы дать отступ слева для вложенных элементов.*/
     &:before {
       display: inline;
-      content: '';
+      content: "";
       padding-left: var(--paddingByDeep);
       transition: padding-left var(--mainMenuCollapseAnimationTime);
     }

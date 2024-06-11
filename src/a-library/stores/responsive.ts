@@ -1,6 +1,6 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
-import {getValueOfCSSVariableAsNumber} from "@/a-library/helpers/DOM/getCSSVariable"
+import { ref, computed } from "vue";
+import { defineStore } from "pinia";
+import { getValueOfCSSVariableAsNumber } from "@/a-library/helpers/DOM/getCSSVariable";
 
 /**
  * Вообще хранилище не должно знать ничего о DOM.
@@ -8,15 +8,14 @@ import {getValueOfCSSVariableAsNumber} from "@/a-library/helpers/DOM/getCSSVaria
  * потому-что данные об адаптивном состоянии в реактивном виде могут понадобиться любому из компонентов.
  * Возможно в будущем перенесу это куда-нибудь. А пока-что пусть лежит здесь.
  */
-let timerForTransition: number | null = null
-function stopTransitionsOnDocumentResize(){
+let timerForTransition: number | null = null;
+function stopTransitionsOnDocumentResize() {
   const bodyClasses = document.body.classList;
-  const classToToggle = 'mod--stop-transitions'
+  const classToToggle = "mod--stop-transitions";
   if (timerForTransition) {
     clearTimeout(timerForTransition);
     timerForTransition = null;
-  }
-  else {
+  } else {
     bodyClasses.add(classToToggle);
   }
   timerForTransition = setTimeout(() => {
@@ -25,31 +24,29 @@ function stopTransitionsOnDocumentResize(){
   }, 100);
 }
 
-export const useResponsiveStore = defineStore('responsive', ()=>{
-  const documentElement = document.documentElement
+export const useResponsiveStore = defineStore("responsive", () => {
+  const documentElement = document.documentElement;
 
-  const documentWidth = ref(documentElement.clientWidth)
+  const documentWidth = ref(documentElement.clientWidth);
 
-  window.addEventListener('resize', ()=>{
-    stopTransitionsOnDocumentResize()
+  window.addEventListener("resize", () => {
+    stopTransitionsOnDocumentResize();
 
-    const newVal = documentElement.clientWidth
-    documentWidth.value = newVal
+    const newVal = documentElement.clientWidth;
+    documentWidth.value = newVal;
   });
 
   const isEqualOrMoreThan = computed(() => {
     return (breakpointVariableName: string) => {
       const bpValue = getValueOfCSSVariableAsNumber(breakpointVariableName);
-      const isEqualOrMoreThan = documentWidth.value >= bpValue
-      return isEqualOrMoreThan
-    }
-  })
+      const isEqualOrMoreThan = documentWidth.value >= bpValue;
+      return isEqualOrMoreThan;
+    };
+  });
   const isMdOrMore = computed(() => {
-    return ()=>{
-      return isEqualOrMoreThan.value('--bp-md')
-    }
-
-  })
-  return { isMdOrMore }
-
-})
+    return () => {
+      return isEqualOrMoreThan.value("--bp-md");
+    };
+  });
+  return { isMdOrMore };
+});

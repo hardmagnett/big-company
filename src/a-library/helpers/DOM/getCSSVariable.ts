@@ -1,5 +1,3 @@
-
-
 /**
  * Получает значение css-переменной.
  * На данный момент реализовано получение из :root{}.
@@ -15,21 +13,26 @@ function getValueOfCSSVariable(varName: string): string {
  * @param varName
  */
 function getValueOfCSSVariableAsNumber(varName: string): number {
-  let resultingString = getValueOfCSSVariable(varName)
+  let resultingString = getValueOfCSSVariable(varName);
 
-  const regexp = new RegExp('(px|rem)$', 'ig')
-  resultingString = resultingString.replaceAll(regexp, '')
+  const regexp = new RegExp("(px|rem)$", "ig");
+  resultingString = resultingString.replaceAll(regexp, "");
 
-  const isResultEmptyOrConsistFromOnlySpaces = resultingString.replaceAll(' ', '').length === 0
+  const isResultEmptyOrConsistFromOnlySpaces =
+    resultingString.replaceAll(" ", "").length === 0;
   if (isResultEmptyOrConsistFromOnlySpaces) {
-    throw new Error('Строковое значение переменной пустое и не может быть корректно приведено к числу')
+    throw new Error(
+      "Строковое значение переменной пустое и не может быть корректно приведено к числу",
+    );
   }
 
-  const convertedToNumber = Number(resultingString)
-  const isResultConvertedToNumberIsNan = Number.isNaN(convertedToNumber)
+  const convertedToNumber = Number(resultingString);
+  const isResultConvertedToNumberIsNan = Number.isNaN(convertedToNumber);
   if (isResultConvertedToNumberIsNan) {
-    throw new Error('Числовое значение является NaN и не может быть полезным. Вероятно значение CSS-переменной некорректное.')
+    throw new Error(
+      "Числовое значение является NaN и не может быть полезным. Вероятно значение CSS-переменной некорректное.",
+    );
   }
-  return convertedToNumber
+  return convertedToNumber;
 }
-export {getValueOfCSSVariable, getValueOfCSSVariableAsNumber}
+export { getValueOfCSSVariable, getValueOfCSSVariableAsNumber };

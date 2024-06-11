@@ -1,72 +1,71 @@
-import type {IMenuItem} from "@/a-library/components/layout/AMainMenu/types";
+import type { IMenuItem } from "@/a-library/components/layout/AMainMenu/types";
 
-let i = 0
+let i = 0;
 
 const menuItems: Array<IMenuItem> = [
   {
     id: i++,
-    title: 'Задачи',
-    icon: 'mdi-view-dashboard-variant',
+    title: "Задачи",
+    icon: "mdi-view-dashboard-variant",
     route: {
-      to: 'tasks'
+      to: "tasks",
     },
   },
   {
     id: i++,
-    title: 'Сотрудники',
-    icon: 'mdi-account-group',
+    title: "Сотрудники",
+    icon: "mdi-account-group",
     route: {
-      to: 'employees'
+      to: "employees",
     },
   },
   {
     id: i++,
-    title: 'Компоненты',
-    icon: 'mdi-vuejs',
+    title: "Компоненты",
+    icon: "mdi-vuejs",
     children: [
       {
         id: i++,
-        title: 'Заголовки',
-        icon: 'mdi-format-size',
+        title: "Заголовки",
+        icon: "mdi-format-size",
         route: {
-          to: 'headers'
+          to: "headers",
         },
       },
       {
         id: i++,
-        title: 'Кнопки',
-        icon: 'mdi-button-cursor',
+        title: "Кнопки",
+        icon: "mdi-button-cursor",
         route: {
-          to: 'buttons'
+          to: "buttons",
         },
       },
       {
         id: i++,
-        title: 'Элементы форм',
-        icon: 'mdi-form-textbox',
+        title: "Элементы форм",
+        icon: "mdi-form-textbox",
         route: {
-          to: 'inputs'
+          to: "inputs",
         },
       },
       {
         id: i++,
-        title: 'Сетка',
-        icon: 'mdi-view-grid',
+        title: "Сетка",
+        icon: "mdi-view-grid",
         route: {
-          to: 'column-grid'
+          to: "column-grid",
         },
       },
       {
         id: i++,
-        title: 'Блоки',
-        icon: 'mdi-square',
+        title: "Блоки",
+        icon: "mdi-square",
         route: {
-          to: 'blocks'
+          to: "blocks",
         },
       },
-    ]
+    ],
   },
-]
+];
 
-
-export default menuItems
+export default menuItems;

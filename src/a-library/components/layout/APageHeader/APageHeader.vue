@@ -1,9 +1,7 @@
 <template>
   <div class="a-page-header">
     <h1 class="mod--mb-0">
-      <slot>
-
-      </slot>
+      <slot> </slot>
     </h1>
   </div>
 </template>
@@ -19,6 +17,6 @@
   align-items: center;
 
   background-color: var(--clr-bg-blue-small);
-  border-bottom: 1px solid var(--clr-border-blue-lighter)
+  border-bottom: 1px solid var(--clr-border-blue-lighter);
 }
 </style>

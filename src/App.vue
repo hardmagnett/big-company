@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-
+import { RouterView } from "vue-router";
 </script>
 
 <template>
@@ -9,7 +8,6 @@ import { RouterView } from 'vue-router'
       <RouterView />
     </AContainer>
   </div>
-
 </template>
 
 <style scoped>
@@ -26,5 +24,4 @@ import { RouterView } from 'vue-router'
     overflow-y: auto; /*Не помню зачем это. Хорошо-бы узнать*/
   }
 }
-
 </style>
