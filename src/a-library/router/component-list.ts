@@ -33,4 +33,10 @@ export default [
     component: () =>
       import("@/a-library/views/component-list/ViewBlocks/ViewBlocks.vue"),
   },
+  {
+    path: `${pathToComponents}tables`,
+    name: "tables",
+    component: () =>
+      import("@/a-library/views/component-list/ViewTables/ViewTables.vue"),
+  },
 ];

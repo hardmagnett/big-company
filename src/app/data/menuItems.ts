@@ -64,6 +64,14 @@ const menuItems: Array<IMenuItem> = [
           to: "blocks",
         },
       },
+      {
+        id: i++,
+        title: "Таблицы",
+        icon: "mdi-table",
+        route: {
+          to: "tables",
+        },
+      },
     ],
   },
 ];
