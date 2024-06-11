@@ -26,7 +26,7 @@ const menuItems: Array<IMenuItem> = [
     children: [
       {
         id: i++,
-        title: "Заголовки",
+        title: "Типографика",
         icon: "mdi-format-size",
         route: {
           to: "headers",
