@@ -5,6 +5,134 @@
   --_hue-orange: 25;
 }
 
+/*Фоны*/
+/*====*/
+/*Для блоков большого размера. Светлый задний фон*/
+/*big - например фон всей страницы*/
+/*small - например для шапки в таблице*/
+/*accent - Чтобы выделялось на фоне любого серого. Например для скроллбара, или подчеркивания в меню.*/
+/*highlight - для blink-эффекта*/
+:root {
+  --_sat-bg-big: 25%;
+  --_light-bg-big: 98%;
+
+  --_sat-bg-small: 9%;
+  --_light-bg-small: 94%;
+
+  --_sat-bg-smaller: 9%;
+  --_light-bg-smaller: 90%;
+
+  --_sat-bg-accent: 19%;
+  --_light-bg-accent: 83%;
+
+  --_sat-bg-highlight: 81%;
+  --_light-bg-highlight: 90%;
+
+  --clr-bg-blue-big: hsl(
+          var(--_hue-blue),
+          var(--_sat-bg-big),
+          var(--_light-bg-big)
+  );
+  --clr-bg-blue-small: hsl(
+          var(--_hue-blue),
+          var(--_sat-bg-small),
+          var(--_light-bg-small)
+  );
+  --clr-bg-blue-smaller: hsl(
+          var(--_hue-blue),
+          var(--_sat-bg-smaller),
+          var(--_light-bg-smaller)
+  );
+  --clr-bg-blue-accent: hsl(
+          var(--_hue-blue),
+          var(--_sat-bg-accent),
+          var(--_light-bg-accent)
+  );
+  --clr-bg-blue-highlight: hsl(
+          var(--_hue-blue),
+          var(--_sat-bg-highlight),
+          var(--_light-bg-highlight)
+  );
+
+  --clr-bg-red-big: hsl(
+          var(--_hue-red),
+          var(--_sat-bg-big),
+          var(--_light-bg-big)
+  );
+  --clr-bg-red-small: hsl(
+          var(--_hue-red),
+          var(--_sat-bg-small),
+          var(--_light-bg-small)
+  );
+  --clr-bg-red-smaller: hsl(
+          var(--_hue-red),
+          var(--_sat-bg-smaller),
+          var(--_light-bg-smaller)
+  );
+  --clr-bg-red-accent: hsl(
+          var(--_hue-red),
+          var(--_sat-bg-accent),
+          var(--_light-bg-accent)
+  );
+  --clr-bg-red-highlight: hsl(
+          var(--_hue-red),
+          var(--_sat-bg-highlight),
+          var(--_light-bg-highlight)
+  );
+
+  --clr-bg-orange-big: hsl(
+          var(--_hue-orange),
+          var(--_sat-bg-big),
+          var(--_light-bg-big)
+  );
+  --clr-bg-orange-small: hsl(
+          var(--_hue-orange),
+          var(--_sat-bg-small),
+          var(--_light-bg-small)
+  );
+  --clr-bg-orange-smaller: hsl(
+          var(--_hue-orange),
+          var(--_sat-bg-smaller),
+          var(--_light-bg-smaller)
+  );
+  --clr-bg-orange-accent: hsl(
+          var(--_hue-orange),
+          var(--_sat-bg-accent),
+          var(--_light-bg-accent)
+  );
+  --clr-bg-orange-highlight: hsl(
+          var(--_hue-orange),
+          var(--_sat-bg-highlight),
+          var(--_light-bg-highlight)
+  );
+
+  --clr-bg-green-big: hsl(
+          var(--_hue-green),
+          var(--_sat-bg-big),
+          var(--_light-bg-big)
+  );
+  --clr-bg-green-small: hsl(
+          var(--_hue-green),
+          var(--_sat-bg-small),
+          var(--_light-bg-small)
+  );
+  --clr-bg-green-smaller: hsl(
+          var(--_hue-green),
+          var(--_sat-bg-smaller),
+          var(--_light-bg-smaller)
+  );
+  --clr-bg-green-accent: hsl(
+          var(--_hue-green),
+          var(--_sat-bg-accent),
+          var(--_light-bg-accent)
+  );
+  --clr-bg-green-highlight: hsl(
+          var(--_hue-green),
+          var(--_sat-bg-highlight),
+          var(--_light-bg-highlight)
+  );
+}
+
 /*Заполнения*/
 /*==========*/
 /*Ярко выраженный цвет. Например кнопка. Максимум - шапка.*/
@@ -118,118 +246,8 @@
   );
 }
 
-/*Фоны*/
-/*====*/
-/*Для блоков большого размера. Светлый задний фон*/
-/*big - например фон всей страницы*/
-/*small - например для шапки в таблице*/
-/*accent - Чтобы выделялось на фоне любого серого. Например для скроллбара, или подчеркивания в меню.*/
-/*highlight - для blink-эффекта*/
-:root {
-  --_sat-bg-big: 25%;
-  --_light-bg-big: 98%;
 
-  --_sat-bg-small: 9%;
-  --_light-bg-small: 94%;
 
-  --_sat-bg-smaller: 9%;
-  --_light-bg-smaller: 90%;
-
-  --_sat-bg-accent: 19%;
-  --_light-bg-accent: 83%;
-
-  --_sat-bg-highlight: 81%;
-  --_light-bg-highlight: 90%;
-
-  --clr-bg-blue-big: hsl(
-    var(--_hue-blue),
-    var(--_sat-bg-big),
-    var(--_light-bg-big)
-  );
-  --clr-bg-blue-small: hsl(
-    var(--_hue-blue),
-    var(--_sat-bg-small),
-    var(--_light-bg-small)
-  );
-  --clr-bg-blue-smaller: hsl(
-    var(--_hue-blue),
-    var(--_sat-bg-smaller),
-    var(--_light-bg-smaller)
-  );
-  --clr-bg-blue-accent: hsl(
-    var(--_hue-blue),
-    var(--_sat-bg-accent),
-    var(--_light-bg-accent)
-  );
-  --clr-bg-blue-highlight: hsl(
-    var(--_hue-blue),
-    var(--_sat-bg-highlight),
-    var(--_light-bg-highlight)
-  );
-
-  --clr-bg-red-big: hsl(
-    var(--_hue-red),
-    var(--_sat-bg-big),
-    var(--_light-bg-big)
-  );
-  --clr-bg-red-small: hsl(
-    var(--_hue-red),
-    var(--_sat-bg-small),
-    var(--_light-bg-small)
-  );
-  --clr-bg-red-accent: hsl(
-    var(--_hue-red),
-    var(--_sat-bg-accent),
-    var(--_light-bg-accent)
-  );
-  --clr-bg-red-highlight: hsl(
-    var(--_hue-red),
-    var(--_sat-bg-highlight),
-    var(--_light-bg-highlight)
-  );
-
-  --clr-bg-orange-big: hsl(
-    var(--_hue-orange),
-    var(--_sat-bg-big),
-    var(--_light-bg-big)
-  );
-  --clr-bg-orange-small: hsl(
-    var(--_hue-orange),
-    var(--_sat-bg-small),
-    var(--_light-bg-small)
-  );
-  --clr-bg-orange-accent: hsl(
-    var(--_hue-orange),
-    var(--_sat-bg-accent),
-    var(--_light-bg-accent)
-  );
-  --clr-bg-orange-highlight: hsl(
-    var(--_hue-orange),
-    var(--_sat-bg-highlight),
-    var(--_light-bg-highlight)
-  );
-
-  --clr-bg-green-big: hsl(
-    var(--_hue-green),
-    var(--_sat-bg-big),
-    var(--_light-bg-big)
-  );
-  --clr-bg-green-small: hsl(
-    var(--_hue-green),
-    var(--_sat-bg-small),
-    var(--_light-bg-small)
-  );
-  --clr-bg-green-accent: hsl(
-    var(--_hue-green),
-    var(--_sat-bg-accent),
-    var(--_light-bg-accent)
-  );
-  --clr-bg-green-highlight: hsl(
-    var(--_hue-green),
-    var(--_sat-bg-highlight),
-    var(--_light-bg-highlight)
-  );
-}
 
 /*Шрифты*/
 /*======*/
