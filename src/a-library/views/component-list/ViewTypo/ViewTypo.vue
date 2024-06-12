@@ -24,6 +24,18 @@
       nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed
       sint? Dolor nobis non provident suscipit totam.
     </p>
+    <br>
+
+    <h2>Размеры шрифтов</h2>
+    <p style="font-size: var(--font-size-base)">--font-size-base</p>
+    <p style="font-size: var(--font-size-small)">--font-size-small</p>
+    <p style="font-size: var(--font-size-tiny)">--font-size-tiny</p>
+    <br>
+
+    <h2>Начертания</h2>
+    <p>Стандартное</p>
+    <p style="font-weight: var(--font-weight-bold)">--font-weight-bold</p>
+    <br>
 
     <h2>Иконки</h2>
     <p>
@@ -39,3 +51,5 @@
 </template>
 
 <style></style>
+<script setup lang="ts">
+</script>

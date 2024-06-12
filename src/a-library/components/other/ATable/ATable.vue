@@ -18,18 +18,18 @@
   border-collapse: collapse;
 
   :slotted(tr) {
-    /*border-top: 1px solid green;*/
-    /*border-left: 1px solid red;*/
-    /*border-spacing: 0;*/
-    /*background-color: red;*/
-    /*:slotted(td, th) {*/
-    :slotted(th), :slotted(td) {
-      /*border-spacing: 0;*/
-      padding: var(--gap);
-      text-align: left;
-      /*background-color: #aff;*/
-      border-bottom: 1px solid orange;
+    :slotted(th){
+      font-weight: var(--font-weight-bold);
     }
+    :slotted(th), :slotted(td) {
+      padding: calc(var(--gap) / 2) var(--gap);
+      text-align: left;
+      border-bottom: 1px solid var(--clr-border-blue-lighter);
+      font-size: var(--font-size-small)
+    }
+  }
+  :slotted(tr:not(thead):hover) {
+      background-color: var(--clr-bg-blue-small);
   }
 }
 </style>

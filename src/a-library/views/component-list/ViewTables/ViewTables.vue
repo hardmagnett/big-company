@@ -21,6 +21,16 @@
         </tr>
       </tbody>
     </ATable>
+
+    <br>
+
+    <ATable>
+      <tr v-for="n in 10" :key="n">
+        <td>Колонка 01</td>
+        <td>Колонка 02</td>
+      </tr>
+    </ATable>
+
   </div>
 </template>
 
