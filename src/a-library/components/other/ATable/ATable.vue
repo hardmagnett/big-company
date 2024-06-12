@@ -42,7 +42,8 @@
         font-size: var(--font-size-small)
       }
     }
-    :slotted(tr:not(thead):hover) {
+
+    :slotted(:not(thead) tr:hover) {
       background-color: var(--clr-bg-blue-small);
     }
   }

@@ -4,9 +4,7 @@
       <APageHeader> Таблицы </APageHeader>
     </Teleport>
 
-    <p>Продолжить отсюда</p>
-    https://vuetifyjs.com/en/components/tables/#api
-    <br>
+    <p>Фактически - стилизованная обертка над тэгом <code>table</code>.</p>
     <br>
 
     <h2>Обычная</h2>
