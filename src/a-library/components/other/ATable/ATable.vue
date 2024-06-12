@@ -1,7 +1,6 @@
-<!--<script setup lang="ts">-->
-<!--import { } from 'vue'-->
+<script setup lang="ts">
+</script>
 
-<!--</script>-->
 
 <template>
   <div class="a-table mod--cool-scrollbar">
@@ -11,6 +10,7 @@
   </div>
 </template>
 
+<!--todo:: вернуть scoped-->
 <style scoped>
 .a-table {
   overflow-y: auto;
@@ -73,5 +73,3 @@
   }
 }
 </style>
-<script setup lang="ts">
-</script>
