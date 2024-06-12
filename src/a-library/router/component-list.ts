@@ -2,10 +2,16 @@ const pathToComponents = "/components/";
 
 export default [
   {
-    path: `${pathToComponents}headers`,
-    name: "headers",
+    path: `${pathToComponents}typo`,
+    name: "typo",
     component: () =>
       import("@/a-library/views/component-list/ViewTypo/ViewTypo.vue"),
+  },
+  {
+    path: `${pathToComponents}colors`,
+    name: "colors",
+    component: () =>
+      import("@/a-library/views/component-list/ViewColors/ViewColors.vue"),
   },
   {
     path: `${pathToComponents}buttons`,

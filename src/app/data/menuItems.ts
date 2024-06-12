@@ -29,7 +29,15 @@ const menuItems: Array<IMenuItem> = [
         title: "Типографика",
         icon: "mdi-format-size",
         route: {
-          to: "headers",
+          to: "typo",
+        },
+      },
+      {
+        id: i++,
+        title: "Цвета",
+        icon: "mdi-palette",
+        route: {
+          to: "colors",
         },
       },
       {
