@@ -82,6 +82,11 @@
           height: 1px;
           background-color: var(--border-color);
         }
+
+        th {
+          /*Те самые бордюры, которые ускролливаются.*/
+          border-bottom: none;
+        }
       }
     }
   }
