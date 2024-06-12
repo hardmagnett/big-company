@@ -244,6 +244,54 @@
     var(--_sat-border-darker),
     var(--_light-border-darker)
   );
+
+  --clr-border-red-lighter: hsl(
+          var(--_hue-red),
+          var(--_sat-border-lighter),
+          var(--_light-border-lighter)
+  );
+  --clr-border-red-lightest: hsl(
+          var(--_hue-red),
+          var(--_sat-border-lightest),
+          var(--_light-border-lightest)
+  );
+  --clr-border-red-darker: hsl(
+          var(--_hue-red),
+          var(--_sat-border-darker),
+          var(--_light-border-darker)
+  );
+
+  --clr-border-orange-lighter: hsl(
+          var(--_hue-orange),
+          var(--_sat-border-lighter),
+          var(--_light-border-lighter)
+  );
+  --clr-border-orange-lightest: hsl(
+          var(--_hue-orange),
+          var(--_sat-border-lightest),
+          var(--_light-border-lightest)
+  );
+  --clr-border-orange-darker: hsl(
+          var(--_hue-orange),
+          var(--_sat-border-darker),
+          var(--_light-border-darker)
+  );
+
+  --clr-border-green-lighter: hsl(
+          var(--_hue-green),
+          var(--_sat-border-lighter),
+          var(--_light-border-lighter)
+  );
+  --clr-border-green-lightest: hsl(
+          var(--_hue-green),
+          var(--_sat-border-lightest),
+          var(--_light-border-lightest)
+  );
+  --clr-border-green-darker: hsl(
+          var(--_hue-green),
+          var(--_sat-border-darker),
+          var(--_light-border-darker)
+  );
 }
 
 

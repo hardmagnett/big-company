@@ -21,10 +21,21 @@ for (let colorName of colorNames) {
     `--clr-fill-${colorName}-accent`,
   ])
 }
+
+let colorBorderCSSVariables: Array<[string, string, string]> = []
+for (let colorName of colorNames) {
+  colorBorderCSSVariables.push([
+    `--clr-border-${colorName}-lightest`,
+    `--clr-border-${colorName}-lighter`,
+    `--clr-border-${colorName}-darker`,
+  ])
+}
+
+
 </script>
 
 <template>
-  <div class="colors">
+  <div class="view-colors">
     <Teleport to="#page-header-place">
       <APageHeader> Цвета </APageHeader>
     </Teleport>
@@ -39,7 +50,6 @@ for (let colorName of colorNames) {
         >
           <td
               v-for="(variableName, index) in colorGroup" :key="index"
-              style="background-color: var(--clr-bg-blue-big)"
               :style="{
                 backgroundColor: `var(${variableName})`
               }"
@@ -61,7 +71,6 @@ for (let colorName of colorNames) {
       >
         <td
             v-for="(variableName, index) in colorGroup" :key="index"
-            style="background-color: var(--clr-bg-blue-big)"
             :style="{
                 backgroundColor: `var(${variableName})`
               }"
@@ -70,11 +79,31 @@ for (let colorName of colorNames) {
         </td>
       </tr>
     </ATable>
+    <br>
 
     <h2></h2>
     <p></p>
 
     <h2>Бордюры</h2>
+
+    <div class="view-colors__wrapper-for-borders">
+      <template
+          v-for="(colorGroup, index) in colorBorderCSSVariables"
+          :key="index"
+      >
+        <ACard
+            class="mod--basis-for-column-flex-item"
+            v-for="(variableName, index) in colorGroup" :key="index"
+            :style="{
+                borderColor: `var(${variableName})`
+              }"
+        >
+          {{ variableName }}
+        </ACard>
+      </template>
+    </div>
+
+    <br>
 
     <h2>Шрифты</h2>
 
@@ -82,6 +111,15 @@ for (let colorName of colorNames) {
 </template>
 
 <style scoped>
-.colors {
+.view-colors {
+  .view-colors__wrapper-for-borders {
+    --flex-items-qty: 3;
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--gap);
+    @container style(--bp-md-or-less) {
+      --flex-items-qty: 1;
+    }
+  }
 }
 </style>

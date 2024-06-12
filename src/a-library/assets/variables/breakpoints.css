@@ -26,4 +26,7 @@
   @media (max-width: 767px) {
     --bp-sm-or-less: true;
   }
+  @media (max-width: 1023px) {
+    --bp-md-or-less: true;
+  }
 }
