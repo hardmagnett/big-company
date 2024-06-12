@@ -17,6 +17,7 @@
 
   table {
     width: 100%;
+    
 
     /*Чтобы убрать всякие отступы между ячейками*/
     border-spacing: 0;
@@ -38,6 +39,18 @@
     }
   }
 
+  &.a-table--fixed-header {
+    outline: 1px solid darkred;
+    table {
+      :slotted(thead) {
+        /*background-color: #aff;*/
+
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+    }
+  }
 }
 </style>
 <script setup lang="ts">

@@ -52,7 +52,24 @@
       </tbody>
     </ATable>
     <br>
+
+    <h2>С ограниченной высотой и фиксированной шапкой</h2>
+    <ATable style="height: 200px" class="a-table--fixed-header">
+      <thead>
+      <tr>
+        <th>Колонка 01</th>
+        <th>Колонка 02</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="n in 10" :key="n">
+        <td>Колонка 01</td>
+        <td>Колонка 02</td>
+      </tr>
+      </tbody>
+    </ATable>
     <br>
+
 
 
 
