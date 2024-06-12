@@ -8,6 +8,7 @@
   --transition-extra-easy-in: cubic-bezier(1, 0, 1, 0);
 
   --gap: 16px;
+  --gap-flex: 16px;
   --border-radius: 4px;
 
   /*Не типографический заголовок, а шапка*/
