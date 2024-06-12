@@ -4,32 +4,41 @@
 <!--</script>-->
 
 <template>
-  <table class="a-table">
-    <slot></slot>
-  </table>
+  <div class="a-table mod--cool-scrollbar">
+    <table>
+      <slot></slot>
+    </table>
+  </div>
 </template>
 
 <style scoped>
 .a-table {
-  width: 100%;
+  overflow-y: auto;
 
-  /*Чтобы убрать всякие отступы между ячейками*/
-  border-spacing: 0;
-  border-collapse: collapse;
+  table {
+    width: 100%;
 
-  :slotted(tr) {
-    :slotted(th){
-      font-weight: var(--font-weight-bold);
+    /*Чтобы убрать всякие отступы между ячейками*/
+    border-spacing: 0;
+    border-collapse: collapse;
+
+    :slotted(tr) {
+      :slotted(th){
+        font-weight: var(--font-weight-bold);
+      }
+      :slotted(th), :slotted(td) {
+        padding: calc(var(--gap) / 2) var(--gap);
+        text-align: left;
+        border-bottom: 1px solid var(--clr-border-blue-lighter);
+        font-size: var(--font-size-small)
+      }
     }
-    :slotted(th), :slotted(td) {
-      padding: calc(var(--gap) / 2) var(--gap);
-      text-align: left;
-      border-bottom: 1px solid var(--clr-border-blue-lighter);
-      font-size: var(--font-size-small)
-    }
-  }
-  :slotted(tr:not(thead):hover) {
+    :slotted(tr:not(thead):hover) {
       background-color: var(--clr-bg-blue-small);
+    }
   }
+
 }
 </style>
+<script setup lang="ts">
+</script>
