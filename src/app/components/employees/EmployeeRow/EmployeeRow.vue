@@ -6,8 +6,8 @@
   <!--</div>-->
 
   <tr class="employee-row">
-    <td>Череззабороногузадерищенко Виктор</td>
-    <td>Колонка 02</td>
+    <td class="mod--ellipsis-one-line">Череззабороногузадерищенко Виктор</td>
+    <td>11</td>
   </tr>
 </template>
 
