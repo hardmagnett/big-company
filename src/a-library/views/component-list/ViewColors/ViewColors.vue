@@ -31,6 +31,16 @@ for (let colorName of colorNames) {
   ])
 }
 
+let colorFontCSSVariables: Array<[string, string, string, string]> = []
+for (let colorName of colorNames) {
+  colorFontCSSVariables.push([
+    `--clr-font-${colorName}-light`,
+    `--clr-font-${colorName}-gray`,
+    `--clr-font-${colorName}-dark`,
+    `--clr-font-${colorName}-darkest`,
+  ])
+}
+
 
 </script>
 
@@ -106,7 +116,31 @@ for (let colorName of colorNames) {
     <br>
 
     <h2>Шрифты</h2>
-
+    <!--<div class="view-colors__wrapper-for-fonts">-->
+      <template
+          v-for="(colorGroup, index) in colorFontCSSVariables"
+          :key="index"
+      >
+        <p
+            v-for="(variableName, index) in colorGroup" :key="index"
+            :style="{
+                color: `var(${variableName})`
+              }"
+        >
+          {{ variableName }}
+        </p>
+        <br>
+        <!--<ACard-->
+        <!--    class="mod&#45;&#45;basis-for-column-flex-item"-->
+        <!--    v-for="(variableName, index) in colorGroup" :key="index"-->
+        <!--    :style="{-->
+        <!--        color: `var(${variableName})`-->
+        <!--      }"-->
+        <!--&gt;-->
+        <!--  {{ variableName }}-->
+        <!--</ACard>-->
+      </template>
+    <!--</div>-->
   </div>
 </template>
 
@@ -121,5 +155,14 @@ for (let colorName of colorNames) {
       --flex-items-qty: 1;
     }
   }
+  /*.view-colors__wrapper-for-fonts {*/
+  /*    --flex-items-qty: 4;*/
+  /*    display: flex;*/
+  /*    flex-flow: row wrap;*/
+  /*    gap: var(--gap);*/
+  /*  @container style(--bp-md-or-less) {*/
+  /*    --flex-items-qty: 1;*/
+  /*  }*/
+  /*}*/
 }
 </style>
