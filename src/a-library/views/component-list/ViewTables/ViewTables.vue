@@ -7,6 +7,7 @@
     <h2>Таблицы</h2>
     <p>Продолжить отсюда</p>
     https://vuetifyjs.com/en/components/tables/#api
+    <ATable> foo </ATable>
   </div>
 </template>
 
@@ -14,5 +15,4 @@
 .tables {
 }
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

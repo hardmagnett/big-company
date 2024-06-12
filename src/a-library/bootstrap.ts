@@ -21,6 +21,9 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 // Blocks
 import ACard from "@/a-library/components/blocks/ACard/ACard.vue";
 
+// Other
+import ATable from "@/a-library/components/other/ATable/ATable.vue";
+
 // Helpers
 // =======
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
@@ -59,6 +62,9 @@ export default function ({
 
   // Blocks
   vueApp.component("ACard", ACard);
+
+  // Other
+  vueApp.component("ATable", ATable);
 
   // Helpers
   // =======
