@@ -23,6 +23,10 @@
     --bp-xxl-or-more: true;
   }
 
+
+  @media (max-width: 575px) {
+    --bp-xs-or-less: true;
+  }
   @media (max-width: 767px) {
     --bp-sm-or-less: true;
   }

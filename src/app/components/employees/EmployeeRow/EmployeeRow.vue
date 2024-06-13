@@ -23,8 +23,7 @@
   .employee-row__task-qty {
     width: 156px;
     text-align: center;
-    @container style(--bp-sm-or-less) {
-      /*outline: 1px solid darkred;*/
+    @container style(--bp-xs-or-less) {
       width: 40px;
     }
   }

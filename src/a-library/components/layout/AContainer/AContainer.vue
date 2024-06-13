@@ -14,7 +14,7 @@ let isCollapsedOnBigScreen = ref(
 let isMenuVisibleOnSmall = ref(false);
 
 let isBig = computed(() => {
-  return isMdOrMore.value();
+  return isMdOrMore.value;
 });
 
 let isMainMenuCollapsed = computed(() => {

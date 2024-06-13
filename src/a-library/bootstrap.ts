@@ -29,6 +29,8 @@ import ATable from "@/a-library/components/other/ATable/ATable.vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 
 
+// Vue Plugins
+// ===========
 import responsiveGlobalStorage from '@/a-library/vue-plugins/responsiveGlobalStorage';
 
 
@@ -76,5 +78,6 @@ export default function ({
   localStorageService.setStoragePrefix(appName);
 
   // Vue-Plugins
+  // ===========
   vueApp.use(responsiveGlobalStorage)
 }
