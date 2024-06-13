@@ -17,7 +17,7 @@
 .employee-row {
   .employee-row__buttons {
     padding: 0;
-    width: 58px;
+    width: 60px;
   }
   .employee-row__task-qty {
     width: 156px;
