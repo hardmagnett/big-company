@@ -15,16 +15,13 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
       </p>
     </div>
 
-    <!--<br />-->
 
-    <!--<div class="mod&#45;&#45;clear-both"></div>-->
     <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
     <EmployeesTable class="mod--cool-scrollbar" />
   </div>
 </template>
 <style scoped>
 .employees {
-  /*flex: 0 0 auto;*/
   display: flex;
   flex-flow: column nowrap;
   > * {
@@ -45,9 +42,6 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
   .employees-table {
     flex: 1 1 auto;
     overflow-y: auto;
-
-    /*outline: 1px solid darkred;*/
-    /*background-color: #aff;*/
   }
 }
 </style>

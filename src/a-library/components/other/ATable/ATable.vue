@@ -21,7 +21,6 @@
 .a-table {
   overflow-y: auto;
 
-  /*&::v-deep(a-table) {*/
   table {
     width: 100%;
 
@@ -38,27 +37,19 @@
     border-spacing: 0;
     border-collapse: collapse;
 
-    /*:slotted(tr) {*/
     tr {
       background-color: var(--background-color);
-      /*:slotted(th){*/
       th {
         font-weight: var(--font-weight-bold);
       }
-      /*:slotted(th), :slotted(td) {*/
       th, td {
         padding: calc(var(--gap) / 2) var(--gap);
         text-align: left;
         border-bottom: 1px solid var(--border-color);
         font-size: var(--font-size-small);
-
-        /*border-collapse: collapse;*/
-
-        /*display: inline-block;*/
       }
     }
 
-    /*:slotted(:not(thead) tr:hover) {*/
     :not(thead) tr:hover {
       background-color: var(--clr-bg-blue-small);
     }
@@ -66,9 +57,7 @@
 
   &.a-table--fixed-header {
     table {
-      /*:slotted(thead) {*/
       thead {
-        /*background-color: #aff;*/
 
         position: sticky;
         top: 0;
@@ -76,7 +65,6 @@
 
         /*Хак. С таблицами нередко необычное приходится делать.*/
         /*Нормальными способами у таблицы бордюр ускролливается.*/
-        /*:slotted(&::before) {*/
         &::before {
           content: '';
           position: absolute;
