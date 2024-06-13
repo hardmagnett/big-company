@@ -15,7 +15,6 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
       </p>
     </div>
 
-
     <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
     <EmployeesTable class="mod--cool-scrollbar" />
   </div>

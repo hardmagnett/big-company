@@ -28,12 +28,9 @@ import ATable from "@/a-library/components/other/ATable/ATable.vue";
 // =======
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 
-
 // Vue Plugins
 // ===========
-import responsiveGlobalStorage from '@/a-library/vue-plugins/responsiveGlobalStorage';
-
-
+import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalStorage";
 
 /**
  * Подключает компоненты из библиотеки.
@@ -79,5 +76,5 @@ export default function ({
 
   // Vue-Plugins
   // ===========
-  vueApp.use(responsiveGlobalStorage)
+  vueApp.use(responsiveGlobalStorage);
 }

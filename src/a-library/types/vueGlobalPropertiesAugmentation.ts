@@ -9,12 +9,12 @@
  * Возможно возникнут проблемы, когда я сделаю ещё одно расширение для globalProperties.
  */
 
-import {useResponsiveStore} from "@/a-library/stores/responsive";
+import { useResponsiveStore } from "@/a-library/stores/responsive";
 
-const valueWithTypeOfUseResponsiveStore = useResponsiveStore()
-declare module 'vue' {
+const valueWithTypeOfUseResponsiveStore = useResponsiveStore();
+declare module "vue" {
   interface ComponentCustomProperties {
-    $responsiveVariables: typeof valueWithTypeOfUseResponsiveStore
+    $responsiveVariables: typeof valueWithTypeOfUseResponsiveStore;
   }
 }
 

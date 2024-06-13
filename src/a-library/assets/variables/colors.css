@@ -29,107 +29,107 @@
   --_light-bg-highlight: 90%;
 
   --clr-bg-blue-big: hsl(
-          var(--_hue-blue),
-          var(--_sat-bg-big),
-          var(--_light-bg-big)
+    var(--_hue-blue),
+    var(--_sat-bg-big),
+    var(--_light-bg-big)
   );
   --clr-bg-blue-small: hsl(
-          var(--_hue-blue),
-          var(--_sat-bg-small),
-          var(--_light-bg-small)
+    var(--_hue-blue),
+    var(--_sat-bg-small),
+    var(--_light-bg-small)
   );
   --clr-bg-blue-smaller: hsl(
-          var(--_hue-blue),
-          var(--_sat-bg-smaller),
-          var(--_light-bg-smaller)
+    var(--_hue-blue),
+    var(--_sat-bg-smaller),
+    var(--_light-bg-smaller)
   );
   --clr-bg-blue-accent: hsl(
-          var(--_hue-blue),
-          var(--_sat-bg-accent),
-          var(--_light-bg-accent)
+    var(--_hue-blue),
+    var(--_sat-bg-accent),
+    var(--_light-bg-accent)
   );
   --clr-bg-blue-highlight: hsl(
-          var(--_hue-blue),
-          var(--_sat-bg-highlight),
-          var(--_light-bg-highlight)
+    var(--_hue-blue),
+    var(--_sat-bg-highlight),
+    var(--_light-bg-highlight)
   );
 
   --clr-bg-red-big: hsl(
-          var(--_hue-red),
-          var(--_sat-bg-big),
-          var(--_light-bg-big)
+    var(--_hue-red),
+    var(--_sat-bg-big),
+    var(--_light-bg-big)
   );
   --clr-bg-red-small: hsl(
-          var(--_hue-red),
-          var(--_sat-bg-small),
-          var(--_light-bg-small)
+    var(--_hue-red),
+    var(--_sat-bg-small),
+    var(--_light-bg-small)
   );
   --clr-bg-red-smaller: hsl(
-          var(--_hue-red),
-          var(--_sat-bg-smaller),
-          var(--_light-bg-smaller)
+    var(--_hue-red),
+    var(--_sat-bg-smaller),
+    var(--_light-bg-smaller)
   );
   --clr-bg-red-accent: hsl(
-          var(--_hue-red),
-          var(--_sat-bg-accent),
-          var(--_light-bg-accent)
+    var(--_hue-red),
+    var(--_sat-bg-accent),
+    var(--_light-bg-accent)
   );
   --clr-bg-red-highlight: hsl(
-          var(--_hue-red),
-          var(--_sat-bg-highlight),
-          var(--_light-bg-highlight)
+    var(--_hue-red),
+    var(--_sat-bg-highlight),
+    var(--_light-bg-highlight)
   );
 
   --clr-bg-orange-big: hsl(
-          var(--_hue-orange),
-          var(--_sat-bg-big),
-          var(--_light-bg-big)
+    var(--_hue-orange),
+    var(--_sat-bg-big),
+    var(--_light-bg-big)
   );
   --clr-bg-orange-small: hsl(
-          var(--_hue-orange),
-          var(--_sat-bg-small),
-          var(--_light-bg-small)
+    var(--_hue-orange),
+    var(--_sat-bg-small),
+    var(--_light-bg-small)
   );
   --clr-bg-orange-smaller: hsl(
-          var(--_hue-orange),
-          var(--_sat-bg-smaller),
-          var(--_light-bg-smaller)
+    var(--_hue-orange),
+    var(--_sat-bg-smaller),
+    var(--_light-bg-smaller)
   );
   --clr-bg-orange-accent: hsl(
-          var(--_hue-orange),
-          var(--_sat-bg-accent),
-          var(--_light-bg-accent)
+    var(--_hue-orange),
+    var(--_sat-bg-accent),
+    var(--_light-bg-accent)
   );
   --clr-bg-orange-highlight: hsl(
-          var(--_hue-orange),
-          var(--_sat-bg-highlight),
-          var(--_light-bg-highlight)
+    var(--_hue-orange),
+    var(--_sat-bg-highlight),
+    var(--_light-bg-highlight)
   );
 
   --clr-bg-green-big: hsl(
-          var(--_hue-green),
-          var(--_sat-bg-big),
-          var(--_light-bg-big)
+    var(--_hue-green),
+    var(--_sat-bg-big),
+    var(--_light-bg-big)
   );
   --clr-bg-green-small: hsl(
-          var(--_hue-green),
-          var(--_sat-bg-small),
-          var(--_light-bg-small)
+    var(--_hue-green),
+    var(--_sat-bg-small),
+    var(--_light-bg-small)
   );
   --clr-bg-green-smaller: hsl(
-          var(--_hue-green),
-          var(--_sat-bg-smaller),
-          var(--_light-bg-smaller)
+    var(--_hue-green),
+    var(--_sat-bg-smaller),
+    var(--_light-bg-smaller)
   );
   --clr-bg-green-accent: hsl(
-          var(--_hue-green),
-          var(--_sat-bg-accent),
-          var(--_light-bg-accent)
+    var(--_hue-green),
+    var(--_sat-bg-accent),
+    var(--_light-bg-accent)
   );
   --clr-bg-green-highlight: hsl(
-          var(--_hue-green),
-          var(--_sat-bg-highlight),
-          var(--_light-bg-highlight)
+    var(--_hue-green),
+    var(--_sat-bg-highlight),
+    var(--_light-bg-highlight)
   );
 }
 
@@ -246,56 +246,53 @@
   );
 
   --clr-border-red-lighter: hsl(
-          var(--_hue-red),
-          var(--_sat-border-lighter),
-          var(--_light-border-lighter)
+    var(--_hue-red),
+    var(--_sat-border-lighter),
+    var(--_light-border-lighter)
   );
   --clr-border-red-lightest: hsl(
-          var(--_hue-red),
-          var(--_sat-border-lightest),
-          var(--_light-border-lightest)
+    var(--_hue-red),
+    var(--_sat-border-lightest),
+    var(--_light-border-lightest)
   );
   --clr-border-red-darker: hsl(
-          var(--_hue-red),
-          var(--_sat-border-darker),
-          var(--_light-border-darker)
+    var(--_hue-red),
+    var(--_sat-border-darker),
+    var(--_light-border-darker)
   );
 
   --clr-border-orange-lighter: hsl(
-          var(--_hue-orange),
-          var(--_sat-border-lighter),
-          var(--_light-border-lighter)
+    var(--_hue-orange),
+    var(--_sat-border-lighter),
+    var(--_light-border-lighter)
   );
   --clr-border-orange-lightest: hsl(
-          var(--_hue-orange),
-          var(--_sat-border-lightest),
-          var(--_light-border-lightest)
+    var(--_hue-orange),
+    var(--_sat-border-lightest),
+    var(--_light-border-lightest)
   );
   --clr-border-orange-darker: hsl(
-          var(--_hue-orange),
-          var(--_sat-border-darker),
-          var(--_light-border-darker)
+    var(--_hue-orange),
+    var(--_sat-border-darker),
+    var(--_light-border-darker)
   );
 
   --clr-border-green-lighter: hsl(
-          var(--_hue-green),
-          var(--_sat-border-lighter),
-          var(--_light-border-lighter)
+    var(--_hue-green),
+    var(--_sat-border-lighter),
+    var(--_light-border-lighter)
   );
   --clr-border-green-lightest: hsl(
-          var(--_hue-green),
-          var(--_sat-border-lightest),
-          var(--_light-border-lightest)
+    var(--_hue-green),
+    var(--_sat-border-lightest),
+    var(--_light-border-lightest)
   );
   --clr-border-green-darker: hsl(
-          var(--_hue-green),
-          var(--_sat-border-darker),
-          var(--_light-border-darker)
+    var(--_hue-green),
+    var(--_sat-border-darker),
+    var(--_light-border-darker)
   );
 }
-
-
-
 
 /*Шрифты*/
 /*======*/
@@ -334,65 +331,65 @@
   );
 
   --clr-font-red-light: hsl(
-          var(--_hue-red),
-          var(--_sat-font-light),
-          var(--_light-font-light)
+    var(--_hue-red),
+    var(--_sat-font-light),
+    var(--_light-font-light)
   );
   --clr-font-red-gray: hsl(
-          var(--_hue-red),
-          var(--_sat-font-gray),
-          var(--_light-font-gray)
+    var(--_hue-red),
+    var(--_sat-font-gray),
+    var(--_light-font-gray)
   );
   --clr-font-red-dark: hsl(
-          var(--_hue-red),
-          var(--_sat-font-dark),
-          var(--_light-font-dark)
+    var(--_hue-red),
+    var(--_sat-font-dark),
+    var(--_light-font-dark)
   );
   --clr-font-red-darkest: hsl(
-          var(--_hue-red),
-          var(--_sat-font-darkest),
-          var(--_light-font-darkest)
+    var(--_hue-red),
+    var(--_sat-font-darkest),
+    var(--_light-font-darkest)
   );
 
   --clr-font-green-light: hsl(
-          var(--_hue-green),
-          var(--_sat-font-light),
-          var(--_light-font-light)
+    var(--_hue-green),
+    var(--_sat-font-light),
+    var(--_light-font-light)
   );
   --clr-font-green-gray: hsl(
-          var(--_hue-green),
-          var(--_sat-font-gray),
-          var(--_light-font-gray)
+    var(--_hue-green),
+    var(--_sat-font-gray),
+    var(--_light-font-gray)
   );
   --clr-font-green-dark: hsl(
-          var(--_hue-green),
-          var(--_sat-font-dark),
-          var(--_light-font-dark)
+    var(--_hue-green),
+    var(--_sat-font-dark),
+    var(--_light-font-dark)
   );
   --clr-font-green-darkest: hsl(
-          var(--_hue-green),
-          var(--_sat-font-darkest),
-          var(--_light-font-darkest)
+    var(--_hue-green),
+    var(--_sat-font-darkest),
+    var(--_light-font-darkest)
   );
 
   --clr-font-orange-light: hsl(
-          var(--_hue-orange),
-          var(--_sat-font-light),
-          var(--_light-font-light)
+    var(--_hue-orange),
+    var(--_sat-font-light),
+    var(--_light-font-light)
   );
   --clr-font-orange-gray: hsl(
-          var(--_hue-orange),
-          var(--_sat-font-gray),
-          var(--_light-font-gray)
+    var(--_hue-orange),
+    var(--_sat-font-gray),
+    var(--_light-font-gray)
   );
   --clr-font-orange-dark: hsl(
-          var(--_hue-orange),
-          var(--_sat-font-dark),
-          var(--_light-font-dark)
+    var(--_hue-orange),
+    var(--_sat-font-dark),
+    var(--_light-font-dark)
   );
   --clr-font-orange-darkest: hsl(
-          var(--_hue-orange),
-          var(--_sat-font-darkest),
-          var(--_light-font-darkest)
+    var(--_hue-orange),
+    var(--_sat-font-darkest),
+    var(--_light-font-darkest)
   );
 }

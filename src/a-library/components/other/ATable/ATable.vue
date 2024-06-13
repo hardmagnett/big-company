@@ -1,6 +1,4 @@
-<script setup lang="ts">
-</script>
-
+<script setup lang="ts"></script>
 
 <template>
   <div class="a-table mod--cool-scrollbar">
@@ -24,12 +22,10 @@
   table {
     width: 100%;
 
-
     /*Нужна чтобы цветом перекрывать задний фон при фиксированной шапке.*/
     --background-color: var(--clr-bg-blue-big);
 
     --border-color: var(--clr-border-blue-lighter);
-
 
     background-color: var(--background-color);
 
@@ -42,7 +38,8 @@
       th {
         font-weight: var(--font-weight-bold);
       }
-      th, td {
+      th,
+      td {
         padding: calc(var(--gap) / 2) var(--gap);
         text-align: left;
         border-bottom: 1px solid var(--border-color);
@@ -58,7 +55,6 @@
   &.a-table--fixed-header {
     table {
       thead {
-
         position: sticky;
         top: 0;
         z-index: 2;
@@ -66,7 +62,7 @@
         /*Хак. С таблицами нередко необычное приходится делать.*/
         /*Нормальными способами у таблицы бордюр ускролливается.*/
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           bottom: 0;
           left: 0;

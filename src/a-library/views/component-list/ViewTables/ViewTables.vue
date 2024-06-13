@@ -5,7 +5,7 @@
     </Teleport>
 
     <p>Фактически - стилизованная обертка над тэгом <code>table</code>.</p>
-    <br>
+    <br />
 
     <h2>Обычная</h2>
     <ATable>
@@ -14,7 +14,7 @@
         <td>Колонка 02</td>
       </tr>
     </ATable>
-    <br>
+    <br />
 
     <h2>С шапкой</h2>
     <ATable>
@@ -31,46 +31,41 @@
         </tr>
       </tbody>
     </ATable>
-    <br>
-
+    <br />
 
     <h2>С ограниченной высотой</h2>
     <ATable style="height: 200px">
       <thead>
-      <tr>
-        <th>Колонка 01</th>
-        <th>Колонка 02</th>
-      </tr>
+        <tr>
+          <th>Колонка 01</th>
+          <th>Колонка 02</th>
+        </tr>
       </thead>
       <tbody>
-      <tr v-for="n in 10" :key="n">
-        <td>Колонка 01</td>
-        <td>Колонка 02</td>
-      </tr>
+        <tr v-for="n in 10" :key="n">
+          <td>Колонка 01</td>
+          <td>Колонка 02</td>
+        </tr>
       </tbody>
     </ATable>
-    <br>
+    <br />
 
     <h2>С ограниченной высотой и фиксированной шапкой</h2>
     <ATable style="height: 200px" class="a-table--fixed-header">
       <thead>
-      <tr>
-        <th>Колонка 01</th>
-        <th>Колонка 02</th>
-      </tr>
+        <tr>
+          <th>Колонка 01</th>
+          <th>Колонка 02</th>
+        </tr>
       </thead>
       <tbody>
-      <tr v-for="n in 10" :key="n">
-        <td>Колонка 01</td>
-        <td>Колонка 02</td>
-      </tr>
+        <tr v-for="n in 10" :key="n">
+          <td>Колонка 01</td>
+          <td>Колонка 02</td>
+        </tr>
       </tbody>
     </ATable>
-    <br>
-
-
-
-
+    <br />
   </div>
 </template>
 
@@ -78,5 +73,4 @@
 .tables {
 }
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

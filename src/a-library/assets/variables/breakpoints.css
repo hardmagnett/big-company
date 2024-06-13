@@ -23,7 +23,6 @@
     --bp-xxl-or-more: true;
   }
 
-
   @media (max-width: 575px) {
     --bp-xs-or-less: true;
   }

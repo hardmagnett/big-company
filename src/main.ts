@@ -19,7 +19,6 @@ bootstrapALibrary({
   appName: "code-example",
 });
 
-
 app.use(router);
 
 app.provide(menuItemsInjectionKey, menuItems);
