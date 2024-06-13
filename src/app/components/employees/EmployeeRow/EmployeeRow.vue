@@ -3,7 +3,9 @@
 
 <template>
   <tr class="employee-row">
-    <td class="mod--ellipsis-one-line-on-table-cell">Череззабороногузадерищенко Виктор</td>
+    <td class="mod--ellipsis-one-line-on-table-cell">
+      Череззабороногузадерищенко Виктор
+    </td>
     <td class="employee-row__task-qty">11</td>
     <td class="employee-row__buttons">
       <ABtn icon><AIcon icon="mdi-pencil" /></ABtn>

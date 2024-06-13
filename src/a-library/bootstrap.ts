@@ -28,6 +28,11 @@ import ATable from "@/a-library/components/other/ATable/ATable.vue";
 // =======
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 
+
+import responsiveGlobalStorage from '@/a-library/vue-plugins/responsiveGlobalStorage';
+
+
+
 /**
  * Подключает компоненты из библиотеки.
  * На практике в приложении обычно используется бОльшая часть возможностей библиотеки.
@@ -69,4 +74,7 @@ export default function ({
   // Helpers
   // =======
   localStorageService.setStoragePrefix(appName);
+
+  // Vue-Plugins
+  vueApp.use(responsiveGlobalStorage)
 }

@@ -3,10 +3,8 @@ import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue"
 </script>
 
 <template>
-
-  <!--<ATable style="height: 200px" class="a-table&#45;&#45;fixed-header">-->
-  <!--style="height: 200px"-->
   <ATable class="employees-table a-table--fixed-header">
+    -={{$responsiveVariables.isMdOrMore()}}=-
     <thead>
     <tr>
       <th>Сотрудник</th>

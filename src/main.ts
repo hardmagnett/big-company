@@ -12,12 +12,14 @@ import "./main.css";
 
 const app = createApp(App);
 
+app.use(createPinia());
+
 bootstrapALibrary({
   vueApp: app,
   appName: "code-example",
 });
 
-app.use(createPinia());
+
 app.use(router);
 
 app.provide(menuItemsInjectionKey, menuItems);

@@ -50,3 +50,4 @@ export const useResponsiveStore = defineStore("responsive", () => {
   });
   return { isMdOrMore };
 });
+
