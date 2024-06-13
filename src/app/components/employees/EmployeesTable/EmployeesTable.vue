@@ -8,8 +8,8 @@ import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue"
     <thead>
     <tr>
       <th>Сотрудник</th>
-      <th>Количество задач</th>
-      <!--<th style="width: 40px;"></th>-->
+      <th v-if="$responsiveVariables.isMdOrMore()">Количество задач</th>
+      <th v-if="!$responsiveVariables.isMdOrMore()">Задач</th>
       <th></th>
     </tr>
     </thead>
