@@ -6,11 +6,12 @@ import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue"
 
   <!--<ATable style="height: 200px" class="a-table&#45;&#45;fixed-header">-->
   <!--style="height: 200px"-->
-  <ATable class="employees-table a-table--fixed-header a-table--fixed-layout">
+  <ATable class="employees-table a-table--fixed-header">
     <thead>
     <tr>
       <th>Сотрудник</th>
-      <th>Задач</th>
+      <th>Количество задач</th>
+      <!--<th style="width: 40px;"></th>-->
       <th></th>
     </tr>
     </thead>

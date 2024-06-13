@@ -50,13 +50,16 @@
         padding: calc(var(--gap) / 2) var(--gap);
         text-align: left;
         border-bottom: 1px solid var(--border-color);
-        font-size: var(--font-size-small)
+        font-size: var(--font-size-small);
+
+        /*border-collapse: collapse;*/
+
+        /*display: inline-block;*/
       }
     }
 
     /*:slotted(:not(thead) tr:hover) {*/
     :not(thead) tr:hover {
-      /*todo:: раскомментить*/
       background-color: var(--clr-bg-blue-small);
     }
   }
@@ -94,11 +97,11 @@
 
   /*Подходит для случаев, когда например не влезающий однострочный текст в ячейке нужно оборвать троеточием.*/
   /*При этом ширины ячеек перестанут подстраиваться под длину контента!!*/
-  &.a-table--fixed-layout {
-    table {
-      table-layout: fixed;
-    }
-
-  }
+  /*&.a-table--fixed-layout {*/
+  /*  table {*/
+  /*    !*todo:: что-то нужно с этим сделать*! Решил! Удалить это нафиг!*/
+  /*    !*table-layout: fixed;*!*/
+  /*  }*/
+  /*}*/
 }
 </style>

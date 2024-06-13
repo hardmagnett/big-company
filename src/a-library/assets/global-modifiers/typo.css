@@ -5,3 +5,11 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.mod--ellipsis-one-line-on-table-cell {
+  max-width: 80px;  /*В случае с таблицами это будет не максимальная а минимальная длина. Таблицы, что тут добавить.*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /*outline: 1px solid orange;*/
+}

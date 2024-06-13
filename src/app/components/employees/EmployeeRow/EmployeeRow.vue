@@ -3,8 +3,8 @@
 
 <template>
   <tr class="employee-row">
-    <td class="mod--ellipsis-one-line">Череззабороногузадерищенко Виктор</td>
-    <td>11</td>
+    <td class="mod--ellipsis-one-line-on-table-cell">Череззабороногузадерищенко Виктор</td>
+    <td class="employee-row__task-qty">11</td>
     <td class="employee-row__buttons">
       <ABtn icon><AIcon icon="mdi-pencil" /></ABtn>
       <ABtn icon class="btn--error"><AIcon icon="mdi-delete" /></ABtn>
@@ -15,8 +15,28 @@
 <style scoped>
 .employee-row {
   .employee-row__buttons {
-    padding-top: 0;
-    padding-bottom: 0;
+    /*padding-top: 0;*/
+    /*padding-bottom: 0;*/
+    /*padding-left: 0;*/
+    /*padding-right: 0;*/
+    padding: 0;
+    width: 58px;
+
+    /*outline: 1px solid red;*/
+
+    /*overflow: hidden;*/
+    /*display: inline-block;*/
+    /*white-space: nowrap;*/
+  }
+  .employee-row__task-qty {
+    width: 156px;
+    text-align: center;
+
+    /*outline: 1px solid green;*/
+
+    /*overflow: hidden;*/
+    /*display: inline-block;*/
+    /*white-space: nowrap;*/
   }
 }
 </style>
