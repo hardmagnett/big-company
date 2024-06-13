@@ -11,6 +11,7 @@ import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue"
     <tr>
       <th>Сотрудник</th>
       <th>Задач</th>
+      <th></th>
     </tr>
     </thead>
     <tbody>

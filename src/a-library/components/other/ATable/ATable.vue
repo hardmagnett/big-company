@@ -56,6 +56,7 @@
 
     /*:slotted(:not(thead) tr:hover) {*/
     :not(thead) tr:hover {
+      /*todo:: раскомментить*/
       background-color: var(--clr-bg-blue-small);
     }
   }
