@@ -1,8 +1,5 @@
 <script setup lang="ts">
 
-// todo:: попробовать сделать чтобы после live-reload модалка не закрывалась!
-// Это блять вообще бесит при работе.
-
 // todo:: проверить в других браузерах и сделать заметки в гистах
 
 import {watch, ref, onMounted, onBeforeUnmount } from 'vue'
@@ -10,10 +7,7 @@ import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
 import {getValueOfCSSVariableAsNumber} from '@/a-library/helpers/DOM/getCSSVariable';
 
 
-
-
-
-const emit = defineEmits(['close'])
+const emit = defineEmits(['needToClose'])
 
 const dialogNode = ref<HTMLDialogElement | null>(null)
 const dialogWrapperNode = ref<HTMLElement | null>(null)
@@ -34,15 +28,24 @@ watch(
     (newVal) => {
       // console.log(newVal); console.log('^...isOpen:')
       if (newVal){
-        dialogNode.value.showModal()
+        showModal()
       } else {
         dialogNode.value.close()
       }
     }
 )
 
-let close = ()=>{
-  emit('close')
+let showModal = ()=>{
+  dialogNode.value.showModal()
+}
+
+/**
+ * Называется needToClose, а не close,
+ * потому-что это не непосредственное закрытие, а лишь намерение о закрытии.
+ * Непосредственное закрытие происходит при вызове метода close() у html-элемента dialog.
+ */
+let needToClose = ()=>{
+  emit('needToClose')
 }
 
 // Обработчик нажатия на esc
@@ -51,7 +54,7 @@ let cancelDialogHandler = (e)=>{
     e.preventDefault()
     runClosingOnDeniedAnimation()
   } else {
-    close()
+    needToClose()
   }
 }
 
@@ -76,12 +79,17 @@ let closeDialogOnOutsideClick = (e: MouseEvent) => {
   const isClickOutsideOfDialog = !isClickOnDialogWrapperOrItsChildrenNodes
 
   if (isClickOutsideOfDialog) {
-    close()
+    needToClose()
   }
 }
 
 onMounted(() => {
+  if (props.isOpen) {
+    // Это спасает от закрытия диалогового окна при live-reload-е.
+    showModal()
+  }
     dialogNode.value.addEventListener("click", closeDialogOnOutsideClick)
+  let a =1;
 })
 onBeforeUnmount(()=> {
     dialogNode.value.removeEventListener("click", closeDialogOnOutsideClick)
@@ -112,7 +120,7 @@ onBeforeUnmount(()=> {
     >
       <slot></slot>
       <button
-          @click="close"
+          @click="needToClose"
       >Закрыть</button>
     </div>
   </dialog>

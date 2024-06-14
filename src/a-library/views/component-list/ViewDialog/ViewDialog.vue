@@ -18,7 +18,7 @@ const isDialogClosingConfiguredOpen = ref(false)
     </ul>
     <ADialog
         :isOpen="isDialogDefaultOpen"
-        @close="isDialogDefaultOpen = false"
+        @needToClose="isDialogDefaultOpen = false"
     >
       <p>Контент диалогового окна по умолчанию</p>
     </ADialog>
@@ -36,7 +36,7 @@ const isDialogClosingConfiguredOpen = ref(false)
         remainOnEsc
         remainOnClickOutside
         :isOpen="isDialogClosingConfiguredOpen"
-        @close="isDialogClosingConfiguredOpen = false"
+        @needToClose="isDialogClosingConfiguredOpen = false"
     >
       <p>Контент диалогового окна c изменением настроек закрытия</p>
     </ADialog>
