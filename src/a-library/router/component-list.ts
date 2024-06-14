@@ -45,4 +45,10 @@ export default [
     component: () =>
       import("@/a-library/views/component-list/ViewTables/ViewTables.vue"),
   },
+  {
+    path: `${pathToComponents}dialog`,
+    name: "dialog",
+    component: () =>
+      import("@/a-library/views/component-list/ViewDialog/ViewDialog.vue"),
+  },
 ];

@@ -80,6 +80,14 @@ const menuItems: Array<IMenuItem> = [
           to: "tables",
         },
       },
+      {
+        id: i++,
+        title: "Диалоговое окно",
+        icon: "mdi-window-maximize",
+        route: {
+          to: "dialog",
+        },
+      },
     ],
   },
 ];
