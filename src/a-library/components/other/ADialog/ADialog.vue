@@ -8,7 +8,11 @@
 // todo:: все что касается watch - в гисты
 
 // todo:: проверить в других браузерах и сделать заметки в гистах
-import {watch, ref, onMounted } from 'vue'
+import {watch, ref, onMounted, onBeforeUnmount } from 'vue'
+import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
+
+
+
 
 const emit = defineEmits(['close'])
 
@@ -28,7 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
 watch(
     () => props.isOpen,
     (newVal) => {
-      console.log(newVal); console.log('^...isOpen:')
+      // console.log(newVal); console.log('^...isOpen:')
       if (newVal){
         dialogNode.value.showModal()
       } else {
@@ -50,53 +54,28 @@ let cancelDialogHandler = (e)=>{
   }
 }
 
-// In a utility library:
-function assertIsNode(e: EventTarget | null): asserts e is Node {
-  if (!e || !("nodeType" in e)) {
-    throw new Error(`Node expected`);
-  }
-}
 
-let closeDialogOnOutsideClick = (e: PointerEvent) => {
-  console.clear()
-  console.log('closeDialogOnOutsideClick')
+// let closeDialogOnOutsideClick = (e: PointerEvent) => {
+let closeDialogOnOutsideClick = (e: MouseEvent) => {
   let target = e.target
   assertIsNode(target);
-  console.log(target); console.log('^...target:')
-  // const isClickOnDialog = target === dialogNode.value
   const isClickOnDialogWrapperOrItsChildrenNodes = dialogWrapperNode.value.contains(target)
 
 
   const isClickOutsideOfDialog = !isClickOnDialogWrapperOrItsChildrenNodes
-
-  console.log(isClickOutsideOfDialog); console.log('^...isClickOutsideOfDialog:')
 
   if (isClickOutsideOfDialog) {
     close()
   }
 }
 
-// let closeDialogOnOutsideClickOLD = (e) => {
-//
-//   let target = e.target
-//   const isClickOnDialog = target === dialogNode.value
-//   const isClickOnDialogChildrenNodes = dialogNode.value.contains(target)
-//
-//   const isClickOutsideOfDialog = !(
-//       isClickOnDialog || isClickOnDialogChildrenNodes
-//   )
-//
-//   // if (isClickOutsideOfDialog) {
-//   //   dialogNode.value.close()
-//   // }
-// }
-
 onMounted(() => {
   if (props.closeOnClickOutside) {
-    // todo:: отключить при выходе со страницы
-    // dialogWrapperNode.value.addEventListener("click", closeDialogOnOutsideClick)
     dialogNode.value.addEventListener("click", closeDialogOnOutsideClick)
   }
+})
+onBeforeUnmount(()=> {
+  dialogNode.value.removeEventListener("click", closeDialogOnOutsideClick)
 })
 </script>
 

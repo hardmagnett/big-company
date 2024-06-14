@@ -26,6 +26,8 @@ const isDialogClosingConfiguredOpen = ref(false)
 
     <ABtn @click="isDialogDefaultOpen = true">Открыть диалоговое окно</ABtn>
 
+    <br>
+
     <h2>C Настройками закрытия</h2>
     <p>Поведение такое-же как и в браузере</p>
     <ul>
