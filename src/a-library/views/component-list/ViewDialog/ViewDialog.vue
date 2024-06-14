@@ -2,6 +2,7 @@
 import {ref} from "vue";
 
 const isDialogDefaultOpen = ref(false)
+const isDialogClosingConfiguredOpen = ref(false)
 </script>
 <template>
   <div class="view-dialog">
@@ -24,6 +25,23 @@ const isDialogDefaultOpen = ref(false)
     </ADialog>
 
     <ABtn @click="isDialogDefaultOpen = true">Открыть диалоговое окно</ABtn>
+
+    <h2>C Настройками закрытия</h2>
+    <p>Поведение такое-же как и в браузере</p>
+    <ul>
+      <li>Не Закрывается по нажатию на esc</li>
+      <li>Закрывается по клику снаружи</li>
+    </ul>
+    <ADialog
+        remainOnEsc
+        closeOnClickOutside
+        :isOpen="isDialogClosingConfiguredOpen"
+        @close="isDialogClosingConfiguredOpen = false"
+    >
+      <p>Контент диалогового окна c изменением настроек закрытия</p>
+    </ADialog>
+
+    <ABtn @click="isDialogClosingConfiguredOpen = true">Открыть диалоговое окно</ABtn>
 
   </div>
 
