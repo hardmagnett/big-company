@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
 // Доступ: Из шаблона - ХЗ. Из скрипта через `props.`.
 
 //////// Data-Props
-const greeting = ref('Hello World!')
+let greeting = ref('Hello World!')
 
 //////// Computed
 const myComputed = computed(() => 'foo')

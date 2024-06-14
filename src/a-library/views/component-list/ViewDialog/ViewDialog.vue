@@ -12,10 +12,9 @@ const isDialogClosingConfiguredOpen = ref(false)
 
 
     <h2>C Настройками по умолчанию</h2>
-    <p>Поведение такое-же как и в браузере</p>
     <ul>
       <li>Закрывается по нажатию на esc</li>
-      <li>Не закрывается по клику снаружи</li>
+      <li>Закрывается по клику снаружи</li>
     </ul>
     <ADialog
         :isOpen="isDialogDefaultOpen"
@@ -31,12 +30,12 @@ const isDialogClosingConfiguredOpen = ref(false)
     <h2>C Настройками закрытия</h2>
     <p>Поведение такое-же как и в браузере</p>
     <ul>
-      <li>Не Закрывается по нажатию на esc</li>
-      <li>Закрывается по клику снаружи</li>
+      <li>Не закрывается по нажатию на esc</li>
+      <li>Не закрывается по клику снаружи</li>
     </ul>
     <ADialog
         remainOnEsc
-        closeOnClickOutside
+        remainOnClickOutside
         :isOpen="isDialogClosingConfiguredOpen"
         @close="isDialogClosingConfiguredOpen = false"
     >

@@ -18,15 +18,16 @@ const emit = defineEmits(['close'])
 
 const dialogNode = ref<HTMLDialogElement | null>(null)
 const dialogWrapperNode = ref<HTMLElement | null>(null)
+const isClosingOnDeniedAnimationRunning = ref(false)
 
 export interface Props {
   isOpen: boolean,
   remainOnEsc?: boolean,
-  closeOnClickOutside?: boolean
+  remainOnClickOutside?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   remainOnEsc: false,
-  closeOnClickOutside: false
+  remainOnClickOutside: false
 })
 
 watch(
@@ -49,11 +50,18 @@ let close = ()=>{
 let cancelDialogHandler = (e)=>{
   if (props.remainOnEsc) {
     e.preventDefault()
+    runClosingOnDeniedAnimation()
   } else {
     close()
   }
 }
 
+let runClosingOnDeniedAnimation = () => {
+  isClosingOnDeniedAnimationRunning.value = true
+  setTimeout(()=>{
+    isClosingOnDeniedAnimationRunning.value = false
+  },300)
+}
 
 // let closeDialogOnOutsideClick = (e: PointerEvent) => {
 let closeDialogOnOutsideClick = (e: MouseEvent) => {
@@ -70,12 +78,15 @@ let closeDialogOnOutsideClick = (e: MouseEvent) => {
 }
 
 onMounted(() => {
-  if (props.closeOnClickOutside) {
+  if (!props.remainOnClickOutside) {
     dialogNode.value.addEventListener("click", closeDialogOnOutsideClick)
   }
 })
 onBeforeUnmount(()=> {
-  dialogNode.value.removeEventListener("click", closeDialogOnOutsideClick)
+  if (!props.remainOnClickOutside) {
+    dialogNode.value.removeEventListener("click", closeDialogOnOutsideClick)
+  }
+
 })
 </script>
 
@@ -85,7 +96,12 @@ onBeforeUnmount(()=> {
   <!--@close="closeDialogHandler"-->
   <dialog
     ref="dialogNode"
-    class="a-dialog"
+    class="
+      a-dialog
+    "
+    :class="{
+      'a-dialog--animation-closing-is-denied': isClosingOnDeniedAnimationRunning
+    }"
     @cancel="cancelDialogHandler"
 
 
@@ -104,21 +120,37 @@ onBeforeUnmount(()=> {
 </template>
 
 <style scoped>
+
+@keyframes closing-is-denied {
+  from {transform: translatey(0);}
+  25% {transform: translatey(10px);}
+  50% {transform: translatey(0);}
+  75% {transform: translatey(-10px);}
+  to {transform: translatey(0);}
+}
+
 .a-dialog {
+  --closing-denied-animation-duration: 0.3s;
   padding: 0;
   border: none;
   border-radius: var(--border-radius);
+  outline: none;
 
 
   .dialog__wrapper {
-
-    /*border: 1px solid var(--clr-border-blue-lighter);*/
-    /*outline: 1px solid darkred;*/
     padding: var(--gap);
   }
   &::backdrop {
-    /*pointer-events: none;*/
     background-color: var(--clr-overlay);
+  }
+
+  &.a-dialog--animation-closing-is-denied {
+    animation-name: closing-is-denied;
+    animation-duration: var(--closing-denied-animation-duration);
+    animation-timing-function: linear;
+    /*animation-iteration-count: infinite;     !*n-times, infinite*!*/
+    animation-iteration-count: 1;     /*n-times, infinite*/
+    /*outline: 4px solid darkred;*/
   }
 }
 </style>
