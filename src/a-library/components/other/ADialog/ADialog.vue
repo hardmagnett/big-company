@@ -1,28 +1,74 @@
 <script setup lang="ts">
 // todo:: все что касается этой модалки и новых css-фич- в гисты
-import { } from 'vue'
 
+// todo:: все что касается watch - в гисты
+import {watch, ref } from 'vue'
+
+const emit = defineEmits(['close'])
+
+const dialogNode = ref<HTMLDialogElement | null>(null)
+
+export interface Props {
+  isOpen: boolean,
+  remainOnEsc?: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  remainOnEsc: false
+})
+
+watch(
+    () => props.isOpen,
+    (newVal) => {
+      console.log(newVal); console.log('^...isOpen:')
+      if (newVal){
+        dialogNode.value.showModal()
+      } else {
+        dialogNode.value.close()
+      }
+    }
+)
+
+let close = ()=>{
+  emit('close')
+}
+
+
+// let closeDialogHandler = (e)=>{
+//   console.log(e); console.log('^...e:')
+//   close()
+// }
+// Обработчик нажатия на esc
+let cancelDialogHandler = (e)=>{
+  if (props.remainOnEsc) {
+    e.preventDefault()
+  } else {
+    close()
+  }
+}
 </script>
 
 <template>
-  <button popovertarget="a-dialog-popover"> Open Popover </button>
-  <div
-      class="a-dialog"
-      id="a-dialog-popover"
-      popover
+
+
+  <!--@close="closeDialogHandler"-->
+  <dialog
+    ref="dialogNode"
+    class="a-dialog"
+    @cancel="cancelDialogHandler"
+
+
+
   >
-    <button popovertarget="a-dialog-popover" popovertargetaction="hide">
-      закрыть
-    </button>
-    <p>This is ADialog</p>
-  </div>
+    <slot></slot>
+    <button
+        @click="close"
+    >Закрыть</button>
+  </dialog>
 </template>
 
 <style scoped>
 .a-dialog {
   &::backdrop {
-    /*стилизация фона ЗА модалкой*/
-    pointer-events: none; /*это почему-то не работает*/
     background-color: var(--clr-overlay);
   }
 }

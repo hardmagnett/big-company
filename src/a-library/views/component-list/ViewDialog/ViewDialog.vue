@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import {ref} from "vue";
+
+const isDialogDefaultOpen = ref(false)
 </script>
 <template>
   <div class="view-dialog">
@@ -6,11 +9,25 @@
       <APageHeader> Диалоговое окно </APageHeader>
     </Teleport>
 
-    <ABtn>Открыть диалоговое окно</ABtn>
-    <ADialog>
-      <p>Передано в слот для a-dialog</p>
+
+    <h2>C Настройками по умолчанию</h2>
+    <p>Поведение такое-же как и в браузере</p>
+    <ul>
+      <li>Закрывается по нажатию на esc</li>
+      <li>Не закрывается по клику снаружи</li>
+    </ul>
+    <ADialog
+        :isOpen="isDialogDefaultOpen"
+        @close="isDialogDefaultOpen = false"
+    >
+      <p>Контент диалогового окна по умолчанию</p>
     </ADialog>
+
+    <ABtn @click="isDialogDefaultOpen = true">Открыть диалоговое окно</ABtn>
+
   </div>
+
+  <p v-for="n in 100" :key="n">: {{ n }}</p>
 </template>
 
 <style scoped>
