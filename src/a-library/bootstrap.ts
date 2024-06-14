@@ -23,6 +23,7 @@ import ACard from "@/a-library/components/blocks/ACard/ACard.vue";
 
 // Other
 import ATable from "@/a-library/components/other/ATable/ATable.vue";
+import ADialog from "@/a-library/components/other/ADialog/ADialog.vue";
 
 // Helpers
 // =======
@@ -69,6 +70,7 @@ export default function ({
 
   // Other
   vueApp.component("ATable", ATable);
+  vueApp.component("ADialog", ADialog);
 
   // Helpers
   // =======

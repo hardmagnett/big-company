@@ -7,6 +7,9 @@
     </Teleport>
 
     <ABtn>Открыть диалоговое окно</ABtn>
+    <ADialog>
+      <p>Передано в слот для a-dialog</p>
+    </ADialog>
   </div>
 </template>
 

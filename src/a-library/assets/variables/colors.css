@@ -393,3 +393,9 @@
     var(--_light-font-darkest)
   );
 }
+
+/*Прочее*/
+/*======*/
+:root {
+  --clr-overlay: rgba(0, 0, 0, 0.7);
+}

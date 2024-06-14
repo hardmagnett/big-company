@@ -163,8 +163,7 @@ function clickOnRouterLinkHandler() {
     right: 0;
     left: 0;
     z-index: 8;
-    background-color: black;
-    opacity: 0.7;
+    background-color: var(--clr-overlay);
     will-change: opacity;
     transition: opacity var(--time-short);
     &.a-container__menu-overlay--invisible {
