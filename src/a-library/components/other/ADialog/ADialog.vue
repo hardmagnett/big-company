@@ -130,18 +130,6 @@ onBeforeUnmount(()=> {
   </dialog>
 </template>
 
-
-<style>
-
-:root {
-  --transition-duration-opacity: var(--time-short);
-  --transition-duration-overlay: var(--time-short);
-  --transition-duration-display: var(--time-short);
-}
-
-
-</style>
-
 <style scoped>
 
 @keyframes closing-is-denied {
@@ -154,6 +142,14 @@ onBeforeUnmount(()=> {
 
 .a-dialog {
   --closing-denied-animation-duration: 300ms;
+
+  --transition-duration-opacity-slow: var(--time-short);
+  --transition-duration-opacity: var(--time-short);
+  --transition-duration-overlay: var(--time-short);
+  --transition-duration-display: var(--time-short);
+  --transform-minified: scale(0.9, 0.9);
+  --transform-normal: scale(1, 1);
+
   padding: 0;
   border: none;
   border-radius: var(--border-radius);
@@ -176,9 +172,11 @@ onBeforeUnmount(()=> {
   /*Transition для показа открытия и закрытия start*/
 
   opacity: 0;
+  transform: var(--transform-minified);
 
   transition:
       opacity var(--transition-duration-opacity),
+      transform var(--transition-duration-opacity),
       overlay var(--transition-duration-overlay) allow-discrete,
       display var(--transition-duration-display) allow-discrete;
 
@@ -193,10 +191,20 @@ onBeforeUnmount(()=> {
   &[open] {
     @starting-style {
       opacity: 0;
+      transform: var(--transform-minified);
+      transition:
+          opacity var(--transition-duration-opacity),
+          overlay var(--transition-duration-overlay) allow-discrete,
+          display var(--transition-duration-display) allow-discrete;
     }
     opacity: 1;
+    transform: var(--transform-normal);
     &::backdrop {
       opacity: 1;
+      transition:
+          display var(--transition-duration-display) allow-discrete,
+          overlay var(--transition-duration-overlay) allow-discrete,
+          opacity var(--transition-duration-opacity);
     }
   }
   /*Вот конкретно с этим @starting-style я заебался искать куда его воткнуть.*/
