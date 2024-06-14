@@ -1,10 +1,14 @@
 <script setup lang="ts">
 
+// todo:: попробовать сделать чтобы после live-reload модалка не закрывалась!
+// Это блять вообще бесит при работе.
+
 // todo:: все что касается этой модалки и новых css-фич- в гисты
 
 // todo:: все что касается watch - в гисты
 
 // todo:: проверить в других браузерах и сделать заметки в гистах
+
 import {watch, ref, onMounted, onBeforeUnmount } from 'vue'
 import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
 
@@ -58,6 +62,7 @@ let runClosingOnDeniedAnimation = () => {
   setTimeout(()=>{
     isClosingOnDeniedAnimationRunning.value = false
     // todo:: получать переменную из css!!!
+    let a = 1;
   },300)
 }
 
