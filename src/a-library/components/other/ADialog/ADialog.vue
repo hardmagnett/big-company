@@ -50,10 +50,18 @@ let cancelDialogHandler = (e)=>{
   }
 }
 
+// In a utility library:
+function assertIsNode(e: EventTarget | null): asserts e is Node {
+  if (!e || !("nodeType" in e)) {
+    throw new Error(`Node expected`);
+  }
+}
+
 let closeDialogOnOutsideClick = (e: PointerEvent) => {
   console.clear()
   console.log('closeDialogOnOutsideClick')
   let target = e.target
+  assertIsNode(target);
   console.log(target); console.log('^...target:')
   // const isClickOnDialog = target === dialogNode.value
   const isClickOnDialogWrapperOrItsChildrenNodes = dialogWrapperNode.value.contains(target)
