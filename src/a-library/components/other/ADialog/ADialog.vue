@@ -1,8 +1,5 @@
 <script setup lang="ts">
 
-// todo:: сделать чтобы по умолчанию закрывалось и по клику на esc и по клику снаружи
-// А блокировать закрытие лишь если указаны соответствующие пункты меню
-
 // todo:: все что касается этой модалки и новых css-фич- в гисты
 
 // todo:: все что касается watch - в гисты
@@ -60,11 +57,15 @@ let runClosingOnDeniedAnimation = () => {
   isClosingOnDeniedAnimationRunning.value = true
   setTimeout(()=>{
     isClosingOnDeniedAnimationRunning.value = false
+    // todo:: получать переменную из css!!!
   },300)
 }
 
-// let closeDialogOnOutsideClick = (e: PointerEvent) => {
 let closeDialogOnOutsideClick = (e: MouseEvent) => {
+  if (props.remainOnClickOutside) {
+    runClosingOnDeniedAnimation()
+    return
+  }
   let target = e.target
   assertIsNode(target);
   const isClickOnDialogWrapperOrItsChildrenNodes = dialogWrapperNode.value.contains(target)
@@ -78,14 +79,10 @@ let closeDialogOnOutsideClick = (e: MouseEvent) => {
 }
 
 onMounted(() => {
-  if (!props.remainOnClickOutside) {
     dialogNode.value.addEventListener("click", closeDialogOnOutsideClick)
-  }
 })
 onBeforeUnmount(()=> {
-  if (!props.remainOnClickOutside) {
     dialogNode.value.removeEventListener("click", closeDialogOnOutsideClick)
-  }
 
 })
 </script>
