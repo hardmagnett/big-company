@@ -143,42 +143,6 @@ onBeforeUnmount(()=> {
 </style>
 
 <style scoped>
-/*dialog[open] {*/
-/*  opacity: 1;*/
-/*}*/
-
-/*dialog {*/
-/*  opacity: 0;*/
-/*  transition:*/
-/*      opacity var(--transition-duration-opacity) ease-out,*/
-/*      overlay var(--transition-duration-overlay) ease-out allow-discrete,*/
-/*      display var(--transition-duration-display) ease-out allow-discrete;*/
-/*}*/
-/*@starting-style {*/
-/*  dialog[open] {*/
-/*    opacity: 0;*/
-/*  }*/
-/*}*/
-
-/*dialog::backdrop {*/
-/*  opacity: 0;*/
-/*  transition:*/
-/*      display var(--transition-duration-display) allow-discrete,*/
-/*      overlay var(--transition-duration-overlay) allow-discrete,*/
-/*      opacity var(--transition-duration-opacity);*/
-/*}*/
-
-/*dialog[open]::backdrop {*/
-/*  opacity: 1;*/
-/*}*/
-
-/*@starting-style {*/
-/*  dialog[open]::backdrop {*/
-/*    opacity: 0;*/
-/*  }*/
-/*}*/
-
-
 
 @keyframes closing-is-denied {
   from {transform: translatey(0);}
@@ -206,29 +170,17 @@ onBeforeUnmount(()=> {
     animation-name: closing-is-denied;
     animation-duration: var(--closing-denied-animation-duration);
     animation-timing-function: linear;
-    /*animation-iteration-count: infinite;     !*n-times, infinite*!*/
-    animation-iteration-count: 1;     /*n-times, infinite*/
-    /*outline: 4px solid darkred;*/
+    animation-iteration-count: 1;
   }
 
-  /*Transition для показа открытия и закрытия*/
+  /*Transition для показа открытия и закрытия start*/
 
   opacity: 0;
-  /*transition:*/
-  /*    opacity var(--transition-duration-opacity) ease-out,*/
-  /*    overlay var(--transition-duration-overlay) ease-out allow-discrete,*/
-  /*    display var(--transition-duration-display) ease-out allow-discrete;*/
 
   transition:
       opacity var(--transition-duration-opacity),
       overlay var(--transition-duration-overlay) allow-discrete,
       display var(--transition-duration-display) allow-discrete;
-
-  /*@starting-style {*/
-  /*  &[open] {*/
-  /*    opacity: 0;*/
-  /*  }*/
-  /*}*/
 
   &::backdrop {
     opacity: 0;
@@ -239,29 +191,25 @@ onBeforeUnmount(()=> {
   }
 
   &[open] {
-    /*Эта шняга работает*/
     @starting-style {
       opacity: 0;
     }
     opacity: 1;
     &::backdrop {
       opacity: 1;
-      /*@starting-style {*/
-      /*  opacity: 0;*/
-      /*}*/
     }
   }
-  /*&[open]::backdrop {*/
-  /*  @starting-style {*/
-  /*    opacity: 0;*/
-  /*  }*/
-  /*}*/
+  /*Вот конкретно с этим @starting-style я заебался искать куда его воткнуть.*/
+  /*Он как-то через жопу работает в в сочетании с нестингом и псевдо-селекторами.*/
+  /*Об этом даже на MDN написано*/
+  @starting-style {
+    &[open]{
+      &::backdrop {
+        opacity: 0;
+      }
+    }
+  }
+  /*Transition для показа открытия и закрытия end*/
 }
-/*@starting-style {*/
-/*  !*.a-dialog[open]::backdrop {*!*/
-/*  dialog[open]::backdrop {*/
-/*      opacity: 0;*/
-/*  }*/
-/*}*/
 
 </style>
