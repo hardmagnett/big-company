@@ -11,6 +11,8 @@
 
 import {watch, ref, onMounted, onBeforeUnmount } from 'vue'
 import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
+import {getValueOfCSSVariableAsNumber} from '@/a-library/helpers/DOM/getCSSVariable';
+
 
 
 
@@ -58,12 +60,11 @@ let cancelDialogHandler = (e)=>{
 }
 
 let runClosingOnDeniedAnimation = () => {
+  let animationTime = getValueOfCSSVariableAsNumber('--closing-denied-animation-duration', dialogNode.value)
   isClosingOnDeniedAnimationRunning.value = true
   setTimeout(()=>{
     isClosingOnDeniedAnimationRunning.value = false
-    // todo:: получать переменную из css!!!
-    let a = 1;
-  },300)
+  },animationTime)
 }
 
 let closeDialogOnOutsideClick = (e: MouseEvent) => {
@@ -132,7 +133,7 @@ onBeforeUnmount(()=> {
 }
 
 .a-dialog {
-  --closing-denied-animation-duration: 0.3s;
+  --closing-denied-animation-duration: 300ms;
   padding: 0;
   border: none;
   border-radius: var(--border-radius);
