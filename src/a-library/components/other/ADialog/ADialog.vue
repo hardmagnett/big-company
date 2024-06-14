@@ -133,10 +133,6 @@ onBeforeUnmount(()=> {
 
 <style>
 :root {
-  /*--transition-duration-opacity: 0.7s;*/
-  /*--transition-duration-overlay: 0.7s;*/
-  /*--transition-duration-display: 0.7s;*/
-
   --transition-duration-opacity: var(--time-short);
   --transition-duration-overlay: var(--time-short);
   --transition-duration-display: var(--time-short);
@@ -158,9 +154,7 @@ dialog {
   }
 }
 
-/* Transition the :backdrop when the dialog modal is promoted to the top layer */
 dialog::backdrop {
-  /*background-color: rgb(0 0 0 / 0%);*/
   opacity: 0;
   transition:
       display var(--transition-duration-display) allow-discrete,
@@ -170,7 +164,6 @@ dialog::backdrop {
 
 dialog[open]::backdrop {
   opacity: 1;
-  /*background-color: var(--clr-overlay);*/
 }
 
 @starting-style {
