@@ -3,9 +3,6 @@
 // todo:: проверить в других браузерах и сделать заметки в гистах
 // - В FF кнопки другой высоты. Поправить.
 
-// todo:: тени для модалки
-// todo:: анимация для модалки
-
 import {watch, ref, onMounted, onBeforeUnmount } from 'vue'
 import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
 import {getValueOfCSSVariableAsNumber} from '@/a-library/helpers/DOM/getCSSVariable';
