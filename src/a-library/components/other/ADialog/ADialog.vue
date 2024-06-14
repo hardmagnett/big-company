@@ -1,6 +1,10 @@
 <script setup lang="ts">
 
 // todo:: проверить в других браузерах и сделать заметки в гистах
+// - В FF кнопки другой высоты. Поправить.
+
+// todo:: тени для модалки
+// todo:: анимация для модалки
 
 import {watch, ref, onMounted, onBeforeUnmount } from 'vue'
 import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
@@ -126,6 +130,56 @@ onBeforeUnmount(()=> {
   </dialog>
 </template>
 
+
+<style>
+:root {
+  /*--transition-duration-opacity: 0.7s;*/
+  /*--transition-duration-overlay: 0.7s;*/
+  /*--transition-duration-display: 0.7s;*/
+
+  --transition-duration-opacity: var(--time-short);
+  --transition-duration-overlay: var(--time-short);
+  --transition-duration-display: var(--time-short);
+}
+dialog[open] {
+  opacity: 1;
+}
+
+dialog {
+  opacity: 0;
+  transition:
+    opacity var(--transition-duration-opacity) ease-out,
+    overlay var(--transition-duration-overlay) ease-out allow-discrete,
+    display var(--transition-duration-display) ease-out allow-discrete;
+}
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+  }
+}
+
+/* Transition the :backdrop when the dialog modal is promoted to the top layer */
+dialog::backdrop {
+  /*background-color: rgb(0 0 0 / 0%);*/
+  opacity: 0;
+  transition:
+      display var(--transition-duration-display) allow-discrete,
+      overlay var(--transition-duration-overlay) allow-discrete,
+      opacity var(--transition-duration-opacity);
+}
+
+dialog[open]::backdrop {
+  opacity: 1;
+  /*background-color: var(--clr-overlay);*/
+}
+
+@starting-style {
+  dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+</style>
+
 <style scoped>
 
 @keyframes closing-is-denied {
@@ -142,7 +196,6 @@ onBeforeUnmount(()=> {
   border: none;
   border-radius: var(--border-radius);
   outline: none;
-
 
   .dialog__wrapper {
     padding: var(--gap);
