@@ -161,6 +161,9 @@ onBeforeUnmount(()=> {
   border-radius: var(--border-radius);
   outline: none;
 
+  max-width: calc(100% - (var(--gap) * 2));
+  width: 500px;
+
   .a-dialog__wrapper {
     .a-dialog__header {
       padding: calc(var(--gap) / 2) var(--gap) ;
