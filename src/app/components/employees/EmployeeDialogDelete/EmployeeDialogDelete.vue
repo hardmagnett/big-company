@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import { } from 'vue'
 
-// todo:: в миксин
-const emit = defineEmits(['needToClose', 'apply'])
+// todo:: в гисты как я делал один интерфейс для разных компонентов. ЭТОГО НИГДЕ НЕТ!!! Я САМ ВЫДУМЫВАЛ!!!
 
-export interface Props {
-  isOpen: boolean,  // todo:: в миксин
-}
+import {iDialogableEmits, iDialogablePropDefaults} from '@/app/component-interfaces/IDialogable';
+import type {IDialogableProps} from '@/app/component-interfaces/IDialogable';
+
+const emit = defineEmits([...iDialogableEmits])
+
+export interface Props extends IDialogableProps {}
 const props = withDefaults(defineProps<Props>(), {
-
+  ...iDialogablePropDefaults
 })
 
 </script>
 
 <template>
   <div class="employee-dialog-delete">
+    <p>{{delmeString}}</p>
     <ADialog
         remainOnEsc
         remainOnClickOutside

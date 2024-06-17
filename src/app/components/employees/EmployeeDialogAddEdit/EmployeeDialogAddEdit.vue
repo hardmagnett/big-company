@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { } from 'vue'
 
-// todo:: в миксин
-const emit = defineEmits(['needToClose', 'apply'])
+import {iDialogableEmits, iDialogablePropDefaults} from '@/app/component-interfaces/IDialogable';
+import type {IDialogableProps} from '@/app/component-interfaces/IDialogable';
 
-export interface Props {
-  isOpen: boolean,  // todo:: в миксин
-}
+const emit = defineEmits([...iDialogableEmits])
+
+export interface Props extends IDialogableProps {}
 const props = withDefaults(defineProps<Props>(), {
-
+  ...iDialogablePropDefaults
 })
 
 </script>
