@@ -10,17 +10,14 @@ let isOpenDialogEmployeeCreatingEditing = ref(false)
 
 const needToDeleteEmployeeHandler = ()=>{
   isOpenDialogEmployeeDeleting.value = true
-  console.log(1)
 }
 
 const needToEditEmployeeHandler = ()=>{
   isOpenDialogEmployeeCreatingEditing.value = true
-  console.log(2)
 }
 
 const needToCreateEmployeeHandler = ()=>{
   isOpenDialogEmployeeCreatingEditing.value = true
-  console.log(3)
 }
 
 const deleteEmployee = ()=>{

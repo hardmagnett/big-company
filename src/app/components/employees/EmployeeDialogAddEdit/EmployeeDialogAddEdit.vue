@@ -26,7 +26,6 @@ const props = withDefaults(defineProps<Props>(), {
         @apply="$emit('apply')"
     >
       <AInput placeholder="Имя" class="mod--mb-1"></AInput>
-      <!--<br>-->
       <AInput placeholder="Фамилия"></AInput>
     </ADialog>
   </div>
