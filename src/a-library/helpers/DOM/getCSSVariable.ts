@@ -3,8 +3,11 @@
  * @param varName String - например '--bpSm'
  * @param node - если не передать, то будет искать переменную в :root{}
  */
-function getValueOfCSSVariable(varName: string, node: HTMLElement | null = null): string {
-  const nodeToGetPropertyValue = node ?? document.documentElement
+function getValueOfCSSVariable(
+  varName: string,
+  node: HTMLElement | null = null,
+): string {
+  const nodeToGetPropertyValue = node ?? document.documentElement;
   return getComputedStyle(nodeToGetPropertyValue).getPropertyValue(varName);
 }
 
@@ -13,7 +16,10 @@ function getValueOfCSSVariable(varName: string, node: HTMLElement | null = null)
  * @param varName
  * @param node
  */
-function getValueOfCSSVariableAsNumber(varName: string, node: HTMLElement | null = null): number {
+function getValueOfCSSVariableAsNumber(
+  varName: string,
+  node: HTMLElement | null = null,
+): number {
   let resultingString = getValueOfCSSVariable(varName, node);
 
   const regexp = new RegExp("(px|rem|ms|s)$", "ig");

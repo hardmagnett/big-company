@@ -7,11 +7,13 @@
  * Чтобы TS не ругался
  * @param probablyNode
  */
-function assertIsNode(probablyNode: EventTarget | Node | null): asserts probablyNode is Node {
-  const isNode = (probablyNode !== null && probablyNode instanceof Node)
+function assertIsNode(
+  probablyNode: EventTarget | Node | null,
+): asserts probablyNode is Node {
+  const isNode = probablyNode !== null && probablyNode instanceof Node;
   if (!isNode) {
     throw new Error(`переменная не является экземпляром Node`);
   }
 }
 
-export {assertIsNode}
+export { assertIsNode };

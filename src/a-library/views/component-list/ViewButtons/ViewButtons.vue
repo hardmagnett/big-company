@@ -23,7 +23,6 @@
       <ABtn class="btn--error btn--tonal">Error</ABtn>
     </div>
 
-
     <h2>Ссылки</h2>
     <div class="buttons-page__buttons">
       <ABtn
@@ -64,5 +63,4 @@
   gap: var(--gap);
 }
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

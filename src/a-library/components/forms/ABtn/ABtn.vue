@@ -116,8 +116,6 @@ const isRouterLink = computed(() => {
         background-color: var(--clr-bg-orange-smaller);
       }
     }
-
-
   }
   &.btn--small {
     --height: calc(var(--gap) * 1.5);
