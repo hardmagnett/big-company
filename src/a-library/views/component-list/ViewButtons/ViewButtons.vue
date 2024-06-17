@@ -7,7 +7,6 @@
     <h2>Обычные</h2>
     <div class="buttons-page__buttons">
       <ABtn>Main</ABtn>
-      <!--<ABtn class="btn&#45;&#45;tonal">Main</ABtn>-->
       <ABtn class="btn--success">Success</ABtn>
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>
@@ -18,7 +17,6 @@
 
     <h2>Тональные</h2>
     <div class="buttons-page__buttons">
-      <!--<ABtn>Main</ABtn>-->
       <ABtn class="btn--tonal">Main</ABtn>
       <ABtn class="btn--success btn--tonal">Success</ABtn>
       <ABtn class="btn--danger btn--tonal">Danger</ABtn>

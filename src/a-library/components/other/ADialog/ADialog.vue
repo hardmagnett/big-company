@@ -1,7 +1,5 @@
 <script setup lang="ts">
 
-// todo:: проверить в других браузерах и сделать заметки в гистах
-
 import {watch, ref, onMounted, onBeforeUnmount } from 'vue'
 import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
 import {getValueOfCSSVariableAsNumber} from '@/a-library/helpers/DOM/getCSSVariable';
@@ -41,7 +39,6 @@ const props = withDefaults(defineProps<Props>(), {
 watch(
     () => props.isOpen,
     (newVal) => {
-      // console.log(newVal); console.log('^...isOpen:')
       if (newVal){
         showModal()
       } else {
@@ -141,9 +138,6 @@ onBeforeUnmount(()=> {
         <slot></slot>
       </div>
       <div class="a-dialog__buttons">
-        <!--<button-->
-
-        <!--&gt;Закрыть</button>-->
 
         <ABtn @click="needToClose"
               :class="[cssClassCancel]"

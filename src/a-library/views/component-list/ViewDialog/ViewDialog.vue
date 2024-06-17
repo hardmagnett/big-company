@@ -52,8 +52,6 @@ const isDialogConfiguredOpen = ref(false)
     </ADialog>
 
     <ABtn @click="isDialogConfiguredOpen = true">Открыть диалоговое окно</ABtn>
-
-    <!--<p v-for="n in 100" :key="n">: {{ n }}</p>-->
   </div>
 
 
