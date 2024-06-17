@@ -51,4 +51,10 @@ export default [
     component: () =>
       import("@/a-library/views/component-list/ViewDialog/ViewDialog.vue"),
   },
+  {
+    path: `${pathToComponents}toasts`,
+    name: "toasts",
+    component: () =>
+      import("@/a-library/views/component-list/ViewToasts/ViewToasts.vue"),
+  },
 ];

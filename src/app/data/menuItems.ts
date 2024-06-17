@@ -88,6 +88,14 @@ const menuItems: Array<IMenuItem> = [
           to: "dialog",
         },
       },
+      {
+        id: i++,
+        title: "Тосты",
+        icon: "mdi-toaster",
+        route: {
+          to: "toasts",
+        },
+      },
     ],
   },
 ];
