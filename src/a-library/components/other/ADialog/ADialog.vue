@@ -163,7 +163,6 @@ onBeforeUnmount(()=> {
 
   .a-dialog__wrapper {
     .a-dialog__header {
-      /*outline: 1px solid darkred;*/
       padding: calc(var(--gap) / 2) var(--gap) ;
 
       background-color: var(--clr-bg-blue-small);
@@ -171,6 +170,10 @@ onBeforeUnmount(()=> {
     }
     .a-dialog__content {
       padding: var(--gap);
+      :slotted(:last-child){
+        /*Чтобы отступ до кнопок был одинаковый независимо от того что передано в слот*/
+        margin-bottom: 0;
+      }
     }
     .a-dialog__buttons {
       display: flex;
