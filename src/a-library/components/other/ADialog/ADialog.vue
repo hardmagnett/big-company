@@ -42,13 +42,13 @@ watch(
       if (newVal){
         showModal()
       } else {
-        dialogNode.value.close()
+        dialogNode.value?.close()
       }
     }
 )
 
 let showModal = ()=>{
-  dialogNode.value.showModal()
+  dialogNode.value?.showModal()
 }
 
 /**
@@ -61,7 +61,7 @@ let needToClose = ()=>{
 }
 
 // Обработчик нажатия на esc
-let cancelDialogHandler = (e)=>{
+let cancelDialogHandler = (e: Event)=>{
   if (props.remainOnEsc) {
     e.preventDefault()
     runClosingOnDeniedAnimation()
@@ -81,7 +81,7 @@ let runClosingOnDeniedAnimation = () => {
 let closeDialogOnOutsideClick = (e: MouseEvent) => {
   let target = e.target
   assertIsNode(target);
-  const isClickOnDialogWrapperOrItsChildrenNodes = dialogWrapperNode.value.contains(target)
+  const isClickOnDialogWrapperOrItsChildrenNodes = dialogWrapperNode.value?.contains(target)
 
 
   const isClickOutsideOfDialog = !isClickOnDialogWrapperOrItsChildrenNodes
@@ -101,11 +101,11 @@ onMounted(() => {
     // Это спасает от закрытия диалогового окна при live-reload-е.
     showModal()
   }
-    dialogNode.value.addEventListener("click", closeDialogOnOutsideClick)
+    dialogNode.value?.addEventListener("click", closeDialogOnOutsideClick)
   let a =1;
 })
 onBeforeUnmount(()=> {
-    dialogNode.value.removeEventListener("click", closeDialogOnOutsideClick)
+    dialogNode.value?.removeEventListener("click", closeDialogOnOutsideClick)
 
 })
 </script>
