@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import {} from "vue";
-
-// todo:: в гисты как я делал один интерфейс для разных компонентов. ЭТОГО НИГДЕ НЕТ!!! Я САМ ВЫДУМЫВАЛ!!!
-
 import {
   iDialogableEmits,
   iDialogablePropDefaults,
@@ -19,7 +16,6 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <div class="employee-dialog-delete">
-    <p>{{ delmeString }}</p>
     <ADialog
       remainOnEsc
       remainOnClickOutside

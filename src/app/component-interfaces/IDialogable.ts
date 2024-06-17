@@ -7,9 +7,6 @@ export interface IDialogableProps {
   delmeString?: string;
 }
 
-// todo:: после добавления в гисты удалить этот shit и всё что с ним связано
-export const iDialogablePropDefaults = {
-  delmeString: "shit",
-};
+export const iDialogablePropDefaults = {};
 
 export const iDialogableEmits = ["needToClose", "apply"];

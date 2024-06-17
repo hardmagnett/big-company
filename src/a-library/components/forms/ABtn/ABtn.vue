@@ -37,6 +37,9 @@ const isRouterLink = computed(() => {
 </template>
 
 <style scoped>
+.btn {
+  outline: none !important;
+}
 .btn--with-text {
   --height: calc(var(--gap) * 1.6);
   @container style(--bp-md-or-more) {
@@ -54,7 +57,6 @@ const isRouterLink = computed(() => {
   width: fit-content;
 
   border-radius: var(--border-radius);
-  outline: none !important;
   text-decoration: none;
   color: white;
   background-color: var(--clr-fill-blue-small);
