@@ -7,20 +7,35 @@ import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
 import {getValueOfCSSVariableAsNumber} from '@/a-library/helpers/DOM/getCSSVariable';
 
 
-const emit = defineEmits(['needToClose'])
+const emit = defineEmits(['needToClose', 'apply'])
 
 const dialogNode = ref<HTMLDialogElement | null>(null)
 const dialogWrapperNode = ref<HTMLElement | null>(null)
 const isClosingOnDeniedAnimationRunning = ref(false)
 
+type DialogCssClass = 'btn--success' | 'btn--danger' | 'btn--error' | ''
 export interface Props {
   isOpen: boolean,
   remainOnEsc?: boolean,
   remainOnClickOutside?: boolean
+  textHeader?:string
+  textApply?:string
+  textCancel?:string
+  cssClassApply?: DialogCssClass
+  cssClassCancel?: DialogCssClass
+  hideApply?:boolean
+  hideCancel?:boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   remainOnEsc: false,
-  remainOnClickOutside: false
+  remainOnClickOutside: false,
+  textHeader: '',
+  textApply: 'Ок',
+  textCancel: 'Отмена',
+  hideApply: false,
+  hideCancel: false,
+  cssClassApply: '',
+  cssClassCancel: ''
 })
 
 watch(
@@ -117,8 +132,10 @@ onBeforeUnmount(()=> {
         ref="dialogWrapperNode"
         class="a-dialog__wrapper"
     >
-      <div class="a-dialog__header">
-        <h2 class="mod--mb-0">Заголовок</h2>
+      <div
+          v-if="textHeader"
+          class="a-dialog__header">
+        <h2 class="mod--mb-0">{{ textHeader }}</h2>
       </div>
       <div class="a-dialog__content">
         <slot></slot>
@@ -128,8 +145,14 @@ onBeforeUnmount(()=> {
 
         <!--&gt;Закрыть</button>-->
 
-        <ABtn @click="needToClose" class="btn--tonal">Отмена</ABtn>
-        <ABtn>Ок</ABtn>
+        <ABtn @click="needToClose"
+              :class="[cssClassCancel]"
+              class="btn--tonal">{{ textCancel }}</ABtn>
+        <ABtn
+            @click="$emit('apply')"
+            v-if="!hideApply"
+            :class="[cssClassApply]"
+        >{{textApply}}</ABtn>
       </div>
 
     </div>

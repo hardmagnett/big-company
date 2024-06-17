@@ -2,7 +2,7 @@
 import {ref} from "vue";
 
 const isDialogDefaultOpen = ref(false)
-const isDialogClosingConfiguredOpen = ref(false)
+const isDialogConfiguredOpen = ref(false)
 </script>
 <template>
   <div class="view-dialog">
@@ -19,32 +19,41 @@ const isDialogClosingConfiguredOpen = ref(false)
     <ADialog
         :isOpen="isDialogDefaultOpen"
         @needToClose="isDialogDefaultOpen = false"
+        @apply="isDialogDefaultOpen = false"
     >
-      <p>Контент диалогового окна по умолчанию</p>
+      <p>Диалоговое окно с настройками по умолчанию</p>
     </ADialog>
 
     <ABtn @click="isDialogDefaultOpen = true">Открыть диалоговое окно</ABtn>
 
     <br>
 
-    <h2>C Настройками закрытия</h2>
+    <h2>C дополнительными настройками</h2>
     <ul>
       <li>Не закрывается по нажатию на esc</li>
       <li>Не закрывается по клику снаружи</li>
+      <li>Заголовок</li>
+      <li>Цвета и тексты для кнопок</li>
+      <li>Скрытие кнопок</li>
     </ul>
     <ADialog
         remainOnEsc
         remainOnClickOutside
-        :isOpen="isDialogClosingConfiguredOpen"
-        @needToClose="isDialogClosingConfiguredOpen = false"
+        text-header="Заголовок окна"
+        textApply="Да!"
+        textCancel="Отменить это!"
+        cssClassApply="btn--error"
+        cssClassCancel="btn--error"
+        hideApply
+        :isOpen="isDialogConfiguredOpen"
+        @needToClose="isDialogConfiguredOpen = false"
     >
-      <!--<p>Контент диалогового окна c изменением настроек закрытия</p>-->
-      <p>Контент</p>
+      <p>Диалоговое окно с дополнительными настройками</p>
     </ADialog>
 
-    <ABtn @click="isDialogClosingConfiguredOpen = true">Открыть диалоговое окно</ABtn>
+    <ABtn @click="isDialogConfiguredOpen = true">Открыть диалоговое окно</ABtn>
 
-    <p v-for="n in 100" :key="n">: {{ n }}</p>
+    <!--<p v-for="n in 100" :key="n">: {{ n }}</p>-->
   </div>
 
 
