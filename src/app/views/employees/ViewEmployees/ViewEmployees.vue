@@ -3,6 +3,7 @@ import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesT
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 import {ref} from 'vue';
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
+import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 
 let isOpenDialogEmployeeDeleting = ref(false)
 let isOpenDialogEmployeeCreatingEditing = ref(false)
@@ -24,6 +25,9 @@ const needToCreateEmployeeHandler = ()=>{
 
 const deleteEmployee = ()=>{
   isOpenDialogEmployeeDeleting.value = false
+}
+const createEditEmployee = ()=>{
+  isOpenDialogEmployeeCreatingEditing.value = false
 }
 
 </script>
@@ -47,6 +51,11 @@ const deleteEmployee = ()=>{
         @needToClose="isOpenDialogEmployeeDeleting = false"
         @apply="deleteEmployee"
     ></EmployeeDialogDelete>
+    <EmployeeDialogAddEdit
+        :is-open="isOpenDialogEmployeeCreatingEditing"
+        @needToClose="isOpenDialogEmployeeCreatingEditing = false"
+        @apply="createEditEmployee"
+    ></EmployeeDialogAddEdit>
 
     <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
     <EmployeesTable class="mod--cool-scrollbar"

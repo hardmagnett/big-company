@@ -180,6 +180,8 @@ onBeforeUnmount(() => {
   max-width: calc(100% - (var(--gap) * 2));
   width: 500px;
 
+  background-color: var(--clr-bg-blue-big);
+
   .a-dialog__wrapper {
     .a-dialog__header {
       padding: calc(var(--gap) / 2) var(--gap);

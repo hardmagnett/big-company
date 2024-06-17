@@ -14,24 +14,25 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="employee-dialog-delete">
+  <div class="employee-dialog-add-edit">
     <ADialog
         remainOnEsc
         remainOnClickOutside
-        text-header="Удаление сотрудника"
-        textApply="Удалить"
-        cssClassApply="btn--error"
+        text-header="Создание/Редактирование сотрудника"
+        textApply="Создать/Редактировать"
 
         :isOpen="isOpen"
         @needToClose="$emit('needToClose')"
         @apply="$emit('apply')"
     >
-      <p>Действительно удалить сотрудника -=Имя Фамилия=-?</p>
+      <AInput placeholder="Имя" class="mod--mb-1"></AInput>
+      <!--<br>-->
+      <AInput placeholder="Фамилия"></AInput>
     </ADialog>
   </div>
 </template>
 
 <style scoped>
-.employee-dialog-delete {
+.employee-dialog-add-edit {
 }
 </style>
