@@ -102,7 +102,6 @@ onMounted(() => {
     showModal()
   }
     dialogNode.value?.addEventListener("click", closeDialogOnOutsideClick)
-  let a =1;
 })
 onBeforeUnmount(()=> {
     dialogNode.value?.removeEventListener("click", closeDialogOnOutsideClick)
