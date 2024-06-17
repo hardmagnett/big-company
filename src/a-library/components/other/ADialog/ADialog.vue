@@ -68,10 +68,6 @@ let runClosingOnDeniedAnimation = () => {
 }
 
 let closeDialogOnOutsideClick = (e: MouseEvent) => {
-  if (props.remainOnClickOutside) {
-    runClosingOnDeniedAnimation()
-    return
-  }
   let target = e.target
   assertIsNode(target);
   const isClickOnDialogWrapperOrItsChildrenNodes = dialogWrapperNode.value.contains(target)
@@ -80,7 +76,12 @@ let closeDialogOnOutsideClick = (e: MouseEvent) => {
   const isClickOutsideOfDialog = !isClickOnDialogWrapperOrItsChildrenNodes
 
   if (isClickOutsideOfDialog) {
-    needToClose()
+    if (props.remainOnClickOutside) {
+      runClosingOnDeniedAnimation()
+    }
+    else {
+      needToClose()
+    }
   }
 }
 
