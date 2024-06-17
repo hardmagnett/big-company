@@ -4,10 +4,10 @@ import { } from 'vue'
 import {iDialogableEmits, iDialogablePropDefaults} from '@/app/component-interfaces/IDialogable';
 import type {IDialogableProps} from '@/app/component-interfaces/IDialogable';
 
-const emit = defineEmits([...iDialogableEmits])
+defineEmits([...iDialogableEmits])
 
 export interface Props extends IDialogableProps {}
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   ...iDialogablePropDefaults
 })
 

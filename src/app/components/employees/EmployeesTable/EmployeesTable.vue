@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue";
 
-const emit=defineEmits(['needToDeleteEmployee', 'needToEditEmployee'])
+defineEmits(['needToDeleteEmployee', 'needToEditEmployee'])
 </script>
 
 <template>
