@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue";
+
+const emit=defineEmits(['needToDeleteEmployee', 'needToEditEmployee'])
 </script>
 
 <template>
@@ -13,7 +15,13 @@ import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue"
       </tr>
     </thead>
     <tbody>
-      <EmployeeRow :key="n" v-for="n in 30" />
+
+      <EmployeeRow
+          @needToDeleteEmployee="$emit('needToDeleteEmployee')"
+          @needToEditEmployee="$emit('needToEditEmployee')"
+          :key="n" v-for="n in 30"
+
+      />
     </tbody>
   </ATable>
 </template>

@@ -1,6 +1,26 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
+import {ref} from 'vue';
+
+let isOpenDialogEmployeeDeleting = ref(false)
+let isOpenDialogEmployeeCreatingEditing = ref(false)
+
+const needToDeleteEmployeeHandler = ()=>{
+  isOpenDialogEmployeeDeleting.value = true
+  console.log(1)
+}
+
+const needToEditEmployeeHandler = ()=>{
+  isOpenDialogEmployeeCreatingEditing.value = true
+  console.log(2)
+}
+
+const needToCreateEmployeeHandler = ()=>{
+  isOpenDialogEmployeeCreatingEditing.value = true
+  console.log(3)
+}
+
 </script>
 
 <template>
@@ -9,14 +29,20 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
       <APageHeader> Сотрудники </APageHeader>
     </Teleport>
     <div class="employees__add-and-qty mod--mb-half">
-      <ABtn> <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать </ABtn>
+      <ABtn
+          @click="needToCreateEmployeeHandler"
+      > <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать </ABtn>
       <p class="mod--mt-0 mod--mb-0">
         Найдено: <span class="employees__qty-number">1</span>
       </p>
     </div>
 
     <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
-    <EmployeesTable class="mod--cool-scrollbar" />
+    <EmployeesTable class="mod--cool-scrollbar"
+      @needToDeleteEmployee="needToDeleteEmployeeHandler"
+      @needToEditEmployee="needToEditEmployeeHandler"
+
+    />
   </div>
 </template>
 <style scoped>
