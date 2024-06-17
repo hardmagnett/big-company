@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit=defineEmits(['needToDeleteEmployee', 'needToEditEmployee'])
+const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 </script>
 
 <template>
@@ -9,12 +9,12 @@ const emit=defineEmits(['needToDeleteEmployee', 'needToEditEmployee'])
     </td>
     <td class="employee-row__task-qty">11</td>
     <td class="employee-row__buttons">
-      <ABtn icon
-            @click="emit('needToEditEmployee')"
-      ><AIcon icon="mdi-pencil" /></ABtn>
-      <ABtn icon class="btn--error"
-            @click="emit('needToDeleteEmployee')"
-      ><AIcon icon="mdi-delete" /></ABtn>
+      <ABtn icon @click="emit('needToEditEmployee')"
+        ><AIcon icon="mdi-pencil"
+      /></ABtn>
+      <ABtn icon class="btn--error" @click="emit('needToDeleteEmployee')"
+        ><AIcon icon="mdi-delete"
+      /></ABtn>
     </td>
   </tr>
 </template>
