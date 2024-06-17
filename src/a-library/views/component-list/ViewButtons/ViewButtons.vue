@@ -4,9 +4,10 @@
       <APageHeader> Кнопки </APageHeader>
     </Teleport>
 
-    <h2>Кнопки-Кнопки</h2>
+    <h2>Обычные</h2>
     <div class="buttons-page__buttons">
       <ABtn>Main</ABtn>
+      <!--<ABtn class="btn&#45;&#45;tonal">Main</ABtn>-->
       <ABtn class="btn--success">Success</ABtn>
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>
@@ -14,7 +15,18 @@
     <div class="buttons-page__buttons">
       <ABtn class="btn--small">Small</ABtn>
     </div>
-    <h2>Кнопки-Ссылки</h2>
+
+    <h2>Тональные</h2>
+    <div class="buttons-page__buttons">
+      <!--<ABtn>Main</ABtn>-->
+      <ABtn class="btn--tonal">Main</ABtn>
+      <ABtn class="btn--success btn--tonal">Success</ABtn>
+      <ABtn class="btn--danger btn--tonal">Danger</ABtn>
+      <ABtn class="btn--error btn--tonal">Error</ABtn>
+    </div>
+
+
+    <h2>Ссылки</h2>
     <div class="buttons-page__buttons">
       <ABtn
         href="https://stackoverflow.com/users/1638298/flamytwista"
@@ -22,12 +34,12 @@
         >stackoverflow.com</ABtn
       >
     </div>
-    <h2>Кнопки-RouterLink</h2>
+    <h2>RouterLink</h2>
     <div class="buttons-page__buttons">
       <ABtn :to="{ path: '/' }">На главную</ABtn>
     </div>
 
-    <h2>Кнопки c иконками</h2>
+    <h2>С иконками</h2>
     <h3>Обычные</h3>
     <div class="buttons-page__buttons">
       <ABtn>Редактировать <AIcon icon="mdi-pencil" /></ABtn>
@@ -54,3 +66,5 @@
   gap: var(--gap);
 }
 </style>
+<script setup lang="ts">
+</script>

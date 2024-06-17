@@ -83,6 +83,42 @@ const isRouterLink = computed(() => {
       background-color: var(--clr-fill-orange-accent);
     }
   }
+  &.btn--tonal {
+    outline: 1px solid darkred;
+    color: var(--clr-fill-blue-big);
+    background-color: var(--clr-bg-blue-small);
+    &:hover {
+      outline: 1px solid green;
+      background-color: var(--clr-bg-blue-smaller);
+    }
+
+    &.btn--error {
+      color: var(--clr-fill-red-big);
+      background-color: var(--clr-bg-red-small);
+      &:hover {
+        outline: 1px solid green;
+        background-color: var(--clr-bg-red-smaller);
+      }
+    }
+    &.btn--success {
+      color: var(--clr-fill-green-big);
+      background-color: var(--clr-bg-green-small);
+      &:hover {
+        outline: 1px solid green;
+        background-color: var(--clr-bg-green-smaller);
+      }
+    }
+    &.btn--danger {
+      color: var(--clr-fill-orange-big);
+      background-color: var(--clr-bg-orange-small);
+      &:hover {
+        outline: 1px solid green;
+        background-color: var(--clr-bg-orange-smaller);
+      }
+    }
+
+
+  }
   &.btn--small {
     --height: calc(var(--gap) * 1.5);
     padding: 0 var(--gap);
