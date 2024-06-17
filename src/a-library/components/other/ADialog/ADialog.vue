@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 // todo:: проверить в других браузерах и сделать заметки в гистах
-// - В FF кнопки другой высоты. Поправить.
 
 import {watch, ref, onMounted, onBeforeUnmount } from 'vue'
 import {assertIsNode} from '@/a-library/helpers/language/typeAssertions';
@@ -101,8 +100,6 @@ onBeforeUnmount(()=> {
 
 <template>
 
-
-  <!--@close="closeDialogHandler"-->
   <dialog
     ref="dialogNode"
     class="
@@ -118,12 +115,23 @@ onBeforeUnmount(()=> {
   >
     <div
         ref="dialogWrapperNode"
-        class="dialog__wrapper"
+        class="a-dialog__wrapper"
     >
-      <slot></slot>
-      <button
-          @click="needToClose"
-      >Закрыть</button>
+      <div class="a-dialog__header">
+        <h2 class="mod--mb-0">Заголовок</h2>
+      </div>
+      <div class="a-dialog__content">
+        <slot></slot>
+      </div>
+      <div class="a-dialog__buttons">
+        <!--<button-->
+
+        <!--&gt;Закрыть</button>-->
+
+        <ABtn @click="needToClose" class="btn--tonal">Отмена</ABtn>
+        <ABtn>Ок</ABtn>
+      </div>
+
     </div>
   </dialog>
 </template>
@@ -153,8 +161,24 @@ onBeforeUnmount(()=> {
   border-radius: var(--border-radius);
   outline: none;
 
-  .dialog__wrapper {
-    padding: var(--gap);
+  .a-dialog__wrapper {
+    .a-dialog__header {
+      /*outline: 1px solid darkred;*/
+      padding: calc(var(--gap) / 2) var(--gap) ;
+
+      background-color: var(--clr-bg-blue-small);
+      border-bottom: 1px solid var(--clr-border-blue-lighter);
+    }
+    .a-dialog__content {
+      padding: var(--gap);
+    }
+    .a-dialog__buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--gap);
+      padding: var(--gap);
+      padding-top: 0;
+    }
   }
   &::backdrop {
     background-color: var(--clr-overlay);

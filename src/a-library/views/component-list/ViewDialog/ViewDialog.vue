@@ -39,6 +39,9 @@ const isDialogClosingConfiguredOpen = ref(false)
         @needToClose="isDialogClosingConfiguredOpen = false"
     >
       <p>Контент диалогового окна c изменением настроек закрытия</p>
+      <p>Контент диалогового окна c изменением настроек закрытия</p>
+      <p>Контент диалогового окна c изменением настроек закрытия</p>
+      <p>Контент диалогового окна c изменением настроек закрытия</p>
     </ADialog>
 
     <ABtn @click="isDialogClosingConfiguredOpen = true">Открыть диалоговое окно</ABtn>
