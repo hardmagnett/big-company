@@ -7,8 +7,8 @@
     <h2>Цветные тосты</h2>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
-      <ABtn>Main</ABtn>
-      <ABtn class="btn--success">Success</ABtn>
+      <ABtn @click="$toast('Main')">Main</ABtn>
+      <ABtn @click="$toast('Main', {type: 'warning'})" class="btn--success">Success</ABtn>
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>
     </div>
