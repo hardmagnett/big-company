@@ -24,6 +24,8 @@ import ACard from "@/a-library/components/blocks/ACard/ACard.vue";
 // Other
 import ATable from "@/a-library/components/other/ATable/ATable.vue";
 import ADialog from "@/a-library/components/other/ADialog/ADialog.vue";
+import AToasts from "@/a-library/components/other/AToasts/AToasts.vue";
+import AToast from "@/a-library/components/other/AToasts/AToast.vue";
 
 // Helpers
 // =======
@@ -72,6 +74,8 @@ export default function ({
   // Other
   vueApp.component("ATable", ATable);
   vueApp.component("ADialog", ADialog);
+  vueApp.component("AToasts", AToasts);
+  vueApp.component("AToast", AToast);
 
   // Helpers
   // =======
