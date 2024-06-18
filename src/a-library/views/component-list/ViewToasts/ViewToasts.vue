@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { inject } from "vue";
+import type { CreateNotification } from "@/a-library/components/other/AToast/useAToast";
+const createNotification = inject<CreateNotification>("create-notification");
+</script>
 <template>
   <div class="view-toasts">
     <Teleport to="#page-header-place">
@@ -7,7 +12,14 @@
     <h2>Цветные тосты</h2>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
-      <ABtn @click="$toast('Main')">Main</ABtn>
+      <!--<ABtn @click="$toast('Main')">Main</ABtn>-->
+      <ABtn @click.prevent="
+          () => {
+            createNotification({
+              message: 'This is a notification from the App.vue Component',
+            });
+          }
+        ">Main</ABtn>
       <ABtn @click="$toast('Main', {type: 'warning'})" class="btn--success">Success</ABtn>
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>
@@ -34,5 +46,4 @@
   }
 }
 </style>
-<script setup lang="ts">
-</script>
+

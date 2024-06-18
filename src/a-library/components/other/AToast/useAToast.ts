@@ -6,6 +6,8 @@ export interface Notification {
   id: string;
   type: string;
   message: string;
+  autoClose: boolean;
+  duration: number;
 }
 
 // todo:: заменить интерфейс на тот, который я сделал. Мне мой больше нравится.
@@ -21,6 +23,8 @@ const defaultNotificationOptions = {
   type: "info",
   message:
     "Ooops! A message was not provided.",
+  autoClose: true,
+  duration: 5,
 };
 
 export default function useAToast() {

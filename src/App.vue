@@ -1,5 +1,29 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
+
+
+// Подключение.
+// todo:: хорошо-бы было сделать это где-то в bootstap.ts
+import { provide } from "vue";
+import useAToast from "@/a-library/components/other/AToast/useAToast";
+import AToast from "@/a-library/components/other/AToast/AToast.vue";
+import type { CreateNotification } from "@/a-library/components/other/AToast/useAToast";
+
+const {
+  notifications,
+  createNotification,
+  removeNotifications,
+  // stopBodyOverflow,
+  // allowBodyOverflow,
+} = useAToast();
+
+// todo:: здесь возможно сделать через $
+// provide("create-notification", createNotification);
+// provide(Symbol() as InjectionKey<string>, createNotification);
+const key = Symbol() as CreateNotification<string>
+provide(key, createNotification);
+
+
 </script>
 
 <template>
@@ -8,6 +32,32 @@ import { RouterView } from "vue-router";
       <RouterView />
     </AContainer>
   </div>
+  <!--todo:: разобраться с этой поебенью, вынести в отдельный компонент, хз что с ней делать, но делать что-то нужно-->
+  <!--@before-enter="stopBodyOverflow"-->
+  <!--@after-enter="allowBodyOverflow"-->
+  <!--@before-leave="stopBodyOverflow"-->
+  <!--@after-leave="allowBodyOverflow"-->
+  <transition-group
+      name="toast-notification"
+      tag="div"
+      class="toast-notifications"
+  >
+    <!--:title="item.title"-->
+    <AToast
+        v-for="(item, idx) in notifications"
+        :key="item.id"
+        :id="item.id"
+        :type="item.type"
+        :message="item.message"
+        :auto-close="item.autoClose"
+        :duration="item.duration"
+        @close="
+          () => {
+            removeNotifications(item.id);
+          }
+        "
+    ></AToast>
+  </transition-group>
 </template>
 
 <style scoped>
