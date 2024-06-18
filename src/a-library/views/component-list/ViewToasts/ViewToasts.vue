@@ -1,22 +1,5 @@
 <script setup lang="ts">
-import { inject } from "vue";
-// import type { CreateNotification } from "@/a-library/components/other/AToast/useAToast";
-import  { createNotificationInjectionKey, shitKey, } from "@/a-library/components/other/AToast/useAToast";
-// const createNotification = inject<CreateNotification>("create-notification");
 
-const createNotification = inject(createNotificationInjectionKey)
-// const createNotification = <CreateNotification>inject("create-notification");
-const shit = inject(shitKey)
-
-console.log(shit)
-
-// createNotification?.({
-//   message: 'This is a notification from the App.vue Component',
-// })
-//
-// createNotification({
-//   message: 'This is a notification from the App.vue Component',
-// })
 </script>
 <template>
   <div class="view-toasts">
@@ -25,10 +8,8 @@ console.log(shit)
     </Teleport>
 
     <h2>Цветные тосты</h2>
-    <p>-={{shit}}=-</p>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
-      <!--<ABtn @click="$toast('Main')">Main</ABtn>-->
       <ABtn class="btn--error">Error</ABtn>
       <ABtn class="btn--error">Error</ABtn>
       <ABtn class="btn--error">Error</ABtn>
@@ -36,24 +17,8 @@ console.log(shit)
       <ABtn class="btn--error">Error</ABtn>
       <ABtn class="btn--error">Error</ABtn>
 
-      <ABtn @click="$toast({
-              message: 'This is a notification from the App.vue Component',
-      })">Main</ABtn>
-      <ABtn @click="createNotification({
-              message: 'This is a notification from the App.vue Component',
-      })
-        "
-      >Main</ABtn>
-
-      <!--<ABtn @click.prevent="-->
-      <!--    () => {-->
-      <!--      createNotification({-->
-      <!--        message: 'This is a notification from the App.vue Component',-->
-      <!--      });-->
-      <!--    }-->
-      <!--  ">Main</ABtn>-->
-
-      <ABtn @click="$toast('Main', {type: 'warning'})" class="btn--success">Success</ABtn>
+      <ABtn @click="$toast({message: 'Длинное предлинное предлинное предлинное сообщение'})">Main</ABtn>
+      <ABtn @click="$toast({message: 'Зеленое Сообщение',  type: 'success'})" class="btn--success">Success</ABtn>
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>
     </div>
@@ -65,6 +30,8 @@ console.log(shit)
       Вдохновляться этим
       <br>
       https://vue-toastification.maronato.dev/
+      <br>
+      https://dev.to/zafaralam/app-wide-toast-notifications-in-vue-3-2fp9
     </p>
   </div>
 </template>

@@ -3,24 +3,14 @@ import { RouterView } from "vue-router";
 
 
 // Подключение.
-// todo:: хорошо-бы было сделать это где-то в bootstap.ts
-import { provide } from "vue";
-import useAToast, {
-  createNotificationInjectionKey,
-  shitKey,
-} from "@/a-library/components/other/AToast/useAToast";
+import useAToast from "@/a-library/components/other/AToast/useAToast";
 import AToast from "@/a-library/components/other/AToast/AToast.vue";
-import type { CreateNotification } from "@/a-library/components/other/AToast/useAToast";
 
 const {
   notifications,
-  createNotification,
   removeNotifications,
 } = useAToast();
 
-// todo:: здесь возможно сделать через $
-provide(createNotificationInjectionKey, createNotification)
-provide(shitKey, 666)
 
 
 </script>
