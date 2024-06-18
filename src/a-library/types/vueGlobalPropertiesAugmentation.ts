@@ -16,6 +16,7 @@ const valueWithTypeOfUseResponsiveStore = useResponsiveStore();
 declare module "vue" {
   interface ComponentCustomProperties {
     $responsiveVariables: typeof valueWithTypeOfUseResponsiveStore;
+    // todo:: похоже это нужно теперь удалить. И всё что с этим связано.
     $toast: ToastFunction
   }
 }

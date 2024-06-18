@@ -1,7 +1,22 @@
 <script setup lang="ts">
 import { inject } from "vue";
-import type { CreateNotification } from "@/a-library/components/other/AToast/useAToast";
-const createNotification = inject<CreateNotification>("create-notification");
+// import type { CreateNotification } from "@/a-library/components/other/AToast/useAToast";
+import  { createNotificationInjectionKey, shitKey, } from "@/a-library/components/other/AToast/useAToast";
+// const createNotification = inject<CreateNotification>("create-notification");
+
+const createNotification = inject(createNotificationInjectionKey)
+// const createNotification = <CreateNotification>inject("create-notification");
+const shit = inject(shitKey)
+
+console.log(shit)
+
+createNotification?.({
+  message: 'This is a notification from the App.vue Component',
+})
+
+createNotification({
+  message: 'This is a notification from the App.vue Component',
+})
 </script>
 <template>
   <div class="view-toasts">
@@ -10,16 +25,24 @@ const createNotification = inject<CreateNotification>("create-notification");
     </Teleport>
 
     <h2>Цветные тосты</h2>
+    <p>-={{shit}}=-</p>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
-      <!--<ABtn @click="$toast('Main')">Main</ABtn>-->
-      <ABtn @click.prevent="
-          () => {
-            createNotification({
+      <ABtn @click="$toast('Main')">Main</ABtn>
+      <ABtn @click="createNotification({
               message: 'This is a notification from the App.vue Component',
-            });
-          }
-        ">Main</ABtn>
+      })
+        "
+      >Main</ABtn>
+
+      <!--<ABtn @click.prevent="-->
+      <!--    () => {-->
+      <!--      createNotification({-->
+      <!--        message: 'This is a notification from the App.vue Component',-->
+      <!--      });-->
+      <!--    }-->
+      <!--  ">Main</ABtn>-->
+
       <ABtn @click="$toast('Main', {type: 'warning'})" class="btn--success">Success</ABtn>
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>

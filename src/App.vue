@@ -4,8 +4,11 @@ import { RouterView } from "vue-router";
 
 // Подключение.
 // todo:: хорошо-бы было сделать это где-то в bootstap.ts
-import { provide } from "vue";
-import useAToast from "@/a-library/components/other/AToast/useAToast";
+import { provide, ref, reactive } from "vue";
+import useAToast, {
+  createNotificationInjectionKey,
+  shitKey,
+} from "@/a-library/components/other/AToast/useAToast";
 import AToast from "@/a-library/components/other/AToast/AToast.vue";
 import type { CreateNotification } from "@/a-library/components/other/AToast/useAToast";
 
@@ -20,8 +23,13 @@ const {
 // todo:: здесь возможно сделать через $
 // provide("create-notification", createNotification);
 // provide(Symbol() as InjectionKey<string>, createNotification);
-const key = Symbol() as CreateNotification<string>
-provide(key, createNotification);
+// const key = Symbol() as CreateNotification<string>
+// provide(key, createNotification);
+
+// provide('createNotification', createNotification)
+provide(createNotificationInjectionKey, createNotification)
+// provide(createNotificationInjectionKey, reactive(createNotification))
+provide(shitKey, 666)
 
 
 </script>
