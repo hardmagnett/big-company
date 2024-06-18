@@ -1,12 +1,12 @@
 <script setup lang="ts">
 
+import {RouterView} from "vue-router";
 </script>
 <template>
   <div class="view-toasts">
     <Teleport to="#page-header-place">
       <APageHeader> Тосты </APageHeader>
     </Teleport>
-
     <h2>Цветные тосты</h2>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
@@ -32,13 +32,23 @@
     </ABtn>
 
     <br>
+    <h2>Подключение</h2>
     <p>
-      Вдохновляться этим
-      <br>
-      https://vue-toastification.maronato.dev/
-      <br>
-      https://dev.to/zafaralam/app-wide-toast-notifications-in-vue-3-2fp9
+      Для того чтобы тосты работали, <br>
+      не забыть вставить компонент <code class="mod--code">&lt;AToasts /&gt;</code> в <code class="mod--code">App.vue</code>
     </p>
+    <p>Например так</p>
+  <pre class="mod--code">
+&lt;template&gt;
+  &lt;div class=&quot;app&quot;&gt;
+    &lt;AContainer&gt;
+      &lt;RouterView /&gt;
+    &lt;/AContainer&gt;
+  &lt;/div&gt;
+  &lt;AToasts /&gt;
+&lt;/template&gt;
+</pre>
+
   </div>
 </template>
 
