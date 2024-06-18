@@ -2,10 +2,8 @@
 import { RouterView } from "vue-router";
 
 // Подключение тостов
-import {notifications, removeNotifications} from '@/a-library/vue-plugins/toast';
+import {toasts, removeToast} from '@/a-library/vue-plugins/toast';
 import AToast from "@/a-library/components/other/AToast/AToast.vue";
-
-
 
 
 </script>
@@ -28,7 +26,7 @@ import AToast from "@/a-library/components/other/AToast/AToast.vue";
   >
     <!--:title="item.title"-->
     <AToast
-        v-for="(item, idx) in notifications"
+        v-for="(item, idx) in toasts"
         :key="item.id"
         :id="item.id"
         :type="item.type"
@@ -37,7 +35,7 @@ import AToast from "@/a-library/components/other/AToast/AToast.vue";
         :duration="item.duration"
         @close="
           () => {
-            removeNotifications(item.id);
+            removeToast(item.id);
           }
         "
     ></AToast>

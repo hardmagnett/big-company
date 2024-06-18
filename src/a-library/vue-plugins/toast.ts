@@ -1,15 +1,11 @@
-import type { App } from "vue";
+import type {App} from "vue";
+import {ref} from "vue";
+import createUUID from '@/a-library/helpers/language/string/createUUID';
 
 
 // todo:: навести в этом файле порядок. А-то всё как-то через жопу.
-// todo:: и разобраться с импортами, что defalut, а что нет
 
-// todo:: перенести из language в strings например
-import createUUID from '@/a-library/helpers/language/string/createUUID';
-
-import { ref } from "vue";
-
-export interface Notification {
+interface Toast {
   id: string;
   type: string;
   message: string;
@@ -17,36 +13,34 @@ export interface Notification {
   duration: number;
 }
 
-
 // todo:: упростить. Постараться избавиться от этого default options заменой на дефолтовые параметры CreateNotification
-const defaultNotificationOptions = {
+const defaultToastOptions = {
   type: "info",
-  message:
-    "Ooops! A message was not provided.",
+  message: "Текст сообщения не указан",
   autoClose: true,
   duration: 5,
 };
 
 
-export const notifications = ref<Notification[]>([])
+const toasts = ref<Toast[]>([])
 
-const createNotification: ToastFunction = (
+const createToast: CreateToastFunctionDeclaration = (
   options
 ) => {
-  const _options = Object.assign({ ...defaultNotificationOptions }, options);
-  notifications.value.push({
+  const _options = Object.assign({ ...defaultToastOptions }, options);
+  toasts.value.push({
     id: createUUID(),
     ..._options,
     // ...options,
   })
 }
 
-export const removeNotifications = (id: string) => {
-  const index = notifications.value.findIndex((item) => item.id === id);
-  if (index !== -1) notifications.value.splice(index, 1);
+const removeToast = (id: string) => {
+  const index = toasts.value.findIndex((item) => item.id === id);
+  if (index !== -1) toasts.value.splice(index, 1);
 };
 
-type ToastFunction =
+type CreateToastFunctionDeclaration =
   (
     options: {
       type?: string;
@@ -56,13 +50,16 @@ type ToastFunction =
   })=> void
 
 export type {
-  ToastFunction
+  Toast,
+  CreateToastFunctionDeclaration
+}
+export {
+  toasts,
+  removeToast
 }
 
 export default {
   install: (app: App) => {
-    const toast: ToastFunction = createNotification
-
-    app.config.globalProperties.$toast = toast
+    app.config.globalProperties.$toast = createToast
   },
 };
