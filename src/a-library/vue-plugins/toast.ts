@@ -2,9 +2,6 @@ import type {App} from "vue";
 import {ref} from "vue";
 import createUUID from '@/a-library/helpers/language/string/createUUID';
 
-
-// todo:: навести в этом файле порядок. А-то всё как-то через жопу.
-
 interface Toast {
   id: string;
   type: string;
@@ -13,7 +10,6 @@ interface Toast {
   duration: number;
 }
 
-// todo:: упростить. Постараться избавиться от этого default options заменой на дефолтовые параметры CreateNotification
 const defaultToastOptions = {
   type: "info",
   message: "Текст сообщения не указан",
@@ -24,22 +20,6 @@ const defaultToastOptions = {
 
 const toasts = ref<Toast[]>([])
 
-const createToast: CreateToastFunctionDeclaration = (
-  options
-) => {
-  const _options = Object.assign({ ...defaultToastOptions }, options);
-  toasts.value.push({
-    id: createUUID(),
-    ..._options,
-    // ...options,
-  })
-}
-
-const removeToast = (id: string) => {
-  const index = toasts.value.findIndex((item) => item.id === id);
-  if (index !== -1) toasts.value.splice(index, 1);
-};
-
 type CreateToastFunctionDeclaration =
   (
     options: {
@@ -47,7 +27,26 @@ type CreateToastFunctionDeclaration =
       message?: string;
       autoClose?: boolean;
       duration?: number;
-  })=> void
+    }
+  )=> void
+
+const createToast: CreateToastFunctionDeclaration = (
+  options
+) => {
+  const _options = Object.assign({ ...defaultToastOptions }, options);
+  const newToast: Toast = {
+    id: createUUID(),
+    ..._options,
+  }
+  toasts.value.push(newToast)
+}
+
+const removeToast = (id: string) => {
+  const index = toasts.value.findIndex((item) => item.id === id);
+  if (index !== -1) toasts.value.splice(index, 1);
+};
+
+
 
 export type {
   Toast,
