@@ -5,7 +5,7 @@ import type { App } from "vue";
 // todo:: и разобраться с импортами, что defalut, а что нет
 
 // todo:: перенести из language в strings например
-import createUUID from '@/a-library/helpers/language/createUUID';
+import createUUID from '@/a-library/helpers/language/string/createUUID';
 
 import { ref } from "vue";
 

@@ -6,7 +6,7 @@
 import {
   randomBetween,
   sameRandom,
-} from "@/a-library/helpers/language/randoms";
+} from "@/a-library/helpers/language/number/randoms";
 
 type Gender = "male" | "female";
 
