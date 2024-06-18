@@ -47,6 +47,22 @@
       </a>
       .
     </p>
+    <br>
+    <h2>Код</h2>
+
+<pre class="mod--code">
+&lt;div&gt;
+  &lt;strong&gt;
+    Hello &amp;nbsp;
+  &lt;/strong&gt;
+&lt;/div&gt;
+</pre>
+
+    <p>
+      Код внутри параграфа. Начало.
+      <code class="mod--code">&lt;div&gt;&lt;strong&gt;Hello &amp;nbsp;&lt;/strong&gt;&lt;/div&gt;</code>
+      Окончание.
+    </p>
   </div>
 </template>
 

@@ -12,3 +12,10 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.mod--code {
+  background-color: var(--clr-bg-blue-small);
+  border-radius: calc(var(--gap) / 4);
+  padding: calc(var(--gap) / 4) calc(var(--gap) / 2);
+
+}
