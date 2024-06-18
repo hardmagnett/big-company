@@ -13,15 +13,6 @@ export interface Notification {
   duration: number;
 }
 
-// todo:: эта хрень повторяется в 2-х местах. Сделать чтобы использовалась одна.
-// export type CreateNotification =
-//   (options: {
-//     type?: string;
-//     message?: string;
-//     autoClose?: boolean;
-//     duration?: number;
-//   })=> void
-
 
 // todo:: упростить. Постараться избавиться от этого default options заменой на дефолтовые параметры CreateNotification
 const defaultNotificationOptions = {
@@ -57,5 +48,4 @@ export default function useAToast() {
     createNotification,
     removeNotifications,
   };
-
 }
