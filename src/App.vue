@@ -4,7 +4,7 @@ import { RouterView } from "vue-router";
 
 // Подключение.
 // todo:: хорошо-бы было сделать это где-то в bootstap.ts
-import { provide, ref, reactive } from "vue";
+import { provide } from "vue";
 import useAToast, {
   createNotificationInjectionKey,
   shitKey,
@@ -16,19 +16,10 @@ const {
   notifications,
   createNotification,
   removeNotifications,
-  // stopBodyOverflow,
-  // allowBodyOverflow,
 } = useAToast();
 
 // todo:: здесь возможно сделать через $
-// provide("create-notification", createNotification);
-// provide(Symbol() as InjectionKey<string>, createNotification);
-// const key = Symbol() as CreateNotification<string>
-// provide(key, createNotification);
-
-// provide('createNotification', createNotification)
 provide(createNotificationInjectionKey, createNotification)
-// provide(createNotificationInjectionKey, reactive(createNotification))
 provide(shitKey, 666)
 
 
