@@ -9,7 +9,7 @@ const {
 
 type ToastFunction =
   (
-    options?: {
+    options: {
       type?: string;
       message?: string;
       autoClose?: boolean;
