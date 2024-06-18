@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
 
-
-// Подключение.
-import useAToast from "@/a-library/components/other/AToast/useAToast";
+// Подключение тостов
+import {notifications, removeNotifications} from '@/a-library/vue-plugins/toast';
 import AToast from "@/a-library/components/other/AToast/AToast.vue";
 
-const {
-  notifications,
-  removeNotifications,
-} = useAToast();
 
 
 
