@@ -10,13 +10,13 @@ const shit = inject(shitKey)
 
 console.log(shit)
 
-createNotification?.({
-  message: 'This is a notification from the App.vue Component',
-})
-
-createNotification({
-  message: 'This is a notification from the App.vue Component',
-})
+// createNotification?.({
+//   message: 'This is a notification from the App.vue Component',
+// })
+//
+// createNotification({
+//   message: 'This is a notification from the App.vue Component',
+// })
 </script>
 <template>
   <div class="view-toasts">
@@ -28,7 +28,17 @@ createNotification({
     <p>-={{shit}}=-</p>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
-      <ABtn @click="$toast('Main')">Main</ABtn>
+      <!--<ABtn @click="$toast('Main')">Main</ABtn>-->
+      <ABtn class="btn--error">Error</ABtn>
+      <ABtn class="btn--error">Error</ABtn>
+      <ABtn class="btn--error">Error</ABtn>
+      <ABtn class="btn--error">Error</ABtn>
+      <ABtn class="btn--error">Error</ABtn>
+      <ABtn class="btn--error">Error</ABtn>
+
+      <ABtn @click="$toast({
+              message: 'This is a notification from the App.vue Component',
+      })">Main</ABtn>
       <ABtn @click="createNotification({
               message: 'This is a notification from the App.vue Component',
       })
