@@ -58,6 +58,10 @@ const close = () => {
 
 <template>
 <!--todo:: переделать под БЭМ-->
+  <div class="a-toast">
+    <div class="a-toast__message">{{ message }}</div>
+    <ABtn icon><AIcon icon="mdi-pencil" /></ABtn>
+  </div>
   <div
       class="toast-notification"
       :style="`--toast-duration: ${duration}s; --toast-color: ${toastColor}`"
@@ -80,6 +84,12 @@ const close = () => {
 </template>
 
 <style scoped>
+.a-toast {
+  width: 500px;
+  height: calc(var(--gap) * 6);
+  outline: 1px solid darkred;
+  background-color: #eee;
+}
 .toast-notification {
   --toast-color: #0067ff;
   cursor: pointer;

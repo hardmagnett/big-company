@@ -5,7 +5,10 @@ import {globalProperties} from '@/main';
 
 
 onMounted(()=>{
-  globalProperties.$toast({message: 'Длинное предлинное предлинное предлинное сообщение'})
+  globalProperties.$toast({
+    message: 'Длинное предлинное предлинное предлинное сообщение',
+    autoClose: false
+  })
 })
 
 </script>

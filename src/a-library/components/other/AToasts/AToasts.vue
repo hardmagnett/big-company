@@ -2,6 +2,12 @@
 import { } from 'vue'
 import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
 
+const closeToast = (toastId: string)=>{
+  // Не забыть раскомментить
+  // removeToast(toastId);
+  let a = 1
+}
+
 </script>
 
 <template>
@@ -28,11 +34,7 @@ import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
         :message="item.message"
         :auto-close="item.autoClose"
         :duration="item.duration"
-        @close="
-          () => {
-            removeToast(item.id);
-          }
-        "
+        @close="closeToast(item.id)"
     ></AToast>
   </transition-group>
 </template>
@@ -44,8 +46,8 @@ import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
 .toast-notifications {
   z-index: 100;
   position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  /*top: 0.5rem;*/
+  /*right: 0.5rem;*/
   display: flex;
   flex-direction: column-reverse;
   gap: 0.8rem;
