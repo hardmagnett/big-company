@@ -9,7 +9,7 @@ const dialogNode = ref<HTMLDialogElement | null>(null);
 const dialogWrapperNode = ref<HTMLElement | null>(null);
 const isClosingOnDeniedAnimationRunning = ref(false);
 
-type DialogCssClass = "btn--success" | "btn--danger" | "btn--error" | "";
+type DialogCssClass = "a-btn--success" | "a-btn--danger" | "a-btn--error" | "";
 export interface Props {
   isOpen: boolean;
   remainOnEsc?: boolean;
@@ -129,7 +129,7 @@ onBeforeUnmount(() => {
         <ABtn
           @click="needToClose"
           :class="[cssClassCancel]"
-          class="btn--tonal"
+          class="a-btn--tonal"
           >{{ textCancel }}</ABtn
         >
         <ABtn

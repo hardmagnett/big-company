@@ -21,7 +21,7 @@ withDefaults(defineProps<Props>(), {
       remainOnClickOutside
       text-header="Удаление сотрудника"
       textApply="Удалить"
-      cssClassApply="btn--error"
+      cssClassApply="a-btn--error"
       :isOpen="isOpen"
       @needToClose="$emit('needToClose')"
       @apply="$emit('apply')"

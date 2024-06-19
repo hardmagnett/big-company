@@ -12,7 +12,7 @@ const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
       <ABtn icon @click="emit('needToEditEmployee')"
         ><AIcon icon="mdi-pencil"
       /></ABtn>
-      <ABtn icon class="btn--error" @click="emit('needToDeleteEmployee')"
+      <ABtn icon class="a-btn--error" @click="emit('needToDeleteEmployee')"
         ><AIcon icon="mdi-delete"
       /></ABtn>
     </td>

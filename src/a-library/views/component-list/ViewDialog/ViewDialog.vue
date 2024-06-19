@@ -41,8 +41,8 @@ const isDialogConfiguredOpen = ref(false);
       text-header="Заголовок окна"
       textApply="Да!"
       textCancel="Отменить это!"
-      cssClassApply="btn--error"
-      cssClassCancel="btn--error"
+      cssClassApply="a-btn--error"
+      cssClassCancel="a-btn--error"
       hideApply
       :isOpen="isDialogConfiguredOpen"
       @needToClose="isDialogConfiguredOpen = false"

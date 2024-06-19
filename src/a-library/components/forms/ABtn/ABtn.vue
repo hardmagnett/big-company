@@ -25,10 +25,10 @@ const isRouterLink = computed(() => {
 <template>
   <component
     :is="rootComponent"
-    class="btn"
+    class="a-btn"
     :class="{
-      'btn--icon': icon,
-      'btn--with-text': !icon,
+      'a-btn--icon': icon,
+      'a-btn--with-text': !icon,
     }"
     v-bind="$attrs"
   >
@@ -37,10 +37,10 @@ const isRouterLink = computed(() => {
 </template>
 
 <style scoped>
-.btn {
+.a-btn {
   outline: none !important;
 }
-.btn--with-text {
+.a-btn--with-text {
   --height: calc(var(--gap) * 1.6);
   @container style(--bp-md-or-more) {
     --height: calc(var(--gap) * 1.8);
@@ -67,25 +67,25 @@ const isRouterLink = computed(() => {
   &:hover {
     background-color: var(--clr-fill-blue-accent);
   }
-  &.btn--error {
+  &.a-btn--error {
     background-color: var(--clr-fill-red-small);
     &:hover {
       background-color: var(--clr-fill-red-accent);
     }
   }
-  &.btn--success {
+  &.a-btn--success {
     background-color: var(--clr-fill-green-small);
     &:hover {
       background-color: var(--clr-fill-green-accent);
     }
   }
-  &.btn--danger {
+  &.a-btn--danger {
     background-color: var(--clr-fill-orange-small);
     &:hover {
       background-color: var(--clr-fill-orange-accent);
     }
   }
-  &.btn--tonal {
+  &.a-btn--tonal {
     outline: 1px solid darkred;
     color: var(--clr-fill-blue-big);
     background-color: var(--clr-bg-blue-small);
@@ -94,7 +94,7 @@ const isRouterLink = computed(() => {
       background-color: var(--clr-bg-blue-smaller);
     }
 
-    &.btn--error {
+    &.a-btn--error {
       color: var(--clr-fill-red-big);
       background-color: var(--clr-bg-red-small);
       &:hover {
@@ -102,7 +102,7 @@ const isRouterLink = computed(() => {
         background-color: var(--clr-bg-red-smaller);
       }
     }
-    &.btn--success {
+    &.a-btn--success {
       color: var(--clr-fill-green-big);
       background-color: var(--clr-bg-green-small);
       &:hover {
@@ -110,7 +110,7 @@ const isRouterLink = computed(() => {
         background-color: var(--clr-bg-green-smaller);
       }
     }
-    &.btn--danger {
+    &.a-btn--danger {
       color: var(--clr-fill-orange-big);
       background-color: var(--clr-bg-orange-small);
       &:hover {
@@ -119,7 +119,7 @@ const isRouterLink = computed(() => {
       }
     }
   }
-  &.btn--small {
+  &.a-btn--small {
     --height: calc(var(--gap) * 1.5);
     padding: 0 var(--gap);
     height: var(--height);
@@ -128,7 +128,7 @@ const isRouterLink = computed(() => {
   }
 }
 
-.btn--icon {
+.a-btn--icon {
   cursor: pointer;
   border-radius: 50%;
   border: none;
@@ -152,19 +152,19 @@ const isRouterLink = computed(() => {
     background-color: var(--clr-bg-blue-smaller);
   }
 
-  &.btn--success {
+  &.a-btn--success {
     color: var(--clr-fill-green-small);
     &:hover {
       background-color: var(--clr-bg-green-smaller);
     }
   }
-  &.btn--danger {
+  &.a-btn--danger {
     color: var(--clr-fill-orange-small);
     &:hover {
       background-color: var(--clr-bg-orange-smaller);
     }
   }
-  &.btn--error {
+  &.a-btn--error {
     color: var(--clr-fill-red-small);
     &:hover {
       background-color: var(--clr-bg-red-smaller);

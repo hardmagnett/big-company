@@ -20,15 +20,15 @@ onMounted(()=>{
     <h2>Цветные тосты</h2>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
-      <ABtn class="btn--error">Error</ABtn>
-      <ABtn class="btn--error">Error</ABtn>
-      <ABtn class="btn--error">Error</ABtn>
-      <ABtn class="btn--error">Error</ABtn>
-      <ABtn class="btn--error">Error</ABtn>
-      <ABtn class="btn--error">Error</ABtn>
+      <ABtn class="a-btn--error">Error</ABtn>
+      <ABtn class="a-btn--error">Error</ABtn>
+      <ABtn class="a-btn--error">Error</ABtn>
+      <ABtn class="a-btn--error">Error</ABtn>
+      <ABtn class="a-btn--error">Error</ABtn>
+      <ABtn class="a-btn--error">Error</ABtn>
 
       <ABtn @click="$toast({message: 'Длинное предлинное предлинное предлинное сообщение'})">Main</ABtn>
-      <ABtn @click="$toast({message: 'Зеленое Сообщение',  type: 'success'})" class="btn--success">Success</ABtn>
+      <ABtn @click="$toast({message: 'Зеленое Сообщение',  type: 'success'})" class="a-btn--success">Success</ABtn>
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>
     </div>
