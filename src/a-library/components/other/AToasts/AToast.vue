@@ -94,6 +94,10 @@ const close = () => {
   position: relative;
   overflow: hidden;
 
+  .a-btn {
+    flex: 0 0 auto;
+  }
+
   &.a-toast--autoclose {
     &::after {
       content: '';
