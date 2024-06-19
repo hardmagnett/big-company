@@ -4,7 +4,7 @@ import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
 
 const closeToast = (toastId: string)=>{
   // Не забыть раскомментить
-  // removeToast(toastId);
+  removeToast(toastId);
   let a = 1
 }
 

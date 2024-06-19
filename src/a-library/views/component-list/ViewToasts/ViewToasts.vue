@@ -13,6 +13,16 @@ onMounted(() => {
     autoClose: false,
     type: 'success'
   });
+  globalProperties.$toast({
+    message: "Длинное предлинное предлинное предлинное сообщение",
+    autoClose: false,
+    type: 'danger'
+  });
+  globalProperties.$toast({
+    message: "Длинное предлинное предлинное предлинное сообщение",
+    // autoClose: false,
+    type: 'error'
+  });
 });
 </script>
 <template>

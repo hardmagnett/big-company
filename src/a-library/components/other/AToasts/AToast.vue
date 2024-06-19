@@ -38,30 +38,7 @@ onMounted(() => {
 
 
 const colorCSSClass = computed(() => {
-  switch (props.type) {
-    case "error":
-      return "#ff355b";
-    case "danger":
-      return "#e8b910";
-    case "success":
-      return "a-toast--success";
-    default:
-      return "a-toast--info";
-  }
-});
-
-// todo:: удалить это.
-const toastColor = computed(() => {
-  switch (props.type) {
-    case "error":
-      return "#ff355b";
-    case "warning":
-      return "#e8b910";
-    case "success":
-      return "#00cc69";
-    default:
-      return "#0067ff";
-  }
+  return `a-toast--${props.type}`
 });
 
 const close = () => {
@@ -74,13 +51,15 @@ const close = () => {
 <!--todo:: переделать под БЭМ-->
   <div class="a-toast"
        :class="[colorCSSClass]"
+       @click="close"
   >
     <div class="a-toast__message">{{ message }}</div>
     <ABtn icon class="a-btn--white"><AIcon icon="mdi-pencil" /></ABtn>
   </div>
+  <!--:style="`&#45;&#45;toast-duration: ${duration}s; &#45;&#45;toast-color: ${toastColor}`"-->
   <div
       class="toast-notification"
-      :style="`--toast-duration: ${duration}s; --toast-color: ${toastColor}`"
+      :style="`--toast-duration: ${duration}s;`"
       @click.prevent="close"
       :ref="id"
   >
@@ -113,17 +92,40 @@ const close = () => {
   align-items: center;
   color: white;
   border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: black;
+    width: 100%;
+    height: calc(var(--gap) / 2);
+    left:0;
+    bottom:0;
+  }
   &.a-toast--info {
     background-color: var(--clr-fill-blue-big);
+    &::after {
+      background-color: var(--clr-fill-blue-accent);
+    }
   }
   &.a-toast--success {
     background-color: var(--clr-fill-green-big);
+    &::after {
+      background-color: var(--clr-fill-green-accent);
+    }
   }
   &.a-toast--danger {
     background-color: var(--clr-fill-orange-big);
+    &::after {
+      background-color: var(--clr-fill-orange-accent);
+    }
   }
   &.a-toast--error {
     background-color: var(--clr-fill-red-big);
+    &::after {
+      background-color: var(--clr-fill-red-accent);
+    }
   }
 }
 .toast-notification {
