@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 
-// Props for our component,
-// these are the same as Notitfication interface.
+// todo:: наверное переделать из plugins в provide-inject.
+// Всё равно эту хрень приходится импортировать.
+
+// Свойства компонента те-же что и для Toast interface
 const props = defineProps({
   id: { type: String, required: true },
   type: {
@@ -41,6 +43,10 @@ const colorCSSClass = computed(() => {
   return `a-toast--${props.type}`
 });
 
+const autoCloseCSSClass = computed(()=>{
+  return props.autoClose ? 'a-toast--autoclose' : null
+})
+
 const close = () => {
   emit("close");
 };
@@ -50,36 +56,29 @@ const close = () => {
 <template>
 <!--todo:: переделать под БЭМ-->
   <div class="a-toast"
-       :class="[colorCSSClass]"
+       :class="[colorCSSClass, autoCloseCSSClass]"
        @click="close"
+       :style="`--toast-duration: ${duration}s;`"
   >
     <div class="a-toast__message">{{ message }}</div>
     <ABtn icon class="a-btn--white"><AIcon icon="mdi-pencil" /></ABtn>
   </div>
-  <!--:style="`&#45;&#45;toast-duration: ${duration}s; &#45;&#45;toast-color: ${toastColor}`"-->
-  <div
-      class="toast-notification"
-      :style="`--toast-duration: ${duration}s;`"
-      @click.prevent="close"
-      :ref="id"
-  >
-    <div @click="close" class="close-btn" title="Close">
-      <i class="ri-icon ri-lg ri-close-fill"></i>
-    </div>
-
-    <div class="body">
-      <div class="vl"></div>
-      <div class="content">
-
-        <p class="content__message">{{ message }}</p>
-      </div>
-    </div>
-    <div v-if="autoClose" class="progress"></div>
-  </div>
 </template>
 
 <style scoped>
+@keyframes progress-animation {
+  to {
+    width: 100%;
+  }
+}
 .a-toast {
+
+  /*
+    Перезаписывается JS из шаблона для каждого конкретного экземпляра.
+    Через style.
+  */
+  --toast-duration: 4s;
+
   width: 500px;
   max-width: 100vw;
   min-height: calc(var(--gap) * 6);
@@ -94,15 +93,23 @@ const close = () => {
   border-radius: var(--border-radius);
   position: relative;
   overflow: hidden;
-  &::after {
-    content: '';
-    position: absolute;
-    background-color: black;
-    width: 100%;
-    height: calc(var(--gap) / 2);
-    left:0;
-    bottom:0;
+
+  &.a-toast--autoclose {
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: black;
+      width: 0%;
+      height: calc(var(--gap) / 2);
+      left:0;
+      bottom:0;
+
+      /*animation: progress-animation var(--toast-duration) ease-in-out forwards;*/
+      animation: progress-animation var(--toast-duration) linear;
+    }
   }
+
+
   &.a-toast--info {
     background-color: var(--clr-fill-blue-big);
     &::after {
@@ -129,79 +136,7 @@ const close = () => {
   }
 }
 .toast-notification {
-  --toast-color: #0067ff;
-  cursor: pointer;
-  max-width: 450px;
-  position: relative;
-  background: white;
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.08),
-  0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-  min-height: 4rem;
-  padding-inline: 1.5rem;
-  padding-block: 1.2rem;
-  transition: all 0.3s ease-in-out;
-
-  .close-btn {
-    position: absolute;
-    top: 0.4rem;
-    right: 0.4rem;
-    display: flex;
-    place-items: center;
-    justify-content: center;
-    height: 32px;
-    width: 32px;
-    /*transition: var(--all-transition);*/
-    transition: var(--time-medium);
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 0px 0px 10px rgb(228, 228, 228);
-      border-radius: 50%;
-    }
-  }
-
-  .body {
-    display: flex;
-    gap: 1.4rem;
-    place-items: center;
-
-    i {
-      color: var(--toast-color);
-    }
-
-    .vl {
-      background: #e4e4e4;
-      width: 0.12rem;
-      height: 3rem;
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-
-      &__title {
-        font-weight: 600;
-      }
-    }
-  }
-
-  .progress {
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    height: 0.4rem;
-    width: 100%;
-    background: var(--toast-color);
-    animation: progress var(--toast-duration) ease-in-out forwards;
-  }
-
-  @keyframes progress {
-    to {
-      width: 0;
-    }
-  }
-
+  /*todo:: удалить эту древнюю хрень, когда всё сделаешь*/
   @keyframes toast-fade-in {
     to {
       opacity: 1;
