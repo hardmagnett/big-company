@@ -36,7 +36,21 @@ onMounted(() => {
   }
 });
 
-// todo:: на основе этого сделать css-класс и сделать по нормальному.
+
+const colorCSSClass = computed(() => {
+  switch (props.type) {
+    case "error":
+      return "#ff355b";
+    case "danger":
+      return "#e8b910";
+    case "success":
+      return "a-toast--success";
+    default:
+      return "a-toast--info";
+  }
+});
+
+// todo:: удалить это.
 const toastColor = computed(() => {
   switch (props.type) {
     case "error":
@@ -58,9 +72,11 @@ const close = () => {
 
 <template>
 <!--todo:: переделать под БЭМ-->
-  <div class="a-toast">
+  <div class="a-toast"
+       :class="[colorCSSClass]"
+  >
     <div class="a-toast__message">{{ message }}</div>
-    <ABtn icon><AIcon icon="mdi-pencil" /></ABtn>
+    <ABtn icon class="a-btn--white"><AIcon icon="mdi-pencil" /></ABtn>
   </div>
   <div
       class="toast-notification"
@@ -86,9 +102,29 @@ const close = () => {
 <style scoped>
 .a-toast {
   width: 500px;
-  height: calc(var(--gap) * 6);
-  outline: 1px solid darkred;
+  max-width: 100vw;
+  min-height: calc(var(--gap) * 6);
+  /*outline: 1px solid darkred;*/
   background-color: #eee;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: var(--gap);
+  gap: var(--gap);
+  align-items: center;
+  color: white;
+  border-radius: var(--border-radius);
+  &.a-toast--info {
+    background-color: var(--clr-fill-blue-big);
+  }
+  &.a-toast--success {
+    background-color: var(--clr-fill-green-big);
+  }
+  &.a-toast--danger {
+    background-color: var(--clr-fill-orange-big);
+  }
+  &.a-toast--error {
+    background-color: var(--clr-fill-red-big);
+  }
 }
 .toast-notification {
   --toast-color: #0067ff;

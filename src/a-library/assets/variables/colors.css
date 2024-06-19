@@ -1,3 +1,19 @@
+/*
+
+Переменную объявленную вот так (ОБЬЯЗАТЕЛЬНО ЧЕРЕЗ ЗАПЯТУЮ):
+--clr-fill-blue-small-raw: var(--_hue-blue), var(--_sat-fill-small), var(--_light-fill-small);
+Можно использовать вот в таких конструкциях
+Для добавления прозрачности
+background-color:hsla(var(--clr-fill-blue-small-raw),0.3);
+
+А вот такую переменную
+--clr-fill-blue-small: hsl(var(--clr-fill-blue-small-raw));
+можно использовать как обычно:
+background-color:(var(--clr-fill-blue-small));
+
+ */
+
+
 :root {
   --_hue-blue: 212;
   --_hue-green: 113;
@@ -149,27 +165,21 @@
   --_sat-fill-accent: 52%;
   --_light-fill-accent: 34%;
 
-  --clr-fill-blue-small: hsl(
-    var(--_hue-blue),
-    var(--_sat-fill-small),
-    var(--_light-fill-small)
-  );
-  --clr-fill-blue-big: hsl(
-    var(--_hue-blue),
-    var(--_sat-fill-big),
-    var(--_light-fill-big)
-  );
+  --clr-fill-blue-small-raw: var(--_hue-blue), var(--_sat-fill-small), var(--_light-fill-small);
+  --clr-fill-blue-small: hsl(var(--clr-fill-blue-small-raw));
+
+  --clr-fill-blue-big-raw: var(--_hue-blue), var(--_sat-fill-big), var(--_light-fill-big);
+  --clr-fill-blue-big: hsl(var(--clr-fill-blue-big-raw));
+
   --clr-fill-blue-accent: hsl(
     var(--_hue-blue),
     var(--_sat-fill-accent),
     var(--_light-fill-accent)
   );
 
-  --clr-fill-red-small: hsl(
-    var(--_hue-red),
-    var(--_sat-fill-small),
-    var(--_light-fill-small)
-  );
+  --clr-fill-red-small-raw: var(--_hue-red), var(--_sat-fill-small), var(--_light-fill-small);
+  --clr-fill-red-small: hsl(var(--clr-fill-red-small-raw));
+
   --clr-fill-red-big: hsl(
     var(--_hue-red),
     var(--_sat-fill-big),
@@ -181,11 +191,15 @@
     var(--_light-fill-accent)
   );
 
-  --clr-fill-green-small: hsl(
-    var(--_hue-green),
-    var(--_sat-fill-small),
-    var(--_light-fill-small)
-  );
+  /*--clr-fill-green-small: hsl(*/
+  /*  var(--_hue-green),*/
+  /*  var(--_sat-fill-small),*/
+  /*  var(--_light-fill-small)*/
+  /*);*/
+
+  --clr-fill-green-small-raw: var(--_hue-green), var(--_sat-fill-small), var(--_light-fill-small);
+  --clr-fill-green-small: hsl(var(--clr-fill-green-small-raw));
+
   --clr-fill-green-big: hsl(
     var(--_hue-green),
     var(--_sat-fill-big),
@@ -197,11 +211,9 @@
     var(--_light-fill-accent)
   );
 
-  --clr-fill-orange-small: hsl(
-    var(--_hue-orange),
-    var(--_sat-fill-small),
-    var(--_light-fill-small)
-  );
+  --clr-fill-orange-small-raw: var(--_hue-orange), var(--_sat-fill-small), var(--_light-fill-small);
+  --clr-fill-orange-small: hsl(var(--clr-fill-orange-small-raw));
+
   --clr-fill-orange-big: hsl(
     var(--_hue-orange),
     var(--_sat-fill-big),

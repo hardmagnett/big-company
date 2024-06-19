@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import {onMounted } from 'vue';
+import { onMounted } from "vue";
 
-import {globalProperties} from '@/main';
+import { globalProperties } from "@/main";
 
-
-onMounted(()=>{
+onMounted(() => {
   globalProperties.$toast({
-    message: 'Длинное предлинное предлинное предлинное сообщение',
-    autoClose: false
-  })
-})
-
+    message: "Длинное предлинное предлинное предлинное сообщение",
+    autoClose: false,
+  });
+  globalProperties.$toast({
+    message: "Длинное предлинное предлинное предлинное сообщение",
+    autoClose: false,
+    type: 'success'
+  });
+});
 </script>
 <template>
   <div class="view-toasts">
@@ -27,28 +30,48 @@ onMounted(()=>{
       <ABtn class="a-btn--error">Error</ABtn>
       <ABtn class="a-btn--error">Error</ABtn>
 
-      <ABtn @click="$toast({message: 'Длинное предлинное предлинное предлинное сообщение'})">Main</ABtn>
-      <ABtn @click="$toast({message: 'Зеленое Сообщение',  type: 'success'})" class="a-btn--success">Success</ABtn>
+      <ABtn
+        @click="
+          $toast({
+            message: 'Длинное предлинное предлинное предлинное сообщение',
+          })
+        "
+        >Main</ABtn
+      >
+      <ABtn
+        @click="$toast({ message: 'Зеленое Сообщение', type: 'success' })"
+        class="a-btn--success"
+        >Success</ABtn
+      >
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>
     </div>
     <h2>Перенос строки в тосте</h2>
     <ABtn>Показать тост</ABtn>
 
-    <br>
+    <br />
 
-    <ABtn @click="$toast({message: 'Eh bien, mon prince. Gênes et Lucques ne sont plus que des apanages, des поместья, de la famille Buonaparte. Non, je vous préviens que si vous ne me dites pas que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j\'y crois) — je ne vous connais plus, vous n\'êtes plus mon ami, vous n\'êtes plus мой верный раб, comme vous dites 1. Ну, здравствуйте, здравствуйте. Je vois que je vous fais peur 2, садитесь и рассказывайте.'})">
+    <ABtn
+      @click="
+        $toast({
+          message:
+            'Eh bien, mon prince. Gênes et Lucques ne sont plus que des apanages, des поместья, de la famille Buonaparte. Non, je vous préviens que si vous ne me dites pas que nous avons la guerre, si vous vous permettez encore de pallier toutes les infamies, toutes les atrocités de cet Antichrist (ma parole, j\'y crois) — je ne vous connais plus, vous n\'êtes plus mon ami, vous n\'êtes plus мой верный раб, comme vous dites 1. Ну, здравствуйте, здравствуйте. Je vois que je vous fais peur 2, садитесь и рассказывайте.',
+        })
+      "
+    >
       Очень длинное сообщение
     </ABtn>
 
-    <br>
+    <br />
     <h2>Подключение</h2>
     <p>
-      Для того чтобы тосты работали, <br>
-      не забыть вставить компонент <code class="mod--code">&lt;AToasts /&gt;</code> в <code class="mod--code">App.vue</code>
+      Для того чтобы тосты работали, <br />
+      не забыть вставить компонент
+      <code class="mod--code">&lt;AToasts /&gt;</code> в
+      <code class="mod--code">App.vue</code>
     </p>
     <p>Например так</p>
-  <pre class="mod--code">
+    <pre class="mod--code">
 &lt;template&gt;
   &lt;div class=&quot;app&quot;&gt;
     &lt;AContainer&gt;
@@ -57,8 +80,8 @@ onMounted(()=>{
   &lt;/div&gt;
   &lt;AToasts /&gt;
 &lt;/template&gt;
-</pre>
-
+</pre
+    >
   </div>
 </template>
 
@@ -72,4 +95,3 @@ onMounted(()=>{
   }
 }
 </style>
-

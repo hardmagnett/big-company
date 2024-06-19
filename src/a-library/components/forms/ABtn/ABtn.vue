@@ -147,27 +147,35 @@ const isRouterLink = computed(() => {
   height: var(--size);
   width: var(--size);
 
+  --bg-opacity: 0.15;
+
   color: var(--clr-fill-blue-small);
   &:hover {
-    background-color: var(--clr-bg-blue-smaller);
+    background-color:hsla(var(--clr-fill-blue-small-raw),var(--bg-opacity));
   }
 
   &.a-btn--success {
     color: var(--clr-fill-green-small);
     &:hover {
-      background-color: var(--clr-bg-green-smaller);
+      background-color:hsla(var(--clr-fill-green-small-raw),var(--bg-opacity));
     }
   }
   &.a-btn--danger {
     color: var(--clr-fill-orange-small);
     &:hover {
-      background-color: var(--clr-bg-orange-smaller);
+      background-color:hsla(var(--clr-fill-orange-small-raw),var(--bg-opacity));
     }
   }
   &.a-btn--error {
     color: var(--clr-fill-red-small);
     &:hover {
-      background-color: var(--clr-bg-red-smaller);
+      background-color:hsla(var(--clr-fill-red-small-raw),var(--bg-opacity));
+    }
+  }
+  &.a-btn--white {
+    color: white;
+    &:hover {
+      background-color: rgba(255,255, 255, var(--bg-opacity));
     }
   }
 }
