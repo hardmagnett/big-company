@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { } from 'vue'
+import { ref, onMounted } from 'vue'
 import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
 
 const closeToast = (toastId: string)=>{
   // Не забыть раскомментить
   removeToast(toastId);
 }
+const rootNode = ref<HTMLElement | null>(null)
+
+onMounted(()=>{
+  rootNode.value?.showPopover()
+})
 
 </script>
 
@@ -43,14 +48,14 @@ const closeToast = (toastId: string)=>{
   <!--popover-->
   <!--data-container="body"-->
   <!--id="my-popover"-->
+
+
   <div
+      ref="rootNode"
       class="a-toasts"
       popover
 
   >
-    <!--open-->
-    <!--aria-modal="true"-->
-
     <AToast
         v-for="(item) in toasts.toReversed()"
         :key="item.id"
@@ -69,6 +74,7 @@ const closeToast = (toastId: string)=>{
 
   &::backdrop {
     /*background-color: rgb(255 255 255 / 0.5);*/
+    /*background-color: red;*/
   }
 
   background-color: transparent;
@@ -82,7 +88,11 @@ const closeToast = (toastId: string)=>{
   flex-flow: column nowrap;
   gap: var(--gap);
   padding: var(--gap);
+  outline: none;
+  outline: 3px solid darkred;
+  border: none;
   .a-toast {
+    flex: 0 0 auto;
     pointer-events: auto;
   }
 }
