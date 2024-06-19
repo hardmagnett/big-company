@@ -11,14 +11,15 @@ const rootNode = ref<HTMLElement | null>(null)
 const shitNode = ref<HTMLElement | null>(null)
 
 onMounted(()=>{
+  // Чтобы popover реально заработал, нужно его включить js-ом.
+  // todo:: возможно переделать чтобы он показывался пока есть элементы, и скрывался когда их нет
   rootNode.value?.showPopover()
-  // shitNode.value?.showPopover()
 })
 
 </script>
 
 <template>
-  <div ref="shitNode" class="boat" popoverZ>this is boat</div>
+
   <div
       ref="rootNode"
       class="a-toasts"
@@ -36,62 +37,25 @@ onMounted(()=>{
         @close="closeToast(item.id)"
     ></AToast>
   </div>
-  <!--todo:: разобраться с этой поебенью, вынести в отдельный компонент, хз что с ней делать, но делать что-то нужно-->
-  <!--@before-enter="stopBodyOverflow"-->
-  <!--@after-enter="allowBodyOverflow"-->
-  <!--@before-leave="stopBodyOverflow"-->
-  <!--@after-leave="allowBodyOverflow"-->
-  <!--<transition-group-->
-  <!--    name="toast-notification"-->
-  <!--    tag="div"-->
-  <!--    class="toast-notifications"-->
-  <!--&gt;-->
-  <!--  &lt;!&ndash;:title="item.title"&ndash;&gt;-->
-  <!--  <AToast-->
-  <!--      v-for="(item) in toasts"-->
-  <!--      :key="item.id"-->
-  <!--      :id="item.id"-->
-  <!--      :type="item.type"-->
-  <!--      :message="item.message"-->
-  <!--      :auto-close="item.autoClose"-->
-  <!--      :duration="item.duration"-->
-  <!--      @close="closeToast(item.id)"-->
-  <!--  ></AToast>-->
-  <!--</transition-group>-->
-  <!--<div popover>-->
-  <!--  <p>this is popover</p>-->
-  <!--</div>-->
+
 </template>
 
 <style scoped>
-.boat {
-  position: absolute;
-  position-anchor: --anchor-body;
-  /*position-anchor: --anchor-app;*/
-  top: anchor(top);
-  right: anchor(right);
-
-  /*top: anchor(--anchor-body top);*/
-  /*right: anchor(--anchor-body right);*/
-
-  background: #333;
-  width: 250px;
-  height: 100px;
-
-  /*display: block;*/
-}
 .a-toasts {
 
   position: absolute;
-  /*  anchor reference  */
-  position-anchor: --anchor-body;
-  top: anchor(top);
-  right: anchor(right);
-  inset: auto;
-
   background-color: transparent;
 
-  /*pointer-events: none;*/
+  /*top: 0;*/
+  /*right: 0;*/
+
+  position-anchor: --anchor-body;
+  right: anchor(right);
+  top: anchor(top);
+  left: auto;
+
+
+  pointer-events: none;
   width: 500px;
   max-width: 100vw;
   max-height: 100dvh;
@@ -104,6 +68,10 @@ onMounted(()=>{
   outline: none;
   outline: 3px solid darkred;
   border: none;
+
+  margin: 0;
+  /*padding: 0;*/
+
   .a-toast {
     flex: 0 0 auto;
     pointer-events: auto;
@@ -129,3 +97,30 @@ onMounted(()=>{
   }
 }
 </style>
+
+<!--Вынес нахуй из шаблона, чтоб не мешало скроллить.-->
+<!--todo:: разобраться с этой поебенью, вынести в отдельный компонент, хз что с ней делать, но делать что-то нужно-->
+<!--@before-enter="stopBodyOverflow"-->
+<!--@after-enter="allowBodyOverflow"-->
+<!--@before-leave="stopBodyOverflow"-->
+<!--@after-leave="allowBodyOverflow"-->
+<!--<transition-group-->
+<!--    name="toast-notification"-->
+<!--    tag="div"-->
+<!--    class="toast-notifications"-->
+<!--&gt;-->
+<!--&lt;!&ndash;:title="item.title"&ndash;&gt;-->
+<!--<AToast-->
+<!--    v-for="(item) in toasts"-->
+<!--    :key="item.id"-->
+<!--    :id="item.id"-->
+<!--    :type="item.type"-->
+<!--    :message="item.message"-->
+<!--    :auto-close="item.autoClose"-->
+<!--    :duration="item.duration"-->
+<!--    @close="closeToast(item.id)"-->
+<!--&gt;</AToast>-->
+<!--</transition-group>-->
+<!--<div popover>-->
+<!--<p>this is popover</p>-->
+<!--</div>-->
