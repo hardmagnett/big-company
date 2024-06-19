@@ -1,6 +1,13 @@
 <script setup lang="ts">
+import {onMounted } from 'vue';
 
-import {RouterView} from "vue-router";
+import {globalProperties} from '@/main';
+
+
+onMounted(()=>{
+  globalProperties.$toast({message: 'Длинное предлинное предлинное предлинное сообщение'})
+})
+
 </script>
 <template>
   <div class="view-toasts">
