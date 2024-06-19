@@ -5,7 +5,6 @@ import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
 const closeToast = (toastId: string)=>{
   // Не забыть раскомментить
   removeToast(toastId);
-  let a = 1
 }
 
 </script>
@@ -20,14 +19,40 @@ const closeToast = (toastId: string)=>{
   <!--@after-enter="allowBodyOverflow"-->
   <!--@before-leave="stopBodyOverflow"-->
   <!--@after-leave="allowBodyOverflow"-->
-  <transition-group
-      name="toast-notification"
-      tag="div"
-      class="toast-notifications"
+  <!--<transition-group-->
+  <!--    name="toast-notification"-->
+  <!--    tag="div"-->
+  <!--    class="toast-notifications"-->
+  <!--&gt;-->
+  <!--  &lt;!&ndash;:title="item.title"&ndash;&gt;-->
+  <!--  <AToast-->
+  <!--      v-for="(item) in toasts"-->
+  <!--      :key="item.id"-->
+  <!--      :id="item.id"-->
+  <!--      :type="item.type"-->
+  <!--      :message="item.message"-->
+  <!--      :auto-close="item.autoClose"-->
+  <!--      :duration="item.duration"-->
+  <!--      @close="closeToast(item.id)"-->
+  <!--  ></AToast>-->
+  <!--</transition-group>-->
+  <!--<div popover>-->
+  <!--  <p>this is popover</p>-->
+  <!--</div>-->
+
+  <!--popover-->
+  <!--data-container="body"-->
+  <!--id="my-popover"-->
+  <div
+      class="a-toasts"
+      popover
+
   >
-    <!--:title="item.title"-->
+    <!--open-->
+    <!--aria-modal="true"-->
+
     <AToast
-        v-for="(item, idx) in toasts"
+        v-for="(item) in toasts.toReversed()"
         :key="item.id"
         :id="item.id"
         :type="item.type"
@@ -36,23 +61,33 @@ const closeToast = (toastId: string)=>{
         :duration="item.duration"
         @close="closeToast(item.id)"
     ></AToast>
-  </transition-group>
+  </div>
 </template>
 
 <style scoped>
-.a-toasts {}
+.a-toasts {
 
-/*todo:: эту хрень тоже куда-то вынести*/
-.toast-notifications {
-  z-index: 100;
-  position: absolute;
-  /*top: 0.5rem;*/
-  /*right: 0.5rem;*/
+  &::backdrop {
+    /*background-color: rgb(255 255 255 / 0.5);*/
+  }
+
+  background-color: transparent;
+  pointer-events: none;
+  width: 500px;
+  max-width: 100vw;
+  max-height: 100dvh;
+  overflow: hidden;
   display: flex;
-  flex-direction: column-reverse;
-  gap: 0.8rem;
+  /*flex-flow: column-reverse nowrap;*/
+  flex-flow: column nowrap;
+  gap: var(--gap);
+  padding: var(--gap);
+  .a-toast {
+    pointer-events: auto;
+  }
 }
 
+/*todo:: эту хрень тоже куда-то вынести*/
 .toast-notification-enter-active {
   animation: toast-fade-in 0.5s ease-in-out;
 }

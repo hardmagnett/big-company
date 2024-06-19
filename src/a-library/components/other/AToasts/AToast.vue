@@ -21,6 +21,7 @@ const props = defineProps({
   duration: { type: Number, default: 5, required: false },
 });
 
+// todo:: эмитить по новому
 const emit = defineEmits<{
   (e: "close"): void;
 }>();
@@ -54,7 +55,6 @@ const close = () => {
 </script>
 
 <template>
-<!--todo:: переделать под БЭМ-->
   <div class="a-toast"
        :class="[colorCSSClass, autoCloseCSSClass]"
        @click="close"
@@ -79,10 +79,9 @@ const close = () => {
   */
   --toast-duration: 4s;
 
-  width: 500px;
-  max-width: 100vw;
+  /*width: 500px;*/
+  /*max-width: 100vw;*/
   min-height: calc(var(--gap) * 6);
-  /*outline: 1px solid darkred;*/
   background-color: #eee;
   display: flex;
   flex-flow: row nowrap;
