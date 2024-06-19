@@ -21,7 +21,7 @@ onMounted(() => {
   });
   globalProperties.$toast({
     message: "Длинное предлинное предлинное предлинное сообщение",
-    // autoClose: false,
+    autoClose: false,
     type: 'error'
   });
 });

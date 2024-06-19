@@ -15,6 +15,8 @@ import { RouterView } from "vue-router";
 
 <style scoped>
 .app {
+  /*todo:: удалить этот анкор, если он не пригодится*/
+  anchor-name: --anchor-app;
   display: flex;
   width: 100%;
   flex-flow: row nowrap;

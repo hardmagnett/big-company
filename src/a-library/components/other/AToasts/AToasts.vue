@@ -7,17 +7,17 @@ const closeToast = (toastId: string)=>{
   removeToast(toastId);
 }
 const rootNode = ref<HTMLElement | null>(null)
+// todo:: удалить shit и всё что с этим связано
+const shitNode = ref<HTMLElement | null>(null)
 
 onMounted(()=>{
   rootNode.value?.showPopover()
+  shitNode.value?.showPopover()
 })
 
 </script>
 
 <template>
-  <!--<div class="a-toasts">-->
-  <!--</div>-->
-
 
   <!--todo:: разобраться с этой поебенью, вынести в отдельный компонент, хз что с ней делать, но делать что-то нужно-->
   <!--@before-enter="stopBodyOverflow"-->
@@ -45,11 +45,7 @@ onMounted(()=>{
   <!--  <p>this is popover</p>-->
   <!--</div>-->
 
-  <!--popover-->
-  <!--data-container="body"-->
-  <!--id="my-popover"-->
-
-
+  <div ref="shitNode" class="boat" popover>this is boat</div>
   <div
       ref="rootNode"
       class="a-toasts"
@@ -67,15 +63,36 @@ onMounted(()=>{
         @close="closeToast(item.id)"
     ></AToast>
   </div>
+
 </template>
 
 <style scoped>
+.boat {
+  position: absolute;
+  position-anchor: --anchor-body;
+  top: anchor(top);
+  right: anchor(right);
+
+  /*top: anchor(--anchor-body top);*/
+  /*right: anchor(--anchor-body right);*/
+
+  background: #333;
+  width: 250px;
+  height: 100px;
+
+  /*display: block;*/
+  /*margin: 0;*/
+  /*padding: 0;*/
+  /*border: 0;*/
+}
 .a-toasts {
 
-  &::backdrop {
-    /*background-color: rgb(255 255 255 / 0.5);*/
-    /*background-color: red;*/
-  }
+  position: absolute;
+  /*  anchor reference  */
+  /*position-anchor: --anchor-body;*/
+  /*top: anchor(top);*/
+  /*right: anchor(right);*/
+
 
   background-color: transparent;
   pointer-events: none;

@@ -1,3 +1,4 @@
 body {
   background-color: var(--clr-bg-blue-big);
+  anchor-name: --anchor-body;
 }
