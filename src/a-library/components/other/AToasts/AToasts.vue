@@ -12,13 +12,30 @@ const shitNode = ref<HTMLElement | null>(null)
 
 onMounted(()=>{
   rootNode.value?.showPopover()
-  shitNode.value?.showPopover()
+  // shitNode.value?.showPopover()
 })
 
 </script>
 
 <template>
+  <div ref="shitNode" class="boat" popoverZ>this is boat</div>
+  <div
+      ref="rootNode"
+      class="a-toasts"
+      popover
 
+  >
+    <AToast
+        v-for="(item) in toasts.toReversed()"
+        :key="item.id"
+        :id="item.id"
+        :type="item.type"
+        :message="item.message"
+        :auto-close="item.autoClose"
+        :duration="item.duration"
+        @close="closeToast(item.id)"
+    ></AToast>
+  </div>
   <!--todo:: разобраться с этой поебенью, вынести в отдельный компонент, хз что с ней делать, но делать что-то нужно-->
   <!--@before-enter="stopBodyOverflow"-->
   <!--@after-enter="allowBodyOverflow"-->
@@ -44,32 +61,13 @@ onMounted(()=>{
   <!--<div popover>-->
   <!--  <p>this is popover</p>-->
   <!--</div>-->
-
-  <div ref="shitNode" class="boat" popover>this is boat</div>
-  <div
-      ref="rootNode"
-      class="a-toasts"
-      popover
-
-  >
-    <AToast
-        v-for="(item) in toasts.toReversed()"
-        :key="item.id"
-        :id="item.id"
-        :type="item.type"
-        :message="item.message"
-        :auto-close="item.autoClose"
-        :duration="item.duration"
-        @close="closeToast(item.id)"
-    ></AToast>
-  </div>
-
 </template>
 
 <style scoped>
 .boat {
   position: absolute;
   position-anchor: --anchor-body;
+  /*position-anchor: --anchor-app;*/
   top: anchor(top);
   right: anchor(right);
 
@@ -81,21 +79,19 @@ onMounted(()=>{
   height: 100px;
 
   /*display: block;*/
-  /*margin: 0;*/
-  /*padding: 0;*/
-  /*border: 0;*/
 }
 .a-toasts {
 
   position: absolute;
   /*  anchor reference  */
-  /*position-anchor: --anchor-body;*/
-  /*top: anchor(top);*/
-  /*right: anchor(right);*/
-
+  position-anchor: --anchor-body;
+  top: anchor(top);
+  right: anchor(right);
+  inset: auto;
 
   background-color: transparent;
-  pointer-events: none;
+
+  /*pointer-events: none;*/
   width: 500px;
   max-width: 100vw;
   max-height: 100dvh;
