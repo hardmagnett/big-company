@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import {onMounted } from "vue";
+import { onMounted } from "vue";
 
 import { globalProperties } from "@/main";
 
 onMounted(() => {
-
   globalProperties.$toast({
     message: "Длинное <br> строка 2 \n строка 3 /n строка 4",
     autoClose: false,
-    type: 'success'
+    type: "success",
   });
 });
 </script>
@@ -18,12 +17,9 @@ onMounted(() => {
       <APageHeader> Тосты </APageHeader>
     </Teleport>
 
-
-
     <h2>Цветные тосты</h2>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
-
       <ABtn
         @click="
           $toast({
@@ -33,24 +29,28 @@ onMounted(() => {
         >Main</ABtn
       >
       <ABtn
-        @click="$toast({ message: 'Сообщение об успешном действии', type: 'success' })"
+        @click="
+          $toast({ message: 'Сообщение об успешном действии', type: 'success' })
+        "
         class="a-btn--success"
         >Success</ABtn
       >
-      <ABtn class="a-btn--danger"
-            @click="$toast({ message: 'Сообщение об опасности', type: 'danger' })"
-      >Danger</ABtn>
-      <ABtn class="a-btn--error"
-            @click="$toast({ message: 'Сообщение об ошибке', type: 'error' })"
-
-      >Error</ABtn>
+      <ABtn
+        class="a-btn--danger"
+        @click="$toast({ message: 'Сообщение об опасности', type: 'danger' })"
+        >Danger</ABtn
+      >
+      <ABtn
+        class="a-btn--error"
+        @click="$toast({ message: 'Сообщение об ошибке', type: 'error' })"
+        >Error</ABtn
+      >
     </div>
     <h2>Нестандартное содержание</h2>
     <ABtn
       @click="
         $toast({
-          message:
-            `
+          message: `
               При указании <code class='mod--code'>printAsHTML: true</code> <br>
               в тосте можно выводить HTML. <br>
               Например, в этом тосте используются:
@@ -60,11 +60,11 @@ onMounted(() => {
                 <li>span с указанием класса</li>
               </ul>
             `,
-            printAsHTML: true,
+          printAsHTML: true,
         })
       "
-
-    >Вывод HTML</ABtn>
+      >Вывод HTML</ABtn
+    >
 
     <br />
 
@@ -83,17 +83,17 @@ onMounted(() => {
     <h2>Постоянное сообщение</h2>
 
     <ABtn
-        @click="
+      @click="
         $toast({
           message:
             'Это сообщение будет находиться здесь до тех пор пока по нему не кликнут.',
-          autoClose: false
+          autoClose: false,
         })
       "
     >
       Показать
     </ABtn>
-    <br>
+    <br />
     <h2>Подключение</h2>
     <p>
       Для того чтобы тосты работали, <br />

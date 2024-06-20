@@ -10,13 +10,13 @@
  */
 
 import { useResponsiveStore } from "@/a-library/stores/responsive";
-import type {CreateToastFunctionDeclaration} from '@/a-library/vue-plugins/toast';
+import type { CreateToastFunctionDeclaration } from "@/a-library/vue-plugins/toast";
 
 const valueWithTypeOfUseResponsiveStore = useResponsiveStore();
 declare module "vue" {
   interface ComponentCustomProperties {
     $responsiveVariables: typeof valueWithTypeOfUseResponsiveStore;
-    $toast: CreateToastFunctionDeclaration
+    $toast: CreateToastFunctionDeclaration;
   }
 }
 

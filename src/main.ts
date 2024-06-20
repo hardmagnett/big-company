@@ -25,7 +25,5 @@ app.provide(menuItemsInjectionKey, menuItems);
 
 app.mount("#app");
 
-const globalProperties = app.config.globalProperties
-export { globalProperties }
-
-
+const globalProperties = app.config.globalProperties;
+export { globalProperties };

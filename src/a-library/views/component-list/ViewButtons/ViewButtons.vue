@@ -48,11 +48,9 @@
       <ABtn icon class="a-btn--success"><AIcon icon="mdi-check-bold" /></ABtn>
       <ABtn icon class="a-btn--danger"><AIcon icon="mdi-close-octagon" /></ABtn>
       <ABtn icon class="a-btn--error"><AIcon icon="mdi-delete" /></ABtn>
-      <div style="background-color:#333; padding: 0 16px;">
+      <div style="background-color: #333; padding: 0 16px">
         <ABtn icon class="a-btn--white"><AIcon icon="mdi-delete" /></ABtn>
       </div>
-
-
     </div>
   </div>
 </template>
@@ -68,5 +66,4 @@
   gap: var(--gap);
 }
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

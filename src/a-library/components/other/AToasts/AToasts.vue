@@ -1,62 +1,52 @@
- <script setup lang="ts">
-import { ref } from 'vue'
-import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
+<script setup lang="ts">
+import { ref } from "vue";
+import { removeToast, toasts } from "@/a-library/vue-plugins/toast";
 
-const closeToast = (toastId: string)=>{
+const closeToast = (toastId: string) => {
   removeToast(toastId);
-}
-const rootNode = ref<HTMLElement | null>(null)
-const hidePopoverIfThereIsNoToasts=()=>{
+};
+const rootNode = ref<HTMLElement | null>(null);
+const hidePopoverIfThereIsNoToasts = () => {
   if (!toasts.value.length) {
-    rootNode.value?.hidePopover()
+    rootNode.value?.hidePopover();
   }
-}
-const showPopoverIfNotShown = ()=>{
+};
+const showPopoverIfNotShown = () => {
   // Не нашел способа как проверить включен-ли он или нет.
   // Поэтому включаем всегда при появлении нового элемента.
-  rootNode.value?.showPopover()
-}
-
+  rootNode.value?.showPopover();
+};
 </script>
 
 <template>
-  <div
-      ref="rootNode"
-      class="a-toasts"
-      popover="manual"
-  >
+  <div ref="rootNode" class="a-toasts" popover="manual">
     <TransitionGroup
-        name="a-toasts__transition-item"
-        tag="div"
-        class="a-toasts__transition-group"
-
-
-        @after-leave="hidePopoverIfThereIsNoToasts"
-        @before-enter="showPopoverIfNotShown"
+      name="a-toasts__transition-item"
+      tag="div"
+      class="a-toasts__transition-group"
+      @after-leave="hidePopoverIfThereIsNoToasts"
+      @before-enter="showPopoverIfNotShown"
     >
       <div
-          v-for="(item) in toasts.toReversed()"
-          :key="item.id"
-          class="a-toasts__transition-item"
+        v-for="item in toasts.toReversed()"
+        :key="item.id"
+        class="a-toasts__transition-item"
       >
         <AToast
-
-            :id="item.id"
-            :type="item.type"
-            :message="item.message"
-            :auto-close="item.autoClose"
-            :duration="item.duration"
-            :printAsHTML="item.printAsHTML"
-            @close="closeToast(item.id)"
+          :id="item.id"
+          :type="item.type"
+          :message="item.message"
+          :auto-close="item.autoClose"
+          :duration="item.duration"
+          :printAsHTML="item.printAsHTML"
+          @close="closeToast(item.id)"
         ></AToast>
       </div>
     </TransitionGroup>
   </div>
-
 </template>
 
 <style scoped>
-
 .a-toasts {
   position: absolute;
   background-color: transparent;
@@ -65,7 +55,6 @@ const showPopoverIfNotShown = ()=>{
   right: anchor(right);
   top: anchor(top);
   left: auto;
-
 
   pointer-events: none;
   width: 500px;
@@ -100,7 +89,6 @@ const showPopoverIfNotShown = ()=>{
         pointer-events: auto;
       }
     }
-
   }
 }
 
@@ -120,4 +108,3 @@ const showPopoverIfNotShown = ()=>{
   width: calc(100% - (var(--gap) * 2));
 }
 </style>
-
