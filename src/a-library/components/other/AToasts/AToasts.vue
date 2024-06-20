@@ -1,4 +1,4 @@
-<script setup lang="ts">
+ <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
 
@@ -8,6 +8,12 @@ const closeToast = (toastId: string)=>{
 }
 const rootNode = ref<HTMLElement | null>(null)
 const hidePopoverIfThereIsNoToasts=(el: Element)=>{
+  // console.log(toasts); console.log('^...toasts:')
+  let length = toasts.value.length
+  console.log(length); console.log('^...length:')
+  if (!toasts.value.length) {
+    rootNode.value?.hidePopover()
+  }
   console.log(el)
 }
 
@@ -24,7 +30,7 @@ onMounted(()=>{
   <div
       ref="rootNode"
       class="a-toasts"
-      popover
+      popover="manual"
 
   >
 
@@ -91,7 +97,11 @@ onMounted(()=>{
   /*чтобы при убирании тоста, пока он абсолютный,чтобы он не обрезался снизу*/
   height: 100dvh;
   overflow: hidden;
-  display: block;
+
+
+  /*display: block;*/
+
+
   /*display: flex;*/
   /*flex-flow: column-reverse nowrap;*/
   /*flex-flow: column nowrap;*/
