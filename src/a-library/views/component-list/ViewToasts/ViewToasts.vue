@@ -74,14 +74,14 @@ onMounted(() => {
             `
               При указании <code class='mod--code'>printAsHTML: true</code> <br>
               в тосте можно выводить HTML. <br>
-              Например в этом тосте используются:
+              Например, в этом тосте используются:
               <ul>
-                <li>Переносы строк</li>
-                <li>Списки</li>
+                <li>переносы строк</li>
+                <li>списки</li>
+                <li>span с указанием класса</li>
               </ul>
             `,
             printAsHTML: true,
-            duration: 1000
         })
       "
 

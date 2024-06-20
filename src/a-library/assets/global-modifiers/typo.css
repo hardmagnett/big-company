@@ -14,7 +14,8 @@
 }
 
 .mod--code {
-  background-color: var(--clr-bg-blue-small);
+  /*Этот цвет смотрится нормально и на светло-сером и на ярко-цветном */
+  background-color: rgba(0,0,0, 0.1);
   border-radius: calc(var(--gap) / 4);
   padding: calc(var(--gap) / 4) calc(var(--gap) / 2);
 

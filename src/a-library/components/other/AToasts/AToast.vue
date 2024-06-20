@@ -102,7 +102,7 @@ const close = () => {
 
   .a-toast__message {
     flex: 1 1 auto;
-    outline: 1px solid darkred;
+    /*outline: 1px solid darkred;*/
 
 
      * :last-child {
