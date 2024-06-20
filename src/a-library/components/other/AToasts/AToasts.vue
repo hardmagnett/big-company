@@ -62,6 +62,9 @@ onMounted(()=>{
 }
 .list-leave-active {
   position: absolute;
+
+  /*Чтобы не меняло ширину, становясь абсолютным.*/
+  width: calc(100% - (var(--gap) * 2));
 }
 
 .a-toasts {
@@ -74,7 +77,7 @@ onMounted(()=>{
   left: auto;
 
 
-  /*pointer-events: none;*/
+  pointer-events: none;
   width: 500px;
   max-width: 100vw;
   /*max-height: 100dvh;*/
@@ -85,7 +88,8 @@ onMounted(()=>{
   /*flex-flow: column-reverse nowrap;*/
   /*flex-flow: column nowrap;*/
   /*gap: var(--gap);*/
-  padding: var(--gap);
+
+  padding: 0;
   outline: none;
   outline: 3px solid darkred;
   border: none;
@@ -98,6 +102,8 @@ onMounted(()=>{
   /*внутри абсолютно спозиционированнго контейнера (popover)*/
   /*Улетают нафиг непонятно куда*/
   .a-toasts__transition-group {
+    padding: var(--gap);
+
     /*Без этой обертки */
     /*при использовании компонента в слоте */
     /*при удалении чипса*/
@@ -111,7 +117,7 @@ onMounted(()=>{
 
       .a-toast {
         /*transition: 1.5s;*/
-        flex: 0 0 auto;
+        /*flex: 0 0 auto;*/
         pointer-events: auto;
       }
     }

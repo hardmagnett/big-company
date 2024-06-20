@@ -93,6 +93,10 @@ const close = () => {
   position: relative;
   overflow: hidden;
 
+
+  .a-toast__message {
+    flex: 1 1 auto;
+  }
   .a-btn {
     flex: 0 0 auto;
   }

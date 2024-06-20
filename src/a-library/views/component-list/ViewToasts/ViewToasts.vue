@@ -6,14 +6,23 @@ let show = ref(false)
 
 onMounted(() => {
   globalProperties.$toast({
-    message: "Длинное предлинное предлинное предлинное сообщение",
+    message: "Длинное",
     autoClose: false,
   });
   globalProperties.$toast({
-    message: "Длинное предлинное предлинное предлинное сообщение",
+    message: "Длинное",
     autoClose: false,
     type: 'success'
   });
+  // globalProperties.$toast({
+  //   message: "Длинное предлинное предлинное предлинное сообщение",
+  //   autoClose: false,
+  // });
+  // globalProperties.$toast({
+  //   message: "Длинное предлинное предлинное предлинное сообщение",
+  //   autoClose: false,
+  //   type: 'success'
+  // });
   globalProperties.$toast({
     message: "Длинное предлинное предлинное предлинное сообщение",
     autoClose: false,
