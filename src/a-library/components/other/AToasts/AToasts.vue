@@ -6,7 +6,7 @@ const closeToast = (toastId: string)=>{
   removeToast(toastId);
 }
 const rootNode = ref<HTMLElement | null>(null)
-const hidePopoverIfThereIsNoToasts=(el: Element)=>{
+const hidePopoverIfThereIsNoToasts=()=>{
   if (!toasts.value.length) {
     rootNode.value?.hidePopover()
   }
