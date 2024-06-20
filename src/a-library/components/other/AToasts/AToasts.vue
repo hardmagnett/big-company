@@ -25,8 +25,6 @@ const showPopoverIfNotShown = ()=>{
       class="a-toasts"
       popover="manual"
   >
-    <!--todo:: потот этот transition обьязательно в гисты!-->
-    <!--enter-active-class="foo&#45;&#45;bar"-->
     <TransitionGroup
         name="a-toasts__transition-item"
         tag="div"
@@ -72,7 +70,6 @@ const showPopoverIfNotShown = ()=>{
   pointer-events: none;
   width: 500px;
   max-width: 100vw;
-  /*max-height: 100dvh;*/
   /*Высота на весь экран, */
   /*чтобы при убирании тоста, пока он абсолютный,чтобы он не обрезался снизу*/
   height: 100dvh;
