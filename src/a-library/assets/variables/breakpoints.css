@@ -23,7 +23,16 @@
     --bp-xxl-or-more: true;
   }
 
+  @media (max-width: 575px) {
+    --bp-xs-or-less: true;
+  }
   @media (max-width: 767px) {
     --bp-sm-or-less: true;
+  }
+  @media (max-width: 1023px) {
+    --bp-md-or-less: true;
+  }
+  @media (max-width: 1279px) {
+    --bp-lg-or-less: true;
   }
 }

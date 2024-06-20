@@ -21,9 +21,20 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 // Blocks
 import ACard from "@/a-library/components/blocks/ACard/ACard.vue";
 
+// Other
+import ATable from "@/a-library/components/other/ATable/ATable.vue";
+import ADialog from "@/a-library/components/other/ADialog/ADialog.vue";
+import AToasts from "@/a-library/components/other/AToasts/AToasts.vue";
+import AToast from "@/a-library/components/other/AToasts/AToast.vue";
+
 // Helpers
 // =======
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
+
+// Vue Plugins
+// ===========
+import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalStorage";
+import toast from "@/a-library/vue-plugins/toast";
 
 /**
  * Подключает компоненты из библиотеки.
@@ -60,7 +71,18 @@ export default function ({
   // Blocks
   vueApp.component("ACard", ACard);
 
+  // Other
+  vueApp.component("ATable", ATable);
+  vueApp.component("ADialog", ADialog);
+  vueApp.component("AToasts", AToasts);
+  vueApp.component("AToast", AToast);
+
   // Helpers
   // =======
   localStorageService.setStoragePrefix(appName);
+
+  // Vue-Plugins
+  // ===========
+  vueApp.use(responsiveGlobalStorage);
+  vueApp.use(toast);
 }

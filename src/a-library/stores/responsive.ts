@@ -43,10 +43,9 @@ export const useResponsiveStore = defineStore("responsive", () => {
       return isEqualOrMoreThan;
     };
   });
-  const isMdOrMore = computed(() => {
-    return () => {
-      return isEqualOrMoreThan.value("--bp-md");
-    };
-  });
-  return { isMdOrMore };
+
+  const isMdOrMore = computed(() => isEqualOrMoreThan.value("--bp-md"));
+  const isSmOrMore = computed(() => isEqualOrMoreThan.value("--bp-sm"));
+
+  return { isMdOrMore, isSmOrMore };
 });

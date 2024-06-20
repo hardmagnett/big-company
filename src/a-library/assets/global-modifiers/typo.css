@@ -5,3 +5,17 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+.mod--ellipsis-one-line-on-table-cell {
+  max-width: 80px; /*В случае с таблицами это будет не максимальная а минимальная длина. Таблицы, что тут добавить.*/
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mod--code {
+  /*Этот цвет смотрится нормально и на светло-сером и на ярко-цветном */
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: calc(var(--gap) / 4);
+  padding: calc(var(--gap) / 4) calc(var(--gap) / 2);
+}

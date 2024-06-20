@@ -1,21 +1,28 @@
 /**
  * Получает значение css-переменной.
- * На данный момент реализовано получение из :root{}.
- * Позже нужно будет реализовать передачу ноды и получения css-переменной из неё.
  * @param varName String - например '--bpSm'
+ * @param node - если не передать, то будет искать переменную в :root{}
  */
-function getValueOfCSSVariable(varName: string): string {
-  return getComputedStyle(document.documentElement).getPropertyValue(varName);
+function getValueOfCSSVariable(
+  varName: string,
+  node: HTMLElement | null = null,
+): string {
+  const nodeToGetPropertyValue = node ?? document.documentElement;
+  return getComputedStyle(nodeToGetPropertyValue).getPropertyValue(varName);
 }
 
 /**
  * Подходит, например, для получения ширины экрана браузера.
  * @param varName
+ * @param node
  */
-function getValueOfCSSVariableAsNumber(varName: string): number {
-  let resultingString = getValueOfCSSVariable(varName);
+function getValueOfCSSVariableAsNumber(
+  varName: string,
+  node: HTMLElement | null = null,
+): number {
+  let resultingString = getValueOfCSSVariable(varName, node);
 
-  const regexp = new RegExp("(px|rem)$", "ig");
+  const regexp = new RegExp("(px|rem|ms|s)$", "ig");
   resultingString = resultingString.replaceAll(regexp, "");
 
   const isResultEmptyOrConsistFromOnlySpaces =

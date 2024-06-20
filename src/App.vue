@@ -8,6 +8,7 @@ import { RouterView } from "vue-router";
       <RouterView />
     </AContainer>
   </div>
+  <AToasts />
 </template>
 
 <style scoped>

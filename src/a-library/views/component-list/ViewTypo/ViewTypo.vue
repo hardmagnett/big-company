@@ -24,6 +24,18 @@
       nobis non rem. Corporis ipsum itaque officia quibusdam recusandae, sed
       sint? Dolor nobis non provident suscipit totam.
     </p>
+    <br />
+
+    <h2>Размеры шрифтов</h2>
+    <p style="font-size: var(--font-size-base)">--font-size-base</p>
+    <p style="font-size: var(--font-size-small)">--font-size-small</p>
+    <p style="font-size: var(--font-size-tiny)">--font-size-tiny</p>
+    <br />
+
+    <h2>Начертания</h2>
+    <p>Стандартное</p>
+    <p style="font-weight: var(--font-weight-bold)">--font-weight-bold</p>
+    <br />
 
     <h2>Иконки</h2>
     <p>
@@ -35,7 +47,28 @@
       </a>
       .
     </p>
+    <br />
+    <h2>Код</h2>
+
+    <pre class="mod--code">
+&lt;div&gt;
+  &lt;strong&gt;
+    Hello &amp;nbsp;
+  &lt;/strong&gt;
+&lt;/div&gt;
+</pre
+    >
+
+    <p>
+      Код внутри параграфа. Начало.
+      <code class="mod--code"
+        >&lt;div&gt;&lt;strong&gt;Hello
+        &amp;nbsp;&lt;/strong&gt;&lt;/div&gt;</code
+      >
+      Окончание.
+    </p>
   </div>
 </template>
 
 <style></style>
+<script setup lang="ts"></script>

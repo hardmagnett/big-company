@@ -6,7 +6,7 @@ import {
   reactive,
   computed,
   useAttrs,
-  useSlots,
+  useSlots, watch,
 } from 'vue'
 
 //////// Эмит событий
@@ -25,11 +25,20 @@ const props = withDefaults(defineProps<Props>(), {
 // Доступ: Из шаблона - ХЗ. Из скрипта через `props.`.
 
 //////// Data-Props
-const greeting = ref('Hello World!')
+let greeting = ref('Hello World!')
+// Доступ: Из шаблона ХЗ. Из скрипта через `.value`
 
 //////// Computed
 const myComputed = computed(() => 'foo')
 // Доступ: Из шаблона напрямую. Из скрипта через `.value`
+
+//////// Watch
+// Так следить за объектами, например за props
+watch(
+    () => props.myProp,
+    (newVal) => {}
+)
+// За примитивами как-то по другому нужно следить.
 
 //////// Methods
 let myMethod = ()=>{

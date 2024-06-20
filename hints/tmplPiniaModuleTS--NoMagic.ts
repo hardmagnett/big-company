@@ -10,7 +10,7 @@ export const useMyShedStore = defineStore('MyShed', () => {
     count.value++
   }
 
-  // getter без параметров
+  // getter без параметров. Их использовать без () !!!!!!!
   const doubleCount = computed(() => count.value * 2)
 
   // параметрический getter

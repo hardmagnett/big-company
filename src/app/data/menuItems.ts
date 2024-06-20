@@ -29,7 +29,15 @@ const menuItems: Array<IMenuItem> = [
         title: "Типографика",
         icon: "mdi-format-size",
         route: {
-          to: "headers",
+          to: "typo",
+        },
+      },
+      {
+        id: i++,
+        title: "Цвета",
+        icon: "mdi-palette",
+        route: {
+          to: "colors",
         },
       },
       {
@@ -62,6 +70,30 @@ const menuItems: Array<IMenuItem> = [
         icon: "mdi-square",
         route: {
           to: "blocks",
+        },
+      },
+      {
+        id: i++,
+        title: "Таблицы",
+        icon: "mdi-table",
+        route: {
+          to: "tables",
+        },
+      },
+      {
+        id: i++,
+        title: "Диалоговое окно",
+        icon: "mdi-window-maximize",
+        route: {
+          to: "dialog",
+        },
+      },
+      {
+        id: i++,
+        title: "Тосты",
+        icon: "mdi-toaster",
+        route: {
+          to: "toasts",
         },
       },
     ],

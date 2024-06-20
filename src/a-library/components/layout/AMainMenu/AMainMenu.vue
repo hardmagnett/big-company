@@ -109,6 +109,9 @@ const menuItems = inject(menuItemsInjectionKey);
   .a-main-menu__width-toggler {
     flex: 0 0 auto;
 
+    /*Чтобы вращающаяся стрелка не меняла высоты блока и не появлялся скроллбар в меню при анимации закрытия-открытия.*/
+    overflow: hidden;
+
     height: calc(var(--gap) * 2);
     border-top: 1px solid var(--clr-border-blue-lighter);
     display: flex;

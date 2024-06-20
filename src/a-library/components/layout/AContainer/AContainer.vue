@@ -14,7 +14,7 @@ let isCollapsedOnBigScreen = ref(
 let isMenuVisibleOnSmall = ref(false);
 
 let isBig = computed(() => {
-  return isMdOrMore.value();
+  return isMdOrMore.value;
 });
 
 let isMainMenuCollapsed = computed(() => {
@@ -151,6 +151,9 @@ function clickOnRouterLinkHandler() {
       flex: 1 1 auto;
       padding: calc(var(--gap) / 2) var(--gap);
       overflow-x: hidden;
+
+      display: flex;
+      flex-flow: column nowrap;
     }
   }
   .a-container__menu-overlay {
@@ -160,8 +163,7 @@ function clickOnRouterLinkHandler() {
     right: 0;
     left: 0;
     z-index: 8;
-    background-color: black;
-    opacity: 0.7;
+    background-color: var(--clr-overlay);
     will-change: opacity;
     transition: opacity var(--time-short);
     &.a-container__menu-overlay--invisible {

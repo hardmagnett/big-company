@@ -4,17 +4,26 @@
       <APageHeader> Кнопки </APageHeader>
     </Teleport>
 
-    <h2>Кнопки-Кнопки</h2>
+    <h2>Обычные</h2>
     <div class="buttons-page__buttons">
       <ABtn>Main</ABtn>
-      <ABtn class="btn--success">Success</ABtn>
-      <ABtn class="btn--danger">Danger</ABtn>
-      <ABtn class="btn--error">Error</ABtn>
+      <ABtn class="a-btn--success">Success</ABtn>
+      <ABtn class="a-btn--danger">Danger</ABtn>
+      <ABtn class="a-btn--error">Error</ABtn>
     </div>
     <div class="buttons-page__buttons">
-      <ABtn class="btn--small">Small</ABtn>
+      <ABtn class="a-btn--small">Small</ABtn>
     </div>
-    <h2>Кнопки-Ссылки</h2>
+
+    <h2>Тональные</h2>
+    <div class="buttons-page__buttons">
+      <ABtn class="a-btn--tonal">Main</ABtn>
+      <ABtn class="a-btn--success a-btn--tonal">Success</ABtn>
+      <ABtn class="a-btn--danger a-btn--tonal">Danger</ABtn>
+      <ABtn class="a-btn--error a-btn--tonal">Error</ABtn>
+    </div>
+
+    <h2>Ссылки</h2>
     <div class="buttons-page__buttons">
       <ABtn
         href="https://stackoverflow.com/users/1638298/flamytwista"
@@ -22,23 +31,26 @@
         >stackoverflow.com</ABtn
       >
     </div>
-    <h2>Кнопки-RouterLink</h2>
+    <h2>RouterLink</h2>
     <div class="buttons-page__buttons">
       <ABtn :to="{ path: '/' }">На главную</ABtn>
     </div>
 
-    <h2>Кнопки c иконками</h2>
+    <h2>С иконками</h2>
     <h3>Обычные</h3>
     <div class="buttons-page__buttons">
       <ABtn>Редактировать <AIcon icon="mdi-pencil" /></ABtn>
-      <ABtn class="btn--error">Удалить <AIcon icon="mdi-delete" /></ABtn>
+      <ABtn class="a-btn--error">Удалить <AIcon icon="mdi-delete" /></ABtn>
     </div>
     <h3>Специально для иконок</h3>
     <div class="buttons-page__buttons">
       <ABtn icon><AIcon icon="mdi-pencil" /></ABtn>
-      <ABtn icon class="btn--success"><AIcon icon="mdi-check-bold" /></ABtn>
-      <ABtn icon class="btn--danger"><AIcon icon="mdi-close-octagon" /></ABtn>
-      <ABtn icon class="btn--error"><AIcon icon="mdi-delete" /></ABtn>
+      <ABtn icon class="a-btn--success"><AIcon icon="mdi-check-bold" /></ABtn>
+      <ABtn icon class="a-btn--danger"><AIcon icon="mdi-close-octagon" /></ABtn>
+      <ABtn icon class="a-btn--error"><AIcon icon="mdi-delete" /></ABtn>
+      <div style="background-color: #333; padding: 0 16px">
+        <ABtn icon class="a-btn--white"><AIcon icon="mdi-delete" /></ABtn>
+      </div>
     </div>
   </div>
 </template>
@@ -54,3 +66,4 @@
   gap: var(--gap);
 }
 </style>
+<script setup lang="ts"></script>
