@@ -68,7 +68,7 @@ const close = () => {
   >
     <div v-if="!printAsHTML" class="a-toast__message">{{ message }}</div>
     <div v-if="printAsHTML" class="a-toast__message" v-html="message"/>
-    <ABtn icon class="a-btn--white"><AIcon icon="mdi-pencil" /></ABtn>
+    <ABtn icon class="a-btn--white"><AIcon icon="mdi-close-thick" /></ABtn>
   </div>
 </template>
 
