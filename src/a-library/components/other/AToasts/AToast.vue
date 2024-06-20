@@ -4,28 +4,20 @@ import { computed, onMounted, ref } from "vue";
 // todo:: наверное переделать из plugins в provide-inject.
 // Всё равно эту хрень приходится импортировать.
 
-// Свойства компонента те-же что и для Toast interface
-// todo:: почему типы с большой буквы? В TS ведь должны быть с маленькой. Переделать нормальным способом
-const props = defineProps({
-  id: { type: String, required: true },
-  type: {
-    type: String,
-    default: "info",
-    required: false,
-  },
-  message: {
-    type: String,
-    default: "Текст сообщения по умолчанию",
-    required: false,
-  },
-  printAsHTML: {
-    type: Boolean,
-    default: false,
-    required: false
-  },
-  autoClose: { type: Boolean, default: true, required: false },
-  duration: { type: Number, default: 5, required: false },
-});
+export interface Props {
+  type?: string,
+  message?: string,
+  printAsHTML?: boolean,
+  autoClose?: boolean,
+  duration?: number,
+}
+const props = withDefaults(defineProps<Props>(), {
+  type: 'info',
+  message: 'Текст сообщения по умолчанию',
+  printAsHTML: false,
+  autoClose: true,
+  duration: 5,
+})
 
 const emit = defineEmits(['close'])
 
