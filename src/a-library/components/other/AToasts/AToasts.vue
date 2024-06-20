@@ -26,8 +26,13 @@ const showPopoverIfNotShown = ()=>{
       popover="manual"
   >
     <!--todo:: потот этот transition обьязательно в гисты!-->
+    <!--enter-active-class="foo&#45;&#45;bar"-->
     <TransitionGroup
-        name="list" tag="div" class="a-toasts__transition-group"
+        name="a-toasts__transition-item"
+        tag="div"
+        class="a-toasts__transition-group"
+
+
         @after-leave="hidePopoverIfThereIsNoToasts"
         @before-enter="showPopoverIfNotShown"
     >
@@ -53,24 +58,6 @@ const showPopoverIfNotShown = ()=>{
 </template>
 
 <style scoped>
-/*todo:: дать нормальные имена классам для transition*/
-.list-move,
-.list-enter-active,
-.list-leave-active {
-  transition: all var(--time-short) ease;
-  /*transition: all 2s ease;*/
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-.list-leave-active {
-  position: absolute;
-
-  /*Чтобы не меняло ширину, становясь абсолютным.*/
-  width: calc(100% - (var(--gap) * 2));
-}
 
 .a-toasts {
   position: absolute;
@@ -116,7 +103,24 @@ const showPopoverIfNotShown = ()=>{
         pointer-events: auto;
       }
     }
+
   }
+}
+
+.a-toasts__transition-item-move,
+.a-toasts__transition-item-enter-active,
+.a-toasts__transition-item-leave-active {
+  transition: all var(--time-short) ease;
+}
+.a-toasts__transition-item-enter-from,
+.a-toasts__transition-item-leave-to {
+  opacity: 0;
+  transform: translateX(90px);
+}
+.a-toasts__transition-item-leave-active {
+  position: absolute;
+  /*Чтобы не меняло ширину, становясь абсолютным.*/
+  width: calc(100% - (var(--gap) * 2));
 }
 </style>
 
