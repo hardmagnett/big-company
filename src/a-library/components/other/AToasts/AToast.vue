@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 
-// todo:: наверное переделать из plugins в provide-inject.
-// Всё равно эту хрень приходится импортировать.
-
 export interface Props {
   type?: string,
   message?: string,
