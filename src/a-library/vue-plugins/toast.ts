@@ -8,6 +8,7 @@ interface Toast {
   message: string;
   autoClose: boolean;
   duration: number;
+  printAsHTML: boolean;
 }
 
 const defaultToastOptions = {
@@ -15,6 +16,7 @@ const defaultToastOptions = {
   message: "Текст сообщения не указан",
   autoClose: true,
   duration: 5,
+  printAsHTML: false
 };
 
 
@@ -27,6 +29,7 @@ type CreateToastFunctionDeclaration =
       message?: string;
       autoClose?: boolean;
       duration?: number;
+      printAsHTML?: boolean;
     }
   )=> void
 

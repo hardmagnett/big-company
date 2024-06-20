@@ -2,18 +2,17 @@
 import {onMounted, ref} from "vue";
 
 import { globalProperties } from "@/main";
-let show = ref(false)
 
 onMounted(() => {
   // globalProperties.$toast({
   //   message: "Длинное",
   //   autoClose: false,
   // });
-  // globalProperties.$toast({
-  //   message: "Длинное",
-  //   autoClose: false,
-  //   type: 'success'
-  // });
+  globalProperties.$toast({
+    message: "Длинное <br> строка 2 \n строка 3 /n строка 4",
+    autoClose: false,
+    type: 'success'
+  });
   //
   // globalProperties.$toast({
   //   message: "Длинное предлинное предлинное предлинное сообщение",
@@ -38,13 +37,6 @@ onMounted(() => {
     <Teleport to="#page-header-place">
       <APageHeader> Тосты </APageHeader>
     </Teleport>
-
-    <button @click="show = !show">Toggle</button>
-    <Transition>
-      <p v-if="show">hello</p>
-    </Transition>
-
-
 
 
 
@@ -74,8 +66,26 @@ onMounted(() => {
       <ABtn class="btn--danger">Danger</ABtn>
       <ABtn class="btn--error">Error</ABtn>
     </div>
-    <h2>Перенос строки в тосте</h2>
-    <ABtn>Показать тост</ABtn>
+    <h2>Нестандартное содержание</h2>
+    <ABtn
+      @click="
+        $toast({
+          message:
+            `
+              При указании <code class='mod--code'>printAsHTML: true</code> <br>
+              в тосте можно выводить HTML. <br>
+              Например в этом тосте используются:
+              <ul>
+                <li>Переносы строк</li>
+                <li>Списки</li>
+              </ul>
+            `,
+            printAsHTML: true,
+            duration: 1000
+        })
+      "
+
+    >Вывод HTML</ABtn>
 
     <br />
 

@@ -51,6 +51,7 @@ const showPopoverIfNotShown = ()=>{
             :message="item.message"
             :auto-close="item.autoClose"
             :duration="item.duration"
+            :printAsHTML="item.printAsHTML"
             @close="closeToast(item.id)"
         ></AToast>
       </div>

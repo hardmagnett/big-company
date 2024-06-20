@@ -5,6 +5,7 @@ import { computed, onMounted, ref } from "vue";
 // Всё равно эту хрень приходится импортировать.
 
 // Свойства компонента те-же что и для Toast interface
+// todo:: почему типы с большой буквы? В TS ведь должны быть с маленькой. Переделать нормальным способом
 const props = defineProps({
   id: { type: String, required: true },
   type: {
@@ -16,6 +17,11 @@ const props = defineProps({
     type: String,
     default: "Текст сообщения по умолчанию",
     required: false,
+  },
+  printAsHTML: {
+    type: Boolean,
+    default: false,
+    required: false
   },
   autoClose: { type: Boolean, default: true, required: false },
   duration: { type: Number, default: 5, required: false },
@@ -60,7 +66,8 @@ const close = () => {
        @click="close"
        :style="`--toast-duration: ${duration}s;`"
   >
-    <div class="a-toast__message">{{ message }}</div>
+    <div v-if="!printAsHTML" class="a-toast__message">{{ message }}</div>
+    <div v-if="printAsHTML" class="a-toast__message" v-html="message"/>
     <ABtn icon class="a-btn--white"><AIcon icon="mdi-pencil" /></ABtn>
   </div>
 </template>
@@ -74,7 +81,7 @@ const close = () => {
 .a-toast {
 
   /*
-    Перезаписывается JS из шаблона для каждого конкретного экземпляра.
+    Перезаписывается JS-ом из шаблона для каждого конкретного экземпляра.
     Через style.
   */
   --toast-duration: 4s;
@@ -93,9 +100,20 @@ const close = () => {
   position: relative;
   overflow: hidden;
 
-
   .a-toast__message {
     flex: 1 1 auto;
+    outline: 1px solid darkred;
+
+
+     * :last-child {
+       outline: 1px solid orange;
+     }
+    /*todo:: проверить не развалиться-ли это после линтинга. После этого удалить коммент с outline*/
+    &::v-deep(> :last-child) {
+      /*outline: 1px solid darkred;*/
+      margin-bottom: 0;
+    }
+
   }
   .a-btn {
     flex: 0 0 auto;
@@ -142,22 +160,4 @@ const close = () => {
     }
   }
 }
-/*.toast-notification {*/
-/*  !*todo:: удалить эту древнюю хрень, когда всё сделаешь*!*/
-/*  @keyframes toast-fade-in {*/
-/*    to {*/
-/*      opacity: 1;*/
-/*    }*/
-/*  }*/
-
-/*  @keyframes toast-fade-out {*/
-/*    from {*/
-/*      opacity: 1;*/
-/*    }*/
-
-/*    to {*/
-/*      opacity: 0;*/
-/*    }*/
-/*  }*/
-/*}*/
 </style>
