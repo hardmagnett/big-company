@@ -16,12 +16,11 @@ const hidePopoverIfThereIsNoToasts=(el: Element)=>{
   }
   console.log(el)
 }
-
-onMounted(()=>{
-  // Чтобы popover реально заработал, нужно его включить js-ом.
-  // todo:: возможно переделать чтобы он показывался пока есть элементы, и скрывался когда их нет
+const showPopoverIfNotShown = ()=>{
+  // Не нашел способа как проверить включен-ли он или нет.
+  // Поэтому включаем всегда при появлении нового элемента.
   rootNode.value?.showPopover()
-})
+}
 
 </script>
 
@@ -38,6 +37,7 @@ onMounted(()=>{
     <TransitionGroup
         name="list" tag="div" class="a-toasts__transition-group"
         @after-leave="hidePopoverIfThereIsNoToasts"
+        @before-enter="showPopoverIfNotShown"
     >
       <div
           v-for="(item) in toasts.toReversed()"
