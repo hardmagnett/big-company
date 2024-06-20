@@ -191,12 +191,6 @@ background-color:(var(--clr-fill-blue-small));
     var(--_light-fill-accent)
   );
 
-  /*--clr-fill-green-small: hsl(*/
-  /*  var(--_hue-green),*/
-  /*  var(--_sat-fill-small),*/
-  /*  var(--_light-fill-small)*/
-  /*);*/
-
   --clr-fill-green-small-raw: var(--_hue-green), var(--_sat-fill-small), var(--_light-fill-small);
   --clr-fill-green-small: hsl(var(--clr-fill-green-small-raw));
 

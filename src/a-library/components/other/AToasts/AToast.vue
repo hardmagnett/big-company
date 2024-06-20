@@ -65,9 +65,6 @@ const close = () => {
   */
   --toast-duration: 4s;
 
-  /*width: 500px;*/
-  /*max-width: 100vw;*/
-  /*min-height: calc(var(--gap) * 6);*/
   background-color: #eee;
   display: flex;
   flex-flow: row nowrap;
@@ -81,7 +78,6 @@ const close = () => {
 
   .a-toast__message {
     flex: 1 1 auto;
-    /*outline: 1px solid darkred;*/
     padding-top: calc(var(--gap));
     padding-bottom: calc(var(--gap));
 
@@ -110,7 +106,6 @@ const close = () => {
       left:0;
       bottom:0;
 
-      /*animation: progress-animation var(--toast-duration) ease-in-out forwards;*/
       animation: progress-animation var(--toast-duration) linear;
     }
   }

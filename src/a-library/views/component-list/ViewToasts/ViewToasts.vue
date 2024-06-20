@@ -4,32 +4,12 @@ import {onMounted, ref} from "vue";
 import { globalProperties } from "@/main";
 
 onMounted(() => {
-  // globalProperties.$toast({
-  //   message: "Длинное",
-  //   autoClose: false,
-  // });
+
   globalProperties.$toast({
     message: "Длинное <br> строка 2 \n строка 3 /n строка 4",
     autoClose: false,
     type: 'success'
   });
-  //
-  // globalProperties.$toast({
-  //   message: "Длинное предлинное предлинное предлинное сообщение",
-  //   autoClose: false,
-  //   type: 'success'
-  // });
-  // globalProperties.$toast({
-  //   message: "Длинное предлинное предлинное предлинное сообщение",
-  //   autoClose: false,
-  //   type: 'success'
-  // });
-  //
-  // globalProperties.$toast({
-  //   message: "Длинное предлинное предлинное предлинное сообщение",
-  //   autoClose: false,
-  //   type: 'error'
-  // });
 });
 </script>
 <template>
@@ -144,22 +124,5 @@ onMounted(() => {
     margin-bottom: var(--gap);
     gap: var(--gap);
   }
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 5s ease;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-
-
-.v-enter-to,
-.v-leave-from {
-  /*opacity: 0;*/
-  outline: 1px solid green;
 }
 </style>
