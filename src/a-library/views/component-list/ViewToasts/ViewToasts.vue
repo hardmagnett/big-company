@@ -1,12 +1,23 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import {onMounted, ref} from "vue";
 
 import { globalProperties } from "@/main";
+let show = ref(false)
 
 onMounted(() => {
   globalProperties.$toast({
     message: "Длинное предлинное предлинное предлинное сообщение",
     autoClose: false,
+  });
+  globalProperties.$toast({
+    message: "Длинное предлинное предлинное предлинное сообщение",
+    autoClose: false,
+    type: 'success'
+  });
+  globalProperties.$toast({
+    message: "Длинное предлинное предлинное предлинное сообщение",
+    autoClose: false,
+    type: 'success'
   });
   globalProperties.$toast({
     message: "Длинное предлинное предлинное предлинное сообщение",
@@ -19,11 +30,11 @@ onMounted(() => {
   //   autoClose: false,
   //   type: 'danger'
   // });
-  // globalProperties.$toast({
-  //   message: "Длинное предлинное предлинное предлинное сообщение",
-  //   autoClose: false,
-  //   type: 'error'
-  // });
+  globalProperties.$toast({
+    message: "Длинное предлинное предлинное предлинное сообщение",
+    autoClose: false,
+    type: 'error'
+  });
 });
 </script>
 <template>
@@ -31,6 +42,16 @@ onMounted(() => {
     <Teleport to="#page-header-place">
       <APageHeader> Тосты </APageHeader>
     </Teleport>
+
+    <button @click="show = !show">Toggle</button>
+    <Transition>
+      <p v-if="show">hello</p>
+    </Transition>
+
+
+
+
+
     <h2>Цветные тосты</h2>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
@@ -104,5 +125,22 @@ onMounted(() => {
     margin-bottom: var(--gap);
     gap: var(--gap);
   }
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+
+.v-enter-to,
+.v-leave-from {
+  /*opacity: 0;*/
+  outline: 1px solid green;
 }
 </style>

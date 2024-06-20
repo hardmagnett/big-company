@@ -7,8 +7,6 @@ const closeToast = (toastId: string)=>{
   removeToast(toastId);
 }
 const rootNode = ref<HTMLElement | null>(null)
-// todo:: удалить shit и всё что с этим связано
-const shitNode = ref<HTMLElement | null>(null)
 
 onMounted(()=>{
   // Чтобы popover реально заработал, нужно его включить js-ом.
@@ -26,28 +24,48 @@ onMounted(()=>{
       popover
 
   >
-    <AToast
-        v-for="(item) in toasts.toReversed()"
-        :key="item.id"
-        :id="item.id"
-        :type="item.type"
-        :message="item.message"
-        :auto-close="item.autoClose"
-        :duration="item.duration"
-        @close="closeToast(item.id)"
-    ></AToast>
+
+    <!--todo:: потот этот transition обьязательно в гисты!-->
+    <TransitionGroup name="list" tag="div" class="a-toasts__transition-group">
+      <div
+          v-for="(item) in toasts.toReversed()"
+          :key="item.id"
+          class="a-toasts__transition-item"
+      >
+        <AToast
+
+            :id="item.id"
+            :type="item.type"
+            :message="item.message"
+            :auto-close="item.autoClose"
+            :duration="item.duration"
+            @close="closeToast(item.id)"
+        ></AToast>
+      </div>
+    </TransitionGroup>
   </div>
 
 </template>
 
 <style scoped>
-.a-toasts {
+/*todo:: дать нормальные имена классам для transition*/
+.list-move,
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.list-leave-active {
+  position: absolute;
+}
 
+.a-toasts {
   position: absolute;
   background-color: transparent;
-
-  /*top: 0;*/
-  /*right: 0;*/
 
   position-anchor: --anchor-body;
   right: anchor(right);
@@ -55,7 +73,7 @@ onMounted(()=>{
   left: auto;
 
 
-  pointer-events: none;
+  /*pointer-events: none;*/
   width: 500px;
   max-width: 100vw;
   max-height: 100dvh;
@@ -72,55 +90,27 @@ onMounted(()=>{
   margin: 0;
   /*padding: 0;*/
 
+  /*Без этой обертки */
+  /*абсолютно спозиционированные элементы*/
+  /*внутри абсолютно спозиционированнго контейнера (popover)*/
+  /*Улетают нафиг непонятно куда*/
+  .a-toasts__transition-group {
+    /*Без этой обертки */
+    /*при использовании компонента в слоте */
+    /*при удалении чипса*/
+    /*vue нивкакую не хочет ставить стиль move остальным элементам.*/
+    /*Нужно чтобы в слоте был элемент а не компонент*/
+    .a-toasts__transition-item {
+
+    }
+  }
   .a-toast {
+    /*transition: 1.5s;*/
     flex: 0 0 auto;
     pointer-events: auto;
   }
 }
 
-/*todo:: эту хрень тоже куда-то вынести*/
-.toast-notification-enter-active {
-  animation: toast-fade-in 0.5s ease-in-out;
-}
-.toast-notification-leave-active {
-  animation: toast-fade-in 0.5s ease-in-out reverse;
-}
 
-@keyframes toast-fade-in {
-  from {
-    opacity: 0;
-    transform: scale(0.4);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 </style>
 
-<!--Вынес нахуй из шаблона, чтоб не мешало скроллить.-->
-<!--todo:: разобраться с этой поебенью, вынести в отдельный компонент, хз что с ней делать, но делать что-то нужно-->
-<!--@before-enter="stopBodyOverflow"-->
-<!--@after-enter="allowBodyOverflow"-->
-<!--@before-leave="stopBodyOverflow"-->
-<!--@after-leave="allowBodyOverflow"-->
-<!--<transition-group-->
-<!--    name="toast-notification"-->
-<!--    tag="div"-->
-<!--    class="toast-notifications"-->
-<!--&gt;-->
-<!--&lt;!&ndash;:title="item.title"&ndash;&gt;-->
-<!--<AToast-->
-<!--    v-for="(item) in toasts"-->
-<!--    :key="item.id"-->
-<!--    :id="item.id"-->
-<!--    :type="item.type"-->
-<!--    :message="item.message"-->
-<!--    :auto-close="item.autoClose"-->
-<!--    :duration="item.duration"-->
-<!--    @close="closeToast(item.id)"-->
-<!--&gt;</AToast>-->
-<!--</transition-group>-->
-<!--<div popover>-->
-<!--<p>this is popover</p>-->
-<!--</div>-->

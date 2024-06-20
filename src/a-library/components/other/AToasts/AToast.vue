@@ -138,22 +138,22 @@ const close = () => {
     }
   }
 }
-.toast-notification {
-  /*todo:: удалить эту древнюю хрень, когда всё сделаешь*/
-  @keyframes toast-fade-in {
-    to {
-      opacity: 1;
-    }
-  }
+/*.toast-notification {*/
+/*  !*todo:: удалить эту древнюю хрень, когда всё сделаешь*!*/
+/*  @keyframes toast-fade-in {*/
+/*    to {*/
+/*      opacity: 1;*/
+/*    }*/
+/*  }*/
 
-  @keyframes toast-fade-out {
-    from {
-      opacity: 1;
-    }
+/*  @keyframes toast-fade-out {*/
+/*    from {*/
+/*      opacity: 1;*/
+/*    }*/
 
-    to {
-      opacity: 0;
-    }
-  }
-}
+/*    to {*/
+/*      opacity: 0;*/
+/*    }*/
+/*  }*/
+/*}*/
 </style>
