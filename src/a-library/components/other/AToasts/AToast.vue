@@ -27,10 +27,7 @@ const props = defineProps({
   duration: { type: Number, default: 5, required: false },
 });
 
-// todo:: эмитить по новому
-const emit = defineEmits<{
-  (e: "close"): void;
-}>();
+const emit = defineEmits(['close'])
 
 onMounted(() => {
   if (props.autoClose) {
