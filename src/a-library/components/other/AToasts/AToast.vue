@@ -32,16 +32,9 @@ const emit = defineEmits<{
   (e: "close"): void;
 }>();
 
-// todo:: все-ли они нужны?
-const timer = ref(-1);
-const startedAt = ref<number>(0);
-const delay = ref<number>(0);
-
 onMounted(() => {
   if (props.autoClose) {
-    startedAt.value = Date.now();
-    delay.value = props.duration * 1000;
-    timer.value = setTimeout(close, delay.value);
+    setTimeout(close, props.duration * 1000);
   }
 });
 
