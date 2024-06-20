@@ -66,7 +66,6 @@ const showPopoverIfNotShown = () => {
 
   padding: 0;
   outline: none;
-  background-color: #aff6;
   border: none;
 
   margin: 0;

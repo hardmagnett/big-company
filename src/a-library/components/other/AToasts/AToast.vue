@@ -82,7 +82,7 @@ const close = () => {
     * :last-child {
       outline: 1px solid orange;
     }
-    /*todo:: проверить не развалиться-ли это после линтинга. После этого удалить коммент с outline*/
+
     &::v-deep(> :last-child) {
       /*outline: 1px solid darkred;*/
       margin-bottom: 0;

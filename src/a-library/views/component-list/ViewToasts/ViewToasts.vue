@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
 
-import { globalProperties } from "@/main";
-
-onMounted(() => {
-  globalProperties.$toast({
-    message: "Длинное <br> строка 2 \n строка 3 /n строка 4",
-    autoClose: false,
-    type: "success",
-  });
-});
+// Вывести тост скриптом примерно вот так.
+// import { onMounted } from "vue";
+// import { globalProperties } from "@/main";
+// onMounted(() => {
+//   globalProperties.$toast({
+//     message: "Длинное <br> строка 2 \n строка 3 /n строка 4",
+//     autoClose: false,
+//     type: "success",
+//   });
+// });
 </script>
 <template>
   <div class="view-toasts">
