@@ -1,20 +1,15 @@
  <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import {removeToast, toasts} from "@/a-library/vue-plugins/toast";
 
 const closeToast = (toastId: string)=>{
-  // Не забыть раскомментить
   removeToast(toastId);
 }
 const rootNode = ref<HTMLElement | null>(null)
 const hidePopoverIfThereIsNoToasts=(el: Element)=>{
-  // console.log(toasts); console.log('^...toasts:')
-  let length = toasts.value.length
-  console.log(length); console.log('^...length:')
   if (!toasts.value.length) {
     rootNode.value?.hidePopover()
   }
-  console.log(el)
 }
 const showPopoverIfNotShown = ()=>{
   // Не нашел способа как проверить включен-ли он или нет.
@@ -25,14 +20,11 @@ const showPopoverIfNotShown = ()=>{
 </script>
 
 <template>
-
   <div
       ref="rootNode"
       class="a-toasts"
       popover="manual"
-
   >
-
     <!--todo:: потот этот transition обьязательно в гисты!-->
     <TransitionGroup
         name="list" tag="div" class="a-toasts__transition-group"
@@ -99,23 +91,12 @@ const showPopoverIfNotShown = ()=>{
   height: 100dvh;
   overflow: hidden;
 
-
-  /*display: block;*/
-
-
-  /*display: flex;*/
-  /*flex-flow: column-reverse nowrap;*/
-  /*flex-flow: column nowrap;*/
-  /*gap: var(--gap);*/
-
   padding: 0;
   outline: none;
-  /*outline: 3px solid darkred;*/
   background-color: #aff6;
   border: none;
 
   margin: 0;
-  /*padding: 0;*/
 
   /*Без этой обертки */
   /*абсолютно спозиционированные элементы*/
@@ -129,22 +110,13 @@ const showPopoverIfNotShown = ()=>{
     /*при удалении чипса*/
     /*vue нивкакую не хочет ставить стиль move остальным элементам.*/
     /*Нужно чтобы в слоте был элемент а не компонент*/
-    /*display: flex;*/
-    /*flex-flow: column nowrap;*/
-    /*gap: var(--gap);*/
     .a-toasts__transition-item {
       margin-bottom: var(--gap);
-
       .a-toast {
-        /*transition: 1.5s;*/
-        /*flex: 0 0 auto;*/
         pointer-events: auto;
       }
     }
   }
-
 }
-
-
 </style>
 
