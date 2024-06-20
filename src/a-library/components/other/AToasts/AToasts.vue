@@ -7,6 +7,9 @@ const closeToast = (toastId: string)=>{
   removeToast(toastId);
 }
 const rootNode = ref<HTMLElement | null>(null)
+const hidePopoverIfThereIsNoToasts=(el: Element)=>{
+  console.log(el)
+}
 
 onMounted(()=>{
   // Чтобы popover реально заработал, нужно его включить js-ом.
@@ -26,7 +29,10 @@ onMounted(()=>{
   >
 
     <!--todo:: потот этот transition обьязательно в гисты!-->
-    <TransitionGroup name="list" tag="div" class="a-toasts__transition-group">
+    <TransitionGroup
+        name="list" tag="div" class="a-toasts__transition-group"
+        @after-leave="hidePopoverIfThereIsNoToasts"
+    >
       <div
           v-for="(item) in toasts.toReversed()"
           :key="item.id"
@@ -81,6 +87,8 @@ onMounted(()=>{
   width: 500px;
   max-width: 100vw;
   /*max-height: 100dvh;*/
+  /*Высота на весь экран, */
+  /*чтобы при убирании тоста, пока он абсолютный,чтобы он не обрезался снизу*/
   height: 100dvh;
   overflow: hidden;
   display: block;
@@ -91,7 +99,8 @@ onMounted(()=>{
 
   padding: 0;
   outline: none;
-  outline: 3px solid darkred;
+  /*outline: 3px solid darkred;*/
+  background-color: #aff6;
   border: none;
 
   margin: 0;
