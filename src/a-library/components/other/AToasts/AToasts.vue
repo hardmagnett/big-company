@@ -52,7 +52,8 @@ onMounted(()=>{
 .list-move,
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.5s ease;
+  transition: all var(--time-short) ease;
+  /*transition: all 2s ease;*/
 }
 .list-enter-from,
 .list-leave-to {
@@ -76,12 +77,14 @@ onMounted(()=>{
   /*pointer-events: none;*/
   width: 500px;
   max-width: 100vw;
-  max-height: 100dvh;
+  /*max-height: 100dvh;*/
+  height: 100dvh;
   overflow: hidden;
-  display: flex;
+  display: block;
+  /*display: flex;*/
   /*flex-flow: column-reverse nowrap;*/
-  flex-flow: column nowrap;
-  gap: var(--gap);
+  /*flex-flow: column nowrap;*/
+  /*gap: var(--gap);*/
   padding: var(--gap);
   outline: none;
   outline: 3px solid darkred;
@@ -100,15 +103,20 @@ onMounted(()=>{
     /*при удалении чипса*/
     /*vue нивкакую не хочет ставить стиль move остальным элементам.*/
     /*Нужно чтобы в слоте был элемент а не компонент*/
+    /*display: flex;*/
+    /*flex-flow: column nowrap;*/
+    /*gap: var(--gap);*/
     .a-toasts__transition-item {
+      margin-bottom: var(--gap);
 
+      .a-toast {
+        /*transition: 1.5s;*/
+        flex: 0 0 auto;
+        pointer-events: auto;
+      }
     }
   }
-  .a-toast {
-    /*transition: 1.5s;*/
-    flex: 0 0 auto;
-    pointer-events: auto;
-  }
+
 }
 
 
