@@ -43,28 +43,27 @@ onMounted(() => {
     <h2>Цветные тосты</h2>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
     <div class="view-toasts__color-buttons">
-      <ABtn class="a-btn--error">Error</ABtn>
-      <ABtn class="a-btn--error">Error</ABtn>
-      <ABtn class="a-btn--error">Error</ABtn>
-      <ABtn class="a-btn--error">Error</ABtn>
-      <ABtn class="a-btn--error">Error</ABtn>
-      <ABtn class="a-btn--error">Error</ABtn>
 
       <ABtn
         @click="
           $toast({
-            message: 'Длинное предлинное предлинное предлинное сообщение',
+            message: 'Информационное сообщение',
           })
         "
         >Main</ABtn
       >
       <ABtn
-        @click="$toast({ message: 'Зеленое Сообщение', type: 'success' })"
+        @click="$toast({ message: 'Сообщение об успешном действии', type: 'success' })"
         class="a-btn--success"
         >Success</ABtn
       >
-      <ABtn class="btn--danger">Danger</ABtn>
-      <ABtn class="btn--error">Error</ABtn>
+      <ABtn class="a-btn--danger"
+            @click="$toast({ message: 'Сообщение об опасности', type: 'danger' })"
+      >Danger</ABtn>
+      <ABtn class="a-btn--error"
+            @click="$toast({ message: 'Сообщение об ошибке', type: 'error' })"
+
+      >Error</ABtn>
     </div>
     <h2>Нестандартное содержание</h2>
     <ABtn
@@ -101,6 +100,20 @@ onMounted(() => {
     </ABtn>
 
     <br />
+    <h2>Постоянное сообщение</h2>
+
+    <ABtn
+        @click="
+        $toast({
+          message:
+            'Это сообщение будет находиться здесь до тех пор пока по нему не кликнут.',
+          autoClose: false
+        })
+      "
+    >
+      Показать
+    </ABtn>
+    <br>
     <h2>Подключение</h2>
     <p>
       Для того чтобы тосты работали, <br />

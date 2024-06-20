@@ -88,7 +88,7 @@ const close = () => {
 
   /*width: 500px;*/
   /*max-width: 100vw;*/
-  min-height: calc(var(--gap) * 6);
+  /*min-height: calc(var(--gap) * 6);*/
   background-color: #eee;
   display: flex;
   flex-flow: row nowrap;
@@ -103,6 +103,8 @@ const close = () => {
   .a-toast__message {
     flex: 1 1 auto;
     /*outline: 1px solid darkred;*/
+    padding-top: calc(var(--gap));
+    padding-bottom: calc(var(--gap));
 
 
      * :last-child {
