@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 // Вывести тост скриптом примерно вот так.
 // import { onMounted } from "vue";
 // import { globalProperties } from "@/main";
