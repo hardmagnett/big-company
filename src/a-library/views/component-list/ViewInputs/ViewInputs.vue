@@ -14,6 +14,13 @@
     <ACheckBox label="С указанием label" />
     <br />
     <ACheckBox />
+    <br>
+    <br>
+    https://vuetifyjs.com/en/components/forms/
+    <br>
+    https://vuetifyjs.com/en/components/text-fields/
+    <br>
+    https://vuetifyjs.com/en/components/checkboxes/
   </div>
 </template>
 
@@ -22,3 +29,5 @@
   padding-bottom: 200px;
 }
 </style>
+<script setup lang="ts">
+</script>
