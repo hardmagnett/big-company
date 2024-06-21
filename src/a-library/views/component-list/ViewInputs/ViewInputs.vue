@@ -21,6 +21,8 @@
     https://vuetifyjs.com/en/components/text-fields/
     <br>
     https://vuetifyjs.com/en/components/checkboxes/
+    <br>
+    https://dev.to/yogeshgalav7/create-validation-plugin-in-vue-1flf
   </div>
 </template>
 
