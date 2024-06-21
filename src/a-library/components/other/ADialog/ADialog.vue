@@ -54,7 +54,9 @@ let showModal = () => {
  * потому-что это не непосредственное закрытие, а лишь намерение о закрытии.
  * Непосредственное закрытие происходит при вызове метода close() у html-элемента dialog.
  */
-let needToClose = () => {
+let needToClose = (e) => {
+  console.log('needToClose')
+  e.preventDefault()
   emit("needToClose");
 };
 
@@ -127,6 +129,7 @@ onBeforeUnmount(() => {
       </div>
       <div class="a-dialog__buttons">
         <ABtn
+          autofocus
           @click="needToClose"
           :class="[cssClassCancel]"
           class="a-btn--tonal"

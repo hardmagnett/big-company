@@ -5,9 +5,10 @@ const attrs = useAttrs();
 
 export interface Props {
   icon?: boolean;
+  autofocus?: boolean;
 }
 withDefaults(defineProps<Props>(), {
-  icon: false,
+  autofocus: false,
 });
 
 const rootComponent = computed(() => {
@@ -25,6 +26,7 @@ const isRouterLink = computed(() => {
 <template>
   <component
     :is="rootComponent"
+    :autofocus="autofocus"
     class="a-btn"
     :class="{
       'a-btn--icon': icon,
@@ -67,9 +69,15 @@ const isRouterLink = computed(() => {
   &:hover {
     background-color: var(--clr-fill-blue-accent);
   }
+  &:focus-visible {
+    background-color: var(--clr-fill-blue-accent);
+  }
   &.a-btn--error {
     background-color: var(--clr-fill-red-small);
     &:hover {
+      background-color: var(--clr-fill-red-accent);
+    }
+    &:focus-visible {
       background-color: var(--clr-fill-red-accent);
     }
   }
@@ -78,20 +86,28 @@ const isRouterLink = computed(() => {
     &:hover {
       background-color: var(--clr-fill-green-accent);
     }
+    &:focus-visible {
+      background-color: var(--clr-fill-green-accent);
+    }
   }
   &.a-btn--danger {
     background-color: var(--clr-fill-orange-small);
     &:hover {
       background-color: var(--clr-fill-orange-accent);
     }
+    &:focus-visible {
+      background-color: var(--clr-fill-orange-accent);
+    }
   }
   &.a-btn--tonal {
-    outline: 1px solid darkred;
     color: var(--clr-fill-blue-big);
     background-color: var(--clr-bg-blue-small);
     &:hover {
-      outline: 1px solid green;
       background-color: var(--clr-bg-blue-smaller);
+    }
+    &:focus-visible {
+    /*&:focus {*/
+      background-color: var(--clr-bg-blue-accent);
     }
 
     &.a-btn--error {
@@ -101,6 +117,9 @@ const isRouterLink = computed(() => {
         outline: 1px solid green;
         background-color: var(--clr-bg-red-smaller);
       }
+      &:focus-visible {
+        background-color: var(--clr-bg-red-accent);
+      }
     }
     &.a-btn--success {
       color: var(--clr-fill-green-big);
@@ -109,13 +128,18 @@ const isRouterLink = computed(() => {
         outline: 1px solid green;
         background-color: var(--clr-bg-green-smaller);
       }
+      &:focus-visible {
+        background-color: var(--clr-bg-green-accent);
+      }
     }
     &.a-btn--danger {
       color: var(--clr-fill-orange-big);
       background-color: var(--clr-bg-orange-small);
       &:hover {
-        outline: 1px solid green;
         background-color: var(--clr-bg-orange-smaller);
+      }
+      &:focus-visible {
+        background-color: var(--clr-bg-red-accent);
       }
     }
   }
@@ -153,6 +177,9 @@ const isRouterLink = computed(() => {
   &:hover {
     background-color: hsla(var(--clr-fill-blue-small-raw), var(--bg-opacity));
   }
+  &:focus-visible {
+    color: var(--clr-fill-blue-accent);
+  }
 
   &.a-btn--success {
     color: var(--clr-fill-green-small);
@@ -161,6 +188,9 @@ const isRouterLink = computed(() => {
         var(--clr-fill-green-small-raw),
         var(--bg-opacity)
       );
+    }
+    &:focus-visible {
+      color: var(--clr-fill-green-accent);
     }
   }
   &.a-btn--danger {
@@ -171,11 +201,17 @@ const isRouterLink = computed(() => {
         var(--bg-opacity)
       );
     }
+    &:focus-visible {
+      color: var(--clr-fill-orange-accent);
+    }
   }
   &.a-btn--error {
     color: var(--clr-fill-red-small);
     &:hover {
       background-color: hsla(var(--clr-fill-red-small-raw), var(--bg-opacity));
+    }
+    &:focus-visible {
+      color: var(--clr-fill-red-accent);
     }
   }
   &.a-btn--white {

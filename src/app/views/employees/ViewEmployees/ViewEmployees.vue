@@ -4,6 +4,7 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 import { ref } from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
+import {globalProperties} from "@/main";
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
@@ -22,9 +23,17 @@ const needToCreateEmployeeHandler = () => {
 
 const deleteEmployee = () => {
   isOpenDialogEmployeeDeleting.value = false;
+  globalProperties.$toast({
+    message: "Сотрудник удален",
+    type: "error",
+  });
 };
 const createEditEmployee = () => {
   isOpenDialogEmployeeCreatingEditing.value = false;
+
+  globalProperties.$toast({
+    message: "Сотрудник добавлен/отредактирован",
+  });
 };
 </script>
 
