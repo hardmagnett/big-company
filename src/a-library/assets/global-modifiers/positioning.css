@@ -1,11 +1,36 @@
 /*У тега, к которому применяется данный класс,*/
 /*должны быть css-переменные --gap-flex и --flex-items-qty.*/
 /*У родителя должен быть flex-flow: row wrap;*/
+/*Deprecated!!! todo:: избавиться от этого на проекте. Оно распостраняет наследование на вложенные флексы. И к тому-же не удобно в использовании*/
 .mod--basis-for-column-flex-item {
   --summaryGapDistance: calc((var(--flex-items-qty) - 1) * var(--gap-flex));
   flex-basis: calc(
     (100% - var(--summaryGapDistance)) / var(--flex-items-qty)
   ) !important;
+}
+.mod--flex-columns {
+  --flex-columns-gap: var(--gap); /*Может перегружаться */
+  --flex-columns-qty: 4;          /*Может перегружаться*/
+
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--flex-columns-gap);
+
+  > .mod--flex-columns-item {
+    --flex-columns-width: 1;    /*Может перегружаться*/
+
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    --summaryGapDistance: calc((var(--flex-columns-qty) - 1) * var(--flex-columns-gap));
+    --leftSpaceWithoutGap: calc(100% - var(--summaryGapDistance));
+    --spaceForOneColumn: calc(var(--leftSpaceWithoutGap) / var(--flex-columns-qty));
+    flex-basis: var(--spaceForOneColumn);
+    padding-left: var(--summaryGapDistance);
+
+    min-height: 50px;
+  }
+
 }
 
 .mod--float-left {

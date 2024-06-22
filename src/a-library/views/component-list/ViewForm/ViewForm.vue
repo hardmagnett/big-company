@@ -5,17 +5,31 @@
     </Teleport>
     <p>В форме работает навигация по элементам при помощи клавиши <code class="mod--code">tab</code>.</p>
 
-    <div class="view-form__inputs">
-      <AInput
-          class="mod--basis-for-column-flex-item"
-          label="Текстовое поле"
-          hideHint
-      ></AInput>
+    <div class="
+      mod--flex-columns
+      view-form__inputs
+    ">
 
-      <ACheckBox
-          class="mod--basis-for-column-flex-item"
+      <div class="mod--flex-columns-item"></div>
+      <div class="mod--flex-columns-item"></div>
+      <div class="mod--flex-columns-item"></div>
+      <div class="mod--flex-columns-item"></div>
+      <!--<AInput-->
+      <!--    class="-->
+      <!--      mod&#45;&#45;flex-columns-item-->
+      <!--      mod&#45;&#45;basis-for-column-flex-itemZ-->
+      <!--    "-->
+      <!--    label="Текстовое поле"-->
+      <!--    hideHint-->
+      <!--&gt;</AInput>-->
 
-          label="Чекбокс-поле"  hide-hint/>
+      <!--<ACheckBox-->
+      <!--    class="-->
+      <!--      mod&#45;&#45;flex-columns-item-->
+      <!--      mod&#45;&#45;basis-for-column-flex-itemZ-->
+      <!--    "-->
+
+      <!--    label="Чекбокс-поле"  hide-hint/>-->
     </div>
 
 
@@ -26,11 +40,11 @@
 .view-form {
 
   .view-form__inputs {
-    outline: 1px solid green;
-    display: flex;
-    flex-flow: row wrap;
-    --gap-flex: var(--gap);
-    --flex-items-qty: 4;
+    /*outline: 1px solid green;*/
+    /*display: flex;*/
+    /*flex-flow: row wrap;*/
+    /*--gap-flex: var(--gap);*/
+    /*--flex-items-qty: 4;*/
     > * {
       outline: 1px solid darkred !important;
       border: 1px solid darkred !important;
