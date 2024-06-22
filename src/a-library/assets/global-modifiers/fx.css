@@ -1,7 +1,8 @@
-.mod--cool-scrollbar {
-  scrollbar-color: #ddd transparent;
-  scrollbar-width: thin;
-}
+/*.mod--cool-scrollbar {*/
+/*  scrollbar-color: #ddd transparent;*/
+/*  scrollbar-width: thin;*/
+/*}*/
+
 .mod--stop-transitions {
   * {
     transition: none !important;

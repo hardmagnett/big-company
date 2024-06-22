@@ -82,7 +82,7 @@ function clickOnRouterLinkHandler() {
         }"
       />
 
-      <div class="container__main-content mod--cool-scrollbar">
+      <div class="container__main-content">
         <slot />
       </div>
     </div>
