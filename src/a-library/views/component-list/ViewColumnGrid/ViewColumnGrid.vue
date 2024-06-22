@@ -3,6 +3,7 @@
     <Teleport to="#page-header-place">
       <APageHeader> Сетка </APageHeader>
     </Teleport>
+    <h2>Стандартная 12-ти колоночная</h2>
     <p>
       Для просмотра адаптивной работы сетки нужно посмотреть страницу на разных
       ширинах.
@@ -24,6 +25,17 @@
       <!--    :key="n"-->
       <!--&gt;: {{ n }}</div>-->
     </div>
+    <br>
+    <h2>Любое количество колонок</h2>
+    <p>Сетка легко превращается из 12-ти колоночной в сетку с любым другим количеством колонок. Например в 5-ти колончатую.
+      <br>
+      Достаточно лишь указать модификатор.
+    </p>
+    <pre class="mod--code">
+&lt;div class=&quot;am-cols am-cols-5&quot;&gt;
+    &lt;div class=&quot;am-col-5 am-col-xl-1&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
   </div>
 </template>
 
