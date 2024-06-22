@@ -1,5 +1,29 @@
+<script setup lang="ts">
+
+import {
+  iAInputableEmits,
+  iAInputablePropDefaults,
+} from "@/a-library/components/forms/component-interfaces/IAInputable";
+import type { IAInputableProps } from "@/a-library/components/forms/component-interfaces/IAInputable";
+
+export interface Props extends IAInputableProps{
+  // label?: string;
+
+}
+withDefaults(defineProps<Props>(), {
+  ...iAInputablePropDefaults
+});
+
+defineEmits([...iAInputableEmits]);
+</script>
+
 <template>
-  <AInputControl class="a-input">
+  <AInputControl
+      :label="label"
+      :hideLabel="hideLabel"
+      :hideHint="hideHint"
+      class="a-input">
+    <!--todo:: избавиться от v-bind=$attrs-->
     <input
       class="a-input__input"
       v-bind="$attrs"
@@ -25,5 +49,4 @@
 
 }
 </style>
-<script setup lang="ts">
-</script>
+

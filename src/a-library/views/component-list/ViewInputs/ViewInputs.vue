@@ -6,9 +6,13 @@
 
     <h2>Текстовое поле</h2>
     <AInput placeholder="placeholder for text"></AInput>
+    <br>
+    <AInput
+        label="Лейбл"
+        placeholder="placeholder for text"></AInput>
     <br />
-    <AInput value="default value"></AInput>
-    <br />
+    <!--<AInput value="default value"></AInput>-->
+    <!--<br />-->
     <p>Без лейбла и подробностей</p>
     <AInput value="default value"
       hideLabel
