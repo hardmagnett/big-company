@@ -2,8 +2,11 @@
   display: flex;
   flex-flow: row wrap;
 
-  --cols-gap: var(--gap); /*Может перегружаться */
-  --cols-qty: 12;         /*Может перегружаться */
+  /*Может перегружаться из того места, где применяется. */
+  /*Если нужно 0 то нужно писать 0px */
+  --cols-gap: var(--gap);
+
+  --cols-qty: 12;
 
 
   --total-gaps: calc(var(--cols-qty) - 1);
@@ -12,6 +15,8 @@
   --width-of-one-column: calc(var(--width-of-all-columns-without-gaps) / var(--cols-qty));
 
   gap: var(--cols-gap);
+
+  &.am-cols-5 {--cols-qty: 5;}
 
   > .am-col-1,
   > .am-col-2,
