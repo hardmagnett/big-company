@@ -9,6 +9,12 @@
     <br />
     <AInput value="default value"></AInput>
     <br />
+    <p>Без лейбла и подробностей</p>
+    <AInput value="default value"
+      hideLabel
+      hideHint
+    ></AInput>
+    <br />
 
     <h2>Чекбокс</h2>
     <ACheckBox label="С указанием label" />

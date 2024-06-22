@@ -11,6 +11,7 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
 import APageHeader from "@/a-library/components/layout/APageHeader/APageHeader.vue";
 
 // Forms
+import AInputControl from "@/a-library/components/forms/AInputControl/AInputControl.vue";
 import ABtn from "@/a-library/components/forms/ABtn/ABtn.vue";
 import AInput from "@/a-library/components/forms/AInput/AInput.vue";
 import ACheckBox from "@/a-library/components/forms/ACheckBox/ACheckBox.vue";
@@ -61,6 +62,7 @@ export default function ({
   vueApp.component("APageHeader", APageHeader);
 
   // Forms
+  vueApp.component("AInputControl", AInputControl);
   vueApp.component("ABtn", ABtn);
   vueApp.component("AInput", AInput);
   vueApp.component("ACheckBox", ACheckBox);
