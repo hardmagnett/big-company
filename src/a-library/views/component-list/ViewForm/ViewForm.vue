@@ -21,6 +21,15 @@
 
           label="Чекбокс-поле"  hide-hint/>
     </div>
+    <br>
+    <AFormButtonsWrapper>
+      <ABtn class="a-btn--tonal">Отмена</ABtn>
+      <ABtn>Ок</ABtn>
+      <template #left>
+        <ABtn class="a-btn--tonal a-btn--small">Кнопка слева</ABtn>
+      </template>
+    </AFormButtonsWrapper>
+
   </div>
 </template>
 
@@ -31,4 +40,5 @@
   }
 }
 </style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
