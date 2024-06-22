@@ -5,16 +5,12 @@
     </Teleport>
 
     <h2>Текстовое поле</h2>
-    <!--<AInput placeholder="placeholder for text"></AInput>-->
-    <!--<br>-->
     <p>По умолчанию.</p>
     <AInput
         label="Лейбл"
         hideHint
         ></AInput>
     <br />
-    <!--<AInput value="default value"></AInput>-->
-    <!--<br />-->
     <p>Без лейбла. С плейлхолдером.</p>
     <AInput value="default value"
       hideLabel
