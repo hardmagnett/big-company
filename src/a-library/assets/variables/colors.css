@@ -307,6 +307,10 @@ background-color:(var(--clr-fill-blue-small));
 /*Шрифты*/
 /*======*/
 :root {
+
+  --_sat-font-bright: 100%;
+  --_light-font-bright: 35%;
+
   --_sat-font-light: 36%;
   --_light-font-light: 88%;
 
@@ -318,6 +322,12 @@ background-color:(var(--clr-fill-blue-small));
 
   --_sat-font-darkest: 0%;
   --_light-font-darkest: 0%;
+
+  --clr-font-blue-bright: hsl(
+          var(--_hue-blue),
+          var(--_sat-font-bright),
+          var(--_light-font-bright)
+  );
 
   --clr-font-blue-light: hsl(
     var(--_hue-blue),
@@ -338,6 +348,12 @@ background-color:(var(--clr-fill-blue-small));
     var(--_hue-blue),
     var(--_sat-font-darkest),
     var(--_light-font-darkest)
+  );
+
+  --clr-font-red-bright: hsl(
+    var(--_hue-red),
+    var(--_sat-font-bright),
+    var(--_light-font-bright)
   );
 
   --clr-font-red-light: hsl(
@@ -361,6 +377,12 @@ background-color:(var(--clr-fill-blue-small));
     var(--_light-font-darkest)
   );
 
+  --clr-font-green-bright: hsl(
+          var(--_hue-green),
+          var(--_sat-font-bright),
+          var(--_light-font-bright)
+  );
+
   --clr-font-green-light: hsl(
     var(--_hue-green),
     var(--_sat-font-light),
@@ -380,6 +402,12 @@ background-color:(var(--clr-fill-blue-small));
     var(--_hue-green),
     var(--_sat-font-darkest),
     var(--_light-font-darkest)
+  );
+
+  --clr-font-orange-bright: hsl(
+          var(--_hue-orange),
+          var(--_sat-font-bright),
+          var(--_light-font-bright)
   );
 
   --clr-font-orange-light: hsl(

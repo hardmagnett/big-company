@@ -30,9 +30,10 @@ for (let colorName of colorNames) {
   ]);
 }
 
-let colorFontCSSVariables: Array<[string, string, string, string]> = [];
+let colorFontCSSVariables: Array<[string, string, string, string, string]> = [];
 for (let colorName of colorNames) {
   colorFontCSSVariables.push([
+    `--clr-font-${colorName}-bright`,
     `--clr-font-${colorName}-darkest`,
     `--clr-font-${colorName}-dark`,
     `--clr-font-${colorName}-gray`,
