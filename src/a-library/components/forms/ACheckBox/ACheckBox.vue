@@ -23,7 +23,7 @@ defineEmits([...iAInputableEmits]);
   <label :for="`a-check-box-${$.uid}`" class="a-check-box__wrapper">
 
     <input
-      class="a-check-box__input"
+      class="a-check-box__input a-inputable__hidden-original-input"
       type="checkbox"
       checked
       :id="`a-check-box-${$.uid}`"
@@ -39,7 +39,9 @@ defineEmits([...iAInputableEmits]);
 </template>
 
 <style scoped>
+@import '@/a-library/components/forms/component-interfaces/AInputable.css';
 .a-check-box {
+
   .a-check-box__wrapper {
     display: block;
     max-width: 100%;
@@ -49,27 +51,8 @@ defineEmits([...iAInputableEmits]);
     height: calc(var(--gap) + 2px);
     line-height: 1.2;
 
-    .a-check-box__input {
-      /*display: none;*/
-      /*width: var(--gap);*/
-      /*height: var(--gap);*/
+    .a-check-box__input {}
 
-      /*todo:: это куда-то в миксин*/
-      cursor: pointer;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-    }
-    .a-check-box__input:focus + .a-check-box__label {
-      /*.a-check-box__label {*/
-        &:before {
-          border: 1px solid blue;
-        /*}*/
-      }
-    }
 
     .a-check-box__label {
       user-select: none;
@@ -89,6 +72,7 @@ defineEmits([...iAInputableEmits]);
         content: "";
         background-color: white;
         border: 1px solid var(--clr-border-blue-lighter);
+        transition: border var(--time-short)
       }
       /*Непосредственно checkmark*/
       &:after {
@@ -98,6 +82,11 @@ defineEmits([...iAInputableEmits]);
         transition: opacity var(--time-short);
         transform: translateX(3px) translateY(0px);
         font-weight: bold;
+      }
+    }
+    .a-check-box__input:focus-visible + .a-check-box__label {
+      &:before {
+        border: 1px solid var(--clr-border-blue-darker);
       }
     }
 

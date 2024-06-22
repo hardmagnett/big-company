@@ -1,0 +1,11 @@
+/*todo:: переименовать папку component-Interfaces например в mixins*/
+
+.a-inputable__hidden-original-input {
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
