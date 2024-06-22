@@ -21,6 +21,7 @@ defineEmits([...iAInputableEmits]);
      :hideHint="hideHint"
   >
   <label :for="`a-check-box-${$.uid}`" class="a-check-box__wrapper">
+
     <input
       class="a-check-box__input"
       type="checkbox"
@@ -49,9 +50,25 @@ defineEmits([...iAInputableEmits]);
     line-height: 1.2;
 
     .a-check-box__input {
-      display: none;
-      width: var(--gap);
-      height: var(--gap);
+      /*display: none;*/
+      /*width: var(--gap);*/
+      /*height: var(--gap);*/
+
+      /*todo:: это куда-то в миксин*/
+      cursor: pointer;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+    .a-check-box__input:focus + .a-check-box__label {
+      /*.a-check-box__label {*/
+        &:before {
+          border: 1px solid blue;
+        /*}*/
+      }
     }
 
     .a-check-box__label {

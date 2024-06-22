@@ -45,6 +45,10 @@ defineEmits([...iAInputableEmits]);
     border: 1px solid var(--clr-border-blue-lighter);
     border-radius: var(--border-radius);
     width: 100%;
+    &:focus {
+      /*border: 1px solid var(--clr-border-blue-lighter);*/
+      border: 1px solid blue;
+    }
   }
 
 }
