@@ -26,13 +26,13 @@
       <!--<div class="am-col-3">10</div>-->
 
       <AInput
-          class="am-col-12 am-col-sm-6"
+          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           label="Текстовое поле"
           hideHint
       ></AInput>
 
       <ACheckBox
-          class="am-col-12 am-col-sm-6"
+          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
 
           label="Чекбокс-поле"  hide-hint/>
     </div>
@@ -47,10 +47,10 @@
     /*flex-flow: row wrap;*/
     /*--gap-flex: var(--gap);*/
     /*--flex-items-qty: 4;*/
-    > * {
-      outline: 1px solid darkred !important;
-      border: 1px solid darkred !important;
-    }
+    /*> * {*/
+    /*  outline: 1px solid darkred !important;*/
+    /*  border: 1px solid darkred !important;*/
+    /*}*/
   }
 }
 </style>

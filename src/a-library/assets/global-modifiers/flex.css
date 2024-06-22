@@ -13,18 +13,18 @@
 
   gap: var(--cols-gap);
 
-  .am-col-1,
-  .am-col-2,
-  .am-col-3,
-  .am-col-4,
-  .am-col-5,
-  .am-col-6,
-  .am-col-7,
-  .am-col-8,
-  .am-col-9,
-  .am-col-10,
-  .am-col-11,
-  .am-col-12 {
+  > .am-col-1,
+  > .am-col-2,
+  > .am-col-3,
+  > .am-col-4,
+  > .am-col-5,
+  > .am-col-6,
+  > .am-col-7,
+  > .am-col-8,
+  > .am-col-9,
+  > .am-col-10,
+  > .am-col-11,
+  > .am-col-12 {
     flex-grow: 0;
     flex-shrink: 0;
 
