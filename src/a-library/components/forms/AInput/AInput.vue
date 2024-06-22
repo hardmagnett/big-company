@@ -23,10 +23,9 @@ defineEmits([...iAInputableEmits]);
       :hideLabel="hideLabel"
       :hideHint="hideHint"
       class="a-input">
-    <!--todo:: избавиться от v-bind=$attrs-->
     <input
       class="a-input__input"
-      v-bind="$attrs"
+
     />
   </AInputControl>
   <!--<input v-bind="$attrs" class="a-input" />-->
