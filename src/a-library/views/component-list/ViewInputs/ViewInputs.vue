@@ -25,11 +25,8 @@
 
     <h2>Чекбокс</h2>
     <ACheckBox label="С указанием label" hide-hint />
-    <!--<br />-->
     <ACheckBox label="Чекбокс со скрытым местом для заголовка"  hide-hint hide-label/>
-    <!--<br />-->
     <ACheckBox hide-hint hide-label/>
-    <!--<br>-->
     <br>
     https://vuetifyjs.com/en/components/forms/
     <br>
