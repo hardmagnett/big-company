@@ -128,19 +128,35 @@ onBeforeUnmount(() => {
         <slot></slot>
       </div>
       <div class="a-dialog__buttons">
-        <ABtn
-          autofocus
-          @click="needToClose"
-          :class="[cssClassCancel]"
-          class="a-btn--tonal"
+        <AFormButtonsWrapper>
+          <ABtn
+              autofocus
+              @click="needToClose"
+              :class="[cssClassCancel]"
+              class="a-btn--tonal"
           >{{ textCancel }}</ABtn
-        >
-        <ABtn
-          @click="$emit('apply')"
-          v-if="!hideApply"
-          :class="[cssClassApply]"
+          >
+          <ABtn
+              @click="$emit('apply')"
+              v-if="!hideApply"
+              :class="[cssClassApply]"
           >{{ textApply }}</ABtn
-        >
+          >
+        </AFormButtonsWrapper>
+
+        <!--<ABtn-->
+        <!--  autofocus-->
+        <!--  @click="needToClose"-->
+        <!--  :class="[cssClassCancel]"-->
+        <!--  class="a-btn&#45;&#45;tonal"-->
+        <!--  >{{ textCancel }}</ABtn-->
+        <!--&gt;-->
+        <!--<ABtn-->
+        <!--  @click="$emit('apply')"-->
+        <!--  v-if="!hideApply"-->
+        <!--  :class="[cssClassApply]"-->
+        <!--  >{{ textApply }}</ABtn-->
+        <!--&gt;-->
       </div>
     </div>
   </dialog>
@@ -200,9 +216,9 @@ onBeforeUnmount(() => {
       }
     }
     .a-dialog__buttons {
-      display: flex;
-      justify-content: flex-end;
-      gap: var(--gap);
+      /*display: flex;*/
+      /*justify-content: flex-end;*/
+      /*gap: var(--gap);*/
       padding: var(--gap);
       padding-top: 0;
     }
