@@ -54,9 +54,9 @@ let showModal = () => {
  * потому-что это не непосредственное закрытие, а лишь намерение о закрытии.
  * Непосредственное закрытие происходит при вызове метода close() у html-элемента dialog.
  */
-let needToClose = (e) => {
-  console.log('needToClose')
-  e.preventDefault()
+let needToClose = (e: Event) => {
+  // console.log('needToClose')
+  // e.preventDefault()
   emit("needToClose");
 };
 
@@ -66,7 +66,7 @@ let cancelDialogHandler = (e: Event) => {
     e.preventDefault();
     runClosingOnDeniedAnimation();
   } else {
-    needToClose();
+    needToClose(e);
   }
 };
 
