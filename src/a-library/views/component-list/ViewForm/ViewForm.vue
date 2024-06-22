@@ -6,14 +6,20 @@
     <p>В форме работает навигация по элементам при помощи клавиши <code class="mod--code">tab</code>.</p>
 
     <div class="
-      mod--flex-columns
+      am-cols
       view-form__inputs
     ">
 
-      <div class="mod--flex-columns-item"></div>
-      <div class="mod--flex-columns-item"></div>
-      <div class="mod--flex-columns-item"></div>
-      <div class="mod--flex-columns-item"></div>
+      <div class="am-col-3">1</div>
+      <div class="am-col-6">2</div>
+      <div class="am-col-3">3</div>
+      <div class="am-col-1">4</div>
+      <div class="am-col-1">5</div>
+      <div class="am-col-2">6</div>
+      <div class="am-col-3">7</div>
+      <div class="am-col-5">8</div>
+      <div class="am-col-3">9</div>
+      <div class="am-col-3">10</div>
       <!--<AInput-->
       <!--    class="-->
       <!--      mod&#45;&#45;flex-columns-item-->
