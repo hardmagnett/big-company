@@ -12,8 +12,8 @@ let valBool = ref(false)
       <APageHeader> Форма </APageHeader>
     </Teleport>
     <p>
-      В форме работает навигация по элементам при помощи клавиши
-      <code class="mod--code">tab</code>.
+      В форме работает навигация по элементам при помощи
+      <code class="mod--code">tab</code> и <code class="mod--code">shift + tab</code>.
     </p>
 
     <div class="am-cols view-form__inputs">
