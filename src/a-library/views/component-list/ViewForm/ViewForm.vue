@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import {ref, reactive} from 'vue';
 
-// let valText = ref('')
-// let valBool = ref(false)
-
-let vals = reactive({
+let formValues = reactive({
   text: '',
   bool: false
 })
@@ -21,22 +18,17 @@ let vals = reactive({
       <code class="mod--code">tab</code> и <code class="mod--code">shift + tab</code>.
     </p>
 
-    <!--<p>valText: {{valText}}</p>-->
-    <!--<p>valBool: {{valBool}}</p>-->
-    <p>vals: {{vals}}</p>
+    <p>vals: {{ formValues }}</p>
     <div class="am-cols view-form__inputs">
 
-      <!--v-model="valText"-->
       <AInput
-          v-model="vals.text"
+          v-model="formValues.text"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           label="Текстовое поле"
           hideHint
       ></AInput>
-
-      <!--v-model="valBool"-->
       <ACheckBox
-          v-model="vals.bool"
+          v-model="formValues.bool"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
 
           label="Чекбокс-поле"  hide-hint/>
@@ -44,8 +36,8 @@ let vals = reactive({
     <br>
     <AFormButtonsWrapper>
       <ABtn class="a-btn--tonal">Отмена</ABtn>
-      <!--type="submit"-->
-      <ABtn>Ок</ABtn>
+
+      <ABtn type="submit" >Ок</ABtn>
       <template #left>
         <ABtn class="a-btn--tonal a-btn--small">Кнопка слева</ABtn>
       </template>

@@ -11,6 +11,10 @@ withDefaults(defineProps<Props>(), {
   autofocus: false,
 });
 
+defineOptions({
+  inheritAttrs: false
+})
+
 const rootComponent = computed(() => {
   return isAnchor.value ? "a" : isRouterLink.value ? "router-link" : "button";
 });
@@ -34,6 +38,7 @@ const isRouterLink = computed(() => {
     }"
     v-bind="$attrs"
   >
+    <!--{{ $attrs }}-->
     <slot />
   </component>
 </template>
