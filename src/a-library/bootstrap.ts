@@ -37,6 +37,7 @@ import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 // ===========
 import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalStorage";
 import toast from "@/a-library/vue-plugins/toast";
+import aValidator from "@/a-library/vue-plugins/aValidator/aValidatorPlugin";
 
 /**
  * Подключает компоненты из библиотеки.
@@ -89,4 +90,6 @@ export default function ({
   // ===========
   vueApp.use(responsiveGlobalStorage);
   vueApp.use(toast);
+  vueApp.use(aValidator);
+
 }
