@@ -27,6 +27,8 @@ defineEmits([...iAInputableEmits]);
 
     <!--checked-->
     <input
+      :name="name"
+      v-validate="rules"
       class="a-check-box__input a-inputable__hidden-original-input"
       type="checkbox"
       v-model="model"

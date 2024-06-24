@@ -4,7 +4,8 @@ import {ref, reactive} from 'vue';
 let formValues = reactive({
   textWithValidation: '',
   textWithoutValidation: '',
-  bool: false
+  booleanWithValidation: false,
+  booleanWithoutValidation: false,
 })
 
 </script>
@@ -41,10 +42,18 @@ let formValues = reactive({
           hideHint
       ></AInput>
       <ACheckBox
-          v-model="formValues.bool"
+          v-model="formValues.booleanWithValidation"
+          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+          name="Чекбокс-поле валидируемое"
+          rules="required:true"
+
+          label="Чекбокс-поле валидируемое"  hide-hint/>
+
+      <ACheckBox
+          v-model="formValues.booleanWithoutValidation"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
 
-          label="Чекбокс-поле"  hide-hint/>
+          label="Чекбокс-поле не валидируемое"  hide-hint/>
     </div>
     <br>
     <AFormButtonsWrapper>

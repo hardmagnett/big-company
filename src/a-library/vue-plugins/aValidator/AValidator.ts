@@ -23,7 +23,7 @@ function setFormFieldData(fieldName: string, rules: string) {
     validationRules[ruleStringName] = ruleStingValue ?? true;
   });
 
-  console.log(validationRules); console.log('^...validationRules:')
+  // console.log(validationRules); console.log('^...validationRules:')
 
   const alreadyPresentField = formFields.find(field=>field.fieldName===fieldName);
 
@@ -42,7 +42,7 @@ function setFormFieldData(fieldName: string, rules: string) {
     rules: validationRules,
   });
 
-  console.log(formFields); console.log('^...formFields:')
+  // console.log(formFields); console.log('^...formFields:')
 
 }
 
