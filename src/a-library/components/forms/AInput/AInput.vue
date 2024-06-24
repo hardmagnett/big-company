@@ -14,6 +14,8 @@ withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults
 });
 
+const model = defineModel()
+
 defineEmits([...iAInputableEmits]);
 </script>
 
@@ -24,6 +26,7 @@ defineEmits([...iAInputableEmits]);
       :hideHint="hideHint"
       class="a-input">
     <input
+      v-model="model"
       class="a-input__input"
 
     />

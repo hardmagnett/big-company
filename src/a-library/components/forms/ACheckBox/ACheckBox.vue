@@ -12,6 +12,9 @@ export interface Props extends IAInputableProps{
 withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults
 });
+
+const model = defineModel()
+
 defineEmits([...iAInputableEmits]);
 </script>
 
@@ -22,10 +25,11 @@ defineEmits([...iAInputableEmits]);
   >
   <label :for="`a-check-box-${$.uid}`" class="a-check-box__wrapper">
 
+    <!--checked-->
     <input
       class="a-check-box__input a-inputable__hidden-original-input"
       type="checkbox"
-      checked
+      v-model="model"
       :id="`a-check-box-${$.uid}`"
     />
     <span
