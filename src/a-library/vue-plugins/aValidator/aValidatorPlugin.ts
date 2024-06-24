@@ -16,6 +16,8 @@ export default {
 // todo:: раскомментить потом в процессе работы
 // todo:: почему field_errors через snake_case, в то время пока остальные через pascalCase?
 
+// todo:: продолжить отсюда Feature 2: It should validate all input fields in document.
+
 // export const fieldErrors = AValitator.field_errors;
 // export const validateDirective = AValitator.validateDirective;
 // export const validateForm = AValitator.validateForm;
