@@ -29,8 +29,10 @@ function setFormFieldData(fieldName: string, rules: string) {
 
   if(alreadyPresentField){
     // todo:: посмотреть как это будет работать с 2-мя разными формами.
-    // Возможно здесь вообще сделать new Error()
-    console.warn('2 полей с одинаковыми name в форме быть не должно. Перезаписываю.')
+
+    // Т.к. функция вызывается и при update, нжно чтобы в правилах не возникало дублей.
+    // Поэтому перезаписываем.
+    // К тому-же список правил может вдруг измениться. Поэтому точно перезаписываем.
     alreadyPresentField.rules = validationRules;
     return true;
   }
@@ -44,14 +46,30 @@ function setFormFieldData(fieldName: string, rules: string) {
 
 }
 
-setFormFieldData('my-name', 'required:true|max:5|boolRule')
+// setFormFieldData('my-name', 'required:true|max:5|boolRule')
 
 export default {
   validateDirective(el: HTMLElement, binding: DirectiveBinding) {
     const elementName = el.getAttribute("name")
+    const rulesString = binding.value
+
+    const areRulesPassed = Boolean(rulesString)
+
+    if (areRulesPassed && !elementName) {
+      // todo:: проверить запретит ли линтер console.log
+      console.error(el)
+      throw new Error(`у проверяемого элемента должен быть атрибут name с уникальным значением`)
+    }
+
     if (!elementName) {
-      // todo:: выводить в консоль сам элемент, чтобы его было легко отдебажить.
-      throw new Error('у проверяемого элемента должен быть атрибут name')
+      // Если у элемента нет имени, то ничего не делаем. Его и проверять не нужно.
+
+      // Таким образом оставим возможность добавлять директиву на элементах у которых не нужна проверка.
+      // Такое может быть если:
+      // 1. Есть самописный инпут. Он-обертка над другим инпутом.
+      // 2. В самописном инпуте есть директива для проверки.
+      // 3. Самописный инпут используется повсеместно, и для него то нужна валидация, то не нужна.
+      return
     }
     setFormFieldData(
       elementName,

@@ -4,6 +4,8 @@
 
 export interface IAInputableProps {
   label?: string;
+  name?: string;  // То, из чего собирается нативный FormData. Так-же используется как идентификатор в валидаторе.
+  rules?: string
   hideLabel?: boolean,
   hideHint?:boolean,
   errorMessages?: Array<string>
@@ -11,6 +13,7 @@ export interface IAInputableProps {
 
 export const iAInputablePropDefaults = {
   label: '',
+  rules: '',
   hideLabel: false,
   hideHint: false,
   // todo:: это похоже будет не нужно.

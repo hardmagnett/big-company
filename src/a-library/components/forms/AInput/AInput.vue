@@ -14,6 +14,10 @@ withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults
 });
 
+defineOptions({
+  inheritAttrs: false
+})
+
 const model = defineModel()
 
 defineEmits([...iAInputableEmits]);
@@ -26,6 +30,8 @@ defineEmits([...iAInputableEmits]);
       :hideHint="hideHint"
       class="a-input">
     <input
+      :name="name"
+      v-validate="rules"
       v-model="model"
       class="a-input__input"
 
