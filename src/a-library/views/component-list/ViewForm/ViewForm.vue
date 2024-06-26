@@ -9,7 +9,6 @@ let formValues = reactive({
 });
 
 const submitHandler = () => {
-  console.log("Листенер снаружи");
 };
 </script>
 
