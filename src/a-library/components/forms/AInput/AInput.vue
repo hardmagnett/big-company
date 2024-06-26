@@ -16,7 +16,7 @@ defineOptions({
 
 const model = defineModel();
 
-defineEmits([...iAInputableEmits]);
+defineEmits([...iAInputableEmits, 'blur']);
 </script>
 
 <template>
@@ -26,7 +26,7 @@ defineEmits([...iAInputableEmits]);
     :hideHint="hideHint"
     class="a-input"
   >
-    <input :name="name" v-model="model" class="a-input__input" />
+    <input :name="name" @blur="$emit('blur')" v-model="model" class="a-input__input" />
   </AInputControl>
 </template>
 

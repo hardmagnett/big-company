@@ -2,16 +2,47 @@
 import { reactive } from "vue";
 
 import { useForm } from 'vee-validate';
-const { values, defineField } = useForm();
-// import * as yup from 'yup';
-//
+// const { values, defineField } = useForm();
+import { toTypedSchema } from '@vee-validate/yup';
+import { object, string }  from 'yup';
+
 // const schema = yup.object({
 //   email: yup.string().required().email(),
 // });
 
+const { values, errors, defineField } = useForm({
+  validationSchema: toTypedSchema(object({
+    email: string().required().email(),
+    password: string().min(6).required(),
+  })),
+});
 
 
-const [email, emailAttrs] = defineField('email');
+
+const [email, emailAttrs] =
+defineField('email', {
+  // Так будет валидировать не по input, а то-ли по change то-ли по blur.
+  // Чтобы это работало с кастомными компонентами - они должны эмитить blur.
+  // validateOnModelUpdate: false,
+
+  // Так можно добавить всякое разное в передачу атрибутов.
+  // В state можно поковыряться через ctrl+Q
+  props: state => ({
+    // error: state.errors[0],
+    errors: state.errors,
+  }),
+});
+// Можно ещё вот так передавать. Вместо обьекта - колбэк.
+// defineField(
+//   'email',
+//   state => {
+//     return {
+//       // validate aggressively as long as there are errors on the input
+//       validateOnModelUpdate: state.errors.length > 0,
+//     };
+// });
+
+const [password, passwordAttrs] = defineField('password');
 
 let formValues = reactive({
   textWithValidation: "AAA",
@@ -37,12 +68,40 @@ const submitHandler = () => {
 
     <pre>vals: {{ formValues }}</pre>
     <pre>values: {{values}}</pre>
+    <pre>errors: {{errors}}</pre>
+    <pre>email: {{email}}</pre>
+    <pre>emailAttrs: {{emailAttrs}}</pre>
     <form @submit.prevent="submitHandler">
+
       <div class="am-cols view-form__inputs">
 
-        <input
+        <div class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3">
+
+          <!--class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"-->
+          <AInput
+              name="email"
+              v-model="password"
+              v-bind="passwordAttrs"
+              class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+              label="Password"
+              hideHint
+          ></AInput>
+          {{errors.password}}
+        </div>
+
+        <div class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3">
+
+          <!--class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"-->
+        <AInput
+            name="email"
+            v-model="email"
+            v-bind="emailAttrs"
             class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-            v-model="email" v-bind="emailAttrs" type="text" />
+            label="E-Mail"
+            hideHint
+        ></AInput>
+        {{errors.email}}
+        </div>
 
         <AInput
           name="Обязательное. Минимум 3 символа."

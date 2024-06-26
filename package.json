@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vee-validate/yup": "^4.13.1",
     "normalize.css": "^8.0.1",
     "pinia": "^2.1.7",
     "vee-validate": "^4.13.1",
