@@ -5,7 +5,7 @@ import {validateForm} from '@/a-library/vue-plugins/aValidator/aValidatorPlugin'
 
 
 let formValues = reactive({
-  textWithValidation: '',
+  textWithValidation: 'AAA',
   textWithoutValidation: '',
   booleanWithValidation: false,
   booleanWithoutValidation: false,

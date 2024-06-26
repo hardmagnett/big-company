@@ -29,11 +29,15 @@ defineEmits([...iAInputableEmits]);
       :hideLabel="hideLabel"
       :hideHint="hideHint"
       class="a-input">
+    <!--shit-->
+    <!--value="shit"-->
+    <!--:data-validate-value="model"-->
     <input
       :name="name"
       v-validate="rules"
       v-model="model"
       class="a-input__input"
+
 
     />
   </AInputControl>

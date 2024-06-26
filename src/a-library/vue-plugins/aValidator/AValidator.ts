@@ -87,16 +87,42 @@ const runValidation = (toBeValidatedFields: FormFields, form: HTMLFormElement)=>
     try {
       toBeValidatedFields.forEach((field)=>{
         for(const [ruleName, ruleParameter] of Object.entries(field.rules)) {
-          // todo:: здесь похоже нужно выбирать не из документа, а из конкретной проверяемой формы
-          const fieldElement = document.getElementsByName(field.fieldName)[0]
-          // let fieldElement = form.elements[field.fieldName]
-          // const fieldElement = form.elements['home']
-          // const fieldElement = form.elements.namedItem(field.fieldName)
+          // // todo:: вынести получение элемента и значения в отдельную ф-ю. Пушо здесь это занимает слишком много места вместе с комментами.
+          // Валидироваться могут не только HTMLFormElement, но и любые другие элементы.
+          // Например, в случае если это какой-нибудь кастомный инпут.
+          // Поэтому имеем дело с HTMLElement.
+          // ---
+          // Валидируемый элемент не обьязательно может находиться в форме:
+          // это может быть какой-нибудь отдельный элемент выполняющий какую-нибудь задачу, поэтому выбираем прямо из документа.
+          let fieldElement: HTMLElement | null
 
-          // let fieldElement = form.elements[1]
+          // Сначала выберем по имени, т.к. элементы с name (например HTMLFormElement) валидируются гораздо чаще.
+          fieldElement = document.getElementsByName(field.fieldName)[0]
+          if (!fieldElement){
+            // Если по имени не выбрался, значит происходит валидация какого-то кастомного компонента, который не является HTMLFormElement
+            fieldElement = document.querySelector(`[data-validate-name="${field.fieldName}"]`);
+          }
+
+          // todo:: я застрял здесь где-то
+
+          // todo:: может-быть сделать здесь throw или хотя-бы console.log
           if (!fieldElement) continue
 
-          const fieldValue = fieldElement.value
+          console.log(fieldElement); console.log('^...fieldElement:')
+          let fieldValue
+          const customValueAttributeName = 'data-validate-value'
+          const elHasAttrValue = fieldElement.hasAttribute('value')
+          // console.log(elHasAttrValue); console.log('^...elHasAttrValue:')
+          const elHasAttrValueCustomAttr = fieldElement.hasAttribute(customValueAttributeName)
+          // console.log(elHasAttrValueCustomAttr); console.log('^...elHasAttrValueCustomAttr:')
+          if (elHasAttrValueCustomAttr) {
+            fieldValue = fieldElement.getAttribute(customValueAttributeName)
+          } else if (fieldElement.value) {
+            fieldValue = fieldElement.getAttribute('value')
+          } else {
+            throw new Error(`У элемента с именем "${field.fieldName}" отсутсвуют атрибуты "value" или "${customValueAttributeName}"`)
+          }
+
           console.log(fieldValue); console.log('^...fieldValue:')
 
 
