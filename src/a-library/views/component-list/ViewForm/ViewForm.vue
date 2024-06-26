@@ -12,15 +12,16 @@ let formValues = reactive({
 })
 
 const submitHandler = (e:Event)=>{
-  console.log('submitHandler')
-  const event = e as SubmitEvent;
-  console.log(event); console.log('^...event:')
-  const form = event.target as HTMLFormElement
-
-  validateForm(form).then(result=>{
-    if(result===true) console.log('validation passed');
-    if(result===false) console.log('validation failed');
-  }).catch(e=>console.error('field not found',e));
+  console.log('Листенер снаружи')
+  // console.log('submitHandler')
+  // const event = e as SubmitEvent;
+  // console.log(event); console.log('^...event:')
+  // const form = event.target as HTMLFormElement
+  //
+  // validateForm(form).then(result=>{
+  //   if(result===true) console.log('validation passed');
+  //   if(result===false) console.log('validation failed');
+  // }).catch(e=>console.error('field not found',e));
 
 }
 
@@ -37,7 +38,7 @@ const submitHandler = (e:Event)=>{
     </p>
 
     <p>vals: {{ formValues }}</p>
-    <form @submit.prevent="submitHandler">
+    <AForm @submit.prevent="submitHandler">
       <div class="am-cols view-form__inputs">
 
 
@@ -80,7 +81,7 @@ const submitHandler = (e:Event)=>{
           <ABtn class="a-btn--tonal a-btn--small">Кнопка слева</ABtn>
         </template>
       </AFormButtonsWrapper>
-    </form>
+    </AForm>
 
   </div>
 </template>

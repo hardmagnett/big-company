@@ -20,6 +20,7 @@ const formFields: FormFields = [];
 
 const fieldErrors: Record<string, string> = reactive({});
 
+
 function setFormFieldData(fieldName: string, rules: string) {
 
 
@@ -159,5 +160,6 @@ export default {
 }
 
 export {
-  validateForm
+  validateForm,
+  fieldErrors
 }
