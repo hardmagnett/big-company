@@ -3,8 +3,8 @@
 import {
   iAInputableEmits,
   iAInputablePropDefaults,
-} from "@/a-library/components/forms/component-interfaces/IAInputable";
-import type { IAInputableProps } from "@/a-library/components/forms/component-interfaces/IAInputable";
+} from "@/a-library/components/forms/mixins/AInputable/IAInputable";
+import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
 export interface Props extends IAInputableProps{
 

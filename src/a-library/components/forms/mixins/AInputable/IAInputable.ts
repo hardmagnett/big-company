@@ -16,9 +16,8 @@ export const iAInputablePropDefaults = {
   rules: '',
   hideLabel: false,
   hideHint: false,
-  // todo:: это похоже будет не нужно.
   // Ведь валидация будет происходить в моих инпутах, и снаружи ошибки в них передавать будет не нужно
-  errorMessages: ()=> []
+  // errorMessages: ()=> []
 };
 
 // export const iAInputableEmits = ["needToClose", "apply"];
