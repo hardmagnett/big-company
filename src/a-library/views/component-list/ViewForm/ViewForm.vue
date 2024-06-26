@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, reactive} from 'vue';
+import {reactive} from 'vue';
 
 
 
@@ -10,7 +10,7 @@ let formValues = reactive({
   booleanWithoutValidation: false,
 })
 
-const submitHandler = (e:Event)=>{
+const submitHandler = ()=>{
   console.log('Листенер снаружи')
 
 }

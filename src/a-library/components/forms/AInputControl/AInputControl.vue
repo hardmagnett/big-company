@@ -8,7 +8,7 @@ export interface Props {
   // В будущем может понадобиться выводить более чем одну ошибку. Поэтому пусть будет массивом
   errorMessages?: string[]
 }
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   label: '',
   hideLabel: false,
   hideHint: false,
