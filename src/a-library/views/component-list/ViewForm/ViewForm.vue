@@ -1,6 +1,18 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 
+import { useForm } from 'vee-validate';
+const { values, defineField } = useForm();
+// import * as yup from 'yup';
+//
+// const schema = yup.object({
+//   email: yup.string().required().email(),
+// });
+
+
+
+const [email, emailAttrs] = defineField('email');
+
 let formValues = reactive({
   textWithValidation: "AAA",
   textWithoutValidation: "",
@@ -23,9 +35,15 @@ const submitHandler = () => {
       <code class="mod--code">shift + tab</code>.
     </p>
 
-    <p>vals: {{ formValues }}</p>
+    <pre>vals: {{ formValues }}</pre>
+    <pre>values: {{values}}</pre>
     <form @submit.prevent="submitHandler">
       <div class="am-cols view-form__inputs">
+
+        <input
+            class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+            v-model="email" v-bind="emailAttrs" type="text" />
+
         <AInput
           name="Обязательное. Минимум 3 символа."
           v-model="formValues.textWithValidation"
