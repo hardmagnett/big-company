@@ -13,7 +13,7 @@ const rules: Record<string, ValidationRule>  = {
     return result
   },
 
-  max(fieldValue, ruleParameter) {
+  minlength(fieldValue, ruleParameter) {
     return false
   }
 }

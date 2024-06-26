@@ -1,4 +1,5 @@
 import type { DirectiveBinding, ObjectDirective } from 'vue'
+import {reactive} from 'vue'
 
 import type {
   ValidationRule,
@@ -17,7 +18,7 @@ import validationMessages from './validationMessages';
 const formFields: FormFields = [];
 
 
-const fieldErrors = reactive({});
+const fieldErrors: Record<string, string> = reactive({});
 
 function setFormFieldData(fieldName: string, rules: string) {
 

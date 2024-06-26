@@ -43,18 +43,18 @@ const submitHandler = (e:Event)=>{
 
 
         <AInput
-            rules="required:true|max:5"
-            name="Текстовое поле валидируемое"
+            rules="required:true|minlength:3"
+            name="Обязательное. Минимум 3 символа."
             v-model="formValues.textWithValidation"
             class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-            label="Текстовое поле валидируемое"
+            label="Обязательное. Минимум 3 символа."
             hideHint
         ></AInput>
 
         <AInput
             v-model="formValues.textWithoutValidation"
             class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-            label="Текстовое поле не валидируемое"
+            label="Невалидируемое"
             hideHint
         ></AInput>
         <ACheckBox
