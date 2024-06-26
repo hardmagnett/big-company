@@ -97,6 +97,7 @@ const runValidation = (toBeValidatedFields: FormFields, form: HTMLFormElement)=>
           if (!fieldElement) continue
 
           const fieldValue = fieldElement.value
+          console.log(fieldValue); console.log('^...fieldValue:')
 
 
           const formError: FormError= {

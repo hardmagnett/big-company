@@ -26,13 +26,18 @@ defineEmits([...iAInputableEmits]);
   <label :for="`a-check-box-${$.uid}`" class="a-check-box__wrapper">
 
     <!--checked-->
+    <!--value=true-->
+    <!--У чекбокса value всегда "on". Независимо от того поставлен он или нет.-->
+    <!--Но если поставить value='foobar' то value будет всегда foobar-->
+    <!--Реальное boolean-значение лежит в поле checked.-->
     <input
       :name="name"
       v-validate="rules"
-      class="a-check-box__input a-inputable__hidden-original-input"
+      class="a-check-box__input a-inputable__hidden-original-inputZ"
       type="checkbox"
       v-model="model"
       :id="`a-check-box-${$.uid}`"
+      validation-name=""
     />
     <span
       class="a-check-box__label mod--ellipsis-one-line"
@@ -57,7 +62,9 @@ defineEmits([...iAInputableEmits]);
     height: calc(var(--gap) + 2px);
     line-height: 1.2;
 
-    .a-check-box__input {}
+    .a-check-box__input {
+      z-index: 10;
+    }
 
 
     .a-check-box__label {

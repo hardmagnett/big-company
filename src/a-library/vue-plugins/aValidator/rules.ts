@@ -6,16 +6,19 @@ const rules: Record<string, Rule> = {
       // if (!ruleParameter) {
       //
       // }
+      // console.log(value); console.log('^...value on required:')
       const result = Boolean(value);
-      return Boolean(value);
+      return result;
     },
     defaultErrorMessage: "Для поля :attribute значение :param неподходящее.",
   },
   minlength: {
     check: (value, param) => {
-      return false
+      // console.log(value); console.log('^...value on minlength:')
+      const result = Boolean(value.length >=3)
+      return result
     },
-    defaultErrorMessage: "Минимальная длина :attribute: должна быть :param.",
+    defaultErrorMessage: "Длина значения :attribute: должна быть не менее :param.",
   },
 };
 export default rules

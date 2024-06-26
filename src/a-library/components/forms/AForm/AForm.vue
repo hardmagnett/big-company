@@ -28,7 +28,7 @@ const submitHandler = (e:Event)=>{
 <template>
   <form class="a-form" @submit.prevent="submitHandler">
     <slot></slot>
-    <p>-={{ fieldErrors }}=-</p>
+    <pre>-={{ fieldErrors }}=-</pre>
 
   </form>
 </template>
