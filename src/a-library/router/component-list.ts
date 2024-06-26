@@ -26,6 +26,12 @@ export default [
       import("@/a-library/views/component-list/ViewInputs/ViewInputs.vue"),
   },
   {
+    path: `${pathToComponents}form`,
+    name: "form",
+    component: () =>
+      import("@/a-library/views/component-list/ViewForm/ViewForm.vue"),
+  },
+  {
     path: `${pathToComponents}column-grid`,
     name: "column-grid",
     component: () =>

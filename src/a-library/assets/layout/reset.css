@@ -1,6 +1,9 @@
 * {
   /*Нормальный прочет размеров*/
   box-sizing: border-box;
+
+  scrollbar-color: #ccc transparent;
+  scrollbar-width: thin;
 }
 
 input,

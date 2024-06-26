@@ -18,4 +18,9 @@
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: calc(var(--gap) / 4);
   padding: calc(var(--gap) / 4) calc(var(--gap) / 2);
+  overflow-y: auto;
+}
+
+.mod--text-tiny {
+  font-size: var(--font-size-tiny);
 }

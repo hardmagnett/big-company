@@ -35,6 +35,16 @@ const isDialogConfiguredOpen = ref(false);
       <li>Цвета и тексты для кнопок</li>
       <li>Скрытие кнопок</li>
     </ul>
+    <p class="mod--text-tiny">
+      В Chrome на элементе dialog 2-й раз не отрабатывает preventDefault
+      (2024-06).
+      <br />
+      Поэтому при 2-м нажатии на esc окно закрывается и больше не открывается.
+      <br />
+      В остальных браузерах работает нормально.
+      <br />
+      Пока-что не исправляю - надеюсь в гугле сами исправят.
+    </p>
     <ADialog
       remainOnEsc
       remainOnClickOutside

@@ -55,7 +55,7 @@ const menuItems = inject(menuItemsInjectionKey);
       logoUrl="/src/app/assets/images/logo.svg"
       textNearLogo="CRM"
     />
-    <div class="a-main-menu__items mod--cool-scrollbar">
+    <div class="a-main-menu__items">
       <AMainMenuItem
         v-for="menuItem in menuItems"
         :key="menuItem.id"

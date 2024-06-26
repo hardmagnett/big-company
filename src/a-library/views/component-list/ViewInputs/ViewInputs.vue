@@ -5,15 +5,27 @@
     </Teleport>
 
     <h2>Текстовое поле</h2>
-    <AInput placeholder="placeholder for text"></AInput>
+    <p>По умолчанию.</p>
+    <AInput label="Лейбл" hideHint></AInput>
     <br />
-    <AInput value="default value"></AInput>
+    <p>Без лейбла. С плейлхолдером.</p>
+    <AInput
+      value="default value"
+      hideLabel
+      placeholder="placeholder for text"
+      hideHint
+    ></AInput>
     <br />
 
     <h2>Чекбокс</h2>
-    <ACheckBox label="С указанием label" />
+    <ACheckBox label="С указанием label" hide-hint />
+    <ACheckBox
+      label="Чекбокс со скрытым местом для заголовка"
+      hide-hint
+      hide-label
+    />
+    <ACheckBox hide-hint hide-label />
     <br />
-    <ACheckBox />
   </div>
 </template>
 
@@ -22,3 +34,4 @@
   padding-bottom: 200px;
 }
 </style>
+<script setup lang="ts"></script>

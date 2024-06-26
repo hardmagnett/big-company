@@ -30,9 +30,10 @@ for (let colorName of colorNames) {
   ]);
 }
 
-let colorFontCSSVariables: Array<[string, string, string, string]> = [];
+let colorFontCSSVariables: Array<[string, string, string, string, string]> = [];
 for (let colorName of colorNames) {
   colorFontCSSVariables.push([
+    `--clr-font-${colorName}-bright`,
     `--clr-font-${colorName}-darkest`,
     `--clr-font-${colorName}-dark`,
     `--clr-font-${colorName}-gray`,
@@ -50,10 +51,10 @@ for (let colorName of colorNames) {
     <h2>Фоны</h2>
     <p>Для блоков большого размера.</p>
 
-    <div class="view-colors__wrapper-for-bgs">
+    <div class="view-colors__wrapper-for-bgs am-cols am-cols-5">
       <template v-for="(colorGroup, index) in colorBGCSSVariables" :key="index">
         <div
-          class="view-colors__color-block mod--basis-for-column-flex-item"
+          class="view-colors__color-block am-col-5 am-col-xl-1"
           v-for="(variableName, index) in colorGroup"
           :key="index"
           :style="{
@@ -70,13 +71,13 @@ for (let colorName of colorNames) {
     <h2>Заполнения</h2>
     <p>Ярко выраженный цвет. Например кнопка. Максимум - шапка.</p>
 
-    <div class="view-colors__wrapper-for-fills">
+    <div class="view-colors__wrapper-for-fills am-cols">
       <template
         v-for="(colorGroup, index) in colorFillCSSVariables"
         :key="index"
       >
         <div
-          class="view-colors__color-block mod--basis-for-column-flex-item"
+          class="view-colors__color-block am-col-12 am-col-lg-4"
           v-for="(variableName, index) in colorGroup"
           :key="index"
           :style="{
@@ -94,13 +95,13 @@ for (let colorName of colorNames) {
 
     <h2>Бордюры</h2>
 
-    <div class="view-colors__wrapper-for-borders">
+    <div class="view-colors__wrapper-for-borders am-cols">
       <template
         v-for="(colorGroup, index) in colorBorderCSSVariables"
         :key="index"
       >
         <ACard
-          class="mod--basis-for-column-flex-item"
+          class="am-col-12 am-col-lg-4"
           v-for="(variableName, index) in colorGroup"
           :key="index"
           :style="{
@@ -135,32 +136,11 @@ for (let colorName of colorNames) {
   .view-colors__color-block {
     padding: var(--gap);
   }
-  .view-colors__wrapper-for-borders,
-  .view-colors__wrapper-for-fills,
-  .view-colors__wrapper-for-bgs {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  .view-colors__wrapper-for-borders {
-    --flex-items-qty: 3;
-    gap: var(--gap);
-    @container style(--bp-md-or-less) {
-      --flex-items-qty: 1;
-    }
-  }
   .view-colors__wrapper-for-fills {
-    --flex-items-qty: 3;
-    --gap-flex: 0px;
-    @container style(--bp-md-or-less) {
-      --flex-items-qty: 1;
-    }
+    --cols-gap: 0px;
   }
   .view-colors__wrapper-for-bgs {
-    --flex-items-qty: 5;
-    --gap-flex: 0px;
-    @container style(--bp-lg-or-less) {
-      --flex-items-qty: 1;
-    }
+    --cols-gap: 0px;
   }
 }
 </style>

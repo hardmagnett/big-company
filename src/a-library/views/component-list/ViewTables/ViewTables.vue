@@ -4,7 +4,10 @@
       <APageHeader> Таблицы </APageHeader>
     </Teleport>
 
-    <p>Фактически - стилизованная обертка над тэгом <code>table</code>.</p>
+    <p>
+      Фактически - стилизованная обертка над тэгом
+      <code class="mod--code">table</code>.
+    </p>
     <br />
 
     <h2>Обычная</h2>

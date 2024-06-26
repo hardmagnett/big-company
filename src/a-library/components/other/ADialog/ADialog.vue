@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { watch, ref, onMounted, onBeforeUnmount } from "vue";
-import { assertIsNode } from "@/a-library/helpers/language/typeAssertions";
 import { getValueOfCSSVariableAsNumber } from "@/a-library/helpers/DOM/getCSSVariable";
 
 const emit = defineEmits(["needToClose", "apply"]);
@@ -54,6 +53,7 @@ let showModal = () => {
  * потому-что это не непосредственное закрытие, а лишь намерение о закрытии.
  * Непосредственное закрытие происходит при вызове метода close() у html-элемента dialog.
  */
+
 let needToClose = () => {
   emit("needToClose");
 };
@@ -80,8 +80,7 @@ let runClosingOnDeniedAnimation = () => {
 };
 
 let closeDialogOnOutsideClick = (e: MouseEvent) => {
-  let target = e.target;
-  assertIsNode(target);
+  let target = e.target as Node;
   const isClickOnDialogWrapperOrItsChildrenNodes =
     dialogWrapperNode.value?.contains(target);
 
@@ -126,18 +125,21 @@ onBeforeUnmount(() => {
         <slot></slot>
       </div>
       <div class="a-dialog__buttons">
-        <ABtn
-          @click="needToClose"
-          :class="[cssClassCancel]"
-          class="a-btn--tonal"
-          >{{ textCancel }}</ABtn
-        >
-        <ABtn
-          @click="$emit('apply')"
-          v-if="!hideApply"
-          :class="[cssClassApply]"
-          >{{ textApply }}</ABtn
-        >
+        <AFormButtonsWrapper>
+          <ABtn
+            autofocus
+            @click="needToClose"
+            :class="[cssClassCancel]"
+            class="a-btn--tonal"
+            >{{ textCancel }}</ABtn
+          >
+          <ABtn
+            @click="$emit('apply')"
+            v-if="!hideApply"
+            :class="[cssClassApply]"
+            >{{ textApply }}</ABtn
+          >
+        </AFormButtonsWrapper>
       </div>
     </div>
   </dialog>
@@ -197,9 +199,6 @@ onBeforeUnmount(() => {
       }
     }
     .a-dialog__buttons {
-      display: flex;
-      justify-content: flex-end;
-      gap: var(--gap);
       padding: var(--gap);
       padding-top: 0;
     }

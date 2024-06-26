@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="a-table mod--cool-scrollbar">
+  <div class="a-table">
     <table>
       <slot></slot>
     </table>

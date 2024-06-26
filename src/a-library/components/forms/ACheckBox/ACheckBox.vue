@@ -1,79 +1,108 @@
 <script setup lang="ts">
-export interface Props {
-  label?: string;
-}
-withDefaults(defineProps<Props>(), {});
+import {
+  iAInputableEmits,
+  iAInputablePropDefaults,
+} from "@/a-library/components/forms/mixins/AInputable/IAInputable";
+import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
+
+export interface Props extends IAInputableProps {}
+withDefaults(defineProps<Props>(), {
+  ...iAInputablePropDefaults,
+});
+
+const model = defineModel();
+
+defineEmits([...iAInputableEmits]);
 </script>
 
 <template>
-  <label :for="`check-box-${$.uid}`" class="check-box">
-    <input
-      class="check-box__input"
-      type="checkbox"
-      checked
-      :id="`check-box-${$.uid}`"
-    />
-    <span
-      class="check-box__label"
-      :class="{ 'check-box__label--with-text': label }"
-    >
-      {{ label }}
-    </span>
-  </label>
+  <AInputControl
+    class="a-check-box"
+    :hideLabel="hideLabel"
+    :hideHint="hideHint"
+  >
+    <label :for="`a-check-box-${$.uid}`" class="a-check-box__wrapper">
+      <!--checked-->
+      <!--value=true-->
+      <!--У чекбокса value всегда "on". Независимо от того поставлен он или нет.-->
+      <!--Но если поставить value='foobar' то value будет всегда foobar-->
+      <!--Реальное boolean-значение лежит в поле checked.-->
+      <input
+        :name="name"
+        class="a-check-box__input a-inputable__hidden-original-input"
+        type="checkbox"
+        v-model="model"
+        :id="`a-check-box-${$.uid}`"
+      />
+      <span
+        class="a-check-box__label mod--ellipsis-one-line"
+        :class="{ 'a-check-box__label--with-text': label }"
+      >
+        {{ label }}
+      </span>
+    </label>
+  </AInputControl>
 </template>
 
 <style scoped>
-.check-box {
-  display: block;
-  cursor: pointer;
-  position: relative;
-  width: fit-content;
-  height: calc(var(--gap) + 2px);
-  line-height: 1.2;
+@import "@/a-library/components/forms/mixins/AInputable/AInputable.css";
+.a-check-box {
+  .a-check-box__wrapper {
+    display: block;
+    max-width: 100%;
+    cursor: pointer;
+    position: relative;
+    width: fit-content;
+    height: calc(var(--gap) + 2px);
+    line-height: 1.2;
 
-  .check-box__input {
-    display: none;
-    width: var(--gap);
-    height: var(--gap);
-  }
-
-  .check-box__label {
-    user-select: none;
-
-    &:before,
-    &:after {
-      display: block;
-      width: var(--gap);
-      height: var(--gap);
-      position: absolute;
-      top: 0;
-      left: 0;
+    .a-check-box__input {
     }
 
-    /*Рамка для checkmark*/
-    &:before {
-      content: "";
-      background-color: white;
-      border: 1px solid var(--clr-border-blue-lighter);
-    }
-    /*Непосредственно checkmark*/
-    &:after {
-      color: var(--clr-fill-blue-accent);
-      content: "✔";
-      opacity: 0;
-      transition: opacity var(--time-short);
-      transform: translateX(3px) translateY(0px);
-      font-weight: bold;
-    }
-  }
+    .a-check-box__label {
+      user-select: none;
 
-  .check-box__label--with-text {
-    padding-left: calc(var(--gap) * 1.5);
-  }
+      &:before,
+      &:after {
+        display: block;
+        width: var(--gap);
+        height: var(--gap);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
 
-  /*чекнутый checkmark*/
-  .check-box__input:checked + .check-box__label::after {
-    opacity: 1;
+      /*Рамка для checkmark*/
+      &:before {
+        content: "";
+        background-color: white;
+        border: 1px solid var(--clr-border-blue-lighter);
+        transition: border var(--time-short);
+      }
+      /*Непосредственно checkmark*/
+      &:after {
+        color: var(--clr-fill-blue-accent);
+        content: "✔";
+        opacity: 0;
+        transition: opacity var(--time-short);
+        transform: translateX(3px) translateY(0px);
+        font-weight: bold;
+      }
+    }
+    .a-check-box__input:focus-visible + .a-check-box__label {
+      &:before {
+        border: 1px solid var(--clr-border-blue-darker);
+      }
+    }
+
+    .a-check-box__label--with-text {
+      padding-left: calc(var(--gap) * 1.5);
+    }
+
+    /*чекнутый checkmark*/
+    .a-check-box__input:checked + .a-check-box__label::after {
+      opacity: 1;
+    }
   }
 }
 </style>

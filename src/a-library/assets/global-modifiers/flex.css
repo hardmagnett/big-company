@@ -1,0 +1,277 @@
+.am-cols {
+  display: flex;
+  flex-flow: row wrap;
+
+  /*Может перегружаться из того места, где применяется. */
+  /*Если нужно 0 то нужно писать 0px */
+  --cols-gap: var(--gap);
+
+  --cols-qty: 12;
+
+  --total-gaps: calc(var(--cols-qty) - 1);
+  --total-gaps-width: calc(var(--total-gaps) * var(--cols-gap));
+  --width-of-all-columns-without-gaps: calc(100% - var(--total-gaps-width));
+  --width-of-one-column: calc(
+    var(--width-of-all-columns-without-gaps) / var(--cols-qty)
+  );
+
+  gap: var(--cols-gap);
+
+  &.am-cols-5 {
+    --cols-qty: 5;
+  }
+
+  > .am-col-1,
+  > .am-col-2,
+  > .am-col-3,
+  > .am-col-4,
+  > .am-col-5,
+  > .am-col-6,
+  > .am-col-7,
+  > .am-col-8,
+  > .am-col-9,
+  > .am-col-10,
+  > .am-col-11,
+  > .am-col-12 {
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    --width-of-all-columns: calc(
+      var(--width-of-one-column) * var(--cols-qty-per-item)
+    );
+    --width-of-all-gaps-to-add: calc(
+      var(--cols-gap) * (var(--cols-qty-per-item) - 1)
+    );
+    --flex-basis-result: calc(
+      var(--width-of-all-columns) + var(--width-of-all-gaps-to-add)
+    );
+    flex-basis: var(--flex-basis-result);
+  }
+
+  .am-col-1 {
+    --cols-qty-per-item: 1;
+  }
+  .am-col-2 {
+    --cols-qty-per-item: 2;
+  }
+  .am-col-3 {
+    --cols-qty-per-item: 3;
+  }
+  .am-col-4 {
+    --cols-qty-per-item: 4;
+  }
+  .am-col-5 {
+    --cols-qty-per-item: 5;
+  }
+  .am-col-6 {
+    --cols-qty-per-item: 6;
+  }
+  .am-col-7 {
+    --cols-qty-per-item: 7;
+  }
+  .am-col-8 {
+    --cols-qty-per-item: 8;
+  }
+  .am-col-9 {
+    --cols-qty-per-item: 9;
+  }
+  .am-col-10 {
+    --cols-qty-per-item: 10;
+  }
+  .am-col-11 {
+    --cols-qty-per-item: 11;
+  }
+  .am-col-12 {
+    --cols-qty-per-item: 12;
+  }
+  @container style(--bp-sm-or-more) {
+    .am-col-sm-1 {
+      --cols-qty-per-item: 1;
+    }
+    .am-col-sm-2 {
+      --cols-qty-per-item: 2;
+    }
+    .am-col-sm-3 {
+      --cols-qty-per-item: 3;
+    }
+    .am-col-sm-4 {
+      --cols-qty-per-item: 4;
+    }
+    .am-col-sm-5 {
+      --cols-qty-per-item: 5;
+    }
+    .am-col-sm-6 {
+      --cols-qty-per-item: 6;
+    }
+    .am-col-sm-7 {
+      --cols-qty-per-item: 7;
+    }
+    .am-col-sm-8 {
+      --cols-qty-per-item: 8;
+    }
+    .am-col-sm-9 {
+      --cols-qty-per-item: 9;
+    }
+    .am-col-sm-10 {
+      --cols-qty-per-item: 10;
+    }
+    .am-col-sm-11 {
+      --cols-qty-per-item: 11;
+    }
+    .am-col-sm-12 {
+      --cols-qty-per-item: 12;
+    }
+  }
+  @container style(--bp-md-or-more) {
+    .am-col-md-1 {
+      --cols-qty-per-item: 1;
+    }
+    .am-col-md-2 {
+      --cols-qty-per-item: 2;
+    }
+    .am-col-md-3 {
+      --cols-qty-per-item: 3;
+    }
+    .am-col-md-4 {
+      --cols-qty-per-item: 4;
+    }
+    .am-col-md-5 {
+      --cols-qty-per-item: 5;
+    }
+    .am-col-md-6 {
+      --cols-qty-per-item: 6;
+    }
+    .am-col-md-7 {
+      --cols-qty-per-item: 7;
+    }
+    .am-col-md-8 {
+      --cols-qty-per-item: 8;
+    }
+    .am-col-md-9 {
+      --cols-qty-per-item: 9;
+    }
+    .am-col-md-10 {
+      --cols-qty-per-item: 10;
+    }
+    .am-col-md-11 {
+      --cols-qty-per-item: 11;
+    }
+    .am-col-md-12 {
+      --cols-qty-per-item: 12;
+    }
+  }
+  @container style(--bp-lg-or-more) {
+    .am-col-lg-1 {
+      --cols-qty-per-item: 1;
+    }
+    .am-col-lg-2 {
+      --cols-qty-per-item: 2;
+    }
+    .am-col-lg-3 {
+      --cols-qty-per-item: 3;
+    }
+    .am-col-lg-4 {
+      --cols-qty-per-item: 4;
+    }
+    .am-col-lg-5 {
+      --cols-qty-per-item: 5;
+    }
+    .am-col-lg-6 {
+      --cols-qty-per-item: 6;
+    }
+    .am-col-lg-7 {
+      --cols-qty-per-item: 7;
+    }
+    .am-col-lg-8 {
+      --cols-qty-per-item: 8;
+    }
+    .am-col-lg-9 {
+      --cols-qty-per-item: 9;
+    }
+    .am-col-lg-10 {
+      --cols-qty-per-item: 10;
+    }
+    .am-col-lg-11 {
+      --cols-qty-per-item: 11;
+    }
+    .am-col-lg-12 {
+      --cols-qty-per-item: 12;
+    }
+  }
+  @container style(--bp-xl-or-more) {
+    .am-col-xl-1 {
+      --cols-qty-per-item: 1;
+    }
+    .am-col-xl-2 {
+      --cols-qty-per-item: 2;
+    }
+    .am-col-xl-3 {
+      --cols-qty-per-item: 3;
+    }
+    .am-col-xl-4 {
+      --cols-qty-per-item: 4;
+    }
+    .am-col-xl-5 {
+      --cols-qty-per-item: 5;
+    }
+    .am-col-xl-6 {
+      --cols-qty-per-item: 6;
+    }
+    .am-col-xl-7 {
+      --cols-qty-per-item: 7;
+    }
+    .am-col-xl-8 {
+      --cols-qty-per-item: 8;
+    }
+    .am-col-xl-9 {
+      --cols-qty-per-item: 9;
+    }
+    .am-col-xl-10 {
+      --cols-qty-per-item: 10;
+    }
+    .am-col-xl-11 {
+      --cols-qty-per-item: 11;
+    }
+    .am-col-xl-12 {
+      --cols-qty-per-item: 12;
+    }
+  }
+  @container style(--bp-xxl-or-more) {
+    .am-col-xxl-1 {
+      --cols-qty-per-item: 1;
+    }
+    .am-col-xxl-2 {
+      --cols-qty-per-item: 2;
+    }
+    .am-col-xxl-3 {
+      --cols-qty-per-item: 3;
+    }
+    .am-col-xxl-4 {
+      --cols-qty-per-item: 4;
+    }
+    .am-col-xxl-5 {
+      --cols-qty-per-item: 5;
+    }
+    .am-col-xxl-6 {
+      --cols-qty-per-item: 6;
+    }
+    .am-col-xxl-7 {
+      --cols-qty-per-item: 7;
+    }
+    .am-col-xxl-8 {
+      --cols-qty-per-item: 8;
+    }
+    .am-col-xxl-9 {
+      --cols-qty-per-item: 9;
+    }
+    .am-col-xxl-10 {
+      --cols-qty-per-item: 10;
+    }
+    .am-col-xxl-11 {
+      --cols-qty-per-item: 11;
+    }
+    .am-col-xxl-12 {
+      --cols-qty-per-item: 12;
+    }
+  }
+}

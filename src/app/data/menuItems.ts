@@ -48,12 +48,21 @@ const menuItems: Array<IMenuItem> = [
           to: "buttons",
         },
       },
+
       {
         id: i++,
         title: "Элементы форм",
         icon: "mdi-form-textbox",
         route: {
           to: "inputs",
+        },
+      },
+      {
+        id: i++,
+        title: "Форма",
+        icon: "mdi-page-next-outline",
+        route: {
+          to: "form",
         },
       },
       {
