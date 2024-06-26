@@ -11,15 +11,12 @@
 
 import { useResponsiveStore } from "@/a-library/stores/responsive";
 import type { CreateToastFunctionDeclaration } from "@/a-library/vue-plugins/toast";
-import type { DirectiveBinding, ObjectDirective } from 'vue'
 
 const valueWithTypeOfUseResponsiveStore = useResponsiveStore();
 declare module "vue" {
   interface ComponentCustomProperties {
     $responsiveVariables: typeof valueWithTypeOfUseResponsiveStore;
     $toast: CreateToastFunctionDeclaration;
-    $validate: ObjectDirective
-    // todo: добавить сюда $validate, когда будет готова AValidator.ValidateDirective;
   }
 }
 

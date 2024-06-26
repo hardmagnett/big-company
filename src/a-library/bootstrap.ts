@@ -11,7 +11,6 @@ import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue"
 import APageHeader from "@/a-library/components/layout/APageHeader/APageHeader.vue";
 
 // Forms
-import AForm from "@/a-library/components/forms/AForm/AForm.vue";
 import AFormButtonsWrapper from "@/a-library/components/forms/AFormButtonsWrapper/AFormButtonsWrapper.vue";
 import AInputControl from "@/a-library/components/forms/AInputControl/AInputControl.vue";
 import ABtn from "@/a-library/components/forms/ABtn/ABtn.vue";
@@ -38,7 +37,6 @@ import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 // ===========
 import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalStorage";
 import toast from "@/a-library/vue-plugins/toast";
-import aValidator from "@/a-library/vue-plugins/aValidator/aValidatorPlugin";
 
 /**
  * Подключает компоненты из библиотеки.
@@ -65,7 +63,6 @@ export default function ({
   vueApp.component("APageHeader", APageHeader);
 
   // Forms
-  vueApp.component("AForm", AForm);
   vueApp.component("AFormButtonsWrapper", AFormButtonsWrapper);
   vueApp.component("AInputControl", AInputControl);
   vueApp.component("ABtn", ABtn);
@@ -92,6 +89,4 @@ export default function ({
   // ===========
   vueApp.use(responsiveGlobalStorage);
   vueApp.use(toast);
-  vueApp.use(aValidator);
-
 }

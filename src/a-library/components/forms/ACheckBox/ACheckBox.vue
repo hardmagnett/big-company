@@ -30,17 +30,12 @@ defineEmits([...iAInputableEmits]);
     <!--У чекбокса value всегда "on". Независимо от того поставлен он или нет.-->
     <!--Но если поставить value='foobar' то value будет всегда foobar-->
     <!--Реальное boolean-значение лежит в поле checked.-->
-
-    <!--todo::записать в storybook как быть с особыми случаями для валидируемых элементов.-->
     <input
       :name="name"
-      v-validate="rules"
       class="a-check-box__input a-inputable__hidden-original-input"
       type="checkbox"
       v-model="model"
       :id="`a-check-box-${$.uid}`"
-      :data-validate-name="name"
-      :data-validate-value="model"
     />
     <span
       class="a-check-box__label mod--ellipsis-one-line"
@@ -65,9 +60,7 @@ defineEmits([...iAInputableEmits]);
     height: calc(var(--gap) + 2px);
     line-height: 1.2;
 
-    .a-check-box__input {
-      z-index: 10;
-    }
+    .a-check-box__input {}
 
 
     .a-check-box__label {
