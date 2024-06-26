@@ -108,22 +108,18 @@ const runValidation = (toBeValidatedFields: FormFields, form: HTMLFormElement)=>
           // todo:: может-быть сделать здесь throw или хотя-бы console.log
           if (!fieldElement) continue
 
-          console.log(fieldElement); console.log('^...fieldElement:')
           let fieldValue
           const customValueAttributeName = 'data-validate-value'
-          const elHasAttrValue = fieldElement.hasAttribute('value')
-          // console.log(elHasAttrValue); console.log('^...elHasAttrValue:')
           const elHasAttrValueCustomAttr = fieldElement.hasAttribute(customValueAttributeName)
-          // console.log(elHasAttrValueCustomAttr); console.log('^...elHasAttrValueCustomAttr:')
           if (elHasAttrValueCustomAttr) {
+            // Сначала получим из кастомного атрибута, т.к. он приоритетнее чем 'value'
             fieldValue = fieldElement.getAttribute(customValueAttributeName)
-          } else if (fieldElement.value) {
-            fieldValue = fieldElement.getAttribute('value')
+          } else if ('value' in fieldElement) {
+            // Иначе получим value
+            fieldValue = fieldElement.value
           } else {
-            throw new Error(`У элемента с именем "${field.fieldName}" отсутсвуют атрибуты "value" или "${customValueAttributeName}"`)
+            throw new Error(`У элемента с именем "${field.fieldName}" отсутствуют атрибуты "value" или "${customValueAttributeName}"`)
           }
-
-          console.log(fieldValue); console.log('^...fieldValue:')
 
 
           const formError: FormError= {
