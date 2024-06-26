@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { watch, ref, onMounted, onBeforeUnmount } from "vue";
-import { assertIsNode } from "@/a-library/helpers/language/typeAssertions";
 import { getValueOfCSSVariableAsNumber } from "@/a-library/helpers/DOM/getCSSVariable";
 
 const emit = defineEmits(["needToClose", "apply"]);
@@ -54,7 +53,8 @@ let showModal = () => {
  * потому-что это не непосредственное закрытие, а лишь намерение о закрытии.
  * Непосредственное закрытие происходит при вызове метода close() у html-элемента dialog.
  */
-let needToClose = (e: Event) => {
+// let needToClose = (e: Event) => {
+let needToClose = () => {
   // console.log('needToClose')
   // e.preventDefault()
   emit("needToClose");
@@ -66,7 +66,8 @@ let cancelDialogHandler = (e: Event) => {
     e.preventDefault();
     runClosingOnDeniedAnimation();
   } else {
-    needToClose(e);
+    // needToClose(e);
+    needToClose();
   }
 };
 
@@ -82,8 +83,9 @@ let runClosingOnDeniedAnimation = () => {
 };
 
 let closeDialogOnOutsideClick = (e: MouseEvent) => {
-  let target = e.target;
-  assertIsNode(target);
+  let target = e.target as Node;
+  // let target = e.target;
+  // assertIsNode(target);
   const isClickOnDialogWrapperOrItsChildrenNodes =
     dialogWrapperNode.value?.contains(target);
 
