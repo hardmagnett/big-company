@@ -43,7 +43,7 @@ const submitHandler = (e:Event)=>{
 
 
         <AInput
-            rules="required:true|max:5|boolRule"
+            rules="required:true|max:5"
             name="Текстовое поле валидируемое"
             v-model="formValues.textWithValidation"
             class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"

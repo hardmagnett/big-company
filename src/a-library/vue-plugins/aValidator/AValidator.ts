@@ -1,17 +1,23 @@
 import type { DirectiveBinding, ObjectDirective } from 'vue'
 
+import type {
+  ValidationRule,
+  RuleValue,
+  Rule,
+  FormFields,
+  FormError
+} from '@/a-library/vue-plugins/aValidator/types';
 
-// todo:: убрать any
-type RuleValue = string | Boolean
-type Rule = Record<string, RuleValue>
+import validationRules from './validationRules';
+import validationMessages from './validationMessages';
 
-type FormFields = { fieldName: string, rules: Rule }[]
 
 // Хранит примерно такое значение
 // [{ 'field_name':'phone_no', 'rules':{required:true, max:5}}]
-// const formFields: Record<string, any>[] = [];
-// const formFields: { fieldName: string, rules: Rule }[] = [];
 const formFields: FormFields = [];
+
+
+const fieldErrors = reactive({});
 
 function setFormFieldData(fieldName: string, rules: string) {
 
@@ -49,9 +55,29 @@ function setFormFieldData(fieldName: string, rules: string) {
 
 }
 
+
+const setFieldError = (formError: FormError, clear=false) => {
+  const fieldName = formError.fieldName;
+  if(clear){
+    fieldErrors[fieldName] = '';
+    return false;
+  }
+  // Replacing underscore and value preceding # from field name. Нахуя?
+  // Видел в одной библиотеке такую замену. Не понял зачем она нужна, но пусть побудет здесь.
+  // fieldName=fieldName.replace(/_/g, ' ').split('#')[0];
+
+  const textMessageUnprepared = validationMessages[formError.ruleName]
+  textMessageUnprepared
+    .replace(':attribute', fieldName)
+    .replace(':param', formError.ruleParam.toString());
+
+  fieldErrors[fieldName] = textMessageUnprepared;
+  return true;
+}
+
 const runValidation = (toBeValidatedFields: FormFields, form: HTMLFormElement)=>{
   return new Promise((resolve, reject)=>{
-    let formErrors = []
+    const formErrors = []
     try {
       toBeValidatedFields.forEach((field)=>{
         for(const [ruleName, ruleParameter] of Object.entries(field.rules)) {
@@ -67,16 +93,17 @@ const runValidation = (toBeValidatedFields: FormFields, form: HTMLFormElement)=>
           const fieldValue = fieldElement.value
 
 
-          let formError = {
+          const formError: FormError= {
             fieldName: field.fieldName,
             ruleName: ruleName,
             ruleParam: ruleParameter,
             formName: field.formName
           }
-          if (!validationRules['ruleName'](fieldValue, ruleParameter)) {
-            setFieldError(formError)
+          if (validationRules[ruleName](fieldValue, ruleParameter)) {
+            setFieldError(formError, true)
           } else {
-            setFieldError (formError, true)
+            setFieldError(formError)
+            formErrors.push(formError);
           }
         }
 
