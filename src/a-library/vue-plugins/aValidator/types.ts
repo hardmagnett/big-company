@@ -1,29 +1,40 @@
-// логичнее назвать RuleParameterValue
-type RuleValue = string | boolean
+type Param = string | boolean
 
-type Rule = Record<string, RuleValue>
+// todo:: разобраться с этим WTF
+type RuleWTF = Record<string, Param>
 
-type FormFields = { fieldName: string, rules: Rule }[]
+type FormFields = { fieldName: string, rules: RuleWTF }[]
 
 // Логичнее назвать FieldError
 type FormError = {
   fieldName: string,
   ruleName: string,
-  ruleParam: RuleValue,
+  ruleParam: Param,
   formName: string
 }
 
+type Rule = {
+  /**
+   *
+   * @param value
+   * @param param
+   * @returns boolean - true, если проверка пройдена. false если проверка не пройдена
+   */
+  check: (value: string | number | boolean,  param: Param) => boolean,
+  defaultErrorMessage: string
+}
 
-type ValidationRule = (
+type ValidationRuleOLD = (
   fieldValue: string | number | boolean,
   // parameter: string | number | boolean
-  ruleParameter: RuleValue
+  ruleParameter: Param
 ) => boolean
 
 export type {
-  RuleValue,
-  ValidationRule,
-  Rule,
+  Param,
+  ValidationRuleOLD,
+  RuleWTF,
   FormFields,
-  FormError
+  FormError,
+  Rule
 }

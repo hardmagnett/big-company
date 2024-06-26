@@ -2,16 +2,16 @@ import type { DirectiveBinding, ObjectDirective } from 'vue'
 import {reactive} from 'vue'
 
 import type {
-  ValidationRule,
-  RuleValue,
-  Rule,
+  ValidationRuleOLD,
+  Param,
+  RuleWTF,
   FormFields,
   FormError
 } from '@/a-library/vue-plugins/aValidator/types';
 
-import validationRules from './validationRules';
-import validationMessages from './validationMessages';
 
+// todo:: переименовать rulesMy в rules когда избавишься от других странных переменных с названием rules
+import rulesMy from './rules';
 
 // Хранит примерно такое значение
 // [{ 'field_name':'phone_no', 'rules':{required:true, max:5}}]
@@ -24,12 +24,12 @@ const fieldErrors: Record<string, string> = reactive({});
 function setFormFieldData(fieldName: string, rules: string) {
 
 
-  const validationRules: Rule = {};
+  const validationRules: RuleWTF = {};
 
   rules.split("|").map((node) => {
     const ruleStringFull = node.split(":");
     const ruleStringName = ruleStringFull[0]
-    let ruleStingValue: RuleValue = ruleStringFull[1]
+    let ruleStingValue: Param = ruleStringFull[1]
     if (ruleStingValue === 'true') ruleStingValue = true
     validationRules[ruleStringName] = ruleStingValue ?? true;
   });
@@ -68,7 +68,11 @@ const setFieldError = (formError: FormError, clear=false) => {
   // Видел в одной библиотеке такую замену. Не понял зачем она нужна, но пусть побудет здесь.
   // fieldName=fieldName.replace(/_/g, ' ').split('#')[0];
 
-  const textMessageUnprepared = validationMessages[formError.ruleName]
+  const ruleToGetMessage = rulesMy[formError.ruleName]
+
+  const textMessageUnprepared  = ruleToGetMessage.defaultErrorMessage
+
+  // const textMessageUnprepared = validationMessages[formError.ruleName]
   textMessageUnprepared
     .replace(':attribute', fieldName)
     .replace(':param', formError.ruleParam.toString());
@@ -101,12 +105,24 @@ const runValidation = (toBeValidatedFields: FormFields, form: HTMLFormElement)=>
             ruleParam: ruleParameter,
             formName: field.formName
           }
-          if (validationRules[ruleName](fieldValue, ruleParameter)) {
+          const ruleToCheck = rulesMy[ruleName]
+          if (!ruleToCheck) {
+            throw new Error(`Не найдено правило с именем ${ruleName}`)
+          }
+
+          if (ruleToCheck.check(fieldValue, ruleParameter)) {
             setFieldError(formError, true)
-          } else {
+          }
+          else {
             setFieldError(formError)
             formErrors.push(formError);
           }
+
+          // if (validationRulesOLD[ruleName](fieldValue, ruleParameter)) {
+          //
+          // } else {
+          //
+          // }
         }
 
       })
