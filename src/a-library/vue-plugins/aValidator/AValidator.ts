@@ -5,10 +5,13 @@ import type { DirectiveBinding, ObjectDirective } from 'vue'
 type RuleValue = string | Boolean
 type Rule = Record<string, RuleValue>
 
+type FormFields = { fieldName: string, rules: Rule }[]
+
 // Хранит примерно такое значение
 // [{ 'field_name':'phone_no', 'rules':{required:true, max:5}}]
 // const formFields: Record<string, any>[] = [];
-const formFields: { fieldName: string, rules: Rule }[] = [];
+// const formFields: { fieldName: string, rules: Rule }[] = [];
+const formFields: FormFields = [];
 
 function setFormFieldData(fieldName: string, rules: string) {
 
@@ -46,7 +49,56 @@ function setFormFieldData(fieldName: string, rules: string) {
 
 }
 
-// setFormFieldData('my-name', 'required:true|max:5|boolRule')
+const runValidation = (toBeValidatedFields: FormFields, form: HTMLFormElement)=>{
+  return new Promise((resolve, reject)=>{
+    let formErrors = []
+    try {
+      toBeValidatedFields.forEach((field)=>{
+        for(const [ruleName, ruleParameter] of Object.entries(field.rules)) {
+          // todo:: здесь похоже нужно выбирать не из документа, а из конкретной проверяемой формы
+          const fieldElement = document.getElementsByName(field.fieldName)[0]
+          // let fieldElement = form.elements[field.fieldName]
+          // const fieldElement = form.elements['home']
+          // const fieldElement = form.elements.namedItem(field.fieldName)
+
+          // let fieldElement = form.elements[1]
+          if (!fieldElement) continue
+
+          const fieldValue = fieldElement.value
+
+
+          let formError = {
+            fieldName: field.fieldName,
+            ruleName: ruleName,
+            ruleParam: ruleParameter,
+            formName: field.formName
+          }
+          if (!validationRules['ruleName'](fieldValue, ruleParameter)) {
+            setFieldError(formError)
+          } else {
+            setFieldError (formError, true)
+          }
+        }
+
+      })
+    } catch (e) {
+      reject(e)
+    }
+    if (formErrors.length){
+      resolve(false)
+    } else {
+      resolve(true)
+    }
+  })
+}
+
+// const validateForm = (FormName='')=>{
+const validateForm = (form: HTMLFormElement)=>{
+  // todo:: здесь, похоже хорошо-бы валидировать не все поля, только те, которые принадлежат к конкретной форме.
+  const toBeValidatedFields = formFields;
+  return runValidation(toBeValidatedFields, form);
+}
+
 
 export default {
   validateDirective(el: HTMLElement, binding: DirectiveBinding) {
@@ -76,4 +128,8 @@ export default {
       binding.value
     );
   },
+}
+
+export {
+  validateForm
 }

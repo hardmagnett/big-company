@@ -1,5 +1,7 @@
 
-import AValidator from "./AValidator";
+import AValidator, {
+  validateForm
+} from "./AValidator";
 import type { App } from "vue";
 
 export default {
@@ -20,7 +22,7 @@ export default {
 
 // export const fieldErrors = AValitator.field_errors;
 // export const validateDirective = AValitator.validateDirective;
-// export const validateForm = AValitator.validateForm;
+
 // export const validateInputs = AValitator.validateInputs;
 // export const validateInput = AValitator.validateInput;
 // export const addField = AValitator.addField;
@@ -29,3 +31,7 @@ export default {
 // Когда доделаю - выбрать как лучше и зачем они вообще здесь.
 // import { validateInputs, validateDirective, fieldErrors } from 'vue-nice-validate';
 // const vValidate = validateDirective;
+
+export {
+  validateForm
+};

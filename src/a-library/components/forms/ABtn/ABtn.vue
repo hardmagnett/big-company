@@ -6,9 +6,12 @@ const attrs = useAttrs();
 export interface Props {
   icon?: boolean;
   autofocus?: boolean;
+  type?:string,
 }
 withDefaults(defineProps<Props>(), {
   autofocus: false,
+  // если кнопке не передать type, то она по умолчанию будет работать как type="submit"
+  type: 'button'
 });
 
 defineOptions({
@@ -28,6 +31,8 @@ const isRouterLink = computed(() => {
 </script>
 
 <template>
+  <!--fixme:: здесь уже передается type, даже если компонент будет не кнопкой, а например ссылкой-->
+  <!--если в сдедующий раз добавиться ещё один аналогичный атрибут, то сделать разный рендеринг для каждого типа компонента.-->
   <component
     :is="rootComponent"
     :autofocus="autofocus"
@@ -37,6 +42,7 @@ const isRouterLink = computed(() => {
       'a-btn--with-text': !icon,
     }"
     v-bind="$attrs"
+    :type="type"
   >
     <!--{{ $attrs }}-->
     <slot />

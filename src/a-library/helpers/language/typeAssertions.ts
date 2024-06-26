@@ -7,6 +7,17 @@
  * Чтобы TS не ругался
  * @param probablyNode
  */
+
+// todo:: Заменить использование этой ф-и на as. Удалить эту ф-ю нафиг.
+/*
+Это напряг - каждый раз импортировать эту ф-ю и писать каждый раз новые проверки на каждый тип.
+Проще пользоваться вот таким способом.
+const submitHandler = (e:Event)=>{
+  console.log('submitHandler')
+  const event = e as SubmitEvent;
+  const form = event.target as HTMLFormElement
+}
+ */
 function assertIsNode(
   probablyNode: EventTarget | Node | null,
 ): asserts probablyNode is Node {
