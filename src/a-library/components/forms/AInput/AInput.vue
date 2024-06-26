@@ -7,7 +7,6 @@ import {
 import type { IAInputableProps } from "@/a-library/components/forms/component-interfaces/IAInputable";
 
 export interface Props extends IAInputableProps{
-  // label?: string;
 
 }
 withDefaults(defineProps<Props>(), {
@@ -29,9 +28,6 @@ defineEmits([...iAInputableEmits]);
       :hideLabel="hideLabel"
       :hideHint="hideHint"
       class="a-input">
-    <!--shit-->
-    <!--value="shit"-->
-    <!--:data-validate-value="model"-->
     <input
       :name="name"
       v-model="model"
@@ -40,7 +36,6 @@ defineEmits([...iAInputableEmits]);
 
     />
   </AInputControl>
-  <!--<input v-bind="$attrs" class="a-input" />-->
 </template>
 
 <style scoped>
@@ -58,7 +53,6 @@ defineEmits([...iAInputableEmits]);
     transition: border var(--time-short);
     width: 100%;
     &:focus {
-      /*border: 1px solid var(--clr-border-blue-lighter);*/
       border: 1px solid var(--clr-border-blue-darker);
     }
   }

@@ -24,13 +24,6 @@
     <ACheckBox label="Чекбокс со скрытым местом для заголовка"  hide-hint hide-label/>
     <ACheckBox hide-hint hide-label/>
     <br>
-    https://vuetifyjs.com/en/components/forms/
-    <br>
-    https://vuetifyjs.com/en/components/text-fields/
-    <br>
-    https://vuetifyjs.com/en/components/checkboxes/
-    <br>
-    https://dev.to/yogeshgalav7/create-validation-plugin-in-vue-1flf
   </div>
 </template>
 

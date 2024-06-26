@@ -1,7 +1,6 @@
 <script setup lang="ts">
 // Расположение кнопок от формы снизу - довольно распространенная задача.
 // Этот компонент нужен чтобы не делать каждый раз одну и ту-же верстку
-// import { } from 'vue'
 
 </script>
 
@@ -27,8 +26,6 @@
     flex-flow: row nowrap;
     align-items: center;
     gap: var(--gap);
-
-    /*outline: 1px solid green;*/
   }
 }
 </style>

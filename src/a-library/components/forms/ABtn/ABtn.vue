@@ -44,7 +44,6 @@ const isRouterLink = computed(() => {
     v-bind="$attrs"
     :type="type"
   >
-    <!--{{ $attrs }}-->
     <slot />
   </component>
 </template>
@@ -117,7 +116,6 @@ const isRouterLink = computed(() => {
       background-color: var(--clr-bg-blue-smaller);
     }
     &:focus-visible {
-    /*&:focus {*/
       background-color: var(--clr-bg-blue-accent);
     }
 

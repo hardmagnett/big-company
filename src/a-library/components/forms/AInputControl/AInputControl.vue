@@ -19,7 +19,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <div class="a-input-control">
-    <!--mod&#45;&#45;ellipsis-one-line-->
     <div v-if="!hideLabel" class="a-input-control__label ">
       <div class=" mod--ellipsis-one-line">
         {{label}}
@@ -45,13 +44,11 @@ const props = withDefaults(defineProps<Props>(), {
   .a-input-control__label {
     display: flex;
     align-items: start;
-    /*outline: 1px solid blue;*/
 
     font-size: var(--font-size-small);
     height: var(--hint-height);
   }
   .a-input-control__input {
-    /*outline: 1px solid green;*/
     height: calc(var(--gap) * 2);
     display: flex;
     align-items: center;
@@ -64,8 +61,6 @@ const props = withDefaults(defineProps<Props>(), {
     height: var(--hint-height);
 
     color: var(--clr-font-red-bright);
-
-    /*outline: 1px solid darkred;*/
   }
 }
 </style>

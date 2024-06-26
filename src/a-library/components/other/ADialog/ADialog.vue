@@ -53,10 +53,8 @@ let showModal = () => {
  * потому-что это не непосредственное закрытие, а лишь намерение о закрытии.
  * Непосредственное закрытие происходит при вызове метода close() у html-элемента dialog.
  */
-// let needToClose = (e: Event) => {
+
 let needToClose = () => {
-  // console.log('needToClose')
-  // e.preventDefault()
   emit("needToClose");
 };
 
@@ -66,7 +64,6 @@ let cancelDialogHandler = (e: Event) => {
     e.preventDefault();
     runClosingOnDeniedAnimation();
   } else {
-    // needToClose(e);
     needToClose();
   }
 };
@@ -84,8 +81,6 @@ let runClosingOnDeniedAnimation = () => {
 
 let closeDialogOnOutsideClick = (e: MouseEvent) => {
   let target = e.target as Node;
-  // let target = e.target;
-  // assertIsNode(target);
   const isClickOnDialogWrapperOrItsChildrenNodes =
     dialogWrapperNode.value?.contains(target);
 
@@ -146,19 +141,6 @@ onBeforeUnmount(() => {
           >
         </AFormButtonsWrapper>
 
-        <!--<ABtn-->
-        <!--  autofocus-->
-        <!--  @click="needToClose"-->
-        <!--  :class="[cssClassCancel]"-->
-        <!--  class="a-btn&#45;&#45;tonal"-->
-        <!--  >{{ textCancel }}</ABtn-->
-        <!--&gt;-->
-        <!--<ABtn-->
-        <!--  @click="$emit('apply')"-->
-        <!--  v-if="!hideApply"-->
-        <!--  :class="[cssClassApply]"-->
-        <!--  >{{ textApply }}</ABtn-->
-        <!--&gt;-->
       </div>
     </div>
   </dialog>
@@ -218,9 +200,6 @@ onBeforeUnmount(() => {
       }
     }
     .a-dialog__buttons {
-      /*display: flex;*/
-      /*justify-content: flex-end;*/
-      /*gap: var(--gap);*/
       padding: var(--gap);
       padding-top: 0;
     }
