@@ -18,19 +18,21 @@
       >
         # {{ n }}
       </ACard>
-
     </div>
-    <br>
+    <br />
     <h2>Любое количество колонок</h2>
-    <p>Сетка легко превращается из 12-ти колоночной в сетку с любым другим количеством колонок. Например в 5-ти колончатую.
-      <br>
+    <p>
+      Сетка легко превращается из 12-ти колоночной в сетку с любым другим
+      количеством колонок. Например в 5-ти колончатую.
+      <br />
       Достаточно лишь указать модификатор.
     </p>
     <pre class="mod--code">
 &lt;div class=&quot;am-cols am-cols-5&quot;&gt;
     &lt;div class=&quot;am-col-5 am-col-xl-1&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
-</pre>
+</pre
+    >
   </div>
 </template>
 
@@ -38,5 +40,4 @@
 .column-grid {
 }
 </style>
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>

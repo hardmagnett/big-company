@@ -1,46 +1,37 @@
 <script setup lang="ts">
-
 import {
   iAInputableEmits,
   iAInputablePropDefaults,
 } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
-export interface Props extends IAInputableProps{
-
-}
+export interface Props extends IAInputableProps {}
 withDefaults(defineProps<Props>(), {
-  ...iAInputablePropDefaults
+  ...iAInputablePropDefaults,
 });
 
 defineOptions({
-  inheritAttrs: false
-})
+  inheritAttrs: false,
+});
 
-const model = defineModel()
+const model = defineModel();
 
 defineEmits([...iAInputableEmits]);
 </script>
 
 <template>
   <AInputControl
-      :label="label"
-      :hideLabel="hideLabel"
-      :hideHint="hideHint"
-      class="a-input">
-    <input
-      :name="name"
-      v-model="model"
-      class="a-input__input"
-
-
-    />
+    :label="label"
+    :hideLabel="hideLabel"
+    :hideHint="hideHint"
+    class="a-input"
+  >
+    <input :name="name" v-model="model" class="a-input__input" />
   </AInputControl>
 </template>
 
 <style scoped>
 .a-input {
-
   .a-input__input {
     --height: calc(var(--gap) * 2);
     display: block;
@@ -56,7 +47,5 @@ defineEmits([...iAInputableEmits]);
       border: 1px solid var(--clr-border-blue-darker);
     }
   }
-
 }
 </style>
-

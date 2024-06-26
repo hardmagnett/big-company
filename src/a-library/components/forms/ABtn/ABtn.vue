@@ -6,17 +6,17 @@ const attrs = useAttrs();
 export interface Props {
   icon?: boolean;
   autofocus?: boolean;
-  type?:string,
+  type?: string;
 }
 withDefaults(defineProps<Props>(), {
   autofocus: false,
   // если кнопке не передать type, то она по умолчанию будет работать как type="submit"
-  type: 'button'
+  type: "button",
 });
 
 defineOptions({
-  inheritAttrs: false
-})
+  inheritAttrs: false,
+});
 
 const rootComponent = computed(() => {
   return isAnchor.value ? "a" : isRouterLink.value ? "router-link" : "button";

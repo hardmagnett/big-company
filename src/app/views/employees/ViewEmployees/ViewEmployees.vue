@@ -4,7 +4,7 @@ import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 import { ref } from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
-import {globalProperties} from "@/main";
+import { globalProperties } from "@/main";
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);

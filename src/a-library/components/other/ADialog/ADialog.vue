@@ -127,20 +127,19 @@ onBeforeUnmount(() => {
       <div class="a-dialog__buttons">
         <AFormButtonsWrapper>
           <ABtn
-              autofocus
-              @click="needToClose"
-              :class="[cssClassCancel]"
-              class="a-btn--tonal"
-          >{{ textCancel }}</ABtn
+            autofocus
+            @click="needToClose"
+            :class="[cssClassCancel]"
+            class="a-btn--tonal"
+            >{{ textCancel }}</ABtn
           >
           <ABtn
-              @click="$emit('apply')"
-              v-if="!hideApply"
-              :class="[cssClassApply]"
-          >{{ textApply }}</ABtn
+            @click="$emit('apply')"
+            v-if="!hideApply"
+            :class="[cssClassApply]"
+            >{{ textApply }}</ABtn
           >
         </AFormButtonsWrapper>
-
       </div>
     </div>
   </dialog>
