@@ -3,25 +3,13 @@ import {reactive, ref} from "vue";
 
 import { type Form, type FormErrors, formSchema} from './ViewFormZod'
 
-// Ideally, put this code in a schema file
-// const formSchema = z.object({
-//   email: z.string()
-//       .min(1, { message: "Email обязателен" })
-//       .min(3, {message: 'Минимальная длина: 3'})
-//       .max(50)
-//   ,
-//   name: z.string()
-//       .min(1, { message: "Имя обязательно" })
-//       .min(3, {message: 'Минимальная длина: 3'})
-//   ,
-// });
-// type Form = z.infer<typeof formSchema>
-// type FormErrors = z.inferFormattedError<typeof formSchema>
+const formErrors = ref<FormErrors>()
 
 let formValues = reactive<Form>({
 // let formValues = reactive({
   name: "AAA",
   email: "",
+  // todo:: как сделать чтобы сдесь были поля, которых нет в схеме?
   // unnecessary: 'ooo',
   // booleanWithValidation: false,
   // booleanWithoutValidation: false,
@@ -33,9 +21,11 @@ const submitHandler = () => {
   const result = formSchema.safeParse(formValues)
   if (result.success) {
     console.log('valid')
+    // formErrors: FormErrors = {}
+    // formErrors.value = {}
   } else {
-    // const errors: FormattedErrors = result.error.format()
     const errors: FormErrors = result.error.format()
+    formErrors.value = errors
     console.log(errors)
   }
 };
@@ -55,20 +45,24 @@ const submitHandler = () => {
     <p>vals: {{ formValues }}</p>
     <form @submit.prevent="submitHandler">
       <div class="am-cols view-form__inputs">
+
+        <!--hideHint-->
         <AInput
           name="name"
           v-model="formValues.name"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+          :error-messages="formErrors?.name?._errors"
           label="Имя"
-          hideHint
-        ></AInput>
 
+        ></AInput>
+        <!--hideHint-->
         <AInput
           name="email"
           v-model="formValues.email"
+          :error-messages="formErrors?.email?._errors"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           label="Email"
-          hideHint
+
         ></AInput>
 
         <AInput

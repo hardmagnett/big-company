@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {} from "vue";
+import {computed} from "vue";
 
 export interface Props {
   label?: string;
@@ -8,12 +8,16 @@ export interface Props {
   // В будущем может понадобиться выводить более чем одну ошибку. Поэтому пусть будет массивом
   errorMessages?: string[];
 }
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   label: "",
   hideLabel: false,
   hideHint: false,
   errorMessages: () => [],
 });
+
+const hint = computed(()=>{
+  return props.errorMessages[0] ?? ''
+})
 </script>
 
 <template>
@@ -27,7 +31,7 @@ withDefaults(defineProps<Props>(), {
       <slot></slot>
     </div>
     <div v-if="!hideHint" class="a-input-control__error">
-      <div class="mod--ellipsis-one-line">hint</div>
+      <div class="mod--ellipsis-one-line">{{hint}}</div>
     </div>
   </div>
 </template>

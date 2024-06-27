@@ -25,6 +25,7 @@ defineEmits([...iAInputableEmits]);
     :hideLabel="hideLabel"
     :hideHint="hideHint"
     class="a-input"
+    :errorMessages="errorMessages"
   >
     <input :name="name" v-model="model" class="a-input__input" />
   </AInputControl>
