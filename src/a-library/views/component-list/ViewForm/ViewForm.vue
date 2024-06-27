@@ -1,28 +1,42 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import {reactive, ref} from "vue";
 
-import { object, string, number } from 'zod';
+import { type Form, type FormErrors, formSchema} from './ViewFormZod'
 
 // Ideally, put this code in a schema file
-const formSchema = object({
-  email: string().min(1, { message: "Email is required" }).min(3).max(50),
-  name: string().min(1, { message: "Имя обязательно" }).min(3),
-});
+// const formSchema = z.object({
+//   email: z.string()
+//       .min(1, { message: "Email обязателен" })
+//       .min(3, {message: 'Минимальная длина: 3'})
+//       .max(50)
+//   ,
+//   name: z.string()
+//       .min(1, { message: "Имя обязательно" })
+//       .min(3, {message: 'Минимальная длина: 3'})
+//   ,
+// });
+// type Form = z.infer<typeof formSchema>
+// type FormErrors = z.inferFormattedError<typeof formSchema>
 
-let formValues = reactive({
+let formValues = reactive<Form>({
+// let formValues = reactive({
   name: "AAA",
   email: "",
-  unnecessary: false,
-  booleanWithValidation: false,
-  booleanWithoutValidation: false,
+  // unnecessary: 'ooo',
+  // booleanWithValidation: false,
+  // booleanWithoutValidation: false,
 });
+
+// const errors = ref<FormErrors>()
 
 const submitHandler = () => {
   const result = formSchema.safeParse(formValues)
   if (result.success) {
     console.log('valid')
   } else {
-    console.log('invalid')
+    // const errors: FormattedErrors = result.error.format()
+    const errors: FormErrors = result.error.format()
+    console.log(errors)
   }
 };
 </script>
