@@ -1,14 +1,29 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 
+import { object, string, number } from 'zod';
+
+// Ideally, put this code in a schema file
+const formSchema = object({
+  email: string().min(1, { message: "Email is required" }).min(3).max(50),
+  name: string().min(1, { message: "Имя обязательно" }).min(3),
+});
+
 let formValues = reactive({
-  textWithValidation: "AAA",
-  textWithoutValidation: "",
+  name: "AAA",
+  email: "",
+  unnecessary: false,
   booleanWithValidation: false,
   booleanWithoutValidation: false,
 });
 
 const submitHandler = () => {
+  const result = formSchema.safeParse(formValues)
+  if (result.success) {
+    console.log('valid')
+  } else {
+    console.log('invalid')
+  }
 };
 </script>
 
@@ -27,19 +42,29 @@ const submitHandler = () => {
     <form @submit.prevent="submitHandler">
       <div class="am-cols view-form__inputs">
         <AInput
-          name="Обязательное. Минимум 3 символа."
-          v-model="formValues.textWithValidation"
+          name="name"
+          v-model="formValues.name"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-          label="Обязательное. Минимум 3 символа."
+          label="Имя"
           hideHint
         ></AInput>
 
         <AInput
-          v-model="formValues.textWithoutValidation"
+          name="email"
+          v-model="formValues.email"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-          label="Невалидируемое"
+          label="Email"
           hideHint
         ></AInput>
+
+        <AInput
+            name="unnecessary"
+            v-model="formValues.unnecessary"
+            class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+            label="Необязательное"
+            hideHint
+        ></AInput>
+
         <ACheckBox
           v-model="formValues.booleanWithValidation"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
