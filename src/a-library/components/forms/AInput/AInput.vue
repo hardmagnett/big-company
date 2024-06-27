@@ -25,13 +25,13 @@ defineEmits([...iAInputableEmits, 'blur']);
 // todo:: сделать чтобы был параметр: 'input'/'blur-change'/'eager'/'disabled'
 const validationListeners = computed(() => {
   // lazy
-  if (!errorMessage.value) {
-    return {
-      blur: handleChange,
-      change: handleChange,
-      input: (e) => handleChange(e, false),
-    };
-  }
+  // if (!errorMessage.value) {
+  //   return {
+  //     blur: handleChange,
+  //     change: handleChange,
+  //     input: (e) => handleChange(e, false),
+  //   };
+  // }
 
   // Aggressive
   return {
