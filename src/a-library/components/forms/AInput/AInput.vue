@@ -6,9 +6,11 @@ import {
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
 export interface Props extends IAInputableProps {}
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
 });
+
+import { useField } from 'vee-validate';
 
 defineOptions({
   inheritAttrs: false,
@@ -17,6 +19,31 @@ defineOptions({
 const model = defineModel();
 
 defineEmits([...iAInputableEmits, 'blur']);
+
+// todo:: как сделать eager в контексте компонента?
+const { value, errorMessage } = useField(
+    () => props.name,
+    undefined,
+    // (state: any)=>{
+    //   return {
+    //     syncVModel: true,
+    //     // validate aggressively as long as there are errors on the input
+    //     validateOnModelUpdate: state.errors.length > 0,
+    //   }
+    // },
+
+    {
+      syncVModel: true,
+      // validateOnValueUpdate: false,
+    }
+//state => {
+//     return {
+//       // validate aggressively as long as there are errors on the input
+//       validateOnModelUpdate: state.errors.length > 0,
+//     };
+// }
+);
+
 </script>
 
 <template>
@@ -25,8 +52,13 @@ defineEmits([...iAInputableEmits, 'blur']);
     :hideLabel="hideLabel"
     :hideHint="hideHint"
     class="a-input"
+    :errorMessage="errorMessage"
   >
-    <input :name="name" @blur="$emit('blur')" v-model="model" class="a-input__input" />
+    <input
+        :name="name"
+        @blur="$emit('blur')"
+        v-model="model"
+        class="a-input__input" />
   </AInputControl>
 </template>
 

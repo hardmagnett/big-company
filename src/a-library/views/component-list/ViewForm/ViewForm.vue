@@ -14,8 +14,9 @@ const { values,
   errors, defineField, handleSubmit,
   defineInputBinds, setValues, resetForm } = useForm({
   validationSchema: toTypedSchema(object({
-    email: string().required().email(),
-    password: string().min(6).required(),
+    email: string().required().email().label('Email'),
+    password: string().min(6).required().label('Пароль'),
+    text: string().min(3).required().label('Текст'),
   })),
   // способ 1 для установки значений
   // resetForm сбросит до этих значений
@@ -38,6 +39,7 @@ const [email, emailAttrs] =
 defineField('email', {
   // Так будет валидировать не по input, а то-ли по change то-ли по blur.
   // Чтобы это работало с кастомными компонентами - они должны эмитить blur.
+  // Не работает если вместо defileField используется useField в кастомном компоненте
   // validateOnModelUpdate: false,
 
   // Так можно добавить всякое разное в передачу атрибутов.
@@ -60,7 +62,7 @@ defineField('email', {
 const [password, passwordAttrs] = defineField('password');
 
 let formValues = reactive({
-  textWithValidation: "AAA",
+  textWithValidation: "A",
   textWithoutValidation: "",
   booleanWithValidation: false,
   booleanWithoutValidation: false,
@@ -103,16 +105,19 @@ let fullReset = ()=>{
 
       <div class="am-cols view-form__inputs">
 
+
+        <!--todo:: избавиться от passwordAttrs и т.п.?-->
         <div class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3">
 
           <!--class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"-->
+          <!--hideHint-->
           <AInput
-              name="email"
+              name="password"
               v-model="password"
               v-bind="passwordAttrs"
               class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
               label="Password"
-              hideHint
+
           ></AInput>
           {{errors.password}}
         </div>
@@ -120,26 +125,29 @@ let fullReset = ()=>{
         <div class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3">
 
           <!--class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"-->
+          <!--hideHint-->
         <AInput
             name="email"
             v-model="email"
             v-bind="emailAttrs"
             class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
             label="E-Mail"
-            hideHint
+
         ></AInput>
         {{errors.email}}
         </div>
 
+        <!--hideHint-->
         <AInput
-          name="Обязательное. Минимум 3 символа."
+          name="text"
           v-model="formValues.textWithValidation"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           label="Обязательное. Минимум 3 символа."
-          hideHint
+
         ></AInput>
 
         <AInput
+          name="Невалидируемое"
           v-model="formValues.textWithoutValidation"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           label="Невалидируемое"
@@ -155,6 +163,7 @@ let fullReset = ()=>{
         />
 
         <ACheckBox
+          name="Чекбокс-поле не валидируемое"
           v-model="formValues.booleanWithoutValidation"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           label="Чекбокс-поле не валидируемое"

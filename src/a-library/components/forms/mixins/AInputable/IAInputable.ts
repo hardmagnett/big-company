@@ -4,7 +4,8 @@
 
 export interface IAInputableProps {
   label?: string;
-  name?: string; // То, из чего собирается нативный FormData. Так-же используется как идентификатор в валидаторе.
+  // name?: string; // То, из чего собирается нативный FormData. Так-же используется как идентификатор в валидаторе.
+  name: string; // То, из чего собирается нативный FormData. Так-же используется как идентификатор в валидаторе.
   rules?: string;
   hideLabel?: boolean;
   hideHint?: boolean;

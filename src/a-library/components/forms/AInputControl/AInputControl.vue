@@ -6,13 +6,15 @@ export interface Props {
   hideLabel?: boolean;
   hideHint?: boolean;
   // В будущем может понадобиться выводить более чем одну ошибку. Поэтому пусть будет массивом
-  errorMessages?: string[];
+  // errorMessages?: string[];
+  errorMessage?: string;
 }
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   label: "",
   hideLabel: false,
   hideHint: false,
-  errorMessages: () => [],
+  // errorMessages: () => [],
+  errorMessage: "",
 });
 </script>
 
@@ -27,7 +29,7 @@ withDefaults(defineProps<Props>(), {
       <slot></slot>
     </div>
     <div v-if="!hideHint" class="a-input-control__error">
-      <div class="mod--ellipsis-one-line">hint</div>
+      <div class="mod--ellipsis-one-line">{{ errorMessage }}</div>
     </div>
   </div>
 </template>
