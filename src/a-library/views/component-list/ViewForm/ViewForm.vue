@@ -10,12 +10,27 @@ import { object, string }  from 'yup';
 //   email: yup.string().required().email(),
 // });
 
-const { values, errors, defineField } = useForm({
+const { values,
+  errors, defineField, handleSubmit,
+  defineInputBinds, setValues, resetForm } = useForm({
   validationSchema: toTypedSchema(object({
     email: string().required().email(),
     password: string().min(6).required(),
   })),
+  // способ 1 для установки значений
+  // resetForm сбросит до этих значений
+  initialValues: {
+    email: 'test@example.com',
+    password: 'p@$$w0rd',
+  }
+  // ,
 });
+// способ 2 для установки значений
+// resetForm сбросит не до этих значений, а до пустых.
+// setValues({
+//     email: 'test@example.com',
+//     password: 'p@$$w0rd',
+// })
 
 
 
@@ -51,8 +66,20 @@ let formValues = reactive({
   booleanWithoutValidation: false,
 });
 
-const submitHandler = () => {
-};
+// const submitHandler = () => {
+// };
+const submitHandler = handleSubmit(() => {
+  console.log('here----------------------------------')
+});
+
+let fullReset = ()=>{
+  resetForm({
+    values: {
+      email: '',
+      password: '',
+    },
+  })
+}
 </script>
 
 <template>
@@ -71,6 +98,7 @@ const submitHandler = () => {
     <pre>errors: {{errors}}</pre>
     <pre>email: {{email}}</pre>
     <pre>emailAttrs: {{emailAttrs}}</pre>
+    <!--<form @submit.prevent="submitHandler">-->
     <form @submit.prevent="submitHandler">
 
       <div class="am-cols view-form__inputs">
@@ -135,11 +163,17 @@ const submitHandler = () => {
       </div>
       <br />
       <AFormButtonsWrapper>
-        <ABtn class="a-btn--tonal">Отмена</ABtn>
+        <ABtn class="a-btn--tonal"
+            @click="resetForm"
+
+        >Сброс</ABtn>
 
         <ABtn type="submit">Ок</ABtn>
         <template #left>
-          <ABtn class="a-btn--tonal a-btn--small">Кнопка слева</ABtn>
+          <ABtn class="a-btn--tonal a-btn--small"
+            @click="fullReset"
+
+          >Полный сброс</ABtn>
         </template>
       </AFormButtonsWrapper>
     </form>
