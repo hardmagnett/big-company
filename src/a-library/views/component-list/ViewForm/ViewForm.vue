@@ -6,9 +6,10 @@ import { type FormSchema, type FormErrors, formSchema} from './ViewFormZod'
 const formErrors = ref<FormErrors>()
 
 let formValues = reactive<FormSchema>({
-// let formValues = reactive({
-  name: "AA",
-  email: "",
+  user: {
+    name: "AA",
+    email: "",
+  },
   // todo:: как сделать чтобы сдесь были поля, которых нет в схеме?
   unnecessary: 'ooo',
   // booleanWithValidation: false,
@@ -70,17 +71,17 @@ const submitHandler = async () => {
         <!--hideHint-->
         <AInput
           name="name"
-          v-model="formValues.name"
+          v-model="formValues.user.name"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-          :error-messages="formErrors?.name?._errors"
+          :error-messages="formErrors?.user?.name?._errors"
           label="Имя"
 
         ></AInput>
         <!--hideHint-->
         <AInput
           name="email"
-          v-model="formValues.email"
-          :error-messages="formErrors?.email?._errors"
+          v-model="formValues.user.email"
+          :error-messages="formErrors?.user?.email?._errors"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           label="Email"
 
