@@ -10,7 +10,7 @@ import { ref, watch, toValue, type MaybeRefOrGetter } from 'vue'
 
 export default function <T extends ZodTypeAny>(
   schema: T,
-  data: MaybeRefOrGetter<Record<string, unknown>>,
+  formValues: MaybeRefOrGetter<Record<string, unknown>>,  // в оринигале было data
   options?: { mode?: 'eager' | 'lazy' }
 ) {
   const _opts = Object.assign({}, { mode: 'lazy' }, options)
@@ -30,7 +30,7 @@ export default function <T extends ZodTypeAny>(
     }
 
     unwatch = watch(
-      () => toValue(data),
+      () => toValue(formValues),
       async () => {
         await validate()
       },
@@ -42,32 +42,21 @@ export default function <T extends ZodTypeAny>(
   const validate = async () => {
     clearErrors()
 
-    const parseResult = await schema.safeParseAsync(toValue(data))
+    const parseResult = await schema.safeParseAsync(toValue(formValues))
     isValid.value = parseResult.success
     console.log(parseResult); console.log('^...parseResult:')
 
     if (!parseResult.success) {
       const issues = parseResult.error.issues
-      console.log(issues); console.log('^...issues:')
-      // const groupedIssues = Object.groupBy(issues, (item: ZodIssue, index) => {
-      // const groupedIssues = Object.groupBy(issues, ({code}) => code)
+      // todo:: здесь результат тот-же что и в lodash, по подчеркивает ошибкой. Найти способ чтоб было без ошибки.
       const groupedIssues = Object.groupBy(issues, ({path}) => path)
       console.log(groupedIssues); console.log('^...groupedIssues:')
       const groupedIssuesWithLodash = groupBy(parseResult.error.issues, 'path')
       console.log(groupedIssuesWithLodash); console.log('^...groupedIssuesWithLodash:')
 
-      // errors.value = groupBy(parseResult.error.issues, 'path')
-      // validationWatch()
+      errors.value = groupedIssuesWithLodash
+      validationWatch()
 
-      const inventory = [
-        { name: "asparagus", type: "vegetables", quantity: 5 },
-        { name: "bananas", type: "fruit", quantity: 0 },
-        { name: "goat", type: "meat", quantity: 23 },
-        { name: "cherries", type: "fruit", quantity: 5 },
-        { name: "fish", type: "meat", quantity: 22 },
-      ];
-      const result = Object.groupBy(inventory, ({ type }) => type);
-      // const result = Object.groupBy(inventory, ({ type }) => type);
     }
 
     return errors

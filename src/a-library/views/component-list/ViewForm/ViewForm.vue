@@ -41,19 +41,19 @@ const {
 
 const submitHandler = async () => {
 
-  // await validate();
+  await validate();
 
-  const parseResult = formSchema.safeParse(formValues)
-  if (parseResult.success) {
-    console.log('valid')
-    // formErrors: FormErrors = {}
-    // formErrors.value = {}
-    formErrors.value = null
-  } else {
-    const errors: FormErrors = parseResult.error.format()
-    formErrors.value = errors
-    console.log(errors)
-  }
+  // const parseResult = formSchema.safeParse(formValues)
+  // if (parseResult.success) {
+  //   console.log('valid')
+  //   // formErrors: FormErrors = {}
+  //   // formErrors.value = {}
+  //   formErrors.value = null
+  // } else {
+  //   const errors: FormErrors = parseResult.error.format()
+  //   formErrors.value = errors
+  //   console.log(errors)
+  // }
 };
 </script>
 
