@@ -10,6 +10,7 @@ let formValues = reactive<FormSchema>({
     name: "AA",
     email: "",
   },
+  books: [],
   // todo:: как сделать чтобы сдесь были поля, которых нет в схеме?
   unnecessary: 'ooo',
   // booleanWithValidation: false,
@@ -37,19 +38,19 @@ const {
 
 const submitHandler = async () => {
 
-  await validate();
+  // await validate();
 
-  // const parseResult = formSchema.safeParse(formValues)
-  // if (parseResult.success) {
-  //   console.log('valid')
-  //   // formErrors: FormErrors = {}
-  //   // formErrors.value = {}
-  //   formErrors.value = null
-  // } else {
-  //   const errors: FormErrors = parseResult.error.format()
-  //   formErrors.value = errors
-  //   console.log(errors)
-  // }
+  const parseResult = formSchema.safeParse(formValues)
+  if (parseResult.success) {
+    console.log('valid')
+    // formErrors: FormErrors = {}
+    // formErrors.value = {}
+    formErrors.value = null
+  } else {
+    const errors: FormErrors = parseResult.error.format()
+    formErrors.value = errors
+    console.log(errors)
+  }
 };
 </script>
 
@@ -66,7 +67,7 @@ const submitHandler = async () => {
 
     <p>vals: {{ formValues }}</p>
     <form @submit.prevent="submitHandler">
-      <div class="am-cols view-form__inputs">
+      <div class="am-cols">
 
         <!--hideHint-->
         <AInput
@@ -111,7 +112,45 @@ const submitHandler = async () => {
           hide-hint
         />
       </div>
+
       <br />
+
+      <template
+          v-for="(book, index) in formValues.books"
+          :key="index">
+        <div class="am-cols">
+          <!--:error-messages="formErrors?.user?.name?._errors"-->
+          <AInput
+              name="name"
+              v-model="book.name"
+              class="am-col-3"
+              :error-messages="formErrors?.books?.[index]?.name?._errors"
+              label="Название книги"
+
+          ></AInput>
+          <AInput
+              name="name"
+              v-model="book.quantity"
+              class="am-col-3"
+              :error-messages="formErrors?.books?.[index]?.quantity?._errors"
+              label="Количество"
+
+          ></AInput>
+          <div class="am-col-3">
+            <button @click="formValues.books.splice(index, 1)">
+              Удалить
+            </button>
+          </div>
+        </div>
+
+      </template>
+      <button
+          type="button"
+          @click="formValues.books.push({ name: '', quantity: 0 })">
+        Add Book
+      </button>
+      <p> {{formErrors?.books?._errors}}</p>
+
       <AFormButtonsWrapper>
         <ABtn class="a-btn--tonal">Отмена</ABtn>
 
@@ -126,7 +165,5 @@ const submitHandler = async () => {
 
 <style scoped>
 .view-form {
-  .view-form__inputs {
-  }
 }
 </style>

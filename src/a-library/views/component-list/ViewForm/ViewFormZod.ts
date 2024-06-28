@@ -14,6 +14,12 @@ export const formSchema = z.object({
       .max(50)
     ,
   }),
+  books: z.array(
+    z.object({
+      name: z.string().min(3, {message: 'Минимальная длина: 3'}),
+      quantity: z.number().int().min(1)
+    }))
+    .min(1, {message: 'Укажите хотя-бы одну книгу'}),
   unnecessary: z.string()
 });
 export type FormSchema = z.infer<typeof formSchema>
