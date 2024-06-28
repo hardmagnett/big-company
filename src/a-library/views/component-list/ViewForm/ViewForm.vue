@@ -1,33 +1,54 @@
 <script setup lang="ts">
 import {reactive, ref} from "vue";
 
-import { type Form, type FormErrors, formSchema} from './ViewFormZod'
+import { type FormSchema, type FormErrors, formSchema} from './ViewFormZod'
 
 const formErrors = ref<FormErrors>()
 
-let formValues = reactive<Form>({
+let formValues = reactive<FormSchema>({
 // let formValues = reactive({
-  name: "AAA",
+  name: "AA",
   email: "",
   // todo:: как сделать чтобы сдесь были поля, которых нет в схеме?
-  // unnecessary: 'ooo',
+  unnecessary: 'ooo',
   // booleanWithValidation: false,
   // booleanWithoutValidation: false,
 });
 
 // const errors = ref<FormErrors>()
 
-const submitHandler = () => {
-  const result = formSchema.safeParse(formValues)
-  if (result.success) {
-    console.log('valid')
-    // formErrors: FormErrors = {}
-    // formErrors.value = {}
-  } else {
-    const errors: FormErrors = result.error.format()
-    formErrors.value = errors
-    console.log(errors)
-  }
+
+import useValidation from './useValidation';
+const {
+  validate,
+//   // errors,
+//   // isValid,
+//   // clearErrors,
+//   // getError,
+//   // scrollToError
+}
+= useValidation(
+    formSchema,
+    formValues,
+//     // {mode: 'lazy'}
+//     {}
+)
+
+const submitHandler = async () => {
+
+  await validate();
+
+  // const parseResult = formSchema.safeParse(formValues)
+  // if (parseResult.success) {
+  //   console.log('valid')
+  //   // formErrors: FormErrors = {}
+  //   // formErrors.value = {}
+  //   formErrors.value = null
+  // } else {
+  //   const errors: FormErrors = parseResult.error.format()
+  //   formErrors.value = errors
+  //   console.log(errors)
+  // }
 };
 </script>
 
