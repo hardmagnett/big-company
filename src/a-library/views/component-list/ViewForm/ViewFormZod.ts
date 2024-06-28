@@ -20,7 +20,10 @@ export const formSchema = z.object({
       quantity: z.number().int().min(1)
     }))
     .min(1, {message: 'Укажите хотя-бы одну книгу'}),
-  unnecessary: z.string()
+  unnecessary: z.string(),
+  agreeWithConditions: z.boolean().refine((val) => val, {
+    message: "Please read and accept the terms and conditions",
+  })
 });
 export type FormSchema = z.infer<typeof formSchema>
 

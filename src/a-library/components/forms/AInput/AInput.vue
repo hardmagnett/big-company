@@ -5,9 +5,12 @@ import {
 } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
-export interface Props extends IAInputableProps {}
+export interface Props extends IAInputableProps {
+  type?: 'text' | 'number'
+}
 withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
+  type: 'text'
 });
 
 defineOptions({
@@ -27,7 +30,12 @@ defineEmits([...iAInputableEmits]);
     class="a-input"
     :errorMessages="errorMessages"
   >
-    <input :name="name" v-model="model" class="a-input__input" />
+    <input
+        :type="type"
+        :name="name"
+        v-model="model"
+        class="a-input__input"
+    />
   </AInputControl>
 </template>
 

@@ -10,10 +10,13 @@ let formValues = reactive<FormSchema>({
     name: "AA",
     email: "",
   },
-  books: [],
+  books: [{
+    name: 'Букварь',
+    quantity: 3,
+  }],
   // todo:: как сделать чтобы сдесь были поля, которых нет в схеме?
   unnecessary: 'ooo',
-  // booleanWithValidation: false,
+  agreeWithConditions: false,
   // booleanWithoutValidation: false,
 });
 
@@ -96,13 +99,15 @@ const submitHandler = async () => {
             hideHint
         ></AInput>
 
+        <!--hide-hintZ-->
+        <!--rules="required:true"-->
         <ACheckBox
-          v-model="formValues.booleanWithValidation"
+          v-model="formValues.agreeWithConditions"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-          name="Чекбокс-поле валидируемое"
-          rules="required:true"
-          label="Чекбокс-поле валидируемое"
-          hide-hint
+          name="agreeWithConditions"
+          label="agreeWithConditions"
+          :error-messages="formErrors?.agreeWithConditions?._errors"
+
         />
 
         <ACheckBox
@@ -129,6 +134,7 @@ const submitHandler = async () => {
 
           ></AInput>
           <AInput
+              type="number"
               name="name"
               v-model="book.quantity"
               class="am-col-3"
@@ -149,7 +155,7 @@ const submitHandler = async () => {
           @click="formValues.books.push({ name: '', quantity: 0 })">
         Add Book
       </button>
-      <p> {{formErrors?.books?._errors}}</p>
+      <p>booksArrayErrors: {{formErrors?.books?._errors}}</p>
 
       <AFormButtonsWrapper>
         <ABtn class="a-btn--tonal">Отмена</ABtn>

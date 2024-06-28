@@ -20,6 +20,7 @@ defineEmits([...iAInputableEmits]);
     class="a-check-box"
     :hideLabel="hideLabel"
     :hideHint="hideHint"
+    :errorMessages="errorMessages"
   >
     <label :for="`a-check-box-${$.uid}`" class="a-check-box__wrapper">
       <!--checked-->
