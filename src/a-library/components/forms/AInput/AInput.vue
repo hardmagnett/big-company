@@ -55,6 +55,15 @@ defineEmits([...iAInputableEmits]);
     &:focus {
       border: 1px solid var(--clr-border-blue-darker);
     }
+    &[type="number"] {
+      padding-right: 0;
+
+      /*Фикс отступа от стрелочек для всех кроме FF. Для FF похоже ситуация непобедимая 2024-07.*/
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button{
+        margin-left: var(--gap);
+      }
+    }
   }
 }
 </style>
