@@ -12,12 +12,16 @@ let formValues = reactive<FormSchema>({
     email: "",
     address: "",
   },
-  books: [{
-    name: 'Букварь',
-    quantity: 3,
-  }],
-  // todo:: как сделать чтобы сдесь были поля, которых нет в схеме?
-  unnecessary: 'ooo',
+  books: [
+      {
+        name: 'Первая',
+        quantity: 3,
+      },
+      {
+        name: 'Букварь',
+        quantity: 3,
+      },
+  ],
   agreeWithConditions: false,
   sendSpam: true,
   // booleanWithoutValidation: false,
@@ -37,8 +41,8 @@ const {
 = useValidation(
     formSchema,
     formValues,
-    // {mode: 'lazy'}
-    {mode: 'eager'}
+    {mode: 'lazy'}
+    // {mode: 'eager'}
 //     {}
 )
 
@@ -81,13 +85,13 @@ const submitHandler = async () => {
         <!--getError('name')-->
         <!--:error-messages="formErrors?.user?.name?._errors"-->
         <!--todo:: довать такое имя класса для ошибки, которое я обычно даю-->
+        <!--:class="{ 'p-invalid': getErrorsForPath('user.name').length }"-->
         <AInput
           name="user-name"
           v-model="formValues.user.name"
-          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-2"
+          class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           :error-messages="getErrorsForPath('user.name')"
           label="Имя *"
-          :class="{ 'p-invalid': getErrorsForPath('user.name').length }"
 
         ></AInput>
         <!--hideHint-->
@@ -95,7 +99,7 @@ const submitHandler = async () => {
           name="email"
           v-model="formValues.user.email"
           :error-messages="getErrorsForPath('user.email')"
-          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-2"
+          class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Email"
 
         ></AInput>
@@ -105,7 +109,7 @@ const submitHandler = async () => {
             name="address"
             v-model="formValues.user.address"
             :error-messages="getErrorsForPath('user.address')"
-            class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-2"
+            class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
             label="Адрес *"
 
         ></AInput>
@@ -114,8 +118,8 @@ const submitHandler = async () => {
       <br />
 
       <div class="am-cols">
-        <h3 class="am-col-2 mod--mb-0" >Книги</h3>
-        <div class="am-col-2">
+        <h3 class="am-col-6 am-col-sm-8 am-col-xxl-4 mod--mb-0" >Книги</h3>
+        <div class="am-col-6 am-col-sm-4 am-col-xxl-2">
           <ABtn
               class="a-btn--small"
               @click="formValues.books.push({ name: '', quantity: 0 })"
@@ -140,7 +144,7 @@ const submitHandler = async () => {
           <AInput
               name="book-name"
               v-model="book.name"
-              class="am-col-2"
+              class="am-col-6 am-col-sm-4 am-col-xxl-2"
               :error-messages="formErrors?.books?.[index]?.name?._errors"
               label="Название *"
 
@@ -152,13 +156,13 @@ const submitHandler = async () => {
               type="number"
               name="quantity"
               v-model="book.quantity"
-              class="am-col-2"
+              class="am-col-4 am-col-sm-4 am-col-xxl-2"
 
               :error-messages="getErrorsForPath(`books.${index}.quantity`)"
               label="Количество *"
 
           ></AInput>
-          <div class="am-col-2">
+          <div class="am-col-2 am-col-sm-4 am-col-xxl-2">
             <AInputControl
 
             >
@@ -193,14 +197,20 @@ const submitHandler = async () => {
       />
       <br>
 
-      <AFormButtonsWrapper>
-        <ABtn class="a-btn--tonal">Отмена</ABtn>
+      <div class="am-cols">
 
-        <ABtn type="submit">Ок</ABtn>
-        <template #left>
-          <ABtn class="a-btn--tonal a-btn--small" @click="clearErrors">Очистить ошибки</ABtn>
-        </template>
-      </AFormButtonsWrapper>
+        <AFormButtonsWrapper
+            class="am-col-12 am-col-xxl-6"
+        >
+          <ABtn class="a-btn--tonal">Отмена</ABtn>
+
+          <ABtn type="submit">Ок</ABtn>
+          <template #left>
+            <ABtn class="a-btn--tonal a-btn--small" @click="clearErrors">Очистить ошибки</ABtn>
+          </template>
+        </AFormButtonsWrapper>
+      </div>
+
     </form>
   </div>
 </template>
