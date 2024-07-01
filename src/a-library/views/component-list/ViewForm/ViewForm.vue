@@ -29,7 +29,7 @@ const {
   errors,
   isValid,
   clearErrors,
-  getError,
+  getErrorsForPath,
   scrollToError
 }
 = useValidation(
@@ -82,13 +82,14 @@ const submitHandler = async () => {
         <!--hideHint-->
         <!--getError('name')-->
         <!--:error-messages="formErrors?.user?.name?._errors"-->
+        <!--todo:: довать такое имя класса, которое я обычно даю-->
         <AInput
           name="user-name"
           v-model="formValues.user.name"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-          :error-messages="[getError('user.name')]"
+          :error-messages="getErrorsForPath('user.name')"
           label="Имя"
-          :class="{ 'p-invalid': !!getError('user.name') }"
+          :class="{ 'p-invalid': getErrorsForPath('user.name').length }"
 
         ></AInput>
         <!--hideHint-->
@@ -143,12 +144,16 @@ const submitHandler = async () => {
               label="Название книги"
 
           ></AInput>
+          <!--:class="{ 'p-invalid': getErrorsForPath('user.name').length }"-->
+          <!--:error-messages="getErrorsForPath('user.name')"-->
+          <!--:error-messages="formErrors?.books?.[index]?.quantity?._errors"-->
           <AInput
               type="number"
               name="quantity"
               v-model="book.quantity"
               class="am-col-3"
-              :error-messages="formErrors?.books?.[index]?.quantity?._errors"
+
+              :error-messages="getErrorsForPath(`books.${index}.quantity`)"
               label="Количество"
 
           ></AInput>

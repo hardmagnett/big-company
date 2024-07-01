@@ -78,26 +78,12 @@ export default function <T extends ZodTypeAny>(
     }
   };
   // Function to get the error message for a specific form field, can be used to get errors for nested objects using dot notation path.
-  // const getError = (path: string) => get(errors.value, `${path.replaceAll('.', ',')}.0.message`)
-  const getError = (path: string) => {
-    // todo:: заменить на js-get
-    // console.log(path); console.log('^...path:')
-    // console.log(errors.value); console.log('^...errors.value:')
-
-
-    let pathToGetError = `${path.replaceAll(".", ",")}.0.message`
-    // let fieldName = `${path.replaceAll(".", ",")}`
-    // console.log(pathToGetError); console.log('^...pathToGetError:')
-    // console.log(fieldName); console.log('^...fieldName:')
-    // let errorTextNew = errors.value?.[fieldName]?.[0].message
-    // console.log(errorTextNew); console.log('^...errorTextNew:')
-
-
-
-    const errorText = get(errors.value, pathToGetError);
-    // console.log(errorText); console.log('^...errorText:')
-    // console.log('---------------------------------------')
-    return errorText;
+  // const getErrorsForPath = (path: string) => get(errors.value, `${path.replaceAll('.', ',')}.0.message`)
+  const getErrorsForPath = (path: string) => {
+    const fieldNameInZodErrors = `${path.replaceAll(".", ",")}`
+    const zodErrors = errors.value?.[fieldNameInZodErrors] ?? []
+    const textErrors = zodErrors.map(ze=>ze.message)
+    return textErrors
   };
 
   // Activate validation watch based on the chosen mode
@@ -110,7 +96,7 @@ export default function <T extends ZodTypeAny>(
     errors,
     isValid,
     clearErrors,
-    getError,
+    getErrorsForPath,
     scrollToError,
   };
 }
