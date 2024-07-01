@@ -14,10 +14,10 @@ export default function <T extends ZodTypeAny>(
   const _opts = Object.assign({}, { mode: "lazy" }, options);
 
   const isValid = ref(true);
-  const errors = ref<Record<string, z.ZodIssue[]> | null>(null);
+  const _zodIssues = ref<Record<string, z.ZodIssue[]> | null>(null);
 
   const clearErrors = () => {
-    errors.value = null;
+    _zodIssues.value = null;
   };
 
   // // Function to initiate validation watch
@@ -48,20 +48,29 @@ export default function <T extends ZodTypeAny>(
     if (!parseResult.success) {
       const issues = parseResult.error.issues;
       // todo:: здесь результат тот-же что и в lodash, по подчеркивает ошибкой. Найти способ чтоб было без ошибки.
-      const groupedIssues = Object.groupBy(issues, ({ path }) => path);
+      const groupedIssues = Object.groupBy(issues, ({ path }) => {
+        // console.log(path); console.log('^...path:')
+        const key = path.join(',')
+        // return path
+        return key
+      });
+      console.log(groupedIssues); console.log('^...groupedIssues:')
       // console.log(groupedIssues);
       // console.log("^...groupedIssues:");
       const groupedIssuesWithLodash = groupBy(parseResult.error.issues, "path");
+      console.log(groupedIssuesWithLodash); console.log('^...groupedIssuesWithLodash:')
       // console.log(groupedIssuesWithLodash);
       // console.log("^...groupedIssuesWithLodash:");
 
-      errors.value = groupedIssuesWithLodash;
+      // _zodIssues.value = groupedIssuesWithLodash;
+      _zodIssues.value = groupedIssues;
       validationWatch();
     }
 
-    return errors;
+    return _zodIssues;
   };
-  // Function to scroll to the first error in the form
+  // Скроллит к первой ошибке в форме
+  // todo:: проверить и подкорректировать работу скролла
   const scrollToError = (selector = ".is-error", options = { offset: 0 }) => {
     const element = document.querySelector(selector);
 
@@ -81,7 +90,7 @@ export default function <T extends ZodTypeAny>(
   // const getErrorsForPath = (path: string) => get(errors.value, `${path.replaceAll('.', ',')}.0.message`)
   const getErrorsForPath = (path: string) => {
     const fieldNameInZodErrors = `${path.replaceAll(".", ",")}`
-    const zodErrors = errors.value?.[fieldNameInZodErrors] ?? []
+    const zodErrors = _zodIssues.value?.[fieldNameInZodErrors] ?? []
     const textErrors = zodErrors.map(ze=>ze.message)
     return textErrors
   };
@@ -93,7 +102,7 @@ export default function <T extends ZodTypeAny>(
 
   return {
     validate,
-    errors,
+    errors: _zodIssues,
     isValid,
     clearErrors,
     getErrorsForPath,

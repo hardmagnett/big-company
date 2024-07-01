@@ -26,7 +26,6 @@ let formValues = reactive<FormSchema>({
 import useValidation from './useValidation';
 const {
   validate,
-  errors,
   isValid,
   clearErrors,
   getErrorsForPath,
