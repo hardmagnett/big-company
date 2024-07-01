@@ -28,13 +28,13 @@ export default function <T extends ZodTypeAny>(
     unwatch = watch(
       () => toValue(formValues),
       async () => {
-        await validate();
+        await validateForm();
       },
       { deep: true },
     );
   };
 
-  const validate = async () => {
+  const validateForm = async () => {
     clearErrors();
 
     const parseResult = await schema.safeParseAsync(toValue(formValues));
@@ -51,7 +51,7 @@ export default function <T extends ZodTypeAny>(
   };
   // Скроллит к первой ошибке в форме
   // todo:: проверить и подкорректировать работу скролла
-  const scrollToError = (selector = ".is-error", options = { offset: 0 }) => {
+  const scrollToFirstError = (selector = ".is-error", options = { offset: 0 }) => {
     const element = document.querySelector(selector);
 
     if (element) {
@@ -66,8 +66,7 @@ export default function <T extends ZodTypeAny>(
       });
     }
   };
-  // Function to get the error message for a specific form field, can be used to get errors for nested objects using dot notation path.
-  // const getErrorsForPath = (path: string) => get(errors.value, `${path.replaceAll('.', ',')}.0.message`)
+  // Получает все ошибки для поля.
   const getErrorsForPath = (path: string) => {
     const fieldNameInZodErrors = `${path.replaceAll(".", ",")}`
     const zodErrors = _zodIssues.value?.[fieldNameInZodErrors] ?? []
@@ -75,7 +74,7 @@ export default function <T extends ZodTypeAny>(
     return textErrors
   };
 
-  // Activate validation watch based on the chosen mode
+  // Условная активация eager-режима
   if (_opts.mode === "eager") {
     validationWatch();
   }
@@ -83,10 +82,10 @@ export default function <T extends ZodTypeAny>(
 
   // errors: _zodIssues,
   return {
-    validate,
+    validateForm,
     isFormValid,
     clearErrors,
     getErrorsForPath,
-    scrollToError,
+    scrollToFirstError,
   };
 }

@@ -2,6 +2,7 @@
 import {reactive, ref} from "vue";
 
 import { type FormSchema, type FormErrors, formSchema} from './ViewFormZod'
+import { globalProperties } from "@/main";
 
 const formErrors = ref<FormErrors>()
 
@@ -25,11 +26,11 @@ let formValues = reactive<FormSchema>({
 
 import useValidation from './useValidation';
 const {
-  validate,
+  validateForm,
   isFormValid,
   clearErrors,
   getErrorsForPath,
-  scrollToError
+  scrollToFirstError
 }
 = useValidation(
     formSchema,
@@ -41,25 +42,19 @@ const {
 
 const submitHandler = async () => {
 
-  await validate();
+  await validateForm();
 
   if (isFormValid.value) {
     alert('Validation succeeded!');
-  } else {
-    scrollToError('.p-invalid', { offset: 24 });
-  }
+    globalProperties.$toast({message: "Форма заполнена верно"});
 
-  // const parseResult = formSchema.safeParse(formValues)
-  // if (parseResult.success) {
-  //   console.log('valid')
-  //   // formErrors: FormErrors = {}
-  //   // formErrors.value = {}
-  //   formErrors.value = null
-  // } else {
-  //   const errors: FormErrors = parseResult.error.format()
-  //   formErrors.value = errors
-  //   console.log(errors)
-  // }
+  } else {
+    scrollToFirstError('.p-invalid', { offset: 24 });
+    globalProperties.$toast({
+      message: "Форма заполнена неверно",
+      type: "error",
+    });
+  }
 };
 </script>
 
@@ -81,7 +76,7 @@ const submitHandler = async () => {
         <!--hideHint-->
         <!--getError('name')-->
         <!--:error-messages="formErrors?.user?.name?._errors"-->
-        <!--todo:: довать такое имя класса, которое я обычно даю-->
+        <!--todo:: довать такое имя класса для ошибки, которое я обычно даю-->
         <AInput
           name="user-name"
           v-model="formValues.user.name"
@@ -177,7 +172,7 @@ const submitHandler = async () => {
 
         <ABtn type="submit">Ок</ABtn>
         <template #left>
-          <ABtn class="a-btn--tonal a-btn--small">Кнопка слева</ABtn>
+          <ABtn class="a-btn--tonal a-btn--small" @click="clearErrors">Очистить ошибки</ABtn>
         </template>
       </AFormButtonsWrapper>
     </form>
