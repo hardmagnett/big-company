@@ -170,7 +170,8 @@ const submitHandler = async () => {
           @click="formValues.books.push({ name: '', quantity: 0 })">
         Add Book
       </button>
-      <p>booksArrayErrors: {{formErrors?.books?._errors}}</p>
+      <!--<p>booksArrayErrors: {{formErrors?.books?._errors}}</p>-->
+      <p>booksArrayErrors: {{getErrorsForPath(`books`)}}</p>
 
       <AFormButtonsWrapper>
         <ABtn class="a-btn--tonal">Отмена</ABtn>
