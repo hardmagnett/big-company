@@ -28,6 +28,7 @@ defineEmits([...iAInputableEmits]);
     :hideLabel="hideLabel"
     :hideHint="hideHint"
     class="a-input"
+    :class="{'a-input--with-error': errorMessages?.length}"
     :errorMessages="errorMessages"
   >
     <input
@@ -63,6 +64,11 @@ defineEmits([...iAInputableEmits]);
       &::-webkit-outer-spin-button{
         margin-left: var(--gap);
       }
+    }
+  }
+  &.a-input--with-error {
+    .a-input__input {
+      border-color: var(--clr-border-red-darker);
     }
   }
 }

@@ -126,12 +126,6 @@ const submitHandler = async () => {
         </div>
       </div>
 
-      <!--<p>booksArrayErrors: {{getErrorsForPath(`books`)}}</p>-->
-
-      <!--<AInputControlHint-->
-      <!--    :error-messages="['dsafasdfa']"-->
-
-      <!--&gt;</AInputControlHint>-->
       <AInputControlHint
           :error-messages="getErrorsForPath(`books`)"
 
@@ -178,12 +172,12 @@ const submitHandler = async () => {
       <ACheckBox
           hide-label
           v-model="formValues.agreeWithConditions"
-          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3 mod--mb-half"
           name="agreeWithConditions"
           label="Я согласен со всеми условиями"
-          :error-messages="formErrors?.agreeWithConditions?._errors"
-
+          :error-messages="getErrorsForPath(`agreeWithConditions`)"
       />
+      <!--<br>-->
 
       <ACheckBox
           hide-label

@@ -18,6 +18,7 @@ defineEmits([...iAInputableEmits]);
 <template>
   <AInputControl
     class="a-check-box"
+    :class="{'a-check-box--with-error': errorMessages?.length}"
     :hideLabel="hideLabel"
     :hideHint="hideHint"
     :errorMessages="errorMessages"
@@ -103,6 +104,14 @@ defineEmits([...iAInputableEmits]);
     /*чекнутый checkmark*/
     .a-check-box__input:checked + .a-check-box__label::after {
       opacity: 1;
+    }
+  }
+  &.a-check-box--with-error {
+    .a-check-box__label {
+      /*Рамка для checkmark*/
+      &:before {
+        border-color: var(--clr-border-red-darker);
+      }
     }
   }
 }
