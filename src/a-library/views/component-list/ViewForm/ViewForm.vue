@@ -114,7 +114,7 @@ const submitHandler = async () => {
       <br />
 
       <div class="am-cols">
-        <h3 class="am-col-2" >Книги</h3>
+        <h3 class="am-col-2 mod--mb-0" >Книги</h3>
         <div class="am-col-2">
           <ABtn
               class="a-btn--small"
@@ -126,7 +126,16 @@ const submitHandler = async () => {
         </div>
       </div>
 
-      <p>booksArrayErrors: {{getErrorsForPath(`books`)}}</p>
+      <!--<p>booksArrayErrors: {{getErrorsForPath(`books`)}}</p>-->
+
+      <!--<AInputControlHint-->
+      <!--    :error-messages="['dsafasdfa']"-->
+
+      <!--&gt;</AInputControlHint>-->
+      <AInputControlHint
+          :error-messages="getErrorsForPath(`books`)"
+
+      ></AInputControlHint>
 
 
       <template

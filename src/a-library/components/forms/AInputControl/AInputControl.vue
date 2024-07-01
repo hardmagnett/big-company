@@ -15,10 +15,6 @@ const props = withDefaults(defineProps<Props>(), {
   errorMessages: () => [],
 });
 
-// defineOptions({
-//   inheritAttrs: false,
-// });
-
 const hint = computed(()=>{
   return props.errorMessages[0] ?? ''
 })
@@ -34,9 +30,17 @@ const hint = computed(()=>{
     <div class="a-input-control__input">
       <slot></slot>
     </div>
-    <div v-if="!hideHint" class="a-input-control__error">
-      <div class="mod--ellipsis-one-line">{{hint}}</div>
-    </div>
+    <!--<div v-if="!hideHint" class="a-input-control__error">-->
+    <!--  <div class="mod&#45;&#45;ellipsis-one-line">{{hint}}</div>-->
+    <!--</div>-->
+    <AInputControlHint
+      v-if="!hideHint"
+      :error-messages="errorMessages"
+
+    ></AInputControlHint>
+    <!--<div v-if="!hideHint" class="a-input-control__error">-->
+    <!--  <div class="mod&#45;&#45;ellipsis-one-line">{{hint}}</div>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -57,14 +61,14 @@ const hint = computed(()=>{
     display: flex;
     align-items: center;
   }
-  .a-input-control__error {
-    display: flex;
-    align-items: end;
+  /*.a-input-control__error {*/
+  /*  display: flex;*/
+  /*  align-items: end;*/
 
-    font-size: var(--font-size-small);
-    height: var(--hint-height);
+  /*  font-size: var(--font-size-small);*/
+  /*  height: var(--hint-height);*/
 
-    color: var(--clr-font-red-bright);
-  }
+  /*  color: var(--clr-font-red-bright);*/
+  /*}*/
 }
 </style>
