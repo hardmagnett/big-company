@@ -8,10 +8,14 @@ export const formSchema = z.object({
       .min(3, {message: 'Минимальная длина: 3'})
     ,
     email: z.string()
-      .min(1, { message: "Email обязателен" })
-      .min(3, {message: 'Минимальная длина: 3'})
       .email({message: 'Укажите правильный Email'})
-      .max(50)
+      // .optional()  // Пусть пока-что здесь побудет. Вроде и без него работает, но убедиться, когда всё проверишь. И в гисты потом.
+      .or(z.literal(''))  // Эта строка делает поле опциональным.
+    ,
+
+    address: z.string()
+      .min(1, { message: "Адрес обязателен" })
+      .min(10, {message: 'Минимальная длина: 10'})
     ,
   }),
   books: z.array(
@@ -20,10 +24,11 @@ export const formSchema = z.object({
       quantity: z.number().int().min(1)
     }))
     .min(1, {message: 'Укажите хотя-бы одну книгу'}),
-  unnecessary: z.string(),
+
   agreeWithConditions: z.boolean().refine((val) => val, {
     message: "Please read and accept the terms and conditions",
-  })
+  }),
+  sendSpam: z.boolean()
 });
 export type FormSchema = z.infer<typeof formSchema>
 

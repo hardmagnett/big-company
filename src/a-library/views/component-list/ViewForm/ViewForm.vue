@@ -10,6 +10,7 @@ let formValues = reactive<FormSchema>({
   user: {
     name: "AA",
     email: "",
+    address: "",
   },
   books: [{
     name: 'Букварь',
@@ -18,6 +19,7 @@ let formValues = reactive<FormSchema>({
   // todo:: как сделать чтобы сдесь были поля, которых нет в схеме?
   unnecessary: 'ooo',
   agreeWithConditions: false,
+  sendSpam: true,
   // booleanWithoutValidation: false,
 });
 
@@ -41,11 +43,9 @@ const {
 )
 
 const submitHandler = async () => {
-
   await validateForm();
 
   if (isFormValid.value) {
-    alert('Validation succeeded!');
     globalProperties.$toast({message: "Форма заполнена верно"});
 
   } else {
@@ -69,7 +69,7 @@ const submitHandler = async () => {
       <code class="mod--code">shift + tab</code>.
     </p>
 
-    <p>vals: {{ formValues }}</p>
+    <!--<p>vals: {{ formValues }}</p>-->
     <form @submit.prevent="submitHandler">
       <div class="am-cols">
 
@@ -82,7 +82,7 @@ const submitHandler = async () => {
           v-model="formValues.user.name"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           :error-messages="getErrorsForPath('user.name')"
-          label="Имя"
+          label="Имя *"
           :class="{ 'p-invalid': getErrorsForPath('user.name').length }"
 
         ></AInput>
@@ -90,37 +90,21 @@ const submitHandler = async () => {
         <AInput
           name="email"
           v-model="formValues.user.email"
-          :error-messages="formErrors?.user?.email?._errors"
+          :error-messages="getErrorsForPath('user.email')"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
           label="Email"
 
         ></AInput>
 
+        <!--hideHint-->
         <AInput
-            name="unnecessary"
-            v-model="formValues.unnecessary"
+            name="address"
+            v-model="formValues.user.address"
+            :error-messages="getErrorsForPath('user.address')"
             class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-            label="Необязательное"
-            hideHint
+            label="Адрес *"
+
         ></AInput>
-
-        <!--hide-hintZ-->
-        <!--rules="required:true"-->
-        <ACheckBox
-          v-model="formValues.agreeWithConditions"
-          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-          name="agreeWithConditions"
-          label="agreeWithConditions"
-          :error-messages="formErrors?.agreeWithConditions?._errors"
-
-        />
-
-        <ACheckBox
-          v-model="formValues.booleanWithoutValidation"
-          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-          label="Чекбокс-поле не валидируемое"
-          hide-hint
-        />
       </div>
 
       <br />
@@ -166,6 +150,26 @@ const submitHandler = async () => {
       </button>
       <!--<p>booksArrayErrors: {{formErrors?.books?._errors}}</p>-->
       <p>booksArrayErrors: {{getErrorsForPath(`books`)}}</p>
+
+
+      <ACheckBox
+          hide-label
+          v-model="formValues.agreeWithConditions"
+          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+          name="agreeWithConditions"
+          label="Я согласен со всеми условиями"
+          :error-messages="formErrors?.agreeWithConditions?._errors"
+
+      />
+
+      <ACheckBox
+          hide-label
+          v-model="formValues.sendSpam"
+          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+          label="Присылать мне спам-рассылку"
+          hide-hint
+      />
+      <br>
 
       <AFormButtonsWrapper>
         <ABtn class="a-btn--tonal">Отмена</ABtn>
