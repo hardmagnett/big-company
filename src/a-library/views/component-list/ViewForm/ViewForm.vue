@@ -159,9 +159,14 @@ const submitHandler = async () => {
 
           ></AInput>
           <div class="am-col-2">
-            <ABtn
-                @click="formValues.books.splice(index, 1)"
-                icon class="a-btn--error"><AIcon icon="mdi-delete" /></ABtn>
+            <AInputControl
+
+            >
+              <ABtn
+                  @click="formValues.books.splice(index, 1)"
+                  icon class="a-btn--error"><AIcon icon="mdi-delete" /></ABtn>
+            </AInputControl>
+
           </div>
         </div>
 
