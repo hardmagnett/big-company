@@ -63,14 +63,18 @@ const submitHandler = async () => {
     <Teleport to="#page-header-place">
       <APageHeader> Форма </APageHeader>
     </Teleport>
+
     <p>
       В форме работает навигация по элементам при помощи
       <code class="mod--code">tab</code> и
       <code class="mod--code">shift + tab</code>.
     </p>
 
+    <h2>Заказ книг</h2>
+
     <!--<p>vals: {{ formValues }}</p>-->
     <form @submit.prevent="submitHandler">
+      <h3>Персональные данные</h3>
       <div class="am-cols">
 
         <!--hideHint-->
@@ -109,6 +113,8 @@ const submitHandler = async () => {
 
       <br />
 
+      <h3>Книги</h3>
+
       <template
           v-for="(book, index) in formValues.books"
           :key="index">
@@ -119,7 +125,7 @@ const submitHandler = async () => {
               v-model="book.name"
               class="am-col-3"
               :error-messages="formErrors?.books?.[index]?.name?._errors"
-              label="Название книги"
+              label="Название *"
 
           ></AInput>
           <!--:class="{ 'p-invalid': getErrorsForPath('user.name').length }"-->
@@ -132,22 +138,36 @@ const submitHandler = async () => {
               class="am-col-3"
 
               :error-messages="getErrorsForPath(`books.${index}.quantity`)"
-              label="Количество"
+              label="Количество *"
 
           ></AInput>
           <div class="am-col-3">
-            <button @click="formValues.books.splice(index, 1)">
-              Удалить
-            </button>
+            <ABtn
+                @click="formValues.books.splice(index, 1)"
+                icon class="a-btn--error"><AIcon icon="mdi-delete" /></ABtn>
           </div>
         </div>
 
       </template>
-      <button
-          type="button"
-          @click="formValues.books.push({ name: '', quantity: 0 })">
-        Add Book
-      </button>
+      <!--<ABtn-->
+      <!--    @click="formValues.books.push({ name: '', quantity: 0 })"-->
+      <!--    icon><AIcon icon="mdi-plus-thick" /></ABtn>-->
+
+
+      <!--class="a-btn&#45;&#45;tonal"-->
+      <ABtn
+          class="a-btn--small"
+          @click="formValues.books.push({ name: '', quantity: 0 })"
+
+      >
+        <AIcon icon="mdi-plus-thick" />
+        Добавить
+      </ABtn>
+      <!--<button-->
+      <!--    type="button"-->
+      <!--    @click="formValues.books.push({ name: '', quantity: 0 })">-->
+      <!--  Add Book-->
+      <!--</button>-->
       <!--<p>booksArrayErrors: {{formErrors?.books?._errors}}</p>-->
       <p>booksArrayErrors: {{getErrorsForPath(`books`)}}</p>
 
