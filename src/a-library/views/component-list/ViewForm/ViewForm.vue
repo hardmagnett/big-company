@@ -26,7 +26,7 @@ let formValues = reactive<FormSchema>({
 import useValidation from './useValidation';
 const {
   validate,
-  isValid,
+  isFormValid,
   clearErrors,
   getErrorsForPath,
   scrollToError
@@ -43,7 +43,7 @@ const submitHandler = async () => {
 
   await validate();
 
-  if (isValid.value) {
+  if (isFormValid.value) {
     alert('Validation succeeded!');
   } else {
     scrollToError('.p-invalid', { offset: 24 });

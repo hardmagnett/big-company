@@ -1,9 +1,6 @@
+
 import { z, type ZodTypeAny } from "zod";
 
-// Возможно этих придется избежать
-// import { get, groupBy } from 'lodash-es'
-import { get, groupBy } from "lodash-es";
-// todo:: удалить lodash нафиг
 import { type MaybeRefOrGetter, ref, toValue, watch } from "vue";
 
 export default function <T extends ZodTypeAny>(
@@ -13,15 +10,16 @@ export default function <T extends ZodTypeAny>(
 ) {
   const _opts = Object.assign({}, { mode: "lazy" }, options);
 
-  const isValid = ref(true);
-  const _zodIssues = ref<Record<string, z.ZodIssue[]> | null>(null);
+  const isFormValid = ref(true);
+  // Пришлось завернуть в Partial, потому-что Object.groupBy возвращает Partial
+  const _zodIssues = ref<Partial<Record<string, z.ZodIssue[]>> | null>(null);
 
   const clearErrors = () => {
     _zodIssues.value = null;
   };
 
-  // // Function to initiate validation watch
-  let unwatch: null | (() => void) = null; // todo:: непонятно что здесь лежит
+  // Функция, инициализирующая watch.
+  let unwatch: null | (() => void) = null;
   const validationWatch = () => {
     if (unwatch !== null) {
       return;
@@ -36,33 +34,15 @@ export default function <T extends ZodTypeAny>(
     );
   };
 
-  // Function to perform validation
   const validate = async () => {
     clearErrors();
 
     const parseResult = await schema.safeParseAsync(toValue(formValues));
-    isValid.value = parseResult.success;
-    // console.log(parseResult);
-    // console.log("^...parseResult:");
+    isFormValid.value = parseResult.success;
 
     if (!parseResult.success) {
       const issues = parseResult.error.issues;
-      // todo:: здесь результат тот-же что и в lodash, по подчеркивает ошибкой. Найти способ чтоб было без ошибки.
-      const groupedIssues = Object.groupBy(issues, ({ path }) => {
-        // console.log(path); console.log('^...path:')
-        const key = path.join(',')
-        // return path
-        return key
-      });
-      console.log(groupedIssues); console.log('^...groupedIssues:')
-      // console.log(groupedIssues);
-      // console.log("^...groupedIssues:");
-      const groupedIssuesWithLodash = groupBy(parseResult.error.issues, "path");
-      console.log(groupedIssuesWithLodash); console.log('^...groupedIssuesWithLodash:')
-      // console.log(groupedIssuesWithLodash);
-      // console.log("^...groupedIssuesWithLodash:");
-
-      // _zodIssues.value = groupedIssuesWithLodash;
+      const groupedIssues = Object.groupBy(issues, ({ path }) => path.join(','));
       _zodIssues.value = groupedIssues;
       validationWatch();
     }
@@ -100,10 +80,11 @@ export default function <T extends ZodTypeAny>(
     validationWatch();
   }
 
+
+  // errors: _zodIssues,
   return {
     validate,
-    errors: _zodIssues,
-    isValid,
+    isFormValid,
     clearErrors,
     getErrorsForPath,
     scrollToError,
