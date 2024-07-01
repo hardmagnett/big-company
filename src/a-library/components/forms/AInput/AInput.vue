@@ -13,9 +13,9 @@ withDefaults(defineProps<Props>(), {
   type: 'text'
 });
 
-defineOptions({
-  inheritAttrs: false,
-});
+// defineOptions({
+//   inheritAttrs: false,
+// });
 
 const model = defineModel();
 

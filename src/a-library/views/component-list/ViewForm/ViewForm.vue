@@ -84,7 +84,7 @@ const submitHandler = async () => {
         <AInput
           name="user-name"
           v-model="formValues.user.name"
-          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-2"
           :error-messages="getErrorsForPath('user.name')"
           label="Имя *"
           :class="{ 'p-invalid': getErrorsForPath('user.name').length }"
@@ -95,7 +95,7 @@ const submitHandler = async () => {
           name="email"
           v-model="formValues.user.email"
           :error-messages="getErrorsForPath('user.email')"
-          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+          class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-2"
           label="Email"
 
         ></AInput>
@@ -105,7 +105,7 @@ const submitHandler = async () => {
             name="address"
             v-model="formValues.user.address"
             :error-messages="getErrorsForPath('user.address')"
-            class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+            class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-2"
             label="Адрес *"
 
         ></AInput>
@@ -115,7 +115,7 @@ const submitHandler = async () => {
 
       <div class="am-cols">
         <h3 class="am-col-2" >Книги</h3>
-        <div class="am-col-1">
+        <div class="am-col-2">
           <ABtn
               class="a-btn--small"
               @click="formValues.books.push({ name: '', quantity: 0 })"
@@ -126,6 +126,8 @@ const submitHandler = async () => {
         </div>
       </div>
 
+      <p>booksArrayErrors: {{getErrorsForPath(`books`)}}</p>
+
 
       <template
           v-for="(book, index) in formValues.books"
@@ -135,7 +137,7 @@ const submitHandler = async () => {
           <AInput
               name="book-name"
               v-model="book.name"
-              class="am-col-3"
+              class="am-col-2"
               :error-messages="formErrors?.books?.[index]?.name?._errors"
               label="Название *"
 
@@ -147,13 +149,13 @@ const submitHandler = async () => {
               type="number"
               name="quantity"
               v-model="book.quantity"
-              class="am-col-3"
+              class="am-col-2"
 
               :error-messages="getErrorsForPath(`books.${index}.quantity`)"
               label="Количество *"
 
           ></AInput>
-          <div class="am-col-3">
+          <div class="am-col-2">
             <ABtn
                 @click="formValues.books.splice(index, 1)"
                 icon class="a-btn--error"><AIcon icon="mdi-delete" /></ABtn>
@@ -161,27 +163,7 @@ const submitHandler = async () => {
         </div>
 
       </template>
-      <!--<ABtn-->
-      <!--    @click="formValues.books.push({ name: '', quantity: 0 })"-->
-      <!--    icon><AIcon icon="mdi-plus-thick" /></ABtn>-->
 
-
-      <!--class="a-btn&#45;&#45;tonal"-->
-      <!--<ABtn-->
-      <!--    class="a-btn&#45;&#45;small"-->
-      <!--    @click="formValues.books.push({ name: '', quantity: 0 })"-->
-
-      <!--&gt;-->
-      <!--  <AIcon icon="mdi-plus-thick" size="small" />-->
-      <!--  Добавить-->
-      <!--</ABtn>-->
-      <!--<button-->
-      <!--    type="button"-->
-      <!--    @click="formValues.books.push({ name: '', quantity: 0 })">-->
-      <!--  Add Book-->
-      <!--</button>-->
-      <!--<p>booksArrayErrors: {{formErrors?.books?._errors}}</p>-->
-      <p>booksArrayErrors: {{getErrorsForPath(`books`)}}</p>
 
 
       <ACheckBox
