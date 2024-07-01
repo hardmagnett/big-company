@@ -19,6 +19,7 @@ const classes = computed(() => {
     "mdi-rotate-180": props.rotate180,
     "a-icon--medium": props.size === "medium",
     "a-icon--large": props.size === "large",
+    "a-icon--small": props.size === "small",
     "a-icon--giant": props.size === "giant",
   };
 });
@@ -34,6 +35,11 @@ const classes = computed(() => {
   /*Там я решил эту проблему.*/
 
   /*В случае необходимости, можно переделать размеры при помощи mdi-класоов. Наприме mdi-18px.mdi-set .*/
+  &.a-icon--small {
+    font-size: var(--font-size-small);
+    /*outline: 1px solid darkred;*/
+  }
+
   &.a-icon--medium {
     font-size: var(--font-size-base);
   }

@@ -15,6 +15,10 @@ const props = withDefaults(defineProps<Props>(), {
   errorMessages: () => [],
 });
 
+// defineOptions({
+//   inheritAttrs: false,
+// });
+
 const hint = computed(()=>{
   return props.errorMessages[0] ?? ''
 })

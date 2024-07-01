@@ -113,7 +113,19 @@ const submitHandler = async () => {
 
       <br />
 
-      <h3>Книги</h3>
+      <div class="am-cols">
+        <h3 class="am-col-2" >Книги</h3>
+        <div class="am-col-1">
+          <ABtn
+              class="a-btn--small"
+              @click="formValues.books.push({ name: '', quantity: 0 })"
+          >
+            <AIcon icon="mdi-plus-thick" size="small" />
+            Добавить
+          </ABtn>
+        </div>
+      </div>
+
 
       <template
           v-for="(book, index) in formValues.books"
@@ -155,14 +167,14 @@ const submitHandler = async () => {
 
 
       <!--class="a-btn&#45;&#45;tonal"-->
-      <ABtn
-          class="a-btn--small"
-          @click="formValues.books.push({ name: '', quantity: 0 })"
+      <!--<ABtn-->
+      <!--    class="a-btn&#45;&#45;small"-->
+      <!--    @click="formValues.books.push({ name: '', quantity: 0 })"-->
 
-      >
-        <AIcon icon="mdi-plus-thick" />
-        Добавить
-      </ABtn>
+      <!--&gt;-->
+      <!--  <AIcon icon="mdi-plus-thick" size="small" />-->
+      <!--  Добавить-->
+      <!--</ABtn>-->
       <!--<button-->
       <!--    type="button"-->
       <!--    @click="formValues.books.push({ name: '', quantity: 0 })">-->
