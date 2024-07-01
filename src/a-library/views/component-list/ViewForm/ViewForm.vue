@@ -26,22 +26,29 @@ let formValues = reactive<FormSchema>({
 import useValidation from './useValidation';
 const {
   validate,
-//   // errors,
-//   // isValid,
-//   // clearErrors,
-//   // getError,
-//   // scrollToError
+  errors,
+  isValid,
+  clearErrors,
+  getError,
+  scrollToError
 }
 = useValidation(
     formSchema,
     formValues,
-//     // {mode: 'lazy'}
+    // {mode: 'lazy'}
+    {mode: 'eager'}
 //     {}
 )
 
 const submitHandler = async () => {
 
   await validate();
+
+  if (isValid.value) {
+    alert('Validation succeeded!');
+  } else {
+    scrollToError('.p-invalid', { offset: 24 });
+  }
 
   // const parseResult = formSchema.safeParse(formValues)
   // if (parseResult.success) {
@@ -73,12 +80,15 @@ const submitHandler = async () => {
       <div class="am-cols">
 
         <!--hideHint-->
+        <!--getError('name')-->
+        <!--:error-messages="formErrors?.user?.name?._errors"-->
         <AInput
-          name="name"
+          name="user-name"
           v-model="formValues.user.name"
           class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-          :error-messages="formErrors?.user?.name?._errors"
+          :error-messages="[getError('user.name')]"
           label="Имя"
+          :class="{ 'p-invalid': !!getError('user.name') }"
 
         ></AInput>
         <!--hideHint-->
@@ -126,7 +136,7 @@ const submitHandler = async () => {
         <div class="am-cols">
           <!--:error-messages="formErrors?.user?.name?._errors"-->
           <AInput
-              name="name"
+              name="book-name"
               v-model="book.name"
               class="am-col-3"
               :error-messages="formErrors?.books?.[index]?.name?._errors"
@@ -135,7 +145,7 @@ const submitHandler = async () => {
           ></AInput>
           <AInput
               type="number"
-              name="name"
+              name="quantity"
               v-model="book.quantity"
               class="am-col-3"
               :error-messages="formErrors?.books?.[index]?.quantity?._errors"
