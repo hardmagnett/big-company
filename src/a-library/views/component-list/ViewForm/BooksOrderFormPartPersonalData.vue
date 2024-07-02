@@ -3,6 +3,7 @@ import {reactive, watch, computed} from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate/validators'
 
+// todo:: переделать здесь как в компоненте с книгами. Эти modelValue похоже нах не нужны.
 export interface Props {
   modelValue: {
     name: string,
@@ -31,6 +32,7 @@ const formPartPersonalData = computed({
     return props.modelValue
   },
   set(newValue) {
+    console.log('set personal')
     emit('update:modelValue', newValue)
   }
 })

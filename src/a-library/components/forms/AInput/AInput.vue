@@ -19,7 +19,7 @@ withDefaults(defineProps<Props>(), {
 
 const doIt= ()=>{
   // todo:: если тут ничего не увеличиться - перенести отсюда в шаблон.
-  console.log('blur')
+  // console.log('blur')
   emit('blur')
 }
 

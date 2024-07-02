@@ -23,10 +23,12 @@ let formValues = reactive({
   },
   books: [
     {
+      id: 'foo',  // todo:: генерить id по нормальному
       name: "Первая",
       quantity: 3,
     },
     {
+      id: 'bar',
       // name: "Букварь",
       name: "",
       quantity: 3,
@@ -68,6 +70,10 @@ const formRules = {
 }
 
 const v$ = useVuelidate(formRules, formValues)
+
+const updateBook = (shit)=>{
+  console.log(shit); console.log('^...shit:')
+}
 
 const submitHandler = async () => {
 
@@ -133,8 +139,20 @@ const submitHandler = async () => {
 
       <!--Zeslint-disable-next-line vue/valid-v-model-->
       <!--<BooksOrderFormPartBooks v-for="(book, index) in formValues.books" :book="book"-->
-      <BooksOrderFormPartBooks v-for="(book, index) in formValues.books" v-model="book"
+      <!--v-model="book"-->
+
+      <!--@update:model-value="((newValue) => {formValues.books.find(book=>book.id === newValue.id) = newValue})"-->
+
+      <!--:model-value="book"-->
+
+      <!--@update:modelValue="updateBook"-->
+      <!--:model-value="formValues.books[index]"-->
+      <BooksOrderFormPartBooks
+          v-for="(book, index) in formValues.books"
           :key="index"
+          :form-part="book"
+
+
       />
 
       <!--<template v-for="(book, index) in formValues.books" :key="index">-->
