@@ -17,9 +17,15 @@ withDefaults(defineProps<Props>(), {
 //   inheritAttrs: false,
 // });
 
+const doIt= ()=>{
+  // todo:: если тут ничего не увеличиться - перенести отсюда в шаблон.
+  console.log('blur')
+  emit('blur')
+}
+
 const model = defineModel();
 
-defineEmits([...iAInputableEmits]);
+const emit = defineEmits([...iAInputableEmits]);
 </script>
 
 <template>
@@ -31,7 +37,9 @@ defineEmits([...iAInputableEmits]);
     :class="{ 'a-input--with-error': errorMessages?.length }"
     :errorMessages="errorMessages"
   >
-    <input :type="type" :name="name" v-model="model" class="a-input__input" />
+    <input :type="type" :name="name" v-model="model" class="a-input__input"
+      @blur="doIt"
+    />
   </AInputControl>
 </template>
 

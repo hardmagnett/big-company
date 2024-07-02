@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import { useVuelidate } from '@vuelidate/core'
+import {required, email, minLength, helpers} from '@vuelidate/validators'
 
-// import { type FormSchema, type FormErrors, formSchema } from "./ViewFormZod";
 import { globalProperties } from "@/main";
 
-// const formErrors = ref<FormErrors>();
-
-// let formValues = reactive<FormSchema>({
 let formValues = reactive({
   user: {
     name: "AA",
@@ -27,14 +25,30 @@ let formValues = reactive({
   sendSpam: true,
 });
 
-// import useValidation from "./useValidation";
-// const {
-//   validateForm,
-//   isFormValid,
-//   clearErrors,
-//   getErrorsForPath,
-//   scrollToFirstError,
-// } = useValidation(formSchema, formValues, { mode: "lazy" });
+const formRules = {
+  // $autoDirty: true,
+  user: {
+    name: { required, minLength: minLength(3)},
+    email: { email },
+    address: { required, minLength: minLength(10) },
+  },
+  // Цикл с книгами пока-что пропустил
+
+  agreeWithConditions: {
+    checked: helpers.withMessage(
+        'Необходимо согласие',
+        value => value === true
+    ),
+    $autoDirty: true,
+  },
+
+
+  sendSpam: {},
+
+}
+
+const v$ = useVuelidate(formRules, formValues)
+
 
 const submitHandler = async () => {
   // await validateForm();
@@ -66,6 +80,7 @@ const submitHandler = async () => {
     <h2>Заказ книг</h2>
 
     <!--<p>vals: {{ formValues }}</p>-->
+    <!--<p>v$: {{ v$ }}</p>-->
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
       <div class="am-cols">
@@ -73,15 +88,28 @@ const submitHandler = async () => {
         <AInput
           name="user-name"
           v-model="formValues.user.name"
+          @blur="v$.user.name.$touch"
+          :error-messages="v$.user.name.$errors.map(e=>e.$message)"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-
           label="Имя *"
         ></AInput>
-        <!--:error-messages="getErrorsForPath('user.email')"-->
+
+
+        <!--:error-messages="v$.user.email.$errors"-->
+
+        <!--@blur="v$.user.email.$touch"-->
+
+
+
+        <!--:error-messages="v$.user.email.$silentErrors.map(e=>e.$message)"-->
+
+        <!--v-model="v$.user.email.$model"-->
         <AInput
           name="email"
+          @blur="v$.user.email.$touch"
           v-model="formValues.user.email"
 
+          :error-messages="v$.user.email.$errors.map(e=>e.$message)"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Email"
         ></AInput>
@@ -90,6 +118,8 @@ const submitHandler = async () => {
         <AInput
           name="address"
           v-model="formValues.user.address"
+          @blur="v$.user.address.$touch"
+          :error-messages="v$.user.address.$errors.map(e=>e.$message)"
 
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Адрес *"
@@ -152,6 +182,7 @@ const submitHandler = async () => {
       <ACheckBox
         hide-label
         v-model="formValues.agreeWithConditions"
+        :error-messages="v$.agreeWithConditions.$errors.map(e=>e.$message)"
         class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3 mod--mb-half"
         name="agreeWithConditions"
         label="Я согласен со всеми условиями"

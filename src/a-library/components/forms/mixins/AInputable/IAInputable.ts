@@ -21,4 +21,4 @@ export const iAInputablePropDefaults = {
 };
 
 // export const iAInputableEmits = ["needToClose", "apply"];
-export const iAInputableEmits = [];
+export const iAInputableEmits = ['blur'];
