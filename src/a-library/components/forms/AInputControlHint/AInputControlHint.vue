@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed} from 'vue'
+import { computed } from "vue";
 
 export interface Props {
   errorMessages?: string[];
@@ -8,15 +8,14 @@ const props = withDefaults(defineProps<Props>(), {
   errorMessages: () => [],
 });
 
-const hint = computed(()=>{
-  return props.errorMessages[0] ?? ''
-})
-
+const hint = computed(() => {
+  return props.errorMessages[0] ?? "";
+});
 </script>
 
 <template>
   <div class="a-input-control-hint">
-    <div class="mod--ellipsis-one-line">{{hint}}</div>
+    <div class="mod--ellipsis-one-line">{{ hint }}</div>
   </div>
 </template>
 

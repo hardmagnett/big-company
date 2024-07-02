@@ -6,11 +6,11 @@ import {
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
 export interface Props extends IAInputableProps {
-  type?: 'text' | 'number'
+  type?: "text" | "number";
 }
 withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
-  type: 'text'
+  type: "text",
 });
 
 // defineOptions({
@@ -28,15 +28,10 @@ defineEmits([...iAInputableEmits]);
     :hideLabel="hideLabel"
     :hideHint="hideHint"
     class="a-input"
-    :class="{'a-input--with-error': errorMessages?.length}"
+    :class="{ 'a-input--with-error': errorMessages?.length }"
     :errorMessages="errorMessages"
   >
-    <input
-        :type="type"
-        :name="name"
-        v-model="model"
-        class="a-input__input"
-    />
+    <input :type="type" :name="name" v-model="model" class="a-input__input" />
   </AInputControl>
 </template>
 
@@ -61,7 +56,7 @@ defineEmits([...iAInputableEmits]);
 
       /*Фикс отступа от стрелочек для всех кроме FF. Для FF похоже ситуация непобедимая 2024-07.*/
       &::-webkit-inner-spin-button,
-      &::-webkit-outer-spin-button{
+      &::-webkit-outer-spin-button {
         margin-left: var(--gap);
       }
     }

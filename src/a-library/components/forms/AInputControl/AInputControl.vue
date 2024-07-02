@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 export interface Props {
   label?: string;
   hideLabel?: boolean;
@@ -28,7 +27,6 @@ withDefaults(defineProps<Props>(), {
     <AInputControlHint
       v-if="!hideHint"
       :error-messages="errorMessages"
-
     ></AInputControlHint>
   </div>
 </template>

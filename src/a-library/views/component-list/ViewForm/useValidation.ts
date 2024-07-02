@@ -43,7 +43,9 @@ export default function <T extends ZodTypeAny>(
 
     if (!parseResult.success) {
       const issues = parseResult.error.issues;
-      const groupedIssues = Object.groupBy(issues, ({ path }) => path.join(','));
+      const groupedIssues = Object.groupBy(issues, ({ path }) =>
+        path.join(","),
+      );
       _zodIssues.value = groupedIssues;
       validationWatch();
     }
@@ -52,7 +54,10 @@ export default function <T extends ZodTypeAny>(
   };
   // Скроллит к первой ошибке в форме
   // Не проверял ещё
-  const scrollToFirstError = (selector = ".is-error", options = { offset: 0 }) => {
+  const scrollToFirstError = (
+    selector = ".is-error",
+    options = { offset: 0 },
+  ) => {
     const element = document.querySelector(selector);
 
     if (element) {
@@ -69,17 +74,16 @@ export default function <T extends ZodTypeAny>(
   };
   // Получает все ошибки для поля.
   const getErrorsForPath = (path: string) => {
-    const fieldNameInZodErrors = `${path.replaceAll(".", ",")}`
-    const zodErrors = _zodIssues.value?.[fieldNameInZodErrors] ?? []
-    const textErrors = zodErrors.map(ze=>ze.message)
-    return textErrors
+    const fieldNameInZodErrors = `${path.replaceAll(".", ",")}`;
+    const zodErrors = _zodIssues.value?.[fieldNameInZodErrors] ?? [];
+    const textErrors = zodErrors.map((ze) => ze.message);
+    return textErrors;
   };
 
   // Условная активация eager-режима
   if (_opts.mode === "eager") {
     validationWatch();
   }
-
 
   return {
     validateForm,

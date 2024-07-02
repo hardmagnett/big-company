@@ -18,7 +18,7 @@ defineEmits([...iAInputableEmits]);
 <template>
   <AInputControl
     class="a-check-box"
-    :class="{'a-check-box--with-error': errorMessages?.length}"
+    :class="{ 'a-check-box--with-error': errorMessages?.length }"
     :hideLabel="hideLabel"
     :hideHint="hideHint"
     :errorMessages="errorMessages"
