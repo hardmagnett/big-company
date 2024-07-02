@@ -18,7 +18,7 @@ function stopTransitionsOnDocumentResize() {
   } else {
     bodyClasses.add(classToToggle);
   }
-  timerForTransition = setTimeout(() => {
+  timerForTransition = window.setTimeout(() => {
     bodyClasses.remove(classToToggle);
     timerForTransition = null;
   }, 100);
