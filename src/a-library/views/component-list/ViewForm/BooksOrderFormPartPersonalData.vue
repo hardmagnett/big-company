@@ -38,7 +38,7 @@ const formPartPersonalData = computed({
 </script>
 
 <template>
-    <div class="sub-form-personal-data am-cols">
+    <div class="books-order-form-part-personal-data am-cols">
       <AInput
           name="user-name"
           v-model="formPartPersonalData.name"
@@ -67,5 +67,5 @@ const formPartPersonalData = computed({
 </template>
 
 <style scoped>
-.sub-form-personal-data {}
+.books-order-form-part-personal-data {}
 </style>

@@ -1,19 +1,62 @@
 <script setup lang="ts">
-import { } from 'vue'
+import {computed} from 'vue'
+import {email, minLength, required, numeric, minValue} from "@vuelidate/validators";
+import {useVuelidate} from "@vuelidate/core";
 
+// export interface Props {
+//   book: {
+//     name: string,
+//     quantity: number
+//   }
+// }
+// const props = withDefaults(defineProps<Props>(), {
+// })
+
+///
 export interface Props {
-  book: {
+  modelValue: {
     name: string,
     quantity: number
   }
 }
+
+const emit = defineEmits(['update:modelValue'])
+
 const props = withDefaults(defineProps<Props>(), {
+})
+
+const formRules = {
+  // name: { required, minLength: minLength(3), $autoDirty: true },
+  // email: { email, $autoDirty: true },
+  // address: { required, minLength: minLength(10) },
+
+  name: {
+    required,
+    minLength: minLength(3),
+    $autoDirty: true
+  },
+  quantity: {
+    numeric, minValue: minValue(1), $autoDirty: true
+  }
+}
+
+const v$ = useVuelidate(formRules, props.modelValue)
+
+
+
+const formPartPersonalData = computed({
+  get() {
+    return props.modelValue
+  },
+  set(newValue) {
+    emit('update:modelValue', newValue)
+  }
 })
 
 </script>
 
 <template>
-  <div class="books-form-elements">
+  <div class="books-order-form-part-books">
     <div class="am-cols">
 
       <!--<AInput-->
@@ -65,5 +108,5 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 
 <style scoped>
-.books-form-elements {}
+.books-order-form-part-books {}
 </style>

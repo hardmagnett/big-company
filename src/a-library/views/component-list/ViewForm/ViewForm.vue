@@ -9,7 +9,7 @@ import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate
 // - попробовать завернуть ошибки вот так https://dev.to/gaisinskii/handling-form-errors-with-vuelidate-in-vuejs-30-5fp
 
 import { globalProperties } from "@/main";
-import BooksFormElements from "@/a-library/views/component-list/ViewForm/BooksFormElements.vue";
+import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
 import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartPersonalData.vue";
 
 // const formattedErrors = computed(() => useValidationErrors<IForm>(v$.value.$errors))
@@ -21,21 +21,21 @@ let formValues = reactive({
     // address: "",
     address: "BB",
   },
-  // books: [
-  //   {
-  //     name: "Первая",
-  //     quantity: 3,
-  //   },
-  //   {
-  //     // name: "Букварь",
-  //     name: "",
-  //     quantity: 3,
-  //   },
-  //   // {
-  //   //   name: "Синяя",
-  //   //   quantity: 0,
-  //   // },
-  // ],
+  books: [
+    {
+      name: "Первая",
+      quantity: 3,
+    },
+    {
+      // name: "Букварь",
+      name: "",
+      quantity: 3,
+    },
+    // {
+    //   name: "Синяя",
+    //   quantity: 0,
+    // },
+  ],
   agreeWithConditions: false,
   sendSpam: true,
 });
@@ -90,17 +90,18 @@ const submitHandler = async () => {
       <APageHeader> Форма </APageHeader>
     </Teleport>
 
-    <p>Есть валидация.</p>
-    <p>Состоит из нескольких компонентов form-part.</p>
-    <p>
-      Работает навигация по элементам при помощи
-      <code class="mod--code">tab</code> и
-      <code class="mod--code">shift + tab</code>.
-    </p>
+    <!--todo:: раскомментить-->
+    <!--<p>Есть валидация.</p>-->
+    <!--<p>Состоит из нескольких компонентов form-part.</p>-->
+    <!--<p>-->
+    <!--  Работает навигация по элементам при помощи-->
+    <!--  <code class="mod&#45;&#45;code">tab</code> и-->
+    <!--  <code class="mod&#45;&#45;code">shift + tab</code>.-->
+    <!--</p>-->
 
 
     <h2>Заказ книг</h2>
-<pre style="font-size: 10px">
+<pre style="font-size: 8px">
     <p>vals: {{ formValues }}</p>
   </pre>
     <!--<p>v$: {{ v$ }}</p>-->
@@ -131,10 +132,10 @@ const submitHandler = async () => {
       ></AInputControlHint>
 
       <!--Zeslint-disable-next-line vue/valid-v-model-->
-      <!--<BooksFormElements v-for="(book, index) in formValues.books" :book="book"-->
-      <!--<BooksFormElements v-for="(book, index) in formValues.books" v-model="book"-->
-      <!--    :key="index"-->
-      <!--/>-->
+      <!--<BooksOrderFormPartBooks v-for="(book, index) in formValues.books" :book="book"-->
+      <BooksOrderFormPartBooks v-for="(book, index) in formValues.books" v-model="book"
+          :key="index"
+      />
 
       <!--<template v-for="(book, index) in formValues.books" :key="index">-->
       <!--  <div class="am-cols">-->
