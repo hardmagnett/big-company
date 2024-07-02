@@ -23,47 +23,47 @@ let formValues = reactive({
     // address: "",
     address: "BB",
   },
-  books: [
-    {
-      name: "Первая",
-      quantity: 3,
-    },
-    {
-      // name: "Букварь",
-      name: "",
-      quantity: 3,
-    },
-    // {
-    //   name: "Синяя",
-    //   quantity: 0,
-    // },
-  ],
+  // books: [
+  //   {
+  //     name: "Первая",
+  //     quantity: 3,
+  //   },
+  //   {
+  //     // name: "Букварь",
+  //     name: "",
+  //     quantity: 3,
+  //   },
+  //   // {
+  //   //   name: "Синяя",
+  //   //   quantity: 0,
+  //   // },
+  // ],
   agreeWithConditions: false,
-  sendSpam: true,
+  // sendSpam: true,
 });
 
 const formRules = {
   $autoDirty: true,
   // $lazy: true,
-  // user: {
-  //   name: { required, minLength: minLength(3) },
-  //   email: { email },
-  //   address: { required, minLength: minLength(10) },
-  // },
-  books: {
-    required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
-    minLength: minLength(1),
-    // $lazy: true,
-    $each: helpers.forEach({
-      name: {
-        required,
-        minLength: minLength(3),
-      },
-      quantity: {
-        numeric, minValue: minValue(1)
-      }
-    })
+  user: {
+    name: { required, minLength: minLength(3) },
+    email: { email },
+    address: { required, minLength: minLength(10) },
   },
+  // books: {
+  //   required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
+  //   minLength: minLength(1),
+  //   // $lazy: true,
+  //   $each: helpers.forEach({
+  //     name: {
+  //       required,
+  //       minLength: minLength(3),
+  //     },
+  //     quantity: {
+  //       numeric, minValue: minValue(1)
+  //     }
+  //   })
+  // },
   // Цикл с книгами пока-что пропустил
 
   agreeWithConditions: {
@@ -75,11 +75,11 @@ const formRules = {
   },
 
 
-  sendSpam: {},
+  // sendSpam: {},
 
 }
 
-// const v$ = useVuelidate(formRules, formValues)
+const v$ = useVuelidate(formRules, formValues)
 
 // const getTextErrors = (param: any)=>{
 //
@@ -157,20 +157,20 @@ const submitHandler = async () => {
       <!--  ></AInput>-->
       <!--</div>-->
 
-      <br />
+      <!--<br />-->
 
-      <div class="am-cols">
-        <h3 class="am-col-6 am-col-sm-8 am-col-xxl-4 mod--mb-0">Книги</h3>
-        <div class="am-col-6 am-col-sm-4 am-col-xxl-2">
-          <ABtn
-            class="a-btn--small"
-            @click="formValues.books.push({ name: '', quantity: 0 })"
-          >
-            <AIcon icon="mdi-plus-thick" size="small" />
-            Добавить
-          </ABtn>
-        </div>
-      </div>
+      <!--<div class="am-cols">-->
+      <!--  <h3 class="am-col-6 am-col-sm-8 am-col-xxl-4 mod&#45;&#45;mb-0">Книги</h3>-->
+      <!--  <div class="am-col-6 am-col-sm-4 am-col-xxl-2">-->
+      <!--    <ABtn-->
+      <!--      class="a-btn&#45;&#45;small"-->
+      <!--      @click="formValues.books.push({ name: '', quantity: 0 })"-->
+      <!--    >-->
+      <!--      <AIcon icon="mdi-plus-thick" size="small" />-->
+      <!--      Добавить-->
+      <!--    </ABtn>-->
+      <!--  </div>-->
+      <!--</div>-->
 
       <!--:error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'required').map(e=>e.$message)"-->
       <AInputControlHint
@@ -183,55 +183,55 @@ const submitHandler = async () => {
       <!--    :key="index"-->
       <!--/>-->
 
-      <template v-for="(book, index) in formValues.books" :key="index">
-        <div class="am-cols">
-          <!--:error-messages="formErrors?.books?.[index]?.name?._errors"-->
+      <!--<template v-for="(book, index) in formValues.books" :key="index">-->
+      <!--  <div class="am-cols">-->
+      <!--    &lt;!&ndash;:error-messages="formErrors?.books?.[index]?.name?._errors"&ndash;&gt;-->
 
-          <!--v-for="error in v$.collection.$each.$response.$errors[index].name"-->
+      <!--    &lt;!&ndash;v-for="error in v$.collection.$each.$response.$errors[index].name"&ndash;&gt;-->
 
-          <!--@blur="v$.books.$each.$response.$errors[index].name.$touch"-->
-          <!--:error-messages="v$.books.$each.$response.$errors[index].name.map(e=>e.$message)"-->
-          <AInput
-            name="book-name"
-            v-model="book.name"
+      <!--    &lt;!&ndash;@blur="v$.books.$each.$response.$errors[index].name.$touch"&ndash;&gt;-->
+      <!--    &lt;!&ndash;:error-messages="v$.books.$each.$response.$errors[index].name.map(e=>e.$message)"&ndash;&gt;-->
+      <!--    <AInput-->
+      <!--      name="book-name"-->
+      <!--      v-model="book.name"-->
 
 
-            class="am-col-6 am-col-sm-4 am-col-xxl-2"
+      <!--      class="am-col-6 am-col-sm-4 am-col-xxl-2"-->
 
-            label="Название *"
-          ></AInput>
-          <!--:error-messages="getErrorsForPath(`books.${index}.quantity`)"-->
+      <!--      label="Название *"-->
+      <!--    ></AInput>-->
+      <!--    &lt;!&ndash;:error-messages="getErrorsForPath(`books.${index}.quantity`)"&ndash;&gt;-->
 
-          <!--@blur="v$.books.$each.$response.$errors[index].quantity.$touch"-->
-          <!--:error-messages="v$.books.$each.$response.$errors[index].quantity.map(e=>e.$message)"-->
-          <AInput
-            type="number"
-            name="quantity"
-            v-model="book.quantity"
+      <!--    &lt;!&ndash;@blur="v$.books.$each.$response.$errors[index].quantity.$touch"&ndash;&gt;-->
+      <!--    &lt;!&ndash;:error-messages="v$.books.$each.$response.$errors[index].quantity.map(e=>e.$message)"&ndash;&gt;-->
+      <!--    <AInput-->
+      <!--      type="number"-->
+      <!--      name="quantity"-->
+      <!--      v-model="book.quantity"-->
 
-            class="am-col-4 am-col-sm-4 am-col-xxl-2"
+      <!--      class="am-col-4 am-col-sm-4 am-col-xxl-2"-->
 
-            label="Количество *"
-          ></AInput>
-          <div class="am-col-2 am-col-sm-4 am-col-xxl-2">
-            <AInputControl>
-              <ABtn
-                @click="formValues.books.splice(index, 1)"
-                icon
-                class="a-btn--error"
-                ><AIcon icon="mdi-delete"
-              /></ABtn>
-            </AInputControl>
-          </div>
-        </div>
-      </template>
+      <!--      label="Количество *"-->
+      <!--    ></AInput>-->
+      <!--    <div class="am-col-2 am-col-sm-4 am-col-xxl-2">-->
+      <!--      <AInputControl>-->
+      <!--        <ABtn-->
+      <!--          @click="formValues.books.splice(index, 1)"-->
+      <!--          icon-->
+      <!--          class="a-btn&#45;&#45;error"-->
+      <!--          ><AIcon icon="mdi-delete"-->
+      <!--        /></ABtn>-->
+      <!--      </AInputControl>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</template>-->
 
       <!--:error-messages="getErrorsForPath(`agreeWithConditions`)"-->
 
-      <!--:error-messages="v$.agreeWithConditions.$errors.map(e=>e.$message)"-->
+
       <ACheckBox
         hide-label
-
+        :error-messages="v$.agreeWithConditions.$errors.map(e=>e.$message)"
         class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3 mod--mb-half"
         name="agreeWithConditions"
         label="Я согласен со всеми условиями"
@@ -239,14 +239,14 @@ const submitHandler = async () => {
 
       />
 
-      <ACheckBox
-        hide-label
-        v-model="formValues.sendSpam"
-        class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
-        label="Присылать мне спам-рассылку"
-        hide-hint
-      />
-      <br />
+      <!--<ACheckBox-->
+      <!--  hide-label-->
+      <!--  v-model="formValues.sendSpam"-->
+      <!--  class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"-->
+      <!--  label="Присылать мне спам-рассылку"-->
+      <!--  hide-hint-->
+      <!--/>-->
+      <!--<br />-->
 
       <div class="am-cols">
         <AFormButtonsWrapper class="am-col-12 am-col-xxl-6">
