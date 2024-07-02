@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {computed} from "vue";
 
 export interface Props {
   label?: string;
@@ -8,16 +7,12 @@ export interface Props {
   // В будущем может понадобиться выводить более чем одну ошибку. Поэтому пусть будет массивом
   errorMessages?: string[];
 }
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   label: "",
   hideLabel: false,
   hideHint: false,
   errorMessages: () => [],
 });
-
-const hint = computed(()=>{
-  return props.errorMessages[0] ?? ''
-})
 </script>
 
 <template>

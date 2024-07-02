@@ -40,9 +40,6 @@ export default function <T extends ZodTypeAny>(
 
     const parseResult = await schema.safeParseAsync(toValue(formValues));
     isFormValid.value = parseResult.success;
-    console.log(parseResult); console.log('^...parseResult:')
-    console.log(parseResult.success); console.log('^...parseResult.success:')
-    console.log(isFormValid.value); console.log('^...isFormValid.value:')
 
     if (!parseResult.success) {
       const issues = parseResult.error.issues;
