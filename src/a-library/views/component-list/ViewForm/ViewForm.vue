@@ -71,8 +71,11 @@ const formRules = {
 
 const v$ = useVuelidate(formRules, formValues)
 
-const updateBook = (shit)=>{
-  console.log(shit); console.log('^...shit:')
+// const updateBook = (shit)=>{
+//   console.log(shit); console.log('^...shit:')
+// }
+
+const updateBook = ()=>{
 }
 
 const submitHandler = async () => {
