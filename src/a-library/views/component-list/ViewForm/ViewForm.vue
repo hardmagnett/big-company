@@ -12,16 +12,17 @@ import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate
 
 import { globalProperties } from "@/main";
 import BooksFormElements from "@/a-library/views/component-list/ViewForm/BooksFormElements.vue";
+import SubFormPersonalData from "@/a-library/views/component-list/ViewForm/SubFormPersonalData.vue";
 
 // const formattedErrors = computed(() => useValidationErrors<IForm>(v$.value.$errors))
 
 let formValues = reactive({
-  user: {
-    name: "AA",
-    email: "",
-    // address: "",
-    address: "BB",
-  },
+  // user: {
+  //   name: "AA",
+  //   email: "",
+  //   // address: "",
+  //   address: "BB",
+  // },
   books: [
     {
       name: "Первая",
@@ -32,23 +33,23 @@ let formValues = reactive({
       name: "",
       quantity: 3,
     },
-    {
-      name: "Синяя",
-      quantity: 0,
-    },
+    // {
+    //   name: "Синяя",
+    //   quantity: 0,
+    // },
   ],
   agreeWithConditions: false,
   sendSpam: true,
 });
 
 const formRules = {
-  // $autoDirty: true,
+  $autoDirty: true,
   // $lazy: true,
-  user: {
-    name: { required, minLength: minLength(3) },
-    email: { email },
-    address: { required, minLength: minLength(10) },
-  },
+  // user: {
+  //   name: { required, minLength: minLength(3) },
+  //   email: { email },
+  //   address: { required, minLength: minLength(10) },
+  // },
   books: {
     required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
     minLength: minLength(1),
@@ -85,7 +86,7 @@ const v$ = useVuelidate(formRules, formValues)
 // }
 
 const submitHandler = async () => {
-  
+
   const isFormCorrect = await v$.value.$validate()
 
   if (isFormCorrect) {
@@ -112,42 +113,44 @@ const submitHandler = async () => {
     </p>
 
     <h2>Заказ книг</h2>
-
-    <!--<p>vals: {{ formValues }}</p>-->
+<pre style="font-size: 10px">
+    <p>vals: {{ formValues }}</p>
+  </pre>
     <!--<p>v$: {{ v$ }}</p>-->
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
-      <div class="am-cols">
-        <!--:error-messages="getErrorsForPath('user.name')"-->
-        <AInput
-          name="user-name"
-          v-model="formValues.user.name"
-          @blur="v$.user.name.$touch"
-          :error-messages="v$.user.name.$errors.map(e=>e.$message)"
-          class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-          label="Имя *"
-        ></AInput>
+      <SubFormPersonalData />
+      <!--<div class="am-cols">-->
+      <!--  &lt;!&ndash;:error-messages="getErrorsForPath('user.name')"&ndash;&gt;-->
+      <!--  <AInput-->
+      <!--    name="user-name"-->
+      <!--    v-model="formValues.user.name"-->
+      <!--    @blur="v$.user.name.$touch"-->
+      <!--    :error-messages="v$.user.name.$errors.map(e=>e.$message)"-->
+      <!--    class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"-->
+      <!--    label="Имя *"-->
+      <!--  ></AInput>-->
 
-        <AInput
-          name="email"
-          @blur="v$.user.email.$touch"
-          v-model="formValues.user.email"
+      <!--  <AInput-->
+      <!--    name="email"-->
+      <!--    @blur="v$.user.email.$touch"-->
+      <!--    v-model="formValues.user.email"-->
 
-          :error-messages="v$.user.email.$errors.map(e=>e.$message)"
-          class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-          label="Email"
-        ></AInput>
+      <!--    :error-messages="v$.user.email.$errors.map(e=>e.$message)"-->
+      <!--    class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"-->
+      <!--    label="Email"-->
+      <!--  ></AInput>-->
 
-        <AInput
-          name="address"
-          v-model="formValues.user.address"
-          @blur="v$.user.address.$touch"
-          :error-messages="v$.user.address.$errors.map(e=>e.$message)"
+      <!--  <AInput-->
+      <!--    name="address"-->
+      <!--    v-model="formValues.user.address"-->
+      <!--    @blur="v$.user.address.$touch"-->
+      <!--    :error-messages="v$.user.address.$errors.map(e=>e.$message)"-->
 
-          class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-          label="Адрес *"
-        ></AInput>
-      </div>
+      <!--    class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"-->
+      <!--    label="Адрес *"-->
+      <!--  ></AInput>-->
+      <!--</div>-->
 
       <br />
 
