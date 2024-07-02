@@ -11,6 +11,7 @@ import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate
 // import type { IForm } from '@/interface/form.interface'
 
 import { globalProperties } from "@/main";
+import BooksFormElements from "@/a-library/views/component-list/ViewForm/BooksFormElements.vue";
 
 // const formattedErrors = computed(() => useValidationErrors<IForm>(v$.value.$errors))
 
@@ -84,17 +85,17 @@ const v$ = useVuelidate(formRules, formValues)
 // }
 
 const submitHandler = async () => {
-  // await validateForm();
+  
+  const isFormCorrect = await v$.value.$validate()
 
-  // if (isFormValid.value) {
-  //   globalProperties.$toast({ message: "Форма заполнена верно" });
-  // } else {
-  //   scrollToFirstError(".p-invalid", { offset: 24 });
-  //   globalProperties.$toast({
-  //     message: "Форма заполнена неверно",
-  //     type: "error",
-  //   });
-  // }
+  if (isFormCorrect) {
+    globalProperties.$toast({ message: "Форма заполнена верно" });
+  } else {
+    globalProperties.$toast({
+      message: "Форма заполнена неверно",
+      type: "error",
+    });
+  }
 };
 </script>
 
@@ -166,6 +167,12 @@ const submitHandler = async () => {
       <AInputControlHint
           :error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'required').map(e=>e.$message)"
       ></AInputControlHint>
+
+      <!--Zeslint-disable-next-line vue/valid-v-model-->
+      <!--<BooksFormElements v-for="(book, index) in formValues.books" :book="book"-->
+      <!--<BooksFormElements v-for="(book, index) in formValues.books" v-model="book"-->
+      <!--    :key="index"-->
+      <!--/>-->
 
       <template v-for="(book, index) in formValues.books" :key="index">
         <div class="am-cols">
