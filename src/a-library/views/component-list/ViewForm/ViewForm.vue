@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { reactive, ref, computed } from "vue";
 import { useVuelidate } from '@vuelidate/core'
-import {required, email, minLength, helpers} from '@vuelidate/validators'
+import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate/validators'
 
 // todo:: когда всё будет работать на обычном JS-е
 // - Переделать на TS-е
@@ -18,7 +18,8 @@ let formValues = reactive({
   user: {
     name: "AA",
     email: "",
-    address: "",
+    // address: "",
+    address: "BB",
   },
   books: [
     {
@@ -26,8 +27,13 @@ let formValues = reactive({
       quantity: 3,
     },
     {
-      name: "Букварь",
+      // name: "Букварь",
+      name: "",
       quantity: 3,
+    },
+    {
+      name: "Синяя",
+      quantity: 0,
     },
   ],
   agreeWithConditions: false,
@@ -35,11 +41,21 @@ let formValues = reactive({
 });
 
 const formRules = {
-  $autoDirty: true,
+  // $autoDirty: true,
   user: {
     name: { required, minLength: minLength(3)},
     email: { email },
     address: { required, minLength: minLength(10) },
+  },
+  books: {
+    $each: helpers.forEach({
+      name: {
+        required, minLength: minLength(3)
+      },
+      quantity: {
+        numeric, minValue: minValue(1)
+      }
+    })
   },
   // Цикл с книгами пока-что пропустил
 
@@ -106,16 +122,6 @@ const submitHandler = async () => {
           label="Имя *"
         ></AInput>
 
-
-        <!--:error-messages="v$.user.email.$errors"-->
-
-        <!--@blur="v$.user.email.$touch"-->
-
-
-
-        <!--:error-messages="v$.user.email.$silentErrors.map(e=>e.$message)"-->
-
-        <!--v-model="v$.user.email.$model"-->
         <AInput
           name="email"
           @blur="v$.user.email.$touch"
@@ -126,7 +132,6 @@ const submitHandler = async () => {
           label="Email"
         ></AInput>
 
-        <!--:error-messages="getErrorsForPath('user.address')"-->
         <AInput
           name="address"
           v-model="formValues.user.address"
@@ -161,9 +166,14 @@ const submitHandler = async () => {
       <template v-for="(book, index) in formValues.books" :key="index">
         <div class="am-cols">
           <!--:error-messages="formErrors?.books?.[index]?.name?._errors"-->
+
+          <!--v-for="error in v$.collection.$each.$response.$errors[index].name"-->
           <AInput
             name="book-name"
             v-model="book.name"
+
+            @blur="v$.books.$each.$response.$errors[index].name.$touch"
+            :error-messages="v$.books.$each.$response.$errors[index].name.map(e=>e.$message)"
             class="am-col-6 am-col-sm-4 am-col-xxl-2"
 
             label="Название *"
@@ -173,6 +183,8 @@ const submitHandler = async () => {
             type="number"
             name="quantity"
             v-model="book.quantity"
+            @blur="v$.books.$each.$response.$errors[index].quantity.$touch"
+            :error-messages="v$.books.$each.$response.$errors[index].quantity.map(e=>e.$message)"
             class="am-col-4 am-col-sm-4 am-col-xxl-2"
 
             label="Количество *"
