@@ -26,7 +26,7 @@ const v$ = useVuelidate(formRules, props.modelValue)
 
 
 
-const innerFormPart = computed({
+const formPartPersonalData = computed({
   get() {
     return props.modelValue
   },
@@ -41,7 +41,7 @@ const innerFormPart = computed({
     <div class="sub-form-personal-data am-cols">
       <AInput
           name="user-name"
-          v-model="innerFormPart.name"
+          v-model="formPartPersonalData.name"
           :error-messages="v$.name.$errors.map(e=>e.$message)"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Имя *"
@@ -49,7 +49,7 @@ const innerFormPart = computed({
 
       <AInput
           name="email"
-          v-model="innerFormPart.email"
+          v-model="formPartPersonalData.email"
           :error-messages="v$.email.$errors.map(e=>e.$message)"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Email"
@@ -57,7 +57,7 @@ const innerFormPart = computed({
 
       <AInput
           name="address"
-          v-model="innerFormPart.address"
+          v-model="formPartPersonalData.address"
           :error-messages="v$.address.$errors.map(e=>e.$message)"
           @blur="v$.address.$touch"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"

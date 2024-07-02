@@ -10,7 +10,7 @@ import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate
 
 import { globalProperties } from "@/main";
 import BooksFormElements from "@/a-library/views/component-list/ViewForm/BooksFormElements.vue";
-import SubFormPersonalData from "@/a-library/views/component-list/ViewForm/SubFormPersonalData.vue";
+import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartPersonalData.vue";
 
 // const formattedErrors = computed(() => useValidationErrors<IForm>(v$.value.$errors))
 
@@ -90,11 +90,14 @@ const submitHandler = async () => {
       <APageHeader> Форма </APageHeader>
     </Teleport>
 
+    <p>Есть валидация.</p>
+    <p>Состоит из нескольких компонентов form-part.</p>
     <p>
-      В форме работает навигация по элементам при помощи
+      Работает навигация по элементам при помощи
       <code class="mod--code">tab</code> и
       <code class="mod--code">shift + tab</code>.
     </p>
+
 
     <h2>Заказ книг</h2>
 <pre style="font-size: 10px">
@@ -104,7 +107,7 @@ const submitHandler = async () => {
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
 
-      <SubFormPersonalData v-model="formValues.user"/>
+      <BooksOrderFormPartPersonalData v-model="formValues.user"/>
 
 
       <!--<br />-->
