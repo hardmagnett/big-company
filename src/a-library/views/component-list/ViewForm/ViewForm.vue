@@ -49,6 +49,8 @@ const formRules = {
     address: { required, minLength: minLength(10) },
   },
   books: {
+    required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
+    minLength: minLength(1),
     // $lazy: true,
     $each: helpers.forEach({
       name: {
@@ -161,9 +163,8 @@ const submitHandler = async () => {
         </div>
       </div>
 
-      <!--:error-messages="getErrorsForPath(`books`)"-->
       <AInputControlHint
-
+          :error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'required').map(e=>e.$message)"
       ></AInputControlHint>
 
       <template v-for="(book, index) in formValues.books" :key="index">
