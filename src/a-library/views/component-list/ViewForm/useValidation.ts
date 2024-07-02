@@ -84,7 +84,6 @@ export default function <T extends ZodTypeAny>(
   }
 
 
-  // errors: _zodIssues,
   return {
     validateForm,
     isFormValid,

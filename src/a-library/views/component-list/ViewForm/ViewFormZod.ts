@@ -8,8 +8,6 @@ export const formSchema = z.object({
     ,
     email: z.string()
       .email({message: 'Укажите правильный Email'})
-      // .email({message: 'Нужно указать правильный Email'})
-      // .optional()  // Пусть пока-что здесь побудет. Вроде и без него работает, но убедиться, когда всё проверишь. И в гисты потом.
       .or(z.literal(''))  // Эта строка делает поле опциональным.
     ,
 
@@ -32,5 +30,4 @@ export const formSchema = z.object({
 });
 export type FormSchema = z.infer<typeof formSchema>
 
-// Ввидосе он как-то по другому сделал nullable-тип
 export type FormErrors = z.inferFormattedError<typeof formSchema> | null

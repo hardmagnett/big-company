@@ -37,7 +37,6 @@ const classes = computed(() => {
   /*В случае необходимости, можно переделать размеры при помощи mdi-класоов. Наприме mdi-18px.mdi-set .*/
   &.a-icon--small {
     font-size: var(--font-size-small);
-    /*outline: 1px solid darkred;*/
   }
 
   &.a-icon--medium {

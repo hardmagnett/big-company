@@ -24,10 +24,8 @@ let formValues = reactive<FormSchema>({
   ],
   agreeWithConditions: false,
   sendSpam: true,
-  // booleanWithoutValidation: false,
 });
 
-// const errors = ref<FormErrors>()
 
 
 import useValidation from './useValidation';
@@ -42,8 +40,6 @@ const {
     formSchema,
     formValues,
     {mode: 'lazy'}
-    // {mode: 'eager'}
-//     {}
 )
 
 const submitHandler = async () => {
@@ -81,10 +77,6 @@ const submitHandler = async () => {
       <h3>Персональные данные</h3>
       <div class="am-cols">
 
-        <!--hideHint-->
-        <!--getError('name')-->
-        <!--:error-messages="formErrors?.user?.name?._errors"-->
-        <!--:class="{ 'p-invalid': getErrorsForPath('user.name').length }"-->
         <AInput
           name="user-name"
           v-model="formValues.user.name"
@@ -103,7 +95,6 @@ const submitHandler = async () => {
 
         ></AInput>
 
-        <!--hideHint-->
         <AInput
             name="address"
             v-model="formValues.user.address"
@@ -139,7 +130,6 @@ const submitHandler = async () => {
           v-for="(book, index) in formValues.books"
           :key="index">
         <div class="am-cols">
-          <!--:error-messages="formErrors?.user?.name?._errors"-->
           <AInput
               name="book-name"
               v-model="book.name"
@@ -148,9 +138,6 @@ const submitHandler = async () => {
               label="Название *"
 
           ></AInput>
-          <!--:class="{ 'p-invalid': getErrorsForPath('user.name').length }"-->
-          <!--:error-messages="getErrorsForPath('user.name')"-->
-          <!--:error-messages="formErrors?.books?.[index]?.quantity?._errors"-->
           <AInput
               type="number"
               name="quantity"
@@ -185,7 +172,6 @@ const submitHandler = async () => {
           label="Я согласен со всеми условиями"
           :error-messages="getErrorsForPath(`agreeWithConditions`)"
       />
-      <!--<br>-->
 
       <ACheckBox
           hide-label

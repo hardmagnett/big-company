@@ -23,7 +23,6 @@ const hint = computed(()=>{
 <style scoped>
 .a-input-control-hint {
   --hint-height: 20px;
-  /*outline: 1px solid darkred;*/
   display: flex;
   align-items: end;
 
