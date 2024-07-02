@@ -1,4 +1,4 @@
-// todo:: если это приживется, то перенести куда-то в подходящее место.
+// todo:: После чисток кода  - в гисты и удалить
 
 import { z, type ZodTypeAny } from "zod";
 
@@ -54,7 +54,7 @@ export default function <T extends ZodTypeAny>(
     return _zodIssues;
   };
   // Скроллит к первой ошибке в форме
-  // todo:: проверить и подкорректировать работу скролла
+  // Не проверял ещё
   const scrollToFirstError = (selector = ".is-error", options = { offset: 0 }) => {
     const element = document.querySelector(selector);
 

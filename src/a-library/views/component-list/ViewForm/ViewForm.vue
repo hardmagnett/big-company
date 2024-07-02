@@ -84,7 +84,6 @@ const submitHandler = async () => {
         <!--hideHint-->
         <!--getError('name')-->
         <!--:error-messages="formErrors?.user?.name?._errors"-->
-        <!--todo:: довать такое имя класса для ошибки, которое я обычно даю-->
         <!--:class="{ 'p-invalid': getErrorsForPath('user.name').length }"-->
         <AInput
           name="user-name"
