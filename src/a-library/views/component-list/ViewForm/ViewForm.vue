@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 
-import { type FormSchema, type FormErrors, formSchema } from "./ViewFormZod";
+// import { type FormSchema, type FormErrors, formSchema } from "./ViewFormZod";
 import { globalProperties } from "@/main";
 
-const formErrors = ref<FormErrors>();
+// const formErrors = ref<FormErrors>();
 
-let formValues = reactive<FormSchema>({
+// let formValues = reactive<FormSchema>({
+let formValues = reactive({
   user: {
     name: "AA",
     email: "",
@@ -26,27 +27,27 @@ let formValues = reactive<FormSchema>({
   sendSpam: true,
 });
 
-import useValidation from "./useValidation";
-const {
-  validateForm,
-  isFormValid,
-  clearErrors,
-  getErrorsForPath,
-  scrollToFirstError,
-} = useValidation(formSchema, formValues, { mode: "lazy" });
+// import useValidation from "./useValidation";
+// const {
+//   validateForm,
+//   isFormValid,
+//   clearErrors,
+//   getErrorsForPath,
+//   scrollToFirstError,
+// } = useValidation(formSchema, formValues, { mode: "lazy" });
 
 const submitHandler = async () => {
-  await validateForm();
+  // await validateForm();
 
-  if (isFormValid.value) {
-    globalProperties.$toast({ message: "Форма заполнена верно" });
-  } else {
-    scrollToFirstError(".p-invalid", { offset: 24 });
-    globalProperties.$toast({
-      message: "Форма заполнена неверно",
-      type: "error",
-    });
-  }
+  // if (isFormValid.value) {
+  //   globalProperties.$toast({ message: "Форма заполнена верно" });
+  // } else {
+  //   scrollToFirstError(".p-invalid", { offset: 24 });
+  //   globalProperties.$toast({
+  //     message: "Форма заполнена неверно",
+  //     type: "error",
+  //   });
+  // }
 };
 </script>
 
@@ -68,26 +69,28 @@ const submitHandler = async () => {
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
       <div class="am-cols">
+        <!--:error-messages="getErrorsForPath('user.name')"-->
         <AInput
           name="user-name"
           v-model="formValues.user.name"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-          :error-messages="getErrorsForPath('user.name')"
+
           label="Имя *"
         ></AInput>
-        <!--hideHint-->
+        <!--:error-messages="getErrorsForPath('user.email')"-->
         <AInput
           name="email"
           v-model="formValues.user.email"
-          :error-messages="getErrorsForPath('user.email')"
+
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Email"
         ></AInput>
 
+        <!--:error-messages="getErrorsForPath('user.address')"-->
         <AInput
           name="address"
           v-model="formValues.user.address"
-          :error-messages="getErrorsForPath('user.address')"
+
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Адрес *"
         ></AInput>
@@ -108,25 +111,28 @@ const submitHandler = async () => {
         </div>
       </div>
 
+      <!--:error-messages="getErrorsForPath(`books`)"-->
       <AInputControlHint
-        :error-messages="getErrorsForPath(`books`)"
+
       ></AInputControlHint>
 
       <template v-for="(book, index) in formValues.books" :key="index">
         <div class="am-cols">
+          <!--:error-messages="formErrors?.books?.[index]?.name?._errors"-->
           <AInput
             name="book-name"
             v-model="book.name"
             class="am-col-6 am-col-sm-4 am-col-xxl-2"
-            :error-messages="formErrors?.books?.[index]?.name?._errors"
+
             label="Название *"
           ></AInput>
+          <!--:error-messages="getErrorsForPath(`books.${index}.quantity`)"-->
           <AInput
             type="number"
             name="quantity"
             v-model="book.quantity"
             class="am-col-4 am-col-sm-4 am-col-xxl-2"
-            :error-messages="getErrorsForPath(`books.${index}.quantity`)"
+
             label="Количество *"
           ></AInput>
           <div class="am-col-2 am-col-sm-4 am-col-xxl-2">
@@ -142,13 +148,14 @@ const submitHandler = async () => {
         </div>
       </template>
 
+      <!--:error-messages="getErrorsForPath(`agreeWithConditions`)"-->
       <ACheckBox
         hide-label
         v-model="formValues.agreeWithConditions"
         class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3 mod--mb-half"
         name="agreeWithConditions"
         label="Я согласен со всеми условиями"
-        :error-messages="getErrorsForPath(`agreeWithConditions`)"
+
       />
 
       <ACheckBox
@@ -166,7 +173,8 @@ const submitHandler = async () => {
 
           <ABtn type="submit">Ок</ABtn>
           <template #left>
-            <ABtn class="a-btn--tonal a-btn--small" @click="clearErrors"
+            <!--@click="clearErrors"-->
+            <ABtn class="a-btn--tonal a-btn--small"
               >Очистить ошибки</ABtn
             >
           </template>
