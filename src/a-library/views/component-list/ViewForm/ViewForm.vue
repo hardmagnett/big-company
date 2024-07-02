@@ -42,15 +42,18 @@ let formValues = reactive({
 
 const formRules = {
   // $autoDirty: true,
+  // $lazy: true,
   user: {
-    name: { required, minLength: minLength(3)},
+    name: { required, minLength: minLength(3) },
     email: { email },
     address: { required, minLength: minLength(10) },
   },
   books: {
+    // $lazy: true,
     $each: helpers.forEach({
       name: {
-        required, minLength: minLength(3)
+        required,
+        minLength: minLength(3),
       },
       quantity: {
         numeric, minValue: minValue(1)
