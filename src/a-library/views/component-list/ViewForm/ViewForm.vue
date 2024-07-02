@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import { useVuelidate } from '@vuelidate/core'
 import {required, email, minLength, helpers} from '@vuelidate/validators'
 
+// todo:: когда всё будет работать на обычном JS-е
+// - Переделать на TS-е
+// - Пройти чистки
+// - попробовать завернуть ошибки вот так https://dev.to/gaisinskii/handling-form-errors-with-vuelidate-in-vuejs-30-5fp
+
+// import type { IForm } from '@/interface/form.interface'
+
 import { globalProperties } from "@/main";
+
+// const formattedErrors = computed(() => useValidationErrors<IForm>(v$.value.$errors))
 
 let formValues = reactive({
   user: {
@@ -26,7 +35,7 @@ let formValues = reactive({
 });
 
 const formRules = {
-  // $autoDirty: true,
+  $autoDirty: true,
   user: {
     name: { required, minLength: minLength(3)},
     email: { email },
@@ -49,6 +58,9 @@ const formRules = {
 
 const v$ = useVuelidate(formRules, formValues)
 
+// const getTextErrors = (param: any)=>{
+//
+// }
 
 const submitHandler = async () => {
   // await validateForm();
