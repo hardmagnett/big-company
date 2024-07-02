@@ -17,12 +17,12 @@ import SubFormPersonalData from "@/a-library/views/component-list/ViewForm/SubFo
 // const formattedErrors = computed(() => useValidationErrors<IForm>(v$.value.$errors))
 
 let formValues = reactive({
-  // user: {
-  //   name: "AA",
-  //   email: "",
-  //   // address: "",
-  //   address: "BB",
-  // },
+  user: {
+    name: "AA",
+    email: "",
+    // address: "",
+    address: "BB",
+  },
   books: [
     {
       name: "Первая",
@@ -79,7 +79,7 @@ const formRules = {
 
 }
 
-const v$ = useVuelidate(formRules, formValues)
+// const v$ = useVuelidate(formRules, formValues)
 
 // const getTextErrors = (param: any)=>{
 //
@@ -87,16 +87,18 @@ const v$ = useVuelidate(formRules, formValues)
 
 const submitHandler = async () => {
 
-  const isFormCorrect = await v$.value.$validate()
+  // const isFormCorrect = await v$.value.$validate()
 
-  if (isFormCorrect) {
-    globalProperties.$toast({ message: "Форма заполнена верно" });
-  } else {
-    globalProperties.$toast({
-      message: "Форма заполнена неверно",
-      type: "error",
-    });
-  }
+  console.log('submitHandler')
+
+  // if (isFormCorrect) {
+  //   globalProperties.$toast({ message: "Форма заполнена верно" });
+  // } else {
+  //   globalProperties.$toast({
+  //     message: "Форма заполнена неверно",
+  //     type: "error",
+  //   });
+  // }
 };
 </script>
 
@@ -119,7 +121,10 @@ const submitHandler = async () => {
     <!--<p>v$: {{ v$ }}</p>-->
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
-      <SubFormPersonalData />
+
+      <!--<SubFormPersonalData :model-value="formValues.user"/>-->
+      <SubFormPersonalData v-model="formValues.user"/>
+
       <!--<div class="am-cols">-->
       <!--  &lt;!&ndash;:error-messages="getErrorsForPath('user.name')"&ndash;&gt;-->
       <!--  <AInput-->
@@ -167,8 +172,9 @@ const submitHandler = async () => {
         </div>
       </div>
 
+      <!--:error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'required').map(e=>e.$message)"-->
       <AInputControlHint
-          :error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'required').map(e=>e.$message)"
+
       ></AInputControlHint>
 
       <!--Zeslint-disable-next-line vue/valid-v-model-->
@@ -182,23 +188,27 @@ const submitHandler = async () => {
           <!--:error-messages="formErrors?.books?.[index]?.name?._errors"-->
 
           <!--v-for="error in v$.collection.$each.$response.$errors[index].name"-->
+
+          <!--@blur="v$.books.$each.$response.$errors[index].name.$touch"-->
+          <!--:error-messages="v$.books.$each.$response.$errors[index].name.map(e=>e.$message)"-->
           <AInput
             name="book-name"
             v-model="book.name"
 
-            @blur="v$.books.$each.$response.$errors[index].name.$touch"
-            :error-messages="v$.books.$each.$response.$errors[index].name.map(e=>e.$message)"
+
             class="am-col-6 am-col-sm-4 am-col-xxl-2"
 
             label="Название *"
           ></AInput>
           <!--:error-messages="getErrorsForPath(`books.${index}.quantity`)"-->
+
+          <!--@blur="v$.books.$each.$response.$errors[index].quantity.$touch"-->
+          <!--:error-messages="v$.books.$each.$response.$errors[index].quantity.map(e=>e.$message)"-->
           <AInput
             type="number"
             name="quantity"
             v-model="book.quantity"
-            @blur="v$.books.$each.$response.$errors[index].quantity.$touch"
-            :error-messages="v$.books.$each.$response.$errors[index].quantity.map(e=>e.$message)"
+
             class="am-col-4 am-col-sm-4 am-col-xxl-2"
 
             label="Количество *"
@@ -217,13 +227,15 @@ const submitHandler = async () => {
       </template>
 
       <!--:error-messages="getErrorsForPath(`agreeWithConditions`)"-->
+
+      <!--:error-messages="v$.agreeWithConditions.$errors.map(e=>e.$message)"-->
       <ACheckBox
         hide-label
-        v-model="formValues.agreeWithConditions"
-        :error-messages="v$.agreeWithConditions.$errors.map(e=>e.$message)"
+
         class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3 mod--mb-half"
         name="agreeWithConditions"
         label="Я согласен со всеми условиями"
+        v-model="formValues.agreeWithConditions"
 
       />
 
