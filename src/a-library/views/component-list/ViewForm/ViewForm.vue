@@ -8,8 +8,6 @@ import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate
 // - Пройти чистки
 // - попробовать завернуть ошибки вот так https://dev.to/gaisinskii/handling-form-errors-with-vuelidate-in-vuejs-30-5fp
 
-// import type { IForm } from '@/interface/form.interface'
-
 import { globalProperties } from "@/main";
 import BooksFormElements from "@/a-library/views/component-list/ViewForm/BooksFormElements.vue";
 import SubFormPersonalData from "@/a-library/views/component-list/ViewForm/SubFormPersonalData.vue";
@@ -39,17 +37,10 @@ let formValues = reactive({
   //   // },
   // ],
   agreeWithConditions: false,
-  // sendSpam: true,
+  sendSpam: true,
 });
 
 const formRules = {
-  $autoDirty: true,
-  // $lazy: true,
-  user: {
-    name: { required, minLength: minLength(3) },
-    email: { email },
-    address: { required, minLength: minLength(10) },
-  },
   // books: {
   //   required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
   //   minLength: minLength(1),
@@ -73,32 +64,23 @@ const formRules = {
     ),
     $autoDirty: true,
   },
-
-
-  // sendSpam: {},
-
+  sendSpam: {},
 }
 
 const v$ = useVuelidate(formRules, formValues)
 
-// const getTextErrors = (param: any)=>{
-//
-// }
-
 const submitHandler = async () => {
 
-  // const isFormCorrect = await v$.value.$validate()
+  const isFormCorrect = await v$.value.$validate()
 
-  console.log('submitHandler')
-
-  // if (isFormCorrect) {
-  //   globalProperties.$toast({ message: "Форма заполнена верно" });
-  // } else {
-  //   globalProperties.$toast({
-  //     message: "Форма заполнена неверно",
-  //     type: "error",
-  //   });
-  // }
+  if (isFormCorrect) {
+    globalProperties.$toast({ message: "Форма заполнена верно" });
+  } else {
+    globalProperties.$toast({
+      message: "Форма заполнена неверно",
+      type: "error",
+    });
+  }
 };
 </script>
 
@@ -122,40 +104,8 @@ const submitHandler = async () => {
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
 
-      <!--<SubFormPersonalData :model-value="formValues.user"/>-->
       <SubFormPersonalData v-model="formValues.user"/>
 
-      <!--<div class="am-cols">-->
-      <!--  &lt;!&ndash;:error-messages="getErrorsForPath('user.name')"&ndash;&gt;-->
-      <!--  <AInput-->
-      <!--    name="user-name"-->
-      <!--    v-model="formValues.user.name"-->
-      <!--    @blur="v$.user.name.$touch"-->
-      <!--    :error-messages="v$.user.name.$errors.map(e=>e.$message)"-->
-      <!--    class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"-->
-      <!--    label="Имя *"-->
-      <!--  ></AInput>-->
-
-      <!--  <AInput-->
-      <!--    name="email"-->
-      <!--    @blur="v$.user.email.$touch"-->
-      <!--    v-model="formValues.user.email"-->
-
-      <!--    :error-messages="v$.user.email.$errors.map(e=>e.$message)"-->
-      <!--    class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"-->
-      <!--    label="Email"-->
-      <!--  ></AInput>-->
-
-      <!--  <AInput-->
-      <!--    name="address"-->
-      <!--    v-model="formValues.user.address"-->
-      <!--    @blur="v$.user.address.$touch"-->
-      <!--    :error-messages="v$.user.address.$errors.map(e=>e.$message)"-->
-
-      <!--    class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"-->
-      <!--    label="Адрес *"-->
-      <!--  ></AInput>-->
-      <!--</div>-->
 
       <!--<br />-->
 
@@ -239,14 +189,14 @@ const submitHandler = async () => {
 
       />
 
-      <!--<ACheckBox-->
-      <!--  hide-label-->
-      <!--  v-model="formValues.sendSpam"-->
-      <!--  class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"-->
-      <!--  label="Присылать мне спам-рассылку"-->
-      <!--  hide-hint-->
-      <!--/>-->
-      <!--<br />-->
+      <ACheckBox
+        hide-label
+        v-model="formValues.sendSpam"
+        class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3"
+        label="Присылать мне спам-рассылку"
+        hide-hint
+      />
+      <br />
 
       <div class="am-cols">
         <AFormButtonsWrapper class="am-col-12 am-col-xxl-6">
