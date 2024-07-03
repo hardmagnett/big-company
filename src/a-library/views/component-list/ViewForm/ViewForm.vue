@@ -4,12 +4,6 @@ import { useVuelidate } from '@vuelidate/core'
 import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate/validators'
 import createUUID from '@/a-library/helpers/language/string/createUUID';
 
-
-// todo:: когда всё будет работать на обычном JS-е
-// - Переделать на TS-е
-// - Пройти чистки
-// - попробовать завернуть ошибки вот так https://dev.to/gaisinskii/handling-form-errors-with-vuelidate-in-vuejs-30-5fp
-
 // todo:: сделать переводы ошибок на русский
 // todo:: не забыть сделать lazy
 
@@ -148,15 +142,6 @@ const removeBook = (bookIndex: number)=>{
     <form @submit.prevent="submitHandler" novalidate>
       <h3>Персональные данные</h3>
 
-
-      <!--<AInput-->
-      <!--    name="user-nameqweqwe"-->
-      <!--    v-model="formValues.monster.name"-->
-      <!--    :error-messages="v$val.monster.name.$errors.map(e=>e.$message)"-->
-      <!--    class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"-->
-      <!--    label="Монстр *"-->
-      <!--&gt;</AInput>-->
-
       <BooksOrderFormPartPersonalData
           :form-part="formValues.user"
           :key="forceRerenderHackKey"
@@ -176,8 +161,6 @@ const removeBook = (bookIndex: number)=>{
         </div>
       </div>
 
-
-      <!--:error-messages="v$val.books.$silentErrors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"-->
       <AInputControlHint
           :error-messages="v$val.books.$errors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"
       ></AInputControlHint>
@@ -193,7 +176,6 @@ const removeBook = (bookIndex: number)=>{
             :key="book.id"
             class="a--animated-list__transition-item"
         >
-          <!--@needToRemove="()=>{formValues.books.splice(index, 1)}"-->
           <BooksOrderFormPartBooks
               :form-part="book"
               @needToRemove="removeBook(index)"
