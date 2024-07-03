@@ -19,6 +19,9 @@ import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/Vie
 
 let formValues = reactive({
 // let formValues = ref({
+//   monster: {
+//     name: "Metroid",
+//   },
   user: {
     name: "Ридли",
     email: "",
@@ -52,6 +55,10 @@ let formValues = reactive({
 });
 
 const formRules = {
+
+  // monster: {
+  //   name: { required, minLength: minLength(3), $autoDirty: true }
+  // },
   books: {
     requiredOneBook: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
   },
@@ -69,6 +76,8 @@ const formRules = {
 const v$ = useVuelidate(formRules, formValues)
 const v$val = v$.value
 
+const forceRerenderHackKey = ref(0);
+
 const clearErrors = ()=>{
   v$.value.$reset()
 }
@@ -76,28 +85,23 @@ const clearErrors = ()=>{
 const resetForm = ()=>{
   // todo:: реализовать reset когда сделаешь блокеры.
 
-  // Object.assign(formValues, {
-  //   user: {
-  //     name: "",
-  //     email: "",
-  //     // address: "",
-  //     address: "",
-  //   },
-  //   books: [],
-  //   agreeWithConditions: false,
-  //   sendSpam: true,
-  // })
-  // formValues.value = {
-  //   user: {
-  //     name: "",
-  //     email: "",
-  //     // address: "",
-  //     address: "",
-  //   },
-  //   books: [],
-  //   agreeWithConditions: false,
-  //   sendSpam: true,
-  // }
+  Object.assign(formValues, {
+    user: {
+      name: "",
+      email: "",
+      // address: "",
+      address: "",
+    },
+    // monster: {
+    //   name: ''
+    // },
+    books: [],
+    agreeWithConditions: false,
+    sendSpam: true,
+  })
+
+  forceRerenderHackKey.value ++
+
 }
 
 const submitHandler = async () => {
@@ -140,9 +144,18 @@ const submitHandler = async () => {
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
 
-      <!--v-model="formValues.user"-->
+
+      <!--<AInput-->
+      <!--    name="user-nameqweqwe"-->
+      <!--    v-model="formValues.monster.name"-->
+      <!--    :error-messages="v$val.monster.name.$errors.map(e=>e.$message)"-->
+      <!--    class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"-->
+      <!--    label="Монстр *"-->
+      <!--&gt;</AInput>-->
+
       <BooksOrderFormPartPersonalData
           :form-part="formValues.user"
+          :key="forceRerenderHackKey"
       />
 
       <br />
