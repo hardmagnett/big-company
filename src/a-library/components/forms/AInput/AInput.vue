@@ -5,18 +5,17 @@ import {
 } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
-export interface Props extends IAInputableProps {}
+export interface Props extends IAInputableProps {
+  type?: "text" | "number";
+}
 withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
-});
-
-defineOptions({
-  inheritAttrs: false,
+  type: "text",
 });
 
 const model = defineModel();
 
-defineEmits([...iAInputableEmits]);
+const emit = defineEmits([...iAInputableEmits]);
 </script>
 
 <template>
@@ -25,8 +24,17 @@ defineEmits([...iAInputableEmits]);
     :hideLabel="hideLabel"
     :hideHint="hideHint"
     class="a-input"
+    :class="{ 'a-input--with-error': errorMessages?.length }"
+    :errorMessages="errorMessages"
   >
-    <input :name="name" v-model="model" class="a-input__input" />
+    <input
+      :autofocus="autofocus"
+      :type="type"
+      :name="name"
+      v-model="model"
+      class="a-input__input"
+      @blur="emit('blur')"
+    />
   </AInputControl>
 </template>
 
@@ -45,6 +53,20 @@ defineEmits([...iAInputableEmits]);
     width: 100%;
     &:focus {
       border: 1px solid var(--clr-border-blue-darker);
+    }
+    &[type="number"] {
+      padding-right: 0;
+
+      /*Фикс отступа от стрелочек для всех кроме FF. Для FF похоже ситуация непобедимая 2024-07.*/
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        margin-left: var(--gap);
+      }
+    }
+  }
+  &.a-input--with-error {
+    .a-input__input {
+      border-color: var(--clr-border-red-darker);
     }
   }
 }

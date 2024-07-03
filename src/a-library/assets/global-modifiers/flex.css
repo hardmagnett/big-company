@@ -46,6 +46,8 @@
       var(--width-of-all-columns) + var(--width-of-all-gaps-to-add)
     );
     flex-basis: var(--flex-basis-result);
+    /*Ширину тоже нужно указать, иначе всё равно разъезжается, несмотря на flex-grow и flex-shrink*/
+    width: var(--flex-basis-result);
   }
 
   .am-col-1 {

@@ -105,6 +105,14 @@ const menuItems: Array<IMenuItem> = [
           to: "toasts",
         },
       },
+      {
+        id: i++,
+        title: "Эксперименты",
+        icon: "mdi-test-tube",
+        route: {
+          to: "experiments",
+        },
+      },
     ],
   },
 ];

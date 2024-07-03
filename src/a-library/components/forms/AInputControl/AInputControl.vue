@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import {} from "vue";
-
 export interface Props {
   label?: string;
   hideLabel?: boolean;
@@ -26,9 +24,10 @@ withDefaults(defineProps<Props>(), {
     <div class="a-input-control__input">
       <slot></slot>
     </div>
-    <div v-if="!hideHint" class="a-input-control__error">
-      <div class="mod--ellipsis-one-line">hint</div>
-    </div>
+    <AInputControlHint
+      v-if="!hideHint"
+      :error-messages="errorMessages"
+    ></AInputControlHint>
   </div>
 </template>
 
@@ -48,15 +47,6 @@ withDefaults(defineProps<Props>(), {
     height: calc(var(--gap) * 2);
     display: flex;
     align-items: center;
-  }
-  .a-input-control__error {
-    display: flex;
-    align-items: end;
-
-    font-size: var(--font-size-small);
-    height: var(--hint-height);
-
-    color: var(--clr-font-red-bright);
   }
 }
 </style>
