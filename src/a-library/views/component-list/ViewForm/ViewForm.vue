@@ -12,7 +12,8 @@ import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/Vie
 
 let formValues = reactive({
   user: {
-    name: "Ридли",
+    // name: "Ридли",
+    name: "Р",
     email: "",
     address: "Ул. Учебная, д.13",
   },
@@ -121,6 +122,7 @@ const removeBook = (bookIndex: number) => {
     <br />
 
     <h2>Заказ книг</h2>
+    <p>-={{ $t('message.hello') }}=-</p>
     <!--<pre style="font-size: 10px">-->
     <!--    <p>vals: {{ formValues }}</p>-->
     <!--  </pre>-->
