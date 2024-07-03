@@ -13,16 +13,6 @@ withDefaults(defineProps<Props>(), {
   type: "text",
 });
 
-// defineOptions({
-//   inheritAttrs: false,
-// });
-
-const doIt= ()=>{
-  // todo:: если тут ничего не увеличиться - перенести отсюда в шаблон.
-  // console.log('blur')
-  emit('blur')
-}
-
 const model = defineModel();
 
 const emit = defineEmits([...iAInputableEmits]);
@@ -38,7 +28,7 @@ const emit = defineEmits([...iAInputableEmits]);
     :errorMessages="errorMessages"
   >
     <input :type="type" :name="name" v-model="model" class="a-input__input"
-      @blur="doIt"
+      @blur="emit('blur')"
     />
   </AInputControl>
 </template>

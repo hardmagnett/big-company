@@ -129,20 +129,20 @@ const removeBook = (bookIndex: number)=>{
       <APageHeader> Форма </APageHeader>
     </Teleport>
 
-    <!--todo:: раскомментить-->
-    <!--<p>Есть валидация.</p>-->
-    <!--<p>Состоит из нескольких компонентов form-part.</p>-->
-    <!--<p>-->
-    <!--  Работает навигация по элементам при помощи-->
-    <!--  <code class="mod&#45;&#45;code">tab</code> и-->
-    <!--  <code class="mod&#45;&#45;code">shift + tab</code>.-->
-    <!--</p>-->
+    <p>Есть валидация.</p>
+    <p>Состоит из нескольких компонентов form-part.</p>
+    <p>
+      Работает навигация по элементам при помощи
+      <code class="mod--code">tab</code> и
+      <code class="mod--code">shift + tab</code>.
+    </p>
+    <br>
 
 
     <h2>Заказ книг</h2>
-<pre style="font-size: 10px">
-    <p>vals: {{ formValues }}</p>
-  </pre>
+<!--<pre style="font-size: 10px">-->
+<!--    <p>vals: {{ formValues }}</p>-->
+<!--  </pre>-->
 
 
     <form @submit.prevent="submitHandler" novalidate>
