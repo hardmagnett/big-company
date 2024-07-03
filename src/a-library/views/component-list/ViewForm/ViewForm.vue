@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, computed } from "vue";
+import { reactive, ref } from "vue";
 import { useVuelidate } from '@vuelidate/core'
 import {required, helpers } from '@vuelidate/validators'
 import createUUID from '@/a-library/helpers/language/string/createUUID';
@@ -100,7 +100,6 @@ const submitHandler = async () => {
 const removeBook = (bookIndex: number)=>{
   formValues.books.splice(bookIndex, 1)
   if (formValues.books.length === 0) {
-    console.log('needToShowError')
     v$.value.books.$touch()
   }
 }

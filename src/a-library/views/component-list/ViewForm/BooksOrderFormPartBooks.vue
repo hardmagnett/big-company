@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {computed, watch} from 'vue'
-import {email, minLength, required, numeric, integer, minValue} from "@vuelidate/validators";
+import {computed } from 'vue'
+import {minLength, required, numeric, integer, minValue} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
 
 export interface Props {
