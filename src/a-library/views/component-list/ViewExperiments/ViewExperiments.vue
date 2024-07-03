@@ -1,6 +1,34 @@
 <script setup lang="ts">
-import { } from 'vue'
+import {reactive} from 'vue'
 import ChildOne from "@/a-library/views/component-list/ViewExperiments/ChildOne.vue";
+import {globalProperties} from "@/main";
+
+let formValues = reactive({
+  user: {
+    name: "AA",
+    email: "",
+    address: "BB",
+  },
+  books: [
+    {
+      name: "Первая",
+      quantity: 3,
+    },
+    {
+      // name: "Букварь",
+      name: "",
+      quantity: 3,
+    },
+  ],
+  agreeWithConditions: false,
+  sendSpam: true,
+});
+
+const submitHandler = async () => {
+
+  console.log(formValues); console.log('^...formValues:')
+  console.log(formValues.agreeWithConditions); console.log('^...formValues.agreeWithConditions:')
+};
 
 </script>
 
@@ -10,7 +38,22 @@ import ChildOne from "@/a-library/views/component-list/ViewExperiments/ChildOne.
       <APageHeader> Эксперименты </APageHeader>
     </Teleport>
 
-    <ChildOne />
+    <pre style="font-size: 8px">
+      <p>vals: {{ formValues }}</p>
+    </pre>
+
+    <form @submit.prevent="submitHandler">
+    <ChildOne v-model="formValues.user" />
+
+
+    <ACheckBox
+        hide-label
+        label="Я согласен со всеми условиями"
+        v-model="formValues.agreeWithConditions"
+
+    />
+    <ABtn type="submit">Ок</ABtn>
+    </form>
 
   </div>
 </template>

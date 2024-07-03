@@ -1,11 +1,39 @@
 <script setup lang="ts">
-import { } from 'vue'
+import {computed} from 'vue'
+
+export interface Props {
+  modelValue: {
+    name: string,
+    email: string,
+    address: string
+  }
+}
+
+const emit = defineEmits(['update:modelValue'])
+
+const props = withDefaults(defineProps<Props>(), {
+})
+
+const formPartPersonalData = computed({
+  get() {
+    return props.modelValue
+  },
+  set(newValue) {
+    console.log('set personal')
+    emit('update:modelValue', newValue)
+  }
+})
 
 </script>
 
 <template>
   <div class="child-one">
-    <p>ChildOne</p>
+    <AInput
+        v-model="formPartPersonalData.name"
+        label="Имя *"
+    ></AInput>
+
+
   </div>
 </template>
 
