@@ -145,7 +145,7 @@ const removeBook = (bookIndex: number)=>{
   </pre>
 
 
-    <form @submit.prevent="submitHandler">
+    <form @submit.prevent="submitHandler" novalidate>
       <h3>Персональные данные</h3>
 
 
