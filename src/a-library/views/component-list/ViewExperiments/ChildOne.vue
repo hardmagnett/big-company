@@ -1,9 +1,5 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="child-one">
-
-  </div>
+  <div class="child-one"></div>
 </template>

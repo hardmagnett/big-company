@@ -22,7 +22,6 @@
 */
 
 .a--animated-list__transition-group {
-
   /*Самая нормальная анимация для стандартных списков*/
   /*То что находится под списком тоже отьезжает без проблем.*/
 
@@ -35,18 +34,15 @@
   --animation-time: var(--time-short);
   /*--animation-time: 2s;*/
 
-
   .a--animated-list__transition-item {
     /*Оставлю outline для дебага анимаций*/
     /*outline: 1px solid darkred;*/
-
 
     /*Max-Height Можно переопределять в зависимости от обстоятельств*/
     max-height: 72px;
     > * {
       /*Это тоже оставлю для дебага*/
       /*background-color: #aff;*/
-
     }
   }
 
@@ -63,6 +59,6 @@
     opacity: 0;
     max-height: 0;
   }
-  .a--animated-list__transition-item-leave-active {}
-
+  .a--animated-list__transition-item-leave-active {
+  }
 }

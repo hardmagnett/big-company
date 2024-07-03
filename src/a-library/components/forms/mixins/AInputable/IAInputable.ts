@@ -24,4 +24,4 @@ export const iAInputablePropDefaults = {
   // errorMessages: ()=> []
 };
 
-export const iAInputableEmits = ['blur'];
+export const iAInputableEmits = ["blur"];

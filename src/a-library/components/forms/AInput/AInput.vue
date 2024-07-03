@@ -27,11 +27,12 @@ const emit = defineEmits([...iAInputableEmits]);
     :class="{ 'a-input--with-error': errorMessages?.length }"
     :errorMessages="errorMessages"
   >
-
     <input
-        :autofocus="autofocus"
-
-        :type="type" :name="name" v-model="model" class="a-input__input"
+      :autofocus="autofocus"
+      :type="type"
+      :name="name"
+      v-model="model"
+      class="a-input__input"
       @blur="emit('blur')"
     />
   </AInputControl>

@@ -1,12 +1,10 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="child-two">
-  </div>
+  <div class="child-two"></div>
 </template>
 
 <style scoped>
-.child-two {}
+.child-two {
+}
 </style>

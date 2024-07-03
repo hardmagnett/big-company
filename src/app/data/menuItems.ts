@@ -112,7 +112,7 @@ const menuItems: Array<IMenuItem> = [
         route: {
           to: "experiments",
         },
-      }
+      },
     ],
   },
 ];

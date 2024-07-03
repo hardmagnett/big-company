@@ -67,6 +67,8 @@ export default [
     path: `${pathToComponents}experiments`,
     name: "experiments",
     component: () =>
-      import("@/a-library/views/component-list/ViewExperiments/ViewExperiments.vue"),
+      import(
+        "@/a-library/views/component-list/ViewExperiments/ViewExperiments.vue"
+      ),
   },
 ];
