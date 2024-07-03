@@ -13,13 +13,9 @@ withDefaults(defineProps<Props>(), {
   type: "text",
 });
 
-// defineOptions({
-//   inheritAttrs: false,
-// });
-
 const model = defineModel();
 
-defineEmits([...iAInputableEmits]);
+const emit = defineEmits([...iAInputableEmits]);
 </script>
 
 <template>
@@ -31,7 +27,13 @@ defineEmits([...iAInputableEmits]);
     :class="{ 'a-input--with-error': errorMessages?.length }"
     :errorMessages="errorMessages"
   >
-    <input :type="type" :name="name" v-model="model" class="a-input__input" />
+
+    <input
+        :autofocus="autofocus"
+
+        :type="type" :name="name" v-model="model" class="a-input__input"
+      @blur="emit('blur')"
+    />
   </AInputControl>
 </template>
 

@@ -63,4 +63,10 @@ export default [
     component: () =>
       import("@/a-library/views/component-list/ViewToasts/ViewToasts.vue"),
   },
+  {
+    path: `${pathToComponents}experiments`,
+    name: "experiments",
+    component: () =>
+      import("@/a-library/views/component-list/ViewExperiments/ViewExperiments.vue"),
+  },
 ];
