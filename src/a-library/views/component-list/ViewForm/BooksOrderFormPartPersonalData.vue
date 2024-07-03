@@ -23,8 +23,10 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const formRules = {
-    name: { required, minLength: minLength(3), $autoDirty: true },
-    email: { email, $autoDirty: true },
+    // autoDirty ещё пригодиться
+    // name: { required, minLength: minLength(3), $autoDirty: true },
+    name: { required, minLength: minLength(3)},
+    email: { email },
     address: { required, minLength: minLength(10) },
 }
 
@@ -56,8 +58,10 @@ const formPartPersonalData = computed(()=>{
 <template>
     <div class="books-order-form-part-personal-data am-cols">
       <AInput
+          autofocus
           name="user-name"
           v-model="formPartPersonalData.name"
+          @blur="v$.name.$touch"
           :error-messages="v$.name.$errors.map(e=>e.$message)"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Имя *"
@@ -66,6 +70,7 @@ const formPartPersonalData = computed(()=>{
       <AInput
           name="email"
           v-model="formPartPersonalData.email"
+          @blur="v$.email.$touch"
           :error-messages="v$.email.$errors.map(e=>e.$message)"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
           label="Email"

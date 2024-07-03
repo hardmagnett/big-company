@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { reactive, ref, computed } from "vue";
 import { useVuelidate } from '@vuelidate/core'
-import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate/validators'
+import {required, helpers } from '@vuelidate/validators'
 import createUUID from '@/a-library/helpers/language/string/createUUID';
 
 // todo:: сделать переводы ошибок на русский
-// todo:: не забыть сделать lazy
 
 import { globalProperties } from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";

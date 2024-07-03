@@ -20,10 +20,9 @@ const formRules = {
   name: {
     required,
     minLength: minLength(3),
-    $autoDirty: true
   },
   quantity: {
-    numeric, integer, minValue: minValue(1), $autoDirty: true
+    numeric, integer, minValue: minValue(1)
   }
 }
 
@@ -45,19 +44,18 @@ let b = 1;
       <AInput
           name="book-name"
           v-model="formPartBook.name"
+          @blur="v$.name.$touch"
           :error-messages="v$.name.$errors.map(e=>e.$message)"
 
           class="am-col-6 am-col-sm-4 am-col-xxl-2"
 
           label="Название *"
       ></AInput>
-
-      <!--@blur="v$.books.$each.$response.$errors[index].quantity.$touch"-->
       <AInput
           type="number"
           name="quantity"
           v-model="formPartBook.quantity"
-
+          @blur="v$.quantity.$touch"
           :error-messages="v$.quantity.$errors.map(e=>e.$message)"
           class="am-col-4 am-col-sm-4 am-col-xxl-2"
 
