@@ -4,6 +4,8 @@ import ChildOne from "@/a-library/views/component-list/ViewExperiments/ChildOne.
 import ChildTwo from "@/a-library/views/component-list/ViewExperiments/ChildTwo.vue";
 import {globalProperties} from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
+import {helpers} from "@vuelidate/validators";
+import {useVuelidate} from "@vuelidate/core";
 
 let formValues = reactive({
   user: {
@@ -25,6 +27,33 @@ let formValues = reactive({
   agreeWithConditions: false,
   sendSpam: true,
 });
+const formRules = {
+  // books: {
+  //   required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
+  //   minLength: minLength(1),
+  //   // $lazy: true,
+  //   $each: helpers.forEach({
+  //     name: {
+  //       required,
+  //       minLength: minLength(3),
+  //     },
+  //     quantity: {
+  //       numeric, minValue: minValue(1)
+  //     }
+  //   })
+  // },
+  // Цикл с книгами пока-что пропустил
+
+  agreeWithConditions: {
+    checked: helpers.withMessage(
+        'Необходимо согласие',
+        value => value === true
+    ),
+    $autoDirty: true,
+  },
+}
+
+const v$ = useVuelidate(formRules, formValues)
 
 const submitHandler = async () => {
 
@@ -60,6 +89,9 @@ const submitHandler = async () => {
         hide-label
         label="Я согласен со всеми условиями"
         v-model="formValues.agreeWithConditions"
+
+        :error-messages="v$.agreeWithConditions.$errors.map(e=>e.$message)"
+        class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3 mod--mb-half"
 
     />
     <ABtn type="submit">Ок</ABtn>

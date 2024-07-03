@@ -23,7 +23,7 @@ const formPartPersonalData = computed({
     emit('update:modelValue', newValue)
   }
 })
-
+let a = 2;
 </script>
 
 <template>
