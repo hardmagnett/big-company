@@ -10,7 +10,6 @@ export interface Props {
   }
 }
 
-// const emit = defineEmits(['update:modelValue'])
 const emit = defineEmits(['needToRemove'])
 
 const props = withDefaults(defineProps<Props>(), {
@@ -33,8 +32,6 @@ const formPartBook = computed(()=>{
     return result
   }
 )
-
-let b = 1;
 
 </script>
 
@@ -63,7 +60,6 @@ let b = 1;
       ></AInput>
       <div class="am-col-2 am-col-sm-4 am-col-xxl-2">
         <AInputControl>
-          <!--@click="formValues.books.splice(index, 1)"-->
           <ABtn
               @click="emit('needToRemove')"
               icon

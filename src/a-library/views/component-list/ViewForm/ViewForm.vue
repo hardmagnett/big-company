@@ -11,14 +11,9 @@ import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/B
 import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartPersonalData.vue";
 
 let formValues = reactive({
-// let formValues = ref({
-//   monster: {
-//     name: "Metroid",
-//   },
   user: {
     name: "Ридли",
     email: "",
-    // address: "",
     address: "Ул. Учебная, д.13",
   },
   books: [
@@ -48,10 +43,6 @@ let formValues = reactive({
 });
 
 const formRules = {
-
-  // monster: {
-  //   name: { required, minLength: minLength(3), $autoDirty: true }
-  // },
   books: {
     requiredOneBook: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
   },
@@ -111,7 +102,6 @@ const removeBook = (bookIndex: number)=>{
   if (formValues.books.length === 0) {
     console.log('needToShowError')
     v$.value.books.$touch()
-    // v$.value.books.$errors.requiredOneBook.$touch
   }
 }
 </script>

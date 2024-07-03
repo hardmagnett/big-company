@@ -63,11 +63,6 @@
     opacity: 0;
     max-height: 0;
   }
-  .a--animated-list__transition-item-leave-active {
-    /*position: absolute;*/
-    /*Чтобы не меняло ширину, становясь абсолютным.*/
-    /*width: calc(100% - (var(--gap) * 2));*/
-    /*width: 100%;*/
-  }
+  .a--animated-list__transition-item-leave-active {}
 
 }

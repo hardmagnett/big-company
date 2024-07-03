@@ -10,14 +10,7 @@ export interface Props {
     email: string,
     address: string
   }
-  // modelValue: {
-  //   name: string,
-  //   email: string,
-  //   address: string
-  // }
 }
-
-// const emit = defineEmits(['update:modelValue'])
 
 const props = withDefaults(defineProps<Props>(), {
 })
@@ -30,9 +23,7 @@ const formRules = {
     address: { required, minLength: minLength(10) },
 }
 
-// const v$ = useVuelidate(formRules, props.modelValue)
 const v$ = useVuelidate(formRules, props.formPart)
-// const v$val = v$.value
 
 
 
@@ -41,17 +32,6 @@ const formPartPersonalData = computed(()=>{
       return result
     }
 )
-
-// const formPartPersonalData = computed({
-//   get() {
-//     return props.modelValue
-//   },
-//   set(newValue) {
-//     console.log('set personal')
-//     emit('update:modelValue', newValue)
-//   }
-// })
-// let a = 1;
 
 </script>
 
