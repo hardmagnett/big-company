@@ -2,11 +2,16 @@
 import { reactive, ref, computed } from "vue";
 import { useVuelidate } from '@vuelidate/core'
 import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate/validators'
+import createUUID from '@/a-library/helpers/language/string/createUUID';
+
 
 // todo:: когда всё будет работать на обычном JS-е
 // - Переделать на TS-е
 // - Пройти чистки
 // - попробовать завернуть ошибки вот так https://dev.to/gaisinskii/handling-form-errors-with-vuelidate-in-vuejs-30-5fp
+
+// todo:: сделать переводы ошибок на русский
+// todo:: не забыть сделать lazy
 
 import { globalProperties } from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
@@ -21,16 +26,24 @@ let formValues = reactive({
   },
   books: [
     {
+      id:createUUID(),
       name: "Первая",
-      quantity: 3,
+      quantity: 0,
     },
     {
+      id:createUUID(),
       name: "Букварь",
-      quantity: 3,
+      quantity: 0,
     },
     {
+      id:createUUID(),
       name: "Синяя",
       quantity: 0,
+    },
+    {
+      id:createUUID(),
+      name: "GoF",
+      quantity: 4,
     },
   ],
   agreeWithConditions: false,
@@ -81,19 +94,19 @@ const submitHandler = async () => {
     </Teleport>
 
     <!--todo:: раскомментить-->
-    <!--<p>Есть валидация.</p>-->
-    <!--<p>Состоит из нескольких компонентов form-part.</p>-->
-    <!--<p>-->
-    <!--  Работает навигация по элементам при помощи-->
-    <!--  <code class="mod&#45;&#45;code">tab</code> и-->
-    <!--  <code class="mod&#45;&#45;code">shift + tab</code>.-->
-    <!--</p>-->
+    <p>Есть валидация.</p>
+    <p>Состоит из нескольких компонентов form-part.</p>
+    <p>
+      Работает навигация по элементам при помощи
+      <code class="mod--code">tab</code> и
+      <code class="mod--code">shift + tab</code>.
+    </p>
 
 
     <h2>Заказ книг</h2>
-<pre style="font-size: 8px">
-    <p>vals: {{ formValues }}</p>
-  </pre>
+<!--<pre style="font-size: 8px">-->
+<!--    <p>vals: {{ formValues }}</p>-->
+<!--  </pre>-->
 
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
@@ -106,7 +119,7 @@ const submitHandler = async () => {
         <div class="am-col-6 am-col-sm-4 am-col-xxl-2">
           <ABtn
             class="a-btn--small"
-            @click="formValues.books.push({ name: '', quantity: 0 })"
+            @click="formValues.books.push({ name: '', quantity: 0, id:createUUID() })"
           >
             <AIcon icon="mdi-plus-thick" size="small" />
             Добавить
@@ -119,13 +132,24 @@ const submitHandler = async () => {
           :error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"
       ></AInputControlHint>
 
-      <!--todo:: попробовать сделать анимированое редактирование списка-->
-      <BooksOrderFormPartBooks
-          v-for="(book, index) in formValues.books"
-          :key="index"
-          :form-part="book"
-          @needToRemove="()=>{formValues.books.splice(index, 1)}"
-      />
+
+      <TransitionGroup
+          name="a--animated-list__transition-item"
+          tag="div"
+          class="a--animated-list__transition-group"
+      >
+        <div
+            v-for="(book, index) in formValues.books"
+            :key="book.id"
+            class="a--animated-list__transition-item"
+        >
+          <BooksOrderFormPartBooks
+              :form-part="book"
+              @needToRemove="()=>{formValues.books.splice(index, 1)}"
+          />
+
+        </div>
+      </TransitionGroup>
 
       <ACheckBox
         hide-label
