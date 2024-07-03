@@ -1,0 +1,73 @@
+/*
+      Пример использования.
+      <TransitionGroup
+          name="a--animated-list__transition-item"
+          tag="div"
+          class="a--animated-list__transition-group"
+      >
+        <!--ключем должен быть обьязательно id а не index. Иначе анимация скачет-->
+        <div
+            v-for="(book, index) in formValues.books"
+            :key="book.id"
+            class="a--animated-list__transition-item"
+        >
+          <BooksOrderFormPartBooks
+              :form-part="book"
+              @needToRemove="()=>{formValues.books.splice(index, 1)}"
+          />
+
+        </div>
+      </TransitionGroup>
+
+*/
+
+.a--animated-list__transition-group {
+
+  /*Самая нормальная анимация для стандартных списков*/
+  /*То что находится под списком тоже отьезжает без проблем.*/
+
+  /*Без этой обертки */
+  /*при использовании компонента в слоте */
+  /*при удалении элемента*/
+  /*vue нивкакую не хочет ставить стиль move остальным элементам.*/
+  /*Нужно чтобы в слоте был элемент а не компонент*/
+  position: relative;
+  --animation-time: var(--time-short);
+  /*--animation-time: 2s;*/
+
+
+  .a--animated-list__transition-item {
+    /*Оставлю outline для дебага анимаций*/
+    /*outline: 1px solid darkred;*/
+
+
+    /*Max-Height Можно переопределять в зависимости от обстоятельств*/
+    max-height: 72px;
+    > * {
+      /*Это тоже оставлю для дебага*/
+      /*background-color: #aff;*/
+
+    }
+  }
+
+  .a--animated-list__transition-item-move,
+  .a--animated-list__transition-item-enter-active,
+  .a--animated-list__transition-item-leave-active {
+    transition: all var(--animation-time) ease;
+
+    /*Чтобы во время изменения высоты ничего не торчало наружу*/
+    overflow: hidden;
+  }
+  .a--animated-list__transition-item-enter-from,
+  .a--animated-list__transition-item-leave-to {
+    opacity: 0;
+    max-height: 0;
+  }
+  .a--animated-list__transition-item-leave-active {
+    /*position: absolute;*/
+    /*Чтобы не меняло ширину, становясь абсолютным.*/
+    /*width: calc(100% - (var(--gap) * 2));*/
+    /*width: 100%;*/
+  }
+
+}

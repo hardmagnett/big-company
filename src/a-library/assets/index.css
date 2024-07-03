@@ -20,3 +20,4 @@
 @import "typo/headers.css";
 
 @import "libs-overriding/material-design.icons.css";
+@import "libs-overriding/vue-transitions.css";

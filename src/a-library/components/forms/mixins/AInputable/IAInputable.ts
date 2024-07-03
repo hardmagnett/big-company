@@ -3,6 +3,7 @@
  */
 
 export interface IAInputableProps {
+  autofocus?: boolean;
   label?: string;
   name?: string; // То, из чего собирается нативный FormData. Так-же используется как идентификатор в валидаторе.
   rules?: string;
@@ -12,10 +13,12 @@ export interface IAInputableProps {
 }
 
 export const iAInputablePropDefaults = {
+  autofocus: false,
   label: "",
   rules: "",
   hideLabel: false,
   hideHint: false,
+
   // Ведь валидация будет происходить в моих инпутах, и снаружи ошибки в них передавать будет не нужно
   // errorMessages: ()=> []
 };

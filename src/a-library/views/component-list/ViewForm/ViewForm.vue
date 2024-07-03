@@ -1,40 +1,46 @@
 <script setup lang="ts">
 import { reactive, ref, computed } from "vue";
 import { useVuelidate } from '@vuelidate/core'
-import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate/validators'
+import {required, helpers } from '@vuelidate/validators'
+import createUUID from '@/a-library/helpers/language/string/createUUID';
 
-// todo:: когда всё будет работать на обычном JS-е
-// - Переделать на TS-е
-// - Пройти чистки
-// - попробовать завернуть ошибки вот так https://dev.to/gaisinskii/handling-form-errors-with-vuelidate-in-vuejs-30-5fp
-
-// import type { IForm } from '@/interface/form.interface'
+// todo:: сделать переводы ошибок на русский
 
 import { globalProperties } from "@/main";
-import BooksFormElements from "@/a-library/views/component-list/ViewForm/BooksFormElements.vue";
-
-// const formattedErrors = computed(() => useValidationErrors<IForm>(v$.value.$errors))
+import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
+import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartPersonalData.vue";
 
 let formValues = reactive({
+// let formValues = ref({
+//   monster: {
+//     name: "Metroid",
+//   },
   user: {
-    name: "AA",
+    name: "Ридли",
     email: "",
     // address: "",
-    address: "BB",
+    address: "Ул. Учебная, д.13",
   },
   books: [
     {
+      id:createUUID(),
       name: "Первая",
-      quantity: 3,
+      quantity: 0,
     },
     {
-      // name: "Букварь",
-      name: "",
-      quantity: 3,
+      id:createUUID(),
+      name: "Букварь",
+      quantity: 0,
     },
     {
+      id:createUUID(),
       name: "Синяя",
       quantity: 0,
+    },
+    {
+      id:createUUID(),
+      name: "GoF",
+      quantity: 4,
     },
   ],
   agreeWithConditions: false,
@@ -42,28 +48,13 @@ let formValues = reactive({
 });
 
 const formRules = {
-  // $autoDirty: true,
-  // $lazy: true,
-  user: {
-    name: { required, minLength: minLength(3) },
-    email: { email },
-    address: { required, minLength: minLength(10) },
-  },
+
+  // monster: {
+  //   name: { required, minLength: minLength(3), $autoDirty: true }
+  // },
   books: {
-    required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
-    minLength: minLength(1),
-    // $lazy: true,
-    $each: helpers.forEach({
-      name: {
-        required,
-        minLength: minLength(3),
-      },
-      quantity: {
-        numeric, minValue: minValue(1)
-      }
-    })
+    requiredOneBook: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
   },
-  // Цикл с книгами пока-что пропустил
 
   agreeWithConditions: {
     checked: helpers.withMessage(
@@ -72,20 +63,37 @@ const formRules = {
     ),
     $autoDirty: true,
   },
-
-
   sendSpam: {},
-
 }
 
 const v$ = useVuelidate(formRules, formValues)
+const v$val = v$.value
 
-// const getTextErrors = (param: any)=>{
-//
-// }
+const forceRerenderHackKey = ref(0);
+
+const clearErrors = ()=>{
+  v$.value.$reset()
+}
+
+const resetForm = ()=>{
+
+  Object.assign(formValues, {
+    user: {
+      name: "",
+      email: "",
+      address: "",
+    },
+    books: [],
+    agreeWithConditions: false,
+    sendSpam: true,
+  })
+
+  forceRerenderHackKey.value ++
+
+}
 
 const submitHandler = async () => {
-  
+
   const isFormCorrect = await v$.value.$validate()
 
   if (isFormCorrect) {
@@ -97,6 +105,15 @@ const submitHandler = async () => {
     });
   }
 };
+
+const removeBook = (bookIndex: number)=>{
+  formValues.books.splice(bookIndex, 1)
+  if (formValues.books.length === 0) {
+    console.log('needToShowError')
+    v$.value.books.$touch()
+    // v$.value.books.$errors.requiredOneBook.$touch
+  }
+}
 </script>
 
 <template>
@@ -105,58 +122,37 @@ const submitHandler = async () => {
       <APageHeader> Форма </APageHeader>
     </Teleport>
 
+    <p>Есть валидация.</p>
+    <p>Состоит из нескольких компонентов form-part.</p>
     <p>
-      В форме работает навигация по элементам при помощи
+      Работает навигация по элементам при помощи
       <code class="mod--code">tab</code> и
       <code class="mod--code">shift + tab</code>.
     </p>
+    <br>
+
 
     <h2>Заказ книг</h2>
+<!--<pre style="font-size: 10px">-->
+<!--    <p>vals: {{ formValues }}</p>-->
+<!--  </pre>-->
 
-    <!--<p>vals: {{ formValues }}</p>-->
-    <!--<p>v$: {{ v$ }}</p>-->
-    <form @submit.prevent="submitHandler">
+
+    <form @submit.prevent="submitHandler" novalidate>
       <h3>Персональные данные</h3>
-      <div class="am-cols">
-        <!--:error-messages="getErrorsForPath('user.name')"-->
-        <AInput
-          name="user-name"
-          v-model="formValues.user.name"
-          @blur="v$.user.name.$touch"
-          :error-messages="v$.user.name.$errors.map(e=>e.$message)"
-          class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-          label="Имя *"
-        ></AInput>
 
-        <AInput
-          name="email"
-          @blur="v$.user.email.$touch"
-          v-model="formValues.user.email"
-
-          :error-messages="v$.user.email.$errors.map(e=>e.$message)"
-          class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-          label="Email"
-        ></AInput>
-
-        <AInput
-          name="address"
-          v-model="formValues.user.address"
-          @blur="v$.user.address.$touch"
-          :error-messages="v$.user.address.$errors.map(e=>e.$message)"
-
-          class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-          label="Адрес *"
-        ></AInput>
-      </div>
+      <BooksOrderFormPartPersonalData
+          :form-part="formValues.user"
+          :key="forceRerenderHackKey"
+      />
 
       <br />
-
       <div class="am-cols">
         <h3 class="am-col-6 am-col-sm-8 am-col-xxl-4 mod--mb-0">Книги</h3>
         <div class="am-col-6 am-col-sm-4 am-col-xxl-2">
           <ABtn
             class="a-btn--small"
-            @click="formValues.books.push({ name: '', quantity: 0 })"
+            @click="formValues.books.push({ name: '', quantity: 0, id:createUUID() })"
           >
             <AIcon icon="mdi-plus-thick" size="small" />
             Добавить
@@ -165,62 +161,35 @@ const submitHandler = async () => {
       </div>
 
       <AInputControlHint
-          :error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'required').map(e=>e.$message)"
+          :error-messages="v$val.books.$errors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"
       ></AInputControlHint>
 
-      <!--Zeslint-disable-next-line vue/valid-v-model-->
-      <!--<BooksFormElements v-for="(book, index) in formValues.books" :book="book"-->
-      <!--<BooksFormElements v-for="(book, index) in formValues.books" v-model="book"-->
-      <!--    :key="index"-->
-      <!--/>-->
 
-      <template v-for="(book, index) in formValues.books" :key="index">
-        <div class="am-cols">
-          <!--:error-messages="formErrors?.books?.[index]?.name?._errors"-->
+      <TransitionGroup
+          name="a--animated-list__transition-item"
+          tag="div"
+          class="a--animated-list__transition-group"
+      >
+        <div
+            v-for="(book, index) in formValues.books"
+            :key="book.id"
+            class="a--animated-list__transition-item"
+        >
+          <BooksOrderFormPartBooks
+              :form-part="book"
+              @needToRemove="removeBook(index)"
+          />
 
-          <!--v-for="error in v$.collection.$each.$response.$errors[index].name"-->
-          <AInput
-            name="book-name"
-            v-model="book.name"
-
-            @blur="v$.books.$each.$response.$errors[index].name.$touch"
-            :error-messages="v$.books.$each.$response.$errors[index].name.map(e=>e.$message)"
-            class="am-col-6 am-col-sm-4 am-col-xxl-2"
-
-            label="Название *"
-          ></AInput>
-          <!--:error-messages="getErrorsForPath(`books.${index}.quantity`)"-->
-          <AInput
-            type="number"
-            name="quantity"
-            v-model="book.quantity"
-            @blur="v$.books.$each.$response.$errors[index].quantity.$touch"
-            :error-messages="v$.books.$each.$response.$errors[index].quantity.map(e=>e.$message)"
-            class="am-col-4 am-col-sm-4 am-col-xxl-2"
-
-            label="Количество *"
-          ></AInput>
-          <div class="am-col-2 am-col-sm-4 am-col-xxl-2">
-            <AInputControl>
-              <ABtn
-                @click="formValues.books.splice(index, 1)"
-                icon
-                class="a-btn--error"
-                ><AIcon icon="mdi-delete"
-              /></ABtn>
-            </AInputControl>
-          </div>
         </div>
-      </template>
+      </TransitionGroup>
 
-      <!--:error-messages="getErrorsForPath(`agreeWithConditions`)"-->
       <ACheckBox
         hide-label
-        v-model="formValues.agreeWithConditions"
-        :error-messages="v$.agreeWithConditions.$errors.map(e=>e.$message)"
+        :error-messages="v$val.agreeWithConditions.$errors.map(e=>e.$message)"
         class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3 mod--mb-half"
         name="agreeWithConditions"
         label="Я согласен со всеми условиями"
+        v-model="formValues.agreeWithConditions"
 
       />
 
@@ -235,13 +204,14 @@ const submitHandler = async () => {
 
       <div class="am-cols">
         <AFormButtonsWrapper class="am-col-12 am-col-xxl-6">
-          <ABtn class="a-btn--tonal">Отмена</ABtn>
+          <ABtn class="a-btn--tonal" @click="resetForm">Сброс</ABtn>
 
           <ABtn type="submit">Ок</ABtn>
           <template #left>
-            <!--@click="clearErrors"-->
-            <ABtn class="a-btn--tonal a-btn--small"
-              >Очистить ошибки</ABtn
+            <ABtn
+                class="a-btn--tonal a-btn--small"
+                @click="clearErrors"
+              >Скрыть ошибки</ABtn
             >
           </template>
         </AFormButtonsWrapper>
