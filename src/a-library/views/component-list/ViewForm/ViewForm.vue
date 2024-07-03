@@ -122,7 +122,10 @@ const removeBook = (bookIndex: number) => {
     <br />
 
     <h2>Заказ книг</h2>
-    <p>-={{ $t('message.hello') }}=-</p>
+    <!--<p>-={{ $t('message.hello') }}=-</p>-->
+    <!--<p>-={{ $t('message.hello2', { msg: 'hello' }) }}=-</p>-->
+    <p>-={{ $t('message.hello2', { msg: 'hello' }) }}=-</p>
+
     <!--<pre style="font-size: 10px">-->
     <!--    <p>vals: {{ formValues }}</p>-->
     <!--  </pre>-->
