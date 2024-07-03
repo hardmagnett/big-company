@@ -18,7 +18,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const formPartBook = computed(()=>{
       const result = props.formPart
-      // console.log(result); console.log('^...result:')
       return result
     }
 )

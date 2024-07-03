@@ -30,10 +30,11 @@ const v$ = useVuelidate(formRules, props.formPart)
 
 const formPartBook = computed(()=>{
     const result = props.formPart
-    console.log(result); console.log('^...result:')
     return result
   }
 )
+
+let b = 1;
 
 </script>
 

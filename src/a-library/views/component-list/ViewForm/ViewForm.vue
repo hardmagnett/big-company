@@ -70,6 +70,7 @@ const formRules = {
 }
 
 const v$ = useVuelidate(formRules, formValues)
+const v$val = v$.value
 
 // const updateBook = (shit)=>{
 //   console.log(shit); console.log('^...shit:')
@@ -206,7 +207,7 @@ const submitHandler = async () => {
 
       <ACheckBox
         hide-label
-        :error-messages="v$.agreeWithConditions.$errors.map(e=>e.$message)"
+        :error-messages="v$val.agreeWithConditions.$errors.map(e=>e.$message)"
         class="am-col-12 am-col-sm-6 am-col-xl-4 am-col-xxl-3 mod--mb-half"
         name="agreeWithConditions"
         label="Я согласен со всеми условиями"
