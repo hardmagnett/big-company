@@ -1,54 +1,26 @@
 <script setup lang="ts">
-import {computed} from 'vue'
-import {email, minLength, required} from "@vuelidate/validators";
+import {reactive, unref} from 'vue'
+import {minLength, required} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
 
-export interface Props {
-  modelValue: {
-    name: string,
-    email: string,
-    address: string
-  }
-}
 
-const emit = defineEmits(['update:modelValue'])
-
-const props = withDefaults(defineProps<Props>(), {
+const formValues = reactive({
+  name: "Inner",
 })
-
-const formPartPersonalData = computed({
-  get() {
-    return props.modelValue
-  },
-  set(newValue) {
-    console.log('set personal')
-    emit('update:modelValue', newValue)
-  }
-})
-
 const formRules = {
   name: { required, minLength: minLength(3), $autoDirty: true },
-  email: { email, $autoDirty: true },
-  address: { required, minLength: minLength(10) },
 }
+const v$ = useVuelidate(formRules, formValues)
 
-const v$ = useVuelidate(formRules, props.modelValue)
-
-let a = 1;
+// Make any changes here to get bug. For example uncomment next string.
+// let a = 1;
 </script>
 
 <template>
   <div class="child-one">
-    <AInput
-        v-model="formPartPersonalData.name"
-        label="Имя *"
-        :error-messages="v$.name.$errors.map(e=>e.$message)"
-    ></AInput>
-
-
+    <pre style="font-size: 8px;">
+      {{formValues}}
+    </pre>
+    <input v-model="formValues.name">
   </div>
 </template>
-
-<style scoped>
-.child-one {}
-</style>
