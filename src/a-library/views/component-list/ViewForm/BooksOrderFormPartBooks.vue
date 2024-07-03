@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, watch} from 'vue'
-import {email, minLength, required, numeric, minValue} from "@vuelidate/validators";
+import {email, minLength, required, numeric, integer, minValue} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
 
 export interface Props {
@@ -23,7 +23,7 @@ const formRules = {
     $autoDirty: true
   },
   quantity: {
-    numeric, minValue: minValue(1), $autoDirty: true
+    numeric, integer, minValue: minValue(1), $autoDirty: true
   }
 }
 

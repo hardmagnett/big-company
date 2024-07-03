@@ -83,18 +83,13 @@ const clearErrors = ()=>{
 }
 
 const resetForm = ()=>{
-  // todo:: реализовать reset когда сделаешь блокеры.
 
   Object.assign(formValues, {
     user: {
       name: "",
       email: "",
-      // address: "",
       address: "",
     },
-    // monster: {
-    //   name: ''
-    // },
     books: [],
     agreeWithConditions: false,
     sendSpam: true,
@@ -117,6 +112,15 @@ const submitHandler = async () => {
     });
   }
 };
+
+const removeBook = (bookIndex: number)=>{
+  formValues.books.splice(bookIndex, 1)
+  if (formValues.books.length === 0) {
+    console.log('needToShowError')
+    v$.value.books.$touch()
+    // v$.value.books.$errors.requiredOneBook.$touch
+  }
+}
 </script>
 
 <template>
@@ -173,8 +177,9 @@ const submitHandler = async () => {
       </div>
 
 
+      <!--:error-messages="v$val.books.$silentErrors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"-->
       <AInputControlHint
-          :error-messages="v$val.books.$silentErrors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"
+          :error-messages="v$val.books.$errors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"
       ></AInputControlHint>
 
 
@@ -188,9 +193,10 @@ const submitHandler = async () => {
             :key="book.id"
             class="a--animated-list__transition-item"
         >
+          <!--@needToRemove="()=>{formValues.books.splice(index, 1)}"-->
           <BooksOrderFormPartBooks
               :form-part="book"
-              @needToRemove="()=>{formValues.books.splice(index, 1)}"
+              @needToRemove="removeBook(index)"
           />
 
         </div>
