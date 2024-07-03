@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import {computed} from 'vue'
+import {email, minLength, required} from "@vuelidate/validators";
+import {useVuelidate} from "@vuelidate/core";
 
 export interface Props {
   modelValue: {
@@ -23,7 +25,16 @@ const formPartPersonalData = computed({
     emit('update:modelValue', newValue)
   }
 })
-let a = 2;
+
+const formRules = {
+  name: { required, minLength: minLength(3), $autoDirty: true },
+  email: { email, $autoDirty: true },
+  address: { required, minLength: minLength(10) },
+}
+
+const v$ = useVuelidate(formRules, props.modelValue)
+
+let a = 1;
 </script>
 
 <template>
@@ -31,6 +42,7 @@ let a = 2;
     <AInput
         v-model="formPartPersonalData.name"
         label="Имя *"
+        :error-messages="v$.name.$errors.map(e=>e.$message)"
     ></AInput>
 
 
