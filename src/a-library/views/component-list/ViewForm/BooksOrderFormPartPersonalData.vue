@@ -82,7 +82,7 @@ const formPartPersonalData = computed(()=>{
           :error-messages="v$.address.$errors.map(e=>e.$message)"
           @blur="v$.address.$touch"
           class="am-col-12 am-col-sm-4 am-col-xl-4Z am-col-xxl-2"
-          label="Адрес * (lazy)"
+          label="Адрес *"
       ></AInput>
     </div>
 </template>
