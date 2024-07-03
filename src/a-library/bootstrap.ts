@@ -38,8 +38,12 @@ import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 // ===========
 import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalStorage";
 import toast from "@/a-library/vue-plugins/toast";
+
+// Это про вьюшную библиотеку
 import { createI18n } from 'vue-i18n'
 import vueI18nConfig from '@/a-library/third-party/vue-i18n/config';
+// Это про ванильную
+import i18next from '@/a-library/vue-plugins/i18next';
 
 
 /**
@@ -94,7 +98,8 @@ export default function ({
   // ===========
   vueApp.use(responsiveGlobalStorage);
   vueApp.use(toast);
+  vueApp.use(i18next);
 
-  const i18n = createI18n(vueI18nConfig)
-  vueApp.use(i18n)
+  // const i18n = createI18n(vueI18nConfig)
+  // vueApp.use(i18n)
 }
