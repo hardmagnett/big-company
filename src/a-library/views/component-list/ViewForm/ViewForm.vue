@@ -17,8 +17,8 @@ import { globalProperties } from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
 import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartPersonalData.vue";
 
-// let formValues = reactive({
-let formValues = ref({
+let formValues = reactive({
+// let formValues = ref({
   user: {
     name: "Ридли",
     email: "",
@@ -161,7 +161,7 @@ const submitHandler = async () => {
 
 
       <AInputControlHint
-          :error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"
+          :error-messages="v$val.books.$silentErrors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"
       ></AInputControlHint>
 
 
