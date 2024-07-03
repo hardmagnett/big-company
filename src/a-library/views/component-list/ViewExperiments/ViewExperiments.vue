@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import {reactive} from 'vue'
 import ChildOne from "@/a-library/views/component-list/ViewExperiments/ChildOne.vue";
+import ChildTwo from "@/a-library/views/component-list/ViewExperiments/ChildTwo.vue";
 import {globalProperties} from "@/main";
+import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
 
 let formValues = reactive({
   user: {
@@ -44,6 +46,14 @@ const submitHandler = async () => {
 
     <form @submit.prevent="submitHandler">
     <ChildOne v-model="formValues.user" />
+
+      <ChildTwo
+          v-for="(book, index) in formValues.books"
+          :key="index"
+          :form-part="book"
+
+
+      />
 
 
     <ACheckBox
