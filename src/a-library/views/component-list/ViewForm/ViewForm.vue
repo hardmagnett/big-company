@@ -100,21 +100,19 @@ const submitHandler = async () => {
 
       <BooksOrderFormPartPersonalData v-model="formValues.user"/>
 
-
-      <!--<br />-->
-
-      <!--<div class="am-cols">-->
-      <!--  <h3 class="am-col-6 am-col-sm-8 am-col-xxl-4 mod&#45;&#45;mb-0">Книги</h3>-->
-      <!--  <div class="am-col-6 am-col-sm-4 am-col-xxl-2">-->
-      <!--    <ABtn-->
-      <!--      class="a-btn&#45;&#45;small"-->
-      <!--      @click="formValues.books.push({ name: '', quantity: 0 })"-->
-      <!--    >-->
-      <!--      <AIcon icon="mdi-plus-thick" size="small" />-->
-      <!--      Добавить-->
-      <!--    </ABtn>-->
-      <!--  </div>-->
-      <!--</div>-->
+      <br />
+      <div class="am-cols">
+        <h3 class="am-col-6 am-col-sm-8 am-col-xxl-4 mod--mb-0">Книги</h3>
+        <div class="am-col-6 am-col-sm-4 am-col-xxl-2">
+          <ABtn
+            class="a-btn--small"
+            @click="formValues.books.push({ name: '', quantity: 0 })"
+          >
+            <AIcon icon="mdi-plus-thick" size="small" />
+            Добавить
+          </ABtn>
+        </div>
+      </div>
 
       <!--:error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'required').map(e=>e.$message)"-->
       <AInputControlHint
