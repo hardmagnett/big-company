@@ -24,6 +24,7 @@ const formRules = {
 }
 
 const v$ = useVuelidate(formRules, props.modelValue)
+// const v$val = v$.value
 
 
 

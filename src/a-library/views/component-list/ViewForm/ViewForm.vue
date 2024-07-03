@@ -17,7 +17,8 @@ import { globalProperties } from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
 import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartPersonalData.vue";
 
-let formValues = reactive({
+// let formValues = reactive({
+let formValues = ref({
   user: {
     name: "Ридли",
     email: "",
@@ -72,6 +73,32 @@ const clearErrors = ()=>{
   v$.value.$reset()
 }
 
+const resetForm = ()=>{
+
+  // Object.assign(formValues, {
+  //   user: {
+  //     name: "",
+  //     email: "",
+  //     // address: "",
+  //     address: "",
+  //   },
+  //   books: [],
+  //   agreeWithConditions: false,
+  //   sendSpam: true,
+  // })
+  // formValues.value = {
+  //   user: {
+  //     name: "",
+  //     email: "",
+  //     // address: "",
+  //     address: "",
+  //   },
+  //   books: [],
+  //   agreeWithConditions: false,
+  //   sendSpam: true,
+  // }
+}
+
 const submitHandler = async () => {
 
   const isFormCorrect = await v$.value.$validate()
@@ -104,9 +131,10 @@ const submitHandler = async () => {
 
 
     <h2>Заказ книг</h2>
-<!--<pre style="font-size: 8px">-->
-<!--    <p>vals: {{ formValues }}</p>-->
-<!--  </pre>-->
+<pre style="font-size: 10px">
+    <p>vals: {{ formValues }}</p>
+  </pre>
+
 
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
@@ -172,7 +200,7 @@ const submitHandler = async () => {
 
       <div class="am-cols">
         <AFormButtonsWrapper class="am-col-12 am-col-xxl-6">
-          <ABtn class="a-btn--tonal">Отмена</ABtn>
+          <ABtn class="a-btn--tonal" @click="resetForm">Сброс</ABtn>
 
           <ABtn type="submit">Ок</ABtn>
           <template #left>
