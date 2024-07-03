@@ -14,10 +14,10 @@ import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/Vie
 
 let formValues = reactive({
   user: {
-    name: "AA",
+    name: "Ридли",
     email: "",
     // address: "",
-    address: "BB",
+    address: "Ул. Учебная, д.13",
   },
   books: [
     {
@@ -38,13 +38,9 @@ let formValues = reactive({
 });
 
 const formRules = {
-  // books: {
-  //   todo:: сделать проверку на наличие хотя-бы одной книги.
-  //   required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
-  //   minLength: minLength(1),
-  //   // $lazy: true,
-  // },
-  // Цикл с книгами пока-что пропустил
+  books: {
+    requiredOneBook: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
+  },
 
   agreeWithConditions: {
     checked: helpers.withMessage(
@@ -58,6 +54,10 @@ const formRules = {
 
 const v$ = useVuelidate(formRules, formValues)
 const v$val = v$.value
+
+const clearErrors = ()=>{
+  v$.value.$reset()
+}
 
 const submitHandler = async () => {
 
@@ -114,75 +114,18 @@ const submitHandler = async () => {
         </div>
       </div>
 
-      <!--:error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'required').map(e=>e.$message)"-->
-      <AInputControlHint
 
+      <AInputControlHint
+          :error-messages="v$.books.$silentErrors.filter(e=>e.$validator === 'requiredOneBook').map(e=>e.$message)"
       ></AInputControlHint>
 
-      <!--Zeslint-disable-next-line vue/valid-v-model-->
-      <!--<BooksOrderFormPartBooks v-for="(book, index) in formValues.books" :book="book"-->
-      <!--v-model="book"-->
-
-      <!--@update:model-value="((newValue) => {formValues.books.find(book=>book.id === newValue.id) = newValue})"-->
-
-      <!--:model-value="book"-->
-
       <!--todo:: попробовать сделать анимированое редактирование списка-->
-
-      <!--@update:modelValue="updateBook"-->
-      <!--:model-value="formValues.books[index]"-->
       <BooksOrderFormPartBooks
           v-for="(book, index) in formValues.books"
           :key="index"
           :form-part="book"
           @needToRemove="()=>{formValues.books.splice(index, 1)}"
       />
-
-      <!--<template v-for="(book, index) in formValues.books" :key="index">-->
-      <!--  <div class="am-cols">-->
-      <!--    &lt;!&ndash;:error-messages="formErrors?.books?.[index]?.name?._errors"&ndash;&gt;-->
-
-      <!--    &lt;!&ndash;v-for="error in v$.collection.$each.$response.$errors[index].name"&ndash;&gt;-->
-
-      <!--    &lt;!&ndash;@blur="v$.books.$each.$response.$errors[index].name.$touch"&ndash;&gt;-->
-      <!--    &lt;!&ndash;:error-messages="v$.books.$each.$response.$errors[index].name.map(e=>e.$message)"&ndash;&gt;-->
-      <!--    <AInput-->
-      <!--      name="book-name"-->
-      <!--      v-model="book.name"-->
-
-
-      <!--      class="am-col-6 am-col-sm-4 am-col-xxl-2"-->
-
-      <!--      label="Название *"-->
-      <!--    ></AInput>-->
-      <!--    &lt;!&ndash;:error-messages="getErrorsForPath(`books.${index}.quantity`)"&ndash;&gt;-->
-
-      <!--    &lt;!&ndash;@blur="v$.books.$each.$response.$errors[index].quantity.$touch"&ndash;&gt;-->
-      <!--    &lt;!&ndash;:error-messages="v$.books.$each.$response.$errors[index].quantity.map(e=>e.$message)"&ndash;&gt;-->
-      <!--    <AInput-->
-      <!--      type="number"-->
-      <!--      name="quantity"-->
-      <!--      v-model="book.quantity"-->
-
-      <!--      class="am-col-4 am-col-sm-4 am-col-xxl-2"-->
-
-      <!--      label="Количество *"-->
-      <!--    ></AInput>-->
-      <!--    <div class="am-col-2 am-col-sm-4 am-col-xxl-2">-->
-      <!--      <AInputControl>-->
-      <!--        <ABtn-->
-      <!--          @click="formValues.books.splice(index, 1)"-->
-      <!--          icon-->
-      <!--          class="a-btn&#45;&#45;error"-->
-      <!--          ><AIcon icon="mdi-delete"-->
-      <!--        /></ABtn>-->
-      <!--      </AInputControl>-->
-      <!--    </div>-->
-      <!--  </div>-->
-      <!--</template>-->
-
-      <!--:error-messages="getErrorsForPath(`agreeWithConditions`)"-->
-
 
       <ACheckBox
         hide-label
@@ -209,9 +152,10 @@ const submitHandler = async () => {
 
           <ABtn type="submit">Ок</ABtn>
           <template #left>
-            <!--@click="clearErrors"-->
-            <ABtn class="a-btn--tonal a-btn--small"
-              >Очистить ошибки</ABtn
+            <ABtn
+                class="a-btn--tonal a-btn--small"
+                @click="clearErrors"
+              >Скрыть ошибки</ABtn
             >
           </template>
         </AFormButtonsWrapper>
