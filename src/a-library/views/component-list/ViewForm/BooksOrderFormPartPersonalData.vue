@@ -3,16 +3,21 @@ import {reactive, watch, computed} from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import {required, email, minLength, helpers, numeric, minValue} from '@vuelidate/validators'
 
-// todo:: переделать здесь как в компоненте с книгами. Эти modelValue похоже нах не нужны.
+
 export interface Props {
-  modelValue: {
+  formPart: {
     name: string,
     email: string,
     address: string
   }
+  // modelValue: {
+  //   name: string,
+  //   email: string,
+  //   address: string
+  // }
 }
 
-const emit = defineEmits(['update:modelValue'])
+// const emit = defineEmits(['update:modelValue'])
 
 const props = withDefaults(defineProps<Props>(), {
 })
@@ -23,20 +28,27 @@ const formRules = {
     address: { required, minLength: minLength(10) },
 }
 
-const v$ = useVuelidate(formRules, props.modelValue)
+// const v$ = useVuelidate(formRules, props.modelValue)
+const v$ = useVuelidate(formRules, props.formPart)
 // const v$val = v$.value
 
 
 
-const formPartPersonalData = computed({
-  get() {
-    return props.modelValue
-  },
-  set(newValue) {
-    console.log('set personal')
-    emit('update:modelValue', newValue)
-  }
-})
+const formPartPersonalData = computed(()=>{
+      const result = props.formPart
+      return result
+    }
+)
+
+// const formPartPersonalData = computed({
+//   get() {
+//     return props.modelValue
+//   },
+//   set(newValue) {
+//     console.log('set personal')
+//     emit('update:modelValue', newValue)
+//   }
+// })
 // let a = 1;
 
 </script>

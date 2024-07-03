@@ -74,6 +74,7 @@ const clearErrors = ()=>{
 }
 
 const resetForm = ()=>{
+  // todo:: реализовать reset когда сделаешь блокеры.
 
   // Object.assign(formValues, {
   //   user: {
@@ -121,13 +122,13 @@ const submitHandler = async () => {
     </Teleport>
 
     <!--todo:: раскомментить-->
-    <p>Есть валидация.</p>
-    <p>Состоит из нескольких компонентов form-part.</p>
-    <p>
-      Работает навигация по элементам при помощи
-      <code class="mod--code">tab</code> и
-      <code class="mod--code">shift + tab</code>.
-    </p>
+    <!--<p>Есть валидация.</p>-->
+    <!--<p>Состоит из нескольких компонентов form-part.</p>-->
+    <!--<p>-->
+    <!--  Работает навигация по элементам при помощи-->
+    <!--  <code class="mod&#45;&#45;code">tab</code> и-->
+    <!--  <code class="mod&#45;&#45;code">shift + tab</code>.-->
+    <!--</p>-->
 
 
     <h2>Заказ книг</h2>
@@ -139,7 +140,10 @@ const submitHandler = async () => {
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
 
-      <BooksOrderFormPartPersonalData v-model="formValues.user"/>
+      <!--v-model="formValues.user"-->
+      <BooksOrderFormPartPersonalData
+          :form-part="formValues.user"
+      />
 
       <br />
       <div class="am-cols">
