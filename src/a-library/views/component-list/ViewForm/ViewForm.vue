@@ -12,8 +12,6 @@ import { globalProperties } from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
 import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartPersonalData.vue";
 
-// const formattedErrors = computed(() => useValidationErrors<IForm>(v$.value.$errors))
-
 let formValues = reactive({
   user: {
     name: "AA",
@@ -23,20 +21,17 @@ let formValues = reactive({
   },
   books: [
     {
-      id: 'foo',  // todo:: генерить id по нормальному
       name: "Первая",
       quantity: 3,
     },
     {
-      id: 'bar',
-      // name: "Букварь",
-      name: "",
+      name: "Букварь",
       quantity: 3,
     },
-    // {
-    //   name: "Синяя",
-    //   quantity: 0,
-    // },
+    {
+      name: "Синяя",
+      quantity: 0,
+    },
   ],
   agreeWithConditions: false,
   sendSpam: true,
@@ -44,18 +39,10 @@ let formValues = reactive({
 
 const formRules = {
   // books: {
+  //   todo:: сделать проверку на наличие хотя-бы одной книги.
   //   required: helpers.withMessage('Добавьте хотя-бы одну книгу', required),
   //   minLength: minLength(1),
   //   // $lazy: true,
-  //   $each: helpers.forEach({
-  //     name: {
-  //       required,
-  //       minLength: minLength(3),
-  //     },
-  //     quantity: {
-  //       numeric, minValue: minValue(1)
-  //     }
-  //   })
   // },
   // Цикл с книгами пока-что пропустил
 
@@ -71,13 +58,6 @@ const formRules = {
 
 const v$ = useVuelidate(formRules, formValues)
 const v$val = v$.value
-
-// const updateBook = (shit)=>{
-//   console.log(shit); console.log('^...shit:')
-// }
-
-const updateBook = ()=>{
-}
 
 const submitHandler = async () => {
 
@@ -114,7 +94,7 @@ const submitHandler = async () => {
 <pre style="font-size: 8px">
     <p>vals: {{ formValues }}</p>
   </pre>
-    <!--<p>v$: {{ v$ }}</p>-->
+
     <form @submit.prevent="submitHandler">
       <h3>Персональные данные</h3>
 
@@ -149,14 +129,15 @@ const submitHandler = async () => {
 
       <!--:model-value="book"-->
 
+      <!--todo:: попробовать сделать анимированое редактирование списка-->
+
       <!--@update:modelValue="updateBook"-->
       <!--:model-value="formValues.books[index]"-->
       <BooksOrderFormPartBooks
           v-for="(book, index) in formValues.books"
           :key="index"
           :form-part="book"
-
-
+          @needToRemove="()=>{formValues.books.splice(index, 1)}"
       />
 
       <!--<template v-for="(book, index) in formValues.books" :key="index">-->

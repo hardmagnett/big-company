@@ -11,6 +11,7 @@ export interface Props {
 }
 
 // const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['needToRemove'])
 
 const props = withDefaults(defineProps<Props>(), {
 })
@@ -62,16 +63,17 @@ let b = 1;
 
           label="Количество *"
       ></AInput>
-      <!--<div class="am-col-2 am-col-sm-4 am-col-xxl-2">-->
-      <!--  <AInputControl>-->
-      <!--    <ABtn-->
-      <!--        @click="formValues.books.splice(index, 1)"-->
-      <!--        icon-->
-      <!--        class="a-btn&#45;&#45;error"-->
-      <!--    ><AIcon icon="mdi-delete"-->
-      <!--    /></ABtn>-->
-      <!--  </AInputControl>-->
-      <!--</div>-->
+      <div class="am-col-2 am-col-sm-4 am-col-xxl-2">
+        <AInputControl>
+          <!--@click="formValues.books.splice(index, 1)"-->
+          <ABtn
+              @click="emit('needToRemove')"
+              icon
+              class="a-btn--error"
+          ><AIcon icon="mdi-delete"
+          /></ABtn>
+        </AInputControl>
+      </div>
     </div>
   </div>
 </template>
