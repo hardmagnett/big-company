@@ -46,23 +46,7 @@ const formRules = {
   },
 
   agreeWithConditions: {
-    // checked: helpers.withMessage(
-    //   "Необходимо согласие",
-    //   // (value) => value === true,
-    //   isTrue,
-    // ),
-
     'forms.demo.agreeWithConditions': isTrue,
-    // isTrue: isTrue,
-
-    // checked: helpers.withParams(
-    //     {fieldName: 'Согласие'},
-    //   // (value) => value === true,
-    //   isTrue,
-    // ),
-
-    // isTrue: helpers.withParams({fieldName: "forms.demo.agree"}, isTrue,),
-
     $autoDirty: true,
   },
   sendSpam: {},
@@ -129,13 +113,6 @@ const removeBook = (bookIndex: number) => {
     <br />
 
     <h2>Заказ книг</h2>
-    <!--<p>-={{ $t('message.hello') }}=-</p>-->
-    <!--<p>-={{ $t('message.hello2', { msg: 'hello' }) }}=-</p>-->
-    <!--<p>-={{ $t('message.hello2', { msg: 'hello' }) }}=-</p>-->
-
-    <!--<pre style="font-size: 10px">-->
-    <!--    <p>vals: {{ formValues }}</p>-->
-    <!--  </pre>-->
 
     <form @submit.prevent="submitHandler" novalidate>
       <h3>Персональные данные</h3>
@@ -164,7 +141,6 @@ const removeBook = (bookIndex: number) => {
       <AInputControlHint
         :error-messages="
           v$val.books.$errors
-            // .filter((e) => e.$validator === 'requiredOneBook')
             .filter((e) => e.$validator === 'forms.demo.requiredOneBook')
             .map((e) => e.$message)
         "
