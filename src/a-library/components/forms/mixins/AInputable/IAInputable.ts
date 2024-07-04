@@ -18,7 +18,7 @@ export const iAInputablePropDefaults = {
   rules: "",
   hideLabel: false,
   hideHint: false,
-  errorMessages: ()=> []
+  errorMessages: () => [],
 };
 
 export const iAInputableEmits = ["blur"];

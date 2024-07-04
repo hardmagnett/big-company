@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { required, minLength, email } from "@/a-library/third-party/vuelidate/i18n-validators";
+import {
+  required,
+  minLength,
+  email,
+} from "@/a-library/third-party/vuelidate/i18n-validators";
 
 export interface Props {
   formPart: {

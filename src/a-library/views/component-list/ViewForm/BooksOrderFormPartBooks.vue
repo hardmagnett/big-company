@@ -2,7 +2,13 @@
 import { computed } from "vue";
 
 import { useVuelidate } from "@vuelidate/core";
-import { required, minLength,numeric,integer,minValue } from "@/a-library/third-party/vuelidate/i18n-validators";
+import {
+  required,
+  minLength,
+  numeric,
+  integer,
+  minValue,
+} from "@/a-library/third-party/vuelidate/i18n-validators";
 
 export interface Props {
   formPart: {

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { required, isTrue } from "@/a-library/third-party/vuelidate/i18n-validators";
+import {
+  required,
+  isTrue,
+} from "@/a-library/third-party/vuelidate/i18n-validators";
 import createUUID from "@/a-library/helpers/language/string/createUUID";
 
 import { globalProperties } from "@/main";
@@ -42,11 +45,11 @@ let formValues = reactive({
 
 const formRules = {
   books: {
-    'forms.demo.requiredOneBook': required,
+    "forms.demo.requiredOneBook": required,
   },
 
   agreeWithConditions: {
-    'forms.demo.agreeWithConditions': isTrue,
+    "forms.demo.agreeWithConditions": isTrue,
     $autoDirty: true,
   },
   sendSpam: {},
@@ -129,7 +132,11 @@ const removeBook = (bookIndex: number) => {
           <ABtn
             class="a-btn--small"
             @click="
-              formValues.books.push({ title: '', quantity: 0, id: createUUID() })
+              formValues.books.push({
+                title: '',
+                quantity: 0,
+                id: createUUID(),
+              })
             "
           >
             <AIcon icon="mdi-plus-thick" size="small" />
