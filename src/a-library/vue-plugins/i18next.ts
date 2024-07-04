@@ -12,6 +12,13 @@ export default {
       resources: {
         ru: {
           translation: {
+            pages: {
+              guide: {
+                form: {
+                  "addAtLeastOneBook": "Добавьте хотя-бы одну книгу",
+                }
+              }
+            },
             validationFieldNames: {
               name: 'Имя',
               address: 'Адрес',

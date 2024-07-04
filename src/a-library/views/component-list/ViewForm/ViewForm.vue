@@ -3,6 +3,7 @@ import { reactive, ref } from "vue";
 import { useVuelidate } from "@vuelidate/core";
 import { required, helpers } from "@vuelidate/validators";
 import createUUID from "@/a-library/helpers/language/string/createUUID";
+import {t} from 'i18next';
 
 // todo:: сделать переводы ошибок на русский
 
@@ -46,7 +47,7 @@ let formValues = reactive({
 const formRules = {
   books: {
     requiredOneBook: helpers.withMessage(
-      "Добавьте хотя-бы одну книгу",
+      t('pages.guide.form.addAtLeastOneBook'),
       required,
     ),
   },
