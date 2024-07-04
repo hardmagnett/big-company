@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { required, helpers } from "@vuelidate/validators";
+import { helpers } from "@vuelidate/validators";
+import { required, } from "@/a-library/third-party/vuelidate/i18n-validators";
 import createUUID from "@/a-library/helpers/language/string/createUUID";
 import {t} from 'i18next';
 
@@ -46,10 +47,7 @@ let formValues = reactive({
 
 const formRules = {
   books: {
-    requiredOneBook: helpers.withMessage(
-      t('pages.guide.form.addAtLeastOneBook'),
-      required,
-    ),
+    'forms.demo.requiredOneBook': required,
   },
 
   agreeWithConditions: {
@@ -158,7 +156,8 @@ const removeBook = (bookIndex: number) => {
       <AInputControlHint
         :error-messages="
           v$val.books.$errors
-            .filter((e) => e.$validator === 'requiredOneBook')
+            // .filter((e) => e.$validator === 'requiredOneBook')
+            .filter((e) => e.$validator === 'forms.demo.requiredOneBook')
             .map((e) => e.$message)
         "
       ></AInputControlHint>
