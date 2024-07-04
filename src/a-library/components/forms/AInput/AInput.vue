@@ -7,7 +7,7 @@ import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInpu
 
 export interface Props extends IAInputableProps {
   type?: "text" | "number";
-  placeholder?: string
+  placeholder?: string;
 }
 withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
