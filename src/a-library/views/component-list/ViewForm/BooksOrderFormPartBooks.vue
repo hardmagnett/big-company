@@ -21,6 +21,7 @@ const emit = defineEmits(["needToRemove"]);
 const props = withDefaults(defineProps<Props>(), {});
 
 const formRules = {
+  // todo:: переименовать на title.
   name: {
     required,
     minLength: minLength(3),

@@ -10,15 +10,20 @@ export default {
       resources: {
         en: {
           translation: {
+            validationFieldNames: {
+              name: 'Имя',
+              address: 'Адрес'
+            },
             validationRules: {
               // '{{property}}' - имя свойства обьекта-схемы валидации. obichnoOnoVTakomFormate
               // '{{min}}' - один из параметров конктетного валидатора. Могут быть разные.
               // '{{model}}' - значение, которое в данный момент находится в поле.
               // {{response}} - по умолчанию - boolean. Само-собой false, раз сообщение показано. Для кастомных валидатором можно возвращать что угодно.
-              "required": "Поле '{{property}}' '{{fieldname}}' обязательное.",
-              "minLength": "У поля {{property}}' '{{fieldname}}'  минимальная длина {{min}}."
+              // '{{fieldname}}' - моё самописное поле, в котором находится человекочитабельное, уже переведенное название поля.
+              "required": "Поле '{{fieldname}}' обязательное",
+              "minLength": "У поля '{{fieldname}}'  минимальная длина {{min}}",
+              "email": "'{{model}}' - неверный почтовый адрес"
             },
-            "key": "hello world"
           }
         }
       }

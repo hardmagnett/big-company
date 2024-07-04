@@ -50,12 +50,22 @@ function createI18nMessageMOVE_ME_TO_ANOTHER_FILE(_ref) {
 
 
 const messagePath = ({ $validator }: { $validator: string}) => `validationRules.${$validator}`;
+const messageParams = (params)=>{
+  // Если в валидатор передан параметр при помощи helpers.withParams, то переводим его.
+  // Иначе переводим назавание поля из js-обьекта-схемы.
+  const fieldnameToTranslate = params.fieldName ?? params.property
+  return {
+    ...params,
+
+    fieldname: t(`validationFieldNames.${fieldnameToTranslate}`)
+  };
+}
 
 // const withI18nMessage = createI18nMessage({ t: i18n.global.t.bind(i18n) })
 const withI18nMessage = createI18nMessage({
   t: t,
-  messagePath
-
+  messagePath,
+  messageParams
 })
 
 
