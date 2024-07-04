@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { required, email, minLength } from "@vuelidate/validators";
+import {
+  required,
+  minLength,
+  email,
+} from "@/a-library/third-party/vuelidate/i18n-validators";
 
 export interface Props {
   formPart: {
@@ -14,11 +18,15 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {});
 
 const formRules = {
-  // autoDirty ещё пригодиться
-  // name: { required, minLength: minLength(3), $autoDirty: true },
-  name: { required, minLength: minLength(3) },
+  name: {
+    required,
+    minLength: minLength(3),
+  },
   email: { email },
-  address: { required, minLength: minLength(10) },
+  address: {
+    required,
+    minLength: minLength(10),
+  },
 };
 
 const v$ = useVuelidate(formRules, props.formPart);

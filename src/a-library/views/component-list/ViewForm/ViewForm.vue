@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { required, helpers } from "@vuelidate/validators";
+import {
+  required,
+  isTrue,
+} from "@/a-library/third-party/vuelidate/i18n-validators";
 import createUUID from "@/a-library/helpers/language/string/createUUID";
-
-// todo:: сделать переводы ошибок на русский
 
 import { globalProperties } from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
@@ -19,22 +20,22 @@ let formValues = reactive({
   books: [
     {
       id: createUUID(),
-      name: "Первая",
+      title: "Первая",
       quantity: 0,
     },
     {
       id: createUUID(),
-      name: "Букварь",
+      title: "Букварь",
       quantity: 0,
     },
     {
       id: createUUID(),
-      name: "Синяя",
+      title: "Синяя",
       quantity: 0,
     },
     {
       id: createUUID(),
-      name: "GoF",
+      title: "GoF",
       quantity: 4,
     },
   ],
@@ -44,17 +45,11 @@ let formValues = reactive({
 
 const formRules = {
   books: {
-    requiredOneBook: helpers.withMessage(
-      "Добавьте хотя-бы одну книгу",
-      required,
-    ),
+    "forms.demo.requiredOneBook": required,
   },
 
   agreeWithConditions: {
-    checked: helpers.withMessage(
-      "Необходимо согласие",
-      (value) => value === true,
-    ),
+    "forms.demo.agreeWithConditions": isTrue,
     $autoDirty: true,
   },
   sendSpam: {},
@@ -121,9 +116,6 @@ const removeBook = (bookIndex: number) => {
     <br />
 
     <h2>Заказ книг</h2>
-    <!--<pre style="font-size: 10px">-->
-    <!--    <p>vals: {{ formValues }}</p>-->
-    <!--  </pre>-->
 
     <form @submit.prevent="submitHandler" novalidate>
       <h3>Персональные данные</h3>
@@ -140,7 +132,11 @@ const removeBook = (bookIndex: number) => {
           <ABtn
             class="a-btn--small"
             @click="
-              formValues.books.push({ name: '', quantity: 0, id: createUUID() })
+              formValues.books.push({
+                title: '',
+                quantity: 0,
+                id: createUUID(),
+              })
             "
           >
             <AIcon icon="mdi-plus-thick" size="small" />
@@ -152,7 +148,7 @@ const removeBook = (bookIndex: number) => {
       <AInputControlHint
         :error-messages="
           v$val.books.$errors
-            .filter((e) => e.$validator === 'requiredOneBook')
+            .filter((e) => e.$validator === 'forms.demo.requiredOneBook')
             .map((e) => e.$message)
         "
       ></AInputControlHint>

@@ -38,6 +38,7 @@ import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 // ===========
 import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalStorage";
 import toast from "@/a-library/vue-plugins/toast";
+import i18next from "@/a-library/vue-plugins/i18next";
 
 /**
  * Подключает компоненты из библиотеки.
@@ -91,4 +92,5 @@ export default function ({
   // ===========
   vueApp.use(responsiveGlobalStorage);
   vueApp.use(toast);
+  vueApp.use(i18next);
 }

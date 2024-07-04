@@ -7,6 +7,7 @@ import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInpu
 
 export interface Props extends IAInputableProps {
   type?: "text" | "number";
+  placeholder?: string;
 }
 withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
@@ -28,6 +29,7 @@ const emit = defineEmits([...iAInputableEmits]);
     :errorMessages="errorMessages"
   >
     <input
+      :placeholder="placeholder"
       :autofocus="autofocus"
       :type="type"
       :name="name"
