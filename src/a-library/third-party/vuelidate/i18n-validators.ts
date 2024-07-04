@@ -1,15 +1,9 @@
 
 import * as validators from '@vuelidate/validators'
 import * as validatorsCustom from './custom-validators';
-import type {MessageParams, TranslationFunction} from '@vuelidate/validators'
-// import type {MessageParams} from '@vuelidate/validators'
-// import  {TranslationFunction} from '@vuelidate/validators'
+import type {MessageParams} from '@vuelidate/validators'
 
 import {t} from 'i18next';
-
-// t as TrantitionFunction
-// t as HTMLFormElement
-// t is TranslationFunction
 
 const { createI18nMessage } = validators
 const messagePath = ({ $validator }: { $validator: string}) => `validationRules.${$validator}`;
@@ -23,7 +17,6 @@ const messageParams = (params: MessageParams)=>{
   };
 }
 
-// const withI18nMessage = createI18nMessage({ t: i18n.global.t.bind(i18n) })
 const withI18nMessage = createI18nMessage({
   // @ts-ignore: В передаче и в приемё - функции из совершенно разных библиотек, но которые в теории должны быть совместимыми. Я не смог убедить TS что одно это другое.
   t: t,

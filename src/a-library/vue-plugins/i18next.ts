@@ -1,8 +1,7 @@
-import type {App} from "vue";
 import i18next from 'i18next';
 
 export default {
-  install: (app: App) => {
+  install: () => {
     i18next.init({
       // i18n применяется только для vuelidate.
       // Поэтому достаточно захоркоженного 'ru' и строк-переводов только 'ru'.
