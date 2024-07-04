@@ -37,7 +37,10 @@ const formRules = {
   address: {
     required,
     minLength:
-    minLength(10, {fieldname: 'Бунгало'}),
+    minLength(
+      10,
+      {fieldname: 'Бунгало'}
+    ),
     $autoDirty: true  // убрать потом
   },
 };
