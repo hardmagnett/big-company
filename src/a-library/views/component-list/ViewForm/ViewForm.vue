@@ -20,22 +20,22 @@ let formValues = reactive({
   books: [
     {
       id: createUUID(),
-      name: "Первая",
+      title: "Первая",
       quantity: 0,
     },
     {
       id: createUUID(),
-      name: "Букварь",
+      title: "Букварь",
       quantity: 0,
     },
     {
       id: createUUID(),
-      name: "Синяя",
+      title: "Синяя",
       quantity: 0,
     },
     {
       id: createUUID(),
-      name: "GoF",
+      title: "GoF",
       quantity: 4,
     },
   ],
@@ -145,7 +145,7 @@ const removeBook = (bookIndex: number) => {
           <ABtn
             class="a-btn--small"
             @click="
-              formValues.books.push({ name: '', quantity: 0, id: createUUID() })
+              formValues.books.push({ title: '', quantity: 0, id: createUUID() })
             "
           >
             <AIcon icon="mdi-plus-thick" size="small" />

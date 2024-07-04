@@ -1,17 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import {
-  minLength,
-  required,
-  numeric,
-  integer,
-  minValue,
-} from "@vuelidate/validators";
+
 import { useVuelidate } from "@vuelidate/core";
+import { required, minLength,numeric,integer,minValue } from "@/a-library/third-party/vuelidate/i18n-validators";
 
 export interface Props {
   formPart: {
-    name: string;
+    title: string;
     quantity: number;
   };
 }
@@ -21,8 +16,7 @@ const emit = defineEmits(["needToRemove"]);
 const props = withDefaults(defineProps<Props>(), {});
 
 const formRules = {
-  // todo:: переименовать на title.
-  name: {
+  title: {
     required,
     minLength: minLength(3),
   },
@@ -46,9 +40,9 @@ const formPartBook = computed(() => {
     <div class="am-cols">
       <AInput
         name="book-name"
-        v-model="formPartBook.name"
-        @blur="v$.name.$touch"
-        :error-messages="v$.name.$errors.map((e) => e.$message)"
+        v-model="formPartBook.title"
+        @blur="v$.title.$touch"
+        :error-messages="v$.title.$errors.map((e) => e.$message)"
         class="am-col-6 am-col-sm-4 am-col-xxl-2"
         label="Название *"
       ></AInput>

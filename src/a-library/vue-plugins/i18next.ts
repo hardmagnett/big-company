@@ -4,15 +4,19 @@ import i18next from 'i18next';
 export default {
   install: (app: App) => {
     i18next.init({
-      lng: 'en', // if you're using a language detector, do not define the lng option
+      // i18n применяется только для vuelidate.
+      // Поэтому достаточно захоркоженного 'ru' и строк-переводов только 'ru'.
+      lng: 'ru',
       // debug: true,
       debug: false,
       resources: {
-        en: {
+        ru: {
           translation: {
             validationFieldNames: {
               name: 'Имя',
-              address: 'Адрес'
+              address: 'Адрес',
+              title: 'Название',
+              quantity: 'Количество',
             },
             validationRules: {
               // '{{property}}' - имя свойства обьекта-схемы валидации. obichnoOnoVTakomFormate
@@ -22,12 +26,14 @@ export default {
               // '{{fieldname}}' - моё самописное поле, в котором находится человекочитабельное, уже переведенное название поля.
               "required": "Поле '{{fieldname}}' обязательное",
               "minLength": "У поля '{{fieldname}}'  минимальная длина {{min}}",
-              "email": "'{{model}}' - неверный почтовый адрес"
+              "minValue": "У поля '{{fieldname}}'  минимальное значение {{min}}",
+              "email": "{{model}} - неверный почтовый адрес",
+              "numeric": "Значение должно быть числом",
+              "integer": "Значение должно быть целым числом"
             },
           }
         }
       }
     });
-    // app.config.globalProperties.$toast = createToast;
   },
 };

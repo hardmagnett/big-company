@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-// import { required, email, minLength } from "@vuelidate/validators";
-import {  email, helpers} from "@vuelidate/validators";
-import { required, minLength } from "@/a-library/third-party/vuelidate/i18n-validators";
+import { required, minLength, email } from "@/a-library/third-party/vuelidate/i18n-validators";
 
 export interface Props {
   formPart: {
@@ -16,34 +14,17 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {});
 
 const formRules = {
-  // autoDirty ещё пригодиться
   name: {
     required,
-
-    // minLength: minLength(4)({fieldname: 'Погоняло'}),
     minLength: minLength(4),
-
-    // Работает
-    // minLength: helpers.withParams(
-    //     {fieldname: 'Имя'},
-    //     minLength(3)
-    // ),
-
-
-    $autoDirty: true
+    $autoDirty: true  // убрать потом
   },
   // name: { required, minLength: minLength(3) },
   email: { email },
   // address: { required, minLength: minLength(10) },
   address: {
     required,
-    minLength:
-    minLength(
-      10,
-    ),
-    // )({fieldname: 'Бунгало'}),
-    // )({}),
-    // )(),
+    minLength: minLength(10),
     $autoDirty: true,  // убрать потом
   },
 };
