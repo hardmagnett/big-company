@@ -63,11 +63,20 @@ export const required = withI18nMessage(validators.required)
 
 const minLengthWM = withI18nMessage(validators.minLength, { withArguments: true })
 
+// Моя самописный декоратор.
+// К любому валидатору добавляет последний аргумент - объект.
+// Например, если примет такой аргумент {fieldname: 'Имя'}
+// то fieldname будет доступен для подстановки в сообщении об ошибке.
 const withMoreParams = (validator)=>{
-  return (params)=>{
+  // return (...params, additionalParams: {fieldname?: string}= {})=>{
+  return (...params)=>{
+    console.log(params); console.log('^...params:')
+    // const additionalParams = {fieldname: 'Имя'}
+    const additionalParams = params.at(-1)
+    params.pop()
     return helpers.withParams(
-      {fieldname: 'Имя'},
-      validator(params)
+      additionalParams,
+      validator([...params])
     )
 
   }
@@ -84,11 +93,11 @@ export {
 
 
 
-let result: string
-result = t('validationRules.required', { property: 'Имя' });
-console.log(result); console.log('^...result:')
-
-result = t('validationRules.minLength', { property: 'Имя', model: 2, min: 6 });
-console.log(result); console.log('^...result:')
+// let result: string
+// result = t('validationRules.required', { property: 'Имя' });
+// console.log(result); console.log('^...result:')
+//
+// result = t('validationRules.minLength', { property: 'Имя', model: 2, min: 6 });
+// console.log(result); console.log('^...result:')
 
 // console.dir(t); console.log('^...t:')

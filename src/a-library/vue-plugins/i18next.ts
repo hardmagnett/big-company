@@ -11,9 +11,11 @@ export default {
         en: {
           translation: {
             validationRules: {
-              // 'required': 'Введи, блин, хоть что-то',
+              // '{{property}}' - имя свойства обьекта-схемы валидации. obichnoOnoVTakomFormate
+              // '{{min}}' - один из параметров конктетного валидатора. Могут быть разные.
+              // '{{model}}' - значение, которое в данный момент находится в поле.
               "required": "Поле '{{property}}' '{{fieldname}}' обязательное.",
-              "minLength": "У поля '{{property}}' '{{fieldname}}' длина {{model}}. Минимальная длина {{min}}."
+              "minLength": "У поля '{{fieldname}}'  минимальная длина {{min}}."
             },
             "key": "hello world"
           }

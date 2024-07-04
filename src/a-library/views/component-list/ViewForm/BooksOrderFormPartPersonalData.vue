@@ -20,7 +20,7 @@ const formRules = {
   name: {
     required,
 
-    minLength: minLength(3),
+    minLength: minLength(4, {fieldname: 'Погоняло'}),
 
     // Работает
     // minLength: helpers.withParams(
@@ -33,7 +33,13 @@ const formRules = {
   },
   // name: { required, minLength: minLength(3) },
   email: { email },
-  address: { required, minLength: minLength(10) },
+  // address: { required, minLength: minLength(10) },
+  address: {
+    required,
+    minLength:
+    minLength(10, {fieldname: 'Бунгало'}),
+    $autoDirty: true  // убрать потом
+  },
 };
 
 const v$ = useVuelidate(formRules, props.formPart);
