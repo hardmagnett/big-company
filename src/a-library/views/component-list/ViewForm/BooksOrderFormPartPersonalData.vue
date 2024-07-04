@@ -20,7 +20,8 @@ const formRules = {
   name: {
     required,
 
-    minLength: minLength(4)({fieldname: 'Погоняло'}),
+    // minLength: minLength(4)({fieldname: 'Погоняло'}),
+    minLength: minLength(4),
 
     // Работает
     // minLength: helpers.withParams(
@@ -39,11 +40,11 @@ const formRules = {
     minLength:
     minLength(
       10,
-    // ),
-    )({fieldname: 'Бунгало'}),
+    ),
+    // )({fieldname: 'Бунгало'}),
     // )({}),
     // )(),
-    $autoDirty: true  // убрать потом
+    $autoDirty: true,  // убрать потом
   },
 };
 

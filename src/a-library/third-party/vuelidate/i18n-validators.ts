@@ -64,9 +64,14 @@ export const required = withI18nMessage(validators.required)
 const minLengthWM = withI18nMessage(validators.minLength, { withArguments: true })
 
 // Моя самописный декоратор.
+// Не применяется, но может применяться если понадобиться для каждой ошибки выводить имя в своем падеже.
+// Не учитывает i18n - предполагается что слово на правильном языке передается сюда из конфигурации схемы.
+// Но можно заморочиться и реализовать это здесь.
+// todo:: перенести в гисты отсюда
 // К любому валидатору добавляет последний аргумент - объект.
 // Например, если примет такой аргумент {fieldname: 'Имя'}
 // то fieldname будет доступен для подстановки в сообщении об ошибке.
+// address: { minLength: minLength(10,)({fieldname: 'Бунгало'})},
 const withMoreParams = (validator)=>{
   // return (...params, additionalParams: {fieldname?: string}= {})=>{
   return (...params)=>{
@@ -88,7 +93,9 @@ const withMoreParams = (validator)=>{
   }
   // return validator
 }
-const minLength = withMoreParams(minLengthWM)
+// todo:: и это в гисты про мой непримененный декоратор.
+// const minLength = withMoreParams(minLengthWM)
+const minLength = minLengthWM
 
 export {
   minLength
