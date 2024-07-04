@@ -60,7 +60,24 @@ const withI18nMessage = createI18nMessage({
 
 
 export const required = withI18nMessage(validators.required)
-export const minLength = withI18nMessage(validators.minLength, { withArguments: true })
+
+const minLengthWM = withI18nMessage(validators.minLength, { withArguments: true })
+
+const withMoreParams = (validator)=>{
+  return (params)=>{
+    return helpers.withParams(
+      {fieldname: 'Имя'},
+      validator(params)
+    )
+
+  }
+  // return validator
+}
+const minLength = withMoreParams(minLengthWM)
+
+export {
+  minLength
+}
 
 // export const required = validators.required
 // export const minLength = validators.minLength

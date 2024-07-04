@@ -12,8 +12,8 @@ export default {
           translation: {
             validationRules: {
               // 'required': 'Введи, блин, хоть что-то',
-              "required": "Поле '{{property}}' обязательное.",
-              "minLength": "У поля '{{property}}' длина {{model}}. Минимальная длина {{min}}."
+              "required": "Поле '{{property}}' '{{fieldname}}' обязательное.",
+              "minLength": "У поля '{{property}}' '{{fieldname}}' длина {{model}}. Минимальная длина {{min}}."
             },
             "key": "hello world"
           }
