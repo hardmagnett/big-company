@@ -13,6 +13,8 @@ export default {
           translation: {
             validationFieldNames: {
               name: "Имя",
+              firstname: "Имя",
+              lastname: "Фамилия",
               address: "Адрес",
               title: "Название",
               quantity: "Количество",
