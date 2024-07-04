@@ -10,8 +10,7 @@ import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/Vie
 
 let formValues = reactive({
   user: {
-    // name: "Ридли",
-    name: "Р",
+    name: "Ридли",
     email: "",
     address: "Ул. Учебная, д.13",
   },

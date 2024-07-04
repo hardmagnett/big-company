@@ -16,16 +16,12 @@ const props = withDefaults(defineProps<Props>(), {});
 const formRules = {
   name: {
     required,
-    minLength: minLength(4),
-    $autoDirty: true  // убрать потом
+    minLength: minLength(3),
   },
-  // name: { required, minLength: minLength(3) },
   email: { email },
-  // address: { required, minLength: minLength(10) },
   address: {
     required,
     minLength: minLength(10),
-    $autoDirty: true,  // убрать потом
   },
 };
 
