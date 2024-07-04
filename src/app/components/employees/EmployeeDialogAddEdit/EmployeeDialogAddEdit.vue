@@ -38,13 +38,7 @@ const submitHandler = async () => {
   const isFormCorrect = await v$.value.$validate();
 
   if (isFormCorrect) {
-    // globalProperties.$toast({ message: "Форма заполнена верно" });
     emit('apply')
-  } else {
-    // globalProperties.$toast({
-    //   message: "Форма заполнена неверно",
-    //   type: "error",
-    // });
   }
 
 }
@@ -52,8 +46,6 @@ const submitHandler = async () => {
 
 <template>
   <div class="employee-dialog-add-edit">
-    <!--<form @submit.prevent="submitHandler" novalidate>-->
-      <!--@apply="$emit('apply')"-->
     <ADialog
       remainOnEsc
       remainOnClickOutside
@@ -77,7 +69,6 @@ const submitHandler = async () => {
         ></AInput>
 
     </ADialog>
-    <!--</form>-->
   </div>
 </template>
 
