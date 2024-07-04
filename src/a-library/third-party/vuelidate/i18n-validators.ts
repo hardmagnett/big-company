@@ -72,12 +72,18 @@ const withMoreParams = (validator)=>{
   return (...params)=>{
     console.log(params); console.log('^...params:')
     // const additionalParams = {fieldname: 'Имя'}
-    const additionalParams = params.at(-1)
-    params.pop()
-    return helpers.withParams(
-      additionalParams,
-      validator([...params])
-    )
+    // const additionalParams = params.at(-1)
+    // params.pop()
+
+    // return(additionalParams: {fieldname?: string} = {fieldname: 'имя поля не указано'})=>{
+    return({fieldname = 'имя поля не указано'} = {})=>{
+      return helpers.withParams(
+        // additionalParams,
+        {fieldname},
+        validator([...params])
+      )
+    }
+
 
   }
   // return validator
