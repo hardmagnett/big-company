@@ -7,10 +7,9 @@ import {t} from 'i18next';
 const { createI18nMessage } = validators
 const messagePath = ({ $validator }: { $validator: string}) => `validationRules.${$validator}`;
 const messageParams = (params)=>{
-  // Если передать параметр так, то он будет более приоритетным.
+  // params.fieldName может появиться при таком использовании:
   // minLength: helpers.withParams({fieldName: 'unusualAddressFieldNameToTranslate'}, minLength(3)),
   const fieldnameToTranslate = params.fieldName ?? params.property
-  console.log(params); console.log('^...params:')
   return {
     ...params,
     fieldName: t(`validationFieldNames.${fieldnameToTranslate}`)
@@ -33,6 +32,4 @@ export const integer = withI18nMessage(validators.integer)
 export const minValue = withI18nMessage(validators.minValue, { withArguments: true })
 
 // Кастомные
-// export const required = withI18nMessage(validators.required)
 export const isTrue = withI18nMessage(validatorsCustom.isTrue)
-// export const isTrue = validatorsCustom.isTrue
