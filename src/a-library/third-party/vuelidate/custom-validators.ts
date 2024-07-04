@@ -1,15 +1,23 @@
 import {helpers} from '@vuelidate/validators'
 
-export const isTrueOLD = (value: boolean) => value
+// В этом валидаторе не заморачивался с дефолтовым message.
+// Не было подходящей ситуации, чтобы проверить.
+// export const isTrue = (value: boolean) => value
 
 
 export const isTrue = helpers.withMessage(
-  ({
-     $property,
-     $invalid,
-     $params,
-     $model
-   // }) => `This field has a value of '${$model}' but must have a min length of ${$params.min} so it is ${$invalid ? 'invalid' : 'valid'}`,
-   }) => `Значение поля ${$property} должно быть положительным`,
+  (messageProps) => {
+    console.log(messageProps); console.log('^...messageProps:')
+    const {
+      $property,
+      $invalid,
+      $params,
+      $model
+    } = messageProps
+
+    const fieldName = $params.fieldName ?? $property
+    // return `Значение поля '${$property}' '${$fieldName}' должно быть положительным`
+    return `Значение поля '${fieldName}' должно быть положительным`
+  },
   (value: boolean) => value
 )

@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { helpers } from "@vuelidate/validators";
-import { required, } from "@/a-library/third-party/vuelidate/i18n-validators";
+import { required, isTrue } from "@/a-library/third-party/vuelidate/i18n-validators";
 import createUUID from "@/a-library/helpers/language/string/createUUID";
-import {t} from 'i18next';
-
-// todo:: сделать переводы ошибок на русский
 
 import { globalProperties } from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
@@ -51,10 +47,23 @@ const formRules = {
   },
 
   agreeWithConditions: {
-    checked: helpers.withMessage(
-      "Необходимо согласие",
-      (value) => value === true,
-    ),
+    // checked: helpers.withMessage(
+    //   "Необходимо согласие",
+    //   // (value) => value === true,
+    //   isTrue,
+    // ),
+
+    'forms.demo.agreeWithConditions': isTrue,
+    // isTrue: isTrue,
+
+    // checked: helpers.withParams(
+    //     {fieldName: 'Согласие'},
+    //   // (value) => value === true,
+    //   isTrue,
+    // ),
+
+    // isTrue: helpers.withParams({fieldName: "forms.demo.agree"}, isTrue,),
+
     $autoDirty: true,
   },
   sendSpam: {},

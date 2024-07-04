@@ -10,10 +10,10 @@ const messageParams = (params)=>{
   // Если передать параметр так, то он будет более приоритетным.
   // minLength: helpers.withParams({fieldName: 'unusualAddressFieldNameToTranslate'}, minLength(3)),
   const fieldnameToTranslate = params.fieldName ?? params.property
-  console.log(params); console.log('^...params:') 
+  console.log(params); console.log('^...params:')
   return {
     ...params,
-    fieldname: t(`validationFieldNames.${fieldnameToTranslate}`)
+    fieldName: t(`validationFieldNames.${fieldnameToTranslate}`)
   };
 }
 
@@ -34,4 +34,5 @@ export const minValue = withI18nMessage(validators.minValue, { withArguments: tr
 
 // Кастомные
 // export const required = withI18nMessage(validators.required)
-export const isTrue = validatorsCustom.isTrue
+export const isTrue = withI18nMessage(validatorsCustom.isTrue)
+// export const isTrue = validatorsCustom.isTrue
