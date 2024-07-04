@@ -6,10 +6,8 @@ import {
   iDialogablePropDefaults,
 } from "@/app/component-interfaces/IDialogable";
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
-import {email, minLength, required} from "@/a-library/third-party/vuelidate/i18n-validators";
+import {required} from "@/a-library/third-party/vuelidate/i18n-validators";
 import {useVuelidate} from "@vuelidate/core";
-import createUUID from "@/a-library/helpers/language/string/createUUID";
-import {globalProperties} from "@/main";
 
 const emit = defineEmits([...iDialogableEmits]);
 
