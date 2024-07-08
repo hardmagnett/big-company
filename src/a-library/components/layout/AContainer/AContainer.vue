@@ -133,9 +133,7 @@ function clickOnRouterLinkHandler() {
       /*outline: 1px solid darkred;*/
     }
     .a-container__page-header-right-side {
-      /*flex: 1 0 auto;*/
-      /*outline: 1px solid darkred;*/
-      padding-right: var(--gap);
+      padding-right: 8px; /*Хардкод вместо var(--gap) из-за невидимой части кнопок, которые обычно здесь находятся*/
       display: flex;
       align-items: center;
 
