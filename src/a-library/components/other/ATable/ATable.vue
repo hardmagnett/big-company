@@ -40,7 +40,13 @@
       }
       th,
       td {
-        padding: calc(var(--gap) / 2) var(--gap);
+        padding: calc(var(--gap) / 2);
+        &:first-child {
+          padding-left: var(--gap);
+        }
+        &:last-child {
+          padding-right: var(--gap);
+        }
         text-align: left;
         border-bottom: 1px solid var(--border-color);
         font-size: var(--font-size-small);

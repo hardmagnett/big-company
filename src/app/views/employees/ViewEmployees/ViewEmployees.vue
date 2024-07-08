@@ -5,6 +5,7 @@ import { ref } from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
+import EmployeesFilter from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
@@ -50,6 +51,8 @@ const createEditEmployee = () => {
         Найдено: <span class="employees__qty-number">1</span>
       </p>
     </div>
+
+    <EmployeesFilter />
 
     <EmployeeDialogDelete
       :is-open="isOpenDialogEmployeeDeleting"
