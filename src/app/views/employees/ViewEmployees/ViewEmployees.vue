@@ -13,13 +13,11 @@ let isOpenDialogEmployeeCreatingEditing = ref(false);
 
 
 let filter = reactive({
-// let filter = ref({
   query: ''
 })
 let filterUpdatesQtyKey = ref(0)
 
 const filterChangeHandler = () => {
-  // console.log(newValue); console.log('^...newValue:')
   console.log(filter); console.log('^... changed filter:')
 }
 
@@ -28,10 +26,6 @@ let watchFilter = ()=>{
     filterChangeHandler()
   })
 }
-
-// let unwatchFilter = watch(filter, (newValue, oldValue) => {
-//   console.log(newValue); console.log('^...newValue:')
-// })
 
 let unwatchFilter = watchFilter()
 
@@ -64,15 +58,10 @@ const createEditEmployee = () => {
   });
 };
 const updateWholeFilter = (newFilter: FilterEmployees) => {
-  // console.log(newFilter); console.log('^...newFilter:')
-  // filter.value = newFilter
   unwatchFilter()
   filter = newFilter
 
   filterUpdatesQtyKey.value++
-  // unwatchFilter = watch(filter, (newValue, oldValue) => {
-  //   console.log(newValue); console.log('^...newValue:')
-  // })
   unwatchFilter = watchFilter()
   filterChangeHandler()
 
@@ -83,6 +72,7 @@ onBeforeMount(()=>{
 
 <template>
   <div class="employees">
+    <!--todo:: не забыть удалить этот коммент-->
     <!--<Teleport to="#teleport-debug">-->
     <!--  <pre>-->
     <!--    {{ filter }}-->
@@ -150,8 +140,6 @@ onBeforeMount(()=>{
   }
   .employees-filter {
     flex: 0 0 auto;
-    /*outline: 1px solid darkred;*/
-    /*background-color: green;*/
   }
 }
 </style>

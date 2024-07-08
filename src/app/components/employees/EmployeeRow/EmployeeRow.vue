@@ -30,7 +30,6 @@ const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
     @container style(--bp-sm-or-more) {
       width: 200px;
     }
-    /*text-align: center;*/
     @container style(--bp-lg-or-more) {
       width: 300px;
     }

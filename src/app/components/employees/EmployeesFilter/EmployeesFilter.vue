@@ -19,10 +19,8 @@ let filterInitial = reactive<FilterEmployees>({
   query: "",
 });
 
-//////// Props
 export interface Props {
   filter: FilterEmployees;
-  // filter: string
 }
 const props = withDefaults(defineProps<Props>(), {});
 
@@ -57,7 +55,6 @@ const setFilterVisibilityBasedOnLocalStorage = () => {
   isFilterHidden.value = isFilterHiddenFromStorage;
 };
 const resetFilter = () => {
-  // filterInner.value = filterInitial
   emit('needToUpdateWholeFilter', filterInitial)
 }
 
@@ -85,7 +82,6 @@ onBeforeMount(() => {
 
     <Teleport to="#page-header-filter-icon-place">
 
-      <!--:class="{ 'a-btn&#45;&#45;danger': isFilterChanged }"-->
       <ABtn
           icon
           @click="resetFilter"
@@ -93,7 +89,6 @@ onBeforeMount(() => {
       ><AIcon
           :icon="filterResetIcon"
       /></ABtn>
-      <!--:class="{ 'a-btn&#45;&#45;danger': isFilterChanged }"-->
       <ABtn
         icon
         @click="toggleFilterVisibility"
@@ -124,7 +119,6 @@ onBeforeMount(() => {
   max-height: 120px;
   overflow-y: hidden;
   transition: max-height var(--time-short) ease-in;
-  /*transition: max-height var(--time-short) var(--transition-extra-easy-in);*/
   will-change: max-height;
 
   &.employees-filter--hidden {

@@ -130,7 +130,6 @@ function clickOnRouterLinkHandler() {
 
     .a-container__page-header-place {
       flex: 1 0 auto;
-      /*outline: 1px solid darkred;*/
     }
     .a-container__page-header-right-side {
       padding-right: 8px; /*Хардкод вместо var(--gap) из-за невидимой части кнопок, которые обычно здесь находятся*/
@@ -193,7 +192,6 @@ function clickOnRouterLinkHandler() {
     bottom: 0;
     left: 0;
     right: 0;
-    /*min-height: 100px;*/
     background-color: white;
   }
 }

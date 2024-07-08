@@ -10,8 +10,6 @@ defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
       <tr>
         <th>Сотрудник</th>
         <th >Отдел</th>
-        <!--<th v-if="$responsiveVariables.isSmOrMore">Количество задач</th>-->
-        <!--<th v-if="!$responsiveVariables.isSmOrMore">Задач</th>-->
         <th></th>
       </tr>
     </thead>
