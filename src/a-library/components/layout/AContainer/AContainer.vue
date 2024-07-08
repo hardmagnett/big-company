@@ -70,6 +70,12 @@ function clickOnRouterLinkHandler() {
       <div id="page-header-place" class="a-container__page-header-place">
         <!--сюда контент передается телепортом из view-х-->
       </div>
+      <div class="a-container__page-header-right-side">
+        <div id="page-header-filter-icon-place">
+          <!--телепорт для иконки из фильтра-->
+        </div>
+
+      </div>
     </div>
     <div class="a-container__body">
       <AMainMenu
@@ -98,6 +104,7 @@ function clickOnRouterLinkHandler() {
 
     display: flex;
     flex-flow: row nowrap;
+    background-color: var(--clr-bg-blue-small);
 
     .a-container__top-left {
       width: var(--left-menu-width-expanded);
@@ -120,6 +127,15 @@ function clickOnRouterLinkHandler() {
 
     .a-container__page-header-place {
       flex: 1 0 auto;
+      /*outline: 1px solid darkred;*/
+    }
+    .a-container__page-header-right-side {
+      /*flex: 1 0 auto;*/
+      /*outline: 1px solid darkred;*/
+      padding-right: var(--gap);
+      display: flex;
+      align-items: center;
+
     }
   }
   .a-container__body {
