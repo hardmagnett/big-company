@@ -78,13 +78,17 @@ const updateWholeFilter = (newFilter: FilterEmployees) => {
 
 }
 onBeforeMount(()=>{
-  // filter = new FilterEmployees({
-  // })
 })
 </script>
 
 <template>
   <div class="employees">
+    <!--<Teleport to="#teleport-debug">-->
+    <!--  <pre>-->
+    <!--    {{ filter }}-->
+    <!--    {{ filterUpdatesQtyKey }}-->
+    <!--  </pre>-->
+    <!--</Teleport>-->
     <Teleport to="#page-header-place">
       <APageHeader> Сотрудники </APageHeader>
     </Teleport>

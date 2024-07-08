@@ -79,8 +79,6 @@ onBeforeMount(() => {
       <pre>
         {{ filter }}
         {{ filterInitial }}
-      </pre>
-      <pre>
         {{ isFilterChanged }}
       </pre>
     </Teleport>
