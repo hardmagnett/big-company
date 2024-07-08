@@ -71,14 +71,6 @@ onBeforeMount(() => {
     class="employees-filter am-cols"
     :class="{ 'employees-filter--hidden': isFilterHidden }"
   >
-    <Teleport to="#teleport-debug">
-      <pre>
-        {{ filter }}
-        {{ filterInitial }}
-        {{ isFilterChanged }}
-      </pre>
-    </Teleport>
-
     <Teleport to="#page-header-filter-icon-place">
       <ABtn icon @click="resetFilter" :disabled="!isFilterChanged"
         ><AIcon :icon="filterResetIcon"
