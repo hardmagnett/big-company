@@ -92,6 +92,9 @@ function clickOnRouterLinkHandler() {
         <slot />
       </div>
     </div>
+    <div id="teleport-debug" class="a-container__debug"></div>
+
+
   </div>
 </template>
 
@@ -186,6 +189,14 @@ function clickOnRouterLinkHandler() {
       opacity: 0;
       pointer-events: none;
     }
+  }
+  .a-container__debug {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*min-height: 100px;*/
+    background-color: white;
   }
 }
 </style>

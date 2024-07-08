@@ -1,15 +1,27 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-import { ref } from "vue";
+import {onBeforeMount, reactive, ref} from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
 import EmployeesFilter from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
+import FilterEmployees from '@/app/components/employees/EmployeesFilter/FilterEmployees';
+
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
 
+// let filter = reactive({
+//   stringQuery: ''
+// })
+let filterRaw = new FilterEmployees({
+  query: 'delme'
+})
+console.log(filterRaw); console.log('^...filterRaw:')
+
+let filter = reactive<FilterEmployees>(new FilterEmployees({
+}))
 const needToDeleteEmployeeHandler = () => {
   isOpenDialogEmployeeDeleting.value = true;
 };
@@ -36,6 +48,10 @@ const createEditEmployee = () => {
     message: "Сотрудник добавлен/отредактирован",
   });
 };
+onBeforeMount(()=>{
+  // filter = new FilterEmployees({
+  // })
+})
 </script>
 
 <template>
@@ -52,7 +68,7 @@ const createEditEmployee = () => {
       </p>
     </div>
 
-    <EmployeesFilter />
+    <EmployeesFilter :filter="filterRaw" />
 
     <EmployeeDialogDelete
       :is-open="isOpenDialogEmployeeDeleting"
@@ -95,6 +111,11 @@ const createEditEmployee = () => {
   .employees-table {
     flex: 1 1 auto;
     overflow-y: auto;
+  }
+  .employees-filter {
+    flex: 0 0 auto;
+    /*outline: 1px solid darkred;*/
+    /*background-color: green;*/
   }
 }
 </style>
