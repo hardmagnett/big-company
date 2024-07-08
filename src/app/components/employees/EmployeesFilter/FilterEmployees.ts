@@ -1,3 +1,4 @@
+// todo:: удалить это нафиг?
 export default class FilterEmployees {
 
   private query: string

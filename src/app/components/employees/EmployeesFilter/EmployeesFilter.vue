@@ -2,15 +2,19 @@
 
 
 
-
-import { computed, ref, onBeforeMount } from "vue";
+import {computed, ref, onBeforeMount, reactive} from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 import debounce from "@/a-library/helpers/language/functions/debounce";
-// import type FilterEmployees from "@/app/components/employees/EmployeesFilter/FilterEmployees";
+import deepEqual from "@/a-library/helpers/language/functions/deepEqual";
 
 type FilterEmployees = {
   query: string
 }
+
+let filterInitial =  reactive<FilterEmployees>({
+  query: ''
+})
+
 //////// Props
 export interface Props {
   filter: FilterEmployees;
@@ -26,6 +30,11 @@ let filterInner = computed(()=>{
 
 const filterIcon = computed(() => {
   return isFilterHidden.value ? "mdi-filter-outline" : "mdi-filter";
+});
+
+const isFilterChanged = computed(() => {
+  return deepEqual(props.filter, filterInitial)
+
 });
 const toggleFilterVisibility = () => {
   isFilterHidden.value = !isFilterHidden.value;
@@ -44,7 +53,7 @@ const setFilterVisibilityBasedOnLocalStorage = () => {
 
 const updateQuery = debounce((eventData:string) => {
   filterInner.value.query = eventData
-}, 500)
+})
 
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
@@ -61,6 +70,10 @@ onBeforeMount(() => {
     <Teleport to="#teleport-debug">
       <pre>
         {{filter}}
+        {{filterInitial}}
+      </pre>
+      <pre>
+        {{isFilterChanged}}
       </pre>
     </Teleport>
 
