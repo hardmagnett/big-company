@@ -1,6 +1,11 @@
 <script setup lang="ts">
+
+
+
+
 import { computed, ref, onBeforeMount } from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
+import debounce from "@/a-library/helpers/language/functions/debounce";
 // import type FilterEmployees from "@/app/components/employees/EmployeesFilter/FilterEmployees";
 
 type FilterEmployees = {
@@ -36,6 +41,11 @@ const setFilterVisibilityBasedOnLocalStorage = () => {
   );
   isFilterHidden.value = isFilterHiddenFromStorage;
 };
+
+const updateQuery = debounce((eventData:string) => {
+  filterInner.value.query = eventData
+}, 500)
+
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
 });
@@ -61,16 +71,12 @@ onBeforeMount(() => {
       /></ABtn>
     </Teleport>
 
-    <!--v-model="formPartPersonalData.name"-->
-    <!--@blur="v$.name.$touch"-->
-    <!--:error-messages="v$.name.$errors.map((e) => e.$message)"-->
-    <!--:model-value="filter.getQuery()"-->
-    <!--@update:model-value="filter.setQuery($event)"-->
     <AInput
       autofocus
       class="am-col-12 am-col-sm-6"
       label="Имя"
-      v-model="filterInner.query"
+      :model-value="filterInner.query"
+      @update:model-value="updateQuery"
       hide-hint
     ></AInput>
     <AInput
@@ -85,15 +91,16 @@ onBeforeMount(() => {
 <style scoped>
 .employees-filter {
   /*todo:: вернуть 120*/
-  /*max-height: 120px;*/
-  max-height: 800px;
+  max-height: 120px;
+  /*max-height: 800px;*/
   overflow-y: hidden;
   transition: max-height var(--time-short) ease-in;
+  /*transition: max-height var(--time-short) var(--transition-extra-easy-in);*/
   will-change: max-height;
 
   &.employees-filter--hidden {
     max-height: 0;
-    transition: max-height var(--time-short) ease-out;
+    transition: max-height var(--time-short) var(--transition-extra-easy-out);
   }
 }
 </style>
