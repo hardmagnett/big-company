@@ -12,15 +12,30 @@ let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
 
 
-// let filter = reactive({
-let filter = ref({
+let filter = reactive({
+// let filter = ref({
   query: ''
 })
 let filterUpdatesQtyKey = ref(0)
 
-watch(filter, (newValue, oldValue) => {
+const filterChangeHandler = () => {
   // console.log(newValue); console.log('^...newValue:')
-})
+  console.log(filter); console.log('^... changed filter:')
+}
+
+let watchFilter = ()=>{
+  return watch(filter, (newValue, oldValue) => {
+    filterChangeHandler()
+  })
+}
+
+// let unwatchFilter = watch(filter, (newValue, oldValue) => {
+//   console.log(newValue); console.log('^...newValue:')
+// })
+
+let unwatchFilter = watchFilter()
+
+
 
 const needToDeleteEmployeeHandler = () => {
   isOpenDialogEmployeeDeleting.value = true;
@@ -49,9 +64,18 @@ const createEditEmployee = () => {
   });
 };
 const updateWholeFilter = (newFilter: FilterEmployees) => {
-  console.log(newFilter); console.log('^...newFilter:')
-  filter.value = newFilter
+  // console.log(newFilter); console.log('^...newFilter:')
+  // filter.value = newFilter
+  unwatchFilter()
+  filter = newFilter
+
   filterUpdatesQtyKey.value++
+  // unwatchFilter = watch(filter, (newValue, oldValue) => {
+  //   console.log(newValue); console.log('^...newValue:')
+  // })
+  unwatchFilter = watchFilter()
+  filterChangeHandler()
+
 }
 onBeforeMount(()=>{
   // filter = new FilterEmployees({
