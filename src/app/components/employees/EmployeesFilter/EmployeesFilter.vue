@@ -1,8 +1,8 @@
 <script setup lang="ts">
-    import {computed, ref} from "vue";
+    import {computed, ref, onBeforeMount} from "vue";
+    import localStorageService from '@/a-library/helpers/DOM/localStorageService';
 
 
-    // todo:: сделать чтобы сохранялся в localStorage
     let isFilterHidden = ref(false)
 
     const filterIcon = computed(() => {
@@ -10,8 +10,16 @@
   });
     const toggleFilterVisibility = () => {
     isFilterHidden.value = !isFilterHidden.value
+    localStorageService.setItem('filter-employees-isHidden', isFilterHidden.value)
 
   }
+  const setFilterVisibilityBasedOnLocalStorage = () => {
+    const isFilterHiddenFromStorage = localStorageService.getItem('filter-employees-isHidden', false)
+    isFilterHidden.value = isFilterHiddenFromStorage
+  }
+  onBeforeMount(()=>{
+    setFilterVisibilityBasedOnLocalStorage()
+  })
   </script>
 
   <template>

@@ -40,3 +40,4 @@ class LocalStorageService {
 }
 const localStorageServiceSingleton = new LocalStorageService();
 export default localStorageServiceSingleton;
+
