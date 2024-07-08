@@ -6,12 +6,14 @@ const attrs = useAttrs();
 export interface Props {
   icon?: boolean;
   autofocus?: boolean;
+  disabled?: boolean;
   type?: string;
 }
 withDefaults(defineProps<Props>(), {
   autofocus: false,
   // если кнопке не передать type, то она по умолчанию будет работать как type="submit"
   type: "button",
+  disabled: false,
 });
 
 defineOptions({
@@ -38,6 +40,7 @@ const isRouterLink = computed(() => {
     :autofocus="autofocus"
     class="a-btn"
     :class="{
+      'a-btn--disabled': disabled,
       'a-btn--icon': icon,
       'a-btn--with-text': !icon,
     }"
@@ -51,6 +54,7 @@ const isRouterLink = computed(() => {
 <style scoped>
 .a-btn {
   outline: none !important;
+  transition: all var(--time-short);
 }
 .a-btn--with-text {
   --height: calc(var(--gap) * 1.6);
@@ -75,7 +79,6 @@ const isRouterLink = computed(() => {
   border: none;
 
   cursor: pointer;
-  transition: background-color var(--time-short);
   &:hover {
     background-color: var(--clr-fill-blue-accent);
   }
@@ -168,7 +171,6 @@ const isRouterLink = computed(() => {
   padding: 0;
 
   background-color: transparent;
-  transition: background-color var(--time-short);
 
   --size: calc(var(--gap) * 1.6);
   @container style(--bp-md-or-more) {
@@ -229,5 +231,10 @@ const isRouterLink = computed(() => {
       background-color: rgba(255, 255, 255, var(--bg-opacity));
     }
   }
+}
+
+.a-btn--disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 </style>

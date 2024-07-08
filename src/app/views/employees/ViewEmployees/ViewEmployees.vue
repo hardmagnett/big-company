@@ -1,13 +1,31 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-import { ref } from "vue";
+import { onBeforeMount, reactive, ref, watch } from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
+import EmployeesFilter, {
+  type FilterEmployees,
+} from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
+
+let filter = reactive({
+  query: "",
+});
+let filterUpdatesQtyKey = ref(0);
+
+const filterChangeHandler = () => {};
+
+let watchFilter = () => {
+  return watch(filter, () => {
+    filterChangeHandler();
+  });
+};
+
+let unwatchFilter = watchFilter();
 
 const needToDeleteEmployeeHandler = () => {
   isOpenDialogEmployeeDeleting.value = true;
@@ -35,6 +53,15 @@ const createEditEmployee = () => {
     message: "Сотрудник добавлен/отредактирован",
   });
 };
+const updateWholeFilter = (newFilter: FilterEmployees) => {
+  unwatchFilter();
+  filter = newFilter;
+
+  filterUpdatesQtyKey.value++;
+  unwatchFilter = watchFilter();
+  filterChangeHandler();
+};
+onBeforeMount(() => {});
 </script>
 
 <template>
@@ -50,6 +77,12 @@ const createEditEmployee = () => {
         Найдено: <span class="employees__qty-number">1</span>
       </p>
     </div>
+
+    <EmployeesFilter
+      :filter="filter"
+      @needToUpdateWholeFilter="updateWholeFilter"
+      :key="filterUpdatesQtyKey"
+    />
 
     <EmployeeDialogDelete
       :is-open="isOpenDialogEmployeeDeleting"
@@ -92,6 +125,9 @@ const createEditEmployee = () => {
   .employees-table {
     flex: 1 1 auto;
     overflow-y: auto;
+  }
+  .employees-filter {
+    flex: 0 0 auto;
   }
 }
 </style>

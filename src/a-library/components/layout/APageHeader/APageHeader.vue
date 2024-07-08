@@ -16,7 +16,6 @@
   flex-flow: row nowrap;
   align-items: center;
 
-  background-color: var(--clr-bg-blue-small);
   border-bottom: 1px solid var(--clr-border-blue-lighter);
 }
 </style>

@@ -70,6 +70,11 @@ function clickOnRouterLinkHandler() {
       <div id="page-header-place" class="a-container__page-header-place">
         <!--сюда контент передается телепортом из view-х-->
       </div>
+      <div class="a-container__page-header-right-side">
+        <div id="page-header-filter-icon-place">
+          <!--телепорт для иконки из фильтра-->
+        </div>
+      </div>
     </div>
     <div class="a-container__body">
       <AMainMenu
@@ -86,6 +91,7 @@ function clickOnRouterLinkHandler() {
         <slot />
       </div>
     </div>
+    <div id="teleport-debug" class="a-container__debug"></div>
   </div>
 </template>
 
@@ -98,6 +104,7 @@ function clickOnRouterLinkHandler() {
 
     display: flex;
     flex-flow: row nowrap;
+    background-color: var(--clr-bg-blue-small);
 
     .a-container__top-left {
       width: var(--left-menu-width-expanded);
@@ -120,6 +127,11 @@ function clickOnRouterLinkHandler() {
 
     .a-container__page-header-place {
       flex: 1 0 auto;
+    }
+    .a-container__page-header-right-side {
+      padding-right: 8px; /*Хардкод вместо var(--gap) из-за невидимой части кнопок, которые обычно здесь находятся*/
+      display: flex;
+      align-items: center;
     }
   }
   .a-container__body {
@@ -170,6 +182,13 @@ function clickOnRouterLinkHandler() {
       opacity: 0;
       pointer-events: none;
     }
+  }
+  .a-container__debug {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
   }
 }
 </style>

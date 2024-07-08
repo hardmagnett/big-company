@@ -7,7 +7,9 @@ const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
     <td class="mod--ellipsis-one-line-on-table-cell">
       Череззабороногузадерищенко Виктор
     </td>
-    <td class="employee-row__task-qty">11</td>
+    <td class="employee-row__department mod--ellipsis-one-line-on-table-cell">
+      Особый отдел
+    </td>
     <td class="employee-row__buttons">
       <ABtn icon @click="emit('needToEditEmployee')"
         ><AIcon icon="mdi-pencil"
@@ -25,11 +27,19 @@ const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
     padding: 0;
     width: 60px;
   }
-  .employee-row__task-qty {
-    width: 156px;
-    text-align: center;
-    @container style(--bp-xs-or-less) {
-      width: 40px;
+  .employee-row__department {
+    width: 40px;
+    @container style(--bp-sm-or-more) {
+      width: 200px;
+    }
+    @container style(--bp-lg-or-more) {
+      width: 300px;
+    }
+    @container style(--bp-xl-or-more) {
+      width: 400px;
+    }
+    @container style(--bp-xxl-or-more) {
+      width: 500px;
     }
   }
 }
