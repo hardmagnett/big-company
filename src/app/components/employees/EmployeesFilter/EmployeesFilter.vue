@@ -9,13 +9,8 @@ export type FilterEmployees = {
   query: string;
 };
 
-// todo:: в шпаргалки
 const emit = defineEmits<{
-  // Значения - массивы или кортежи (в этом примере - именованые кортежи) (WTF! А обьекты?),
-  // описывающие параметры события.
-  // change: [id: number]
-  // needToUpdateWholeFilter: [value: FilterEmployees]
-  needToUpdateWholeFilter: [id: FilterEmployees]
+  needToUpdateWholeFilter: [value: FilterEmployees]
 }>()
 
 
