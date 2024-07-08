@@ -40,6 +40,9 @@ let filterInner = computed(() => {
 const filterIcon = computed(() => {
   return isFilterHidden.value ? "mdi-filter-outline" : "mdi-filter";
 });
+const filterResetIcon = computed(() => {
+  return isFilterChanged.value ? "mdi-filter-remove" : "mdi-filter-remove-outline";
+});
 
 const isFilterChanged = computed(() => {
   return !deepEqual(props.filter, filterInitial);
@@ -89,17 +92,19 @@ onBeforeMount(() => {
 
     <Teleport to="#page-header-filter-icon-place">
 
+      <!--:class="{ 'a-btn&#45;&#45;danger': isFilterChanged }"-->
       <ABtn
           icon
           @click="resetFilter"
-          :class="{ 'a-btn--danger': isFilterChanged }"
-      ><AIcon icon="mdi-filter-remove-outline"
+          :disabled="!isFilterChanged"
+      ><AIcon
+          :icon="filterResetIcon"
       /></ABtn>
-
+      <!--:class="{ 'a-btn&#45;&#45;danger': isFilterChanged }"-->
       <ABtn
         icon
         @click="toggleFilterVisibility"
-        :class="{ 'a-btn--danger': isFilterChanged }"
+
         ><AIcon :icon="filterIcon"
       /></ABtn>
     </Teleport>

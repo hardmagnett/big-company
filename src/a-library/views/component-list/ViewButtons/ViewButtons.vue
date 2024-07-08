@@ -52,6 +52,13 @@
         <ABtn icon class="a-btn--white"><AIcon icon="mdi-delete" /></ABtn>
       </div>
     </div>
+    <h2>Disabled</h2>
+    <div class="buttons-page__buttons">
+      <ABtn disabled>Main</ABtn>
+      <ABtn disabled class="a-btn--tonal">Main</ABtn>
+      <ABtn disabled>Редактировать <AIcon icon="mdi-pencil" /></ABtn>
+      <ABtn disabled icon><AIcon icon="mdi-pencil" /></ABtn>
+    </div>
   </div>
 </template>
 
@@ -66,4 +73,5 @@
   gap: var(--gap);
 }
 </style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
