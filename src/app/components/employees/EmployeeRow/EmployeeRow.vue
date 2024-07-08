@@ -28,18 +28,22 @@ const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
     width: 60px;
   }
   .employee-row__department {
-    width: 40px;
+    --width: 80px;
     @container style(--bp-sm-or-more) {
-      width: 200px;
+    --width: 200px;
+
+    width: var(--width);
+    max-width: var(--width);
+
     }
     @container style(--bp-lg-or-more) {
-      width: 300px;
+    --width: 300px;
     }
     @container style(--bp-xl-or-more) {
-      width: 400px;
+    --width: 400px;
     }
     @container style(--bp-xxl-or-more) {
-      width: 500px;
+      --width: 500px;
     }
   }
 }
