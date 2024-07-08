@@ -5,19 +5,21 @@ import {onBeforeMount, reactive, ref, watch} from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
-import EmployeesFilter from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
+import EmployeesFilter, {type FilterEmployees} from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
 
 
-let filter = reactive({
+// let filter = reactive({
+let filter = ref({
   query: ''
 })
+let filterUpdatesQtyKey = ref(0)
 
 watch(filter, (newValue, oldValue) => {
-  console.log(newValue); console.log('^...newValue:')
+  // console.log(newValue); console.log('^...newValue:')
 })
 
 const needToDeleteEmployeeHandler = () => {
@@ -46,6 +48,11 @@ const createEditEmployee = () => {
     message: "Сотрудник добавлен/отредактирован",
   });
 };
+const updateWholeFilter = (newFilter: FilterEmployees) => {
+  console.log(newFilter); console.log('^...newFilter:')
+  filter.value = newFilter
+  filterUpdatesQtyKey.value++
+}
 onBeforeMount(()=>{
   // filter = new FilterEmployees({
   // })
@@ -66,7 +73,10 @@ onBeforeMount(()=>{
       </p>
     </div>
 
-    <EmployeesFilter :filter="filter" />
+    <EmployeesFilter :filter="filter"
+      @needToUpdateWholeFilter="updateWholeFilter"
+                     :key="filterUpdatesQtyKey"
+    />
 
     <EmployeeDialogDelete
       :is-open="isOpenDialogEmployeeDeleting"

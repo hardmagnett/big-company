@@ -4,9 +4,21 @@ import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 import debounce from "@/a-library/helpers/language/functions/debounce";
 import deepEqual from "@/a-library/helpers/language/functions/deepEqual";
 
-type FilterEmployees = {
+
+export type FilterEmployees = {
   query: string;
 };
+
+// todo:: в шпаргалки
+const emit = defineEmits<{
+  // Значения - массивы или кортежи (в этом примере - именованые кортежи) (WTF! А обьекты?),
+  // описывающие параметры события.
+  // change: [id: number]
+  // needToUpdateWholeFilter: [value: FilterEmployees]
+  needToUpdateWholeFilter: [id: FilterEmployees]
+}>()
+
+
 
 let filterInitial = reactive<FilterEmployees>({
   query: "",
@@ -46,6 +58,10 @@ const setFilterVisibilityBasedOnLocalStorage = () => {
   );
   isFilterHidden.value = isFilterHiddenFromStorage;
 };
+const resetFilter = () => {
+  // filterInner.value = filterInitial
+  emit('needToUpdateWholeFilter', filterInitial)
+}
 
 const updateQuery = debounce((eventData: string) => {
   filterInner.value.query = eventData;
@@ -72,6 +88,14 @@ onBeforeMount(() => {
     </Teleport>
 
     <Teleport to="#page-header-filter-icon-place">
+
+      <ABtn
+          icon
+          @click="resetFilter"
+          :class="{ 'a-btn--danger': isFilterChanged }"
+      ><AIcon icon="mdi-filter-remove-outline"
+      /></ABtn>
+
       <ABtn
         icon
         @click="toggleFilterVisibility"
