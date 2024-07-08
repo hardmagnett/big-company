@@ -35,8 +35,12 @@ export default function deepEqual(obj1: any, obj2: any) {
     return true;
   }
 
-  if (typeof obj1 !== 'object' || obj1 === null ||
-    typeof obj2 !== 'object' || obj2 === null) {
+  if (
+    typeof obj1 !== "object" ||
+    obj1 === null ||
+    typeof obj2 !== "object" ||
+    obj2 === null
+  ) {
     return false;
   }
 
@@ -48,7 +52,10 @@ export default function deepEqual(obj1: any, obj2: any) {
   }
 
   for (const key of keys1) {
-    if (!Object.prototype.hasOwnProperty.call(obj2, key) || !deepEqual(obj1[key], obj2[key])) {
+    if (
+      !Object.prototype.hasOwnProperty.call(obj2, key) ||
+      !deepEqual(obj1[key], obj2[key])
+    ) {
       return false;
     }
   }

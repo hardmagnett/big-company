@@ -7,7 +7,9 @@ const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
     <td class="mod--ellipsis-one-line-on-table-cell">
       Череззабороногузадерищенко Виктор
     </td>
-    <td class="employee-row__department mod--ellipsis-one-line-on-table-cell">Особый отдел</td>
+    <td class="employee-row__department mod--ellipsis-one-line-on-table-cell">
+      Особый отдел
+    </td>
     <td class="employee-row__buttons">
       <ABtn icon @click="emit('needToEditEmployee')"
         ><AIcon icon="mdi-pencil"
@@ -33,12 +35,12 @@ const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
     @container style(--bp-lg-or-more) {
       width: 300px;
     }
-  @container style(--bp-xl-or-more) {
-    width: 400px;
-  }
-  @container style(--bp-xxl-or-more) {
-    width: 500px;
-  }
+    @container style(--bp-xl-or-more) {
+      width: 400px;
+    }
+    @container style(--bp-xxl-or-more) {
+      width: 500px;
+    }
   }
 }
 </style>

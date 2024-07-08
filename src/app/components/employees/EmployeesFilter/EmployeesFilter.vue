@@ -4,16 +4,13 @@ import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 import debounce from "@/a-library/helpers/language/functions/debounce";
 import deepEqual from "@/a-library/helpers/language/functions/deepEqual";
 
-
 export type FilterEmployees = {
   query: string;
 };
 
 const emit = defineEmits<{
-  needToUpdateWholeFilter: [value: FilterEmployees]
-}>()
-
-
+  needToUpdateWholeFilter: [value: FilterEmployees];
+}>();
 
 let filterInitial = reactive<FilterEmployees>({
   query: "",
@@ -34,7 +31,9 @@ const filterIcon = computed(() => {
   return isFilterHidden.value ? "mdi-filter-outline" : "mdi-filter";
 });
 const filterResetIcon = computed(() => {
-  return isFilterChanged.value ? "mdi-filter-remove" : "mdi-filter-remove-outline";
+  return isFilterChanged.value
+    ? "mdi-filter-remove"
+    : "mdi-filter-remove-outline";
 });
 
 const isFilterChanged = computed(() => {
@@ -55,8 +54,8 @@ const setFilterVisibilityBasedOnLocalStorage = () => {
   isFilterHidden.value = isFilterHiddenFromStorage;
 };
 const resetFilter = () => {
-  emit('needToUpdateWholeFilter', filterInitial)
-}
+  emit("needToUpdateWholeFilter", filterInitial);
+};
 
 const updateQuery = debounce((eventData: string) => {
   filterInner.value.query = eventData;
@@ -81,18 +80,10 @@ onBeforeMount(() => {
     </Teleport>
 
     <Teleport to="#page-header-filter-icon-place">
-
-      <ABtn
-          icon
-          @click="resetFilter"
-          :disabled="!isFilterChanged"
-      ><AIcon
-          :icon="filterResetIcon"
+      <ABtn icon @click="resetFilter" :disabled="!isFilterChanged"
+        ><AIcon :icon="filterResetIcon"
       /></ABtn>
-      <ABtn
-        icon
-        @click="toggleFilterVisibility"
-
+      <ABtn icon @click="toggleFilterVisibility"
         ><AIcon :icon="filterIcon"
       /></ABtn>
     </Teleport>

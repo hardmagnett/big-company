@@ -9,7 +9,7 @@ defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
     <thead>
       <tr>
         <th>Сотрудник</th>
-        <th >Отдел</th>
+        <th>Отдел</th>
         <th></th>
       </tr>
     </thead>

@@ -54,7 +54,7 @@ const isRouterLink = computed(() => {
 <style scoped>
 .a-btn {
   outline: none !important;
-  transition: all var(--time-short)
+  transition: all var(--time-short);
 }
 .a-btn--with-text {
   --height: calc(var(--gap) * 1.6);

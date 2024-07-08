@@ -1,34 +1,31 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-import {onBeforeMount, reactive, ref, watch} from "vue";
+import { onBeforeMount, reactive, ref, watch } from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
-import EmployeesFilter, {type FilterEmployees} from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
-
+import EmployeesFilter, {
+  type FilterEmployees,
+} from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
 
-
 let filter = reactive({
-  query: ''
-})
-let filterUpdatesQtyKey = ref(0)
+  query: "",
+});
+let filterUpdatesQtyKey = ref(0);
 
-const filterChangeHandler = () => {
-}
+const filterChangeHandler = () => {};
 
-let watchFilter = ()=>{
+let watchFilter = () => {
   return watch(filter, () => {
-    filterChangeHandler()
-  })
-}
+    filterChangeHandler();
+  });
+};
 
-let unwatchFilter = watchFilter()
-
-
+let unwatchFilter = watchFilter();
 
 const needToDeleteEmployeeHandler = () => {
   isOpenDialogEmployeeDeleting.value = true;
@@ -57,16 +54,14 @@ const createEditEmployee = () => {
   });
 };
 const updateWholeFilter = (newFilter: FilterEmployees) => {
-  unwatchFilter()
-  filter = newFilter
+  unwatchFilter();
+  filter = newFilter;
 
-  filterUpdatesQtyKey.value++
-  unwatchFilter = watchFilter()
-  filterChangeHandler()
-
-}
-onBeforeMount(()=>{
-})
+  filterUpdatesQtyKey.value++;
+  unwatchFilter = watchFilter();
+  filterChangeHandler();
+};
+onBeforeMount(() => {});
 </script>
 
 <template>
@@ -83,9 +78,10 @@ onBeforeMount(()=>{
       </p>
     </div>
 
-    <EmployeesFilter :filter="filter"
+    <EmployeesFilter
+      :filter="filter"
       @needToUpdateWholeFilter="updateWholeFilter"
-                     :key="filterUpdatesQtyKey"
+      :key="filterUpdatesQtyKey"
     />
 
     <EmployeeDialogDelete

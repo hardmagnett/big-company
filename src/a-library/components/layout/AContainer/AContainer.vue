@@ -74,7 +74,6 @@ function clickOnRouterLinkHandler() {
         <div id="page-header-filter-icon-place">
           <!--телепорт для иконки из фильтра-->
         </div>
-
       </div>
     </div>
     <div class="a-container__body">
@@ -93,8 +92,6 @@ function clickOnRouterLinkHandler() {
       </div>
     </div>
     <div id="teleport-debug" class="a-container__debug"></div>
-
-
   </div>
 </template>
 
@@ -135,7 +132,6 @@ function clickOnRouterLinkHandler() {
       padding-right: 8px; /*Хардкод вместо var(--gap) из-за невидимой части кнопок, которые обычно здесь находятся*/
       display: flex;
       align-items: center;
-
     }
   }
   .a-container__body {
