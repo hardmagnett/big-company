@@ -6,7 +6,6 @@ import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelet
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
 import EmployeesFilter from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
-import FilterEmployees from '@/app/components/employees/EmployeesFilter/FilterEmployees';
 
 
 let isOpenDialogEmployeeDeleting = ref(false);
@@ -16,13 +15,6 @@ let isOpenDialogEmployeeCreatingEditing = ref(false);
 let filter = reactive({
   query: ''
 })
-// let filterRaw = new FilterEmployees({
-//   query: 'delme'
-// })
-// console.log(filterRaw); console.log('^...filterRaw:')
-
-// let filter = reactive<FilterEmployees>(filterRaw)
-// let filter = ref<FilterEmployees>(filterRaw)
 
 watch(filter, (newValue, oldValue) => {
   console.log(newValue); console.log('^...newValue:')

@@ -168,7 +168,7 @@ const isRouterLink = computed(() => {
   padding: 0;
 
   background-color: transparent;
-  transition: background-color var(--time-short);
+  transition: background-color var(--time-short), color var(--time-short);
 
   --size: calc(var(--gap) * 1.6);
   @container style(--bp-md-or-more) {

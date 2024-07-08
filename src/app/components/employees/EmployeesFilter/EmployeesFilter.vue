@@ -1,19 +1,16 @@
 <script setup lang="ts">
-
-
-
-import {computed, ref, onBeforeMount, reactive} from "vue";
+import { computed, ref, onBeforeMount, reactive } from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 import debounce from "@/a-library/helpers/language/functions/debounce";
 import deepEqual from "@/a-library/helpers/language/functions/deepEqual";
 
 type FilterEmployees = {
-  query: string
-}
+  query: string;
+};
 
-let filterInitial =  reactive<FilterEmployees>({
-  query: ''
-})
+let filterInitial = reactive<FilterEmployees>({
+  query: "",
+});
 
 //////// Props
 export interface Props {
@@ -24,17 +21,16 @@ const props = withDefaults(defineProps<Props>(), {});
 
 let isFilterHidden = ref(false);
 
-let filterInner = computed(()=>{
-  return props.filter
-})
+let filterInner = computed(() => {
+  return props.filter;
+});
 
 const filterIcon = computed(() => {
   return isFilterHidden.value ? "mdi-filter-outline" : "mdi-filter";
 });
 
 const isFilterChanged = computed(() => {
-  return deepEqual(props.filter, filterInitial)
-
+  return !deepEqual(props.filter, filterInitial);
 });
 const toggleFilterVisibility = () => {
   isFilterHidden.value = !isFilterHidden.value;
@@ -51,9 +47,9 @@ const setFilterVisibilityBasedOnLocalStorage = () => {
   isFilterHidden.value = isFilterHiddenFromStorage;
 };
 
-const updateQuery = debounce((eventData:string) => {
-  filterInner.value.query = eventData
-})
+const updateQuery = debounce((eventData: string) => {
+  filterInner.value.query = eventData;
+});
 
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
@@ -61,25 +57,25 @@ onBeforeMount(() => {
 </script>
 
 <template>
-
   <div
     class="employees-filter am-cols"
     :class="{ 'employees-filter--hidden': isFilterHidden }"
   >
-
     <Teleport to="#teleport-debug">
       <pre>
-        {{filter}}
-        {{filterInitial}}
+        {{ filter }}
+        {{ filterInitial }}
       </pre>
       <pre>
-        {{isFilterChanged}}
+        {{ isFilterChanged }}
       </pre>
     </Teleport>
 
-
     <Teleport to="#page-header-filter-icon-place">
-      <ABtn icon @click="toggleFilterVisibility"
+      <ABtn
+        icon
+        @click="toggleFilterVisibility"
+        :class="{ 'a-btn--danger': isFilterChanged }"
         ><AIcon :icon="filterIcon"
       /></ABtn>
     </Teleport>
@@ -103,9 +99,7 @@ onBeforeMount(() => {
 
 <style scoped>
 .employees-filter {
-  /*todo:: вернуть 120*/
   max-height: 120px;
-  /*max-height: 800px;*/
   overflow-y: hidden;
   transition: max-height var(--time-short) ease-in;
   /*transition: max-height var(--time-short) var(--transition-extra-easy-in);*/
