@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-import {onBeforeMount, reactive, ref} from "vue";
+import {onBeforeMount, reactive, ref, watch} from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
@@ -12,16 +12,22 @@ import FilterEmployees from '@/app/components/employees/EmployeesFilter/FilterEm
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
 
-// let filter = reactive({
-//   stringQuery: ''
-// })
-let filterRaw = new FilterEmployees({
-  query: 'delme'
-})
-console.log(filterRaw); console.log('^...filterRaw:')
 
-let filter = reactive<FilterEmployees>(new FilterEmployees({
-}))
+let filter = reactive({
+  query: ''
+})
+// let filterRaw = new FilterEmployees({
+//   query: 'delme'
+// })
+// console.log(filterRaw); console.log('^...filterRaw:')
+
+// let filter = reactive<FilterEmployees>(filterRaw)
+// let filter = ref<FilterEmployees>(filterRaw)
+
+watch(filter, (newValue, oldValue) => {
+  console.log(newValue); console.log('^...newValue:')
+})
+
 const needToDeleteEmployeeHandler = () => {
   isOpenDialogEmployeeDeleting.value = true;
 };
@@ -68,7 +74,7 @@ onBeforeMount(()=>{
       </p>
     </div>
 
-    <EmployeesFilter :filter="filterRaw" />
+    <EmployeesFilter :filter="filter" />
 
     <EmployeeDialogDelete
       :is-open="isOpenDialogEmployeeDeleting"

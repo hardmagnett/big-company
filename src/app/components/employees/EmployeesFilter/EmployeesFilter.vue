@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { computed, ref, onBeforeMount } from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
-import type FilterEmployees from "@/app/components/employees/EmployeesFilter/FilterEmployees";
+// import type FilterEmployees from "@/app/components/employees/EmployeesFilter/FilterEmployees";
 
+type FilterEmployees = {
+  query: string
+}
 //////// Props
 export interface Props {
   filter: FilterEmployees;
@@ -11,6 +14,10 @@ export interface Props {
 const props = withDefaults(defineProps<Props>(), {});
 
 let isFilterHidden = ref(false);
+
+let filterInner = computed(()=>{
+  return props.filter
+})
 
 const filterIcon = computed(() => {
   return isFilterHidden.value ? "mdi-filter-outline" : "mdi-filter";
@@ -57,12 +64,13 @@ onBeforeMount(() => {
     <!--v-model="formPartPersonalData.name"-->
     <!--@blur="v$.name.$touch"-->
     <!--:error-messages="v$.name.$errors.map((e) => e.$message)"-->
+    <!--:model-value="filter.getQuery()"-->
+    <!--@update:model-value="filter.setQuery($event)"-->
     <AInput
       autofocus
       class="am-col-12 am-col-sm-6"
       label="Имя"
-      :model-value="filter.getQuery()"
-      @update:model-value="filter.setQuery($event)"
+      v-model="filterInner.query"
       hide-hint
     ></AInput>
     <AInput
