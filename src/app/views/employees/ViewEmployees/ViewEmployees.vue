@@ -18,11 +18,10 @@ let filter = reactive({
 let filterUpdatesQtyKey = ref(0)
 
 const filterChangeHandler = () => {
-  console.log(filter); console.log('^... changed filter:')
 }
 
 let watchFilter = ()=>{
-  return watch(filter, (newValue, oldValue) => {
+  return watch(filter, () => {
     filterChangeHandler()
   })
 }
@@ -72,13 +71,6 @@ onBeforeMount(()=>{
 
 <template>
   <div class="employees">
-    <!--todo:: не забыть удалить этот коммент-->
-    <!--<Teleport to="#teleport-debug">-->
-    <!--  <pre>-->
-    <!--    {{ filter }}-->
-    <!--    {{ filterUpdatesQtyKey }}-->
-    <!--  </pre>-->
-    <!--</Teleport>-->
     <Teleport to="#page-header-place">
       <APageHeader> Сотрудники </APageHeader>
     </Teleport>

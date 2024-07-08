@@ -47,7 +47,7 @@ export default function deepEqual(obj1: any, obj2: any) {
     return false;
   }
 
-  for (let key of keys1) {
+  for (const key of keys1) {
     if (!Object.prototype.hasOwnProperty.call(obj2, key) || !deepEqual(obj1[key], obj2[key])) {
       return false;
     }
