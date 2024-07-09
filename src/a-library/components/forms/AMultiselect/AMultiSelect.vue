@@ -31,12 +31,27 @@ type OptionObject = Record<string | number, string | number>
 type Option = string | number | OptionObject
 
 // todo:: В composable logic
-const createTemplateKeyForOption = (option: Option, index: number)=>{
-  if (typeof option === 'number' || typeof option === 'string') {
-    return index
-  }
+const isOptionNumberOrString = (option: Option): option is number | string => {
+  let result = (typeof option === 'number' || typeof option === 'string')
+  return result
+}
 
-  return option[props.optionObjectFieldValue]
+// todo:: В composable logic
+const createTemplateKeyForOption = (option: Option, index: number)=>{
+  let result = isOptionNumberOrString(option)
+      ? index
+      : option[props.optionObjectFieldValue]
+  return result
+}
+// todo:: В composable logic
+const createTemplateValueForOption = (option: Option)=>{
+  let result = isOptionNumberOrString(option)
+      ? option
+      : option[props.optionObjectFieldTitle]
+  return result
+
+
+
 }
 
 </script>
@@ -51,7 +66,7 @@ const createTemplateKeyForOption = (option: Option, index: number)=>{
           v-for="(option, index) in options"
           :key="createTemplateKeyForOption(option, index)"
       >
-        {{ option }}
+        {{ createTemplateValueForOption(option) }}
       </div>
     </div>
   </div>
@@ -59,6 +74,7 @@ const createTemplateKeyForOption = (option: Option, index: number)=>{
 
 <style scoped>
 .a-multi-select {
+
   /*Постоянное*/
 
   /*Временное*/
@@ -85,7 +101,8 @@ const createTemplateKeyForOption = (option: Option, index: number)=>{
 
     /*Временное*/
     outline: 1px solid #339;
-    flex: 0 0 300px;
+    flex: 0 0 150px;
+    /*font-size: var(--font-size-tiny);*/
   }
 }
 </style>
