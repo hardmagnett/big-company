@@ -5,7 +5,7 @@ import {
   iAInputablePropDefaults,
 } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
-// todo:: про composable в гисты. Особенно про передачу props
+
 import { useMultiSelectLogic } from "./useMultiSelectLogic";
 
 export interface Props extends IAInputableProps {
