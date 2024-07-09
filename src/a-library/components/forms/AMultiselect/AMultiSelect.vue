@@ -5,8 +5,8 @@ import {
   iAInputablePropDefaults,
 } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
-
-
+// todo:: про composable в гисты. Особенно про передачу props
+import { useMultiSelectLogic } from "./useMultiSelectLogic";
 
 export interface Props extends IAInputableProps {
   options: Option[];
@@ -26,33 +26,14 @@ const props = withDefaults(defineProps<Props>(), {
   multiple: false,
 });
 
+export type PropsWithDefaults =  typeof props
+const {
+  createTemplateKeyForOption,
+  createTemplateValueForOption,
+} = useMultiSelectLogic(props);
 
-type OptionObject = Record<string | number, string | number>
-type Option = string | number | OptionObject
-
-// todo:: В composable logic
-const isOptionNumberOrString = (option: Option): option is number | string => {
-  let result = (typeof option === 'number' || typeof option === 'string')
-  return result
-}
-
-// todo:: В composable logic
-const createTemplateKeyForOption = (option: Option, index: number)=>{
-  let result = isOptionNumberOrString(option)
-      ? index
-      : option[props.optionObjectFieldValue]
-  return result
-}
-// todo:: В composable logic
-const createTemplateValueForOption = (option: Option)=>{
-  let result = isOptionNumberOrString(option)
-      ? option
-      : option[props.optionObjectFieldTitle]
-  return result
-
-
-
-}
+type OptionObject = Record<string | number, string | number>;
+export type Option = string | number | OptionObject;
 
 </script>
 
@@ -62,9 +43,9 @@ const createTemplateValueForOption = (option: Option)=>{
 
     <div class="a-multi-select__options">
       <div
-          class="a-multi-select__option"
-          v-for="(option, index) in options"
-          :key="createTemplateKeyForOption(option, index)"
+        class="a-multi-select__option"
+        v-for="(option, index) in options"
+        :key="createTemplateKeyForOption(option, index)"
       >
         {{ createTemplateValueForOption(option) }}
       </div>
@@ -74,7 +55,6 @@ const createTemplateValueForOption = (option: Option)=>{
 
 <style scoped>
 .a-multi-select {
-
   /*Постоянное*/
 
   /*Временное*/
@@ -92,12 +72,10 @@ const createTemplateValueForOption = (option: Option)=>{
     display: flex;
     flex-flow: row nowrap;
     gap: var(--gap);
-
   }
   .a-multi-select__option {
     /*Постоянное*/
     cursor: pointer;
-
 
     /*Временное*/
     outline: 1px solid #339;
