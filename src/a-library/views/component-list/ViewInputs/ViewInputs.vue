@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import {reactive} from "vue";
+import AMultiSelect from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
 
 let multiselectVals = reactive({
   singleInNumbersOutNumber: null,
@@ -62,6 +63,10 @@ let optionVals = {
     <h3>number[] -> number</h3>
     <p>Value: <code>{{$debugVar(multiselectVals.singleInNumbersOutNumber)}}</code></p>
     <p>Options: <code>{{optionVals.numbers}}</code></p>
+    <AMultiSelect
+        v-model="multiselectVals.singleInNumbersOutNumber"
+        :options="optionVals.numbers"
+    />
   </div>
 </template>
 
