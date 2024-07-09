@@ -17,6 +17,7 @@ import AInputControlHint from "@/a-library/components/forms/AInputControlHint/AI
 import ABtn from "@/a-library/components/forms/ABtn/ABtn.vue";
 import AInput from "@/a-library/components/forms/AInput/AInput.vue";
 import ACheckBox from "@/a-library/components/forms/ACheckBox/ACheckBox.vue";
+import AMultiSelect from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
 
 // Typo
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
@@ -71,6 +72,7 @@ export default function ({
   vueApp.component("ABtn", ABtn);
   vueApp.component("AInput", AInput);
   vueApp.component("ACheckBox", ACheckBox);
+  vueApp.component("AMultiSelect", AMultiSelect);
 
   // Typo
   vueApp.component("AIcon", AIcon);

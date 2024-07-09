@@ -1,3 +1,8 @@
+<script setup lang="ts">
+
+
+</script>
+
 <template>
   <div class="inputs-page">
     <Teleport to="#page-header-place">
@@ -26,6 +31,9 @@
     />
     <ACheckBox hide-hint hide-label />
     <br />
+
+    <h2>Мультиселект</h2>
+    <AMultiSelect />
   </div>
 </template>
 
@@ -34,4 +42,6 @@
   padding-bottom: 200px;
 }
 </style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AMultiSelect from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
+</script>
