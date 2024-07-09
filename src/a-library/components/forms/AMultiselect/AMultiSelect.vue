@@ -6,12 +6,7 @@ import {
 } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
-type OptionObject = {
-  id: number,
-  title: string,
-}
-// type Option = string | number | object
-type Option = string | number | OptionObject
+
 
 export interface Props extends IAInputableProps {
   options: Option[];
@@ -21,7 +16,7 @@ export interface Props extends IAInputableProps {
   hideSearch?: boolean;
   multiple?: boolean;
 }
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
   options: () => [],
   optionObjectFieldTitle: "title",
@@ -31,14 +26,17 @@ withDefaults(defineProps<Props>(), {
   multiple: false,
 });
 
+
+type OptionObject = Record<string | number, string | number>
+type Option = string | number | OptionObject
+
 // todo:: В composable logic
 const createTemplateKeyForOption = (option: Option, index: number)=>{
   if (typeof option === 'number' || typeof option === 'string') {
     return index
   }
-
-  // todo:: сделать чтобы кроме id были и другие варианты имени поля
-  return option.id
+  
+  return option[props.optionObjectFieldValue]
 }
 
 </script>
