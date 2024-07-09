@@ -7,7 +7,7 @@ import {
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
 export interface Props extends IAInputableProps {
-  options: string[] // todo:: должен так-же принимать массив обьектов
+  options: string[] | number [] | object[]
   optionObjectFieldTitle?: string,
   optionObjectFieldValue?: string,
   returnObject?: boolean

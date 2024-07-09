@@ -1,6 +1,32 @@
 <script setup lang="ts">
 
+import {reactive} from "vue";
 
+let multiselectVals = reactive({
+  singleInNumbersOutNumber: null,
+  singleInStringsOutString: null,
+  singleInObjectOutNumber: null,
+  singleInObjectOutString: null,
+  singleInObjectOutObject: null,
+
+  multiInNumberOutNumberArray: [],
+  multiInStringOutStringArray: [],
+  multiInObjectOutNumberArray: [],
+  multiInObjectOutStringArray: [],
+  multiInObjectOutObjectArray: [],
+})
+
+let optionVals = {
+  numbers: [1,3,6,7,13],
+  strings: ['one', 'three', 'six', 'seven', 'thirteen'],
+  objects: [
+    {theId: 1, theTitle: 'one'},
+    {theId: 3, theTitle: 'three'},
+    {theId: 6, theTitle: 'six'},
+    {theId: 7, theTitle: 'seven'},
+    {theId: 13, theTitle: 'thirteen'},
+  ]
+}
 </script>
 
 <template>
@@ -33,7 +59,9 @@
     <br />
 
     <h2>Мультиселект</h2>
-    <AMultiSelect />
+    <h3>number[] -> number</h3>
+    <p>Value: <code>{{$debugVar(multiselectVals.singleInNumbersOutNumber)}}</code></p>
+    <p>Options: <code>{{optionVals.numbers}}</code></p>
   </div>
 </template>
 
@@ -42,6 +70,3 @@
   padding-bottom: 200px;
 }
 </style>
-<script setup lang="ts">
-import AMultiSelect from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
-</script>
