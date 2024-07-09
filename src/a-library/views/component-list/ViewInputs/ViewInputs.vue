@@ -6,15 +6,15 @@ import AMultiSelect from "@/a-library/components/forms/AMultiselect/AMultiSelect
 let multiselectVals = reactive({
   singleInNumbersOutNumber: null,
   singleInStringsOutString: null,
-  singleInObjectOutNumber: null,
-  singleInObjectOutString: null,
-  singleInObjectOutObject: null,
+  singleInObjectsOutNumber: null,
+  singleInObjectsOutString: null,
+  singleInObjectsOutObject: null,
 
   multiInNumberOutNumberArray: [],
   multiInStringOutStringArray: [],
-  multiInObjectOutNumberArray: [],
-  multiInObjectOutStringArray: [],
-  multiInObjectOutObjectArray: [],
+  multiInObjectsOutNumberArray: [],
+  multiInObjectsOutStringArray: [],
+  multiInObjectsOutObjectArray: [],
 })
 
 let optionVals = {
@@ -36,6 +36,45 @@ let optionVals = {
       <APageHeader> Элементы форм </APageHeader>
     </Teleport>
 
+    <h2>Мультиселект</h2>
+    <h3>number[] -> number</h3>
+    <p>
+      <span>Value: <code>{{$debugVar(multiselectVals.singleInNumbersOutNumber)}}</code></span>
+      &nbsp;&nbsp;&nbsp;
+      <span>Options: <code>{{optionVals.numbers}}</code></span>
+    </p>
+    <AMultiSelect
+        v-model="multiselectVals.singleInNumbersOutNumber"
+        :options="optionVals.numbers"
+    />
+
+    <br>
+    <h3>string[] -> string</h3>
+    <p>
+      <span>Value: <code>{{$debugVar(multiselectVals.singleInStringsOutString)}}</code></span>
+      &nbsp;&nbsp;&nbsp;
+      <span>Options: <code>{{optionVals.strings}}</code></span>
+    </p>
+    <AMultiSelect
+        v-model="multiselectVals.singleInStringsOutString"
+        :options="optionVals.strings"
+    />
+
+    <br>
+    <h3>Object[] -> number</h3>
+    <p>
+      <span>Value: <code>{{$debugVar(multiselectVals.singleInObjectsOutNumber)}}</code></span>
+      &nbsp;&nbsp;&nbsp;
+      <span>Options: <code>{{optionVals.objects}}</code></span>
+    </p>
+    <AMultiSelect
+        v-model="multiselectVals.singleInObjectsOutString"
+        :options="optionVals.objects"
+    />
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <hr><hr><hr><hr><hr>
+    <br>
     <h2>Текстовое поле</h2>
     <p>По умолчанию.</p>
     <AInput label="Лейбл" hideHint></AInput>
@@ -59,14 +98,7 @@ let optionVals = {
     <ACheckBox hide-hint hide-label />
     <br />
 
-    <h2>Мультиселект</h2>
-    <h3>number[] -> number</h3>
-    <p>Value: <code>{{$debugVar(multiselectVals.singleInNumbersOutNumber)}}</code></p>
-    <p>Options: <code>{{optionVals.numbers}}</code></p>
-    <AMultiSelect
-        v-model="multiselectVals.singleInNumbersOutNumber"
-        :options="optionVals.numbers"
-    />
+
   </div>
 </template>
 

@@ -35,7 +35,7 @@ const createTemplateKeyForOption = (option: Option, index: number)=>{
   if (typeof option === 'number' || typeof option === 'string') {
     return index
   }
-  
+
   return option[props.optionObjectFieldValue]
 }
 
@@ -45,12 +45,14 @@ const createTemplateKeyForOption = (option: Option, index: number)=>{
   <div class="a-multi-select">
     im multiselect
 
-    <div
-        class="a-multi-select__option"
-        v-for="(option, index) in options"
-        :key="createTemplateKeyForOption(option, index)"
-    >
-      {{ option }}
+    <div class="a-multi-select__options">
+      <div
+          class="a-multi-select__option"
+          v-for="(option, index) in options"
+          :key="createTemplateKeyForOption(option, index)"
+      >
+        {{ option }}
+      </div>
     </div>
   </div>
 </template>
@@ -60,17 +62,30 @@ const createTemplateKeyForOption = (option: Option, index: number)=>{
   /*Постоянное*/
 
   /*Временное*/
-  outline: 1px solid #333;
+  /*outline: 1px solid #333;*/
+  background-color: #eee;
   display: flex;
   flex-flow: column nowrap;
   gap: var(--gap);
-  padding: var(--gap);
+  /*padding: var(--gap);*/
+  /*padding: 2px;*/
+  .a-multi-select__options {
+    /*Постоянное*/
+
+    /*Временное*/
+    display: flex;
+    flex-flow: row nowrap;
+    gap: var(--gap);
+
+  }
   .a-multi-select__option {
     /*Постоянное*/
     cursor: pointer;
 
+
     /*Временное*/
     outline: 1px solid #339;
+    flex: 0 0 300px;
   }
 }
 </style>
