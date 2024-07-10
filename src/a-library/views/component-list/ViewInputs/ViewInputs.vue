@@ -22,11 +22,18 @@ let optionVals = {
   numbers: [1,3,6,7],
   // strings: ['one', 'three', 'six', 'seven', 'thirteen'],
   strings: ['one', 'three', 'six', 'seven'],
-  objects: [
+  objectsWithNumberId: [
     {tId: 1, tTitle: 'one'},
     {tId: 3, tTitle: 'three'},
     {tId: 6, tTitle: 'six'},
     {tId: 7, tTitle: 'seven'},
+    // {theId: 13, theTitle: 'thirteen'},
+  ],
+  objectsWithStringId: [
+    {tId: 'first', tTitle: 'one'},
+    {tId: 'third', tTitle: 'three'},
+    {tId: 'sixth', tTitle: 'six'},
+    {tId: 'seventh', tTitle: 'seven'},
     // {theId: 13, theTitle: 'thirteen'},
   ]
 }
@@ -73,11 +80,11 @@ let optionVals = {
           Value: <code>{{$debugVar(multiselectVals.singleInObjectsOutNumber)}}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.objects}}</code>
+          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
             v-model="multiselectVals.singleInObjectsOutNumber"
-            :options="optionVals.objects"
+            :options="optionVals.objectsWithNumberId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
         />
@@ -88,11 +95,11 @@ let optionVals = {
           Value: <code>{{$debugVar(multiselectVals.singleInObjectsOutString)}}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.objects}}</code>
+          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
             v-model="multiselectVals.singleInObjectsOutString"
-            :options="optionVals.objects"
+            :options="optionVals.objectsWithStringId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
         />
@@ -103,13 +110,14 @@ let optionVals = {
           Value: <code>{{$debugVar(multiselectVals.singleInObjectsOutObject)}}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.objects}}</code>
+          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
             v-model="multiselectVals.singleInObjectsOutObject"
-            :options="optionVals.objects"
+            :options="optionVals.objectsWithNumberId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
+            return-object
         />
       </div>
 
@@ -146,11 +154,11 @@ let optionVals = {
           Value: <code>{{$debugVar(multiselectVals.multiInObjectsOutNumberArray)}}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.objects}}</code>
+          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
             v-model="multiselectVals.multiInObjectsOutNumberArray"
-            :options="optionVals.objects"
+            :options="optionVals.objectsWithNumberId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
         />
@@ -161,11 +169,11 @@ let optionVals = {
           Value: <code>{{$debugVar(multiselectVals.multiInObjectsOutStringArray)}}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.objects}}</code>
+          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
             v-model="multiselectVals.multiInObjectsOutStringArray"
-            :options="optionVals.objects"
+            :options="optionVals.objectsWithNumberId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
         />
@@ -176,11 +184,11 @@ let optionVals = {
           Value: <code>{{$debugVar(multiselectVals.multiInObjectsOutObjectArray)}}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.objects}}</code>
+          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
             v-model="multiselectVals.multiInObjectsOutObjectArray"
-            :options="optionVals.objects"
+            :options="optionVals.objectsWithNumberId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
         />

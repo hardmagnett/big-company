@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {} from "vue";
+import {computed} from "vue";
 import {
   iAInputableEmits,
   iAInputablePropDefaults,
@@ -15,6 +15,9 @@ export interface Props extends IAInputableProps {
   returnObject?: boolean;
   hideSearch?: boolean;
   multiple?: boolean;
+  // modelValue: string | number | string[] | number[] | Option[]
+  // modelValue: Option | Option[]
+  modelValue: Options
 }
 const props = withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
@@ -26,14 +29,77 @@ const props = withDefaults(defineProps<Props>(), {
   multiple: false,
 });
 
+const emit = defineEmits<{
+  // change: [value: Options]
+  'update:modelValue': [value: Options]
+}>()
+
+let modelValueInner = computed({
+  get(){
+    return props.modelValue
+  },
+  set (newVal) {
+    console.log(newVal); console.log('^...newVal:')
+    // emit('change', newVal)
+    emit('update:modelValue', newVal)
+  }
+})
+
 export type PropsWithDefaults =  typeof props
 const {
+  areOptionsArray,
+  // isOptionNumberOrString,
+  isOptionOptionObject,
   createTemplateKeyForOption,
   createTemplateValueForOption,
 } = useMultiSelectLogic(props);
 
-type OptionObject = Record<string | number, string | number>;
-export type Option = string | number | OptionObject;
+export type OptionObject = Record<string | number, string | number>;
+export type Option = null | string | number | OptionObject;
+export type Options = Option | Option[]
+
+// todo:: возможно вынести в logic composable
+const isOptionSelected = (option: Option) => {
+  return false
+}
+// todo:: возможно вынести в logic composable
+const unselectOption = (option: Option) => {
+  
+}
+// todo:: возможно вынести в logic composable
+const selectOption = (option: Option) => {
+  if (props.multiple) {
+    if (areOptionsArray(modelValueInner.value)){
+      console.log('selectOption multiple')
+      modelValueInner.value.push(option)
+    }
+  }
+  // single
+  if (!props.multiple) {
+    console.log('selectOption single')
+    
+    if (!isOptionOptionObject(option)) {
+      modelValueInner.value = option
+    } else {
+      if (props.returnObject) {
+        modelValueInner.value = option
+      } else {
+        modelValueInner.value = option[props.optionObjectFieldValue]
+      }
+      
+    }
+    
+  }
+}
+
+// todo:: возможно вынести в logic composable
+const toggleOption = (option: Option) => {
+  if (isOptionSelected(option)) {
+    unselectOption(option)
+  } else {
+    selectOption(option)
+  }
+}
 
 </script>
 
@@ -46,6 +112,7 @@ export type Option = string | number | OptionObject;
         class="a-multi-select__option"
         v-for="(option, index) in options"
         :key="createTemplateKeyForOption(option, index)"
+        @click="toggleOption(option)"
       >
         {{ createTemplateValueForOption(option) }}
       </div>
