@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import {computed, ref} from "vue";
 import { iAInputablePropDefaults } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
 import { useMultiSelectLogic } from "./useMultiSelectLogic";
+import { useMultiSelectMouse } from "./useMultiSelectMouse";
 
 export interface Props extends IAInputableProps {
   options: Option[];
@@ -28,6 +29,8 @@ const emit = defineEmits<{
   "update:modelValue": [value: Options];
 }>();
 
+const realInput = ref<HTMLInputElement | null>(null)
+
 let modelValueInner = computed({
   get() {
     return props.modelValue;
@@ -46,26 +49,37 @@ const {
   createTemplateValueForOption,
 } = useMultiSelectLogic(props, modelValueInner);
 
+const {selectedValuesClickHandler} = useMultiSelectMouse(realInput)
+
 export type OptionObject = Record<string | number, string | number>;
 export type Option = null | string | number | OptionObject;
 export type Options = Option | Option[];
 </script>
 
 <template>
-  <div class="a-multi-select">
-    <!--im multiselect-->
-    <div class="a-multi-select__selected-values">
-      &nbsp;
-      
-      
+
+  <AInputControl
+      :label="label"
+      :hideLabel="hideLabel"
+      :hideHint="hideHint"
+      class="a-multi-select"
+      :class="{ 'a-input--with-error': errorMessages?.length }"
+      :errorMessages="errorMessages"
+  >
+    <input
+        class="a-multi-select__input a-inputable__hidden-original-input"
+        type="select"
+        ref="realInput"
+    />
+    <div class="a-multi-select__selected-values"
+      @click="selectedValuesClickHandler"
+    >
       <span
           v-if="!areOptionsArray(modelValueInner) && modelValueInner"
           class="a-multi-select__selected-value"
       >
-        <!--{{modelValueInner}}-->
         {{createTemplateValueForOption(modelValueInner)}}
       </span>
-      
       <template v-if="areOptionsArray(modelValueInner)">
         <template
             v-for="(selectedOption, index) in modelValueInner"
@@ -74,15 +88,14 @@ export type Options = Option | Option[];
               class="a-multi-select__selected-value"
           >
             {{createTemplateValueForOption(selectedOption)}}
-            <span v-if="index != modelValueInner.length - 1">, </span>
+            <span v-if="index != modelValueInner.length - 1">,&nbsp;</span>
           </span>
-          
-          
         </template>
-        
       </template>
     </div>
-
+  </AInputControl>
+  
+  <div class="a-multi-select">
     <div class="a-multi-select__options">
       <div
         class="a-multi-select__option"
@@ -93,6 +106,9 @@ export type Options = Option | Option[];
         :key="createTemplateKeyForOption(option, index)"
         @click="toggleOption(option)"
       >
+        
+        
+        
         {{ createTemplateValueForOption(option) }}
       </div>
     </div>
@@ -100,17 +116,45 @@ export type Options = Option | Option[];
 </template>
 
 <style scoped>
+@import "@/a-library/components/forms/mixins/AInputable/AInputable.css";
+
 .a-multi-select {
   /*Постоянное*/
-
+  position: relative;
+  
   /*Временное*/
   /*outline: 1px solid #333;*/
   background-color: #eee;
-  display: flex;
-  flex-flow: column nowrap;
-  gap: var(--gap);
+  /*display: flex;*/
+  /*flex-flow: column nowrap;*/
+  /*gap: var(--gap);*/
   /*padding: var(--gap);*/
   /*padding: 2px;*/
+  
+  .a-multi-select__selected-values {
+    --height: calc(var(--gap) * 2);
+    /*display: block;*/
+    height: var(--height);
+    line-height: var(--height);
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+    border: 1px solid var(--clr-border-blue-lighter);
+    border-radius: var(--border-radius);
+    transition: border var(--time-short);
+    width: 100%;
+    background-color: white;
+    cursor: pointer;
+    
+    display: flex;
+    flex-flow: row wrap;
+    
+    .a-multi-select__selected-value {
+      /*outline: 1px solid darkred;*/
+      height: var(--height);
+      
+    }
+  }
+  
   .a-multi-select__options {
     /*Постоянное*/
 
@@ -131,6 +175,16 @@ export type Options = Option | Option[];
     &.a-multi-select__option--selected {
       background-color: #aff;
     }
+  }
+
+  /*.a-multi-select__input:focus-visible {*/
+  .a-multi-select__input:focus {
+  /*.a-multi-select__input {*/
+    background-color: red;
+    opacity: 0.05;
+  }
+  .a-multi-select__input:focus-visible + .a-multi-select__selected-values {
+    border: 1px solid var(--clr-border-blue-darker);
   }
 }
 </style>

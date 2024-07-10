@@ -43,8 +43,6 @@ let optionVals = {
     <h2>Мультиселект</h2>
     <div class="temp-columns">
       <div class="temp-column">
-        <h3>number[] -> number</h3>
-
         <p class="temp-hint">
           Value:
           <code>{{ $debugVar(multiselectVals.singleInNumbersOutNumber) }}</code>
@@ -53,12 +51,12 @@ let optionVals = {
           Options: <code>{{ optionVals.numbers }}</code>
         </p>
         <AMultiSelect
+          label="number[] -> number"
           v-model="multiselectVals.singleInNumbersOutNumber"
           :options="optionVals.numbers"
         />
 
         <br />
-        <h3>string[] -> string</h3>
         <p class="temp-hint">
           Value:
           <code>{{ $debugVar(multiselectVals.singleInStringsOutString) }}</code>
@@ -67,12 +65,12 @@ let optionVals = {
           Options: <code>{{ optionVals.strings }}</code>
         </p>
         <AMultiSelect
+          label="string[] -> string"
           v-model="multiselectVals.singleInStringsOutString"
           :options="optionVals.strings"
         />
 
         <br />
-        <h3>Object[] -> number</h3>
         <p class="temp-hint">
           Value:
           <code>{{ $debugVar(multiselectVals.singleInObjectsOutNumber) }}</code>
@@ -81,6 +79,7 @@ let optionVals = {
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
+          label="Object[] -> number"
           v-model="multiselectVals.singleInObjectsOutNumber"
           :options="optionVals.objectsWithNumberId"
           optionObjectFieldTitle="tTitle"
@@ -88,7 +87,6 @@ let optionVals = {
         />
 
         <br />
-        <h3>Object[] -> string</h3>
         <p class="temp-hint">
           Value:
           <code>{{ $debugVar(multiselectVals.singleInObjectsOutString) }}</code>
@@ -97,6 +95,7 @@ let optionVals = {
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
+          label="Object[] -> string"
           v-model="multiselectVals.singleInObjectsOutString"
           :options="optionVals.objectsWithStringId"
           optionObjectFieldTitle="tTitle"
@@ -104,7 +103,6 @@ let optionVals = {
         />
 
         <br />
-        <h3>Object[] -> Object</h3>
         <p class="temp-hint">
           Value:
           <code>{{ $debugVar(multiselectVals.singleInObjectsOutObject) }}</code>
@@ -113,6 +111,7 @@ let optionVals = {
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
+          label="Object[] -> Object"
           v-model="multiselectVals.singleInObjectsOutObject"
           :options="optionVals.objectsWithNumberId"
           optionObjectFieldTitle="tTitle"
@@ -122,7 +121,6 @@ let optionVals = {
       </div>
 
       <div class="temp-column">
-        <h3>number[] -> number[]</h3>
 
         <p class="temp-hint">
           Value:
@@ -134,13 +132,13 @@ let optionVals = {
           Options: <code>{{ optionVals.numbers }}</code>
         </p>
         <AMultiSelect
+          label="number[] -> number[]"
           v-model="multiselectVals.multiInNumbersOutNumberArray"
           :options="optionVals.numbers"
           multiple
         />
 
         <br />
-        <h3>string[] -> string[]</h3>
         <p class="temp-hint">
           Value:
           <code>{{
@@ -151,13 +149,13 @@ let optionVals = {
           Options: <code>{{ optionVals.strings }}</code>
         </p>
         <AMultiSelect
+          label="string[] -> string[]"
           v-model="multiselectVals.multiInStringsOutStringArray"
           :options="optionVals.strings"
           multiple
         />
 
         <br />
-        <h3>Object[] -> number[]</h3>
         <p class="temp-hint">
           Value:
           <code>{{
@@ -168,6 +166,7 @@ let optionVals = {
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
+          label="Object[] -> number[]"
           v-model="multiselectVals.multiInObjectsOutNumberArray"
           :options="optionVals.objectsWithNumberId"
           optionObjectFieldTitle="tTitle"
@@ -176,7 +175,6 @@ let optionVals = {
         />
 
         <br />
-        <h3>Object[] -> string[]</h3>
         <p class="temp-hint">
           Value:
           <code>{{
@@ -187,6 +185,7 @@ let optionVals = {
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
+          label="Object[] -> string[]"
           v-model="multiselectVals.multiInObjectsOutStringArray"
           :options="optionVals.objectsWithStringId"
           optionObjectFieldTitle="tTitle"
@@ -195,7 +194,6 @@ let optionVals = {
         />
 
         <br />
-        <h3>Object[] -> Object</h3>
         <p class="temp-hint">
           Value:
           <code>{{
@@ -206,6 +204,7 @@ let optionVals = {
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
+          label="Object[] -> Object"
           v-model="multiselectVals.multiInObjectsOutObjectArray"
           :options="optionVals.objectsWithNumberId"
           optionObjectFieldTitle="tTitle"
