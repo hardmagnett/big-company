@@ -15,8 +15,6 @@ export interface Props extends IAInputableProps {
   returnObject?: boolean;
   hideSearch?: boolean;
   multiple?: boolean;
-  // modelValue: string | number | string[] | number[] | Option[]
-  // modelValue: Option | Option[]
   modelValue: Options
 }
 const props = withDefaults(defineProps<Props>(), {
@@ -30,7 +28,6 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  // change: [value: Options]
   'update:modelValue': [value: Options]
 }>()
 
@@ -40,7 +37,6 @@ let modelValueInner = computed({
   },
   set (newVal) {
     console.log(newVal); console.log('^...newVal:')
-    // emit('change', newVal)
     emit('update:modelValue', newVal)
   }
 })

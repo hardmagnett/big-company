@@ -1,6 +1,11 @@
 import type {Option, Options, OptionObject, PropsWithDefaults} from '@/a-library/components/forms/AMultiselect/AMultiSelect.vue';
+import type {WritableComputedRef} from "vue";
 
-export function useMultiSelectLogic(props: PropsWithDefaults, modelValueInner: Options) {
+// export function useMultiSelectLogic(props: PropsWithDefaults, modelValueInner: Options) {
+export function useMultiSelectLogic(
+  props: PropsWithDefaults, 
+  modelValueInner: WritableComputedRef<Options>
+) {
   
   const areOptionsArray = (options: Options): options is Array<Option> => {
     return Array.isArray(options)
@@ -52,7 +57,7 @@ export function useMultiSelectLogic(props: PropsWithDefaults, modelValueInner: O
         // Если возвращать объект
         if (props.returnObject) {
           if (areOptionsArray(modelValueInner.value)){
-            let ids = modelValueInner.value.map((o: Option)=> {
+            const ids = modelValueInner.value.map((o: Option)=> {
               if (isOptionOptionObject(o)) {
                 return o[props.optionObjectFieldValue]
               }
