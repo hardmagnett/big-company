@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import {computed} from "vue";
-import {
-  iAInputablePropDefaults,
-} from "@/a-library/components/forms/mixins/AInputable/IAInputable";
+import { computed } from "vue";
+import { iAInputablePropDefaults } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
 import { useMultiSelectLogic } from "./useMultiSelectLogic";
@@ -14,7 +12,7 @@ export interface Props extends IAInputableProps {
   returnObject?: boolean;
   hideSearch?: boolean;
   multiple?: boolean;
-  modelValue: Options
+  modelValue: Options;
 }
 const props = withDefaults(defineProps<Props>(), {
   ...iAInputablePropDefaults,
@@ -27,19 +25,19 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  'update:modelValue': [value: Options]
-}>()
+  "update:modelValue": [value: Options];
+}>();
 
 let modelValueInner = computed({
-  get(){
-    return props.modelValue
+  get() {
+    return props.modelValue;
   },
-  set (newVal) {
-    emit('update:modelValue', newVal)
-  }
-})
+  set(newVal) {
+    emit("update:modelValue", newVal);
+  },
+});
 
-export type PropsWithDefaults =  typeof props
+export type PropsWithDefaults = typeof props;
 const {
   isOptionSelected,
   toggleOption,
@@ -49,10 +47,7 @@ const {
 
 export type OptionObject = Record<string | number, string | number>;
 export type Option = null | string | number | OptionObject;
-export type Options = Option | Option[]
-
-
-
+export type Options = Option | Option[];
 </script>
 
 <template>
@@ -63,7 +58,7 @@ export type Options = Option | Option[]
       <div
         class="a-multi-select__option"
         :class="{
-          'a-multi-select__option--selected': isOptionSelected(option)
+          'a-multi-select__option--selected': isOptionSelected(option),
         }"
         v-for="(option, index) in options"
         :key="createTemplateKeyForOption(option, index)"
@@ -103,7 +98,7 @@ export type Options = Option | Option[]
     outline: 1px solid #339;
     flex: 0 0 150px;
     /*font-size: var(--font-size-tiny);*/
-    
+
     &.a-multi-select__option--selected {
       background-color: #aff;
     }

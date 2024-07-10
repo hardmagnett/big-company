@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-import {reactive} from "vue";
+import { reactive } from "vue";
 import AMultiSelect from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
 
 let multiselectVals = reactive({
@@ -15,24 +14,24 @@ let multiselectVals = reactive({
   multiInObjectsOutNumberArray: [],
   multiInObjectsOutStringArray: [],
   multiInObjectsOutObjectArray: [],
-})
+});
 
 let optionVals = {
-  numbers: [1,3,6,7],
-  strings: ['one', 'three', 'six', 'seven'],
+  numbers: [1, 3, 6, 7],
+  strings: ["one", "three", "six", "seven"],
   objectsWithNumberId: [
-    {tId: 1, tTitle: 'one'},
-    {tId: 3, tTitle: 'three'},
-    {tId: 6, tTitle: 'six'},
-    {tId: 7, tTitle: 'seven'},
+    { tId: 1, tTitle: "one" },
+    { tId: 3, tTitle: "three" },
+    { tId: 6, tTitle: "six" },
+    { tId: 7, tTitle: "seven" },
   ],
   objectsWithStringId: [
-    {tId: 'first', tTitle: 'one'},
-    {tId: 'third', tTitle: 'three'},
-    {tId: 'sixth', tTitle: 'six'},
-    {tId: 'seventh', tTitle: 'seven'},
-  ]
-}
+    { tId: "first", tTitle: "one" },
+    { tId: "third", tTitle: "three" },
+    { tId: "sixth", tTitle: "six" },
+    { tId: "seventh", tTitle: "seven" },
+  ],
+};
 </script>
 
 <template>
@@ -47,73 +46,78 @@ let optionVals = {
         <h3>number[] -> number</h3>
 
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.singleInNumbersOutNumber)}}</code>
+          Value:
+          <code>{{ $debugVar(multiselectVals.singleInNumbersOutNumber) }}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.numbers}}</code>
+          Options: <code>{{ optionVals.numbers }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.singleInNumbersOutNumber"
-            :options="optionVals.numbers"
+          v-model="multiselectVals.singleInNumbersOutNumber"
+          :options="optionVals.numbers"
         />
 
-        <br>
+        <br />
         <h3>string[] -> string</h3>
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.singleInStringsOutString)}}</code>
+          Value:
+          <code>{{ $debugVar(multiselectVals.singleInStringsOutString) }}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.strings}}</code>
+          Options: <code>{{ optionVals.strings }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.singleInStringsOutString"
-            :options="optionVals.strings"
+          v-model="multiselectVals.singleInStringsOutString"
+          :options="optionVals.strings"
         />
 
-        <br>
+        <br />
         <h3>Object[] -> number</h3>
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.singleInObjectsOutNumber)}}</code>
+          Value:
+          <code>{{ $debugVar(multiselectVals.singleInObjectsOutNumber) }}</code>
         </p>
         <p class="temp-hint">
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.singleInObjectsOutNumber"
-            :options="optionVals.objectsWithNumberId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
+          v-model="multiselectVals.singleInObjectsOutNumber"
+          :options="optionVals.objectsWithNumberId"
+          optionObjectFieldTitle="tTitle"
+          optionObjectFieldValue="tId"
         />
 
-        <br>
+        <br />
         <h3>Object[] -> string</h3>
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.singleInObjectsOutString)}}</code>
+          Value:
+          <code>{{ $debugVar(multiselectVals.singleInObjectsOutString) }}</code>
         </p>
         <p class="temp-hint">
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.singleInObjectsOutString"
-            :options="optionVals.objectsWithStringId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
+          v-model="multiselectVals.singleInObjectsOutString"
+          :options="optionVals.objectsWithStringId"
+          optionObjectFieldTitle="tTitle"
+          optionObjectFieldValue="tId"
         />
 
-        <br>
+        <br />
         <h3>Object[] -> Object</h3>
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.singleInObjectsOutObject)}}</code>
+          Value:
+          <code>{{ $debugVar(multiselectVals.singleInObjectsOutObject) }}</code>
         </p>
         <p class="temp-hint">
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.singleInObjectsOutObject"
-            :options="optionVals.objectsWithNumberId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-            return-object
+          v-model="multiselectVals.singleInObjectsOutObject"
+          :options="optionVals.objectsWithNumberId"
+          optionObjectFieldTitle="tTitle"
+          optionObjectFieldValue="tId"
+          return-object
         />
       </div>
 
@@ -121,85 +125,104 @@ let optionVals = {
         <h3>number[] -> number[]</h3>
 
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.multiInNumbersOutNumberArray)}}</code>
+          Value:
+          <code>{{
+            $debugVar(multiselectVals.multiInNumbersOutNumberArray)
+          }}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.numbers}}</code>
+          Options: <code>{{ optionVals.numbers }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.multiInNumbersOutNumberArray"
-            :options="optionVals.numbers"
-            multiple
+          v-model="multiselectVals.multiInNumbersOutNumberArray"
+          :options="optionVals.numbers"
+          multiple
         />
 
-        <br>
+        <br />
         <h3>string[] -> string[]</h3>
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.multiInStringsOutStringArray)}}</code>
+          Value:
+          <code>{{
+            $debugVar(multiselectVals.multiInStringsOutStringArray)
+          }}</code>
         </p>
         <p class="temp-hint">
-          Options: <code>{{optionVals.strings}}</code>
+          Options: <code>{{ optionVals.strings }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.multiInStringsOutStringArray"
-            :options="optionVals.strings"
-            multiple
+          v-model="multiselectVals.multiInStringsOutStringArray"
+          :options="optionVals.strings"
+          multiple
         />
 
-        <br>
+        <br />
         <h3>Object[] -> number[]</h3>
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.multiInObjectsOutNumberArray)}}</code>
+          Value:
+          <code>{{
+            $debugVar(multiselectVals.multiInObjectsOutNumberArray)
+          }}</code>
         </p>
         <p class="temp-hint">
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.multiInObjectsOutNumberArray"
-            :options="optionVals.objectsWithNumberId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-            multiple
+          v-model="multiselectVals.multiInObjectsOutNumberArray"
+          :options="optionVals.objectsWithNumberId"
+          optionObjectFieldTitle="tTitle"
+          optionObjectFieldValue="tId"
+          multiple
         />
 
-        <br>
+        <br />
         <h3>Object[] -> string[]</h3>
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.multiInObjectsOutStringArray)}}</code>
+          Value:
+          <code>{{
+            $debugVar(multiselectVals.multiInObjectsOutStringArray)
+          }}</code>
         </p>
         <p class="temp-hint">
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.multiInObjectsOutStringArray"
-            :options="optionVals.objectsWithStringId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-            multiple
+          v-model="multiselectVals.multiInObjectsOutStringArray"
+          :options="optionVals.objectsWithStringId"
+          optionObjectFieldTitle="tTitle"
+          optionObjectFieldValue="tId"
+          multiple
         />
 
-        <br>
+        <br />
         <h3>Object[] -> Object</h3>
         <p class="temp-hint">
-          Value: <code>{{$debugVar(multiselectVals.multiInObjectsOutObjectArray)}}</code>
+          Value:
+          <code>{{
+            $debugVar(multiselectVals.multiInObjectsOutObjectArray)
+          }}</code>
         </p>
         <p class="temp-hint">
           Options: <code>{{ optionVals.objectsWithNumberId }}</code>
         </p>
         <AMultiSelect
-            v-model="multiselectVals.multiInObjectsOutObjectArray"
-            :options="optionVals.objectsWithNumberId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-            multiple
-            return-object
+          v-model="multiselectVals.multiInObjectsOutObjectArray"
+          :options="optionVals.objectsWithNumberId"
+          optionObjectFieldTitle="tTitle"
+          optionObjectFieldValue="tId"
+          multiple
+          return-object
         />
       </div>
     </div>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <hr><hr><hr><hr><hr>
-    <br>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+    <br />
     <h2>Текстовое поле</h2>
     <p>По умолчанию.</p>
     <AInput label="Лейбл" hideHint></AInput>
@@ -222,8 +245,6 @@ let optionVals = {
     />
     <ACheckBox hide-hint hide-label />
     <br />
-
-
   </div>
 </template>
 

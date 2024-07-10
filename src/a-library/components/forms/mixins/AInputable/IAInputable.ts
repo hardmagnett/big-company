@@ -5,8 +5,8 @@
 export interface IAInputableProps {
   autofocus?: boolean;
   label?: string;
-  name?: string;      // Кажется не применялся
-  rules?: string;     // Кажется не применялся. Мои инпуты ведь валидируются снаружи.
+  name?: string; // Кажется не применялся
+  rules?: string; // Кажется не применялся. Мои инпуты ведь валидируются снаружи.
   hideLabel?: boolean;
   hideHint?: boolean;
   errorMessages?: Array<string>;
