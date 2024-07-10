@@ -3,13 +3,17 @@
 import type {Ref} from "vue";
 import {ref} from "vue";
 
-export function useMultiSelectMouse(realInput: Ref<HTMLInputElement | null>){
+export function useMultiSelectMouse(
+  realInput: Ref<HTMLInputElement | null>,
+  popover: Ref<HTMLElement | null>
+  
+){
 
   let isFocused = ref(false)
   // const realInput = ref<HTMLInputElement | null>(null)
   
   const selectedValuesClickHandler = () => {
-    // realInput.value?.focus()
+    popover.value?.showPopover()
     isFocused.value = true
   }
   

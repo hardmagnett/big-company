@@ -30,6 +30,7 @@ const emit = defineEmits<{
 }>();
 
 const realInput = ref<HTMLInputElement | null>(null)
+const popover = ref<HTMLInputElement | null>(null)
 
 let modelValueInner = computed({
   get() {
@@ -52,7 +53,7 @@ const {
 const {
   isFocused,
   selectedValuesClickHandler
-} = useMultiSelectMouse(realInput)
+} = useMultiSelectMouse(realInput, popover)
 
 export type OptionObject = Record<string | number, string | number>;
 export type Option = null | string | number | OptionObject;
@@ -78,7 +79,14 @@ export type Options = Option | Option[];
         ref="realInput"
         @focus="selectedValuesClickHandler"
     />
-    <div class="a-multi-select__selected-values"
+    <div class="
+      a-multi-select__selected-values
+      a-multi-select__anchor-for-popover
+    "
+      :style="
+        // @ts-ignore: TS не знает о position-anchor в 2024-07.
+        {'anchor-name': `--anchor-for-popover-${$.uid}`}
+      "
       @click="selectedValuesClickHandler"
     >
       <span
@@ -99,6 +107,20 @@ export type Options = Option | Option[];
           </span>
         </template>
       </template>
+    </div>
+
+    <div
+      :style="
+        {
+          // @ts-ignore: TS не знает о position-anchor в 2024-07.
+          'width':`anchor-size(--anchor-for-popover-${$.uid} width)`,
+          // @ts-ignore: TS не знает о position-anchor в 2024-07.
+          'position-anchor': `--anchor-for-popover-${$.uid}`
+        }
+      "
+        popover ref="popover" class="a-multi-select__popover">
+      fsad
+      
     </div>
   </AInputControl>
   
@@ -137,6 +159,36 @@ export type Options = Option | Option[];
   /*gap: var(--gap);*/
   /*padding: var(--gap);*/
   /*padding: 2px;*/
+  .a-multi-select__anchor-for-popover {
+    /*Не удалять. Пусть будет для понимания*/
+    /*anchor-name: --anchor-for-popover;*/
+    
+    /*border: 10px solid darkred;*/
+    /*background-color: red !important;*/
+    position: relative;
+  }
+  
+  .a-multi-select__popover {
+    position: absolute;
+    /*Не удалять. Пусть будет для понимания*/
+    /*position-anchor: --anchor-for-popover;*/
+    
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    /*border: 1px solid green;*/
+
+    background-color: #aff;
+    
+    top: anchor(bottom);
+    right: anchor(right);
+    left: anchor(left);
+    
+    height: 100px;
+    /*width: 100px;*/
+  }
   
   .a-multi-select__selected-values {
     --height: calc(var(--gap) * 2);
@@ -161,6 +213,8 @@ export type Options = Option | Option[];
       
     }
   }
+
+
   
   .a-multi-select__options {
     /*Постоянное*/
