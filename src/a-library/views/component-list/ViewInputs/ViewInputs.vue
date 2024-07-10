@@ -18,23 +18,19 @@ let multiselectVals = reactive({
 })
 
 let optionVals = {
-  // numbers: [1,3,6,7,13],
   numbers: [1,3,6,7],
-  // strings: ['one', 'three', 'six', 'seven', 'thirteen'],
   strings: ['one', 'three', 'six', 'seven'],
   objectsWithNumberId: [
     {tId: 1, tTitle: 'one'},
     {tId: 3, tTitle: 'three'},
     {tId: 6, tTitle: 'six'},
     {tId: 7, tTitle: 'seven'},
-    // {theId: 13, theTitle: 'thirteen'},
   ],
   objectsWithStringId: [
     {tId: 'first', tTitle: 'one'},
     {tId: 'third', tTitle: 'three'},
     {tId: 'sixth', tTitle: 'six'},
     {tId: 'seventh', tTitle: 'seven'},
-    // {theId: 13, theTitle: 'thirteen'},
   ]
 }
 </script>
@@ -200,8 +196,6 @@ let optionVals = {
         />
       </div>
     </div>
-    <!--eawrwq-->
-
 
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <hr><hr><hr><hr><hr>
@@ -247,7 +241,6 @@ let optionVals = {
 
     .temp-column {
       outline: 1px solid darkred;
-      /*flex: 0 0 50%;*/
       flex: 0 0 calc(50% - var(--gap) / 2);
     }
   }

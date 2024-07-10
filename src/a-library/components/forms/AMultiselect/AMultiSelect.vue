@@ -44,7 +44,6 @@ let modelValueInner = computed({
 export type PropsWithDefaults =  typeof props
 const {
   areOptionsArray,
-  // isOptionNumberOrString,
   isOptionOptionObject,
   isOptionSelected,
   toggleOption,

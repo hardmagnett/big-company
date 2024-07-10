@@ -1,7 +1,6 @@
 import type {Option, Options, OptionObject, PropsWithDefaults} from '@/a-library/components/forms/AMultiselect/AMultiSelect.vue';
 import type {WritableComputedRef} from "vue";
 
-// export function useMultiSelectLogic(props: PropsWithDefaults, modelValueInner: Options) {
 export function useMultiSelectLogic(
   props: PropsWithDefaults, 
   modelValueInner: WritableComputedRef<Options>
@@ -31,8 +30,7 @@ export function useMultiSelectLogic(
       
     return result
   }
-
-  // todo:: возможно вынести в logic composable
+  
   const pushOption = (option:Option) => {
     if (areOptionsArray(modelValueInner.value)){
       modelValueInner.value = [
@@ -41,7 +39,6 @@ export function useMultiSelectLogic(
       ]
     }
   }
-// todo:: возможно вынести в logic composable
   const isOptionSelected = (option: Option) => {
     console.log(option); console.log('^...option:')
     let result = false
@@ -63,7 +60,6 @@ export function useMultiSelectLogic(
               }
             })
             result = ids.includes(option[props.optionObjectFieldValue])
-            // console.log(ids); console.log('^...ids:') 
           }
 
           // Если возвращать примитив
@@ -91,11 +87,8 @@ export function useMultiSelectLogic(
         }
       }
     }
-    console.log(result); console.log('^...result:')
-    // return false
     return result
   }
-// todo:: возможно вынести в logic composable
   const unselectOption = (option: Option) => {
     if (props.multiple) {
       if (areOptionsArray(modelValueInner.value)) {
@@ -109,10 +102,6 @@ export function useMultiSelectLogic(
               } else {
                 result = selectedOption !== option[props.optionObjectFieldValue]
               }
-
-              // if (areOptionsArray(modelValueInner.value)){
-              //   result = modelValueInner.value.includes(option)
-              // }
             }
             // Если возвращать массив объектов
             else {
@@ -133,8 +122,7 @@ export function useMultiSelectLogic(
   }
 
 
-
-// todo:: возможно вынести в logic composable
+  
   const selectOption = (option: Option) => {
     if (props.multiple) {
       if (areOptionsArray(modelValueInner.value)){
@@ -162,8 +150,7 @@ export function useMultiSelectLogic(
       }
     }
   }
-
-// todo:: возможно вынести в logic composable
+  
   const toggleOption = (option: Option) => {
     if (isOptionSelected(option)) {
       unselectOption(option)
