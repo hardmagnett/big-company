@@ -49,7 +49,10 @@ const {
   createTemplateValueForOption,
 } = useMultiSelectLogic(props, modelValueInner);
 
-const {selectedValuesClickHandler} = useMultiSelectMouse(realInput)
+const {
+  isFocused,
+  selectedValuesClickHandler
+} = useMultiSelectMouse(realInput)
 
 export type OptionObject = Record<string | number, string | number>;
 export type Option = null | string | number | OptionObject;
@@ -63,13 +66,17 @@ export type Options = Option | Option[];
       :hideLabel="hideLabel"
       :hideHint="hideHint"
       class="a-multi-select"
-      :class="{ 'a-input--with-error': errorMessages?.length }"
+      :class="{ 
+        'a-input--with-error': errorMessages?.length,
+        'a-multi-select--focused': isFocused 
+      }"
       :errorMessages="errorMessages"
   >
     <input
         class="a-multi-select__input a-inputable__hidden-original-input"
         type="select"
         ref="realInput"
+        @focus="selectedValuesClickHandler"
     />
     <div class="a-multi-select__selected-values"
       @click="selectedValuesClickHandler"
@@ -184,7 +191,13 @@ export type Options = Option | Option[];
     opacity: 0.05;
   }
   .a-multi-select__input:focus-visible + .a-multi-select__selected-values {
-    border: 1px solid var(--clr-border-blue-darker);
+    
+  }
+  &.a-multi-select--focused {
+    .a-multi-select__selected-values {
+      border: 1px solid var(--clr-border-blue-darker);
+    }
+    
   }
 }
 </style>
