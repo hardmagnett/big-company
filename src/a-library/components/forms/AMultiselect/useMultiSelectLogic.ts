@@ -40,7 +40,6 @@ export function useMultiSelectLogic(
     }
   }
   const isOptionSelected = (option: Option) => {
-    console.log(option); console.log('^...option:')
     let result = false
     if (props.multiple) {
       // Если в опциях - примитивы
@@ -92,7 +91,7 @@ export function useMultiSelectLogic(
   const unselectOption = (option: Option) => {
     if (props.multiple) {
       if (areOptionsArray(modelValueInner.value)) {
-        let newSelectedOptions = modelValueInner.value.filter(
+        const newSelectedOptions = modelValueInner.value.filter(
           (selectedOption: Option)=>{
             let result = true
             // Если возвращать массив примитивов

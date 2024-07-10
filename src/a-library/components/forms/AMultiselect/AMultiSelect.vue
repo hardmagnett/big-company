@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {computed} from "vue";
 import {
-  iAInputableEmits,
   iAInputablePropDefaults,
 } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
@@ -36,15 +35,12 @@ let modelValueInner = computed({
     return props.modelValue
   },
   set (newVal) {
-    console.log(newVal); console.log('^...newVal:')
     emit('update:modelValue', newVal)
   }
 })
 
 export type PropsWithDefaults =  typeof props
 const {
-  areOptionsArray,
-  isOptionOptionObject,
   isOptionSelected,
   toggleOption,
   createTemplateKeyForOption,
