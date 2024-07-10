@@ -71,13 +71,16 @@ const pushOption = (option:Option) => {
 const isOptionSelected = (option: Option) => {
   console.log(option); console.log('^...option:') 
   let result = false
-  // console.log(option); console.log('^...option:')
   if (props.multiple) {
+    // Если в опциях - примитивы
     if (!isOptionOptionObject(option)) {
       if (areOptionsArray(modelValueInner.value)){
         result = modelValueInner.value.includes(option)
       }
-    } else {
+    }
+    // Если в опциях - объекты
+    else {
+      // Если возвращать объект
       if (props.returnObject) {
         if (areOptionsArray(modelValueInner.value)){
           let ids = modelValueInner.value.map((o: Option)=> {
@@ -85,10 +88,11 @@ const isOptionSelected = (option: Option) => {
               return o[props.optionObjectFieldValue]
             }
           })
-          console.log(ids); console.log('^...ids:') 
+          result = ids.includes(option[props.optionObjectFieldValue])
+          // console.log(ids); console.log('^...ids:') 
         }
         
-        
+      // Если возвращать примитив
       } else {
         if (areOptionsArray(modelValueInner.value)){
           result = modelValueInner.value.includes(option[props.optionObjectFieldValue])
