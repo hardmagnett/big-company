@@ -60,11 +60,33 @@ export type Options = Option | Option[]
 
 // todo:: возможно вынести в logic composable
 const isOptionSelected = (option: Option) => {
+  console.log(option); console.log('^...option:') 
   let result = false
   // console.log(option); console.log('^...option:')
-  // if (props.multiple) {
-  //  
-  // }
+  if (props.multiple) {
+    if (!isOptionOptionObject(option)) {
+      if (areOptionsArray(modelValueInner.value)){
+        result = modelValueInner.value.includes(option)
+      }
+    } else {
+      if (props.returnObject) {
+        if (areOptionsArray(modelValueInner.value)){
+          let ids = modelValueInner.value.map((o: Option)=> {
+            if (isOptionOptionObject(o)) {
+              return o[props.optionObjectFieldValue]
+            }
+          })
+          console.log(ids); console.log('^...ids:') 
+        }
+        
+        
+      } else {
+        if (areOptionsArray(modelValueInner.value)){
+          result = modelValueInner.value.includes(option[props.optionObjectFieldValue])
+        }
+      }
+    }
+  }
   // Single
   if (!props.multiple) {
     if (!isOptionOptionObject(option)) {
@@ -83,7 +105,8 @@ const isOptionSelected = (option: Option) => {
     }
   }
   console.log(result); console.log('^...result:') 
-  return false
+  // return false
+  return result
 }
 // todo:: возможно вынести в logic composable
 const unselectOption = (option: Option) => {
@@ -150,6 +173,9 @@ const toggleOption = (option: Option) => {
     <div class="a-multi-select__options">
       <div
         class="a-multi-select__option"
+        :class="{
+          'a-multi-select__option--selected': isOptionSelected(option)
+        }"
         v-for="(option, index) in options"
         :key="createTemplateKeyForOption(option, index)"
         @click="toggleOption(option)"
@@ -188,6 +214,10 @@ const toggleOption = (option: Option) => {
     outline: 1px solid #339;
     flex: 0 0 150px;
     /*font-size: var(--font-size-tiny);*/
+    
+    &.a-multi-select__option--selected {
+      background-color: #aff;
+    }
   }
 }
 </style>
