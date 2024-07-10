@@ -128,6 +128,7 @@ const unselectOption = (option: Option) => {
       let newSelectedOptions = modelValueInner.value.filter(
         (selectedOption: Option)=>{
           let result = true
+          // Если возвращать массив примитивов
           if (!isOptionOptionObject(selectedOption)) {
             if (!isOptionOptionObject(option)) {
               result = selectedOption !== option
@@ -139,8 +140,12 @@ const unselectOption = (option: Option) => {
             //   result = modelValueInner.value.includes(option)
             // }
           }
-          
-          
+          // Если возвращать массив объектов
+          else {
+            if (!isOptionOptionObject(option)) {
+              result = selectedOption[props.optionObjectFieldValue] !== option[props.optionObjectFieldValue]
+            }
+          }
           return result
         }
       )
