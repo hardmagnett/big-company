@@ -59,6 +59,15 @@ export type Option = null | string | number | OptionObject;
 export type Options = Option | Option[]
 
 // todo:: возможно вынести в logic composable
+const pushOption = (option:Option) => {
+  if (areOptionsArray(modelValueInner.value)){
+    modelValueInner.value = [
+      ...modelValueInner.value,
+      option
+    ]
+  }
+}
+// todo:: возможно вынести в logic composable
 const isOptionSelected = (option: Option) => {
   console.log(option); console.log('^...option:') 
   let result = false
@@ -110,33 +119,49 @@ const isOptionSelected = (option: Option) => {
 }
 // todo:: возможно вынести в logic composable
 const unselectOption = (option: Option) => {
-  
-}
-
-// todo:: возможно вынести в logic composable
-const pushOption = (option:Option) => {
-  if (areOptionsArray(modelValueInner.value)){
-    modelValueInner.value = [
-      ...modelValueInner.value,
-      option
-    ]
+  if (props.multiple) {
+    if (areOptionsArray(modelValueInner.value)) {
+      let newSelectedOptions = modelValueInner.value.filter(
+        (selectedOption: Option)=>{
+          let result = true
+          if (!isOptionOptionObject(selectedOption)) {
+            if (!isOptionOptionObject(option)) {
+              result = selectedOption !== option
+            } else {
+              result = selectedOption !== option[props.optionObjectFieldValue]
+            }
+            
+            // if (areOptionsArray(modelValueInner.value)){
+            //   result = modelValueInner.value.includes(option)
+            // }
+          }
+          
+          
+          return result
+        }
+      )
+      modelValueInner.value = newSelectedOptions
+    }
+    
+  }
+  if (!props.multiple) {
+    modelValueInner.value = null
   }
 }
+
+
 
 // todo:: возможно вынести в logic composable
 const selectOption = (option: Option) => {
   if (props.multiple) {
     if (areOptionsArray(modelValueInner.value)){
       if (!isOptionOptionObject(option)) {
-        // modelValueInner.value.push(option)
         pushOption(option)
       } else {
         if (props.returnObject) {
-          // modelValueInner.value.push(option)
           pushOption(option)
         } else {
           pushOption(option[props.optionObjectFieldValue])
-          // modelValueInner.value.push(option[props.optionObjectFieldValue]) 
         }
       }
     }
