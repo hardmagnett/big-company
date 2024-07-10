@@ -66,17 +66,31 @@ const isOptionSelected = (option: Option) => {
 const unselectOption = (option: Option) => {
   
 }
+
+
+const pushOption = (option:Option) => {
+  if (areOptionsArray(modelValueInner.value)){
+    modelValueInner.value = [
+      ...modelValueInner.value,
+      option
+    ]
+  }
+}
+
 // todo:: возможно вынести в logic composable
 const selectOption = (option: Option) => {
   if (props.multiple) {
     if (areOptionsArray(modelValueInner.value)){
       if (!isOptionOptionObject(option)) {
-        modelValueInner.value.push(option)
+        // modelValueInner.value.push(option)
+        pushOption(option)
       } else {
         if (props.returnObject) {
-          modelValueInner.value.push(option) 
+          // modelValueInner.value.push(option)
+          pushOption(option)
         } else {
-          modelValueInner.value.push(option[props.optionObjectFieldValue]) 
+          pushOption(option[props.optionObjectFieldValue])
+          // modelValueInner.value.push(option[props.optionObjectFieldValue]) 
         }
       }
     }
