@@ -39,6 +39,7 @@ let modelValueInner = computed({
 
 export type PropsWithDefaults = typeof props;
 const {
+  areOptionsArray,
   isOptionSelected,
   toggleOption,
   createTemplateKeyForOption,
@@ -52,7 +53,34 @@ export type Options = Option | Option[];
 
 <template>
   <div class="a-multi-select">
-    im multiselect
+    <!--im multiselect-->
+    <div class="a-multi-select__selected-values">
+      &nbsp;
+      
+      
+      <span
+          v-if="!areOptionsArray(modelValueInner) && modelValueInner"
+          class="a-multi-select__selected-value"
+      >
+        {{modelValueInner}}
+      </span>
+      
+      <template v-if="areOptionsArray(modelValueInner)">
+        <template
+            v-for="(selectedOption, index) in modelValueInner"
+        >
+          <span
+              class="a-multi-select__selected-value"
+          >
+            {{selectedOption}}
+            <span v-if="index != modelValueInner.length - 1">, </span>
+          </span>
+          
+          
+        </template>
+        
+      </template>
+    </div>
 
     <div class="a-multi-select__options">
       <div
