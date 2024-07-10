@@ -6,11 +6,6 @@ export function useMultiSelectLogic(props: PropsWithDefaults) {
     return Array.isArray(options)
   }
   
-  // const isOptionNumberOrString = (option: Option): option is number | string => {
-  //   const result = (typeof option === 'number' || typeof option === 'string')
-  //   return result
-  // }
-  
   const isOptionOptionObject = (option: Option): option is OptionObject =>{
     const result =  typeof option === 'object' && !Array.isArray(option) && option !== null
     return result
@@ -18,9 +13,6 @@ export function useMultiSelectLogic(props: PropsWithDefaults) {
   }
 
   const createTemplateKeyForOption = (option: Option, index: number)=>{
-    // const result = isOptionNumberOrString(option)
-    //   ? index
-    //   : option[props.optionObjectFieldValue]
     
     const result = isOptionOptionObject(option)
       ? option[props.optionObjectFieldValue]
@@ -37,7 +29,6 @@ export function useMultiSelectLogic(props: PropsWithDefaults) {
   return {
     areOptionsArray,
     isOptionOptionObject,
-    // isOptionNumberOrString,
     createTemplateKeyForOption,
     createTemplateValueForOption
   }

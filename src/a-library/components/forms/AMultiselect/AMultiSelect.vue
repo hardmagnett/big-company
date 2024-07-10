@@ -142,7 +142,7 @@ const unselectOption = (option: Option) => {
           }
           // Если возвращать массив объектов
           else {
-            if (!isOptionOptionObject(option)) {
+            if (isOptionOptionObject(option)) {
               result = selectedOption[props.optionObjectFieldValue] !== option[props.optionObjectFieldValue]
             }
           }
