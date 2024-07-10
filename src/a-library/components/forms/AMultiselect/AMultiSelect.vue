@@ -62,7 +62,8 @@ export type Options = Option | Option[];
           v-if="!areOptionsArray(modelValueInner) && modelValueInner"
           class="a-multi-select__selected-value"
       >
-        {{modelValueInner}}
+        <!--{{modelValueInner}}-->
+        {{createTemplateValueForOption(modelValueInner)}}
       </span>
       
       <template v-if="areOptionsArray(modelValueInner)">
@@ -72,7 +73,7 @@ export type Options = Option | Option[];
           <span
               class="a-multi-select__selected-value"
           >
-            {{selectedOption}}
+            {{createTemplateValueForOption(selectedOption)}}
             <span v-if="index != modelValueInner.length - 1">, </span>
           </span>
           
