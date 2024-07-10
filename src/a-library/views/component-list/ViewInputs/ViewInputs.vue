@@ -133,10 +133,11 @@ let optionVals = {
         <AMultiSelect
             v-model="multiselectVals.multiInNumbersOutNumberArray"
             :options="optionVals.numbers"
+            multiple
         />
 
         <br>
-        <h3>string[] -> string</h3>
+        <h3>string[] -> string[]</h3>
         <p class="temp-hint">
           Value: <code>{{$debugVar(multiselectVals.multiInStringsOutStringArray)}}</code>
         </p>
@@ -146,6 +147,7 @@ let optionVals = {
         <AMultiSelect
             v-model="multiselectVals.multiInStringsOutStringArray"
             :options="optionVals.strings"
+            multiple
         />
 
         <br>
@@ -161,10 +163,11 @@ let optionVals = {
             :options="optionVals.objectsWithNumberId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
+            multiple
         />
 
         <br>
-        <h3>Object[] -> string</h3>
+        <h3>Object[] -> string[]</h3>
         <p class="temp-hint">
           Value: <code>{{$debugVar(multiselectVals.multiInObjectsOutStringArray)}}</code>
         </p>
@@ -173,9 +176,10 @@ let optionVals = {
         </p>
         <AMultiSelect
             v-model="multiselectVals.multiInObjectsOutStringArray"
-            :options="optionVals.objectsWithNumberId"
+            :options="optionVals.objectsWithStringId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
+            multiple
         />
 
         <br>
@@ -191,6 +195,8 @@ let optionVals = {
             :options="optionVals.objectsWithNumberId"
             optionObjectFieldTitle="tTitle"
             optionObjectFieldValue="tId"
+            multiple
+            return-object
         />
       </div>
     </div>

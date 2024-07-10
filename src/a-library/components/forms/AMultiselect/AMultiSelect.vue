@@ -70,14 +70,19 @@ const unselectOption = (option: Option) => {
 const selectOption = (option: Option) => {
   if (props.multiple) {
     if (areOptionsArray(modelValueInner.value)){
-      console.log('selectOption multiple')
-      modelValueInner.value.push(option)
+      if (!isOptionOptionObject(option)) {
+        modelValueInner.value.push(option)
+      } else {
+        if (props.returnObject) {
+          modelValueInner.value.push(option) 
+        } else {
+          modelValueInner.value.push(option[props.optionObjectFieldValue]) 
+        }
+      }
     }
   }
   // single
   if (!props.multiple) {
-    console.log('selectOption single')
-    
     if (!isOptionOptionObject(option)) {
       modelValueInner.value = option
     } else {
@@ -86,9 +91,7 @@ const selectOption = (option: Option) => {
       } else {
         modelValueInner.value = option[props.optionObjectFieldValue]
       }
-      
     }
-    
   }
 }
 
