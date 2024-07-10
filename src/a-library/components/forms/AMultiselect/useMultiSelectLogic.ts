@@ -10,11 +10,11 @@ export function useMultiSelectLogic(
   props: PropsWithDefaults,
   modelValueInner: WritableComputedRef<Options>,
 ) {
-  const areOptionsArray = (options: Options): options is Array<Option> => {
+  const areOptionsArray = (options: unknown): options is Array<Option> => {
     return Array.isArray(options);
   };
-
-  const isOptionOptionObject = (option: Option): option is OptionObject => {
+  
+  const isOptionOptionObject = (option: unknown): option is OptionObject => {
     const result =
       typeof option === "object" && !Array.isArray(option) && option !== null;
     return result;
