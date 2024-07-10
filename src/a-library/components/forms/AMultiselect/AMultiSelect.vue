@@ -60,6 +60,29 @@ export type Options = Option | Option[]
 
 // todo:: возможно вынести в logic composable
 const isOptionSelected = (option: Option) => {
+  let result = false
+  // console.log(option); console.log('^...option:')
+  // if (props.multiple) {
+  //  
+  // }
+  // Single
+  if (!props.multiple) {
+    if (!isOptionOptionObject(option)) {
+      result = modelValueInner.value === option
+    } else {
+      if (props.returnObject) {
+        if (
+            !areOptionsArray(modelValueInner.value)
+            && isOptionOptionObject(modelValueInner.value)
+        ) {
+          result = modelValueInner.value?.[props.optionObjectFieldValue] === option[props.optionObjectFieldValue]
+        }
+      } else {
+        result = modelValueInner.value === option[props.optionObjectFieldValue]
+      }
+    }
+  }
+  console.log(result); console.log('^...result:') 
   return false
 }
 // todo:: возможно вынести в logic composable
@@ -67,7 +90,7 @@ const unselectOption = (option: Option) => {
   
 }
 
-
+// todo:: возможно вынести в logic composable
 const pushOption = (option:Option) => {
   if (areOptionsArray(modelValueInner.value)){
     modelValueInner.value = [
