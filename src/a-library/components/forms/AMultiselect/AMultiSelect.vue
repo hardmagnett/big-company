@@ -147,11 +147,14 @@ export type Options = Option | Option[];
 <style scoped>
 @import "@/a-library/components/forms/mixins/AInputable/AInputable.css";
 
-/*@position-try --top {*/
-/*  bottom: anchor(top);*/
-/*}*/
+
+@position-try --a-multiselect-popover-top {
+  bottom: anchor(top);
+  top: auto;
+}
 
 .a-multi-select {
+  
   /*Постоянное*/
   position: relative;
   
@@ -176,30 +179,21 @@ export type Options = Option | Option[];
     position: absolute;
     /*Не удалять. Пусть будет для понимания*/
     /*position-anchor: --anchor-for-popover;*/
-    
 
     margin: 0;
     padding: 0;
     border: 0;
 
-    /*border: 1px solid green;*/
-
     background-color: #aff;
 
     top: anchor(bottom);
-    /*bottom: anchor(top);*/
     right: anchor(right);
     left: anchor(left);
     
     height: 100px;
     /*min-height: 100px;*/
 
-    position-try-options: --top;
-
-    @position-try --top {
-      bottom: anchor(top);
-    }
-    
+    position-try-options: --a-multiselect-popover-top;
   }
   
   .a-multi-select__selected-values {
