@@ -153,8 +153,10 @@ export type Options = Option | Option[];
 
 
 @position-try --a-multiselect-popover-top {
-  bottom: anchor(top);
+  /*calc - костыль, потому-что нельзя дать разные стили в зависимости от перескока*/
+  bottom: calc(anchor(top) - 1px);
   top: auto;
+  /*Здесь не работают всякие border, color и т.п. 2024-07*/
 }
 
 .a-multi-select {
@@ -169,19 +171,20 @@ export type Options = Option | Option[];
   }
   
   .a-multi-select__popover {
+    
+    
     position: absolute;
     /*Не удалять. Пусть будет для понимания*/
     /*position-anchor: --anchor-for-popover;*/
 
     margin: 0;
     padding: 0;
-    border: 0;
+    /*border: 0;*/
 
     border: 1px solid var(--clr-border-blue-darker);
-
-    /*background-color: #aff;*/
-
-    top: anchor(bottom);
+    
+    /*calc - костыль, потому-что нельзя дать разные стили в зависимости от перескока*/
+    top: calc(anchor(bottom) -  1px);
     right: anchor(right);
     left: anchor(left);
     
@@ -199,7 +202,7 @@ export type Options = Option | Option[];
     padding-right: var(--gap);
     border: 1px solid var(--clr-border-blue-lighter);
     border-radius: var(--border-radius);
-    transition: border var(--time-short);
+    transition: all var(--time-short);
     width: 100%;
     background-color: white;
     cursor: pointer;
@@ -262,6 +265,7 @@ export type Options = Option | Option[];
   &.a-multi-select--focused {
     .a-multi-select__selected-values {
       border: 1px solid var(--clr-border-blue-darker);
+      border-radius: 0;
     }
     
   }
