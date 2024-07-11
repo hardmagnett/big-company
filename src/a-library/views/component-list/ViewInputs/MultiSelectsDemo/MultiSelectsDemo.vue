@@ -145,7 +145,8 @@ let allVariantsData = reactive([
 <template>
   <div class="multi-selects-demo">
 
-    <h2>Мультиселект  с большим количеством данных</h2>
+    <h2>Мультиселект</h2>
+    <h3>Длинные варианты. Количество превышает максимальную высоту</h3>
     <AMultiSelect
         label="Много больших данных"
         v-model="modelForBigData"
@@ -153,7 +154,7 @@ let allVariantsData = reactive([
         multiple
     />
     
-    <h2>Отладка работы с разными типами данных</h2>
+    <h3>Отладка работы с разными типами данных</h3>
     
     <div class="multi-selects-demo__data-variants am-cols am-cols-5">
       <!--class="multi-selects-demo__data-variant am-col-5 am-col-xl-1"-->
