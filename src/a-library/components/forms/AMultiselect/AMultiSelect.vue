@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// todo:: сделать анимацию открытия-закрытия выпадахи
 import {computed, ref} from "vue";
 import { iAInputablePropDefaults } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";

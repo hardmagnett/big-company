@@ -20,19 +20,19 @@ let optionsForBigData = [
     
 ]
 
-let multiselectVals = reactive({
-  singleInNumbersOutNumber: null,
-  singleInStringsOutString: null,
-  singleInObjectsOutNumber: null,
-  singleInObjectsOutString: null,
-  singleInObjectsOutObject: null,
-
-  multiInNumbersOutNumberArray: [],
-  multiInStringsOutStringArray: [],
-  multiInObjectsOutNumberArray: [],
-  multiInObjectsOutStringArray: [],
-  multiInObjectsOutObjectArray: [],
-});
+// let multiselectVals = reactive({
+//   singleInNumbersOutNumber: null,
+//   singleInStringsOutString: null,
+//   singleInObjectsOutNumber: null,
+//   singleInObjectsOutString: null,
+//   singleInObjectsOutObject: null,
+//
+//   multiInNumbersOutNumberArray: [],
+//   multiInStringsOutStringArray: [],
+//   multiInObjectsOutNumberArray: [],
+//   multiInObjectsOutStringArray: [],
+//   multiInObjectsOutObjectArray: [],
+// });
 
 let optionVals = {
   numbers: [1, 3, 7],
@@ -40,13 +40,11 @@ let optionVals = {
   objectsWithNumberId: [
     { tId: 1, tTitle: "One" },
     { tId: 3, tTitle: "Three" },
-    // { tId: 6, tTitle: "Six" },
     { tId: 7, tTitle: "Seven" },
   ],
   objectsWithStringId: [
     { tId: "First", tTitle: "One" },
     { tId: "Third", tTitle: "Three" },
-    // { tId: "Sixth", tTitle: "Six" },
     { tId: "Seventh", tTitle: "Seven" },
   ],
 };
@@ -149,7 +147,7 @@ let allVariantsData = reactive([
 
     <h2>Мультиселект  с большим количеством данных</h2>
     <AMultiSelect
-        label="Много данных"
+        label="Много больших данных"
         v-model="modelForBigData"
         :options="optionsForBigData"
         multiple
