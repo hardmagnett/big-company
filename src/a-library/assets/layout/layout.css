@@ -1,3 +1,15 @@
+html {
+  /*
+  Этим overflow hidden я победил проблему со скроллбаром 
+  при anhor-positioned popover для multiselect.
+  Проблема была вообще неочевидная, и похоже проявлялась
+  только на моей full-flex-вёрстке.
+  
+  На скролле обычной страницы такой проблемы не было. 
+  */
+  overflow: hidden;
+}
+
 body {
   background-color: var(--clr-bg-blue-big);
   anchor-name: --anchor-body;
