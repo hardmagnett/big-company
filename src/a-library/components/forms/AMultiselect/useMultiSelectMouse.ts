@@ -18,10 +18,10 @@ export function useMultiSelectMouse(
   }
   const closePopover = () => {
     popover.value?.hidePopover()
-    // isFocused.value = true
+    isFocused.value = true
   }
   let popoverToggleHandler = (e: Event): void => {
-    console.log('popoverToggleHandler')
+    // console.log('popoverToggleHandler')
     let event = e as ToggleEvent
     if (event.newState === 'closed') {
       isFocused.value = false

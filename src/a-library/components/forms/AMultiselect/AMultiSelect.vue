@@ -155,6 +155,7 @@ export type Options = Option | Option[];
 @position-try --a-multiselect-popover-top {
   /*calc - костыль, потому-что нельзя дать разные стили в зависимости от перескока*/
   bottom: calc(anchor(top) - 1px);
+  /*bottom: anchor(top);*/
   top: auto;
   /*Здесь не работают всякие border, color и т.п. 2024-07*/
 }
@@ -185,6 +186,7 @@ export type Options = Option | Option[];
     
     /*calc - костыль, потому-что нельзя дать разные стили в зависимости от перескока*/
     top: calc(anchor(bottom) -  1px);
+    /*top: anchor(bottom);*/
     right: anchor(right);
     left: anchor(left);
     

@@ -17,18 +17,18 @@ let multiselectVals = reactive({
 });
 
 let optionVals = {
-  numbers: [1, 3, 6, 7],
-  strings: ["one", "three", "six", "seven"],
+  numbers: [1, 3, 7],
+  strings: ["one", "three", "seven"],
   objectsWithNumberId: [
     { tId: 1, tTitle: "One" },
     { tId: 3, tTitle: "Three" },
-    { tId: 6, tTitle: "Six" },
+    // { tId: 6, tTitle: "Six" },
     { tId: 7, tTitle: "Seven" },
   ],
   objectsWithStringId: [
     { tId: "First", tTitle: "One" },
     { tId: "Third", tTitle: "Three" },
-    { tId: "Sixth", tTitle: "Six" },
+    // { tId: "Sixth", tTitle: "Six" },
     { tId: "Seventh", tTitle: "Seven" },
   ],
 };
@@ -129,200 +129,27 @@ let allVariantsData = reactive([
 <template>
   <div class="multi-selects-demo">
     <h2>Мультиселект</h2>
-
-    <div
-        class="multi-selects-demo__data-variant"
-        v-for="(dataVariant, index) in allVariantsData" :key="index">
-      <div  class="temp-hint">
-        v-model:
-        <code>{{ $debugVar(dataVariant.vModel) }}</code>
-      </div>
-      <p class="temp-hint">
-        Options: <code>{{ dataVariant.options }}</code>
-      </p>
-      <AMultiSelect
-          :label="dataVariant.label"
-          v-model="dataVariant.vModel"
-          :options="dataVariant.options"
-          :return-object="dataVariant.returnObject"
-          :multiple="dataVariant.multiple"
-          :optionObjectFieldTitle="dataVariant.optionObjectFieldTitle"
-          :optionObjectFieldValue="dataVariant.optionObjectFieldValue"
-      />
-    </div> 
-
-    <hr>
-    <div class="temp-columns">
-      <div class="temp-column">
-        <p class="temp-hint">
-          Value:
-          <code>{{ $debugVar(multiselectVals.singleInNumbersOutNumber) }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.numbers }}</code>
-        </p>
+    
+    <div class="multi-selects-demo__data-variants am-cols am-cols-5">
+      <div
+          class="multi-selects-demo__data-variant am-col-5 am-col-xl-1"
+          v-for="(dataVariant, index) in allVariantsData" :key="index">
         <AMultiSelect
-            label="number[] -> number"
-            v-model="multiselectVals.singleInNumbersOutNumber"
-            :options="optionVals.numbers"
+            :label="dataVariant.label"
+            v-model="dataVariant.vModel"
+            :options="dataVariant.options"
+            :return-object="dataVariant.returnObject"
+            :multiple="dataVariant.multiple"
+            :optionObjectFieldTitle="dataVariant.optionObjectFieldTitle"
+            :optionObjectFieldValue="dataVariant.optionObjectFieldValue"
         />
-
-        <br />
-        <p class="temp-hint">
-          Value:
-          <code>{{ $debugVar(multiselectVals.singleInStringsOutString) }}</code>
+        <div  class="multi-selects-demo__debug">
+          v-model:
+          <pre>{{ $debugVar(dataVariant.vModel) }}</pre>
+        </div>
+        <p class="multi-selects-demo__debug">
+          Options: <pre>{{ dataVariant.options }}</pre>
         </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.strings }}</code>
-        </p>
-        <AMultiSelect
-            label="string[] -> string"
-            v-model="multiselectVals.singleInStringsOutString"
-            :options="optionVals.strings"
-        />
-
-        <br />
-        <p class="temp-hint">
-          Value:
-          <code>{{ $debugVar(multiselectVals.singleInObjectsOutNumber) }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
-        </p>
-        <AMultiSelect
-            label="Object[] -> number"
-            v-model="multiselectVals.singleInObjectsOutNumber"
-            :options="optionVals.objectsWithNumberId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-        />
-
-        <br />
-        <p class="temp-hint">
-          Value:
-          <code>{{ $debugVar(multiselectVals.singleInObjectsOutString) }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
-        </p>
-        <AMultiSelect
-            label="Object[] -> string"
-            v-model="multiselectVals.singleInObjectsOutString"
-            :options="optionVals.objectsWithStringId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-        />
-
-        <br />
-        <p class="temp-hint">
-          Value:
-          <code>{{ $debugVar(multiselectVals.singleInObjectsOutObject) }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
-        </p>
-        <AMultiSelect
-            label="Object[] -> Object"
-            v-model="multiselectVals.singleInObjectsOutObject"
-            :options="optionVals.objectsWithNumberId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-            return-object
-        />
-      </div>
-
-      <div class="temp-column">
-
-        <p class="temp-hint">
-          Value:
-          <code>{{
-              $debugVar(multiselectVals.multiInNumbersOutNumberArray)
-            }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.numbers }}</code>
-        </p>
-        <AMultiSelect
-            label="number[] -> number[]"
-            v-model="multiselectVals.multiInNumbersOutNumberArray"
-            :options="optionVals.numbers"
-            multiple
-        />
-
-        <br />
-        <p class="temp-hint">
-          Value:
-          <code>{{
-              $debugVar(multiselectVals.multiInStringsOutStringArray)
-            }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.strings }}</code>
-        </p>
-        <AMultiSelect
-            label="string[] -> string[]"
-            v-model="multiselectVals.multiInStringsOutStringArray"
-            :options="optionVals.strings"
-            multiple
-        />
-
-        <br />
-        <p class="temp-hint">
-          Value:
-          <code>{{
-              $debugVar(multiselectVals.multiInObjectsOutNumberArray)
-            }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
-        </p>
-        <AMultiSelect
-            label="Object[] -> number[]"
-            v-model="multiselectVals.multiInObjectsOutNumberArray"
-            :options="optionVals.objectsWithNumberId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-            multiple
-        />
-
-        <br />
-        <p class="temp-hint">
-          Value:
-          <code>{{
-              $debugVar(multiselectVals.multiInObjectsOutStringArray)
-            }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
-        </p>
-        <AMultiSelect
-            label="Object[] -> string[]"
-            v-model="multiselectVals.multiInObjectsOutStringArray"
-            :options="optionVals.objectsWithStringId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-            multiple
-        />
-
-        <br />
-        <p class="temp-hint">
-          Value:
-          <code>{{
-              $debugVar(multiselectVals.multiInObjectsOutObjectArray)
-            }}</code>
-        </p>
-        <p class="temp-hint">
-          Options: <code>{{ optionVals.objectsWithNumberId }}</code>
-        </p>
-        <AMultiSelect
-            label="Object[] -> Object"
-            v-model="multiselectVals.multiInObjectsOutObjectArray"
-            :options="optionVals.objectsWithNumberId"
-            optionObjectFieldTitle="tTitle"
-            optionObjectFieldValue="tId"
-            multiple
-            return-object
-        />
       </div>
     </div>
   </div>
@@ -332,22 +159,15 @@ let allVariantsData = reactive([
 .multi-selects-demo {
   .multi-selects-demo__data-variant {
     outline: 1px solid gray;
-    height: 500px;
-  }
-  
-  .temp-hint {
-    font-size: var(--font-size-tiny);
-    margin: 0;
-  }
-  .temp-columns {
-    display: flex;
-    gap: var(--gap);
-
-    .temp-column {
-      /*outline: 1px solid darkred;*/
-      flex: 0 0 calc(50% - var(--gap) / 2);
+    /*height: 500px;*/
+    .multi-selects-demo__debug {
+      font-size: var(--font-size-tiny);
+      margin: 0;
+      pre {
+        height: 250px;
+        margin: 0;
+      }
     }
   }
-  
 }
 </style>
