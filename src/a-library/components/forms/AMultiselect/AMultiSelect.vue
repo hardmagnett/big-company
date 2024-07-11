@@ -183,12 +183,13 @@ export type Options = Option | Option[];
 
     margin: 0;
     padding: 0;
-    /*border: 0;*/
+    border: 0;
 
-    border: 1px solid var(--clr-border-blue-darker);
+    /*border: 1px solid var(--clr-border-blue-darker);*/
     
     /*calc - костыль, потому-что нельзя дать разные стили в зависимости от перескока*/
     top: calc(anchor(bottom) -  1px);
+    bottom: auto;
     /*top: anchor(bottom);*/
     right: anchor(right);
     left: anchor(left);
