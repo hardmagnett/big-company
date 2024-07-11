@@ -178,6 +178,9 @@ export type Options = Option | Option[];
     /*Не удалять. Пусть будет для понимания*/
     /*position-anchor: --anchor-for-popover;*/
 
+
+    position-visibility: anchors-visible;
+
     margin: 0;
     padding: 0;
     /*border: 0;*/
