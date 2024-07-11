@@ -219,10 +219,18 @@ export type Options = Option | Option[];
     
     display: flex;
     flex-flow: row wrap;
+    overflow: hidden;
     
     .a-multi-select__selected-value {
       /*outline: 1px solid darkred;*/
       height: var(--height);
+      
+      outline: 1px solid darkred;
+      max-width: 100%;
+      
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       
     }
   }
