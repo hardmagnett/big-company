@@ -190,7 +190,7 @@ export type Options = Option | Option[];
     right: anchor(right);
     left: anchor(left);
     
-    max-height: 100px;
+    max-height: 200px;
     /*min-height: 100px;*/
 
     position-try-options: --a-multiselect-popover-top;

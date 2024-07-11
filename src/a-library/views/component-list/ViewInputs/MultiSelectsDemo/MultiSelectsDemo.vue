@@ -1,6 +1,17 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import AMultiSelect from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
+
+let modelForBigData = ref([])
+let optionsForBigData = [
+    'asdfsad sdafsad asdfsad asfdasd fsdaasd sfdaasd ',
+    'asdfsad sdafsad asdfsad ', 
+    'sdafsad asdfsad ', 
+    'asdfsad 1',
+    'asdfsad 2',
+    'asdfsad 3',
+    'asdfsad 4'
+]
 
 let multiselectVals = reactive({
   singleInNumbersOutNumber: null,
@@ -128,7 +139,16 @@ let allVariantsData = reactive([
 
 <template>
   <div class="multi-selects-demo">
-    <h2>Мультиселект</h2>
+
+    <!--<h2>Мультиселект  с большим количеством данных</h2>-->
+    <!--<AMultiSelect-->
+    <!--    label="Много данных"-->
+    <!--    v-model="modelForBigData"-->
+    <!--    :options="optionsForBigData"-->
+    <!--    multiple-->
+    <!--/>-->
+    
+    <h2>Отладка работы с разными типами данных</h2>
     
     <div class="multi-selects-demo__data-variants am-cols am-cols-5">
       <div
@@ -152,8 +172,18 @@ let allVariantsData = reactive([
         </p>
       </div>
     </div>
+    <br>
+    <h2>Мультиселект  с большим количеством данных</h2>
+    <AMultiSelect
+        label="Много данных"
+        v-model="modelForBigData"
+        :options="optionsForBigData"
+        multiple
+    />
+
   </div>
 </template>
+
 
 <style scoped>
 .multi-selects-demo {
