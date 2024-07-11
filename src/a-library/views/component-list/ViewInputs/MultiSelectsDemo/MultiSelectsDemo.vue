@@ -140,19 +140,20 @@ let allVariantsData = reactive([
 <template>
   <div class="multi-selects-demo">
 
-    <!--<h2>Мультиселект  с большим количеством данных</h2>-->
-    <!--<AMultiSelect-->
-    <!--    label="Много данных"-->
-    <!--    v-model="modelForBigData"-->
-    <!--    :options="optionsForBigData"-->
-    <!--    multiple-->
-    <!--/>-->
+    <h2>Мультиселект  с большим количеством данных</h2>
+    <AMultiSelect
+        label="Много данных"
+        v-model="modelForBigData"
+        :options="optionsForBigData"
+        multiple
+    />
     
     <h2>Отладка работы с разными типами данных</h2>
     
     <div class="multi-selects-demo__data-variants am-cols am-cols-5">
-      <div
-          class="multi-selects-demo__data-variant am-col-5 am-col-xl-1"
+      <!--class="multi-selects-demo__data-variant am-col-5 am-col-xl-1"-->
+      <ACard
+          class="am-col-5 am-col-xl-1 a-card--calm"
           v-for="(dataVariant, index) in allVariantsData" :key="index">
         <AMultiSelect
             :label="dataVariant.label"
@@ -170,16 +171,16 @@ let allVariantsData = reactive([
         <p class="multi-selects-demo__debug">
           Options: <pre>{{ dataVariant.options }}</pre>
         </p>
-      </div>
+      </ACard>
     </div>
     <br>
-    <h2>Мультиселект  с большим количеством данных</h2>
-    <AMultiSelect
-        label="Много данных"
-        v-model="modelForBigData"
-        :options="optionsForBigData"
-        multiple
-    />
+    <!--<h2>Мультиселект  с большим количеством данных</h2>-->
+    <!--<AMultiSelect-->
+    <!--    label="Много данных"-->
+    <!--    v-model="modelForBigData"-->
+    <!--    :options="optionsForBigData"-->
+    <!--    multiple-->
+    <!--/>-->
 
   </div>
 </template>
