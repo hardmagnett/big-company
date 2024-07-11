@@ -119,29 +119,44 @@ export type Options = Option | Option[];
         }
       "
         popover ref="popover" class="a-multi-select__popover">
-      fsad
+      <div class="a-multi-select__options">
+        <div
+            class="a-multi-select__option"
+            :class="{
+          'a-multi-select__option--selected': isOptionSelected(option),
+        }"
+            v-for="(option, index) in options"
+            :key="createTemplateKeyForOption(option, index)"
+            @click="toggleOption(option)"
+        >
+
+
+
+          {{ createTemplateValueForOption(option) }}
+        </div>
+      </div>
       
     </div>
   </AInputControl>
   
-  <div class="a-multi-select">
-    <div class="a-multi-select__options">
-      <div
-        class="a-multi-select__option"
-        :class="{
-          'a-multi-select__option--selected': isOptionSelected(option),
-        }"
-        v-for="(option, index) in options"
-        :key="createTemplateKeyForOption(option, index)"
-        @click="toggleOption(option)"
-      >
-        
-        
-        
-        {{ createTemplateValueForOption(option) }}
-      </div>
-    </div>
-  </div>
+  <!--<div class="a-multi-select">-->
+  <!--  <div class="a-multi-select__options">-->
+  <!--    <div-->
+  <!--      class="a-multi-select__option"-->
+  <!--      :class="{-->
+  <!--        'a-multi-select__option&#45;&#45;selected': isOptionSelected(option),-->
+  <!--      }"-->
+  <!--      v-for="(option, index) in options"-->
+  <!--      :key="createTemplateKeyForOption(option, index)"-->
+  <!--      @click="toggleOption(option)"-->
+  <!--    >-->
+  <!--      -->
+  <!--      -->
+  <!--      -->
+  <!--      {{ createTemplateValueForOption(option) }}-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
 </template>
 
 <style scoped>
@@ -154,13 +169,15 @@ export type Options = Option | Option[];
 }
 
 .a-multi-select {
+  --accentedColorLess: var(--clr-bg-blue-accent);
+  --accentedColor: var(--clr-fill-blue-small);
   
   /*Постоянное*/
   position: relative;
   
   /*Временное*/
   /*outline: 1px solid #333;*/
-  background-color: #eee;
+  /*background-color: #eee;*/
   /*display: flex;*/
   /*flex-flow: column nowrap;*/
   /*gap: var(--gap);*/
@@ -184,13 +201,15 @@ export type Options = Option | Option[];
     padding: 0;
     border: 0;
 
-    background-color: #aff;
+    border: 1px solid var(--clr-border-blue-darker);
+
+    /*background-color: #aff;*/
 
     top: anchor(bottom);
     right: anchor(right);
     left: anchor(left);
     
-    height: 100px;
+    max-height: 100px;
     /*min-height: 100px;*/
 
     position-try-options: --a-multiselect-popover-top;
@@ -226,21 +245,33 @@ export type Options = Option | Option[];
     /*Постоянное*/
 
     /*Временное*/
-    display: flex;
-    flex-flow: row nowrap;
-    gap: var(--gap);
+    /*display: flex;*/
+    /*flex-flow: row nowrap;*/
+    /*gap: var(--gap);*/
   }
   .a-multi-select__option {
     /*Постоянное*/
     cursor: pointer;
+    /*padding: var(--gap);*/
+    height: calc(var(--gap) * 2);
+    font-size: var(--font-size-tiny);
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    align-items: center;
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+    
 
     /*Временное*/
-    outline: 1px solid #339;
-    flex: 0 0 150px;
+    /*flex: 0 0 150px;*/
     /*font-size: var(--font-size-tiny);*/
 
+    &:hover {
+      background-color: var(--accentedColorLess);
+    }
     &.a-multi-select__option--selected {
-      background-color: #aff;
+      background-color: var(--accentedColor);
+      color: var(--clr-font-blue-light) !important;
     }
   }
 

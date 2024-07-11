@@ -20,16 +20,16 @@ let optionVals = {
   numbers: [1, 3, 6, 7],
   strings: ["one", "three", "six", "seven"],
   objectsWithNumberId: [
-    { tId: 1, tTitle: "one" },
-    { tId: 3, tTitle: "three" },
-    { tId: 6, tTitle: "six" },
-    { tId: 7, tTitle: "seven" },
+    { tId: 1, tTitle: "One" },
+    { tId: 3, tTitle: "Three" },
+    { tId: 6, tTitle: "Six" },
+    { tId: 7, tTitle: "Seven" },
   ],
   objectsWithStringId: [
-    { tId: "first", tTitle: "one" },
-    { tId: "third", tTitle: "three" },
-    { tId: "sixth", tTitle: "six" },
-    { tId: "seventh", tTitle: "seven" },
+    { tId: "First", tTitle: "One" },
+    { tId: "Third", tTitle: "Three" },
+    { tId: "Sixth", tTitle: "Six" },
+    { tId: "Seventh", tTitle: "Seven" },
   ],
 };
 </script>
@@ -260,7 +260,7 @@ let optionVals = {
     gap: var(--gap);
 
     .temp-column {
-      outline: 1px solid darkred;
+      /*outline: 1px solid darkred;*/
       flex: 0 0 calc(50% - var(--gap) / 2);
     }
   }

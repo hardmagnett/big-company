@@ -1,7 +1,7 @@
 // import {ref} from "vue";
 
 import type {Ref} from "vue";
-import {ref} from "vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 
 export function useMultiSelectMouse(
   realInput: Ref<HTMLInputElement | null>,
@@ -16,6 +16,19 @@ export function useMultiSelectMouse(
     popover.value?.showPopover()
     isFocused.value = true
   }
+  let popoverToggleHandler = (e: Event): void => {
+    let event = e as ToggleEvent
+    if (event.newState === 'closed') {
+      isFocused.value = false
+    }
+    
+  }
+  onMounted(()=>{
+    popover.value?.addEventListener("toggle", popoverToggleHandler)
+  })
+  onBeforeUnmount(()=>{
+    popover.value?.removeEventListener("toggle", popoverToggleHandler)
+  })
   
   return {
     isFocused,
