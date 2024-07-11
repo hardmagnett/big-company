@@ -1,5 +1,9 @@
 <script setup lang="ts">
 // todo:: сделать анимацию открытия-закрытия выпадахи
+// todo:: НЕПРАВИЛЬНЫЙ ПОКАЗ!!! 
+//  object[]->number, object[]->number[] 
+//  object[]->string, object[]->string[]
+//  и выводят в выбранных вариантах возвращаемый ключ, а должны выводить поле которое для показа  
 import {computed, ref} from "vue";
 import { iAInputablePropDefaults } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
