@@ -139,8 +139,10 @@ export type Options = Option | Option[];
         >
 
 
-
-          {{ createTemplateValueForOption(option) }}
+          <span class="mod--ellipsis-one-line">
+            {{ createTemplateValueForOption(option) }}
+          </span>
+          
         </div>
       </div>
       
