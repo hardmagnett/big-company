@@ -52,8 +52,16 @@ const {
 
 const {
   isFocused,
-  selectedValuesClickHandler
+  selectedValuesClickHandler,
+  closePopover
 } = useMultiSelectMouse(realInput, popover)
+
+const optionClickHandler = (e: MouseEvent, option: Option) => {
+  if (!props.multiple) {
+    closePopover()
+  }
+  toggleOption(option)
+}
 
 export type OptionObject = Record<string | number, string | number>;
 export type Option = null | string | number | OptionObject;
@@ -127,7 +135,7 @@ export type Options = Option | Option[];
         }"
             v-for="(option, index) in options"
             :key="createTemplateKeyForOption(option, index)"
-            @click="toggleOption(option)"
+            @click="optionClickHandler($event, option)"
         >
 
 
@@ -138,25 +146,6 @@ export type Options = Option | Option[];
       
     </div>
   </AInputControl>
-  
-  <!--<div class="a-multi-select">-->
-  <!--  <div class="a-multi-select__options">-->
-  <!--    <div-->
-  <!--      class="a-multi-select__option"-->
-  <!--      :class="{-->
-  <!--        'a-multi-select__option&#45;&#45;selected': isOptionSelected(option),-->
-  <!--      }"-->
-  <!--      v-for="(option, index) in options"-->
-  <!--      :key="createTemplateKeyForOption(option, index)"-->
-  <!--      @click="toggleOption(option)"-->
-  <!--    >-->
-  <!--      -->
-  <!--      -->
-  <!--      -->
-  <!--      {{ createTemplateValueForOption(option) }}-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</div>-->
 </template>
 
 <style scoped>
@@ -175,20 +164,7 @@ export type Options = Option | Option[];
   /*Постоянное*/
   position: relative;
   
-  /*Временное*/
-  /*outline: 1px solid #333;*/
-  /*background-color: #eee;*/
-  /*display: flex;*/
-  /*flex-flow: column nowrap;*/
-  /*gap: var(--gap);*/
-  /*padding: var(--gap);*/
-  /*padding: 2px;*/
   .a-multi-select__anchor-for-popover {
-    /*Не удалять. Пусть будет для понимания*/
-    /*anchor-name: --anchor-for-popover;*/
-    
-    /*border: 10px solid darkred;*/
-    /*background-color: red !important;*/
     position: relative;
   }
   
@@ -217,7 +193,6 @@ export type Options = Option | Option[];
   
   .a-multi-select__selected-values {
     --height: calc(var(--gap) * 2);
-    /*display: block;*/
     height: var(--height);
     line-height: var(--height);
     padding-left: var(--gap);
