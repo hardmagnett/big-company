@@ -201,9 +201,29 @@ export type Options = Option | Option[];
     left: anchor(left);
 
     max-height: 200px;
-    /*min-height: 100px;*/
 
     position-try-options: --a-multiselect-popover-top;
+    
+    /*Анимации открытия-закрытия start*/
+    --transition-duration-opacity: var(--time-short);
+    opacity: 0;
+    transition:
+        opacity var(--transition-duration-opacity),
+        display var(--transition-duration-opacity) allow-discrete,
+        overlay var(--transition-duration-opacity) allow-discrete;
+
+
+    
+    &[popover]:popover-open {
+      opacity: 1;
+    }
+    @starting-style {
+      &[popover]:popover-open {
+        opacity: 0;
+      }
+    }
+    /*Анимации открытия-закрытия end*/
+    
   }
 
   .a-multi-select__selected-values-and-other {
