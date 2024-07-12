@@ -25,7 +25,7 @@ html {
   Всё вышесказанное распространяется и на body 
   */
   overflow: hidden;
-  
+
   /*Это - чтобы дебажить проблему со скроллом в случае отключения overflow: hidden;*/
   /*scrollbar-color: red green;*/
 }
@@ -34,4 +34,3 @@ body {
   background-color: var(--clr-bg-blue-big);
   anchor-name: --anchor-body;
 }
-
