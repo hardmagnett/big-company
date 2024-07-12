@@ -13,16 +13,9 @@ import { RouterView } from "vue-router";
 
 <style scoped>
 .app {
-  display: flex;
-  width: 100%;
-  flex-flow: row nowrap;
-
-  height: 100%;
-  position: absolute;
-
   .a-container {
-    flex: 1 1 auto;
-    overflow-y: auto; /*Не помню зачем это. Хорошо-бы узнать*/
+    width: 100%;
+    height: 100dvh;
   }
 }
 </style>
