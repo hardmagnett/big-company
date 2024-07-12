@@ -1,4 +1,4 @@
-let tempPositions = [
+const tempPositions = [
   {id: 1, title: 'IT-Менеджер'},
   {id: 2, title: 'Аналитик данных'},
   {id: 3, title: 'Backend-разработчик'},
