@@ -13,14 +13,6 @@ const menuItems: Array<IMenuItem> = [
   },
   {
     id: i++,
-    title: "Должности",
-    icon: "mdi-badge-account-horizontal-outline",
-    route: {
-      to: "positions",
-    },
-  },
-  {
-    id: i++,
     title: "Компоненты",
     icon: "mdi-vuejs",
     children: [
