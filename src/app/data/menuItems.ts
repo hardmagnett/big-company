@@ -113,6 +113,14 @@ const menuItems: Array<IMenuItem> = [
           to: "experiments",
         },
       },
+      {
+        id: i++,
+        title: "О Проекте",
+        icon: "mdi-information-outline",
+        route: {
+          to: "about",
+        },
+      },
     ],
   },
 ];
