@@ -36,6 +36,5 @@ import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiS
 
 <style scoped>
 .inputs-page {
-  /*padding-bottom: 200px;*/
 }
 </style>
