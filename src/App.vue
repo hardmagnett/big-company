@@ -17,8 +17,10 @@ import { RouterView } from "vue-router";
   width: 100%;
   flex-flow: row nowrap;
 
-  height: 100%;
-  position: absolute;
+  /*height: 100%;*/
+  /*position: absolute;*/
+
+  height: 100dvh;
 
   .a-container {
     flex: 1 1 auto;

@@ -7,7 +7,8 @@ html {
   
   На скролле обычной страницы такой проблемы не было. 
   */
-  overflow: hidden;
+  /*overflow: hidden;*/
+  scrollbar-color: red green;
 }
 
 body {
