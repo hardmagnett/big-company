@@ -7,17 +7,7 @@ import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiS
     <Teleport to="#page-header-place">
       <APageHeader> Элементы форм </APageHeader>
     </Teleport>
-
-    <!--todo:: перенести потом это вниз и убрать коммент ниже-->
-    <MultiSelectsDemo />
-
-    <!--<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />-->
-    <!--<hr />-->
-    <!--<hr />-->
-    <!--<hr />-->
-    <!--<hr />-->
-    <!--<hr />-->
-    <br />
+    
     <h2>Текстовое поле</h2>
     <p>По умолчанию.</p>
     <AInput label="Лейбл" hideHint></AInput>
@@ -40,11 +30,12 @@ import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiS
     />
     <ACheckBox hide-hint hide-label />
     <br />
+    <MultiSelectsDemo />
   </div>
 </template>
 
 <style scoped>
 .inputs-page {
-  padding-bottom: 200px;
+  /*padding-bottom: 200px;*/
 }
 </style>
