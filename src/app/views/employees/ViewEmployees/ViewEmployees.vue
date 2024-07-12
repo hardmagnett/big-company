@@ -95,8 +95,7 @@ onBeforeMount(() => {});
       @needToClose="isOpenDialogEmployeeCreatingEditing = false"
       @apply="createEditEmployee"
     ></EmployeeDialogAddEdit>
-
-    <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
+    
     <EmployeesTable
       class=""
       @needToDeleteEmployee="needToDeleteEmployeeHandler"
