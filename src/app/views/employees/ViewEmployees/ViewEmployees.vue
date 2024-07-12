@@ -14,7 +14,7 @@ let isOpenDialogEmployeeCreatingEditing = ref(false);
 
 let filter = reactive({
   query: "",
-  positionsIds: [] as number[]
+  positionsIds: [] as number[],
 });
 let filterUpdatesQtyKey = ref(0);
 
@@ -95,7 +95,7 @@ onBeforeMount(() => {});
       @needToClose="isOpenDialogEmployeeCreatingEditing = false"
       @apply="createEditEmployee"
     ></EmployeeDialogAddEdit>
-    
+
     <EmployeesTable
       class=""
       @needToDeleteEmployee="needToDeleteEmployeeHandler"

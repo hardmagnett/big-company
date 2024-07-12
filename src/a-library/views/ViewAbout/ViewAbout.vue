@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { } from 'vue'
+import {} from "vue";
 import RootParent from "@/a-library/views/component-list/ViewExperiments/RootParent.vue";
-
 </script>
 
 <template>
@@ -12,20 +11,23 @@ import RootParent from "@/a-library/views/component-list/ViewExperiments/RootPar
     <RootParent />
     <h2>Новые технологии</h2>
     <p>
-      В проекте используются свежие (на 2024-й год) возможности браузера, <br>
-      Поэтому правильная работа гарантируется лишь в Chrome на десктопе и на смартфонах.
-      <br>
+      В проекте используются свежие (на 2024-й год) возможности браузера, <br />
+      Поэтому правильная работа гарантируется лишь в Chrome на десктопе и на
+      смартфонах.
+      <br />
     </p>
-    <p>
-      Что из нового:
-      <ul>
-        <li>@container style(--boolean-css-variable)</li>
-        <li>Dialog, Popover</li>
-        <li>Anchor Positioning</li>
-      </ul>
-    </p>
+    <p>Что из нового:</p>
+    <ul>
+      <li>@container style(--boolean-css-variable)</li>
+      <li>Dialog, Popover</li>
+      <li>Anchor Positioning</li>
+    </ul>
+
     <h2>Нет UI-UX-зависимостей</h2>
-    <p>Зависимые библиотеки применяются лишь для хранения, обработки и валидации данных.</p>
+    <p>
+      Зависимые библиотеки применяются лишь для хранения, обработки и валидации
+      данных.
+    </p>
     <p>Все UI-UX-компоненты самописные.</p>
     <h2>Мокапирование бэкенда</h2>
     <p>Бэкенда для данного проекта не существует.</p>
@@ -35,5 +37,6 @@ import RootParent from "@/a-library/views/component-list/ViewExperiments/RootPar
 </template>
 
 <style scoped>
-.view-about {}
+.view-about {
+}
 </style>

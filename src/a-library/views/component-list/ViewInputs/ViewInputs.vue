@@ -7,7 +7,7 @@ import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiS
     <Teleport to="#page-header-place">
       <APageHeader> Элементы форм </APageHeader>
     </Teleport>
-    
+
     <h2>Текстовое поле</h2>
     <p>По умолчанию.</p>
     <AInput label="Лейбл" hideHint></AInput>

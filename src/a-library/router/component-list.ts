@@ -74,9 +74,6 @@ export default [
   {
     path: `${pathToComponents}about`,
     name: "about",
-    component: () =>
-      import(
-        "@/a-library/views/ViewAbout/ViewAbout.vue"
-        ),
+    component: () => import("@/a-library/views/ViewAbout/ViewAbout.vue"),
   },
 ];

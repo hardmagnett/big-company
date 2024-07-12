@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   "update:modelValue": [value: Options];
-  "blur": [];
+  blur: [];
 }>();
 
 export type Emit = typeof emit;
