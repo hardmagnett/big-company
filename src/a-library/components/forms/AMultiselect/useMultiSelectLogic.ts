@@ -5,7 +5,7 @@ import type {
   PropsWithDefaults,
 } from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
 import type { WritableComputedRef } from "vue";
-import {computed} from "vue";
+import { computed } from "vue";
 
 export function useMultiSelectLogic(
   props: PropsWithDefaults,
@@ -14,7 +14,7 @@ export function useMultiSelectLogic(
   const areOptionsArray = (options: unknown): options is Array<Option> => {
     return Array.isArray(options);
   };
-  
+
   const isOptionOptionObject = (option: unknown): option is OptionObject => {
     const result =
       typeof option === "object" && !Array.isArray(option) && option !== null;
@@ -27,59 +27,57 @@ export function useMultiSelectLogic(
       : index;
     return result;
   };
-  
+
   const findOptionBySelectedValue = (selectedValue: Option) => {
     let option = props.options.find((option) => {
-      let valueToCompare
-      
+      let valueToCompare;
+
       if (isOptionOptionObject(option)) {
         if (isOptionOptionObject(selectedValue)) {
-          valueToCompare = option
+          valueToCompare = option;
         } else {
-          valueToCompare = option[props.optionObjectFieldValue]
+          valueToCompare = option[props.optionObjectFieldValue];
         }
-        
       } else {
-        valueToCompare = option
+        valueToCompare = option;
       }
-      
-      return selectedValue === valueToCompare
-    })
-    return option
-  }
-  
+
+      return selectedValue === valueToCompare;
+    });
+    return option;
+  };
+
   const createTemplateValueForSelectedValue = (selectedValue: Option) => {
-    let option = findOptionBySelectedValue(selectedValue)
+    let option = findOptionBySelectedValue(selectedValue);
     if (option) {
-      return createTemplateValueForOption(option)
+      return createTemplateValueForOption(option);
     } else {
       // Предполагается что раз опция выбрана, значит она есть в списке доступных опций.
-      return 'Опция не найдена почему-то'
+      return "Опция не найдена почему-то";
     }
-    
-  }
-  
+  };
+
   const createTemplateValueForOption = (option: Option) => {
-  //   let result
-  //  
-  //   if (isOptionOptionObject(option)) {
-  //     result = option[props.optionObjectFieldTitle]
-  //   } else {
-  //     // если примитив
-  //    
-  //     if(props.returnObject) {
-  //       result = option
-  //     } else {
-  //       result = 'shit'
-  //     }
-  //    
-  //   }
-    
+    //   let result
+    //
+    //   if (isOptionOptionObject(option)) {
+    //     result = option[props.optionObjectFieldTitle]
+    //   } else {
+    //     // если примитив
+    //
+    //     if(props.returnObject) {
+    //       result = option
+    //     } else {
+    //       result = 'shit'
+    //     }
+    //
+    //   }
+
     const result = isOptionOptionObject(option)
       ? option[props.optionObjectFieldTitle]
       : option;
 
-    return result
+    return result;
     // return result + ' YO';
   };
 

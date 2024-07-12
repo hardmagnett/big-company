@@ -7,7 +7,7 @@ import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiS
     <Teleport to="#page-header-place">
       <APageHeader> Элементы форм </APageHeader>
     </Teleport>
-    
+
     <MultiSelectsDemo />
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -45,7 +45,5 @@ import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiS
 <style scoped>
 .inputs-page {
   padding-bottom: 200px;
-
-
 }
 </style>

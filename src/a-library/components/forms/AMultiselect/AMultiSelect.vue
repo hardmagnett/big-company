@@ -1,6 +1,6 @@
 <script setup lang="ts">
-// todo:: сделать анимацию открытия-закрытия выпадахи 
-import {computed, ref} from "vue";
+// todo:: сделать анимацию открытия-закрытия выпадахи
+import { computed, ref } from "vue";
 import { iAInputablePropDefaults } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 
@@ -30,8 +30,8 @@ const emit = defineEmits<{
   "update:modelValue": [value: Options];
 }>();
 
-const realInput = ref<HTMLInputElement | null>(null)
-const popover = ref<HTMLInputElement | null>(null)
+const realInput = ref<HTMLInputElement | null>(null);
+const popover = ref<HTMLInputElement | null>(null);
 
 let modelValueInner = computed({
   get() {
@@ -57,18 +57,15 @@ const {
   createTemplateValueForSelectedValue,
 } = useMultiSelectLogic(props, modelValueInner);
 
-const {
-  isFocused,
-  selectedValuesClickHandler,
-  closePopover
-} = useMultiSelectMouse(realInput, popover)
+const { isFocused, selectedValuesClickHandler, closePopover } =
+  useMultiSelectMouse(realInput, popover);
 
 const optionClickHandler = (e: MouseEvent, option: Option) => {
   if (!props.multiple) {
-    closePopover()
+    closePopover();
   }
-  toggleOption(option)
-}
+  toggleOption(option);
+};
 
 export type OptionObject = Record<string | number, string | number>;
 export type Option = null | string | number | OptionObject;
@@ -76,103 +73,91 @@ export type Options = Option | Option[];
 </script>
 
 <template>
-
   <AInputControl
-      :label="label"
-      :hideLabel="hideLabel"
-      :hideHint="hideHint"
-      class="a-multi-select"
-      :class="{ 
-        'a-input--with-error': errorMessages?.length,
-        'a-multi-select--focused': isFocused 
-      }"
-      :errorMessages="errorMessages"
+    :label="label"
+    :hideLabel="hideLabel"
+    :hideHint="hideHint"
+    class="a-multi-select"
+    :class="{
+      'a-input--with-error': errorMessages?.length,
+      'a-multi-select--focused': isFocused,
+    }"
+    :errorMessages="errorMessages"
   >
     <input
-        class="a-multi-select__input a-inputable__hidden-original-input"
-        type="select"
-        ref="realInput"
-        @focus="selectedValuesClickHandler"
+      class="a-multi-select__input a-inputable__hidden-original-input"
+      type="select"
+      ref="realInput"
+      @focus="selectedValuesClickHandler"
     />
-    <div class="
-        a-multi-select__selected-values-and-other
-        a-multi-select__anchor-for-popover
-      "
-       :style="
-        // @ts-ignore: TS не знает о position-anchor в 2024-07.
-        {'anchor-name': `--anchor-for-popover-${$.uid}`}
-      "
-       @click="selectedValuesClickHandler"
-    
+    <div
+      class="a-multi-select__selected-values-and-other a-multi-select__anchor-for-popover"
+      :style="// @ts-ignore: TS не знает о position-anchor в 2024-07.
+      { 'anchor-name': `--anchor-for-popover-${$.uid}` }"
+      @click="selectedValuesClickHandler"
     >
       <div class="a-multi-select__selected-values">
-      <span
+        <span
           v-if="!areOptionsArray(modelValueInner) && modelValueInner"
           class="a-multi-select__selected-value"
-      >
-        {{createTemplateValueForSelectedValue(modelValueInner)}}
-      </span>
+        >
+          {{ createTemplateValueForSelectedValue(modelValueInner) }}
+        </span>
         <template v-if="areOptionsArray(modelValueInner)">
-          <template
-              v-for="(selectedOption, index) in modelValueInner"
-          >
-          <span
-              class="a-multi-select__selected-value"
-          >
-            {{createTemplateValueForSelectedValue(selectedOption)}}<span 
-              v-if="index != modelValueInner.length - 1">,&nbsp;</span>
-          </span>
+          <template v-for="(selectedOption, index) in modelValueInner">
+            <span class="a-multi-select__selected-value">
+              {{ createTemplateValueForSelectedValue(selectedOption)
+              }}<span v-if="index != modelValueInner.length - 1">,&nbsp;</span>
+            </span>
           </template>
         </template>
       </div>
-      <div class="a-multi-select__selected-qty"
-           v-if="areOptionsArray(modelValueInner) && modelValueInner.length > 1"
+      <div
+        class="a-multi-select__selected-qty"
+        v-if="areOptionsArray(modelValueInner) && modelValueInner.length > 1"
       >
         (Всего:
-        
-        <span class="a-multi-select__selected-qty-number">{{modelValueInner.length}}</span>
-        
+
+        <span class="a-multi-select__selected-qty-number">{{
+          modelValueInner.length
+        }}</span>
+
         )
       </div>
     </div>
 
-
     <div
-      :style="
-        {
-          // @ts-ignore: TS не знает о position-anchor в 2024-07.
-          'width':`anchor-size(--anchor-for-popover-${$.uid} width)`,
-          // @ts-ignore: TS не знает о position-anchor в 2024-07.
-          'position-anchor': `--anchor-for-popover-${$.uid}`
-        }
-      "
-        popover ref="popover" class="a-multi-select__popover">
+      :style="{
+        // @ts-ignore: TS не знает о position-anchor в 2024-07.
+        width: `anchor-size(--anchor-for-popover-${$.uid} width)`,
+        // @ts-ignore: TS не знает о position-anchor в 2024-07.
+        'position-anchor': `--anchor-for-popover-${$.uid}`,
+      }"
+      popover
+      ref="popover"
+      class="a-multi-select__popover"
+    >
       <div class="a-multi-select__options">
         <div
-            class="a-multi-select__option"
-            :class="{
-          'a-multi-select__option--selected': isOptionSelected(option),
-        }"
-            v-for="(option, index) in options"
-            :key="createTemplateKeyForOption(option, index)"
-            @click="optionClickHandler($event, option)"
+          class="a-multi-select__option"
+          :class="{
+            'a-multi-select__option--selected': isOptionSelected(option),
+          }"
+          v-for="(option, index) in options"
+          :key="createTemplateKeyForOption(option, index)"
+          @click="optionClickHandler($event, option)"
         >
-
-
           <span class="mod--ellipsis-one-line">
             {{ createTemplateValueForOption(option) }}
           </span>
-          
         </div>
       </div>
-      
     </div>
   </AInputControl>
 </template>
 
 <style scoped>
 @import "@/a-library/components/forms/mixins/AInputable/AInputable.css";
-
 
 @position-try --a-multiselect-popover-top {
   /*calc - костыль, потому-что нельзя дать разные стили в зависимости от перескока*/
@@ -185,21 +170,18 @@ export type Options = Option | Option[];
 .a-multi-select {
   --accentedColorLess: var(--clr-bg-blue-accent);
   --accentedColor: var(--clr-fill-blue-small);
-  
+
   /*Постоянное*/
   position: relative;
-  
+
   .a-multi-select__anchor-for-popover {
     position: relative;
   }
-  
+
   .a-multi-select__popover {
-    
-    
     position: absolute;
     /*Не удалять. Пусть будет для понимания*/
     /*position-anchor: --anchor-for-popover;*/
-
 
     position-visibility: anchors-visible;
 
@@ -210,14 +192,14 @@ export type Options = Option | Option[];
     /*Опасный момент. */
     /*Бордюры у popover могут вызывать непредсказуемое поведение*/
     border: 1px solid var(--clr-border-blue-darker);
-    
+
     /*calc - костыль, потому-что нельзя дать разные стили в зависимости от перескока*/
-    top: calc(anchor(bottom) -  1px);
+    top: calc(anchor(bottom) - 1px);
     bottom: auto;
     /*top: anchor(bottom);*/
     right: anchor(right);
     left: anchor(left);
-    
+
     max-height: 200px;
     /*min-height: 100px;*/
 
@@ -235,7 +217,7 @@ export type Options = Option | Option[];
     width: 100%;
     background-color: white;
     cursor: pointer;
-    
+
     display: flex;
     flex-flow: row nowrap;
 
@@ -252,12 +234,10 @@ export type Options = Option | Option[];
       }
     }
     .a-multi-select__selected-values {
-      
       height: var(--height);
       line-height: var(--height);
-      
+
       flex: 1 1 auto;
-      
 
       display: flex;
       flex-flow: row wrap;
@@ -273,15 +253,10 @@ export type Options = Option | Option[];
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-
       }
     }
   }
-  
-  
 
-
-  
   .a-multi-select__options {
     /*Постоянное*/
 
@@ -301,7 +276,6 @@ export type Options = Option | Option[];
     align-items: center;
     padding-left: var(--gap);
     padding-right: var(--gap);
-    
 
     /*Временное*/
     /*flex: 0 0 150px;*/
@@ -318,7 +292,7 @@ export type Options = Option | Option[];
 
   /*.a-multi-select__input:focus-visible {*/
   .a-multi-select__input:focus {
-  /*.a-multi-select__input {*/
+    /*.a-multi-select__input {*/
     background-color: red;
     opacity: 0.05;
   }
@@ -330,7 +304,6 @@ export type Options = Option | Option[];
       border: 1px solid var(--clr-border-blue-darker);
       border-radius: 0;
     }
-    
   }
 }
 </style>
