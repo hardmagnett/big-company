@@ -119,8 +119,8 @@ export type Options = Option | Option[];
           <span
               class="a-multi-select__selected-value"
           >
-            {{createTemplateValueForSelectedValue(selectedOption)}}
-            <span v-if="index != modelValueInner.length - 1">,&nbsp;</span>
+            {{createTemplateValueForSelectedValue(selectedOption)}}<span 
+              v-if="index != modelValueInner.length - 1">,&nbsp;</span>
           </span>
           </template>
         </template>
