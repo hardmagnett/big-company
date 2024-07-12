@@ -1,6 +1,7 @@
-import tasks from "@/app/router/tasks";
 import employees from "@/app/router/employees";
+import positions from "@/app/router/positions";
 
-const routes = [...tasks, ...employees];
+
+const routes = [...employees, ...positions];
 
 export default routes;

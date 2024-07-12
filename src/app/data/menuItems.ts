@@ -5,18 +5,18 @@ let i = 0;
 const menuItems: Array<IMenuItem> = [
   {
     id: i++,
-    title: "Задачи",
-    icon: "mdi-view-dashboard-variant",
-    route: {
-      to: "tasks",
-    },
-  },
-  {
-    id: i++,
     title: "Сотрудники",
     icon: "mdi-account-group",
     route: {
       to: "employees",
+    },
+  },
+  {
+    id: i++,
+    title: "Должности",
+    icon: "mdi-badge-account-horizontal-outline",
+    route: {
+      to: "positions",
     },
   },
   {
