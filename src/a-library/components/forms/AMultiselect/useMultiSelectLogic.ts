@@ -57,7 +57,6 @@ export function useMultiSelectLogic(
   };
 
   const createTemplateValueForOption = (option: Option) => {
-
     const result = isOptionOptionObject(option)
       ? option[props.optionObjectFieldTitle]
       : option;

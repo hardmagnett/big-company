@@ -103,8 +103,11 @@ export type Options = Option | Option[];
           {{ createTemplateValueForSelectedValue(modelValueInner) }}
         </span>
         <template v-if="areOptionsArray(modelValueInner)">
-          <template v-for="(selectedOption, index) in modelValueInner" :key="index">
-            <span class="a-multi-select__selected-value" >
+          <template
+            v-for="(selectedOption, index) in modelValueInner"
+            :key="index"
+          >
+            <span class="a-multi-select__selected-value">
               {{ createTemplateValueForSelectedValue(selectedOption)
               }}<span v-if="index != modelValueInner.length - 1">,&nbsp;</span>
             </span>
@@ -202,17 +205,15 @@ export type Options = Option | Option[];
     max-height: 200px;
 
     position-try-options: --a-multiselect-popover-top;
-    
+
     /*Анимации открытия-закрытия start*/
     --transition-duration-opacity: var(--time-short);
     opacity: 0;
     transition:
-        opacity var(--transition-duration-opacity),
-        display var(--transition-duration-opacity) allow-discrete,
-        overlay var(--transition-duration-opacity) allow-discrete;
+      opacity var(--transition-duration-opacity),
+      display var(--transition-duration-opacity) allow-discrete,
+      overlay var(--transition-duration-opacity) allow-discrete;
 
-
-    
     &[popover]:popover-open {
       opacity: 1;
     }
@@ -222,7 +223,6 @@ export type Options = Option | Option[];
       }
     }
     /*Анимации открытия-закрытия end*/
-    
   }
 
   .a-multi-select__selected-values-and-other {
@@ -272,7 +272,6 @@ export type Options = Option | Option[];
   }
 
   .a-multi-select__options {
-
   }
   .a-multi-select__option {
     cursor: pointer;
@@ -283,7 +282,6 @@ export type Options = Option | Option[];
     align-items: center;
     padding-left: var(--gap);
     padding-right: var(--gap);
-    
 
     &:hover {
       background-color: var(--accentedColorLess);
@@ -293,7 +291,7 @@ export type Options = Option | Option[];
       color: var(--clr-font-blue-light) !important;
     }
   }
-  
+
   .a-multi-select__input:focus {
     /*Полезно будет для отладки*/
     /*background-color: red;*/

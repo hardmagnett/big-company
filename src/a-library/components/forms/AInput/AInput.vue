@@ -33,10 +33,8 @@ const emit = defineEmits([...iAInputableEmits]);
       :autofocus="autofocus"
       :type="type"
       :name="name"
-      
       :value="model"
-      @input="e=>model = (e.target as HTMLInputElement).value"
-      
+      @input="(e) => (model = (e.target as HTMLInputElement).value)"
       class="a-input__input"
       @blur="emit('blur')"
     />
