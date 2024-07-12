@@ -1,9 +1,23 @@
+<script setup lang="ts">
+import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiSelectsDemo/MultiSelectsDemo.vue";
+</script>
+
 <template>
   <div class="inputs-page">
     <Teleport to="#page-header-place">
       <APageHeader> Элементы форм </APageHeader>
     </Teleport>
 
+    <!--todo:: перенести потом это вниз и убрать коммент ниже-->
+    <MultiSelectsDemo />
+
+    <!--<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />-->
+    <!--<hr />-->
+    <!--<hr />-->
+    <!--<hr />-->
+    <!--<hr />-->
+    <!--<hr />-->
+    <br />
     <h2>Текстовое поле</h2>
     <p>По умолчанию.</p>
     <AInput label="Лейбл" hideHint></AInput>
@@ -34,4 +48,3 @@
   padding-bottom: 200px;
 }
 </style>
-<script setup lang="ts"></script>

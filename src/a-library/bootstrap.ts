@@ -17,6 +17,7 @@ import AInputControlHint from "@/a-library/components/forms/AInputControlHint/AI
 import ABtn from "@/a-library/components/forms/ABtn/ABtn.vue";
 import AInput from "@/a-library/components/forms/AInput/AInput.vue";
 import ACheckBox from "@/a-library/components/forms/ACheckBox/ACheckBox.vue";
+import AMultiSelect from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
 
 // Typo
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
@@ -39,6 +40,7 @@ import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalStorage";
 import toast from "@/a-library/vue-plugins/toast";
 import i18next from "@/a-library/vue-plugins/i18next";
+import templateHelpers from "@/a-library/vue-plugins/templateHelpers";
 
 /**
  * Подключает компоненты из библиотеки.
@@ -71,6 +73,7 @@ export default function ({
   vueApp.component("ABtn", ABtn);
   vueApp.component("AInput", AInput);
   vueApp.component("ACheckBox", ACheckBox);
+  vueApp.component("AMultiSelect", AMultiSelect);
 
   // Typo
   vueApp.component("AIcon", AIcon);
@@ -93,4 +96,5 @@ export default function ({
   vueApp.use(responsiveGlobalStorage);
   vueApp.use(toast);
   vueApp.use(i18next);
+  vueApp.use(templateHelpers);
 }

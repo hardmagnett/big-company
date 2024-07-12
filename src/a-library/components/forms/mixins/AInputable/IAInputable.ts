@@ -5,8 +5,8 @@
 export interface IAInputableProps {
   autofocus?: boolean;
   label?: string;
-  name?: string; // То, из чего собирается нативный FormData. Так-же используется как идентификатор в валидаторе.
-  rules?: string;
+  name?: string; // Кажется не применялся
+  rules?: string; // Кажется не применялся. Мои инпуты ведь валидируются снаружи.
   hideLabel?: boolean;
   hideHint?: boolean;
   errorMessages?: Array<string>;
