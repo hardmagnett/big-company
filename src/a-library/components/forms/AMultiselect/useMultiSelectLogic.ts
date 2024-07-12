@@ -49,8 +49,13 @@ export function useMultiSelectLogic(
   
   const createTemplateValueForSelectedValue = (selectedValue: Option) => {
     let option = findOptionBySelectedValue(selectedValue)
+    if (option) {
+      return createTemplateValueForOption(option)
+    } else {
+      // Предполагается что раз опция выбрана, значит она есть в списке доступных опций.
+      return 'Опция не найдена почему-то'
+    }
     
-    return createTemplateValueForOption(option)
   }
   
   const createTemplateValueForOption = (option: Option) => {
