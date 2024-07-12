@@ -5,7 +5,6 @@ import type {
   PropsWithDefaults,
 } from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
 import type { WritableComputedRef } from "vue";
-import { computed } from "vue";
 
 export function useMultiSelectLogic(
   props: PropsWithDefaults,
@@ -29,7 +28,7 @@ export function useMultiSelectLogic(
   };
 
   const findOptionBySelectedValue = (selectedValue: Option) => {
-    let option = props.options.find((option) => {
+    const option = props.options.find((option) => {
       let valueToCompare;
 
       if (isOptionOptionObject(option)) {
@@ -48,7 +47,7 @@ export function useMultiSelectLogic(
   };
 
   const createTemplateValueForSelectedValue = (selectedValue: Option) => {
-    let option = findOptionBySelectedValue(selectedValue);
+    const option = findOptionBySelectedValue(selectedValue);
     if (option) {
       return createTemplateValueForOption(option);
     } else {

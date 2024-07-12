@@ -7,7 +7,7 @@ export function useMultiSelectMouse(
   realInput: Ref<HTMLInputElement | null>,
   popover: Ref<HTMLElement | null>,
 ) {
-  let isFocused = ref(false);
+  const isFocused = ref(false);
 
   const selectedValuesClickHandler = () => {
     popover.value?.showPopover();
@@ -17,8 +17,8 @@ export function useMultiSelectMouse(
     popover.value?.hidePopover();
     isFocused.value = true;
   };
-  let popoverToggleHandler = (e: Event): void => {
-    let event = e as ToggleEvent;
+  const popoverToggleHandler = (e: Event): void => {
+    const event = e as ToggleEvent;
     if (event.newState === "closed") {
       isFocused.value = false;
     }

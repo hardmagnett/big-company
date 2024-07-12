@@ -103,8 +103,8 @@ export type Options = Option | Option[];
           {{ createTemplateValueForSelectedValue(modelValueInner) }}
         </span>
         <template v-if="areOptionsArray(modelValueInner)">
-          <template v-for="(selectedOption, index) in modelValueInner">
-            <span class="a-multi-select__selected-value">
+          <template v-for="(selectedOption, index) in modelValueInner" :key="index">
+            <span class="a-multi-select__selected-value" >
               {{ createTemplateValueForSelectedValue(selectedOption)
               }}<span v-if="index != modelValueInner.length - 1">,&nbsp;</span>
             </span>
