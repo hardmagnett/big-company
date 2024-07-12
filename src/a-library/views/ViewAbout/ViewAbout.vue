@@ -10,7 +10,21 @@ import RootParent from "@/a-library/views/component-list/ViewExperiments/RootPar
       <APageHeader> О проекте </APageHeader>
     </Teleport>
     <RootParent />
-    <h2>Минимум зависимостей</h2>
+    <h2>Новые технологии</h2>
+    <p>
+      В проекте используются свежие (на 2024-й год) возможности браузера, <br>
+      Поэтому правильная работа гарантируется лишь в Chrome на десктопе и на смартфонах.
+      <br>
+    </p>
+    <p>
+      Что из нового:
+      <ul>
+        <li>@container style(--boolean-css-variable)</li>
+        <li>Dialog, Popover</li>
+        <li>Anchor Positioning</li>
+      </ul>
+    </p>
+    <h2>Нет UI-UX-зависимостей</h2>
     <p>Зависимые библиотеки применяются лишь для хранения, обработки и валидации данных.</p>
     <p>Все UI-UX-компоненты самописные.</p>
     <h2>Мокапирование бэкенда</h2>
