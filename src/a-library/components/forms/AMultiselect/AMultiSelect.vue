@@ -27,7 +27,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   "update:modelValue": [value: Options];
+  "blur": [];
 }>();
+
+export type Emit = typeof emit;
 
 const realInput = ref<HTMLInputElement | null>(null);
 const popover = ref<HTMLInputElement | null>(null);
@@ -57,7 +60,7 @@ const {
 } = useMultiSelectLogic(props, modelValueInner);
 
 const { isFocused, selectedValuesClickHandler, closePopover } =
-  useMultiSelectMouse(realInput, popover);
+  useMultiSelectMouse(realInput, popover, emit);
 
 const optionClickHandler = (e: MouseEvent, option: Option) => {
   if (!props.multiple) {

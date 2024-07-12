@@ -77,6 +77,7 @@ const submitHandler = async () => {
           label="Должность"
           v-model="formValues.positionId"
           :options="tempPositions"
+          @blur="v$.positionId.$touch"
           :error-messages="v$.positionId.$errors.map((e) => e.$message)"
       />
     </ADialog>

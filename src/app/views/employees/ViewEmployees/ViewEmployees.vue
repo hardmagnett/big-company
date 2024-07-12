@@ -14,7 +14,7 @@ let isOpenDialogEmployeeCreatingEditing = ref(false);
 
 let filter = reactive({
   query: "",
-  positionsIds: []
+  positionsIds: [] as number[]
 });
 let filterUpdatesQtyKey = ref(0);
 
