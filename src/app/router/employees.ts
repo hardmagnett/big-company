@@ -1,6 +1,6 @@
 export default [
   {
-    path: "/employees",
+    path: "/",
     name: "employees",
     component: () =>
       import("@/app/views/employees/ViewEmployees/ViewEmployees.vue"),

@@ -5,14 +5,6 @@ let i = 0;
 const menuItems: Array<IMenuItem> = [
   {
     id: i++,
-    title: "Задачи",
-    icon: "mdi-view-dashboard-variant",
-    route: {
-      to: "tasks",
-    },
-  },
-  {
-    id: i++,
     title: "Сотрудники",
     icon: "mdi-account-group",
     route: {
@@ -111,6 +103,14 @@ const menuItems: Array<IMenuItem> = [
         icon: "mdi-test-tube",
         route: {
           to: "experiments",
+        },
+      },
+      {
+        id: i++,
+        title: "О Проекте",
+        icon: "mdi-information-outline",
+        route: {
+          to: "about",
         },
       },
     ],

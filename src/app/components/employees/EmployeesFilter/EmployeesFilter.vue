@@ -6,6 +6,7 @@ import deepEqual from "@/a-library/helpers/language/functions/deepEqual";
 
 export type FilterEmployees = {
   query: string;
+  positionsIds: number[];
 };
 
 const emit = defineEmits<{
@@ -14,6 +15,7 @@ const emit = defineEmits<{
 
 let filterInitial = reactive<FilterEmployees>({
   query: "",
+  positionsIds: [],
 });
 
 export interface Props {
@@ -61,6 +63,8 @@ const updateQuery = debounce((eventData: string) => {
   filterInner.value.query = eventData;
 });
 
+import tempPositions from "@/delme-temp-data/tempPositions";
+
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
 });
@@ -88,12 +92,14 @@ onBeforeMount(() => {
       @update:model-value="updateQuery"
       hide-hint
     ></AInput>
-    <AInput
-      autofocus
+    <AMultiSelect
       class="am-col-12 am-col-sm-6"
-      label="Отдел"
+      label="Должности"
+      multiple
+      v-model="filterInner.positionsIds"
+      :options="tempPositions"
       hide-hint
-    ></AInput>
+    />
   </div>
 </template>
 

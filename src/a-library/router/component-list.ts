@@ -71,4 +71,9 @@ export default [
         "@/a-library/views/component-list/ViewExperiments/ViewExperiments.vue"
       ),
   },
+  {
+    path: `${pathToComponents}about`,
+    name: "about",
+    component: () => import("@/a-library/views/ViewAbout/ViewAbout.vue"),
+  },
 ];

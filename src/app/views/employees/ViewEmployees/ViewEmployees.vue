@@ -14,6 +14,7 @@ let isOpenDialogEmployeeCreatingEditing = ref(false);
 
 let filter = reactive({
   query: "",
+  positionsIds: [] as number[],
 });
 let filterUpdatesQtyKey = ref(0);
 
@@ -95,7 +96,6 @@ onBeforeMount(() => {});
       @apply="createEditEmployee"
     ></EmployeeDialogAddEdit>
 
-    <!--Здесь ещё будет компонент-фильтр. Поэтому,чтобы не нагромождать,employeesTable сделано отдельным компонентом.-->
     <EmployeesTable
       class=""
       @needToDeleteEmployee="needToDeleteEmployeeHandler"
