@@ -8,6 +8,8 @@ import {
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
 import { required } from "@/a-library/third-party/vuelidate/i18n-validators";
 import { useVuelidate } from "@vuelidate/core";
+import tempPositions from "@/delme-temp-data/tempPositions";
+import {helpers} from "@vuelidate/validators";
 
 const emit = defineEmits([...iDialogableEmits]);
 
@@ -19,6 +21,7 @@ withDefaults(defineProps<Props>(), {
 let formValues = reactive({
   firstname: "Стивен",
   lastname: "Спилберг",
+  positionId: 1
 });
 
 const formRules = {
@@ -27,6 +30,9 @@ const formRules = {
   },
   lastname: {
     required,
+  },
+  positionId: {
+    required: helpers.withParams({fieldName: 'position'}, required)
   },
 };
 const v$ = useVuelidate(formRules, formValues);
@@ -66,6 +72,13 @@ const submitHandler = async () => {
         :error-messages="v$.lastname.$errors.map((e) => e.$message)"
         v-model="formValues.lastname"
       ></AInput>
+      <AMultiSelect
+          class="am-col-12 am-col-sm-6"
+          label="Должность"
+          v-model="formValues.positionId"
+          :options="tempPositions"
+          :error-messages="v$.positionId.$errors.map((e) => e.$message)"
+      />
     </ADialog>
   </div>
 </template>

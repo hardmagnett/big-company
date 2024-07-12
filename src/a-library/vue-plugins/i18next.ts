@@ -18,6 +18,7 @@ export default {
               address: "Адрес",
               title: "Название",
               quantity: "Количество",
+              position: "Должность",
 
               forms: {
                 demo: {

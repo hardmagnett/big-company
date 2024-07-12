@@ -64,7 +64,6 @@ const updateQuery = debounce((eventData: string) => {
 });
 
 import tempPositions from '@/delme-temp-data/tempPositions';
-let tempSelectedPositions = ref([])
 
 
 
@@ -95,14 +94,11 @@ onBeforeMount(() => {
       @update:model-value="updateQuery"
       hide-hint
     ></AInput>
-    <!--:model-value="filterInner.tempSelectedPositions"-->
-    <!--@update:model-value="updateQuery"-->
     <AMultiSelect
         class="am-col-12 am-col-sm-6"
         label="Должности"
         multiple
-        v-model="filterInner.positionsIds" 
-        
+        v-model="filterInner.positionsIds"
         :options="tempPositions"
         hide-hint
     />
