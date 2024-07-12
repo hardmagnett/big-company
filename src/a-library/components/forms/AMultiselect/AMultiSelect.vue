@@ -42,6 +42,11 @@ let modelValueInner = computed({
   get() {
     return props.modelValue;
   },
+  //fixme:: При следующей реализации данного компонента лучше сделать так:
+  // Если options принимается массив объектов, а возвращается примитив,
+  // То внутренним значением хранить объект.
+  // Так получится более гибко.
+  // А так как сейчас реализовано - приходится костыли ставить.
   set(newVal) {
     emit("update:modelValue", newVal);
   },
@@ -54,6 +59,7 @@ const {
   toggleOption,
   createTemplateKeyForOption,
   createTemplateValueForOption,
+  createTemplateValueForSelectedValue,
 } = useMultiSelectLogic(props, modelValueInner);
 
 const {
@@ -107,7 +113,8 @@ export type Options = Option | Option[];
           v-if="!areOptionsArray(modelValueInner) && modelValueInner"
           class="a-multi-select__selected-value"
       >
-        {{createTemplateValueForOption(modelValueInner)}}
+        <!--{{ createTemplateValueForOption(modelValueInner)}}-->
+        {{createTemplateValueForSelectedValue(modelValueInner)}}
       </span>
       <template v-if="areOptionsArray(modelValueInner)">
         <template
@@ -116,7 +123,8 @@ export type Options = Option | Option[];
           <span
               class="a-multi-select__selected-value"
           >
-            {{createTemplateValueForOption(selectedOption)}}
+            <!--{{createTemplateValueForOption(selectedOption)}}-->
+            {{createTemplateValueForSelectedValue(selectedOption)}}
             <span v-if="index != modelValueInner.length - 1">,&nbsp;</span>
           </span>
         </template>

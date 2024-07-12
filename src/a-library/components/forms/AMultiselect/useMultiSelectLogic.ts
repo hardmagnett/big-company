@@ -26,12 +26,55 @@ export function useMultiSelectLogic(
       : index;
     return result;
   };
+  
+  const findOptionBySelectedValue = (selectedValue: Option) => {
+    let option = props.options.find((option) => {
+      let valueToCompare
+      
+      if (isOptionOptionObject(option)) {
+        if (isOptionOptionObject(selectedValue)) {
+          valueToCompare = option
+        } else {
+          valueToCompare = option[props.optionObjectFieldValue]
+        }
+        
+      } else {
+        valueToCompare = option
+      }
+      
+      return selectedValue === valueToCompare
+    })
+    return option
+  }
+  
+  const createTemplateValueForSelectedValue = (selectedValue: Option) => {
+    let option = findOptionBySelectedValue(selectedValue)
+    
+    return createTemplateValueForOption(option)
+  }
+  
   const createTemplateValueForOption = (option: Option) => {
+  //   let result
+  //  
+  //   if (isOptionOptionObject(option)) {
+  //     result = option[props.optionObjectFieldTitle]
+  //   } else {
+  //     // если примитив
+  //    
+  //     if(props.returnObject) {
+  //       result = option
+  //     } else {
+  //       result = 'shit'
+  //     }
+  //    
+  //   }
+    
     const result = isOptionOptionObject(option)
       ? option[props.optionObjectFieldTitle]
       : option;
 
-    return result;
+    return result
+    // return result + ' YO';
   };
 
   const pushOption = (option: Option) => {
@@ -168,6 +211,7 @@ export function useMultiSelectLogic(
     isOptionOptionObject,
     isOptionSelected,
     toggleOption,
+    createTemplateValueForSelectedValue,
     createTemplateKeyForOption,
     createTemplateValueForOption,
   };
