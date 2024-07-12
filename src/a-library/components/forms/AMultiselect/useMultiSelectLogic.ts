@@ -5,6 +5,7 @@ import type {
   PropsWithDefaults,
 } from "@/a-library/components/forms/AMultiselect/AMultiSelect.vue";
 import type { WritableComputedRef } from "vue";
+import {computed} from "vue";
 
 export function useMultiSelectLogic(
   props: PropsWithDefaults,

@@ -1,10 +1,5 @@
 <script setup lang="ts">
-// todo:: если выбранно больше 1-го варианта - показывать (... всего: N)
-// todo:: сделать анимацию открытия-закрытия выпадахи
-// todo:: НЕПРАВИЛЬНЫЙ ПОКАЗ!!! 
-//  object[]->number, object[]->number[] 
-//  object[]->string, object[]->string[]
-//  и выводят в выбранных вариантах возвращаемый ключ, а должны выводить поле которое для показа  
+// todo:: сделать анимацию открытия-закрытия выпадахи 
 import {computed, ref} from "vue";
 import { iAInputablePropDefaults } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
@@ -100,36 +95,47 @@ export type Options = Option | Option[];
         @focus="selectedValuesClickHandler"
     />
     <div class="
-      a-multi-select__selected-values
-      a-multi-select__anchor-for-popover
-    "
-      :style="
+        a-multi-select__selected-values-and-other
+        a-multi-select__anchor-for-popover
+      "
+       :style="
         // @ts-ignore: TS не знает о position-anchor в 2024-07.
         {'anchor-name': `--anchor-for-popover-${$.uid}`}
       "
-      @click="selectedValuesClickHandler"
+       @click="selectedValuesClickHandler"
+    
     >
+      <div class="a-multi-select__selected-values">
       <span
           v-if="!areOptionsArray(modelValueInner) && modelValueInner"
           class="a-multi-select__selected-value"
       >
-        <!--{{ createTemplateValueForOption(modelValueInner)}}-->
         {{createTemplateValueForSelectedValue(modelValueInner)}}
       </span>
-      <template v-if="areOptionsArray(modelValueInner)">
-        <template
-            v-for="(selectedOption, index) in modelValueInner"
-        >
+        <template v-if="areOptionsArray(modelValueInner)">
+          <template
+              v-for="(selectedOption, index) in modelValueInner"
+          >
           <span
               class="a-multi-select__selected-value"
           >
-            <!--{{createTemplateValueForOption(selectedOption)}}-->
             {{createTemplateValueForSelectedValue(selectedOption)}}
             <span v-if="index != modelValueInner.length - 1">,&nbsp;</span>
           </span>
+          </template>
         </template>
-      </template>
+      </div>
+      <div class="a-multi-select__selected-qty"
+           v-if="areOptionsArray(modelValueInner) && modelValueInner.length > 1"
+      >
+        (Всего:
+        
+        <span class="a-multi-select__selected-qty-number">{{modelValueInner.length}}</span>
+        
+        )
+      </div>
     </div>
+
 
     <div
       :style="
@@ -217,11 +223,10 @@ export type Options = Option | Option[];
 
     position-try-options: --a-multiselect-popover-top;
   }
-  
-  .a-multi-select__selected-values {
+
+  .a-multi-select__selected-values-and-other {
     --height: calc(var(--gap) * 2);
     height: var(--height);
-    line-height: var(--height);
     padding-left: var(--gap);
     padding-right: var(--gap);
     border: 1px solid var(--clr-border-blue-lighter);
@@ -232,22 +237,48 @@ export type Options = Option | Option[];
     cursor: pointer;
     
     display: flex;
-    flex-flow: row wrap;
-    overflow: hidden;
-    
-    .a-multi-select__selected-value {
-      /*outline: 1px solid darkred;*/
+    flex-flow: row nowrap;
+
+    .a-multi-select__selected-qty {
+      flex: 0 0 auto;
+      /*outline: 1px solid green;*/
+      line-height: var(--height);
+      font-size: var(--font-size-tiny);
+      .a-multi-select__selected-qty-number {
+        /*outline: 1px solid blue;*/
+        width: 15px;
+        display: inline-block;
+        text-align: right;
+      }
+    }
+    .a-multi-select__selected-values {
+      
       height: var(--height);
+      line-height: var(--height);
       
-      outline: 1px solid darkred;
-      max-width: 100%;
+      flex: 1 1 auto;
       
+
+      display: flex;
+      flex-flow: row wrap;
       overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      
+
+      .a-multi-select__selected-value {
+        /*outline: 1px solid darkred;*/
+        height: var(--height);
+
+        /*outline: 1px solid darkred;*/
+        max-width: 100%;
+
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+      }
     }
   }
+  
+  
 
 
   
@@ -291,11 +322,11 @@ export type Options = Option | Option[];
     background-color: red;
     opacity: 0.05;
   }
-  .a-multi-select__input:focus-visible + .a-multi-select__selected-values {
-    
-  }
+  /*.a-multi-select__input:focus-visible + .a-multi-select__selected-values {*/
+  /*  */
+  /*}*/
   &.a-multi-select--focused {
-    .a-multi-select__selected-values {
+    .a-multi-select__selected-values-and-other {
       border: 1px solid var(--clr-border-blue-darker);
       border-radius: 0;
     }
