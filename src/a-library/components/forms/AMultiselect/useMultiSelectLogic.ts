@@ -58,27 +58,12 @@ export function useMultiSelectLogic(
   };
 
   const createTemplateValueForOption = (option: Option) => {
-    //   let result
-    //
-    //   if (isOptionOptionObject(option)) {
-    //     result = option[props.optionObjectFieldTitle]
-    //   } else {
-    //     // если примитив
-    //
-    //     if(props.returnObject) {
-    //       result = option
-    //     } else {
-    //       result = 'shit'
-    //     }
-    //
-    //   }
 
     const result = isOptionOptionObject(option)
       ? option[props.optionObjectFieldTitle]
       : option;
 
     return result;
-    // return result + ' YO';
   };
 
   const pushOption = (option: Option) => {

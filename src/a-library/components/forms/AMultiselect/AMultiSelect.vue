@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// todo:: сделать анимацию открытия-закрытия выпадахи
 import { computed, ref } from "vue";
 import { iAInputablePropDefaults } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
 import type { IAInputableProps } from "@/a-library/components/forms/mixins/AInputable/IAInputable";
@@ -243,11 +242,9 @@ export type Options = Option | Option[];
 
     .a-multi-select__selected-qty {
       flex: 0 0 auto;
-      /*outline: 1px solid green;*/
       line-height: var(--height);
       font-size: var(--font-size-tiny);
       .a-multi-select__selected-qty-number {
-        /*outline: 1px solid blue;*/
         width: 15px;
         display: inline-block;
         text-align: right;
@@ -264,10 +261,7 @@ export type Options = Option | Option[];
       overflow: hidden;
 
       .a-multi-select__selected-value {
-        /*outline: 1px solid darkred;*/
         height: var(--height);
-
-        /*outline: 1px solid darkred;*/
         max-width: 100%;
 
         overflow: hidden;
@@ -278,17 +272,10 @@ export type Options = Option | Option[];
   }
 
   .a-multi-select__options {
-    /*Постоянное*/
 
-    /*Временное*/
-    /*display: flex;*/
-    /*flex-flow: row nowrap;*/
-    /*gap: var(--gap);*/
   }
   .a-multi-select__option {
-    /*Постоянное*/
     cursor: pointer;
-    /*padding: var(--gap);*/
     height: calc(var(--gap) * 2);
     font-size: var(--font-size-tiny);
     font-weight: var(--font-weight-bold);
@@ -296,10 +283,7 @@ export type Options = Option | Option[];
     align-items: center;
     padding-left: var(--gap);
     padding-right: var(--gap);
-
-    /*Временное*/
-    /*flex: 0 0 150px;*/
-    /*font-size: var(--font-size-tiny);*/
+    
 
     &:hover {
       background-color: var(--accentedColorLess);
@@ -309,16 +293,12 @@ export type Options = Option | Option[];
       color: var(--clr-font-blue-light) !important;
     }
   }
-
-  /*.a-multi-select__input:focus-visible {*/
+  
   .a-multi-select__input:focus {
-    /*.a-multi-select__input {*/
-    background-color: red;
-    opacity: 0.05;
+    /*Полезно будет для отладки*/
+    /*background-color: red;*/
+    /*opacity: 0.05;*/
   }
-  /*.a-multi-select__input:focus-visible + .a-multi-select__selected-values {*/
-  /*  */
-  /*}*/
   &.a-multi-select--focused {
     .a-multi-select__selected-values-and-other {
       border: 1px solid var(--clr-border-blue-darker);

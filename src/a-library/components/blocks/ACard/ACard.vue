@@ -12,7 +12,6 @@
   background-color: white;
 }
 .a-card--calm {
-  /*background-color: var(--clr-bg-blue-big);*/
   background-color: var(--clr-bg-blue-small);
   border: 1px solid var(--clr-border-blue-lighter);
 }

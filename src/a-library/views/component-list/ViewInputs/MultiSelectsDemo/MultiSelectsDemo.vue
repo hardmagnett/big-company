@@ -20,20 +20,6 @@ let optionsForBigData = [
     
 ]
 
-// let multiselectVals = reactive({
-//   singleInNumbersOutNumber: null,
-//   singleInStringsOutString: null,
-//   singleInObjectsOutNumber: null,
-//   singleInObjectsOutString: null,
-//   singleInObjectsOutObject: null,
-//
-//   multiInNumbersOutNumberArray: [],
-//   multiInStringsOutStringArray: [],
-//   multiInObjectsOutNumberArray: [],
-//   multiInObjectsOutStringArray: [],
-//   multiInObjectsOutObjectArray: [],
-// });
-
 let optionVals = {
   numbers: [1, 3, 7],
   strings: ["one", "three", "seven"],
@@ -157,7 +143,6 @@ let allVariantsData = reactive([
     <h3>Отладка работы с разными типами данных</h3>
     
     <div class="multi-selects-demo__data-variants am-cols am-cols-5">
-      <!--class="multi-selects-demo__data-variant am-col-5 am-col-xl-1"-->
       <ACard
           class="am-col-5 am-col-xl-1 a-card--calm"
           v-for="(dataVariant, index) in allVariantsData" :key="index">
@@ -180,13 +165,6 @@ let allVariantsData = reactive([
       </ACard>
     </div>
     <br>
-    <!--<h2>Мультиселект  с большим количеством данных</h2>-->
-    <!--<AMultiSelect-->
-    <!--    label="Много данных"-->
-    <!--    v-model="modelForBigData"-->
-    <!--    :options="optionsForBigData"-->
-    <!--    multiple-->
-    <!--/>-->
 
   </div>
 </template>
@@ -196,7 +174,6 @@ let allVariantsData = reactive([
 .multi-selects-demo {
   .multi-selects-demo__data-variant {
     outline: 1px solid gray;
-    /*height: 500px;*/
     .multi-selects-demo__debug {
       font-size: var(--font-size-tiny);
       margin: 0;

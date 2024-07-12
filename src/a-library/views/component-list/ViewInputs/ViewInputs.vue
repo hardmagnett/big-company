@@ -8,14 +8,15 @@ import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiS
       <APageHeader> Элементы форм </APageHeader>
     </Teleport>
 
+    <!--todo:: перенести потом это вниз и убрать коммент ниже-->
     <MultiSelectsDemo />
 
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <hr />
-    <hr />
-    <hr />
-    <hr />
-    <hr />
+    <!--<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />-->
+    <!--<hr />-->
+    <!--<hr />-->
+    <!--<hr />-->
+    <!--<hr />-->
+    <!--<hr />-->
     <br />
     <h2>Текстовое поле</h2>
     <p>По умолчанию.</p>

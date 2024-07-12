@@ -21,7 +21,6 @@ const formRules = {
   name: {
     required,
     minLength: minLength(3),
-    $autoDirty: true,
   },
   email: { email },
   address: {
