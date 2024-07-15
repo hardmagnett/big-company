@@ -41,6 +41,7 @@ import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalSto
 import toast from "@/a-library/vue-plugins/toast";
 import i18next from "@/a-library/vue-plugins/i18next";
 import templateHelpers from "@/a-library/vue-plugins/templateHelpers";
+import piniaOrm from "@/a-library/vue-plugins/piniaOrm";
 
 /**
  * Подключает компоненты из библиотеки.
@@ -97,4 +98,5 @@ export default function ({
   vueApp.use(toast);
   vueApp.use(i18next);
   vueApp.use(templateHelpers);
+  vueApp.use(piniaOrm);
 }
