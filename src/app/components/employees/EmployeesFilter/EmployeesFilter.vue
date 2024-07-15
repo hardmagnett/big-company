@@ -1,4 +1,9 @@
 <script setup lang="ts">
+// todo:: все эти импорты моделей должны быть в pinia-модулях
+import Position from '@/app/models/position/Position'
+import { useRepo } from 'pinia-orm'
+const positionRepo = useRepo(Position)
+
 import { computed, ref, onBeforeMount, reactive } from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 import debounce from "@/a-library/helpers/language/functions/debounce";
@@ -67,6 +72,16 @@ import tempPositions from "@/delme-temp-data/tempPositions";
 
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
+  console.log('here----------------------------------')
+
+  positionRepo.save([
+    { id: 1, title: 'John Doe' },
+    { id: 2, title: 'Jane Doe' }
+  ])
+  
+  // const positions = positionRepo.with('todos').get()
+  const positions = positionRepo.get()
+  console.log(positions); console.log('^...positions:') 
 });
 </script>
 
