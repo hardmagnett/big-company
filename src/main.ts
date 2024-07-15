@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import { createPinia } from "pinia";
 import bootstrapALibrary from "@/a-library/bootstrap";
 // @ts-ignore Всё что касается мокапирования делаю без типизации. Нет времени ещё и на типизацию этого дела.
-import mockServiceWorker from "@/app/vue-plugins/mockServiceWorker.js";
+// import mockServiceWorker from "@/app/vue-plugins/mockServiceWorker.js";
 
 
 import App from "./App.vue";

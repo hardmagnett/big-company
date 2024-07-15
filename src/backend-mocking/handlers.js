@@ -10,6 +10,7 @@ export const handlers = [
   
   // http.get(`${baseUrl}src/`, () => {
   // http.get(`/src/*`, () => {
+  // http.get(`*`, () => {
   //   passthrough()
   // }),
   
