@@ -7,9 +7,11 @@ import { handlers } from '@/backend-mocking/handlers'
 
 export default {
   // install: (app: App) => {
-  install: () => {
-    // worker.listen()
+  install: async () => {
     let worker = setupWorker(...handlers)
-    worker.start()
+    
+    
+    await worker.start()
+    // await worker.start({ onUnhandledRequest: "bypass" })
   },
 };
