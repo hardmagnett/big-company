@@ -8,6 +8,10 @@ import { globalProperties } from "@/main";
 import EmployeesFilter, {
   type FilterEmployees,
 } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
+import {usePositionsStore} from '@/app/stores/position';
+const positionsStore = usePositionsStore()
+// const {allPositions} = storeToRefs(positionsStore)
+const {fetchAllPositions} = positionsStore
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
@@ -62,11 +66,15 @@ const updateWholeFilter = (newFilter: FilterEmployees) => {
   unwatchFilter = watchFilter();
   filterChangeHandler();
 };
-onBeforeMount(() => {});
+onBeforeMount(() => {
+  // todo:: делать этот запрос снаружи, т.к. это нужно не только в фильтре но и в создании-редактировании
+  fetchAllPositions();
+});
 </script>
 
 <template>
   <div class="employees">
+    <!--<p>{{filter}}</p>-->
     <Teleport to="#page-header-place">
       <APageHeader> Сотрудники </APageHeader>
     </Teleport>

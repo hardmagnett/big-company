@@ -1,13 +1,9 @@
 <script setup lang="ts">
-// todo:: все эти импорты моделей должны быть в pinia-модулях
-import Position from '@/app/models/position/Position'
-import { useRepo } from 'pinia-orm'
-const positionRepo = useRepo(Position)
 import {storeToRefs} from "pinia";
 import {usePositionsStore} from '@/app/stores/position';
 const positionsStore = usePositionsStore()
-// const {getAllPositions} = storeToRefs(positionsStore)
-const {fetchAllPositions, getAllPositions} = positionsStore
+const {allPositions} = storeToRefs(positionsStore)
+const {fetchAllPositions} = positionsStore
 
 
 import { computed, ref, onBeforeMount, reactive } from "vue";
@@ -74,16 +70,16 @@ const updateQuery = debounce((eventData: string) => {
   filterInner.value.query = eventData;
 });
 
-import tempPositions from "@/delme-temp-data/tempPositions";
+
 
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
+  // // todo:: делать этот запрос снаружи, т.к. это нужно не только в фильтре но и в создании-редактировании
+  // fetchAllPositions();
   
-  fetchAllPositions();
-
-  // todo:: похоже это отправить наружу компонента.
-  const positions = getAllPositions()
-  console.log(positions); console.log('^...positions:') 
+  // const positions = allPositions()
+  // const positions = allPositions.value()
+  // console.log(positions); console.log('^...positions:') 
 });
 </script>
 
@@ -101,6 +97,8 @@ onBeforeMount(() => {
       /></ABtn>
     </Teleport>
 
+    <!--<p>-={{allPositions()}}=-</p>-->
+    
     <AInput
       autofocus
       class="am-col-12 am-col-sm-6"
@@ -114,7 +112,7 @@ onBeforeMount(() => {
       label="Должности"
       multiple
       v-model="filterInner.positionsIds"
-      :options="tempPositions"
+      :options="allPositions()"
       hide-hint
     />
   </div>

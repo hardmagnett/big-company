@@ -8,8 +8,14 @@ import {
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
 import { required } from "@/a-library/third-party/vuelidate/i18n-validators";
 import { useVuelidate } from "@vuelidate/core";
-import tempPositions from "@/delme-temp-data/tempPositions";
+// import tempPositions from "@/delme-temp-data/tempPositions";
 import { helpers } from "@vuelidate/validators";
+
+import {storeToRefs} from "pinia";
+import {usePositionsStore} from '@/app/stores/position';
+const positionsStore = usePositionsStore()
+const {allPositions} = storeToRefs(positionsStore)
+const {fetchAllPositions} = positionsStore
 
 const emit = defineEmits([...iDialogableEmits]);
 
@@ -76,7 +82,7 @@ const submitHandler = async () => {
         class="am-col-12 am-col-sm-6"
         label="Должность"
         v-model="formValues.positionId"
-        :options="tempPositions"
+        :options="allPositions()"
         @blur="v$.positionId.$touch"
         :error-messages="v$.positionId.$errors.map((e) => e.$message)"
       />
