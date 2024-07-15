@@ -3,6 +3,12 @@
 import Position from '@/app/models/position/Position'
 import { useRepo } from 'pinia-orm'
 const positionRepo = useRepo(Position)
+import {storeToRefs} from "pinia";
+import {usePositionsStore} from '@/app/stores/position';
+const positionsStore = usePositionsStore()
+// const {getAllPositions} = storeToRefs(positionsStore)
+const {fetchAllPositions, getAllPositions} = positionsStore
+
 
 import { computed, ref, onBeforeMount, reactive } from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
@@ -72,15 +78,11 @@ import tempPositions from "@/delme-temp-data/tempPositions";
 
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
-  console.log('here----------------------------------')
-
-  positionRepo.save([
-    { id: 1, title: 'John Doe' },
-    { id: 2, title: 'Jane Doe' }
-  ])
   
-  // const positions = positionRepo.with('todos').get()
-  const positions = positionRepo.get()
+  fetchAllPositions();
+
+  // todo:: похоже это отправить наружу компонента.
+  const positions = getAllPositions()
   console.log(positions); console.log('^...positions:') 
 });
 </script>
