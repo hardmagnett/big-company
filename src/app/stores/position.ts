@@ -1,6 +1,8 @@
 import {defineStore} from "pinia";
 import {computed, ref} from "vue";
 
+import apiMain from '@/app/api/apiMain'
+
 import Position from '@/app/models/position/Position'
 import { useRepo } from 'pinia-orm'
 // todo:: возможно это придется сделать computed
@@ -16,6 +18,11 @@ export const usePositionsStore = defineStore('counter', {
   },
   actions: {
     fetchAllPositions() {
+      apiMain.fetch({
+          method: 'get',
+          url: 'positions'
+        }
+      )
       positionRepo.save([
         { id: 1, title: "IT-Менеджер" },
         { id: 2, title: "Аналитик данных" },
