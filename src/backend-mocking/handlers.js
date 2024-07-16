@@ -1,28 +1,31 @@
 // src/mocks/handlers.js
 import { http, HttpResponse, passthrough } from 'msw'
 
+import {db} from '@/backend-mocking/db'
+
+
 let baseUrl = '/api'
 
 export const handlers = [
   http.get(`${baseUrl}/positions`, () => {
+
+    const allPositions = db.position.getAll()
+
     return HttpResponse.json({
-      data: [
-        { id: 1, title: "IT-Менеджер" },
-        { id: 2, title: "Аналитик данных" },
-        { id: 3, title: "Backend-разработчик" },
-        { id: 4, title: "Frontend-разработчик" },
-        { id: 5, title: "IOS-разработчик" },
-        { id: 6, title: "Android-разработчик" },
-        { id: 7, title: "Программист 1C" },
-        { id: 8, title: "UI и UX дизайнер" },
-        { id: 9, title: "Администратор безопасности" },
-        { id: 10, title: "DevOps-инженер" },
-        { id: 11, title: "Специалист техподдержки" },
-        { id: 12, title: "Тестировщик" },
-        { id: 13, title: "Дата-инженер " },
-        { id: 14, title: "Аналитик данных" },
-        { id: 15, title: "Системный аналитик" },
-      ]
+      data: allPositions.map(p=>{return {
+        id: p.id,
+        title: p.title
+      }})
+    })
+  }),
+
+  http.get(`${baseUrl}/employees`, () => {
+
+    const allEmployees = db.employee.getAll()
+    
+
+    return HttpResponse.json({
+      data: [1,2,3]
     })
   }),
 ]

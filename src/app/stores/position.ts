@@ -19,6 +19,21 @@ export const usePositionsStore = defineStore('counter', {
   },
   actions: {
     async fetchAllPositions() {
+
+      fetch(
+        'positions', {
+          method: 'get',
+        })
+        .then(function(res){
+          // console.log(res); console.log('^...res:')
+          return res.json();
+        })
+        .then(function(data){
+          console.log(data); console.log('^...data:')
+        })
+        .catch(function(err) {
+        });
+      
       let dataFromServer = await apiMain.fetch({
           method: 'get',
           url: 'positions'
