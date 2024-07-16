@@ -1,6 +1,9 @@
 type FetchParams = {
-  method: 'get' | 'post' | 'put' | 'delete', 
   url: string
+  method: 'get' | 'post' | 'put' | 'delete',
+  // getParams?: Record<string, string|number>
+  getParams?: Record<string, string>
+  
 }
 /**
  * @baseUrl например 'https://ya.ru/' или '/api'
@@ -16,12 +19,14 @@ class Fetchios {
   ){
     this.baseUrl = baseUrl
   }
-  fetch(params: FetchParams ){
+  fetch({url, method, getParams}: FetchParams ){
     return new Promise((resolve, reject) => {
-      const finalUrl = this.baseUrl + params.url
+      const finalWithBase = this.baseUrl + url
+      // todo:: преобразовывать числа и массивы в строки
+      const finalUrl = finalWithBase + '?' + new URLSearchParams(getParams).toString()
       fetch(
         finalUrl, {
-          method: params.method,
+          method: method,
         })
         .then(function(res){
           // console.log(res); console.log('^...res:')

@@ -9,9 +9,11 @@ import EmployeesFilter, {
   type FilterEmployees,
 } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 import {usePositionsStore} from '@/app/stores/position';
+import {useEmployeesStore} from '@/app/stores/employee';
 const positionsStore = usePositionsStore()
-// const {allPositions} = storeToRefs(positionsStore)
+const employeesStore = useEmployeesStore()
 const {fetchAllPositions} = positionsStore
+const {fetchPaginatedEmployees} = employeesStore
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
@@ -67,8 +69,11 @@ const updateWholeFilter = (newFilter: FilterEmployees) => {
   filterChangeHandler();
 };
 onBeforeMount(() => {
-  // todo:: делать этот запрос снаружи, т.к. это нужно не только в фильтре но и в создании-редактировании
   fetchAllPositions();
+  fetchPaginatedEmployees({
+    // todo:: сюда ещё фильтр передавать нужно будет
+    page: 1,
+  });
 });
 </script>
 
