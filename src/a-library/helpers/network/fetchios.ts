@@ -17,19 +17,24 @@ class Fetchios {
     this.baseUrl = baseUrl
   }
   fetch(params: FetchParams ){
-    const finalUrl = this.baseUrl + params.url
-    fetch(
-      finalUrl, {
-        method: params.method,
+    return new Promise((resolve, reject) => {
+      const finalUrl = this.baseUrl + params.url
+      fetch(
+        finalUrl, {
+          method: params.method,
+        })
+        .then(function(res){
+          // console.log(res); console.log('^...res:')
+          return res.json();
+        })
+        .then(function(data){
+          // console.log(data); console.log('^...data:')
+          resolve(data)
+        })
+        .catch(function(err) {
+          reject(err)
+        });
     })
-      .then(function(res){
-        return res.json();
-      })
-      .then(function(data){
-        
-      })
-      .catch(function(err) {});
-    
   }
 }
 
