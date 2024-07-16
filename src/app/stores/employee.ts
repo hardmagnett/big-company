@@ -5,15 +5,18 @@ import type {IPosition} from "@/app/types/apiEntities";
 // todo:: разобраться с WTF здесь и в других местах
 export const useEmployeesStore = defineStore('WTF?', {
   actions: {
-    async fetchPaginatedEmployees({page}: {page?: number} = {page: 1}) {
+    async fetchPaginatedEmployees({page = 1}: {page?: number}) {
 
       let dataFromServer = await apiMain.fetch({
           method: 'get',
-          url: 'employees'
+          url: 'employees',
+          getParams: {
+            page: page,
+            // todo:: убрать хардкод
+            position_ids: [100, 500, 100500]
+          }
         }
       )
-      console.log(dataFromServer); console.log('^...dataFromServer:') 
-      
     }
   }
 })

@@ -1,15 +1,39 @@
-type FetchParams = {
-  url: string
-  method: 'get' | 'post' | 'put' | 'delete',
-  // getParams?: Record<string, string|number>
-  getParams?: Record<string, string>
-  
-}
+
 /**
  * @baseUrl например 'https://ya.ru/' или '/api'
  */
 type ConstructorParams = {
   baseUrl?: string  
+}
+
+type GetParams = Record<string, string|number|string[]|number[]>
+let convertObjectForURLSearchParams = (getParams: GetParams): Record<string, string>=>{
+  let convertedParams: Record<string, string> = {}
+  for (let key in getParams) {
+    if (Object.prototype.hasOwnProperty.call(getParams, key)) {
+      let resultingKey = key.toString()
+      let val = getParams[key];
+      let resultingVal: string
+      if (typeof val === 'number') {
+        resultingVal = val.toString()
+      } else if (Array.isArray(val)) {
+        resultingVal = val.join(',')
+      } else {
+        resultingVal = val.toString()
+      }
+      convertedParams[resultingKey] = resultingVal
+    }
+  }
+  return convertedParams
+}
+
+type FetchParams = {
+  url: string
+  method: 'get' | 'post' | 'put' | 'delete',
+  // getParams?: Record<string, string|number>
+  // getParams?: Record<string, string>
+  getParams?: GetParams
+
 }
 // todo:: сделать обработчики ошибок. Как в статье.
 class Fetchios {
@@ -19,11 +43,14 @@ class Fetchios {
   ){
     this.baseUrl = baseUrl
   }
-  fetch({url, method, getParams}: FetchParams ){
+  fetch({url, method, getParams = {}}: FetchParams ){
     return new Promise((resolve, reject) => {
       const finalWithBase = this.baseUrl + url
-      // todo:: преобразовывать числа и массивы в строки
-      const finalUrl = finalWithBase + '?' + new URLSearchParams(getParams).toString()
+
+      let convertedGetParams = convertObjectForURLSearchParams(getParams)
+      // todo:: добавлять знак вопроса только если есть гет-параметры
+      const finalUrl = finalWithBase + '?' + new URLSearchParams(convertedGetParams).toString()
+      // console.log(finalUrl); console.log('^...finalUrl:') 
       fetch(
         finalUrl, {
           method: method,
