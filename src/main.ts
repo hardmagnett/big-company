@@ -23,7 +23,6 @@ bootstrapALibrary({
 });
 
 app.use(router);
-// app.use(mockServiceWorker);
 
 app.provide(menuItemsInjectionKey, menuItems);
 
@@ -31,18 +30,12 @@ app.provide(menuItemsInjectionKey, menuItems);
 const globalProperties = app.config.globalProperties;
 export { globalProperties };
 
-// async function prepareApp() {
-//   // @ts-ignore
-//   const { worker } = await import("@/app/vue-plugins/browser.js");
-//   return worker.start();
-// }
-// prepareApp().then(() => {
-//   app.mount("#app");
-// });
 
 // @ts-ignore
-const { worker } = await import("@/app/vue-plugins/browser.js");
-await worker.start();
+const { worker, unhandledRequestHandler } = await import("@/app/vue-plugins/browser.js");
+await worker.start({
+  onUnhandledRequest: unhandledRequestHandler
+});
 
 app.mount("#app");
 

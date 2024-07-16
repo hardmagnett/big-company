@@ -3,37 +3,32 @@ type FetchParams = {
   url: string
 }
 /**
- * @baseUrl например 'https://ya.ru/'
+ * @baseUrl например 'https://ya.ru/' или '/api'
  */
 type ConstructorParams = {
   baseUrl?: string  
 }
-
+// todo:: сделать обработчики ошибок. Как в статье.
 class Fetchios {
-  private baseUrl: string
+  private readonly baseUrl: string
   constructor(
     {baseUrl = ''}: ConstructorParams = {baseUrl: ''}
   ){
     this.baseUrl = baseUrl
   }
   fetch(params: FetchParams ){
-    // console.log(this); console.log('^...this:')
     const finalUrl = this.baseUrl + params.url
-    // console.log(finalUrl); console.log('^...finalUrl:')
-
-
     fetch(
       finalUrl, {
         method: params.method,
     })
       .then(function(res){
-        //res.headers.get('Content-Type');    res.status;     res.statusText;
-        return res.json(); //instead json can be: arrayBuffer,blob, formData, json, text
+        return res.json();
       })
       .then(function(data){
         
       })
-      .catch(function(err) {});   //optional
+      .catch(function(err) {});
     
   }
 }
