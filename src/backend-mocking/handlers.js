@@ -1,31 +1,11 @@
-// src/mocks/handlers.js
-import { http, HttpResponse, passthrough } from 'msw'
-
 import {dbInstance} from '@/backend-mocking/db'
-
 
 let baseUrl = '/api'
 
+import {createPositionHandlers} from '@/backend-mocking/handlers/positions/index.js'
+import {createEmployeeHandlers} from '@/backend-mocking/handlers/employees/index.js'
+
 export const handlers = [
-  http.get(`${baseUrl}/positions`, () => {
-
-    const allPositions = dbInstance.position.getAll()
-
-    return HttpResponse.json({
-      data: allPositions.map(p=>{return {
-        id: p.id,
-        title: p.title
-      }})
-    })
-  }),
-
-  http.get(`${baseUrl}/employees`, () => {
-
-    const allEmployees = dbInstance.employee.getAll()
-    
-
-    return HttpResponse.json({
-      data: [1,2,3]
-    })
-  }),
+  ...createPositionHandlers({baseUrl, dbInstance}),
+  ...createEmployeeHandlers({baseUrl, dbInstance})
 ]
