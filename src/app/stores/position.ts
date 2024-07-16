@@ -1,5 +1,4 @@
 import {defineStore} from "pinia";
-import {computed, ref} from "vue";
 
 import apiMain from '@/app/api/apiMain'
 
@@ -8,8 +7,10 @@ import { useRepo } from 'pinia-orm'
 // todo:: возможно это придется сделать computed
 const positionRepo = useRepo(Position)
 
+import type {IPosition} from '@/app/types/apiEntities';
+
+
 export const usePositionsStore = defineStore('counter', {
-  // state: () => ({ count: 0, name: 'Eduardo' }),
   getters: {
     allPositions: (state) => ()=>{
       const positions = positionRepo.get()
@@ -23,8 +24,7 @@ export const usePositionsStore = defineStore('counter', {
           url: 'positions'
         }
       )
-      let positions = dataFromServer.data
-      console.log(positions); console.log('^...positions:')
+      let positions = (dataFromServer as {data: IPosition[]}).data
       positionRepo.save(positions)
     },
   },
