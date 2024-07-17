@@ -2,7 +2,7 @@ import {defineStore} from "pinia";
 import apiMain from "@/app/api/apiMain";
 import type {IPosition} from "@/app/types/apiEntities";
 
-export const useEmployeesStore = defineStore('employee', {
+export const useEmployeesStore = defineStore('employeesStore', {
   actions: {
     async fetchPaginatedEmployees({page = 1}: {page?: number}) {
 

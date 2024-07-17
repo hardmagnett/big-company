@@ -9,7 +9,7 @@ const positionRepo = useRepo(Position)  // Если будет глючить - 
 import type {IPosition} from '@/app/types/apiEntities';
 
 
-export const usePositionsStore = defineStore('positions', {
+export const usePositionsStore = defineStore('positionsStore', {
   getters: {
     allPositions: (state) => ()=>{
       const positions = positionRepo.get()
