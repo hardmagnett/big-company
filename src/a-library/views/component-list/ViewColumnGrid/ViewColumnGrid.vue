@@ -1,8 +1,6 @@
 <template>
   <div class="column-grid">
-    <Teleport to="#page-header-place">
-      <APageHeader> Сетка </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Сетка" />
     <h2>Стандартная 12-ти колоночная</h2>
     <p>
       Для просмотра адаптивной работы сетки нужно посмотреть страницу на разных
@@ -40,4 +38,6 @@
 .column-grid {
 }
 </style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
+</script>

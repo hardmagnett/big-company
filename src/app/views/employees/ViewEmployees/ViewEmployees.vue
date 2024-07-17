@@ -11,6 +11,7 @@ import EmployeesFilter, {
 import {usePositionsStore} from '@/app/stores/position';
 import {useEmployeesStore} from '@/app/stores/employee';
 import {storeToRefs} from "pinia";
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 const positionsStore = usePositionsStore()
 const {fetchAllPositions} = positionsStore
 const employeesStore = useEmployeesStore()
@@ -81,9 +82,7 @@ onBeforeMount(() => {
 
 <template>
   <div class="employees">
-    <Teleport to="#page-header-place">
-      <APageHeader> Сотрудники </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Сотрудники" />
     <div class="employees__add-and-qty mod--mb-half">
       <ABtn @click="needToCreateEmployeeHandler">
         <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать

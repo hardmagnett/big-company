@@ -1,8 +1,6 @@
 <template>
   <div class="buttons-page">
-    <Teleport to="#page-header-place">
-      <APageHeader> Кнопки </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Кнопки" />
 
     <h2>Обычные</h2>
     <div class="buttons-page__buttons">
@@ -73,4 +71,6 @@
   gap: var(--gap);
 }
 </style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
+</script>

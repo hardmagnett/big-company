@@ -82,14 +82,14 @@ onBeforeMount(() => {
     class="employees-filter am-cols"
     :class="{ 'employees-filter--hidden': isFilterHidden }"
   >
-    <Teleport to="#page-header-filter-icon-place">
+    <AMountedTeleport to="#page-header-filter-icon-place">
       <ABtn icon @click="resetFilter" :disabled="!isFilterChanged"
         ><AIcon :icon="filterResetIcon"
       /></ABtn>
       <ABtn icon @click="toggleFilterVisibility"
         ><AIcon :icon="filterIcon"
       /></ABtn>
-    </Teleport>
+    </AMountedTeleport>
 
     <!--<p>-={{allPositions()}}=-</p>-->
     

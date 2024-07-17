@@ -1,8 +1,6 @@
 <template>
   <div class="tables">
-    <Teleport to="#page-header-place">
-      <APageHeader> Таблицы </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Таблицы" />
 
     <p>
       Фактически - стилизованная обертка над тэгом
@@ -76,4 +74,6 @@
 .tables {
 }
 </style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
+</script>

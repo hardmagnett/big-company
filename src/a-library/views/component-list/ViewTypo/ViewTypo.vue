@@ -1,8 +1,6 @@
 <template>
   <div class="headers">
-    <Teleport to="#page-header-place">
-      <APageHeader> Типографика </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Типографика" />
 
     <h1>Заголовок h1</h1>
     <h2>Заголовок h2</h2>
@@ -71,4 +69,6 @@
 </template>
 
 <style></style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
+</script>

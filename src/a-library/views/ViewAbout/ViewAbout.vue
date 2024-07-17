@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import {} from "vue";
 import RootParent from "@/a-library/views/component-list/ViewExperiments/RootParent.vue";
+import AMountedTeleport from "@/a-library/components/other/AMountedTeleport/AMountedTeleport.vue";
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 </script>
 
 <template>
   <div class="view-about">
-    <Teleport to="#page-header-place">
-      <APageHeader> О проекте </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="О проекте" />
     <RootParent />
     <h2>Новые технологии</h2>
     <p>
