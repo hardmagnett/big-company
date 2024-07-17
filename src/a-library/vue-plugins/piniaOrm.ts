@@ -4,6 +4,6 @@ import { createORM } from 'pinia-orm'
 
 export default {
   install: () => {
-    const pinia = createPinia().use(createORM())
+    createPinia().use(createORM())
   },
 };

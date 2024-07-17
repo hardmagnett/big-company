@@ -6,7 +6,7 @@ const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 export interface Props {
   employee: Employee
 }
-const props = withDefaults(defineProps<Props>(), {})
+withDefaults(defineProps<Props>(), {})
 </script>
 
 <template>

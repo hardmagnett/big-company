@@ -5,10 +5,12 @@ import {getParamAsNumber, splitGetParamToNumberArray} from '@/backend-mocking/ha
 const perPage = 20
 
 export const createGetHandler = ({baseUrl, dbInstance})=>{
-  return http.get(`${baseUrl}/employees`, ({request, params, cookies}) => {
+  return http.get(`${baseUrl}/employees`, ({request}) => {
     
     const url = new URL(request.url)
     const page = getParamAsNumber('page', url)
+    
+    // eslint-disable-next-line
     const position_ids = splitGetParamToNumberArray('position_ids', url)
     
     const whereFilter = {

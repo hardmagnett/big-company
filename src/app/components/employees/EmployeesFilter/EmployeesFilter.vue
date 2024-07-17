@@ -3,7 +3,6 @@ import {storeToRefs} from "pinia";
 import {usePositionsStore} from '@/app/stores/position';
 const positionsStore = usePositionsStore()
 const {allPositions} = storeToRefs(positionsStore)
-const {fetchAllPositions} = positionsStore
 
 
 import { computed, ref, onBeforeMount, reactive } from "vue";

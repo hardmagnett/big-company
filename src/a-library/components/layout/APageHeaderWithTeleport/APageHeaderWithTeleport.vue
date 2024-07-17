@@ -5,7 +5,7 @@ import AMountedTeleport from "@/a-library/components/other/AMountedTeleport/AMou
 export interface Props {
   text?: string,
 }
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   text: 'Текст не указан'
 })
 

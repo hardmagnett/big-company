@@ -14,7 +14,7 @@ export const useEmployeesStore = defineStore('employeesStore', {
   actions: {
     async fetchPaginatedEmployees({page = 1}: {page?: number}) {
 
-      let dataFromServer = await apiMain.fetch({
+      const dataFromServer = await apiMain.fetch({
           method: 'get',
           url: 'employees',
           getParams: {

@@ -14,7 +14,6 @@ import {storeToRefs} from "pinia";
 import {usePositionsStore} from '@/app/stores/position';
 const positionsStore = usePositionsStore()
 const {allPositions} = storeToRefs(positionsStore)
-const {fetchAllPositions} = positionsStore
 
 const emit = defineEmits([...iDialogableEmits]);
 

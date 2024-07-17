@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import {} from "vue";
 import RootParent from "@/a-library/views/component-list/ViewExperiments/RootParent.vue";
-import AMountedTeleport from "@/a-library/components/other/AMountedTeleport/AMountedTeleport.vue";
 import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 </script>
 

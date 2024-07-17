@@ -7,12 +7,12 @@ type ConstructorParams = {
 }
 
 type GetParams = Record<string, string|number|string[]|number[]>
-let convertObjectForURLSearchParams = (getParams: GetParams): Record<string, string>=>{
-  let convertedParams: Record<string, string> = {}
-  for (let key in getParams) {
+const convertObjectForURLSearchParams = (getParams: GetParams): Record<string, string>=>{
+  const convertedParams: Record<string, string> = {}
+  for (const key in getParams) {
     if (Object.prototype.hasOwnProperty.call(getParams, key)) {
-      let resultingKey = key.toString()
-      let val = getParams[key];
+      const resultingKey = key.toString()
+      const val = getParams[key];
       let resultingVal: string
       if (typeof val === 'number') {
         resultingVal = val.toString()
@@ -42,8 +42,8 @@ class Fetchios {
   }
   private _prepareUrl({url, getParams}: {url: string, getParams: GetParams}){
     let finalUrl = this.baseUrl + url
-    let convertedGetParams = convertObjectForURLSearchParams(getParams)
-    let searchParamsString = new URLSearchParams(convertedGetParams).toString()
+    const convertedGetParams = convertObjectForURLSearchParams(getParams)
+    const searchParamsString = new URLSearchParams(convertedGetParams).toString()
     if (searchParamsString) {
       finalUrl = finalUrl + '?' + searchParamsString
     }
@@ -51,7 +51,7 @@ class Fetchios {
   }
   fetch({url, method, getParams = {}}: FetchParams ){
     return new Promise((resolve, reject) => {
-      let finalUrl = this._prepareUrl({url, getParams})
+      const finalUrl = this._prepareUrl({url, getParams})
 
       fetch(
         finalUrl, {

@@ -11,19 +11,19 @@ import type {IPosition} from '@/app/types/apiEntities';
 
 export const usePositionsStore = defineStore('positionsStore', {
   getters: {
-    allPositions: (state) => ()=>{
+    allPositions: () => ()=>{
       const positions = positionRepo.get()
       return positions
     },
   },
   actions: {
     async fetchAllPositions() {
-      let dataFromServer = await apiMain.fetch({
+      const dataFromServer = await apiMain.fetch({
           method: 'get',
           url: 'positions'
         }
       )
-      let positions = (dataFromServer as {data: IPosition[]}).data
+      const positions = (dataFromServer as {data: IPosition[]}).data
       positionRepo.save(positions)
     },
   },

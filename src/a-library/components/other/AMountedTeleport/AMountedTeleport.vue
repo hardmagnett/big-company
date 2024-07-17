@@ -12,7 +12,7 @@ import {onMounted, ref} from 'vue'
 export interface Props {
   to: string,
 }
-const props = withDefaults(defineProps<Props>(), {})
+withDefaults(defineProps<Props>(), {})
 
 let isMounted = ref(false)
 onMounted(()=>{
