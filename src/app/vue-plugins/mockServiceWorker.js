@@ -1,21 +1,19 @@
-// todo:: удалить. Через плагины это не работает нормально.
+// Это не vue-плагин. Это просто запускалка для мокапирования.
+// Если её подключать как плагин - то мокапирование начинает перехватывать фрагменты сборки от Vite.
+// Не придумал другого места куда это положить.
+
 import { setupWorker } from 'msw/browser'
 import { handlers } from '@/backend-mocking/handlers'
+export const mockServiceWorker = setupWorker(...handlers)
 
-// export const worker = setupWorker(...handlers)
+export const unhandledRequestHandler = (req, print)=>{
+  let url = new URL(req.url)
+  let pathname = url.pathname
 
+  if (!pathname.startsWith('/api/')) {
+    return
+  }
 
+  print.warning()
+}
 
-// worker.listen()
-
-export default {
-  // install: (app: App) => {
-  install: async () => {
-
-    let worker = setupWorker(...handlers)
-    await worker.start()
-    
-    // await worker.start()
-    // await worker.start({ onUnhandledRequest: "bypass" })
-  },
-};

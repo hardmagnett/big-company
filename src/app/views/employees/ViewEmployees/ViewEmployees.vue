@@ -79,7 +79,6 @@ onBeforeMount(() => {
 
 <template>
   <div class="employees">
-    <!--<p>{{filter}}</p>-->
     <Teleport to="#page-header-place">
       <APageHeader> Сотрудники </APageHeader>
     </Teleport>

@@ -1,9 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import bootstrapALibrary from "@/a-library/bootstrap";
-// @ts-ignore Всё что касается мокапирования делаю без типизации. Нет времени ещё и на типизацию этого дела.
-// import mockServiceWorker from "@/app/vue-plugins/mockServiceWorker.js";
-
 
 import App from "./App.vue";
 import router from "./router";
@@ -31,9 +28,12 @@ const globalProperties = app.config.globalProperties;
 export { globalProperties };
 
 
-// @ts-ignore
-const { worker, unhandledRequestHandler } = await import("@/app/vue-plugins/browser.js");
-await worker.start({
+
+// Импортировать это нужно именно при помощи await import.
+// Иначе начнет перехватывать фрагменты сборки от Vite.
+// @ts-ignore Мокапирование делаю без типизации. Может-быть потом переделаю.
+const { mockServiceWorker, unhandledRequestHandler} = await import("@/app/vue-plugins/mockServiceWorker.js");
+await mockServiceWorker.start({
   onUnhandledRequest: unhandledRequestHandler
 });
 
