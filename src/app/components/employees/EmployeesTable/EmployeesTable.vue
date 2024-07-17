@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue";
+import {useEmployeesStore} from '@/app/stores/employee';
+import {storeToRefs} from "pinia";
+const employeesStore = useEmployeesStore()
+const {paginatedEmployees} = storeToRefs(employeesStore)
 
 defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 </script>
@@ -14,11 +18,13 @@ defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
       </tr>
     </thead>
     <tbody>
+    <!--v-for="n in 30"-->
       <EmployeeRow
+        v-for="employee in paginatedEmployees"
         @needToDeleteEmployee="$emit('needToDeleteEmployee')"
         @needToEditEmployee="$emit('needToEditEmployee')"
-        :key="n"
-        v-for="n in 30"
+        :key="employee.id"
+        
       />
     </tbody>
   </ATable>

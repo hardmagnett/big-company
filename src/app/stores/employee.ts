@@ -23,7 +23,7 @@ export const useEmployeesStore = defineStore('employeesStore', {
           }
         }
       ) as {data: IEmployee[]}
-      console.log(dataFromServer); console.log('^...dataFromServer:')
+      // console.log(dataFromServer); console.log('^...dataFromServer:')
       const fetchedEmployeesIds = dataFromServer.data.map(e=>e.id);
       this.paginatedEmployeeIds = [...this.paginatedEmployeeIds, ...fetchedEmployeesIds]
 
@@ -35,6 +35,16 @@ export const useEmployeesStore = defineStore('employeesStore', {
     },
   },
   getters: {
-
+    paginatedEmployees: (state) => {
+      // Это работает нормально
+      // const users = useRepo(User).get()
+      const employees = employeeRepo.query()
+        // todo:: Отфильровать по массиву id-шников, да ещё и в том-же порядке в котором id-шники. И обьязательно в гисты.
+        // .whereIdIn(state.paginatedEmployeeIds)
+        // .whereId(state.paginatedEmployeeIds)
+        .with('position')
+        .get()
+      return employees
+    },
   },
 })
