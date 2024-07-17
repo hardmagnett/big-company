@@ -34,7 +34,8 @@ export { globalProperties };
 // @ts-ignore Мокапирование делаю без типизации. Может-быть потом переделаю.
 const { mockServiceWorker, unhandledRequestHandler} = await import("@/app/vue-plugins/mockServiceWorker.js");
 await mockServiceWorker.start({
-  onUnhandledRequest: unhandledRequestHandler
+  onUnhandledRequest: unhandledRequestHandler,
+  quiet: true,
 });
 
 app.mount("#app");
