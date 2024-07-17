@@ -32,7 +32,7 @@ type FetchParams = {
   method: 'get' | 'post' | 'put' | 'delete',
   getParams?: GetParams
 }
-// todo:: сделать обработчики ошибок. Как в статье.
+
 class Fetchios {
   private readonly baseUrl: string
   constructor(
@@ -58,14 +58,18 @@ class Fetchios {
           method: method,
         })
         .then(function(res){
-          // console.log(res); console.log('^...res:')
-          return res.json();
+          if (!res.ok) {
+            // Если код не 2xx
+            throw new Error(`HTTP ошибка! status: ${res.status}`);
+          } else {
+            return res.json();
+          }
         })
         .then(function(data){
-          // console.log(data); console.log('^...data:')
           resolve(data)
         })
         .catch(function(err) {
+          // Сюда попадают только сетевые ошибки (Офлайн, ошибки DNS, сети и т.п.). Например, net::ERR_FAILED.
           reject(err)
         });
     })
