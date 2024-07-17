@@ -3,7 +3,6 @@ import type Employee from "@/app/models/employee/Employee";
 
 const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 
-//////// Props
 export interface Props {
   employee: Employee
 }

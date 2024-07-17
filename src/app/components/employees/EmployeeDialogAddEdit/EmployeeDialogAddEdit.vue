@@ -8,7 +8,6 @@ import {
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
 import { required } from "@/a-library/third-party/vuelidate/i18n-validators";
 import { useVuelidate } from "@vuelidate/core";
-// import tempPositions from "@/delme-temp-data/tempPositions";
 import { helpers } from "@vuelidate/validators";
 
 import {storeToRefs} from "pinia";

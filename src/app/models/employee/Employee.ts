@@ -10,7 +10,6 @@ export default class Employee extends Model {
   @Str('') declare lastname: string
 
   @Num(null) declare position_id: number
-  // @Attr(null) declare position_id: number | null
   
   @BelongsTo(() => Position, 'position_id') declare position: Position | null
   

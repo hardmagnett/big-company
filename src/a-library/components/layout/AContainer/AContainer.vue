@@ -60,7 +60,6 @@ function clickOnRouterLinkHandler() {
           @clickedOnCross="toggleMenuOnSmall"
           :is-crossed="isMenuVisibleOnSmall"
         />
-        <!--logoUrl="@/src/app/assets/images/logo.svg"-->
         <AHeader
           v-if="isBig"
           :isMainMenuCollapsed="isMainMenuCollapsed"
