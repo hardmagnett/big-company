@@ -2,7 +2,7 @@ import { Model } from 'pinia-orm'
 import { Attr, BelongsTo, Str, Uid } from 'pinia-orm/decorators'
 import Position from '@/app/models/position/Position'
 export default class Employee extends Model {
-  static entity = 'posts'
+  static entity = 'employees'
   
   @Uid() declare id: string
   
