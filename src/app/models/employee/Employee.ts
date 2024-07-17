@@ -13,4 +13,8 @@ export default class Employee extends Model {
   // @Attr(null) declare position_id: number | null
   
   @BelongsTo(() => Position, 'position_id') declare position: Position | null
+  
+  get fullname() {
+    return `${this.firstname} ${this.lastname}`
+  }
 }

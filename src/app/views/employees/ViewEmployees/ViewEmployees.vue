@@ -87,6 +87,7 @@ onBeforeMount(() => {
         <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
       </ABtn>
       <p class="mod--mt-0 mod--mb-0">
+        <!--todo:: не забыть выводить верное значение от общего количества-->
         Найдено: <span class="employees__qty-number">1</span>
       </p>
     </div>

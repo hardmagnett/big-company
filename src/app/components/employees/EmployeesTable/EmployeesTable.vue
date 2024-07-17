@@ -13,18 +13,17 @@ defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
     <thead>
       <tr>
         <th>Сотрудник</th>
-        <th>Отдел</th>
+        <th>Должность</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-    <!--v-for="n in 30"-->
       <EmployeeRow
         v-for="employee in paginatedEmployees"
+        :employee="employee"
         @needToDeleteEmployee="$emit('needToDeleteEmployee')"
         @needToEditEmployee="$emit('needToEditEmployee')"
         :key="employee.id"
-        
       />
     </tbody>
   </ATable>
