@@ -8,7 +8,8 @@ const employeeRepo = useRepo(Employee)  // Если будет глючить - 
 
 export const useEmployeesStore = defineStore('employeesStore', {
   state: () => ({
-    paginatedEmployeeIds: [] as number[]
+    paginatedEmployeeIds: [] as number[],
+    totalPaginatedEmployeesQty: 0 // Сколько окажется, если паджинацию докрутить до конца.
   }),
   actions: {
     async fetchPaginatedEmployees({page = 1}: {page?: number}) {
@@ -22,10 +23,10 @@ export const useEmployeesStore = defineStore('employeesStore', {
             position_ids: [100, 500, 100500]
           }
         }
-      ) as {data: IEmployee[]}
-      // console.log(dataFromServer); console.log('^...dataFromServer:')
+      ) as {data: IEmployee[], total_count: number}
       const fetchedEmployeesIds = dataFromServer.data.map(e=>e.id);
       this.paginatedEmployeeIds = [...this.paginatedEmployeeIds, ...fetchedEmployeesIds]
+      this.totalPaginatedEmployeesQty = dataFromServer.total_count
 
       employeeRepo.save(dataFromServer.data)
 
@@ -36,12 +37,8 @@ export const useEmployeesStore = defineStore('employeesStore', {
   },
   getters: {
     paginatedEmployees: (state) => {
-      // Это работает нормально
-      // const users = useRepo(User).get()
       const employees = employeeRepo.query()
-        // todo:: Отфильровать по массиву id-шников, да ещё и в том-же порядке в котором id-шники. И обьязательно в гисты.
-        // .whereIdIn(state.paginatedEmployeeIds)
-        // .whereId(state.paginatedEmployeeIds)
+        .whereId(state.paginatedEmployeeIds)
         .with('position')
         .get()
       return employees

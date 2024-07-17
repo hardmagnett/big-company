@@ -10,10 +10,12 @@ import EmployeesFilter, {
 } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 import {usePositionsStore} from '@/app/stores/position';
 import {useEmployeesStore} from '@/app/stores/employee';
+import {storeToRefs} from "pinia";
 const positionsStore = usePositionsStore()
-const employeesStore = useEmployeesStore()
 const {fetchAllPositions} = positionsStore
+const employeesStore = useEmployeesStore()
 const {fetchPaginatedEmployees} = employeesStore
+const {totalPaginatedEmployeesQty} = storeToRefs(employeesStore)
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
@@ -87,8 +89,12 @@ onBeforeMount(() => {
         <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
       </ABtn>
       <p class="mod--mt-0 mod--mb-0">
-        <!--todo:: не забыть выводить верное значение от общего количества-->
-        Найдено: <span class="employees__qty-number">1</span>
+        
+        Найдено:
+        <!--todo:: не забыть скрывать этот span пока идет запрос-->
+        <span class="employees__qty-number">
+          {{totalPaginatedEmployeesQty}}
+        </span>
       </p>
     </div>
 
