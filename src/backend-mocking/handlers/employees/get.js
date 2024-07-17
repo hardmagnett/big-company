@@ -11,14 +11,18 @@ export const createGetHandler = ({baseUrl, dbInstance})=>{
     const page = getParamAsNumber('page', url)
     const position_ids = splitGetParamToNumberArray('position_ids', url)
     
+    const whereFilter = {
+      // тут будет фильтрация по тексту и выбранным должностям
+    }
+    
     const selectedEmployees = dbInstance.employee.findMany({
+      where: whereFilter,
       orderBy: {
         id: 'desc',
       },
       take: perPage,
       skip: perPage * (page - 1),
-    })
-      .map(e=>{
+    }).map(e=>{
         let position = dbInstance.position.findFirst({
           where: {
             id: {
@@ -35,8 +39,13 @@ export const createGetHandler = ({baseUrl, dbInstance})=>{
           }
         }
       })
+    
+    let totalEmployeeCount = dbInstance.employee.count({
+      where: whereFilter,
+    })
     return HttpResponse.json(
       {
+        total_count: totalEmployeeCount,
         data: selectedEmployees
       },
       )
