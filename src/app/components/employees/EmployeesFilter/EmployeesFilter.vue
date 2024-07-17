@@ -74,12 +74,6 @@ const updateQuery = debounce((eventData: string) => {
 
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
-  // // todo:: делать этот запрос снаружи, т.к. это нужно не только в фильтре но и в создании-редактировании
-  // fetchAllPositions();
-  
-  // const positions = allPositions()
-  // const positions = allPositions.value()
-  // console.log(positions); console.log('^...positions:') 
 });
 </script>
 
