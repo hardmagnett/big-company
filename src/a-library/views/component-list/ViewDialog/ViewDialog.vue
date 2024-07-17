@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 
 const isDialogDefaultOpen = ref(false);
 const isDialogConfiguredOpen = ref(false);
 </script>
 <template>
   <div class="view-dialog">
-    <Teleport to="#page-header-place">
-      <APageHeader> Диалоговое окно </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Диалоговое окно" />
 
     <h2>C Настройками по умолчанию</h2>
     <ul>

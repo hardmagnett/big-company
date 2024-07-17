@@ -1,8 +1,6 @@
 <template>
   <div class="blocks">
-    <Teleport to="#page-header-place">
-      <APageHeader> Блоки </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Блоки" />
 
     <h2>Карточка</h2>
     <ACard> Содержимое карточки </ACard>
@@ -17,4 +15,6 @@
 .blocks {
 }
 </style>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
+</script>

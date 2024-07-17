@@ -1,4 +1,4 @@
-const tempPositions = [
+const positionsRaw = [
   { id: 1, title: "IT-Менеджер" },
   { id: 2, title: "Аналитик данных" },
   { id: 3, title: "Backend-разработчик" },
@@ -16,4 +16,11 @@ const tempPositions = [
   { id: 15, title: "Системный аналитик" },
 ];
 
-export default tempPositions;
+const seedPositions = ({ dbInstance }) => {
+  let positions = [];
+  for (let positionRaw of positionsRaw) {
+    positions.push(dbInstance.position.create(positionRaw));
+  }
+  return positions;
+};
+export { seedPositions };

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
+
 const colorNames: Array<string> = ["blue", "red", "green", "orange"];
 
 let colorBGCSSVariables: Array<[string, string, string, string, string]> = [];
@@ -44,9 +46,7 @@ for (let colorName of colorNames) {
 
 <template>
   <div class="view-colors">
-    <Teleport to="#page-header-place">
-      <APageHeader> Цвета </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Цвета" />
 
     <h2>Фоны</h2>
     <p>Для блоков большого размера.</p>

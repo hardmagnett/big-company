@@ -14,5 +14,8 @@ export default defineConfig({
   css: {
     devSourcemap: true,
     preprocessorOptions: {}
+  },
+  build: {
+    target: 'esnext'
   }
 })

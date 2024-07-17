@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import {} from "vue";
 import RootParent from "@/a-library/views/component-list/ViewExperiments/RootParent.vue";
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 </script>
 
 <template>
   <div class="view-about">
-    <Teleport to="#page-header-place">
-      <APageHeader> О проекте </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="О проекте" />
     <RootParent />
     <h2>Новые технологии</h2>
     <p>
-      В проекте используются свежие (на 2024-й год) возможности браузера, <br />
+      Применяются свежие (на 2024-й год) возможности браузера, <br />
       Поэтому правильная работа гарантируется лишь в Chrome на десктопе и на
       смартфонах.
       <br />
@@ -24,18 +23,17 @@ import RootParent from "@/a-library/views/component-list/ViewExperiments/RootPar
     </ul>
 
     <h2>Нет UI-UX-зависимостей</h2>
-    <p>
-      Зависимые библиотеки применяются лишь для хранения, обработки и валидации
-      данных.
-    </p>
+    <p>Зависимые библиотеки применяются лишь для работы с данными.</p>
     <p>Все UI-UX-компоненты самописные.</p>
     <h2>Мокапирование бэкенда</h2>
-    <p>Бэкенда для данного проекта не существует.</p>
-    <p>Все GET/PUT/POST/DELETE и прочие запросы эмулируются в браузере</p>
-    <p>После перезагрузки страницы все внесённые изменения сбрасываются.</p>
+    <p>HTTP запросы и база данных эмулируются в Service Worker</p>
+    <p>После перезагрузки страницы внесённые изменения сбрасываются.</p>
     <h2>Адаптив</h2>
     <p>Предусмотрена ширина окна браузера от 320px до 2560px.</p>
-    <p>На более высоких разрешениях пользователи обычно включают масштабирование либо в ОС либо в браузере.</p>
+    <p>
+      На более высоких разрешениях пользователи обычно включают масштабирование
+      либо в ОС либо в браузере.
+    </p>
   </div>
 </template>
 

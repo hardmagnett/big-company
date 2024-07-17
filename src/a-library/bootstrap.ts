@@ -9,6 +9,7 @@ import AHeader from "@/a-library/components/layout/AHeader/AHeader.vue";
 import AMainMenu from "@/a-library/components/layout/AMainMenu/AMainMenu.vue";
 import AHamburger from "@/a-library/components/layout/AHamburger/AHamburger.vue";
 import APageHeader from "@/a-library/components/layout/APageHeader/APageHeader.vue";
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 
 // Forms
 import AFormButtonsWrapper from "@/a-library/components/forms/AFormButtonsWrapper/AFormButtonsWrapper.vue";
@@ -30,6 +31,7 @@ import ATable from "@/a-library/components/other/ATable/ATable.vue";
 import ADialog from "@/a-library/components/other/ADialog/ADialog.vue";
 import AToasts from "@/a-library/components/other/AToasts/AToasts.vue";
 import AToast from "@/a-library/components/other/AToasts/AToast.vue";
+import AMountedTeleport from "@/a-library/components/other/AMountedTeleport/AMountedTeleport.vue";
 
 // Helpers
 // =======
@@ -41,6 +43,7 @@ import responsiveGlobalStorage from "@/a-library/vue-plugins/responsiveGlobalSto
 import toast from "@/a-library/vue-plugins/toast";
 import i18next from "@/a-library/vue-plugins/i18next";
 import templateHelpers from "@/a-library/vue-plugins/templateHelpers";
+import piniaOrm from "@/a-library/vue-plugins/piniaOrm";
 
 /**
  * Подключает компоненты из библиотеки.
@@ -65,6 +68,7 @@ export default function ({
   vueApp.component("AMainMenu", AMainMenu);
   vueApp.component("AHamburger", AHamburger);
   vueApp.component("APageHeader", APageHeader);
+  vueApp.component("APageHeaderWithTeleport", APageHeaderWithTeleport);
 
   // Forms
   vueApp.component("AFormButtonsWrapper", AFormButtonsWrapper);
@@ -86,6 +90,7 @@ export default function ({
   vueApp.component("ADialog", ADialog);
   vueApp.component("AToasts", AToasts);
   vueApp.component("AToast", AToast);
+  vueApp.component("AMountedTeleport", AMountedTeleport);
 
   // Helpers
   // =======
@@ -97,4 +102,5 @@ export default function ({
   vueApp.use(toast);
   vueApp.use(i18next);
   vueApp.use(templateHelpers);
+  vueApp.use(piniaOrm);
 }

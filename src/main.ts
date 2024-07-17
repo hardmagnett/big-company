@@ -23,7 +23,18 @@ app.use(router);
 
 app.provide(menuItemsInjectionKey, menuItems);
 
-app.mount("#app");
-
 const globalProperties = app.config.globalProperties;
 export { globalProperties };
+
+// Импортировать это нужно именно при помощи await import.
+// Иначе начнет перехватывать фрагменты сборки от Vite.
+// @ts-ignore Мокапирование делаю без типизации. Может-быть потом переделаю.
+const { mockServiceWorker, unhandledRequestHandler } = await import(
+  "@/app/vue-plugins/mockServiceWorker.js"
+);
+await mockServiceWorker.start({
+  onUnhandledRequest: unhandledRequestHandler,
+  quiet: true,
+});
+
+app.mount("#app");

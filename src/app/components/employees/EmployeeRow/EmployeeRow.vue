@@ -1,14 +1,23 @@
 <script setup lang="ts">
+import type Employee from "@/app/models/employee/Employee";
+
 const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
+
+export interface Props {
+  employee: Employee;
+}
+withDefaults(defineProps<Props>(), {});
 </script>
 
 <template>
   <tr class="employee-row">
     <td class="mod--ellipsis-one-line-on-table-cell">
-      Череззабороногузадерищенко Виктор
+      <!--todo::убрать потом id-->
+      {{ employee.id }}
+      {{ employee.fullname }}
     </td>
     <td class="employee-row__department mod--ellipsis-one-line-on-table-cell">
-      Особый отдел
+      {{ employee.position?.title }}
     </td>
     <td class="employee-row__buttons">
       <ABtn icon @click="emit('needToEditEmployee')"

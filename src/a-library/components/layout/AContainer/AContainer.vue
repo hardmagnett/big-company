@@ -63,7 +63,7 @@ function clickOnRouterLinkHandler() {
         <AHeader
           v-if="isBig"
           :isMainMenuCollapsed="isMainMenuCollapsed"
-          logoUrl="/src/app/assets/images/logo.svg"
+          logoUrl="/images/logo.svg"
           textNearLogo="CRM"
         />
       </div>

@@ -10,6 +10,7 @@ import createUUID from "@/a-library/helpers/language/string/createUUID";
 import { globalProperties } from "@/main";
 import BooksOrderFormPartBooks from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartBooks.vue";
 import BooksOrderFormPartPersonalData from "@/a-library/views/component-list/ViewForm/BooksOrderFormPartPersonalData.vue";
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 
 let formValues = reactive({
   user: {
@@ -102,9 +103,7 @@ const removeBook = (bookIndex: number) => {
 
 <template>
   <div class="view-form">
-    <Teleport to="#page-header-place">
-      <APageHeader> Форма </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Форма" />
 
     <p>Есть валидация.</p>
     <p>Состоит из нескольких компонентов form-part.</p>

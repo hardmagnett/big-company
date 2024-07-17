@@ -52,7 +52,7 @@ const menuItems = inject(menuItemsInjectionKey);
       v-if="!isBig"
       :isOnSmallScreen="!isBig"
       :isMainMenuCollapsed="isCollapsed"
-      logoUrl="/src/app/assets/images/logo.svg"
+      logoUrl="/images/logo.svg"
       textNearLogo="CRM"
     />
     <div class="a-main-menu__items">

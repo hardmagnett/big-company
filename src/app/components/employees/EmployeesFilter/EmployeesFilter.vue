@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { usePositionsStore } from "@/app/stores/position";
+const positionsStore = usePositionsStore();
+const { allPositions } = storeToRefs(positionsStore);
+
 import { computed, ref, onBeforeMount, reactive } from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 import debounce from "@/a-library/helpers/language/functions/debounce";
@@ -63,8 +68,6 @@ const updateQuery = debounce((eventData: string) => {
   filterInner.value.query = eventData;
 });
 
-import tempPositions from "@/delme-temp-data/tempPositions";
-
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
 });
@@ -75,14 +78,14 @@ onBeforeMount(() => {
     class="employees-filter am-cols"
     :class="{ 'employees-filter--hidden': isFilterHidden }"
   >
-    <Teleport to="#page-header-filter-icon-place">
+    <AMountedTeleport to="#page-header-filter-icon-place">
       <ABtn icon @click="resetFilter" :disabled="!isFilterChanged"
         ><AIcon :icon="filterResetIcon"
       /></ABtn>
       <ABtn icon @click="toggleFilterVisibility"
         ><AIcon :icon="filterIcon"
       /></ABtn>
-    </Teleport>
+    </AMountedTeleport>
 
     <AInput
       autofocus
@@ -97,7 +100,7 @@ onBeforeMount(() => {
       label="Должности"
       multiple
       v-model="filterInner.positionsIds"
-      :options="tempPositions"
+      :options="allPositions()"
       hide-hint
     />
   </div>

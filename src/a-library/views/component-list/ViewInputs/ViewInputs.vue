@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import MultiSelectsDemo from "@/a-library/views/component-list/ViewInputs/MultiSelectsDemo/MultiSelectsDemo.vue";
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 </script>
 
 <template>
   <div class="inputs-page">
-    <Teleport to="#page-header-place">
-      <APageHeader> Элементы форм </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Элементы форм" />
 
     <h2>Текстовое поле</h2>
     <p>По умолчанию.</p>

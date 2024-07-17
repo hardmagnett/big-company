@@ -8,6 +8,15 @@ import { globalProperties } from "@/main";
 import EmployeesFilter, {
   type FilterEmployees,
 } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
+import { usePositionsStore } from "@/app/stores/position";
+import { useEmployeesStore } from "@/app/stores/employee";
+import { storeToRefs } from "pinia";
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
+const positionsStore = usePositionsStore();
+const { fetchAllPositions } = positionsStore;
+const employeesStore = useEmployeesStore();
+const { fetchPaginatedEmployees } = employeesStore;
+const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
@@ -62,20 +71,28 @@ const updateWholeFilter = (newFilter: FilterEmployees) => {
   unwatchFilter = watchFilter();
   filterChangeHandler();
 };
-onBeforeMount(() => {});
+onBeforeMount(() => {
+  fetchAllPositions();
+  fetchPaginatedEmployees({
+    // todo:: сюда ещё фильтр передавать нужно будет
+    page: 1,
+  });
+});
 </script>
 
 <template>
   <div class="employees">
-    <Teleport to="#page-header-place">
-      <APageHeader> Сотрудники </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Сотрудники" />
     <div class="employees__add-and-qty mod--mb-half">
       <ABtn @click="needToCreateEmployeeHandler">
         <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
       </ABtn>
       <p class="mod--mt-0 mod--mb-0">
-        Найдено: <span class="employees__qty-number">1</span>
+        Найдено:
+        <!--todo:: не забыть скрывать этот span пока идет запрос-->
+        <span class="employees__qty-number">
+          {{ totalPaginatedEmployeesQty }}
+        </span>
       </p>
     </div>
 

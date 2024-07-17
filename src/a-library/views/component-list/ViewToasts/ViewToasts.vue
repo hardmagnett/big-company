@@ -9,12 +9,11 @@
 //     type: "success",
 //   });
 // });
+import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 </script>
 <template>
   <div class="view-toasts">
-    <Teleport to="#page-header-place">
-      <APageHeader> Тосты </APageHeader>
-    </Teleport>
+    <APageHeaderWithTeleport text="Тосты" />
 
     <h2>Цветные тосты</h2>
     <p>Для просмотра тостов нужно понажимать на кнопки</p>
