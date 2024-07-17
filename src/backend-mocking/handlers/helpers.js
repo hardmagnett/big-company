@@ -1,28 +1,29 @@
-const splitGetParamToArray = (paramName, urlInstance)=>{
+const splitGetParamToArray = (paramName, urlInstance) => {
   return urlInstance.searchParams.has(paramName)
-    ? urlInstance.searchParams.get(paramName).split(',')
-    : []
-}
-const splitGetParamToNumberArray = (paramName, urlInstance)=>{
-  let result = splitGetParamToArray(paramName, urlInstance)
-  result = result.map(i=>Number(i))
-  return result
-}
+    ? urlInstance.searchParams.get(paramName).split(",")
+    : [];
+};
+const splitGetParamToNumberArray = (paramName, urlInstance) => {
+  let result = splitGetParamToArray(paramName, urlInstance);
+  result = result.map((i) => Number(i));
+  return result;
+};
 
-const getParam = (paramName, urlInstance) =>{
-  return urlInstance.searchParams.has(paramName) ? urlInstance.searchParams.get(paramName) : null
-}
-const getParamAsNumber = (paramName, urlInstance) =>{
-  let result = getParam(paramName, urlInstance)
+const getParam = (paramName, urlInstance) => {
+  return urlInstance.searchParams.has(paramName)
+    ? urlInstance.searchParams.get(paramName)
+    : null;
+};
+const getParamAsNumber = (paramName, urlInstance) => {
+  let result = getParam(paramName, urlInstance);
   if (result) {
-    result = Number(result)
+    result = Number(result);
   }
-  return result
-}
+  return result;
+};
 export {
   splitGetParamToArray,
   splitGetParamToNumberArray,
   getParam,
-  getParamAsNumber
-}
-
+  getParamAsNumber,
+};

@@ -14,15 +14,13 @@ const positionsRaw = [
   { id: 13, title: "Дата-инженер " },
   { id: 14, title: "Аналитик данных" },
   { id: 15, title: "Системный аналитик" },
-]
+];
 
-const seedPositions = ({dbInstance})=>{
-  let positions = []
+const seedPositions = ({ dbInstance }) => {
+  let positions = [];
   for (let positionRaw of positionsRaw) {
-    positions.push (dbInstance.position.create(positionRaw))
+    positions.push(dbInstance.position.create(positionRaw));
   }
-  return positions
-}
-export {
-  seedPositions
-}
+  return positions;
+};
+export { seedPositions };

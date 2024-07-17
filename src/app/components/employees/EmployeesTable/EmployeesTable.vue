@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue";
-import {useEmployeesStore} from '@/app/stores/employee';
-import {storeToRefs} from "pinia";
-const employeesStore = useEmployeesStore()
-const {paginatedEmployees} = storeToRefs(employeesStore)
+import { useEmployeesStore } from "@/app/stores/employee";
+import { storeToRefs } from "pinia";
+const employeesStore = useEmployeesStore();
+const { paginatedEmployees } = storeToRefs(employeesStore);
 
 defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 </script>

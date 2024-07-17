@@ -10,10 +10,10 @@ import { required } from "@/a-library/third-party/vuelidate/i18n-validators";
 import { useVuelidate } from "@vuelidate/core";
 import { helpers } from "@vuelidate/validators";
 
-import {storeToRefs} from "pinia";
-import {usePositionsStore} from '@/app/stores/position';
-const positionsStore = usePositionsStore()
-const {allPositions} = storeToRefs(positionsStore)
+import { storeToRefs } from "pinia";
+import { usePositionsStore } from "@/app/stores/position";
+const positionsStore = usePositionsStore();
+const { allPositions } = storeToRefs(positionsStore);
 
 const emit = defineEmits([...iDialogableEmits]);
 

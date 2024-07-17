@@ -1,7 +1,5 @@
-import {createGetHandler} from './get.js'
+import { createGetHandler } from "./get.js";
 
-export const createPositionHandlers = ({baseUrl, dbInstance})=>{
-  return [
-    createGetHandler({baseUrl, dbInstance})
-  ]
-}
+export const createPositionHandlers = ({ baseUrl, dbInstance }) => {
+  return [createGetHandler({ baseUrl, dbInstance })];
+};

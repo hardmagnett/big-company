@@ -8,15 +8,15 @@ import { globalProperties } from "@/main";
 import EmployeesFilter, {
   type FilterEmployees,
 } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
-import {usePositionsStore} from '@/app/stores/position';
-import {useEmployeesStore} from '@/app/stores/employee';
-import {storeToRefs} from "pinia";
+import { usePositionsStore } from "@/app/stores/position";
+import { useEmployeesStore } from "@/app/stores/employee";
+import { storeToRefs } from "pinia";
 import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
-const positionsStore = usePositionsStore()
-const {fetchAllPositions} = positionsStore
-const employeesStore = useEmployeesStore()
-const {fetchPaginatedEmployees} = employeesStore
-const {totalPaginatedEmployeesQty} = storeToRefs(employeesStore)
+const positionsStore = usePositionsStore();
+const { fetchAllPositions } = positionsStore;
+const employeesStore = useEmployeesStore();
+const { fetchPaginatedEmployees } = employeesStore;
+const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 
 let isOpenDialogEmployeeDeleting = ref(false);
 let isOpenDialogEmployeeCreatingEditing = ref(false);
@@ -88,11 +88,10 @@ onBeforeMount(() => {
         <AIcon icon="mdi-plus-circle-outline"></AIcon> Создать
       </ABtn>
       <p class="mod--mt-0 mod--mb-0">
-        
         Найдено:
         <!--todo:: не забыть скрывать этот span пока идет запрос-->
         <span class="employees__qty-number">
-          {{totalPaginatedEmployeesQty}}
+          {{ totalPaginatedEmployeesQty }}
         </span>
       </p>
     </div>

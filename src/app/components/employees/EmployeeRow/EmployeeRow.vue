@@ -4,16 +4,16 @@ import type Employee from "@/app/models/employee/Employee";
 const emit = defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 
 export interface Props {
-  employee: Employee
+  employee: Employee;
 }
-withDefaults(defineProps<Props>(), {})
+withDefaults(defineProps<Props>(), {});
 </script>
 
 <template>
   <tr class="employee-row">
     <td class="mod--ellipsis-one-line-on-table-cell">
       <!--todo::убрать потом id-->
-      {{employee.id}}
+      {{ employee.id }}
       {{ employee.fullname }}
     </td>
     <td class="employee-row__department mod--ellipsis-one-line-on-table-cell">

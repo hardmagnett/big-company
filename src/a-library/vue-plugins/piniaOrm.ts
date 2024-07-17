@@ -1,9 +1,8 @@
-import { createPinia } from 'pinia'
-import { createORM } from 'pinia-orm'
-
+import { createPinia } from "pinia";
+import { createORM } from "pinia-orm";
 
 export default {
   install: () => {
-    createPinia().use(createORM())
+    createPinia().use(createORM());
   },
 };

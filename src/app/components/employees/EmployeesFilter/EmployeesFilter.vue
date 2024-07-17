@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import {storeToRefs} from "pinia";
-import {usePositionsStore} from '@/app/stores/position';
-const positionsStore = usePositionsStore()
-const {allPositions} = storeToRefs(positionsStore)
-
+import { storeToRefs } from "pinia";
+import { usePositionsStore } from "@/app/stores/position";
+const positionsStore = usePositionsStore();
+const { allPositions } = storeToRefs(positionsStore);
 
 import { computed, ref, onBeforeMount, reactive } from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
@@ -69,8 +68,6 @@ const updateQuery = debounce((eventData: string) => {
   filterInner.value.query = eventData;
 });
 
-
-
 onBeforeMount(() => {
   setFilterVisibilityBasedOnLocalStorage();
 });
@@ -89,7 +86,7 @@ onBeforeMount(() => {
         ><AIcon :icon="filterIcon"
       /></ABtn>
     </AMountedTeleport>
-    
+
     <AInput
       autofocus
       class="am-col-12 am-col-sm-6"

@@ -2,18 +2,17 @@
 // Если её подключать как плагин - то мокапирование начинает перехватывать фрагменты сборки от Vite.
 // Не придумал другого места куда это положить.
 
-import { setupWorker } from 'msw/browser'
-import { handlers } from '@/backend-mocking/handlers'
-export const mockServiceWorker = setupWorker(...handlers)
+import { setupWorker } from "msw/browser";
+import { handlers } from "@/backend-mocking/handlers";
+export const mockServiceWorker = setupWorker(...handlers);
 
-export const unhandledRequestHandler = (req, print)=>{
-  let url = new URL(req.url)
-  let pathname = url.pathname
+export const unhandledRequestHandler = (req, print) => {
+  let url = new URL(req.url);
+  let pathname = url.pathname;
 
-  if (!pathname.startsWith('/api/')) {
-    return
+  if (!pathname.startsWith("/api/")) {
+    return;
   }
 
-  print.warning()
-}
-
+  print.warning();
+};

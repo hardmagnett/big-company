@@ -7,24 +7,24 @@
  * Несмотря на то, что Evan You рекомендует использовать teleport только за пределами <div id="app">,
  * в реальности иногда удобно отправлять что угодно куда угодно.
  */
-import {onMounted, ref} from 'vue'
+import { onMounted, ref } from "vue";
 
 export interface Props {
-  to: string,
+  to: string;
 }
-withDefaults(defineProps<Props>(), {})
+withDefaults(defineProps<Props>(), {});
 
-let isMounted = ref(false)
-onMounted(()=>{
-  isMounted.value = true
-})
+let isMounted = ref(false);
+onMounted(() => {
+  isMounted.value = true;
+});
 </script>
-
 
 <template>
   <Teleport :to="to" v-if="isMounted"><slot></slot></Teleport>
 </template>
 
 <style scoped>
-.a-mounted-teleport {}
+.a-mounted-teleport {
+}
 </style>

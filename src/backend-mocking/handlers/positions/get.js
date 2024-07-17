@@ -1,16 +1,16 @@
-import {http, HttpResponse} from "msw"
+import { http, HttpResponse } from "msw";
 
-export const createGetHandler = ({baseUrl, dbInstance})=>{
+export const createGetHandler = ({ baseUrl, dbInstance }) => {
   return http.get(`${baseUrl}/positions`, () => {
-
-    const allPositions = dbInstance.position.getAll()
+    const allPositions = dbInstance.position.getAll();
 
     return HttpResponse.json({
-      data: allPositions.map(p=>{return {
-        id: p.id,
-        title: p.title
-      }})
-    })
-  })
-}
-
+      data: allPositions.map((p) => {
+        return {
+          id: p.id,
+          title: p.title,
+        };
+      }),
+    });
+  });
+};
