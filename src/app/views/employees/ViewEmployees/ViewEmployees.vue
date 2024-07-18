@@ -75,8 +75,11 @@ const createEditEmployee = () => {
 const updateWholeFilter = (newFilter: FilterEmployees) => {
   // unwatchFilter();
   // filter.value = newFilter;
+  // Object.assign(filter.value, newFilter);
   // filter.value = Object.assign(filter.value, newFilter);
-  filter = Object.assign(filter, newFilter);
+  // filter = Object.assign(filter, newFilter);
+  Object.assign(filter, newFilter);
+  
 
   // filterUpdatesQtyKey.value++;
   // unwatchFilter = watchFilter();
