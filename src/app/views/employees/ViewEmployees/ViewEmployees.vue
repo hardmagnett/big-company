@@ -114,7 +114,7 @@ onBeforeMount(() => {
     ></EmployeeDialogAddEdit>
 
     <EmployeesTable
-      class=""
+      :filter="filter"
       @needToDeleteEmployee="needToDeleteEmployeeHandler"
       @needToEditEmployee="needToEditEmployeeHandler"
     />
