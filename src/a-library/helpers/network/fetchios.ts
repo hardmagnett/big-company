@@ -16,7 +16,9 @@ const convertObjectForURLSearchParams = (
       const val = getParams[key];
       let needToSkip = false
       let resultingVal: string = '';
-      if (typeof val === "number") {
+      if (val === null) {
+        needToSkip = true
+      } else if (typeof val === "number") {
         resultingVal = val.toString();
       } else if (Array.isArray(val)) {
         if(val.length) {
@@ -24,12 +26,12 @@ const convertObjectForURLSearchParams = (
         } else {
           needToSkip = true;
         }
-        
-      } else if (val === null){
-        needToSkip = true
-        // resultingVal = 'dummy';
-      } else{
-        resultingVal = val.toString();
+      } else {
+        if (!val) {
+          needToSkip = true;
+        } else {
+          resultingVal = val.toString();
+        }
       }
       if (!needToSkip){
         convertedParams[resultingKey] = resultingVal;

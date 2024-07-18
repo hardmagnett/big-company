@@ -17,13 +17,14 @@ export const useEmployeesStore = defineStore("employeesStore", {
   }),
   actions: {
     async fetchPaginatedEmployees({ page = 1, filter = null }: { page?: number, filter?: FilterEmployees | null}) {
-      console.log(filter); console.log('^...filter:') 
+      // console.log(filter); console.log('^...filter:') 
       const dataFromServer = (await apiMain.fetch({
         method: "get",
         url: "employees",
         getParams: {
           page: page,
           position_ids: filter?.positionsIds ?? null,
+          firstname: filter?.query.trim() ?? null
         },
       })) as { data: IEmployee[]; total_count: number };
       const fetchedEmployeesIds = dataFromServer.data.map((e) => e.id);
