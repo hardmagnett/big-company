@@ -8,12 +8,13 @@ import {
   splitGetParamToNumberArray,
 } from "@/backend-mocking/handlers/helpers.js"
 
-const perPage = 20;
+// const perPage = 20;
 
 export const createGetHandler = ({ baseUrl, dbInstance }) => {
   return http.get(`${baseUrl}/employees`, async ({ request }) => {
     const url = new URL(request.url);
     const page = getParamAsNumber("page", url);
+    const perPage = getParamAsNumber("per_page", url);
     const firstname = getParam("firstname", url);
 
     // eslint-disable-next-line
