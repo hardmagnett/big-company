@@ -103,7 +103,7 @@ onBeforeMount(() => {
       </ABtn>
       <p class="mod--mt-0 mod--mb-0">
         Найдено:
-        <!--todo:: не забыть скрывать этот span пока идет запрос-->
+        <!--todo:: сделать этот span поуже. У меня ведь будет максимум 5000 записей-->
         <span class="employees__qty-number">
           {{ totalPaginatedEmployeesQty }}
         </span>
@@ -138,6 +138,10 @@ onBeforeMount(() => {
 .employees {
   display: flex;
   flex-flow: column nowrap;
+
+  /*Чтобы таблица растягивалась на всю высоту, даже если у неё недостаточно записей*/
+  /*Чтобы лоадер можно было разместить по центру*/
+  flex: 1 1 auto; 
   > * {
     flex: 0 0 auto;
   }

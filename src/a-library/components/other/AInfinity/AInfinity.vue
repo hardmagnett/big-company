@@ -57,6 +57,7 @@ const stateHandler: StateHandler = {
 
     let containerNode = getContainerNode()
     
+    // todo:: вынести в dom-хелперы
     const checkScrollBar = (el: HTMLElement)=>{
       return ((el.scrollHeight - el.clientHeight) > 0)
     };
@@ -147,13 +148,20 @@ onBeforeUnmount(()=>{
 .a-infinity {
   /*background-color: #aff;*/
   /*height: 100px;*/
+  /*background-color: azure;*/
+  display: flex;
   .a-infinity__loader-wrapper {
-    /*background-color: red;*/
-    /*outline: 1px solid darkred;*/
+    flex: 1 1 auto;
+
+    
     
     display: flex;
     justify-content: center;
+    align-items: center;
     padding-top: var(--gap);
+    .a-loader {
+      /*background-color: bisque;*/
+    }
   }
 }
 </style>

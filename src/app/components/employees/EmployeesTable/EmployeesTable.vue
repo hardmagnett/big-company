@@ -83,5 +83,11 @@ onBeforeMount(() => {});
 
 <style scoped>
 .employees-table {
+  /*background-color: #aff;*/
+  /*outline: 1px solid darkred;*/
+  
+  .a-infinity {
+    flex: 1 1 auto;
+  }
 }
 </style>
