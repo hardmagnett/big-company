@@ -18,10 +18,6 @@ const emit = defineEmits<{
   needToUpdateWholeFilter: [value: FilterEmployees];
 }>();
 
-// let filterInitial = reactive<FilterEmployees>({
-//   query: "",
-//   positionsIds: [],
-// });
 let filterInitial: FilterEmployees = {
   query: "",
   positionsIds: [],
@@ -49,7 +45,6 @@ const filterResetIcon = computed(() => {
 
 const isFilterChanged = computed(() => {
   return !deepEqual(props.filter, filterInitial);
-  // return false;
 });
 const toggleFilterVisibility = () => {
   isFilterHidden.value = !isFilterHidden.value;
@@ -67,7 +62,6 @@ const setFilterVisibilityBasedOnLocalStorage = () => {
 };
 const resetFilter = () => {
   emit("needToUpdateWholeFilter", filterInitial);
-  // props.filter = filterInitial;
 };
 
 const updateQuery = debounce((eventData: string) => {

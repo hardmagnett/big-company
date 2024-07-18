@@ -17,7 +17,6 @@ export const useEmployeesStore = defineStore("employeesStore", {
   }),
   actions: {
     async fetchPaginatedEmployees({ page = 1, perPage = 50, filter = null }: { page?: number, perPage?: number, filter?: FilterEmployees | null}) {
-      // console.log(filter); console.log('^...filter:') 
       const dataFromServer = (await apiMain.fetch({
         method: "get",
         url: "employees",

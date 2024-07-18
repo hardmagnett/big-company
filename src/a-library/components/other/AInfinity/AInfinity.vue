@@ -50,13 +50,7 @@ const stateHandler: StateHandler = {
     state.value = "loading";
   },
   async loaded() {
-    // console.log('loaded')
     state.value = "loaded";
-    // const parentEl = params.parentEl || document.documentElement;
-    // await nextTick();
-    // if (top) parentEl.scrollTop = parentEl.scrollHeight - prevHeight;
-    // if (isVisible(infiniteLoading.value!, params.parentEl)) params.emit();
-
 
     let containerNode = getContainerNode()
     
@@ -67,12 +61,10 @@ const stateHandler: StateHandler = {
       // Если после добавления партии скролл-бар ещё не появился, то загружаю ещё одну партию.
       emitLoadMore()
     }
-    // console.log(containerNode); console.log('^...containerNode:') 
     
   },
   completed() {
     state.value = "completed";
-    // observer?.disconnect();
     observer.value?.disconnect()
   },
 };
@@ -84,11 +76,7 @@ const emitLoadMore = ()=>{
 }
 
 const handleIntersect = (triggerNode: IntersectionObserverEntry) => {
-  // console.log(1)
   if (triggerNode.isIntersecting && ['empty', "loaded"].includes(state.value)) {
-    // console.log(2)
-    // stateHandler.loading();
-    // emit('needToLoadMore', stateHandler)
     emitLoadMore()
   }
 }
@@ -101,15 +89,10 @@ const getContainerNode = ()=>{
 }
 
 const prepareIntersectionObserver = ()=>{
-  
-  // console.log(rootNode.value); console.log('^...rootNode.value:')
-
   // Здесь rootNode уже точно Element.
   let localRootNode = rootNode.value as Element
-
-  // const ancestorNode = localRootNode.parentElement; // Можно ещё сделать опциональный prop и передавать его, если этот prop есть.
-  const ancestorNode = getContainerNode(); 
-  // console.log(ancestorNode); console.log('^...ancestorNode:') 
+  
+  const ancestorNode = getContainerNode();
   observer.value = new IntersectionObserver((entries)=>{
     handleIntersect(entries[0])
   }, {
@@ -144,9 +127,6 @@ onBeforeUnmount(()=>{
 
 <style scoped>
 .a-infinity {
-  /*background-color: #aff;*/
-  /*height: 100px;*/
-  /*background-color: azure;*/
   display: flex;
   .a-infinity__loader-wrapper {
     flex: 1 1 auto;
@@ -157,9 +137,7 @@ onBeforeUnmount(()=>{
     justify-content: center;
     align-items: center;
     padding-top: var(--gap);
-    .a-loader {
-      /*background-color: bisque;*/
-    }
+    .a-loader {}
   }
 }
 </style>

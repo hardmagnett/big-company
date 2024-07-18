@@ -24,7 +24,6 @@ let infinityResetId = ref(0)
 watch(
     props.filter,
     (newVal) => {
-      // console.log(newVal); console.log('^...newVal:')
       pageNumber.value = 1
       clearPagination()
       infinityResetId.value++
