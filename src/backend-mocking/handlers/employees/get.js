@@ -1,4 +1,4 @@
-import { http, HttpResponse } from "msw";
+import { http, HttpResponse, delay } from "msw";
 
 import {
   getParamAsNumber,
@@ -8,7 +8,7 @@ import {
 const perPage = 20;
 
 export const createGetHandler = ({ baseUrl, dbInstance }) => {
-  return http.get(`${baseUrl}/employees`, ({ request }) => {
+  return http.get(`${baseUrl}/employees`, async ({ request }) => {
     const url = new URL(request.url);
     const page = getParamAsNumber("page", url);
 
@@ -49,6 +49,7 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     let totalEmployeeCount = dbInstance.employee.count({
       where: whereFilter,
     });
+    await delay(1000)
     return HttpResponse.json({
       total_count: totalEmployeeCount,
       data: selectedEmployees,

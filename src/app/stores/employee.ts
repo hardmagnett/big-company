@@ -9,7 +9,9 @@ const employeeRepo = useRepo(Employee); // Если будет глючить - 
 export const useEmployeesStore = defineStore("employeesStore", {
   state: () => ({
     paginatedEmployeeIds: [] as number[],
-    totalPaginatedEmployeesQty: 0, // Сколько окажется, если паджинацию докрутить до конца.
+    // Сколько окажется, если паджинацию докрутить до конца.
+    // Должна быть null в то время пока вообще ничего не загружено.
+    totalPaginatedEmployeesQty: null as (null | number), 
   }),
   actions: {
     async fetchPaginatedEmployees({ page = 1 }: { page?: number }) {
@@ -32,6 +34,7 @@ export const useEmployeesStore = defineStore("employeesStore", {
       employeeRepo.save(dataFromServer.data);
     },
     clearPagination() {
+      this.totalPaginatedEmployeesQty = null
       this.paginatedEmployeeIds = [];
     },
   },

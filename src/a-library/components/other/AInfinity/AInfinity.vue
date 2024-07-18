@@ -2,6 +2,9 @@
 import {onBeforeUnmount, onMounted, ref} from 'vue'
 
 
+const emit = defineEmits<{
+  needToLoadMore: [noMatterFieldName: string]  
+}>()
 
 let observer = ref<IntersectionObserver | null>(null)
 const rootNode = ref<Element | null>(null)
@@ -9,7 +12,7 @@ const rootNode = ref<Element | null>(null)
 
 const handleIntersect = (triggerNode: IntersectionObserverEntry) => {
   if (triggerNode.isIntersecting) {
-    console.log('Заходим')
+    emit('needToLoadMore', 'shit')
   }
   
   
@@ -28,8 +31,7 @@ const prepareIntersectionObserver = ()=>{
   }, {
     root: ancestorNode,
     threshold: 0,
-    // Если у корневого элемента высота 0, то не сработает. Нужно чтобы срабатывал немного раньше.
-    rootMargin: "10px" 
+    rootMargin: "10px"  // Если у rootNode высота 0, то не сработает. Нужно чтобы срабатывал немного раньше. 
   })
   
   observer.value.observe(localRootNode)

@@ -5,28 +5,28 @@ import { storeToRefs } from "pinia";
 import {onBeforeMount, ref} from "vue";
 import AInfinity from "@/a-library/components/other/AInfinity/AInfinity.vue";
 const employeesStore = useEmployeesStore();
-const { paginatedEmployees } = storeToRefs(employeesStore);
+const { paginatedEmployees, totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 const { fetchPaginatedEmployees } = employeesStore;
 
 defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 
 let pageNumber = ref(1)
 const loadMore = ()=>{
-  pageNumber.value++
   // todo:: дубли загрузки. Вынести куда-то.
+  
+  if (paginatedEmployees.value.length === totalPaginatedEmployeesQty.value) {
+    return
+  }
+  
   fetchPaginatedEmployees({
     // todo:: сюда ещё фильтр передавать нужно будет
     page: pageNumber.value,
   });
+  pageNumber.value++
 }
 
 
-onBeforeMount(() => {
-  fetchPaginatedEmployees({
-    // todo:: сюда ещё фильтр передавать нужно будет
-    page: pageNumber.value,
-  });
-});
+onBeforeMount(() => {});
 </script>
 
 <template>
@@ -50,7 +50,7 @@ onBeforeMount(() => {
 
     <template #appendRoot>
       <AInfinity
-
+          @needToLoadMore="loadMore"
       />
     </template>
     
