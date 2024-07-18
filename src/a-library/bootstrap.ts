@@ -32,6 +32,7 @@ import ADialog from "@/a-library/components/other/ADialog/ADialog.vue";
 import AToasts from "@/a-library/components/other/AToasts/AToasts.vue";
 import AToast from "@/a-library/components/other/AToasts/AToast.vue";
 import AMountedTeleport from "@/a-library/components/other/AMountedTeleport/AMountedTeleport.vue";
+import AInfinity from "@/a-library/components/other/AInfinity/AInfinity.vue";
 
 // Helpers
 // =======
@@ -91,6 +92,7 @@ export default function ({
   vueApp.component("AToasts", AToasts);
   vueApp.component("AToast", AToast);
   vueApp.component("AMountedTeleport", AMountedTeleport);
+  vueApp.component("AInfinity", AInfinity);
 
   // Helpers
   // =======

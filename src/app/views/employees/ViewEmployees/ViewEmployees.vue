@@ -73,10 +73,10 @@ const updateWholeFilter = (newFilter: FilterEmployees) => {
 };
 onBeforeMount(() => {
   fetchAllPositions();
-  fetchPaginatedEmployees({
-    // todo:: сюда ещё фильтр передавать нужно будет
-    page: 1,
-  });
+  // fetchPaginatedEmployees({
+  //   // todo:: сюда ещё фильтр передавать нужно будет
+  //   page: 1,
+  // });
 });
 </script>
 
