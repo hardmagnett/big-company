@@ -6,7 +6,7 @@ import {onBeforeMount, ref, watch} from "vue";
 import AInfinity from "@/a-library/components/other/AInfinity/AInfinity.vue";
 const employeesStore = useEmployeesStore();
 const { paginatedEmployees, totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
-const { fetchPaginatedEmployees } = employeesStore;
+const { fetchPaginatedEmployees, clearPagination } = employeesStore;
 import type {StateHandler} from '@/a-library/components/other/AInfinity/AInfinity.vue';
 import type {FilterEmployees} from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 
@@ -18,25 +18,26 @@ export interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {});
 
+let pageNumber = ref(1)
+let infinityResetId = ref(0)
+
 watch(
-    // () => props.filter,
     props.filter,
     (newVal) => {
-      console.log(newVal); console.log('^...newVal:')  
+      // console.log(newVal); console.log('^...newVal:')
+      pageNumber.value = 1
+      clearPagination()
+      infinityResetId.value++
     }
 )
 
-let pageNumber = ref(1)
+
 const loadMore = async ($state: StateHandler)=>{
-  // if (paginatedEmployees.value.length === totalPaginatedEmployeesQty.value) {
-  //   return
-  // }
   
   await fetchPaginatedEmployees({
-    // todo:: сюда ещё фильтр передавать нужно будет
     page: pageNumber.value,
+    filter: props.filter
   });
-  // console.log(paginatedEmployees.value.length); console.log('^...paginatedEmployees.value.length:') 
 
   if (paginatedEmployees.value.length === totalPaginatedEmployeesQty.value) {
     $state.completed();
@@ -72,6 +73,7 @@ onBeforeMount(() => {});
 
     <template #appendRoot>
       <AInfinity
+          :resetId="infinityResetId"
           @needToLoadMore="loadMore"
       />
     </template>

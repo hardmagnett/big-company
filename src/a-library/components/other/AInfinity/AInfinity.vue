@@ -5,9 +5,22 @@
  * https://vue3-infinite-loading.netlify.app/guide/quick-demo.html
  * Но переделал всё по своему. Пусть ссылки останутся, на случай если нужно будет доработать.
  */
-import {onBeforeUnmount, onMounted, ref} from 'vue'
+import {onBeforeUnmount, onMounted, ref, watch} from 'vue'
+
+export interface Props {
+  resetId?: number,
+}
+const props = withDefaults(defineProps<Props>(), {
+  resetId: 0,
+})
+
+watch(()=>props.resetId, ()=>{
+    stateHandler.empty()
+  }
+)
 
 export type StateHandler = {
+  empty: ()=>void;
   loading: ()=>void;
   loaded: ()=>void;
   completed: ()=>void;
@@ -24,6 +37,11 @@ const rootNode = ref<Element | null>(null)
 const state = ref<'empty' | 'loading' | 'loaded' | 'completed'>('empty');
 
 const stateHandler: StateHandler = {
+  empty() {
+    state.value = "empty";
+    disconnectIntersectionObserver();
+    prepareIntersectionObserver();
+  },
   loading() {
     state.value = "loading";
   },
@@ -68,12 +86,15 @@ const prepareIntersectionObserver = ()=>{
   
   observer.value.observe(localRootNode)
 }
+const disconnectIntersectionObserver = ()=>{
+  observer.value?.disconnect()
+}
 
 onMounted(()=>{
   prepareIntersectionObserver()
 })
 onBeforeUnmount(()=>{
-  observer.value?.disconnect()
+  disconnectIntersectionObserver();
   observer.value = null
 })
 </script>

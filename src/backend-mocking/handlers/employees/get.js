@@ -18,6 +18,16 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     const whereFilter = {
       // тут будет фильтрация по тексту и выбранным должностям
     };
+    if (position_ids.length) {
+      whereFilter.position = {
+        id: {
+          // equals: 1,
+          in: position_ids
+        }
+        
+        
+      }
+    }
 
     const selectedEmployees = dbInstance.employee
       .findMany({
@@ -49,7 +59,8 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     let totalEmployeeCount = dbInstance.employee.count({
       where: whereFilter,
     });
-    await delay(1000)
+    await delay(200)
+    // await delay(1000)
     // await delay(4000)
     return HttpResponse.json({
       total_count: totalEmployeeCount,

@@ -6,6 +6,8 @@ import Employee from "@/app/models/employee/Employee";
 import { useRepo } from "pinia-orm";
 const employeeRepo = useRepo(Employee); // Если будет глючить - сделать его computed/getter. В примерах оно было computed/getter.
 
+import type {FilterEmployees}  from '@/app/components/employees/EmployeesFilter/EmployeesFilter.vue';
+
 export const useEmployeesStore = defineStore("employeesStore", {
   state: () => ({
     paginatedEmployeeIds: [] as number[],
@@ -14,14 +16,14 @@ export const useEmployeesStore = defineStore("employeesStore", {
     totalPaginatedEmployeesQty: null as (null | number), 
   }),
   actions: {
-    async fetchPaginatedEmployees({ page = 1 }: { page?: number }) {
+    async fetchPaginatedEmployees({ page = 1, filter = null }: { page?: number, filter?: FilterEmployees | null}) {
+      console.log(filter); console.log('^...filter:') 
       const dataFromServer = (await apiMain.fetch({
         method: "get",
         url: "employees",
         getParams: {
           page: page,
-          // todo:: убрать хардкод
-          position_ids: [100, 500, 100500],
+          position_ids: filter?.positionsIds ?? null,
         },
       })) as { data: IEmployee[]; total_count: number };
       const fetchedEmployeesIds = dataFromServer.data.map((e) => e.id);
