@@ -28,8 +28,8 @@ export { globalProperties };
 
 // Импортировать это нужно именно при помощи await import.
 // Иначе начнет перехватывать фрагменты сборки от Vite.
-// @ts-ignore Мокапирование делаю без типизации. Может-быть потом переделаю.
 const { mockServiceWorker, unhandledRequestHandler } = await import(
+  // @ts-ignore Мокапирование делаю без типизации. Может-быть потом переделаю.
   "@/app/vue-plugins/mockServiceWorker.js"
 );
 await mockServiceWorker.start({
