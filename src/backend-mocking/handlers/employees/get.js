@@ -50,6 +50,7 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
       where: whereFilter,
     });
     await delay(1000)
+    // await delay(4000)
     return HttpResponse.json({
       total_count: totalEmployeeCount,
       data: selectedEmployees,

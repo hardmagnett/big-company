@@ -7,21 +7,29 @@ import AInfinity from "@/a-library/components/other/AInfinity/AInfinity.vue";
 const employeesStore = useEmployeesStore();
 const { paginatedEmployees, totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 const { fetchPaginatedEmployees } = employeesStore;
+import type {StateHandler} from '@/a-library/components/other/AInfinity/AInfinity.vue';
+
 
 defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 
 let pageNumber = ref(1)
-const loadMore = ()=>{
-  // todo:: дубли загрузки. Вынести куда-то.
+const loadMore = async ($state: StateHandler)=>{
+  // if (paginatedEmployees.value.length === totalPaginatedEmployeesQty.value) {
+  //   return
+  // }
   
-  if (paginatedEmployees.value.length === totalPaginatedEmployeesQty.value) {
-    return
-  }
-  
-  fetchPaginatedEmployees({
+  await fetchPaginatedEmployees({
     // todo:: сюда ещё фильтр передавать нужно будет
     page: pageNumber.value,
   });
+  console.log(paginatedEmployees.value.length); console.log('^...paginatedEmployees.value.length:') 
+
+  if (paginatedEmployees.value.length === totalPaginatedEmployeesQty.value) {
+    $state.completed();
+  }
+  else {
+    $state.loaded();
+  }
   pageNumber.value++
 }
 

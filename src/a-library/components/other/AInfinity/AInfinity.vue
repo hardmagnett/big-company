@@ -1,18 +1,50 @@
 <script setup lang="ts">
+/**
+ * Вдохновлялся этой статьей и этой библиотекой
+ * https://www.netguru.com/blog/infinite-scroll-with-vue.js-and-intersection-observer
+ * https://vue3-infinite-loading.netlify.app/guide/quick-demo.html
+ * Но переделал всё по своему. Пусть ссылки останутся, на случай если нужно будет доработать.
+ */
 import {onBeforeUnmount, onMounted, ref} from 'vue'
 
+export type StateHandler = {
+  loading: ()=>void;
+  loaded: ()=>void;
+  completed: ()=>void;
+}
 
 const emit = defineEmits<{
-  needToLoadMore: [noMatterFieldName: string]  
+  needToLoadMore: [stateHandler: StateHandler]  
 }>()
 
 let observer = ref<IntersectionObserver | null>(null)
 const rootNode = ref<Element | null>(null)
 
 
+const state = ref<'empty' | 'loading' | 'loaded' | 'completed'>('empty');
+
+const stateHandler: StateHandler = {
+  loading() {
+    state.value = "loading";
+  },
+  async loaded() {
+    state.value = "loaded";
+    // const parentEl = params.parentEl || document.documentElement;
+    // await nextTick();
+    // if (top) parentEl.scrollTop = parentEl.scrollHeight - prevHeight;
+    // if (isVisible(infiniteLoading.value!, params.parentEl)) params.emit();
+  },
+  completed() {
+    state.value = "completed";
+    // observer?.disconnect();
+    observer.value?.disconnect()
+  },
+};
+
 const handleIntersect = (triggerNode: IntersectionObserverEntry) => {
-  if (triggerNode.isIntersecting) {
-    emit('needToLoadMore', 'shit')
+  if (triggerNode.isIntersecting && ['empty', "loaded"].includes(state.value)) {
+    stateHandler.loading();
+    emit('needToLoadMore', stateHandler)
   }
   
   
@@ -48,6 +80,11 @@ onBeforeUnmount(()=>{
 
 <template>
   <div class="a-infinity" ref="rootNode">
+    <!--todo:: сделать красивый лоадер-->
+    <p v-if="state==='loading'" style="height: 100px; background-color:#aff;">
+      Loading ...
+    </p>
+    <!--<p>shit</p>-->
     
   </div>
 </template>
