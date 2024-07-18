@@ -11,6 +11,11 @@ import {
 
 //////// Эмит событий
 const emit = defineEmits(['myEventName'])
+const emit2 = defineEmits<{
+  update: [noMatterFieldName: string]
+}>()
+
+
 function someMethod(){emit('myEventName')}
 
 //////// Props

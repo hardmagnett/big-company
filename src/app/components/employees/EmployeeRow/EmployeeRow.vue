@@ -16,7 +16,7 @@ withDefaults(defineProps<Props>(), {});
       {{ employee.id }}
       {{ employee.fullname }}
     </td>
-    <td class="employee-row__department mod--ellipsis-one-line-on-table-cell">
+    <td class="mod--ellipsis-one-line-on-table-cell">
       {{ employee.position?.title }}
     </td>
     <td class="employee-row__buttons">
@@ -34,25 +34,6 @@ withDefaults(defineProps<Props>(), {});
 .employee-row {
   .employee-row__buttons {
     padding: 0;
-    width: 60px;
-  }
-  .employee-row__department {
-    --width: 80px;
-    @container style(--bp-sm-or-more) {
-      --width: 200px;
-
-      width: var(--width);
-      max-width: var(--width);
-    }
-    @container style(--bp-lg-or-more) {
-      --width: 300px;
-    }
-    @container style(--bp-xl-or-more) {
-      --width: 400px;
-    }
-    @container style(--bp-xxl-or-more) {
-      --width: 500px;
-    }
   }
 }
 </style>

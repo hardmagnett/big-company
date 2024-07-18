@@ -1,9 +1,11 @@
 import { randomBetween } from "@/a-library/helpers/language/number/randoms";
 import fable from "@/a-library/helpers/content/fable";
 
+const employeesQty = 200;
+
 const seedEmployees = ({ dbInstance }) => {
   const positions = dbInstance.position.getAll();
-  for (let id = 1; id <= 200; id++) {
+  for (let id = 1; id <= employeesQty; id++) {
     let gender =
       randomBetween(0, 1, { sameRandom: true }) === 1 ? "female" : "male";
 
@@ -13,7 +15,7 @@ const seedEmployees = ({ dbInstance }) => {
     let positionForEmployee = positions[positionIndex];
     dbInstance.employee.create({
       id: id,
-      firstname: fable.firstName({ gender }),
+      firstname: fable.firstName({ gender }).toLowerCase(),
       lastname: fable.lastName({ gender }),
       position: positionForEmployee,
     });

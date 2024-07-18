@@ -5,7 +5,7 @@ type ConstructorParams = {
   baseUrl?: string;
 };
 
-type GetParams = Record<string, string | number | string[] | number[]>;
+type GetParams = Record<string, string | number | string[] | number[] | null>;
 const convertObjectForURLSearchParams = (
   getParams: GetParams,
 ): Record<string, string> => {
@@ -14,15 +14,28 @@ const convertObjectForURLSearchParams = (
     if (Object.prototype.hasOwnProperty.call(getParams, key)) {
       const resultingKey = key.toString();
       const val = getParams[key];
-      let resultingVal: string;
-      if (typeof val === "number") {
+      let needToSkip = false;
+      let resultingVal: string = "";
+      if (val === null) {
+        needToSkip = true;
+      } else if (typeof val === "number") {
         resultingVal = val.toString();
       } else if (Array.isArray(val)) {
-        resultingVal = val.join(",");
+        if (val.length) {
+          resultingVal = val.join(",");
+        } else {
+          needToSkip = true;
+        }
       } else {
-        resultingVal = val.toString();
+        if (!val) {
+          needToSkip = true;
+        } else {
+          resultingVal = val.toString();
+        }
       }
-      convertedParams[resultingKey] = resultingVal;
+      if (!needToSkip) {
+        convertedParams[resultingKey] = resultingVal;
+      }
     }
   }
   return convertedParams;

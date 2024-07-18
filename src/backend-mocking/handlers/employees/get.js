@@ -1,16 +1,18 @@
-import { http, HttpResponse } from "msw";
+import { http, HttpResponse, delay } from "msw";
+import capitalizeFirstLetter from "@/a-library/helpers/language/string/capitalizeFirstLetter";
 
 import {
+  getParam,
   getParamAsNumber,
   splitGetParamToNumberArray,
 } from "@/backend-mocking/handlers/helpers.js";
 
-const perPage = 20;
-
 export const createGetHandler = ({ baseUrl, dbInstance }) => {
-  return http.get(`${baseUrl}/employees`, ({ request }) => {
+  return http.get(`${baseUrl}/employees`, async ({ request }) => {
     const url = new URL(request.url);
     const page = getParamAsNumber("page", url);
+    const perPage = getParamAsNumber("per_page", url);
+    const firstname = getParam("firstname", url);
 
     // eslint-disable-next-line
     const position_ids = splitGetParamToNumberArray("position_ids", url);
@@ -18,6 +20,18 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     const whereFilter = {
       // тут будет фильтрация по тексту и выбранным должностям
     };
+    if (position_ids.length) {
+      whereFilter.position = {
+        id: {
+          in: position_ids,
+        },
+      };
+    }
+    if (firstname) {
+      whereFilter.firstname = {
+        contains: firstname.toLowerCase(),
+      };
+    }
 
     const selectedEmployees = dbInstance.employee
       .findMany({
@@ -38,7 +52,7 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
         });
         return {
           id: e.id,
-          firstname: e.firstname,
+          firstname: capitalizeFirstLetter(e.firstname),
           lastname: e.lastname,
           position: {
             id: position.id,
@@ -49,6 +63,7 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     let totalEmployeeCount = dbInstance.employee.count({
       where: whereFilter,
     });
+    await delay(1000);
     return HttpResponse.json({
       total_count: totalEmployeeCount,
       data: selectedEmployees,

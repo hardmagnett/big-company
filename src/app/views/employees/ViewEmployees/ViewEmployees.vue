@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-import { onBeforeMount, reactive, ref, watch } from "vue";
+import { onBeforeMount, reactive, ref } from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
@@ -15,7 +15,6 @@ import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWi
 const positionsStore = usePositionsStore();
 const { fetchAllPositions } = positionsStore;
 const employeesStore = useEmployeesStore();
-const { fetchPaginatedEmployees } = employeesStore;
 const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 
 let isOpenDialogEmployeeDeleting = ref(false);
@@ -25,17 +24,8 @@ let filter = reactive({
   query: "",
   positionsIds: [] as number[],
 });
+
 let filterUpdatesQtyKey = ref(0);
-
-const filterChangeHandler = () => {};
-
-let watchFilter = () => {
-  return watch(filter, () => {
-    filterChangeHandler();
-  });
-};
-
-let unwatchFilter = watchFilter();
 
 const needToDeleteEmployeeHandler = () => {
   isOpenDialogEmployeeDeleting.value = true;
@@ -64,19 +54,10 @@ const createEditEmployee = () => {
   });
 };
 const updateWholeFilter = (newFilter: FilterEmployees) => {
-  unwatchFilter();
-  filter = newFilter;
-
-  filterUpdatesQtyKey.value++;
-  unwatchFilter = watchFilter();
-  filterChangeHandler();
+  Object.assign(filter, newFilter);
 };
 onBeforeMount(() => {
   fetchAllPositions();
-  fetchPaginatedEmployees({
-    // todo:: сюда ещё фильтр передавать нужно будет
-    page: 1,
-  });
 });
 </script>
 
@@ -89,7 +70,7 @@ onBeforeMount(() => {
       </ABtn>
       <p class="mod--mt-0 mod--mb-0">
         Найдено:
-        <!--todo:: не забыть скрывать этот span пока идет запрос-->
+        <!--todo:: сделать этот span поуже. У меня ведь будет максимум 5000 записей-->
         <span class="employees__qty-number">
           {{ totalPaginatedEmployeesQty }}
         </span>
@@ -114,7 +95,7 @@ onBeforeMount(() => {
     ></EmployeeDialogAddEdit>
 
     <EmployeesTable
-      class=""
+      :filter="filter"
       @needToDeleteEmployee="needToDeleteEmployeeHandler"
       @needToEditEmployee="needToEditEmployeeHandler"
     />
@@ -124,6 +105,10 @@ onBeforeMount(() => {
 .employees {
   display: flex;
   flex-flow: column nowrap;
+
+  /*Чтобы таблица растягивалась на всю высоту, даже если у неё недостаточно записей*/
+  /*Чтобы лоадер можно было разместить по центру*/
+  flex: 1 1 auto;
   > * {
     flex: 0 0 auto;
   }

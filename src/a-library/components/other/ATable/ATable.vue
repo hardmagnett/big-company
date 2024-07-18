@@ -5,6 +5,9 @@
     <table>
       <slot></slot>
     </table>
+
+    <!--Нужен, например, чтобы в корень этого класть AInfinity-->
+    <slot name="appendRoot"></slot>
   </div>
 </template>
 
@@ -18,6 +21,12 @@
 <style>
 .a-table {
   overflow-y: auto;
+
+  /*Флекс нужен если вдруг непосредственно под или над <table> нужно будет разместить элемент. Например <AInfinity>.*/
+  /*Да так разместить, чтобы он занимал много пространства по высоте.*/
+  /*Тогда ему можно будет задать тянущуюся высоту при помощи flex: X X xxxx*/
+  display: flex;
+  flex-flow: column nowrap;
 
   table {
     width: 100%;

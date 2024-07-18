@@ -4,7 +4,7 @@ import { usePositionsStore } from "@/app/stores/position";
 const positionsStore = usePositionsStore();
 const { allPositions } = storeToRefs(positionsStore);
 
-import { computed, ref, onBeforeMount, reactive } from "vue";
+import { computed, ref, onBeforeMount } from "vue";
 import localStorageService from "@/a-library/helpers/DOM/localStorageService";
 import debounce from "@/a-library/helpers/language/functions/debounce";
 import deepEqual from "@/a-library/helpers/language/functions/deepEqual";
@@ -18,10 +18,10 @@ const emit = defineEmits<{
   needToUpdateWholeFilter: [value: FilterEmployees];
 }>();
 
-let filterInitial = reactive<FilterEmployees>({
+let filterInitial: FilterEmployees = {
   query: "",
   positionsIds: [],
-});
+};
 
 export interface Props {
   filter: FilterEmployees;
