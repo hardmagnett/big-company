@@ -3,10 +3,13 @@
  * Вдохновлялся этой статьей и этой библиотекой
  * https://www.netguru.com/blog/infinite-scroll-with-vue.js-and-intersection-observer
  * https://vue3-infinite-loading.netlify.app/guide/quick-demo.html
- * Но переделал всё по своему. Пусть ссылки останутся, на случай если нужно будет доработать.
+ * Но переделал всё до неузнаваемости. Пусть ссылки останутся, на случай если нужно будет доработать.
  */
 import {nextTick, onBeforeUnmount, onMounted, ref, watch} from 'vue'
 import ALoader from "@/a-library/components/other/ALoader/ALoader.vue";
+import {checkScrollBarPresenceHorizontal} from '@/a-library/helpers/DOM/scrollHelpers';
+
+
 
 export interface Props {
   resetId?: number,
@@ -57,14 +60,9 @@ const stateHandler: StateHandler = {
 
     let containerNode = getContainerNode()
     
-    // todo:: вынести в dom-хелперы
-    const checkScrollBar = (el: HTMLElement)=>{
-      return ((el.scrollHeight - el.clientHeight) > 0)
-    };
-    
     await nextTick(); // Чтобы вновь пришедшие данные успели отрендериться
      
-    let hasScrollBar = checkScrollBar(containerNode)
+    let hasScrollBar = checkScrollBarPresenceHorizontal(containerNode)
     if (!hasScrollBar) {
       // Если после добавления партии скролл-бар ещё не появился, то загружаю ещё одну партию.
       emitLoadMore()
