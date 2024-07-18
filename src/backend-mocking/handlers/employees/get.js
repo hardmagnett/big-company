@@ -67,9 +67,10 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     let totalEmployeeCount = dbInstance.employee.count({
       where: whereFilter,
     });
-    await delay(200)
+    // await delay(200)
     // await delay(1000)
     // await delay(4000)
+    await delay(600000)
     return HttpResponse.json({
       total_count: totalEmployeeCount,
       data: selectedEmployees,

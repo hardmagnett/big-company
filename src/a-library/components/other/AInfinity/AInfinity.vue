@@ -6,6 +6,7 @@
  * Но переделал всё по своему. Пусть ссылки останутся, на случай если нужно будет доработать.
  */
 import {onBeforeUnmount, onMounted, ref, watch} from 'vue'
+import ALoader from "@/a-library/components/other/ALoader/ALoader.vue";
 
 export interface Props {
   resetId?: number,
@@ -101,11 +102,9 @@ onBeforeUnmount(()=>{
 
 <template>
   <div class="a-infinity" ref="rootNode">
-    <!--todo:: сделать красивый лоадер-->
-    <p v-if="state==='loading'" style="height: 100px; background-color:#aff;">
-      Loading ...
-    </p>
-    <!--<p>shit</p>-->
+    <div class="a-infinity__loader-wrapper" v-if="state==='loading'">
+      <ALoader />
+    </div>
     
   </div>
 </template>
@@ -114,5 +113,13 @@ onBeforeUnmount(()=>{
 .a-infinity {
   /*background-color: #aff;*/
   /*height: 100px;*/
+  .a-infinity__loader-wrapper {
+    /*background-color: red;*/
+    /*outline: 1px solid darkred;*/
+    
+    display: flex;
+    justify-content: center;
+    padding-top: var(--gap);
+  }
 }
 </style>
