@@ -5,7 +5,7 @@
     <table>
       <slot></slot>
     </table>
-    
+
     <!--Нужен, например, чтобы в корень этого класть AInfinity-->
     <slot name="appendRoot"></slot>
   </div>

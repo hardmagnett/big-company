@@ -2,14 +2,14 @@
 import EmployeeRow from "@/app/components/employees/EmployeeRow/EmployeeRow.vue";
 import { useEmployeesStore } from "@/app/stores/employee";
 import { storeToRefs } from "pinia";
-import {onBeforeMount, ref, watch} from "vue";
+import { onBeforeMount, ref, watch } from "vue";
 import AInfinity from "@/a-library/components/other/AInfinity/AInfinity.vue";
 const employeesStore = useEmployeesStore();
-const { paginatedEmployees, totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
+const { paginatedEmployees, totalPaginatedEmployeesQty } =
+  storeToRefs(employeesStore);
 const { fetchPaginatedEmployees, clearPagination } = employeesStore;
-import type {StateHandler} from '@/a-library/components/other/AInfinity/AInfinity.vue';
-import type {FilterEmployees} from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
-
+import type { StateHandler } from "@/a-library/components/other/AInfinity/AInfinity.vue";
+import type { FilterEmployees } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 
 defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 
@@ -18,35 +18,28 @@ export interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {});
 
-let pageNumber = ref(1)
-let infinityResetId = ref(0)
+let pageNumber = ref(1);
+let infinityResetId = ref(0);
 
-watch(
-    props.filter,
-    () => {
-      pageNumber.value = 1
-      clearPagination()
-      infinityResetId.value++
-    }
-)
+watch(props.filter, () => {
+  pageNumber.value = 1;
+  clearPagination();
+  infinityResetId.value++;
+});
 
-
-const loadMore = async ($state: StateHandler)=>{
-  
+const loadMore = async ($state: StateHandler) => {
   await fetchPaginatedEmployees({
     page: pageNumber.value,
-    filter: props.filter
+    filter: props.filter,
   });
 
   if (paginatedEmployees.value.length === totalPaginatedEmployeesQty.value) {
     $state.completed();
-  }
-  else {
+  } else {
     $state.loaded();
   }
-  pageNumber.value++
-}
-
+  pageNumber.value++;
+};
 
 onBeforeMount(() => {});
 </script>
@@ -71,12 +64,8 @@ onBeforeMount(() => {});
     </tbody>
 
     <template #appendRoot>
-      <AInfinity
-          :resetId="infinityResetId"
-          @needToLoadMore="loadMore"
-      />
+      <AInfinity :resetId="infinityResetId" @needToLoadMore="loadMore" />
     </template>
-    
   </ATable>
 </template>
 
@@ -93,7 +82,7 @@ onBeforeMount(() => {});
     --width: 80px;
     @container style(--bp-sm-or-more) {
       --width: 200px;
-  
+
       width: var(--width);
       max-width: var(--width);
     }
@@ -107,6 +96,5 @@ onBeforeMount(() => {});
       --width: 500px;
     }
   }
-  
 }
 </style>

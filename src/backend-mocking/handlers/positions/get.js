@@ -1,6 +1,4 @@
-import { http, HttpResponse} from "msw"
-
-
+import { http, HttpResponse } from "msw";
 
 export const createGetHandler = ({ baseUrl, dbInstance }) => {
   return http.get(`${baseUrl}/positions`, () => {

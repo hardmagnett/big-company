@@ -27,7 +27,6 @@ let filter = reactive({
 
 let filterUpdatesQtyKey = ref(0);
 
-
 const needToDeleteEmployeeHandler = () => {
   isOpenDialogEmployeeDeleting.value = true;
 };
@@ -109,7 +108,7 @@ onBeforeMount(() => {
 
   /*Чтобы таблица растягивалась на всю высоту, даже если у неё недостаточно записей*/
   /*Чтобы лоадер можно было разместить по центру*/
-  flex: 1 1 auto; 
+  flex: 1 1 auto;
   > * {
     flex: 0 0 auto;
   }

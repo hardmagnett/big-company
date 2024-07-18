@@ -6,17 +6,25 @@ import Employee from "@/app/models/employee/Employee";
 import { useRepo } from "pinia-orm";
 const employeeRepo = useRepo(Employee); // Если будет глючить - сделать его computed/getter. В примерах оно было computed/getter.
 
-import type {FilterEmployees}  from '@/app/components/employees/EmployeesFilter/EmployeesFilter.vue';
+import type { FilterEmployees } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 
 export const useEmployeesStore = defineStore("employeesStore", {
   state: () => ({
     paginatedEmployeeIds: [] as number[],
     // Сколько окажется, если паджинацию докрутить до конца.
     // Должна быть null в то время пока вообще ничего не загружено.
-    totalPaginatedEmployeesQty: null as (null | number), 
+    totalPaginatedEmployeesQty: null as null | number,
   }),
   actions: {
-    async fetchPaginatedEmployees({ page = 1, perPage = 50, filter = null }: { page?: number, perPage?: number, filter?: FilterEmployees | null}) {
+    async fetchPaginatedEmployees({
+      page = 1,
+      perPage = 50,
+      filter = null,
+    }: {
+      page?: number;
+      perPage?: number;
+      filter?: FilterEmployees | null;
+    }) {
       const dataFromServer = (await apiMain.fetch({
         method: "get",
         url: "employees",
@@ -24,7 +32,7 @@ export const useEmployeesStore = defineStore("employeesStore", {
           page: page,
           per_page: perPage,
           position_ids: filter?.positionsIds ?? null,
-          firstname: filter?.query.trim() ?? null
+          firstname: filter?.query.trim() ?? null,
         },
       })) as { data: IEmployee[]; total_count: number };
       const fetchedEmployeesIds = dataFromServer.data.map((e) => e.id);
@@ -37,7 +45,7 @@ export const useEmployeesStore = defineStore("employeesStore", {
       employeeRepo.save(dataFromServer.data);
     },
     clearPagination() {
-      this.totalPaginatedEmployeesQty = null
+      this.totalPaginatedEmployeesQty = null;
       this.paginatedEmployeeIds = [];
     },
   },

@@ -14,14 +14,14 @@ const convertObjectForURLSearchParams = (
     if (Object.prototype.hasOwnProperty.call(getParams, key)) {
       const resultingKey = key.toString();
       const val = getParams[key];
-      let needToSkip = false
-      let resultingVal: string = '';
+      let needToSkip = false;
+      let resultingVal: string = "";
       if (val === null) {
-        needToSkip = true
+        needToSkip = true;
       } else if (typeof val === "number") {
         resultingVal = val.toString();
       } else if (Array.isArray(val)) {
-        if(val.length) {
+        if (val.length) {
           resultingVal = val.join(",");
         } else {
           needToSkip = true;
@@ -33,10 +33,9 @@ const convertObjectForURLSearchParams = (
           resultingVal = val.toString();
         }
       }
-      if (!needToSkip){
+      if (!needToSkip) {
         convertedParams[resultingKey] = resultingVal;
       }
-      
     }
   }
   return convertedParams;

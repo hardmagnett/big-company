@@ -5,40 +5,39 @@
  * https://vue3-infinite-loading.netlify.app/guide/quick-demo.html
  * Но переделал всё до неузнаваемости. Пусть ссылки останутся, на случай если нужно будет доработать.
  */
-import {nextTick, onBeforeUnmount, onMounted, ref, watch} from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import ALoader from "@/a-library/components/other/ALoader/ALoader.vue";
-import {checkScrollBarPresenceHorizontal} from '@/a-library/helpers/DOM/scrollHelpers';
-
-
+import { checkScrollBarPresenceHorizontal } from "@/a-library/helpers/DOM/scrollHelpers";
 
 export interface Props {
-  resetId?: number,
+  resetId?: number;
 }
 const props = withDefaults(defineProps<Props>(), {
   resetId: 0,
-})
+});
 
-watch(()=>props.resetId, ()=>{
-    stateHandler.empty()
-  }
-)
+watch(
+  () => props.resetId,
+  () => {
+    stateHandler.empty();
+  },
+);
 
 export type StateHandler = {
-  empty: ()=>void;
-  loading: ()=>void;
-  loaded: ()=>void;
-  completed: ()=>void;
-}
+  empty: () => void;
+  loading: () => void;
+  loaded: () => void;
+  completed: () => void;
+};
 
 const emit = defineEmits<{
-  needToLoadMore: [stateHandler: StateHandler]  
-}>()
+  needToLoadMore: [stateHandler: StateHandler];
+}>();
 
-let observer = ref<IntersectionObserver | null>(null)
-const rootNode = ref<Element | null>(null)
+let observer = ref<IntersectionObserver | null>(null);
+const rootNode = ref<Element | null>(null);
 
-
-const state = ref<'empty' | 'loading' | 'loaded' | 'completed'>('empty');
+const state = ref<"empty" | "loading" | "loaded" | "completed">("empty");
 
 const stateHandler: StateHandler = {
   empty() {
@@ -52,76 +51,76 @@ const stateHandler: StateHandler = {
   async loaded() {
     state.value = "loaded";
 
-    let containerNode = getContainerNode()
-    
+    let containerNode = getContainerNode();
+
     await nextTick(); // Чтобы вновь пришедшие данные успели отрендериться
-     
-    let hasScrollBar = checkScrollBarPresenceHorizontal(containerNode)
+
+    let hasScrollBar = checkScrollBarPresenceHorizontal(containerNode);
     if (!hasScrollBar) {
       // Если после добавления партии скролл-бар ещё не появился, то загружаю ещё одну партию.
-      emitLoadMore()
+      emitLoadMore();
     }
-    
   },
   completed() {
     state.value = "completed";
-    observer.value?.disconnect()
+    observer.value?.disconnect();
   },
 };
 
-
-const emitLoadMore = ()=>{
+const emitLoadMore = () => {
   stateHandler.loading();
-  emit('needToLoadMore', stateHandler)
-}
+  emit("needToLoadMore", stateHandler);
+};
 
 const handleIntersect = (triggerNode: IntersectionObserverEntry) => {
-  if (triggerNode.isIntersecting && ['empty', "loaded"].includes(state.value)) {
-    emitLoadMore()
+  if (triggerNode.isIntersecting && ["empty", "loaded"].includes(state.value)) {
+    emitLoadMore();
   }
-}
+};
 
-const getContainerNode = ()=>{
+const getContainerNode = () => {
   // Можно ещё сделать опциональный prop с контейнером и использовать его, если этот prop передан.
-  let localRootNode = rootNode.value as Element
+  let localRootNode = rootNode.value as Element;
   const ancestorNode = localRootNode.parentElement as HTMLElement;
-  return ancestorNode
-}
+  return ancestorNode;
+};
 
-const prepareIntersectionObserver = ()=>{
+const prepareIntersectionObserver = () => {
   // Здесь rootNode уже точно Element.
-  let localRootNode = rootNode.value as Element
-  
-  const ancestorNode = getContainerNode();
-  observer.value = new IntersectionObserver((entries)=>{
-    handleIntersect(entries[0])
-  }, {
-    root: ancestorNode,
-    threshold: 0,
-    rootMargin: "10px"  // Если у rootNode высота 0, то не сработает. Нужно чтобы срабатывал немного раньше. 
-  })
-  
-  observer.value.observe(localRootNode)
-}
-const disconnectIntersectionObserver = ()=>{
-  observer.value?.disconnect()
-}
+  let localRootNode = rootNode.value as Element;
 
-onMounted(()=>{
-  prepareIntersectionObserver()
-})
-onBeforeUnmount(()=>{
+  const ancestorNode = getContainerNode();
+  observer.value = new IntersectionObserver(
+    (entries) => {
+      handleIntersect(entries[0]);
+    },
+    {
+      root: ancestorNode,
+      threshold: 0,
+      rootMargin: "10px", // Если у rootNode высота 0, то не сработает. Нужно чтобы срабатывал немного раньше.
+    },
+  );
+
+  observer.value.observe(localRootNode);
+};
+const disconnectIntersectionObserver = () => {
+  observer.value?.disconnect();
+};
+
+onMounted(() => {
+  prepareIntersectionObserver();
+});
+onBeforeUnmount(() => {
   disconnectIntersectionObserver();
-  observer.value = null
-})
+  observer.value = null;
+});
 </script>
 
 <template>
   <div class="a-infinity" ref="rootNode">
-    <div class="a-infinity__loader-wrapper" v-if="state==='loading'">
+    <div class="a-infinity__loader-wrapper" v-if="state === 'loading'">
       <ALoader />
     </div>
-    
   </div>
 </template>
 
@@ -131,13 +130,12 @@ onBeforeUnmount(()=>{
   .a-infinity__loader-wrapper {
     flex: 1 1 auto;
 
-    
-    
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: var(--gap);
-    .a-loader {}
+    .a-loader {
+    }
   }
 }
 </style>

@@ -1,13 +1,11 @@
 import { http, HttpResponse, delay } from "msw";
-import capitalizeFirstLetter from '@/a-library/helpers/language/string/capitalizeFirstLetter'
-
+import capitalizeFirstLetter from "@/a-library/helpers/language/string/capitalizeFirstLetter";
 
 import {
   getParam,
   getParamAsNumber,
   splitGetParamToNumberArray,
-} from "@/backend-mocking/handlers/helpers.js"
-
+} from "@/backend-mocking/handlers/helpers.js";
 
 export const createGetHandler = ({ baseUrl, dbInstance }) => {
   return http.get(`${baseUrl}/employees`, async ({ request }) => {
@@ -25,14 +23,14 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     if (position_ids.length) {
       whereFilter.position = {
         id: {
-          in: position_ids
-        }
-      }
+          in: position_ids,
+        },
+      };
     }
     if (firstname) {
       whereFilter.firstname = {
-          contains: firstname.toLowerCase()
-      }
+        contains: firstname.toLowerCase(),
+      };
     }
 
     const selectedEmployees = dbInstance.employee
@@ -65,7 +63,7 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     let totalEmployeeCount = dbInstance.employee.count({
       where: whereFilter,
     });
-    await delay(1000)
+    await delay(1000);
     return HttpResponse.json({
       total_count: totalEmployeeCount,
       data: selectedEmployees,
