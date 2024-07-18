@@ -25,17 +25,26 @@ let filter = reactive({
   query: "",
   positionsIds: [] as number[],
 });
+
+// let filter = ref({
+//   query: "",
+//   positionsIds: [] as number[],
+// });
 let filterUpdatesQtyKey = ref(0);
 
-const filterChangeHandler = () => {};
+// const filterChangeHandler = () => {};
 
-let watchFilter = () => {
-  return watch(filter, () => {
-    filterChangeHandler();
-  });
-};
 
-let unwatchFilter = watchFilter();
+// watch(filter, () => {
+//   filterChangeHandler();
+// });
+// let watchFilter = () => {
+//   return watch(filter, () => {
+//     filterChangeHandler();
+//   });
+// };
+
+// let unwatchFilter = watchFilter();
 
 const needToDeleteEmployeeHandler = () => {
   isOpenDialogEmployeeDeleting.value = true;
@@ -64,12 +73,14 @@ const createEditEmployee = () => {
   });
 };
 const updateWholeFilter = (newFilter: FilterEmployees) => {
-  unwatchFilter();
-  filter = newFilter;
+  // unwatchFilter();
+  // filter.value = newFilter;
+  // filter.value = Object.assign(filter.value, newFilter);
+  filter = Object.assign(filter, newFilter);
 
-  filterUpdatesQtyKey.value++;
-  unwatchFilter = watchFilter();
-  filterChangeHandler();
+  // filterUpdatesQtyKey.value++;
+  // unwatchFilter = watchFilter();
+  // filterChangeHandler();
 };
 onBeforeMount(() => {
   fetchAllPositions();
