@@ -57,8 +57,8 @@ onBeforeMount(() => {});
     <thead>
       <tr>
         <th>Сотрудник</th>
-        <th>Должность</th>
-        <th></th>
+        <th class="employee-table__col-position">Должность</th>
+        <th class="employee-table__col-buttons"></th>
       </tr>
     </thead>
     <tbody>
@@ -83,11 +83,31 @@ onBeforeMount(() => {});
 
 <style scoped>
 .employees-table {
-  /*background-color: #aff;*/
-  /*outline: 1px solid darkred;*/
-  
   .a-infinity {
     flex: 1 1 auto;
   }
+  .employee-table__col-buttons {
+    padding: 0;
+    width: 60px;
+  }
+  .employee-table__col-position {
+    --width: 80px;
+    @container style(--bp-sm-or-more) {
+      --width: 200px;
+  
+      width: var(--width);
+      max-width: var(--width);
+    }
+    @container style(--bp-lg-or-more) {
+      --width: 300px;
+    }
+    @container style(--bp-xl-or-more) {
+      --width: 400px;
+    }
+    @container style(--bp-xxl-or-more) {
+      --width: 500px;
+    }
+  }
+  
 }
 </style>
