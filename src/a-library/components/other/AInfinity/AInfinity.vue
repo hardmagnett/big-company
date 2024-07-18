@@ -5,7 +5,7 @@
  * https://vue3-infinite-loading.netlify.app/guide/quick-demo.html
  * Но переделал всё по своему. Пусть ссылки останутся, на случай если нужно будет доработать.
  */
-import {onBeforeUnmount, onMounted, ref, watch} from 'vue'
+import {nextTick, onBeforeUnmount, onMounted, ref, watch} from 'vue'
 import ALoader from "@/a-library/components/other/ALoader/ALoader.vue";
 
 export interface Props {
@@ -47,11 +47,29 @@ const stateHandler: StateHandler = {
     state.value = "loading";
   },
   async loaded() {
+    // console.log('loaded')
     state.value = "loaded";
     // const parentEl = params.parentEl || document.documentElement;
     // await nextTick();
     // if (top) parentEl.scrollTop = parentEl.scrollHeight - prevHeight;
     // if (isVisible(infiniteLoading.value!, params.parentEl)) params.emit();
+
+
+    let containerNode = getContainerNode()
+    
+    const checkScrollBar = (el: HTMLElement)=>{
+      return ((el.scrollHeight - el.clientHeight) > 0)
+    };
+    
+    await nextTick(); // Чтобы вновь пришедшие данные успели отрендериться
+     
+    let hasScrollBar = checkScrollBar(containerNode)
+    if (!hasScrollBar) {
+      // Если после добавления партии скролл-бар ещё не появился, то загружаю ещё одну партию.
+      emitLoadMore()
+    }
+    // console.log(containerNode); console.log('^...containerNode:') 
+    
   },
   completed() {
     state.value = "completed";
@@ -60,14 +78,29 @@ const stateHandler: StateHandler = {
   },
 };
 
-const handleIntersect = (triggerNode: IntersectionObserverEntry) => {
-  if (triggerNode.isIntersecting && ['empty', "loaded"].includes(state.value)) {
-    stateHandler.loading();
-    emit('needToLoadMore', stateHandler)
-  }
-  
-  
+
+const emitLoadMore = ()=>{
+  stateHandler.loading();
+  emit('needToLoadMore', stateHandler)
 }
+
+const handleIntersect = (triggerNode: IntersectionObserverEntry) => {
+  // console.log(1)
+  if (triggerNode.isIntersecting && ['empty', "loaded"].includes(state.value)) {
+    // console.log(2)
+    // stateHandler.loading();
+    // emit('needToLoadMore', stateHandler)
+    emitLoadMore()
+  }
+}
+
+const getContainerNode = ()=>{
+  // Можно ещё сделать опциональный prop с контейнером и использовать его, если этот prop передан.
+  let localRootNode = rootNode.value as Element
+  const ancestorNode = localRootNode.parentElement as HTMLElement;
+  return ancestorNode
+}
+
 const prepareIntersectionObserver = ()=>{
   
   // console.log(rootNode.value); console.log('^...rootNode.value:')
@@ -75,7 +108,8 @@ const prepareIntersectionObserver = ()=>{
   // Здесь rootNode уже точно Element.
   let localRootNode = rootNode.value as Element
 
-  const ancestorNode = localRootNode.parentElement; // Можно ещё сделать опциональный prop и передавать его, если этот prop есть.
+  // const ancestorNode = localRootNode.parentElement; // Можно ещё сделать опциональный prop и передавать его, если этот prop есть.
+  const ancestorNode = getContainerNode(); 
   // console.log(ancestorNode); console.log('^...ancestorNode:') 
   observer.value = new IntersectionObserver((entries)=>{
     handleIntersect(entries[0])
