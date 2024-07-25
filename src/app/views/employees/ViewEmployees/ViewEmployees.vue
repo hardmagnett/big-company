@@ -22,6 +22,7 @@ const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 
 let isOpenDialogEmployeeDeleting = ref(false);
 
+let employeeToEdit = ref<Employee | null>(null)
 let employeeToDelete = ref<Employee | null>(null)
 // let employeeToDelete = reactive<Employee | null>(null)
 // let employeeToDelete: Employee | null = null
@@ -42,10 +43,12 @@ const needToDeleteEmployeeHandler = ({employee}: {employee:Employee}) => {
 };
 
 const needToEditEmployeeHandler = ({employee}: {employee:Employee}) => {
+  employeeToEdit.value = employee
   isOpenDialogEmployeeCreatingEditing.value = true;
 };
 
 const needToCreateEmployeeHandler = () => {
+  employeeToEdit.value = null
   isOpenDialogEmployeeCreatingEditing.value = true;
 };
 
@@ -106,6 +109,7 @@ onBeforeMount(() => {
       @apply="deleteEmployee"
     ></EmployeeDialogDelete>
     <EmployeeDialogAddEdit
+      :employee="employeeToEdit"
       :is-open="isOpenDialogEmployeeCreatingEditing"
       @needToClose="isOpenDialogEmployeeCreatingEditing = false"
       @apply="createEditEmployee"

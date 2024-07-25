@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import {computed, reactive} from "vue";
 
 import {
   iDialogableEmits,
@@ -12,13 +12,17 @@ import { helpers } from "@vuelidate/validators";
 
 import { storeToRefs } from "pinia";
 import { usePositionsStore } from "@/app/stores/position";
+import type Employee from "@/app/models/employee/Employee";
 const positionsStore = usePositionsStore();
 const { allPositions } = storeToRefs(positionsStore);
 
 const emit = defineEmits([...iDialogableEmits]);
 
-export interface Props extends IDialogableProps {}
-withDefaults(defineProps<Props>(), {
+export interface Props extends IDialogableProps {
+  employee: Employee | null,
+}
+const props = withDefaults(defineProps<Props>(), {
+  employee: null,
   ...iDialogablePropDefaults,
 });
 
@@ -48,6 +52,15 @@ const submitHandler = async () => {
     emit("apply");
   }
 };
+let textHeader = computed(()=>{
+  let actionWord = props.employee ? "Редактирование" : "Создание"
+  let result = `${actionWord} сотрудника`
+  return result
+})
+
+let textApply = computed(()=>{
+  return props.employee ? "Редактировать" : "Создать"
+})
 </script>
 
 <template>
@@ -55,8 +68,8 @@ const submitHandler = async () => {
     <ADialog
       remainOnEsc
       remainOnClickOutside
-      text-header="Создание/Редактирование сотрудника"
-      textApply="Создать/Редактировать"
+      :text-header="textHeader"
+      :textApply="textApply"
       :isOpen="isOpen"
       @needToClose="emit('needToClose')"
       @apply="submitHandler"
