@@ -48,6 +48,13 @@ export const useEmployeesStore = defineStore("employeesStore", {
       this.totalPaginatedEmployeesQty = null;
       this.paginatedEmployeeIds = [];
     },
+    async deleteEmployee({employeeId}: {employeeId: number}){
+      console.log(employeeId); console.log('^...employeeId:')
+      const dataFromServer = await apiMain.fetch({
+        method: 'delete',
+        url: `employees/${employeeId}`
+      })
+    }
   },
   getters: {
     paginatedEmployees: (state) => {

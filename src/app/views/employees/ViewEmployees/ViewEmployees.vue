@@ -13,9 +13,11 @@ import { useEmployeesStore } from "@/app/stores/employee";
 import { storeToRefs } from "pinia";
 import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 import type Employee from "@/app/models/employee/Employee";
+import {getValueOfCSSVariableAsNumber} from "@/a-library/helpers/DOM/getCSSVariable";
 const positionsStore = usePositionsStore();
 const { fetchAllPositions } = positionsStore;
 const employeesStore = useEmployeesStore();
+// const { deleteEmployee } = employeesStore;
 const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 
 let isOpenDialogEmployeeDeleting = ref(false);
@@ -32,9 +34,9 @@ let filter = reactive({
 });
 
 let filterUpdatesQtyKey = ref(0);
+let closingDialogAnimationTime = getValueOfCSSVariableAsNumber('--time-short')
 
 const needToDeleteEmployeeHandler = ({employee}: {employee:Employee}) => {
-  console.log('needToDeleteEmployeeHandler') 
   employeeToDelete.value = employee
   isOpenDialogEmployeeDeleting.value = true;
 };
@@ -49,10 +51,15 @@ const needToCreateEmployeeHandler = () => {
 
 const deleteEmployee = () => {
   isOpenDialogEmployeeDeleting.value = false;
-  globalProperties.$toast({
-    message: "Сотрудник удален",
-    type: "error",
-  });
+  setTimeout(async()=>{
+    if (!employeeToDelete.value) return
+    await employeesStore.deleteEmployee({employeeId: employeeToDelete.value.id})
+    globalProperties.$toast({
+      message: "Сотрудник удален",
+      type: "error",
+    });
+  },closingDialogAnimationTime)
+  
 };
 const createEditEmployee = () => {
   isOpenDialogEmployeeCreatingEditing.value = false;
