@@ -48,6 +48,7 @@ onBeforeMount(() => {});
   <ATable class="employees-table a-table--fixed-header">
     <thead>
       <tr>
+        <th class="employee-table__col-id">ID</th>
         <th>Сотрудник</th>
         <th class="employee-table__col-position">Должность</th>
         <th class="employee-table__col-buttons"></th>
@@ -77,6 +78,9 @@ onBeforeMount(() => {});
   .employee-table__col-buttons {
     padding: 0;
     width: 60px;
+  }
+  .employee-table__col-id {
+    width: 39px;
   }
   .employee-table__col-position {
     --width: 80px;

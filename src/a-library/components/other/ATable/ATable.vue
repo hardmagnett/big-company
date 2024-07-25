@@ -49,12 +49,17 @@
       }
       th,
       td {
-        padding: calc(var(--gap) / 2);
+        /*padding: calc(var(--gap) / 2);*/
+        padding: calc(var(--gap) / 2) calc(var(--gap) / 4);
         &:first-child {
-          padding-left: var(--gap);
+          /*padding-left: var(--gap);*/
+          padding-left: calc(var(--gap) / 2);
+          /*padding-left: 0;*/
         }
         &:last-child {
-          padding-right: var(--gap);
+          /*padding-right: var(--gap);*/
+          padding-right: calc(var(--gap) / 2);
+          /*padding-right: 0;*/
         }
         text-align: left;
         border-bottom: 1px solid var(--border-color);

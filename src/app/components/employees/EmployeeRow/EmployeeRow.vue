@@ -14,9 +14,11 @@ withDefaults(defineProps<Props>(), {});
 
 <template>
   <tr class="employee-row">
-    <td class="mod--ellipsis-one-line-on-table-cell">
-      <!--todo::убрать потом id-->
+    <td class="">
       {{ employee.id }}
+    </td>
+    <td class="mod--ellipsis-one-line-on-table-cell">
+      
       {{ employee.fullname }}
     </td>
     <td class="mod--ellipsis-one-line-on-table-cell">
