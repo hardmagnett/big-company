@@ -5,7 +5,6 @@ export const createDeleteHandler = ({ baseUrl, dbInstance }) => {
 
     let { id } = params
     id = Number(id)
-    console.log(id); console.log('^...id:') 
     
     
     const deletingEmployee = dbInstance.employee.findFirst({
@@ -27,8 +26,6 @@ export const createDeleteHandler = ({ baseUrl, dbInstance }) => {
         },
       },
     })
-    console.log(deletedEmployee); console.log('^...deletedEmployee:') 
-    // return HttpResponse.json(deletedEmployee, {status: 204})
     return HttpResponse.json(deletedEmployee)
     
   })

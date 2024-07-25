@@ -53,9 +53,10 @@ const deleteEmployee = () => {
   isOpenDialogEmployeeDeleting.value = false;
   setTimeout(async()=>{
     if (!employeeToDelete.value) return
-    await employeesStore.deleteEmployee({employeeId: employeeToDelete.value.id})
+    let deletedEmployee = await employeesStore.deleteEmployee({employeeId: employeeToDelete.value.id})
+    if (!deletedEmployee) return
     globalProperties.$toast({
-      message: "Сотрудник удален",
+      message: `Сотрудник "${deletedEmployee.fullname}" удален`,
       type: "error",
     });
   },closingDialogAnimationTime)

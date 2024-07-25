@@ -49,11 +49,15 @@ export const useEmployeesStore = defineStore("employeesStore", {
       this.paginatedEmployeeIds = [];
     },
     async deleteEmployee({employeeId}: {employeeId: number}){
-      console.log(employeeId); console.log('^...employeeId:')
-      const dataFromServer = await apiMain.fetch({
+      const dataFromServer = (await apiMain.fetch({
         method: 'delete',
         url: `employees/${employeeId}`
-      })
+      })) as IEmployee
+      
+      const deletedId = dataFromServer.id
+      let deletedEmployee = employeeRepo.destroy(deletedId);
+      this.paginatedEmployeeIds = this.paginatedEmployeeIds.filter(id=>id !== deletedId)
+      return deletedEmployee
     }
   },
   getters: {
