@@ -86,7 +86,6 @@ onBeforeMount(() => {
       </ABtn>
       <p class="mod--mt-0 mod--mb-0">
         Найдено:
-        <!--todo:: сделать этот span поуже. У меня ведь будет максимум 5000 записей-->
         <span class="employees__qty-number">
           {{ totalPaginatedEmployeesQty }}
         </span>
@@ -138,7 +137,7 @@ onBeforeMount(() => {
     justify-content: space-between;
     .employees__qty-number {
       display: inline-block;
-      width: 55px;
+      width: 30px;
       text-align: right;
     }
   }
