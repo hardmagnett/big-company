@@ -21,10 +21,14 @@ const props = withDefaults(defineProps<Props>(), {});
 let pageNumber = ref(1);
 let infinityResetId = ref(0);
 
-watch(props.filter, () => {
+
+let filterChangeHandler = ()=>{
   pageNumber.value = 1;
   clearPagination();
   infinityResetId.value++;
+}
+watch(props.filter, () => {
+  filterChangeHandler()
 });
 
 const loadMore = async ($state: StateHandler) => {

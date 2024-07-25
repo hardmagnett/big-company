@@ -24,7 +24,10 @@ export const useEmployeesStore = defineStore("employeesStore", {
       page?: number;
       perPage?: number;
       filter?: FilterEmployees | null;
-    }) {
+    }, {
+      abortSignal
+    }: {abortSignal?: AbortSignal} = {}) {
+      
       const dataFromServer = (await apiMain.fetch({
         method: "get",
         url: "employees",
@@ -34,6 +37,7 @@ export const useEmployeesStore = defineStore("employeesStore", {
           position_ids: filter?.positionsIds ?? null,
           firstname: filter?.query.trim() ?? null,
         },
+        abortSignal: abortSignal
       })) as { data: IEmployee[]; total_count: number };
       const fetchedEmployeesIds = dataFromServer.data.map((e) => e.id);
       this.paginatedEmployeeIds = [
