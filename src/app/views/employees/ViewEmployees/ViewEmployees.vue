@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-import { onBeforeMount, reactive, ref } from "vue";
+import {onBeforeMount, reactive, ref, toValue, unref} from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
@@ -12,12 +12,18 @@ import { usePositionsStore } from "@/app/stores/position";
 import { useEmployeesStore } from "@/app/stores/employee";
 import { storeToRefs } from "pinia";
 import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
+import type Employee from "@/app/models/employee/Employee";
 const positionsStore = usePositionsStore();
 const { fetchAllPositions } = positionsStore;
 const employeesStore = useEmployeesStore();
 const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 
 let isOpenDialogEmployeeDeleting = ref(false);
+
+let employeeToDelete = ref<Employee | null>(null)
+// let employeeToDelete = reactive<Employee | null>(null)
+// let employeeToDelete: Employee | null = null
+
 let isOpenDialogEmployeeCreatingEditing = ref(false);
 
 let filter = reactive({
@@ -27,11 +33,13 @@ let filter = reactive({
 
 let filterUpdatesQtyKey = ref(0);
 
-const needToDeleteEmployeeHandler = () => {
+const needToDeleteEmployeeHandler = ({employee}: {employee:Employee}) => {
+  console.log('needToDeleteEmployeeHandler') 
+  employeeToDelete.value = employee
   isOpenDialogEmployeeDeleting.value = true;
 };
 
-const needToEditEmployeeHandler = () => {
+const needToEditEmployeeHandler = ({employee}: {employee:Employee}) => {
   isOpenDialogEmployeeCreatingEditing.value = true;
 };
 
@@ -84,6 +92,8 @@ onBeforeMount(() => {
     />
 
     <EmployeeDialogDelete
+      v-if="employeeToDelete"
+      :employee="employeeToDelete as Employee"
       :is-open="isOpenDialogEmployeeDeleting"
       @needToClose="isOpenDialogEmployeeDeleting = false"
       @apply="deleteEmployee"

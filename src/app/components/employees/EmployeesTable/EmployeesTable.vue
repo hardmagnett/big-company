@@ -57,8 +57,8 @@ onBeforeMount(() => {});
       <EmployeeRow
         v-for="employee in paginatedEmployees"
         :employee="employee"
-        @needToDeleteEmployee="$emit('needToDeleteEmployee')"
-        @needToEditEmployee="$emit('needToEditEmployee')"
+        @needToDeleteEmployee="$emit('needToDeleteEmployee', $event)"
+        @needToEditEmployee="$emit('needToEditEmployee', $event)"
         :key="employee.id"
       />
     </tbody>

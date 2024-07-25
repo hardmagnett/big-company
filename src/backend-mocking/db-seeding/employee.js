@@ -1,7 +1,7 @@
 import { randomBetween } from "@/a-library/helpers/language/number/randoms";
 import fable from "@/a-library/helpers/content/fable";
 
-const employeesQty = 200;
+const employeesQty = 220;
 
 const seedEmployees = ({ dbInstance }) => {
   const positions = dbInstance.position.getAll();
