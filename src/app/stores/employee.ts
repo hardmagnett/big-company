@@ -74,10 +74,12 @@ export const useEmployeesStore = defineStore("employeesStore", {
           position_id: formData.positionId,
         }
       })) as IEmployee
-      console.log(dataFromServer); console.log('^...dataFromServer:') 
-      return {
-        fullname: 'John Doe'
-      }
+      let createdEmployee = employeeRepo.save(dataFromServer)
+      
+      // todo:: добавлять newEmployee в список паджинации, если он соответствует фильтру.
+      
+      return createdEmployee
+      
     },
     async editEmployee({formData}: {formData: AddEditFormData}) {
       return {
