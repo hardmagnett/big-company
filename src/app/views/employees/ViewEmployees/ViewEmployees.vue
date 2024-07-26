@@ -67,6 +67,12 @@ const deleteEmployee = () => {
 };
 const createEditEmployee = () => {
   isOpenDialogEmployeeCreatingEditing.value = false;
+  
+  if (employeeToEdit) {
+    
+  } else {
+    
+  }
 
   globalProperties.$toast({
     message: "Сотрудник добавлен/отредактирован",

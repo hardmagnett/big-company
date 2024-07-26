@@ -26,12 +26,14 @@ const props = withDefaults(defineProps<Props>(), {
   ...iDialogablePropDefaults,
 });
 
-type FormData = {
+export type FormData = {
+  id?: number | null,
   firstname: string,
   lastname: string,
   positionId: number | null
 }
 let initialFormValues = {
+  id: null,
   firstname: "",
   lastname: "",
   positionId: null,
@@ -55,17 +57,16 @@ watch(
     () => props.employee,
     (newEmployee) => {
       if (newEmployee){
-        console.log(1)
         Object.assign(formValues, {
+          id: newEmployee.id,
           firstname: newEmployee.firstname,
           lastname: newEmployee.lastname,
           positionId: newEmployee.position_id
         })
       } else {
-        console.log(2)
         Object.assign(formValues, initialFormValues)
       }
-      // console.log(newEmployee); console.log('^...newEmployee:') 
+      v$.value.$reset();
     }
 )
 
