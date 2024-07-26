@@ -65,6 +65,16 @@ export const useEmployeesStore = defineStore("employeesStore", {
       return deletedEmployee
     },
     async createEmployee({formData}: {formData: AddEditFormData}) {
+      const dataFromServer = (await apiMain.fetch({
+        method: 'post',
+        url: `employees/`,
+        body: {
+          firstname: formData.firstname,
+          lastname: formData.lastname,
+          position_id: formData.positionId,
+        }
+      })) as IEmployee
+      console.log(dataFromServer); console.log('^...dataFromServer:') 
       return {
         fullname: 'John Doe'
       }

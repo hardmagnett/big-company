@@ -46,6 +46,7 @@ type FetchParams = {
   method: "get" | "post" | "put" | "delete";
   getParams?: GetParams;
   abortSignal?: AbortSignal
+  body?: Object
 };
 
 class Fetchios {
@@ -70,13 +71,14 @@ class Fetchios {
     }
     return finalUrl;
   }
-  fetch({ url, method, getParams = {}, abortSignal }: FetchParams) {
+  fetch({ url, method, getParams = {}, abortSignal, body }: FetchParams) {
     return new Promise((resolve, reject) => {
       const finalUrl = this._prepareUrl({ url, getParams });
 
       fetch(finalUrl, {
         method: method,
-        signal: abortSignal
+        signal: abortSignal,
+        body: JSON.stringify(body)
       })
         .then(function (res) {
           if (!res.ok) {
