@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import {} from "vue";
 import {
-  iDialogableEmits,
+  // iDialogableEmits,
   iDialogablePropDefaults,
 } from "@/app/component-interfaces/IDialogable";
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
 import type Employee from "@/app/models/employee/Employee";
 
-defineEmits([...iDialogableEmits]);
+// defineEmits([...iDialogableEmits]);
+
+const emit = defineEmits<{
+  needToClose: []
+  apply: []
+}>()
 
 export interface Props extends IDialogableProps {
   employee: Employee,

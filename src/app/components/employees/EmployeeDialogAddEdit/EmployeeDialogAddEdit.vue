@@ -2,7 +2,7 @@
 import {computed, reactive, watch} from "vue";
 
 import {
-  iDialogableEmits,
+  // iDialogableEmits,
   iDialogablePropDefaults,
 } from "@/app/component-interfaces/IDialogable";
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
@@ -16,7 +16,12 @@ import type Employee from "@/app/models/employee/Employee";
 const positionsStore = usePositionsStore();
 const { allPositions } = storeToRefs(positionsStore);
 
-const emit = defineEmits([...iDialogableEmits]);
+// const emit = defineEmits([...iDialogableEmits]);
+const emit = defineEmits<{
+  needToClose: []
+  // apply: [noMatterFieldName: string]
+  apply: []
+}>()
 
 export interface Props extends IDialogableProps {
   employee: Employee | null,
