@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// todo:: после переоткрытия окна создания сотрудника очищать ранее введенные данные.
+
+// todo:: Убрать колонку "id" из таблицы. Пушо много места занимает. И дело не только в этом.
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 import {onBeforeMount, reactive, ref, toValue, unref} from "vue";
@@ -22,6 +25,7 @@ const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 import type {AddEditFormData} from '@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue'
 
 let isOpenDialogEmployeeDeleting = ref(false);
+// let resetTableEntitiesCounter = ref(1)
 
 let employeeToEdit = ref<Employee | null>(null)
 let employeeToDelete = ref<Employee | null>(null)
@@ -73,8 +77,12 @@ const createEditEmployee = async (formData: AddEditFormData) => {
     let editedEmployee = await employeesStore.editEmployee({formData})
     textForToast = `Сотрудник "${editedEmployee.fullname}" отредактирован`
   } else {
-    let createdEmployee = await employeesStore.createEmployee({formData})
+    let createdEmployee = await employeesStore.createEmployee({formData, filter})
     textForToast = `Сотрудник "${createdEmployee.fullname}" добавлен`
+    
+    // Обновим данные в таблице,
+    // чтобы вновь созданный пользователь показывался или не показывался
+    // resetTableEntitiesCounter.value++
   }
   globalProperties.$toast({
     message: textForToast,
@@ -123,6 +131,7 @@ onBeforeMount(() => {
       @apply="createEditEmployee"
     ></EmployeeDialogAddEdit>
 
+    <!--:resetTableEntitiesCounter="resetTableEntitiesCounter"-->
     <EmployeesTable
       :filter="filter"
       @needToDeleteEmployee="needToDeleteEmployeeHandler"

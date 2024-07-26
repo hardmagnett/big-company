@@ -8,6 +8,7 @@ const employeeRepo = useRepo(Employee); // Если будет глючить - 
 
 import type { FilterEmployees } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
 import type {AddEditFormData} from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
+import {isEmployeePassesFilter} from "@/app/components/employees/EmployeesFilter/employeeFilterHelpers";
 
 export const useEmployeesStore = defineStore("employeesStore", {
   state: () => ({
@@ -62,9 +63,12 @@ export const useEmployeesStore = defineStore("employeesStore", {
       const deletedId = dataFromServer.id
       let deletedEmployee = employeeRepo.destroy(deletedId);
       this.paginatedEmployeeIds = this.paginatedEmployeeIds.filter(id=>id !== deletedId)
+      if (typeof this.totalPaginatedEmployeesQty === 'number') {
+        this.totalPaginatedEmployeesQty--
+      }
       return deletedEmployee
     },
-    async createEmployee({formData}: {formData: AddEditFormData}) {
+    async createEmployee({formData, filter}: {formData: AddEditFormData, filter: FilterEmployees}) {
       const dataFromServer = (await apiMain.fetch({
         method: 'post',
         url: `employees/`,
@@ -76,7 +80,13 @@ export const useEmployeesStore = defineStore("employeesStore", {
       })) as IEmployee
       let createdEmployee = employeeRepo.save(dataFromServer)
       
-      // todo:: добавлять newEmployee в список паджинации, если он соответствует фильтру.
+      let needToAddToPagination = isEmployeePassesFilter(createdEmployee, filter)
+      if (needToAddToPagination) {
+        this.paginatedEmployeeIds.unshift(createdEmployee.id)
+        if (typeof this.totalPaginatedEmployeesQty === 'number') {
+          this.totalPaginatedEmployeesQty++
+        }
+      }
       
       return createdEmployee
       
