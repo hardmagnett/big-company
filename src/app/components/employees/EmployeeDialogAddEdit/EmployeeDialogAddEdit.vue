@@ -19,8 +19,7 @@ const { allPositions } = storeToRefs(positionsStore);
 // const emit = defineEmits([...iDialogableEmits]);
 const emit = defineEmits<{
   needToClose: []
-  // apply: [noMatterFieldName: string]
-  apply: []
+  apply: [eventData: AddEditFormData]
 }>()
 
 export interface Props extends IDialogableProps {
@@ -31,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   ...iDialogablePropDefaults,
 });
 
-export type FormData = {
+export type AddEditFormData = {
   id?: number | null,
   firstname: string,
   lastname: string,
@@ -43,7 +42,7 @@ let initialFormValues = {
   lastname: "",
   positionId: null,
 }
-let formValues = reactive<FormData>(structuredClone(initialFormValues));
+let formValues = reactive<AddEditFormData>(structuredClone(initialFormValues));
 
 const formRules = {
   firstname: {
@@ -79,7 +78,7 @@ const submitHandler = async () => {
   const isFormCorrect = await v$.value.$validate();
 
   if (isFormCorrect) {
-    emit("apply");
+    emit("apply", formValues);
   }
 };
 let textHeader = computed(()=>{

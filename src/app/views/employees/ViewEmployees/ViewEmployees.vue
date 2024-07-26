@@ -19,6 +19,7 @@ const { fetchAllPositions } = positionsStore;
 const employeesStore = useEmployeesStore();
 // const { deleteEmployee } = employeesStore;
 const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
+import type {AddEditFormData} from '@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue'
 
 let isOpenDialogEmployeeDeleting = ref(false);
 
@@ -65,17 +66,18 @@ const deleteEmployee = () => {
   },closingDialogAnimationTime)
   
 };
-const createEditEmployee = () => {
+const createEditEmployee = async (formData: AddEditFormData) => {
   isOpenDialogEmployeeCreatingEditing.value = false;
-  
-  if (employeeToEdit) {
-    
+  let textForToast: string
+  if (employeeToEdit.value) {
+    let editedEmployee = await employeesStore.editEmployee({formData})
+    textForToast = `Сотрудник "${editedEmployee.fullname}" отредактирован`
   } else {
-    
+    let createdEmployee = await employeesStore.createEmployee({formData})
+    textForToast = `Сотрудник "${createdEmployee.fullname}" добавлен`
   }
-
   globalProperties.$toast({
-    message: "Сотрудник добавлен/отредактирован",
+    message: textForToast,
   });
 };
 const updateWholeFilter = (newFilter: FilterEmployees) => {

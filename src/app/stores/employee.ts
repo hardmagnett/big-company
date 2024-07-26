@@ -7,6 +7,7 @@ import { useRepo } from "pinia-orm";
 const employeeRepo = useRepo(Employee); // Если будет глючить - сделать его computed/getter. В примерах оно было computed/getter.
 
 import type { FilterEmployees } from "@/app/components/employees/EmployeesFilter/EmployeesFilter.vue";
+import type {AddEditFormData} from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 
 export const useEmployeesStore = defineStore("employeesStore", {
   state: () => ({
@@ -62,7 +63,17 @@ export const useEmployeesStore = defineStore("employeesStore", {
       let deletedEmployee = employeeRepo.destroy(deletedId);
       this.paginatedEmployeeIds = this.paginatedEmployeeIds.filter(id=>id !== deletedId)
       return deletedEmployee
-    }
+    },
+    async createEmployee({formData}: {formData: AddEditFormData}) {
+      return {
+        fullname: 'John Doe'
+      }
+    },
+    async editEmployee({formData}: {formData: AddEditFormData}) {
+      return {
+        fullname: 'Вася Пупкин'
+      }
+    },
   },
   getters: {
     paginatedEmployees: (state) => {
