@@ -109,7 +109,7 @@ onBeforeMount(() => {
       @apply="deleteEmployee"
     ></EmployeeDialogDelete>
     <EmployeeDialogAddEdit
-      :employee="employeeToEdit"
+      :employee="employeeToEdit as Employee | null"
       :is-open="isOpenDialogEmployeeCreatingEditing"
       @needToClose="isOpenDialogEmployeeCreatingEditing = false"
       @apply="createEditEmployee"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, reactive} from "vue";
+import {computed, reactive, watch} from "vue";
 
 import {
   iDialogableEmits,
@@ -26,11 +26,17 @@ const props = withDefaults(defineProps<Props>(), {
   ...iDialogablePropDefaults,
 });
 
-let formValues = reactive({
-  firstname: "Стивен",
-  lastname: "Спилберг",
-  positionId: 1,
-});
+type FormData = {
+  firstname: string,
+  lastname: string,
+  positionId: number | null
+}
+let initialFormValues = {
+  firstname: "",
+  lastname: "",
+  positionId: null,
+}
+let formValues = reactive<FormData>(structuredClone(initialFormValues));
 
 const formRules = {
   firstname: {
@@ -44,6 +50,24 @@ const formRules = {
   },
 };
 const v$ = useVuelidate(formRules, formValues);
+
+watch(
+    () => props.employee,
+    (newEmployee) => {
+      if (newEmployee){
+        console.log(1)
+        Object.assign(formValues, {
+          firstname: newEmployee.firstname,
+          lastname: newEmployee.lastname,
+          positionId: newEmployee.position_id
+        })
+      } else {
+        console.log(2)
+        Object.assign(formValues, initialFormValues)
+      }
+      // console.log(newEmployee); console.log('^...newEmployee:') 
+    }
+)
 
 const submitHandler = async () => {
   const isFormCorrect = await v$.value.$validate();
