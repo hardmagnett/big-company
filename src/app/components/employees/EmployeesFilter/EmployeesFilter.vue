@@ -91,6 +91,7 @@ onBeforeMount(() => {
       autofocus
       class="am-col-12 am-col-sm-6"
       label="Имя"
+      placeholder="Поиск регистрозависимый"
       :model-value="filterInner.query"
       @update:model-value="updateQuery"
       hide-hint

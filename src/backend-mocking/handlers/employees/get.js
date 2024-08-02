@@ -1,5 +1,4 @@
 import { http, HttpResponse, delay } from "msw";
-import capitalizeFirstLetter from "@/a-library/helpers/language/string/capitalizeFirstLetter";
 
 import {
   getParam,
@@ -29,7 +28,7 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     }
     if (firstname) {
       whereFilter.firstname = {
-        contains: firstname.toLowerCase(),
+        contains: firstname,
       };
     }
 
@@ -52,7 +51,7 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
         });
         return {
           id: e.id,
-          firstname: capitalizeFirstLetter(e.firstname),
+          firstname: e.firstname,
           lastname: e.lastname,
           position: {
             id: position.id,

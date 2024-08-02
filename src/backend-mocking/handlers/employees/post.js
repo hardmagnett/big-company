@@ -11,7 +11,7 @@ export const createPostHandler = ({ baseUrl, dbInstance }) => {
       },
     });
     let createdEmployee = dbInstance.employee.create({
-      firstname: body.firstname.toLowerCase(),
+      firstname: body.firstname,
       lastname: body.lastname,
       position: positionForEmployee,
     });

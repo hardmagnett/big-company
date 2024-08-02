@@ -20,7 +20,7 @@ export const createPutHandler = ({ baseUrl, dbInstance }) => {
         },
       },
       data: {
-        firstname: body.firstname.toLowerCase(),
+        firstname: body.firstname,
         lastname: body.lastname,
         position: newPositionForEmployee,
       },
