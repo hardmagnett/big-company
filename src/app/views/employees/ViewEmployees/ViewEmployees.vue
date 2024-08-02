@@ -1,7 +1,4 @@
 <script setup lang="ts">
-// todo:: после переоткрытия окна создания сотрудника очищать ранее введенные данные.
-
-// todo:: Убрать колонку "id" из таблицы. Пушо много места занимает. И дело не только в этом.
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
 import {onBeforeMount, reactive, ref, toValue, unref} from "vue";
@@ -20,17 +17,13 @@ import {getValueOfCSSVariableAsNumber} from "@/a-library/helpers/DOM/getCSSVaria
 const positionsStore = usePositionsStore();
 const { fetchAllPositions } = positionsStore;
 const employeesStore = useEmployeesStore();
-// const { deleteEmployee } = employeesStore;
 const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
 import type {AddEditFormData} from '@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue'
 
 let isOpenDialogEmployeeDeleting = ref(false);
-// let resetTableEntitiesCounter = ref(1)
 
 let employeeToEdit = ref<Employee | null>(null)
 let employeeToDelete = ref<Employee | null>(null)
-// let employeeToDelete = reactive<Employee | null>(null)
-// let employeeToDelete: Employee | null = null
 
 let isOpenDialogEmployeeCreatingEditing = ref(false);
 
@@ -79,10 +72,6 @@ const createEditEmployee = async (formData: AddEditFormData) => {
   } else {
     let createdEmployee = await employeesStore.createEmployee({formData, filter})
     textForToast = `Сотрудник "${createdEmployee.fullname}" добавлен`
-    
-    // Обновим данные в таблице,
-    // чтобы вновь созданный пользователь показывался или не показывался
-    // resetTableEntitiesCounter.value++
   }
   globalProperties.$toast({
     message: textForToast,
@@ -130,8 +119,7 @@ onBeforeMount(() => {
       @needToClose="isOpenDialogEmployeeCreatingEditing = false"
       @apply="createEditEmployee"
     ></EmployeeDialogAddEdit>
-
-    <!--:resetTableEntitiesCounter="resetTableEntitiesCounter"-->
+    
     <EmployeesTable
       :filter="filter"
       @needToDeleteEmployee="needToDeleteEmployeeHandler"

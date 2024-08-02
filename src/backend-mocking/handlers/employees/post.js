@@ -1,5 +1,4 @@
 import {http, HttpResponse} from "msw"
-// import fable from "@/a-library/helpers/content/fable.js"
 
 export const createPostHandler = ({ baseUrl, dbInstance }) => {
   return http.post(`${baseUrl}/employees/`, async ({ request, params }) => {

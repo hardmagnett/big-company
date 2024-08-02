@@ -15,11 +15,8 @@ defineEmits(["needToDeleteEmployee", "needToEditEmployee"]);
 
 export interface Props {
   filter: FilterEmployees;
-  // resetTableEntitiesCounter?: number
 }
-const props = withDefaults(defineProps<Props>(), {
-  // resetTableEntitiesCounter: 1
-});
+const props = withDefaults(defineProps<Props>(), {});
 
 let pageNumber = ref(1);
 let infinityResetId = ref(0);
@@ -33,11 +30,6 @@ let filterChangeHandler = ()=>{
 watch(props.filter, () => {
   filterChangeHandler()
 });
-// watch(
-//     ()=>props.resetTableEntitiesCounter,
-//     ()=>{
-//       filterChangeHandler()
-// })
 
 const loadMore = async ($state: StateHandler) => {
   await fetchPaginatedEmployees({

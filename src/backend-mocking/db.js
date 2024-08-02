@@ -12,7 +12,6 @@ export const dbInstance = factory({
   },
   employee: {
     id: primaryKey(() => lastEmployeeId++),
-    // id: primaryKey(Number),
     firstname: String,
     lastname: String,
     position: oneOf("position"),

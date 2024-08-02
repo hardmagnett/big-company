@@ -7,5 +7,3 @@ export interface IDialogableProps {
 }
 
 export const iDialogablePropDefaults = {};
-
-// export const iDialogableEmits = ["needToClose", "apply"];
