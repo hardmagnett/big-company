@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import {} from "vue";
-import {
-  iDialogablePropDefaults,
-} from "@/app/component-interfaces/IDialogable";
+import { iDialogablePropDefaults } from "@/app/component-interfaces/IDialogable";
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
 import type Employee from "@/app/models/employee/Employee";
 
 // const emit = defineEmits<{
 defineEmits<{
-  needToClose: []
-  apply: []
-}>()
+  needToClose: [];
+  apply: [];
+}>();
 
 export interface Props extends IDialogableProps {
-  employee: Employee,
+  employee: Employee;
 }
 withDefaults(defineProps<Props>(), {
   ...iDialogablePropDefaults,
@@ -32,7 +30,7 @@ withDefaults(defineProps<Props>(), {
       @needToClose="$emit('needToClose')"
       @apply="$emit('apply')"
     >
-      <p>Действительно удалить сотрудника "{{employee.fullname}}"?</p>
+      <p>Действительно удалить сотрудника "{{ employee.fullname }}"?</p>
     </ADialog>
   </div>
 </template>

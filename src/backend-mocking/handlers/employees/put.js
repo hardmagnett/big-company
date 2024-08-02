@@ -1,12 +1,11 @@
-import {http, HttpResponse} from "msw"
+import { http, HttpResponse } from "msw";
 
 export const createPutHandler = ({ baseUrl, dbInstance }) => {
   return http.put(`${baseUrl}/employees/:id`, async ({ request, params }) => {
+    let { id } = params;
+    id = Number(id);
 
-    let { id } = params
-    id = Number(id)
-
-    let body = await request.json()
+    let body = await request.json();
     let newPositionForEmployee = dbInstance.position.findFirst({
       where: {
         id: {
@@ -25,16 +24,15 @@ export const createPutHandler = ({ baseUrl, dbInstance }) => {
         lastname: body.lastname,
         position: newPositionForEmployee,
       },
-    })
+    });
 
     return HttpResponse.json({
-      id:updatedEmployee.id,
-      firstname:updatedEmployee.firstname,
-      lastname:updatedEmployee.lastname,
+      id: updatedEmployee.id,
+      firstname: updatedEmployee.firstname,
+      lastname: updatedEmployee.lastname,
       position: {
-        id: updatedEmployee.position.id
+        id: updatedEmployee.position.id,
       },
-    })
-
-  })
-}
+    });
+  });
+};

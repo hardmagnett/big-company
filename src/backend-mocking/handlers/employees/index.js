@@ -8,6 +8,6 @@ export const createEmployeeHandlers = ({ baseUrl, dbInstance }) => {
     createGetHandler({ baseUrl, dbInstance }),
     createPostHandler({ baseUrl, dbInstance }),
     createPutHandler({ baseUrl, dbInstance }),
-    createDeleteHandler({ baseUrl, dbInstance })
+    createDeleteHandler({ baseUrl, dbInstance }),
   ];
 };

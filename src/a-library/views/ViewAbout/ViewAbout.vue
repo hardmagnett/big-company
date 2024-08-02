@@ -17,7 +17,11 @@ import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWi
     </p>
     <p>Что из нового:</p>
     <ul>
-      <li><code class="mod--code">@container style(--pseudo-boolean-css-variable)</code></li>
+      <li>
+        <code class="mod--code"
+          >@container style(--pseudo-boolean-css-variable)</code
+        >
+      </li>
       <li>Dialog, Popover</li>
       <li>Anchor Positioning</li>
     </ul>
@@ -36,9 +40,7 @@ import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWi
     </p>
     <h2>А не украден-ли или не куплен-ли этот код?</h2>
     <p>Нет, не украден и не куплен.</p>
-    <p>
-      Всё видно в git-репозитории.
-    </p>
+    <p>Всё видно в git-репозитории.</p>
   </div>
 </template>
 

@@ -2,9 +2,9 @@
 import type Employee from "@/app/models/employee/Employee";
 
 const emit = defineEmits<{
-  needToDeleteEmployee: [val: {employee: Employee}]
-  needToEditEmployee: [val: {employee: Employee}]
-}>()
+  needToDeleteEmployee: [val: { employee: Employee }];
+  needToEditEmployee: [val: { employee: Employee }];
+}>();
 
 export interface Props {
   employee: Employee;
@@ -15,17 +15,19 @@ withDefaults(defineProps<Props>(), {});
 <template>
   <tr class="employee-row">
     <td class="mod--ellipsis-one-line-on-table-cell">
-      
       {{ employee.fullname }}
     </td>
     <td class="mod--ellipsis-one-line-on-table-cell">
       {{ employee.position?.title }}
     </td>
     <td class="employee-row__buttons">
-      <ABtn icon @click="emit('needToEditEmployee', {employee: employee})"
+      <ABtn icon @click="emit('needToEditEmployee', { employee: employee })"
         ><AIcon icon="mdi-pencil"
       /></ABtn>
-      <ABtn icon class="a-btn--error" @click="emit('needToDeleteEmployee', {employee: employee})"
+      <ABtn
+        icon
+        class="a-btn--error"
+        @click="emit('needToDeleteEmployee', { employee: employee })"
         ><AIcon icon="mdi-delete"
       /></ABtn>
     </td>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-import {onBeforeMount, reactive, ref} from "vue";
+import { onBeforeMount, reactive, ref } from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";
@@ -13,17 +13,17 @@ import { useEmployeesStore } from "@/app/stores/employee";
 import { storeToRefs } from "pinia";
 import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWithTeleport/APageHeaderWithTeleport.vue";
 import type Employee from "@/app/models/employee/Employee";
-import {getValueOfCSSVariableAsNumber} from "@/a-library/helpers/DOM/getCSSVariable";
+import { getValueOfCSSVariableAsNumber } from "@/a-library/helpers/DOM/getCSSVariable";
 const positionsStore = usePositionsStore();
 const { fetchAllPositions } = positionsStore;
 const employeesStore = useEmployeesStore();
 const { totalPaginatedEmployeesQty } = storeToRefs(employeesStore);
-import type {AddEditFormData} from '@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue'
+import type { AddEditFormData } from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 
 let isOpenDialogEmployeeDeleting = ref(false);
 
-let employeeToEdit = ref<Employee | null>(null)
-let employeeToDelete = ref<Employee | null>(null)
+let employeeToEdit = ref<Employee | null>(null);
+let employeeToDelete = ref<Employee | null>(null);
 
 let isOpenDialogEmployeeCreatingEditing = ref(false);
 
@@ -33,45 +33,49 @@ let filter = reactive({
 });
 
 let filterUpdatesQtyKey = ref(0);
-let closingDialogAnimationTime = getValueOfCSSVariableAsNumber('--time-short')
+let closingDialogAnimationTime = getValueOfCSSVariableAsNumber("--time-short");
 
-const needToDeleteEmployeeHandler = ({employee}: {employee:Employee}) => {
-  employeeToDelete.value = employee
+const needToDeleteEmployeeHandler = ({ employee }: { employee: Employee }) => {
+  employeeToDelete.value = employee;
   isOpenDialogEmployeeDeleting.value = true;
 };
 
-const needToEditEmployeeHandler = ({employee}: {employee:Employee}) => {
-  employeeToEdit.value = employee
+const needToEditEmployeeHandler = ({ employee }: { employee: Employee }) => {
+  employeeToEdit.value = employee;
   isOpenDialogEmployeeCreatingEditing.value = true;
 };
 
 const needToCreateEmployeeHandler = () => {
-  employeeToEdit.value = null
+  employeeToEdit.value = null;
   isOpenDialogEmployeeCreatingEditing.value = true;
 };
 
 const deleteEmployee = () => {
   isOpenDialogEmployeeDeleting.value = false;
-  setTimeout(async()=>{
-    if (!employeeToDelete.value) return
-    let deletedEmployee = await employeesStore.deleteEmployee({employeeId: employeeToDelete.value.id})
-    if (!deletedEmployee) return
+  setTimeout(async () => {
+    if (!employeeToDelete.value) return;
+    let deletedEmployee = await employeesStore.deleteEmployee({
+      employeeId: employeeToDelete.value.id,
+    });
+    if (!deletedEmployee) return;
     globalProperties.$toast({
       message: `Сотрудник "${deletedEmployee.fullname}" удален`,
       type: "error",
     });
-  },closingDialogAnimationTime)
-  
+  }, closingDialogAnimationTime);
 };
 const createEditEmployee = async (formData: AddEditFormData) => {
   isOpenDialogEmployeeCreatingEditing.value = false;
-  let textForToast: string
+  let textForToast: string;
   if (employeeToEdit.value) {
-    let editedEmployee = await employeesStore.editEmployee({formData})
-    textForToast = `Сотрудник "${editedEmployee.fullname}" отредактирован`
+    let editedEmployee = await employeesStore.editEmployee({ formData });
+    textForToast = `Сотрудник "${editedEmployee.fullname}" отредактирован`;
   } else {
-    let createdEmployee = await employeesStore.createEmployee({formData, filter})
-    textForToast = `Сотрудник "${createdEmployee.fullname}" добавлен`
+    let createdEmployee = await employeesStore.createEmployee({
+      formData,
+      filter,
+    });
+    textForToast = `Сотрудник "${createdEmployee.fullname}" добавлен`;
   }
   globalProperties.$toast({
     message: textForToast,
@@ -119,7 +123,7 @@ onBeforeMount(() => {
       @needToClose="isOpenDialogEmployeeCreatingEditing = false"
       @apply="createEditEmployee"
     ></EmployeeDialogAddEdit>
-    
+
     <EmployeesTable
       :filter="filter"
       @needToDeleteEmployee="needToDeleteEmployeeHandler"

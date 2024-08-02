@@ -1,9 +1,8 @@
-import {http, HttpResponse} from "msw"
+import { http, HttpResponse } from "msw";
 
 export const createPostHandler = ({ baseUrl, dbInstance }) => {
   return http.post(`${baseUrl}/employees/`, async ({ request }) => {
-     
-    let body = await request.json()
+    let body = await request.json();
     let positionForEmployee = dbInstance.position.findFirst({
       where: {
         id: {
@@ -18,13 +17,12 @@ export const createPostHandler = ({ baseUrl, dbInstance }) => {
     });
 
     return HttpResponse.json({
-      id:createdEmployee.id,
-      firstname:createdEmployee.firstname,
-      lastname:createdEmployee.lastname,
+      id: createdEmployee.id,
+      firstname: createdEmployee.firstname,
+      lastname: createdEmployee.lastname,
       position: {
-        id: createdEmployee.position.id
+        id: createdEmployee.position.id,
       },
-    })
-
-  })
-}
+    });
+  });
+};

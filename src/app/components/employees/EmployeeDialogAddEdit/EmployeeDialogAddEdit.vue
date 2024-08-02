@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import {computed, reactive, watch} from "vue";
+import { computed, reactive, watch } from "vue";
 
-import {
-  iDialogablePropDefaults,
-} from "@/app/component-interfaces/IDialogable";
+import { iDialogablePropDefaults } from "@/app/component-interfaces/IDialogable";
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
 import { required } from "@/a-library/third-party/vuelidate/i18n-validators";
 import { useVuelidate } from "@vuelidate/core";
@@ -16,12 +14,12 @@ const positionsStore = usePositionsStore();
 const { allPositions } = storeToRefs(positionsStore);
 
 const emit = defineEmits<{
-  needToClose: []
-  apply: [eventData: AddEditFormData]
-}>()
+  needToClose: [];
+  apply: [eventData: AddEditFormData];
+}>();
 
 export interface Props extends IDialogableProps {
-  employee: Employee | null,
+  employee: Employee | null;
 }
 const props = withDefaults(defineProps<Props>(), {
   employee: null,
@@ -29,17 +27,17 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 export type AddEditFormData = {
-  id?: number | null,
-  firstname: string,
-  lastname: string,
-  positionId: number | null
-}
+  id?: number | null;
+  firstname: string;
+  lastname: string;
+  positionId: number | null;
+};
 let initialFormValues = {
   id: null,
   firstname: "",
   lastname: "",
   positionId: null,
-}
+};
 let formValues = reactive<AddEditFormData>(structuredClone(initialFormValues));
 
 const formRules = {
@@ -56,25 +54,25 @@ const formRules = {
 const v$ = useVuelidate(formRules, formValues);
 
 watch(
-    () => props.isOpen,
-    () => {
-      resetForm(props.employee)
-    }
-)
+  () => props.isOpen,
+  () => {
+    resetForm(props.employee);
+  },
+);
 
-const resetForm = (employee: Employee | null)=>{
-  if (employee){
+const resetForm = (employee: Employee | null) => {
+  if (employee) {
     Object.assign(formValues, {
       id: employee.id,
       firstname: employee.firstname,
       lastname: employee.lastname,
-      positionId: employee.position_id
-    })
+      positionId: employee.position_id,
+    });
   } else {
-    Object.assign(formValues, initialFormValues)
+    Object.assign(formValues, initialFormValues);
   }
   v$.value.$reset();
-}
+};
 
 const submitHandler = async () => {
   const isFormCorrect = await v$.value.$validate();
@@ -83,15 +81,15 @@ const submitHandler = async () => {
     emit("apply", formValues);
   }
 };
-let textHeader = computed(()=>{
-  let actionWord = props.employee ? "Редактирование" : "Создание"
-  let result = `${actionWord} сотрудника`
-  return result
-})
+let textHeader = computed(() => {
+  let actionWord = props.employee ? "Редактирование" : "Создание";
+  let result = `${actionWord} сотрудника`;
+  return result;
+});
 
-let textApply = computed(()=>{
-  return props.employee ? "Редактировать" : "Создать"
-})
+let textApply = computed(() => {
+  return props.employee ? "Редактировать" : "Создать";
+});
 </script>
 
 <template>

@@ -45,8 +45,8 @@ type FetchParams = {
   url: string;
   method: "get" | "post" | "put" | "delete";
   getParams?: GetParams;
-  abortSignal?: AbortSignal
-  body?: Object
+  abortSignal?: AbortSignal;
+  body?: Object;
 };
 
 class Fetchios {
@@ -78,7 +78,7 @@ class Fetchios {
       fetch(finalUrl, {
         method: method,
         signal: abortSignal,
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       })
         .then(function (res) {
           if (!res.ok) {
