@@ -106,9 +106,6 @@ export const useEmployeesStore = defineStore("employeesStore", {
       let updatedEmployee = employeeRepo.save(dataFromServer)
       
       return updatedEmployee
-      // return {
-      //   fullname: 'Вася Пупкин'
-      // }
     },
   },
   getters: {

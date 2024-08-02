@@ -57,16 +57,9 @@ const formRules = {
 };
 const v$ = useVuelidate(formRules, formValues);
 
-// watch(
-//     () => props.employee,
-//     (newEmployee) => {
-//       resetForm(newEmployee)
-//     }
-// )
 watch(
     () => props.isOpen,
     () => {
-      console.log('watch isOpen')
       resetForm(props.employee)
     }
 )

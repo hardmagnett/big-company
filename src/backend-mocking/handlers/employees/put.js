@@ -7,7 +7,6 @@ export const createPutHandler = ({ baseUrl, dbInstance }) => {
     id = Number(id)
 
     let body = await request.json()
-    console.log(body); console.log('^...body:') 
     let newPositionForEmployee = dbInstance.position.findFirst({
       where: {
         id: {
