@@ -4,7 +4,7 @@ import Position from "@/app/models/position/Position";
 export default class Employee extends Model {
   static entity = "employees";
 
-  @Uid() declare id: string;
+  @Uid() declare id: number;
 
   @Str("") declare firstname: string;
   @Str("") declare lastname: string;

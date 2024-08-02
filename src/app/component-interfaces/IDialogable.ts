@@ -4,9 +4,6 @@
 
 export interface IDialogableProps {
   isOpen: boolean;
-  delmeString?: string;
 }
 
 export const iDialogablePropDefaults = {};
-
-export const iDialogableEmits = ["needToClose", "apply"];

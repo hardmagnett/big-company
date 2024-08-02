@@ -2,6 +2,8 @@ import { factory, manyOf, oneOf, primaryKey } from "@mswjs/data";
 import { seedPositions } from "@/backend-mocking/db-seeding/position";
 import { seedEmployees } from "@/backend-mocking/db-seeding/employee";
 
+let lastEmployeeId = 1;
+
 export const dbInstance = factory({
   position: {
     id: primaryKey(Number),
@@ -9,7 +11,7 @@ export const dbInstance = factory({
     employees: manyOf("employee"),
   },
   employee: {
-    id: primaryKey(Number),
+    id: primaryKey(() => lastEmployeeId++),
     firstname: String,
     lastname: String,
     position: oneOf("position"),

@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { computed, reactive, watch } from "vue";
 
-import {
-  iDialogableEmits,
-  iDialogablePropDefaults,
-} from "@/app/component-interfaces/IDialogable";
+import { iDialogablePropDefaults } from "@/app/component-interfaces/IDialogable";
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
 import { required } from "@/a-library/third-party/vuelidate/i18n-validators";
 import { useVuelidate } from "@vuelidate/core";
@@ -12,21 +9,36 @@ import { helpers } from "@vuelidate/validators";
 
 import { storeToRefs } from "pinia";
 import { usePositionsStore } from "@/app/stores/position";
+import type Employee from "@/app/models/employee/Employee";
 const positionsStore = usePositionsStore();
 const { allPositions } = storeToRefs(positionsStore);
 
-const emit = defineEmits([...iDialogableEmits]);
+const emit = defineEmits<{
+  needToClose: [];
+  apply: [eventData: AddEditFormData];
+}>();
 
-export interface Props extends IDialogableProps {}
-withDefaults(defineProps<Props>(), {
+export interface Props extends IDialogableProps {
+  employee: Employee | null;
+}
+const props = withDefaults(defineProps<Props>(), {
+  employee: null,
   ...iDialogablePropDefaults,
 });
 
-let formValues = reactive({
-  firstname: "Стивен",
-  lastname: "Спилберг",
-  positionId: 1,
-});
+export type AddEditFormData = {
+  id?: number | null;
+  firstname: string;
+  lastname: string;
+  positionId: number | null;
+};
+let initialFormValues = {
+  id: null,
+  firstname: "",
+  lastname: "",
+  positionId: null,
+};
+let formValues = reactive<AddEditFormData>(structuredClone(initialFormValues));
 
 const formRules = {
   firstname: {
@@ -41,13 +53,43 @@ const formRules = {
 };
 const v$ = useVuelidate(formRules, formValues);
 
+watch(
+  () => props.isOpen,
+  () => {
+    resetForm(props.employee);
+  },
+);
+
+const resetForm = (employee: Employee | null) => {
+  if (employee) {
+    Object.assign(formValues, {
+      id: employee.id,
+      firstname: employee.firstname,
+      lastname: employee.lastname,
+      positionId: employee.position_id,
+    });
+  } else {
+    Object.assign(formValues, initialFormValues);
+  }
+  v$.value.$reset();
+};
+
 const submitHandler = async () => {
   const isFormCorrect = await v$.value.$validate();
 
   if (isFormCorrect) {
-    emit("apply");
+    emit("apply", formValues);
   }
 };
+let textHeader = computed(() => {
+  let actionWord = props.employee ? "Редактирование" : "Создание";
+  let result = `${actionWord} сотрудника`;
+  return result;
+});
+
+let textApply = computed(() => {
+  return props.employee ? "Редактировать" : "Создать";
+});
 </script>
 
 <template>
@@ -55,15 +97,15 @@ const submitHandler = async () => {
     <ADialog
       remainOnEsc
       remainOnClickOutside
-      text-header="Создание/Редактирование сотрудника"
-      textApply="Создать/Редактировать"
+      :text-header="textHeader"
+      :textApply="textApply"
       :isOpen="isOpen"
       @needToClose="emit('needToClose')"
       @apply="submitHandler"
     >
       <AInput
         placeholder="Имя"
-        class="mod--mb-1"
+        class="mod--mb-half"
         label="Имя *"
         @blur="v$.firstname.$touch"
         :error-messages="v$.firstname.$errors.map((e) => e.$message)"
@@ -71,6 +113,7 @@ const submitHandler = async () => {
       ></AInput>
       <AInput
         placeholder="Фамилия"
+        class="mod--mb-half"
         label="Фамилия *"
         @blur="v$.lastname.$touch"
         :error-messages="v$.lastname.$errors.map((e) => e.$message)"

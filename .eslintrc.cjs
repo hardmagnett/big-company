@@ -13,5 +13,9 @@ module.exports = {
   },
   rules: {
     "no-console": "warn",
+    // Линтер путает вот такие TS-конструкции (через pipe)
+    // <EmployeeDialogAddEdit :employee="employeeToEdit as Employee | null"></EmployeeDialogAddEdit>
+    // с фильтрами, которые были во vue2 а во vue3 стали deprecated.
+    "vue/no-deprecated-filter": "off"
   }
 }

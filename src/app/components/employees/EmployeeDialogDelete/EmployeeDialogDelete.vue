@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import {} from "vue";
-import {
-  iDialogableEmits,
-  iDialogablePropDefaults,
-} from "@/app/component-interfaces/IDialogable";
+import { iDialogablePropDefaults } from "@/app/component-interfaces/IDialogable";
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
+import type Employee from "@/app/models/employee/Employee";
 
-defineEmits([...iDialogableEmits]);
+// const emit = defineEmits<{
+defineEmits<{
+  needToClose: [];
+  apply: [];
+}>();
 
-export interface Props extends IDialogableProps {}
+export interface Props extends IDialogableProps {
+  employee: Employee;
+}
 withDefaults(defineProps<Props>(), {
   ...iDialogablePropDefaults,
 });
@@ -26,7 +30,7 @@ withDefaults(defineProps<Props>(), {
       @needToClose="$emit('needToClose')"
       @apply="$emit('apply')"
     >
-      <p>Действительно удалить сотрудника -=Имя Фамилия=-?</p>
+      <p>Действительно удалить сотрудника "{{ employee.fullname }}"?</p>
     </ADialog>
   </div>
 </template>

@@ -45,6 +45,8 @@ type FetchParams = {
   url: string;
   method: "get" | "post" | "put" | "delete";
   getParams?: GetParams;
+  abortSignal?: AbortSignal;
+  body?: Object;
 };
 
 class Fetchios {
@@ -69,12 +71,14 @@ class Fetchios {
     }
     return finalUrl;
   }
-  fetch({ url, method, getParams = {} }: FetchParams) {
+  fetch({ url, method, getParams = {}, abortSignal, body }: FetchParams) {
     return new Promise((resolve, reject) => {
       const finalUrl = this._prepareUrl({ url, getParams });
 
       fetch(finalUrl, {
         method: method,
+        signal: abortSignal,
+        body: JSON.stringify(body),
       })
         .then(function (res) {
           if (!res.ok) {
@@ -88,7 +92,7 @@ class Fetchios {
           resolve(data);
         })
         .catch(function (err) {
-          // Сюда попадают только сетевые ошибки (Офлайн, ошибки DNS, сети и т.п.). Например, net::ERR_FAILED.
+          // Сюда попадают только сетевые ошибки (Офлайн, ошибки DNS, сети, AbortError и т.п.). Например, net::ERR_FAILED.
           reject(err);
         });
     });

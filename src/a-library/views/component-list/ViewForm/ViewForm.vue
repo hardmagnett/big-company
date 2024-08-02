@@ -21,22 +21,22 @@ let formValues = reactive({
   books: [
     {
       id: createUUID(),
-      title: "Первая",
+      title: "Азимов",
       quantity: 0,
     },
     {
       id: createUUID(),
-      title: "Букварь",
+      title: "Шекли",
       quantity: 0,
     },
     {
       id: createUUID(),
-      title: "Синяя",
+      title: "Лем",
       quantity: 0,
     },
     {
       id: createUUID(),
-      title: "GoF",
+      title: "Брэдбери",
       quantity: 4,
     },
   ],

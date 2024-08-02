@@ -21,10 +21,13 @@ const props = withDefaults(defineProps<Props>(), {});
 let pageNumber = ref(1);
 let infinityResetId = ref(0);
 
-watch(props.filter, () => {
+let filterChangeHandler = () => {
   pageNumber.value = 1;
   clearPagination();
   infinityResetId.value++;
+};
+watch(props.filter, () => {
+  filterChangeHandler();
 });
 
 const loadMore = async ($state: StateHandler) => {
@@ -57,8 +60,8 @@ onBeforeMount(() => {});
       <EmployeeRow
         v-for="employee in paginatedEmployees"
         :employee="employee"
-        @needToDeleteEmployee="$emit('needToDeleteEmployee')"
-        @needToEditEmployee="$emit('needToEditEmployee')"
+        @needToDeleteEmployee="$emit('needToDeleteEmployee', $event)"
+        @needToEditEmployee="$emit('needToEditEmployee', $event)"
         :key="employee.id"
       />
     </tbody>
@@ -77,6 +80,9 @@ onBeforeMount(() => {});
   .employee-table__col-buttons {
     padding: 0;
     width: 60px;
+  }
+  .employee-table__col-id {
+    width: 39px;
   }
   .employee-table__col-position {
     --width: 80px;
