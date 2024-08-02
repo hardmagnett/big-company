@@ -1,5 +1,4 @@
 import { http, HttpResponse, delay } from "msw";
-import capitalizeFirstLetter from "@/a-library/helpers/language/string/capitalizeFirstLetter";
 
 import {
   getParam,
