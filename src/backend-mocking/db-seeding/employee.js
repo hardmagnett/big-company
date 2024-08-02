@@ -14,7 +14,6 @@ const seedEmployees = ({ dbInstance }) => {
     });
     let positionForEmployee = positions[positionIndex];
     dbInstance.employee.create({
-      // firstname: fable.firstName({ gender }).toLowerCase(),
       firstname: fable.firstName({ gender }),
       lastname: fable.lastName({ gender }),
       position: positionForEmployee,
