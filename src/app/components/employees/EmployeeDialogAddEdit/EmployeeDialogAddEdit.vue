@@ -57,22 +57,33 @@ const formRules = {
 };
 const v$ = useVuelidate(formRules, formValues);
 
+// watch(
+//     () => props.employee,
+//     (newEmployee) => {
+//       resetForm(newEmployee)
+//     }
+// )
 watch(
-    () => props.employee,
-    (newEmployee) => {
-      if (newEmployee){
-        Object.assign(formValues, {
-          id: newEmployee.id,
-          firstname: newEmployee.firstname,
-          lastname: newEmployee.lastname,
-          positionId: newEmployee.position_id
-        })
-      } else {
-        Object.assign(formValues, initialFormValues)
-      }
-      v$.value.$reset();
+    () => props.isOpen,
+    () => {
+      console.log('watch isOpen')
+      resetForm(props.employee)
     }
 )
+
+const resetForm = (employee: Employee | null)=>{
+  if (employee){
+    Object.assign(formValues, {
+      id: employee.id,
+      firstname: employee.firstname,
+      lastname: employee.lastname,
+      positionId: employee.position_id
+    })
+  } else {
+    Object.assign(formValues, initialFormValues)
+  }
+  v$.value.$reset();
+}
 
 const submitHandler = async () => {
   const isFormCorrect = await v$.value.$validate();
@@ -105,7 +116,7 @@ let textApply = computed(()=>{
     >
       <AInput
         placeholder="Имя"
-        class="mod--mb-1"
+        class="mod--mb-half"
         label="Имя *"
         @blur="v$.firstname.$touch"
         :error-messages="v$.firstname.$errors.map((e) => e.$message)"
@@ -113,6 +124,7 @@ let textApply = computed(()=>{
       ></AInput>
       <AInput
         placeholder="Фамилия"
+        class="mod--mb-half"
         label="Фамилия *"
         @blur="v$.lastname.$touch"
         :error-messages="v$.lastname.$errors.map((e) => e.$message)"
