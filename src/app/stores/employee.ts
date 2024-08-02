@@ -61,7 +61,7 @@ export const useEmployeesStore = defineStore("employeesStore", {
       })) as IEmployee
       
       const deletedId = dataFromServer.id
-      let deletedEmployee = employeeRepo.destroy(deletedId);
+      const deletedEmployee = employeeRepo.destroy(deletedId);
       this.paginatedEmployeeIds = this.paginatedEmployeeIds.filter(id=>id !== deletedId)
       if (typeof this.totalPaginatedEmployeesQty === 'number') {
         this.totalPaginatedEmployeesQty--
@@ -78,9 +78,9 @@ export const useEmployeesStore = defineStore("employeesStore", {
           position_id: formData.positionId,
         }
       })) as IEmployee
-      let createdEmployee = employeeRepo.save(dataFromServer)
+      const createdEmployee = employeeRepo.save(dataFromServer)
       
-      let needToAddToPagination = isEmployeePassesFilter(createdEmployee, filter)
+      const needToAddToPagination = isEmployeePassesFilter(createdEmployee, filter)
       if (needToAddToPagination) {
         this.paginatedEmployeeIds.unshift(createdEmployee.id)
         if (typeof this.totalPaginatedEmployeesQty === 'number') {
@@ -103,7 +103,7 @@ export const useEmployeesStore = defineStore("employeesStore", {
         }
       })) as IEmployee
 
-      let updatedEmployee = employeeRepo.save(dataFromServer)
+      const updatedEmployee = employeeRepo.save(dataFromServer)
       
       return updatedEmployee
     },

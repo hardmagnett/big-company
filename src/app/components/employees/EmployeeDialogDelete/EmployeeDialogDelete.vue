@@ -6,7 +6,8 @@ import {
 import type { IDialogableProps } from "@/app/component-interfaces/IDialogable";
 import type Employee from "@/app/models/employee/Employee";
 
-const emit = defineEmits<{
+// const emit = defineEmits<{
+defineEmits<{
   needToClose: []
   apply: []
 }>()

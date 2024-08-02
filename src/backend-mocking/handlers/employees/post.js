@@ -1,7 +1,7 @@
 import {http, HttpResponse} from "msw"
 
 export const createPostHandler = ({ baseUrl, dbInstance }) => {
-  return http.post(`${baseUrl}/employees/`, async ({ request, params }) => {
+  return http.post(`${baseUrl}/employees/`, async ({ request }) => {
      
     let body = await request.json()
     let positionForEmployee = dbInstance.position.findFirst({

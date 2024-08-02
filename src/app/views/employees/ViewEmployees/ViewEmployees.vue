@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EmployeesTable from "@/app/components/employees/EmployeesTable/EmployeesTable.vue";
 import AIcon from "@/a-library/components/typo/AIcon/AIcon.vue";
-import {onBeforeMount, reactive, ref, toValue, unref} from "vue";
+import {onBeforeMount, reactive, ref} from "vue";
 import EmployeeDialogDelete from "@/app/components/employees/EmployeeDialogDelete/EmployeeDialogDelete.vue";
 import EmployeeDialogAddEdit from "@/app/components/employees/EmployeeDialogAddEdit/EmployeeDialogAddEdit.vue";
 import { globalProperties } from "@/main";

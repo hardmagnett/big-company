@@ -1,7 +1,7 @@
 import {http, HttpResponse} from "msw"
 
 export const createDeleteHandler = ({ baseUrl, dbInstance }) => {
-  return http.delete(`${baseUrl}/employees/:id`, async ({ request, params }) => {
+  return http.delete(`${baseUrl}/employees/:id`, async ({ params }) => {
 
     let { id } = params
     id = Number(id)
