@@ -29,7 +29,8 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
     }
     if (firstname) {
       whereFilter.firstname = {
-        contains: firstname.toLowerCase(),
+        // contains: firstname.toLowerCase(),
+        contains: firstname,
       };
     }
 
@@ -52,7 +53,8 @@ export const createGetHandler = ({ baseUrl, dbInstance }) => {
         });
         return {
           id: e.id,
-          firstname: capitalizeFirstLetter(e.firstname),
+          // firstname: capitalizeFirstLetter(e.firstname),
+          firstname: e.firstname,
           lastname: e.lastname,
           position: {
             id: position.id,
