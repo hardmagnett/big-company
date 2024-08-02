@@ -92,9 +92,23 @@ export const useEmployeesStore = defineStore("employeesStore", {
       
     },
     async editEmployee({formData}: {formData: AddEditFormData}) {
-      return {
-        fullname: 'Вася Пупкин'
-      }
+      const dataFromServer = (await apiMain.fetch({
+        method: 'put',
+        url: `employees/${formData.id}`,
+        body: {
+          id: formData.id,
+          firstname: formData.firstname,
+          lastname: formData.lastname,
+          position_id: formData.positionId,
+        }
+      })) as IEmployee
+
+      let updatedEmployee = employeeRepo.save(dataFromServer)
+      
+      return updatedEmployee
+      // return {
+      //   fullname: 'Вася Пупкин'
+      // }
     },
   },
   getters: {
