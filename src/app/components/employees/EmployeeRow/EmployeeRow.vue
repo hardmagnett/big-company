@@ -14,9 +14,6 @@ withDefaults(defineProps<Props>(), {});
 
 <template>
   <tr class="employee-row">
-    <td class="">
-      {{ employee.id }}
-    </td>
     <td class="mod--ellipsis-one-line-on-table-cell">
       
       {{ employee.fullname }}

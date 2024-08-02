@@ -17,7 +17,7 @@ import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWi
     </p>
     <p>Что из нового:</p>
     <ul>
-      <li>@container style(--boolean-css-variable)</li>
+      <li><code class="mod--code">@container style(--pseudo-boolean-css-variable)</code></li>
       <li>Dialog, Popover</li>
       <li>Anchor Positioning</li>
     </ul>
@@ -37,10 +37,8 @@ import APageHeaderWithTeleport from "@/a-library/components/layout/APageHeaderWi
     <h2>А не украден-ли или не куплен-ли этот код?</h2>
     <p>Нет, не украден и не куплен.</p>
     <p>
-      В Git-е можно посмотреть кто и когда сделал любой коммит или изменил любую
-      строку в любом файле.
+      Всё видно в git-репозитории.
     </p>
-    <p>Отследить историю изменений и развеять сомнения несложно.</p>
   </div>
 </template>
 

@@ -60,7 +60,6 @@ onBeforeMount(() => {});
   <ATable class="employees-table a-table--fixed-header">
     <thead>
       <tr>
-        <th class="employee-table__col-id">ID</th>
         <th>Сотрудник</th>
         <th class="employee-table__col-position">Должность</th>
         <th class="employee-table__col-buttons"></th>
