@@ -1,2 +1,6 @@
 Посмотреть в действии можно здесь:  
-http://code-example.pragmatic-dev.ru/
+http://code-example.pragmatic-dev.ru/  
+Смотреть в Chrome или Edge на десктопе и смартфоне.  
+Потому-что применены свежие возможности браузера на 2024-й год,  
+которые ещё не поддерживаются в Safari и Firefox.
+
